@@ -1,0 +1,39 @@
+@keyframes lineAppear {
+	0%   {height: 0;}
+	100% {height: $separator-line-height;}
+}
+
+@keyframes soundOptionsSlideOutRight {
+	0%   {transform: translateX(-$soundOptionsButtonWidth);}
+	100% {transform: translateX(0);}
+}
+
+@keyframes soundOptionsSlideOutLeft {
+	0%   {transform: translateX($soundOptionsButtonWidth);}
+	100% {transform: translateX(0);}
+}
+
+@keyframes slideCornerLogo {
+	0% {transform: translateX(0);}
+	100% {transform: translateX($cornerLogoAnimateDistance);}
+}
+
+
+@keyframes fadeInDriftUp {
+	0%   {top: 15px;opacity: 0;}
+	100% {top: 0;opacity: 1;}
+}
+@keyframes fadeInDriftDown {
+	0%   {bottom: 50px;opacity: 0;}
+	100% {bottom: 0;opacity: 1;}
+}
+
+@keyframes fadeOut {
+	0% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+@keyframes fadeIn {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}

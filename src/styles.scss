@@ -1,59 +1,87 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+@import 'sass/_reset';
 
 
-.App {
-  text-align: center;
+@import 'sass/_variables';
+@import 'sass/_animations';
+
+/* Custom Styles */
+@import 'sass/_all';
+
+@media screen and (min-width: 769px) {
+	@import 'sass/_desktop';
+}
+@media screen and (min-width: 769px) and (max-height: 700px) {
+	@import 'sass/_desktop_short_height';
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@media screen and (max-width: 768px) {
+	.not-mobile {
+		display: none !important;
+	}
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@media screen and (max-width: 768px),
+	screen and (max-height: 415px) and (orientation: landscape) {
+	@import 'sass/_mobile';
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@media screen and (max-height: 415px) and (orientation: landscape) {//For large landscape phones eg. iPhone 11
+	@import 'sass/_mobile_landscape';
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-pre {
-  word-break: break-all;
-  white-space: break-spaces;
-  text-align: left;
+
+/*
+@media screen and (min-width: 769px) and (max-height: 1080px) {
+	//Fixes for contact form slide on smaller screens
+	.slide {
+		.contactForm {
+			top: calc(100px + 6vh);
+			padding: 4vh;
+			
+			.headline {
+				margin-bottom: 1.6vh;
+				line-height: 1.4em;
+				font-size: calc(11px + .2vh);
+				letter-spacing: 0.4vh;
+			}
+			.form-control {
+				.label {
+					margin-top: 1vh;
+					font-size: calc(11px + .2vh);
+					line-height: 1.4em;
+				}
+				.input {
+					margin-top: 0.5vh;
+					height: 4vh;
+					padding: 0.9vh;
+					&.textarea {
+						height: calc(30px + 2vh);
+					}
+				}
+			}
+			.fine-print {
+				margin-top: 0.5vh;
+			}
+			.rightArrow {
+				margin-top: 0.5vh;
+				width: 40px;
+			}
+		}
+		.privacyPolicy {
+			.verticalLineContainer {
+				height: calc(100px + 10vh);
+			}
+			.logo {
+				margin-top: 3vh;
+				margin-bottom: 3vh;
+				height: calc(45px + 4vh);
+			}
+			.contactInfo .btn {
+				margin-top: 4vh;
+			}
+		}
+	}
 }
+*/
