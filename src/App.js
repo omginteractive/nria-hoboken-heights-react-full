@@ -13,21 +13,20 @@ class App extends React.Component {
         slidesViewed: [0],
         scrollDebouncer: null,
         transitiongState: 0, // 0 for false -1 for up 1 for down
-			currIdx: 0,
-			previousScrollVal: 0,
-			peakScrollVal: 0,
-			readyForScroll: 1,
-			browser: '',
-			operating_sys: '',
-			isiPhone: '',
-			touchState: 0,//0 for end, 1 for start, 2 for move
-			touchDirection: null,
-			touchStartCoordinate: {
-				x: null,
-				y: null
-            },
-            scrollDebouncer: null,
-			slideHasScrolled: null,
+        currIdx: 0,
+        previousScrollVal: 0,
+        peakScrollVal: 0,
+        readyForScroll: 1,
+        browser: '',
+        operating_sys: '',
+        isiPhone: '',
+        touchState: 0,//0 for end, 1 for start, 2 for move
+        touchDirection: null,
+        touchStartCoordinate: {
+            x: null,
+            y: null
+        },
+        slideHasScrolled: null,
 			
 
 			
@@ -40,12 +39,16 @@ class App extends React.Component {
         }, {
             slideTemplate: 'exteriorLightToggle',
             styles: {
-                background: "#ff0000",
+                background: "#fff",
             },
+            slideClasses: "fullWidthVideo",
+            // video: './NIRMA_1_Exterior_High_Cinemagraphic.mp4',
+            videoLoop: true,
+            videoZoomEffect: true,
         }],
     }
 
-    this.watchForEventEnd = this.watchForEventEnd.bind(this);
+        this.watchForEventEnd = this.watchForEventEnd.bind(this);
 		this.firstSlide = this.firstSlide.bind(this);
 		this.lastSlide = this.lastSlide.bind(this);
 		this.nextSlide = this.nextSlide.bind(this);
@@ -118,12 +121,10 @@ class App extends React.Component {
 		this.headerElement = React.createRef()
 
 		this.state.isiPhone = navigator.platform== "iPhone"
-  }
+    }
 
-  componentDidMount() {
-    // console.log(modules)
-    // console.log(Slide)
-		window.addEventListener('keydown', (event) => {
+    componentDidMount() {
+    	window.addEventListener('keydown', (event) => {
 			if (!event.target.classList.contains('input')) {
 				if (event.code === "ArrowUp") this.prevSlide()
 				else if (event.code === "ArrowDown") this.nextSlide()
@@ -297,12 +298,13 @@ class App extends React.Component {
 		// 	this.prevSlide();
 		// }
 	}
-	watchForEventEnd(e) {
-		//The onTransitionEnd event triggers many properties and not only for .slides_inner . We only want to run this function for the transform property
+	watchForEventEnd(e) {console.log(e.target)
+        //The onTransitionEnd event triggers many properties and not only for .slides_inner . We only want to run this function for the transform property
 		const isSlidesInner = e.target.classList.contains('slides_inner');
-		if(!isSlidesInner) {
+		const isHome = e.target.classList.contains('slideTemplate-home');
+		if(!isSlidesInner && !isHome) {
 			return;
-		}
+		}console.log(2)
 
 		// const transitionProperty = e.propertyName
 		// if(transitionProperty != 'transform') return;
@@ -576,10 +578,8 @@ class App extends React.Component {
             isCurrent={idx == this.state.currIdx}
             isPlaying={this.state.isPlaying}></Slide>
     )
-        
-    const innerStyle = {
-			transform: 'translateY(-' + (this.state.currIdx * 100) + 'vh)'
-    }
+    const isFirstOrSecondSlide = this.state.currIdx == 0 || this.state.currIdx == 1
+    const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + (this.state.currIdx * 100) + 'vh)'}
         
     let slides_inner_classes = "slides_inner slide_idx_"+this.state.currIdx;
     let pageClasses = this.state.formSubmitted ? 'formSubmitted' : '';

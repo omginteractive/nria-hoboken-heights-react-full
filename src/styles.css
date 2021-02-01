@@ -121,6 +121,23 @@ table {
   }
 }
 /* Custom Styles */
+html,
+body {
+  /*
+   * this is used only to prevent pull-to-refresh which can be triggered 
+   * anytime the user tries to scroll up on a touch device
+   * 
+   * This also prevents an issue where the background color of the body is 
+   * exposed during overscroll/elasticscroll behavior on iOS
+   * 
+   * This prevents users from overscrolling on slides causing vertical
+   * movement not related to the slider
+   *
+   * This has caused issues before and may need to get disabled
+   */
+  overflow: hidden;
+}
+
 .slides_wrapper {
   overflow: hidden;
   height: 100vh;
@@ -139,6 +156,18 @@ table {
   position: relative;
   overflow: hidden;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-home {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: transform 1s;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-home:not(.activeSlide) {
+  transform: translateY(-100%);
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-home .animatedLogo {
   width: 250px;
 }
@@ -154,6 +183,22 @@ table {
   animation-duration: 1s;
   animation-delay: 2s;
   cursor: pointer;
+}
+.slides_wrapper .slides_inner .slide .videoContainer.compact {
+  width: 85vw;
+  height: 80%;
+  bottom: 0;
+  position: absolute;
+}
+.slides_wrapper .slides_inner .slide .videoContainer .background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: object-position 1400ms linear 0s;
+}
+.slides_wrapper .slides_inner .slide .videoContainer .background-video.videoZoomEffect {
+  transform: scale(1.07);
+  transition: object-position 1400ms linear 0s, transform 1.2s ease-out 1.2s;
 }
 
 @media screen and (max-width: 768px) {

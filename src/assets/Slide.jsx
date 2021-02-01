@@ -79,7 +79,7 @@ class Slide extends Component {
                     <SlideHome />
                 }
                 {slideObj.slideTemplate == 'exteriorLightToggle' && 
-                    <SlideExteriorLightToggle />
+                    <SlideExteriorLightToggle configuration={slideObj} />
                 }
             </div>
         )
@@ -100,12 +100,34 @@ class SlideHome extends Component {
 }
 class SlideExteriorLightToggle extends Component {
     render(){
+        let videoContainerClasses = 'videoContainer'
+        videoContainerClasses += ' compact'
+        let videoClasses = 'background-video'
+        
+        if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect'
         return(
             <>
-                <img className="animatedLogo" src={animatedLogo} alt=""/>
-                <div className="downArrowContainer">
-                    <img className="downArrow" src={downArrow}></img>
-                </div>
+                
+                {
+							//Hide landingpage video on FFMobile because it will not autoplay
+							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
+						<div
+						className={videoContainerClasses}
+						dangerouslySetInnerHTML={{
+							__html: `
+							<video
+							class="${videoClasses}"
+							${this.props.configuration.videoLoop ? 'loop="true"' : ''}
+							muted='muted'
+							autoplay='true'
+							playsinline='playsinline'
+							preload="metadata"
+							>
+							<source src='/videos/NIRMA_1_Exterior_High_OFF_Cinemagraphic.mp4' type="video/mp4" />
+							</video>`
+						}}
+					/>
+				}
             </>
         )
     }
