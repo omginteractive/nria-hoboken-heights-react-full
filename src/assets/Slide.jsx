@@ -10,30 +10,31 @@ class Slide extends Component {
 			type: this.props.obj.slideTemplate,
 		}
     }
-    handleLangChange = e => {
+    handleTheScroll = e => {
         let element = e.target
 		const scrolled = element.scrollTop > 0 ? true : false
         this.props.onSlideScroll(scrolled);
     }
+
+    scrollToNextSlide() {
+		const {goToNextSlide} = this.props;
+		goToNextSlide();
+    }
+    
     render(){
         const slideObj = this.props.obj;
-
+        const slideMethods = {
+            scrollToNextSlide: this.scrollToNextSlide.bind(this),
+        }
 		let slideClasses = "slide "
 		let videoClasses = 'background-video'
-		let landing_page_sound_player_classes = 'landing_page_sound_player';
 		let centerTextClasses = 'center';
 		let centerBottomClasses = "centerBottom";
 
 		const isCurrent = this.props.isCurrent;
-		const headerOptions = {
-			addCornerLogo: slideObj.addCornerLogo,
-			addDarkCornerLogo: slideObj.addDarkCornerLogo,
-			animateCornerLogoOnStart: slideObj.animateCornerLogoOnStart,
-			cornerLogoHideOnLastSlide: slideObj.cornerLogoHideOnLastSlide,
-			cornerLogofadeIn: slideObj.cornerLogofadeIn
-		};
 		
-		slideClasses += slideObj.slideClasses != undefined ? " " + slideObj.slideClasses : '';
+		
+		slideClasses += slideObj.slideClasses !== undefined ? " " + slideObj.slideClasses : '';
 		if(isCurrent) slideClasses += " runAnimations activeSlide";
 		if(this.props.slideViewed) slideClasses += " runAnimationOnce";
 		if(slideObj.videoZoomEffect) videoClasses += ' videoZoomEffect'
@@ -69,16 +70,12 @@ class Slide extends Component {
 			centerImageStyles = slideObj.centerImageStylesMobile
 		}
 
-		let right_arrow_bouncing = <div className='right_arrow_bouncing' onClick={() => this.slideHorizontal('right')}/>
-		let left_arrow_bouncing = <div className='left_arrow_bouncing' onClick={() => this.slideHorizontal('left')}/>
-        
-        
-        return(
-            <div className={slideClasses} style={slideStyles} onScroll={this.handleLangChange}>
-                {slideObj.slideTemplate == 'home' && 
-                    <SlideHome />
+		return(
+            <div className={slideClasses} style={slideStyles} onScroll={this.handleTheScroll}>
+                {slideObj.slideTemplate === 'home' && 
+                    <SlideHome methods={slideMethods} />
                 }
-                {slideObj.slideTemplate == 'exteriorLightToggle' && 
+                {slideObj.slideTemplate === 'exteriorLightToggle' && 
                     <SlideExteriorLightToggle configuration={slideObj} />
                 }
             </div>
@@ -87,12 +84,16 @@ class Slide extends Component {
 }
 
 class SlideHome extends Component {
+    nextSlide(){
+        this.props.methods.scrollToNextSlide()
+    }
     render(){
+        
         return(
             <>
                 <img className="animatedLogo" src={animatedLogo} alt=""/>
                 <div className="downArrowContainer">
-                    <img className="downArrow" src={downArrow}></img>
+                    <img onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
                 </div>
             </>
         )

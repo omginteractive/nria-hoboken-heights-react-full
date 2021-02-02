@@ -298,13 +298,13 @@ class App extends React.Component {
 		// 	this.prevSlide();
 		// }
 	}
-	watchForEventEnd(e) {console.log(e.target)
+	watchForEventEnd(e) {
         //The onTransitionEnd event triggers many properties and not only for .slides_inner . We only want to run this function for the transform property
 		const isSlidesInner = e.target.classList.contains('slides_inner');
 		const isHome = e.target.classList.contains('slideTemplate-home');
 		if(!isSlidesInner && !isHome) {
 			return;
-		}console.log(2)
+		}
 
 		// const transitionProperty = e.propertyName
 		// if(transitionProperty != 'transform') return;
