@@ -45,7 +45,15 @@ class App extends React.Component {
             // video: './NIRMA_1_Exterior_High_Cinemagraphic.mp4',
             videoLoop: true,
             videoZoomEffect: true,
-        }],
+        }, {
+            slideTemplate: 'fountainPen',
+            styles: {
+                background: "#fff",
+            },
+            slideClasses: "fullWidthVideo",
+            videoLoop: true,
+            videoZoomEffect: true,
+        }]
     }
 
         this.watchForEventEnd = this.watchForEventEnd.bind(this);
@@ -131,14 +139,12 @@ class App extends React.Component {
 				else if (event.code === "ArrowLeft") this.prevSlide()
 				else if (event.code === "ArrowRight") this.nextSlide()
 			}
-		});
-
-		
+        });
 		//See handleResizeOnAndroid() for details
 		if(this.state.operating_sys === 'android') {
 			this.timerHandle = null;
 			window.addEventListener('resize', () => this.handleResizeOnAndroid())
-		}
+        }
 	}
 
 	/*
@@ -574,12 +580,13 @@ class App extends React.Component {
             goToNextSlide={this.nextSlide}
             scrollToLastSlide={this.lastSlide}
             key={idx}
+            slideCount={idx}
             obj={slide}
             isCurrent={idx == this.state.currIdx}
             isPlaying={this.state.isPlaying}></Slide>
     )
     const isFirstOrSecondSlide = this.state.currIdx == 0 || this.state.currIdx == 1
-    const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + (this.state.currIdx * 100) + 'vh)'}
+    const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + ((this.state.currIdx-1) * 100) + 'vh)'}
         
     let slides_inner_classes = "slides_inner slide_idx_"+this.state.currIdx;
     let pageClasses = this.state.formSubmitted ? 'formSubmitted' : '';
@@ -589,20 +596,21 @@ class App extends React.Component {
 		if(this.state.slideHasScrolled) slidesWrapperClasses += ' scrolled'
     return (
       <div id="page" className={pageClasses}>
-                <div className={slidesWrapperClasses}
+            <div className={slidesWrapperClasses}
                 onTouchStart={this.handleTouchStart.bind(this)}
                 onTouchMove={this.handleTouchMove.bind(this)}
                 onTouchEnd={this.handleTouchEnd.bind(this)}
                 onWheel={this.handleWheelEvent.bind(this)}
                 onScroll={this.handleScrollEvent.bind(this)}>
-					<div
-						className={slides_inner_classes}
-						style={innerStyle}
-                        onTransitionEnd={e => this.watchForEventEnd(e)}>
-						{$slides}
-					</div>
-				</div>
-			</div>
+                {/* <header class='fixed-header'>Hamburger Logo Inquiries</header> */}
+                <div
+                    className={slides_inner_classes}
+                    style={innerStyle}
+                    onTransitionEnd={e => this.watchForEventEnd(e)}>
+                    {$slides}
+                </div>
+            </div>
+        </div>
     )
   }
 }

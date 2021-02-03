@@ -1,3 +1,40 @@
+@font-face {
+	src: url("assets/fonts/Gotham-Thin.otf");
+	font-family: "Gotham-Thin";
+	// font-weight: 200;
+}
+@font-face {
+	src: url("assets/fonts/Gotham-Light.otf");
+	font-family: "Gotham-Light";
+	font-weight: 300;
+}
+
+@font-face {
+    src: url("assets/fonts/Gotham-Book.otf");
+	font-family: 'Gotham-Book';
+	font-weight: 400;
+}
+
+@font-face {
+    src: url("assets/fonts/Gotham-Medium.otf") format("truetype");
+	font-family: 'Gotham-Medium';
+	font-weight: 500;
+}
+
+@font-face {
+	src: url("assets/fonts/Gotham-Bold.otf");
+	font-family: "Gotham-Bold";
+	font-weight: 700;
+	font-style: normal;
+}
+
+
+
+
+* {
+	box-sizing: border-box;
+}
+
 html,
 body {
     /*
@@ -15,9 +52,67 @@ body {
     overflow: hidden;
 }
 
+.fixed-header {
+    z-index: 999999999999;
+    position: absolute;
+    color: #fff;
+    top: 0;
+    width: 85vw;
+    height: 20vh;
+    left: 7.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Gotham-Book';
+	font-weight: 400;
+    &.dark {
+        color: #000;
+    }
+    .hamburger {
+        transform: translateY(0);
+        transition: transform 0.5s linear $slideAnimationDuration;
+        padding: 30px 15px 15px 15px;
+        // pointer-events: all;//because .mobileMenu has none
+        .line {
+            border-top: solid 4px #000;
+            width: 33px;
+            margin-bottom: 10px;
+        }
+    }
+    .corner-logo-wrapper {
+        height: 60px;
+        // width: 250px;
+        display: flex;
+        .corner-logo {
+            width: 110px;
+        }
+        .text {
+            letter-spacing: 5px;
+            color: #000;
+            width: 300px;
+            display: flex;
+            align-items: center;
+            
+            .separator {
+                margin: 0 12px;
+                border-left: 0.5462802649px solid #000;
+                height: 42px;
+                margin: 0 24px;
+                width: 1px;//necessary for some browsers
+            }
+        }
+    }
+    .inquiry-link {
+        color: #000000;
+    }
+}
+.slide .fixed-header {
+    z-index: 0;
+}
 .slides_wrapper {
 	overflow: hidden;
-	height: 100vh;
+    height: 100vh;
+    
 	.slides_inner {
 		transition-property: transform;
 		transition-duration: $slideAnimationDuration;
@@ -35,25 +130,25 @@ body {
                     position: absolute;
                     top: 0;
                     left: 0;
-                    width: 100%;
-                    height: 100%;
+                    width: 100vw;
+                    height: 100vh;
                     z-index: 1;
                     transition: transform 1s;
+                    display: flex;
+                    flex-direction: column;
                     &:not(.activeSlide) {
                         transform: translateY(-100%);
-
                     }
                     .animatedLogo {
                         width: 250px;
                     }
                     .downArrowContainer {
                         position: absolute;
-                        bottom: 10vh;
+                        bottom: 50px;
                         .downArrow {
                             opacity: 0;
-                            position: relative;
                             animation-fill-mode: forwards, none;
-                            animation-name: fadeInDriftDown, upAndDown;
+                            animation-name: fadeInDriftDownArrow, upAndDown;
                             animation-iteration-count: 1, infinite;
                             animation-duration: 1s, 2s;
                             animation-delay: 2s, 3s;
@@ -63,6 +158,19 @@ body {
 
                         }
 				
+                    }
+                }
+            }
+            &.runAnimationOnce {
+                .videoContainer {
+                    .background-video {
+
+                        
+                        &.videoZoomEffect {
+                            transform: scale(1);
+                            //the object-position transitions are only used in mobile but for simplicity they are set here
+                            transition: object-position $slideAnimationDuration linear 0s, transform 1.2s ease-out 1.2s;
+                        }
                     }
                 }
             }
@@ -196,6 +304,7 @@ body {
                     height: 80%;
                     bottom: 0;
                     position: absolute;
+                    overflow: hidden;
 
                 }
                 .background-video {
@@ -204,10 +313,8 @@ body {
                     object-fit: cover;
                     //the object-position transitions are only used in mobile but for simplicity they are set here
                     transition: object-position $slideAnimationDuration linear 0s;
-                    &.videoZoomEffect {
+                    &.startZoomedIn {
                         transform: scale(1.07);
-                        //the object-position transitions are only used in mobile but for simplicity they are set here
-                        transition: object-position $slideAnimationDuration linear 0s, transform 1.2s ease-out 1.2s;
                     }
                 }
             }

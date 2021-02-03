@@ -17,6 +17,15 @@ const flypilotFetchWPRestAPI = (self) => {
             // video: './NIRMA_1_Exterior_High_Cinemagraphic.mp4',
             videoLoop: true,
             videoZoomEffect: true,
+        }, {
+            slideTemplate: 'exteriorLightToggle',
+            styles: {
+                background: "#fff",
+            },
+            slideClasses: "fullWidthVideo",
+            // video: './NIRMA_1_Exterior_High_Cinemagraphic.mp4',
+            videoLoop: true,
+            videoZoomEffect: true,
         }
     ]
     self.setState({ slides: SLIDES });

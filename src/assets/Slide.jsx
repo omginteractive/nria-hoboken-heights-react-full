@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import animatedLogo from '../assets/images/Motion_logo.gif';
 import downArrow from '../assets/images/downarrow.svg';
+
 class Slide extends Component {
     constructor(props) {
         super(props);
@@ -78,6 +79,9 @@ class Slide extends Component {
                 {slideObj.slideTemplate === 'exteriorLightToggle' && 
                     <SlideExteriorLightToggle configuration={slideObj} />
                 }
+                {slideObj.slideTemplate === 'fountainPen' &&
+                    <SlideFountainPen configuration={slideObj} slideCount={this.props.slideCount} curridx={this.props.currIdx} />
+                }
             </div>
         )
     }
@@ -105,10 +109,53 @@ class SlideExteriorLightToggle extends Component {
         videoContainerClasses += ' compact'
         let videoClasses = 'background-video'
         
+        if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect startZoomedIn'
+        return(
+            <>
+                <header class='fixed-header'>
+                    <div class="hamburger">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="corner-logo-wrapper">
+                        <div class="text">HOBOKEN HEIGHTS<div class="separator"></div></div>
+                        <img class="corner-logo" src={require('./images/logos/NIRMA_Logo_Symbol_Black.png').default} />
+                    </div>
+                    <div className="inquiry-link">INQUIRE NOW</div>
+                </header>
+                {
+							//Hide landingpage video on FFMobile because it will not autoplay
+							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
+						<div
+						className={videoContainerClasses}
+						dangerouslySetInnerHTML={{
+							__html: `
+							<video
+							class="${videoClasses}"
+							${this.props.configuration.videoLoop ? 'loop="true"' : ''}
+							muted='muted'
+							autoplay='true'
+							playsinline='playsinline'
+							preload="metadata"
+							>
+							<source src='/videos/NIRMA_1_Exterior_High_OFF_Cinemagraphic.mp4' type="video/mp4" />
+							</video>`
+						}}
+					/>
+				}
+            </>
+        )
+    }
+}
+
+class SlideFountainPen extends Component {
+    render(){
+        let videoContainerClasses = 'videoContainer'
+        videoContainerClasses += ' compact'
+        let videoClasses = 'background-video'
         if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect'
         return(
             <>
-                
                 {
 							//Hide landingpage video on FFMobile because it will not autoplay
 							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay

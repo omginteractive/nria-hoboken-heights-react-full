@@ -120,18 +120,57 @@ table {
     opacity: 1;
   }
 }
-@keyframes upAndDown {
+@keyframes fadeInDriftDownArrow {
   0% {
-    bottom: 0;
-  }
-  50% {
-    bottom: 20px;
+    transform: translateY(-20px);
+    opacity: 0;
   }
   100% {
-    bottom: 0;
+    transform: translateY(20px);
+    opacity: 1;
+  }
+}
+@keyframes upAndDown {
+  0% {
+    transform: translateY(20px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(20px);
   }
 }
 /* Custom Styles */
+@font-face {
+  src: url("assets/fonts/Gotham-Thin.otf");
+  font-family: "Gotham-Thin";
+}
+@font-face {
+  src: url("assets/fonts/Gotham-Light.otf");
+  font-family: "Gotham-Light";
+  font-weight: 300;
+}
+@font-face {
+  src: url("assets/fonts/Gotham-Book.otf");
+  font-family: "Gotham-Book";
+  font-weight: 400;
+}
+@font-face {
+  src: url("assets/fonts/Gotham-Medium.otf") format("truetype");
+  font-family: "Gotham-Medium";
+  font-weight: 500;
+}
+@font-face {
+  src: url("assets/fonts/Gotham-Bold.otf");
+  font-family: "Gotham-Bold";
+  font-weight: 700;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   /*
@@ -147,6 +186,62 @@ body {
    * This has caused issues before and may need to get disabled
    */
   overflow: hidden;
+}
+
+.fixed-header {
+  z-index: 999999999999;
+  position: absolute;
+  color: #fff;
+  top: 0;
+  width: 85vw;
+  height: 20vh;
+  left: 7.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Gotham-Book";
+  font-weight: 400;
+}
+.fixed-header.dark {
+  color: #000;
+}
+.fixed-header .hamburger {
+  transform: translateY(0);
+  transition: transform 0.5s linear 1400ms;
+  padding: 30px 15px 15px 15px;
+}
+.fixed-header .hamburger .line {
+  border-top: solid 4px #000;
+  width: 33px;
+  margin-bottom: 10px;
+}
+.fixed-header .corner-logo-wrapper {
+  height: 60px;
+  display: flex;
+}
+.fixed-header .corner-logo-wrapper .corner-logo {
+  width: 110px;
+}
+.fixed-header .corner-logo-wrapper .text {
+  letter-spacing: 5px;
+  color: #000;
+  width: 300px;
+  display: flex;
+  align-items: center;
+}
+.fixed-header .corner-logo-wrapper .text .separator {
+  margin: 0 12px;
+  border-left: 0.5462802649px solid #000;
+  height: 42px;
+  margin: 0 24px;
+  width: 1px;
+}
+.fixed-header .inquiry-link {
+  color: #000000;
+}
+
+.slide .fixed-header {
+  z-index: 0;
 }
 
 .slides_wrapper {
@@ -171,10 +266,12 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   z-index: 1;
   transition: transform 1s;
+  display: flex;
+  flex-direction: column;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-home:not(.activeSlide) {
   transform: translateY(-100%);
@@ -184,24 +281,28 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-home .downArrowContainer {
   position: absolute;
-  bottom: 10vh;
+  bottom: 50px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-home .downArrowContainer .downArrow {
   opacity: 0;
-  position: relative;
   animation-fill-mode: forwards, none;
-  animation-name: fadeInDriftDown, upAndDown;
+  animation-name: fadeInDriftDownArrow, upAndDown;
   animation-iteration-count: 1, infinite;
   animation-duration: 1s, 2s;
   animation-delay: 2s, 3s;
   animation-timing-function: linear, ease-in-out;
   cursor: pointer;
 }
+.slides_wrapper .slides_inner .slide.runAnimationOnce .videoContainer .background-video.videoZoomEffect {
+  transform: scale(1);
+  transition: object-position 1400ms linear 0s, transform 1.2s ease-out 1.2s;
+}
 .slides_wrapper .slides_inner .slide .videoContainer.compact {
   width: 85vw;
   height: 80%;
   bottom: 0;
   position: absolute;
+  overflow: hidden;
 }
 .slides_wrapper .slides_inner .slide .videoContainer .background-video {
   width: 100%;
@@ -209,9 +310,8 @@ body {
   object-fit: cover;
   transition: object-position 1400ms linear 0s;
 }
-.slides_wrapper .slides_inner .slide .videoContainer .background-video.videoZoomEffect {
+.slides_wrapper .slides_inner .slide .videoContainer .background-video.startZoomedIn {
   transform: scale(1.07);
-  transition: object-position 1400ms linear 0s, transform 1.2s ease-out 1.2s;
 }
 
 @media screen and (max-width: 768px) {
