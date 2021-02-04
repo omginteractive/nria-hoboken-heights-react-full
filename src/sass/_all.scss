@@ -29,6 +29,11 @@
 }
 
 
+h2 {
+    text-transform: uppercase;
+    font-size: 40px;
+    font-family: "Gotham-Thin";
+}
 
 
 * {
@@ -80,15 +85,33 @@ body {
     
     &.dark {
         color: #000;
+        .separator {
+            border-left: 0.5462802649px solid #000;
+        }
+    }
+    &.light {
+        color: #fff;
+        .separator {
+            border-left: 0.5462802649px solid #fff;
+        }
+    }
+    $menuBtnWidth: 33px;
+    $menuBtnHorizontalPadding: 15px;
+    .closeBtn {
+        cursor: pointer;
+        height: 25px;
+        width: calc(#{$menuBtnHorizontalPadding}*2 + #{$menuBtnWidth});
+        padding: 0 $menuBtnHorizontalPadding;
     }
     .hamburger {
+        cursor: pointer;
         transform: translateY(0);
         transition: transform 0.5s linear $slideAnimationDuration;
-        padding: 30px 15px 15px 15px;
+        padding: 0 $menuBtnHorizontalPadding;
         // pointer-events: all;//because .mobileMenu has none
         .line {
             border-top: solid 4px #000;
-            width: 33px;
+            width: $menuBtnWidth;
             margin-bottom: 10px;
         }
     }
@@ -101,22 +124,92 @@ body {
         }
         .text {
             letter-spacing: 5px;
-            color: #000;
             width: 300px;
             display: flex;
             align-items: center;
             
             .separator {
                 margin: 0 12px;
-                border-left: 0.5462802649px solid #000;
                 height: 42px;
                 margin: 0 24px;
                 width: 1px;//necessary for some browsers
             }
         }
     }
-    .inquiry-link {
-        color: #000000;
+}
+
+.mobile-menu {
+    background-color: #363636;
+    height: 100vh;
+    width: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: 100000;
+    transition: width 1s;
+    &.open {
+        width: 100vw;
+    }
+    .fixed-header {
+        position: absolute;
+    }
+    .mobileMenuLinks {
+        color: #ffffff;
+        position: absolute;
+        left: calc(50px + #{$side-margin});
+        top: calc(50px + #{$header-height});
+        > a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            height: 60px;
+            > h2 {
+                line-height: 1.4em;
+                transform-origin: left;
+                transition: transform 0.4s, color 0.4s;
+                color: rgba(255, 255, 255, 0.5);
+                &:hover {
+                    transform: scale(1.3);
+                    color: #fff;
+                }
+            }
+        }
+    }
+    .mobileMenuContact {
+        color: #ffffff;
+        position: absolute;
+        right: $side-margin;
+        bottom: $header-height/2;
+        text-align: right;
+        white-space: nowrap;//prevent line breaks
+        .socialMedias {
+            display: flex;
+            justify-content: flex-end;
+            font-weight: bold;
+            text-transform: uppercase;
+            .socialMedia {
+                > a {
+                    color: #ffffff;
+                    text-decoration: none;
+                }
+            }
+            .separator {
+                margin: 0 4px;
+            }
+        }
+        .address {
+            line-height: 1.4em;
+            margin: 40px 0;
+            .phoneNum {
+                font-weight: bold;
+                > a {
+                    text-decoration: none;
+                    color: #ffffff;
+                }
+            }
+        }
+        .copyright {
+            line-height: 1.4em;
+        }
     }
 }
 .slide .fixed-header {
@@ -219,11 +312,6 @@ body {
                         }
                     }
                 }
-            }
-            h2 {
-                text-transform: uppercase;
-                font-size: 40px;
-                font-family: "Gotham-Thin";
             }
             .btn {
                 cursor: pointer;
@@ -369,6 +457,7 @@ body {
             //     height: 100vh;
             // }
             .videoContainer {
+                pointer-events: none;
                 &.compact {
                     width: calc(100vw - #{$side-margin}*2);
                     height: 80%;

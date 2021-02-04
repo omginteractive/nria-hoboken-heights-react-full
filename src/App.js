@@ -2,6 +2,8 @@ import React from 'react';
 // import flypilotFetchWPRestAPI from './flypilotFetchWPRestAPI.js';
 import modules from './assets/modules';
 import Slide from './assets/Slide';
+import MobileMenu from './assets/MobileMenu';
+import Header from './assets/Header';
 import $ from 'jquery'
 import _ from "lodash";
 
@@ -53,7 +55,8 @@ class App extends React.Component {
             slideClasses: "fullWidthVideo",
             // videoLoop: true,
             // videoZoomEffect: true,
-        }]
+        }],
+        mobileMenuOpen: false
     }
 
         this.watchForEventEnd = this.watchForEventEnd.bind(this);
@@ -67,10 +70,7 @@ class App extends React.Component {
 		// this.debounceOnScroll = _.throttle(this.debounceOnScroll.bind(this), 3500, {leading: true, trailing:true});
 
 
-		this.musicMute = this.musicMute.bind(this);
-		this.musicPlay = this.musicPlay.bind(this);
-		this.musicToggle = this.musicToggle.bind(this);
-
+		
 	
 		/*
 		 * Browser wheel event inconsistencies
@@ -191,14 +191,12 @@ class App extends React.Component {
 	// 	this.setState({previousScrollVal: 0});
 	// }
 
-	musicMute(evt) {
-		this.setState({ isPlaying: false });
-	}
-	musicPlay(evt) {
-		this.setState({ isPlaying: true });
-	}
-	musicToggle(){
-		this.setState({ isPlaying: !this.state.isPlaying })
+    toggleMobileMenu(){
+        const mobileMenuOpen = this.state.mobileMenuOpen
+        this.setState({
+            mobileMenuOpen: !mobileMenuOpen
+        });
+        
 	}
 	scrollSlide(deltaY){
         const isScrollingDown = deltaY > 0;
@@ -558,90 +556,81 @@ class App extends React.Component {
 			this.privacyPolicyModalRemove();
 		}
 	}
-  render() {
-    // let headerOptions = {
-		// 	addCornerLogo: true,
-		// 	addDarkCornerLogo: true,
-		// 	fixedHeader: true
-		// }
-    const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
+    render() {
+        // let headerOptions = {
+            // 	addCornerLogo: true,
+            // 	addDarkCornerLogo: true,
+            // 	fixedHeader: true
+            // }
+        const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
 
-    const $slides = this.state.slides.map((slide, idx) =>
-        <Slide isFirefoxAndroid={isFirefoxAndroid}
-            showPrivacyPolicy={this.privacyPolicyModalOpen.bind(this)}
-            horizontalSlide={this.slideHorizontal.bind(this)}
-            onSlideScroll={this.handleSlideScroll}
-            scrollToFirstSlide={this.firstSlide}
-            createHubspotContactForm={this.createHubspotForm.bind(this)}
-            formCleared={this.contactFormCleared.bind(this)}
-            formSubmitted={this.contactFormSubmitted.bind(this)}
-            currIdx={this.state.currIdx}
-            slideViewed={this.state.slidesViewed.includes(idx)}
-            goToNextSlide={this.nextSlide}
-            scrollToLastSlide={this.lastSlide}
-            key={idx}
-            slideCount={idx}
-            obj={slide}
-            isCurrent={idx == this.state.currIdx}
-            isPlaying={this.state.isPlaying}></Slide>
-    )
-    const isFirstOrSecondSlide = this.state.currIdx == 0 || this.state.currIdx == 1
-    const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + ((this.state.currIdx-1) * 100) + 'vh)'}
-        
-    let slides_inner_classes = "slides_inner slide_idx_"+this.state.currIdx;
-    let pageClasses = this.state.formSubmitted ? 'formSubmitted' : '';
-    pageClasses += this.state.isiPhone ? ' iPhone' : '';
-    pageClasses +=  isFirefoxAndroid ? ' firefoxAndroid' : '';
-    let slidesWrapperClasses = "slides_wrapper";
-		if(this.state.slideHasScrolled) slidesWrapperClasses += ' scrolled'
-    return (
-      <div id="page" className={pageClasses}>
-            <div className={slidesWrapperClasses}
-                onTouchStart={this.handleTouchStart.bind(this)}
-                onTouchMove={this.handleTouchMove.bind(this)}
-                onTouchEnd={this.handleTouchEnd.bind(this)}
-                onWheel={this.handleWheelEvent.bind(this)}
-                onScroll={this.handleScrollEvent.bind(this)}>
-                <div className="fixed-headers">
-                    <div className='fixed-header-inner'>
-                        <div className='fixed-header-wrapper'>
-                            <header className='fixed-header'>
-                                <div className="hamburger">
-                                    <div className="line"></div>
-                                    <div className="line"></div>
-                                </div>
-                                <div className="corner-logo-wrapper">
-                                    <div className="text">HOBOKEN HEIGHTS<div className="separator"></div></div>
-                                    <img className="corner-logo" src={require('./assets/images/logos/NIRMA_Logo_Symbol_Black.png').default} />
-                                </div>
-                                <div className="inquiry-link">INQUIRE NOW</div>
-                            </header>
+        const $slides = this.state.slides.map((slide, idx) =>
+            <Slide isFirefoxAndroid={isFirefoxAndroid}
+                showPrivacyPolicy={this.privacyPolicyModalOpen.bind(this)}
+                horizontalSlide={this.slideHorizontal.bind(this)}
+                onSlideScroll={this.handleSlideScroll}
+                scrollToFirstSlide={this.firstSlide}
+                createHubspotContactForm={this.createHubspotForm.bind(this)}
+                formCleared={this.contactFormCleared.bind(this)}
+                formSubmitted={this.contactFormSubmitted.bind(this)}
+                currIdx={this.state.currIdx}
+                slideViewed={this.state.slidesViewed.includes(idx)}
+                goToNextSlide={this.nextSlide}
+                scrollToLastSlide={this.lastSlide}
+                key={idx}
+                slideCount={idx}
+                obj={slide}
+                isCurrent={idx == this.state.currIdx}
+                isPlaying={this.state.isPlaying}></Slide>
+        )
+        const isFirstOrSecondSlide = this.state.currIdx == 0 || this.state.currIdx == 1
+        const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + ((this.state.currIdx-1) * 100) + 'vh)'}
+            
+        let slides_inner_classes = "slides_inner slide_idx_"+this.state.currIdx;
+        let pageClasses = this.state.formSubmitted ? 'formSubmitted' : '';
+        pageClasses += this.state.isiPhone ? ' iPhone' : '';
+        pageClasses +=  isFirefoxAndroid ? ' firefoxAndroid' : '';
+        let slidesWrapperClasses = "slides_wrapper";
+            if(this.state.slideHasScrolled) slidesWrapperClasses += ' scrolled'
+        return (
+            <div id="page" className={pageClasses}>
+                <MobileMenu open={this.state.mobileMenuOpen} toggleMobileMenu={this.toggleMobileMenu.bind(this)} />
+                    <div className={slidesWrapperClasses}
+                        onTouchStart={this.handleTouchStart.bind(this)}
+                        onTouchMove={this.handleTouchMove.bind(this)}
+                        onTouchEnd={this.handleTouchEnd.bind(this)}
+                        onWheel={this.handleWheelEvent.bind(this)}
+                        onScroll={this.handleScrollEvent.bind(this)}>
+                    <div className="fixed-headers">
+                        <div className='fixed-header-inner'>
+                            <div className='fixed-header-wrapper'>
+                                <Header toggleMobileMenu={this.toggleMobileMenu.bind(this)} />
+                            </div>
+                            {/* <div className='fixed-header-wrapper'>
+                                <header className='fixed-header'>
+                                    <div className="hamburger">
+                                        <div className="line"></div>
+                                        <div className="line"></div>
+                                    </div>
+                                    <div className="corner-logo-wrapper">
+                                        <div className="text">TEST HOBOKEN HEIGHTS<div className="separator"></div></div>
+                                        <img className="corner-logo" src={require('./assets/images/logos/NIRMA_Logo_Symbol_Black.png').default} />
+                                    </div>
+                                    <div className="inquiry-link">INQUIRE NOW</div>
+                                </header>
+                            </div> */}
                         </div>
-                        {/* <div className='fixed-header-wrapper'>
-                            <header className='fixed-header'>
-                                <div className="hamburger">
-                                    <div className="line"></div>
-                                    <div className="line"></div>
-                                </div>
-                                <div className="corner-logo-wrapper">
-                                    <div className="text">TEST HOBOKEN HEIGHTS<div className="separator"></div></div>
-                                    <img className="corner-logo" src={require('./assets/images/logos/NIRMA_Logo_Symbol_Black.png').default} />
-                                </div>
-                                <div className="inquiry-link">INQUIRE NOW</div>
-                            </header>
-                        </div> */}
+                    </div>
+                    <div
+                        className={slides_inner_classes}
+                        style={innerStyle}
+                        onTransitionEnd={e => this.watchForEventEnd(e)}>
+                        {$slides}
                     </div>
                 </div>
-                <div
-                    className={slides_inner_classes}
-                    style={innerStyle}
-                    onTransitionEnd={e => this.watchForEventEnd(e)}>
-                    {$slides}
-                </div>
             </div>
-        </div>
-    )
-  }
+        )
+    }
 }
 
 export default App;

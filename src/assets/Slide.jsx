@@ -128,14 +128,14 @@ class SlideExteriorLightToggle extends Component {
         if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect startZoomedIn'
         return(
             <>
-                <header class='fixed-header'>
-                    <div class="hamburger">
-                        <div class="line"></div>
-                        <div class="line"></div>
+                <header className='fixed-header'>
+                    <div className="hamburger">
+                        <div className="line"></div>
+                        <div className="line"></div>
                     </div>
-                    <div class="corner-logo-wrapper">
-                        <div class="text">HOBOKEN HEIGHTS<div class="separator"></div></div>
-                        <img class="corner-logo" src={require('./images/logos/NIRMA_Logo_Symbol_Black.png').default} />
+                    <div className="corner-logo-wrapper">
+                        <div className="text">HOBOKEN HEIGHTS<div className="separator"></div></div>
+                        <img className="corner-logo" src={require('./images/logos/NIRMA_Logo_Symbol_Black.png').default} />
                     </div>
                     <div className="inquiry-link">INQUIRE NOW</div>
                 </header>
