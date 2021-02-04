@@ -51,8 +51,8 @@ class App extends React.Component {
                 background: "#fff",
             },
             slideClasses: "fullWidthVideo",
-            videoLoop: true,
-            videoZoomEffect: true,
+            // videoLoop: true,
+            // videoZoomEffect: true,
         }]
     }
 

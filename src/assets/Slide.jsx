@@ -139,7 +139,7 @@ class SlideExteriorLightToggle extends Component {
                     </div>
                     <div className="inquiry-link">INQUIRE NOW</div>
                 </header>
-                <div onClick={this.toggleLights.bind(this)} className="toggleLights">{lightButtonText}</div>
+                <div onClick={this.toggleLights.bind(this)} className="toggleLights btn">{lightButtonText}</div>
                 {
 							//Hide landingpage video on FFMobile because it will not autoplay
 							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
@@ -188,11 +188,18 @@ class SlideExteriorLightToggle extends Component {
 class SlideFountainPen extends Component {
     render(){
         let videoContainerClasses = 'videoContainer'
-        videoContainerClasses += ' compact'
         let videoClasses = 'background-video'
         if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect'
         return(
-            <>
+            <> 
+                {
+                    <div className="textSection">
+                        <h2>4 State-of-the-art Buildings<br />55 Residences | 9 Penthouses</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <div className="btn dark">Inquire now</div>
+                    </div>
+                }
                 {
 							//Hide landingpage video on FFMobile because it will not autoplay
 							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
@@ -208,7 +215,7 @@ class SlideFountainPen extends Component {
 							playsinline='playsinline'
 							preload="metadata"
 							>
-							<source src='/videos/NIRMA_1_Exterior_High_OFF_Cinemagraphic.mp4' type="video/mp4" />
+							<source src='/videos/Motion_signature.mp4' type="video/mp4" />
 							</video>`
 						}}
 					/>

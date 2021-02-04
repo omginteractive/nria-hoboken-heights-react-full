@@ -308,26 +308,65 @@ body {
   cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights {
-  top: calc(20vh + 30px);
   position: absolute;
+  top: calc(20vh + 30px);
   right: calc(7.5vw + 30px);
-  cursor: pointer;
-  text-align: center;
-  border: rgba(255, 255, 255, 0.7) solid 1px;
   z-index: 1;
-  text-transform: uppercase;
-  padding: 15px;
-  color: #fff;
-  width: 150px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights:hover,
 .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights .on {
   background-color: #fff;
   color: #000;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection {
+  position: absolute;
+  left: calc(50px + 7.5vw);
+  top: calc(50px + 20vh);
+  height: calc(100vh - 20vh*2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection > p {
+  margin-top: 1em;
+  text-align: justify;
+  width: 50%;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection .btn {
+  margin-top: 1em;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .videoContainer .background-video {
+  height: 100vh;
+  width: 100vw;
+  object-position: top right;
+}
 .slides_wrapper .slides_inner .slide.runAnimationOnce .videoContainer .background-video.videoZoomEffect {
   transform: scale(1);
   transition: object-position 1400ms linear 0s, transform 1.2s ease-out 1.2s;
+}
+.slides_wrapper .slides_inner .slide h2 {
+  text-transform: uppercase;
+  font-size: 40px;
+  font-family: "Gotham-Thin";
+}
+.slides_wrapper .slides_inner .slide .btn {
+  cursor: pointer;
+  text-align: center;
+  border: rgba(255, 255, 255, 0.7) solid 1px;
+  color: #fff;
+  z-index: 1;
+  text-transform: uppercase;
+  padding: 15px;
+  width: 170px;
+}
+.slides_wrapper .slides_inner .slide .btn.dark {
+  background-color: #000;
+  color: #ffffff;
+}
+.slides_wrapper .slides_inner .slide .btn.dark:hover {
+  background-color: #fff;
+  color: #000;
+  border-color: #000;
 }
 .slides_wrapper .slides_inner .slide .videoContainer.compact {
   width: calc(100vw - 7.5vw*2);
