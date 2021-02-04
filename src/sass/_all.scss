@@ -32,7 +32,7 @@
 
 
 * {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html,
@@ -51,20 +51,33 @@ body {
      */
     overflow: hidden;
 }
+.fixed-headers {
+    position: absolute;
+    transform: translateY(1px);
+    z-index: 12313;
+    height: $header-height;
+    overflow: hidden;
+    .fixed-header-inner {
 
+        .fixed-header-wrapper {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+    }
+}
 .fixed-header {
     z-index: 999999999999;
-    position: absolute;
+    position: fixed;
     color: #fff;
     top: 0;
     width: 85vw;
-    height: 20vh;
-    left: 7.5vw;
+    height: $header-height;
+    left: $side-margin;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-family: 'Gotham-Book';
-	font-weight: 400;
+    
     &.dark {
         color: #000;
     }
@@ -108,6 +121,7 @@ body {
 }
 .slide .fixed-header {
     z-index: 0;
+    display: none;
 }
 .slides_wrapper {
 	overflow: hidden;
@@ -132,7 +146,7 @@ body {
                     left: 0;
                     width: 100vw;
                     height: 100vh;
-                    z-index: 1;
+                    z-index: 2;
                     transition: transform 1s;
                     display: flex;
                     flex-direction: column;
@@ -154,18 +168,33 @@ body {
                             animation-delay: 2s, 3s;
                             animation-timing-function: linear, ease-in-out;
                             cursor: pointer;
-
-
                         }
-				
+                    }
+                }
+                &exteriorLightToggle {
+                    .toggleLights {
+                        top: calc(#{$header-height} + 30px);
+                        position: absolute;
+                        right: calc(#{$side-margin} + 30px);
+                        cursor: pointer;
+                        text-align: center;
+                        border: rgba(255, 255, 255, 0.7) solid 1px;
+                        z-index: 1;
+                        text-transform: uppercase;
+                        padding: 15px;
+                        color: #fff;
+                        width: 150px;
+                        &:hover,
+                        .on {
+                            background-color: #fff;
+                            color: #000;
+                        }
                     }
                 }
             }
             &.runAnimationOnce {
                 .videoContainer {
                     .background-video {
-
-                        
                         &.videoZoomEffect {
                             transform: scale(1);
                             //the object-position transitions are only used in mobile but for simplicity they are set here
@@ -300,7 +329,7 @@ body {
             // }
             .videoContainer {
                 &.compact {
-                    width: 85vw;
+                    width: calc(100vw - #{$side-margin}*2);
                     height: 80%;
                     bottom: 0;
                     position: absolute;

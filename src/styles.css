@@ -31,6 +31,8 @@ footer, header, hgroup, menu, nav, section {
 
 body {
   line-height: 1;
+  font-family: "Gotham-Book";
+  font-weight: 400;
 }
 
 ol, ul {
@@ -188,9 +190,22 @@ body {
   overflow: hidden;
 }
 
+.fixed-headers {
+  position: absolute;
+  transform: translateY(1px);
+  z-index: 12313;
+  height: 20vh;
+  overflow: hidden;
+}
+.fixed-headers .fixed-header-inner .fixed-header-wrapper {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
 .fixed-header {
   z-index: 999999999999;
-  position: absolute;
+  position: fixed;
   color: #fff;
   top: 0;
   width: 85vw;
@@ -199,8 +214,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: "Gotham-Book";
-  font-weight: 400;
 }
 .fixed-header.dark {
   color: #000;
@@ -242,6 +255,7 @@ body {
 
 .slide .fixed-header {
   z-index: 0;
+  display: none;
 }
 
 .slides_wrapper {
@@ -268,7 +282,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1;
+  z-index: 2;
   transition: transform 1s;
   display: flex;
   flex-direction: column;
@@ -293,12 +307,30 @@ body {
   animation-timing-function: linear, ease-in-out;
   cursor: pointer;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights {
+  top: calc(20vh + 30px);
+  position: absolute;
+  right: calc(7.5vw + 30px);
+  cursor: pointer;
+  text-align: center;
+  border: rgba(255, 255, 255, 0.7) solid 1px;
+  z-index: 1;
+  text-transform: uppercase;
+  padding: 15px;
+  color: #fff;
+  width: 150px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights:hover,
+.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights .on {
+  background-color: #fff;
+  color: #000;
+}
 .slides_wrapper .slides_inner .slide.runAnimationOnce .videoContainer .background-video.videoZoomEffect {
   transform: scale(1);
   transition: object-position 1400ms linear 0s, transform 1.2s ease-out 1.2s;
 }
 .slides_wrapper .slides_inner .slide .videoContainer.compact {
-  width: 85vw;
+  width: calc(100vw - 7.5vw*2);
   height: 80%;
   bottom: 0;
   position: absolute;

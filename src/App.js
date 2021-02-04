@@ -602,7 +602,36 @@ class App extends React.Component {
                 onTouchEnd={this.handleTouchEnd.bind(this)}
                 onWheel={this.handleWheelEvent.bind(this)}
                 onScroll={this.handleScrollEvent.bind(this)}>
-                {/* <header class='fixed-header'>Hamburger Logo Inquiries</header> */}
+                <div className="fixed-headers">
+                    <div className='fixed-header-inner'>
+                        <div className='fixed-header-wrapper'>
+                            <header className='fixed-header'>
+                                <div className="hamburger">
+                                    <div className="line"></div>
+                                    <div className="line"></div>
+                                </div>
+                                <div className="corner-logo-wrapper">
+                                    <div className="text">HOBOKEN HEIGHTS<div className="separator"></div></div>
+                                    <img className="corner-logo" src={require('./assets/images/logos/NIRMA_Logo_Symbol_Black.png').default} />
+                                </div>
+                                <div className="inquiry-link">INQUIRE NOW</div>
+                            </header>
+                        </div>
+                        {/* <div className='fixed-header-wrapper'>
+                            <header className='fixed-header'>
+                                <div className="hamburger">
+                                    <div className="line"></div>
+                                    <div className="line"></div>
+                                </div>
+                                <div className="corner-logo-wrapper">
+                                    <div className="text">TEST HOBOKEN HEIGHTS<div className="separator"></div></div>
+                                    <img className="corner-logo" src={require('./assets/images/logos/NIRMA_Logo_Symbol_Black.png').default} />
+                                </div>
+                                <div className="inquiry-link">INQUIRE NOW</div>
+                            </header>
+                        </div> */}
+                    </div>
+                </div>
                 <div
                     className={slides_inner_classes}
                     style={innerStyle}

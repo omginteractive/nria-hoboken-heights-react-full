@@ -104,11 +104,27 @@ class SlideHome extends Component {
     }
 }
 class SlideExteriorLightToggle extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            lightsOn: false,
+            video: null
+        }
+        this.lightsOffVideo= '/videos/NIRMA_1_Exterior_High_OFF_Cinemagraphic.mp4'
+        this.lightsOnVideo= '/videos/NIRMA_1_Exterior_High_Cinemagraphic.mp4'
+    }
+
+    toggleLights(){
+        const newLightsState = !this.state.lightsOn
+        this.setState({
+            lightsOn: newLightsState
+        })
+    }
     render(){
         let videoContainerClasses = 'videoContainer'
         videoContainerClasses += ' compact'
         let videoClasses = 'background-video'
-        
+        let lightButtonText = this.state.lightsOn ? 'Turn Off' : 'Turn On'
         if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect startZoomedIn'
         return(
             <>
@@ -123,6 +139,7 @@ class SlideExteriorLightToggle extends Component {
                     </div>
                     <div className="inquiry-link">INQUIRE NOW</div>
                 </header>
+                <div onClick={this.toggleLights.bind(this)} className="toggleLights">{lightButtonText}</div>
                 {
 							//Hide landingpage video on FFMobile because it will not autoplay
 							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
@@ -138,7 +155,27 @@ class SlideExteriorLightToggle extends Component {
 							playsinline='playsinline'
 							preload="metadata"
 							>
-							<source src='/videos/NIRMA_1_Exterior_High_OFF_Cinemagraphic.mp4' type="video/mp4" />
+							<source src="${this.lightsOnVideo}" type="video/mp4" />
+							</video>`
+						}}
+					/>
+				}
+                {!this.state.lightsOn &&
+							//Hide landingpage video on FFMobile because it will not autoplay
+							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
+						<div
+						className={videoContainerClasses}
+						dangerouslySetInnerHTML={{
+							__html: `
+							<video
+							class="${videoClasses}"
+							${this.props.configuration.videoLoop ? 'loop="true"' : ''}
+							muted='muted'
+							autoplay='true'
+							playsinline='playsinline'
+							preload="metadata"
+							>
+							<source src="${this.lightsOffVideo}" type="video/mp4" />
 							</video>`
 						}}
 					/>
