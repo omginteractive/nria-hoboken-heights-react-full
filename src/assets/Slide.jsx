@@ -82,6 +82,9 @@ class Slide extends Component {
                 {slideObj.slideTemplate === 'fountainPen' &&
                     <SlideFountainPen configuration={slideObj} slideCount={this.props.slideCount} curridx={this.props.currIdx} />
                 }
+                {slideObj.slideTemplate === 'patio' &&
+                    <SlidePatio configuration={slideObj} />
+                }
             </div>
         )
     }
@@ -225,4 +228,44 @@ class SlideFountainPen extends Component {
     }
 }
 
+
+class SlidePatio extends Component {
+    nextSlide(){
+        this.props.methods.scrollToNextSlide()
+    }
+    render(){
+        let videoContainerClasses = 'videoContainer'
+        let videoClasses = 'background-video'
+        if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect'
+        return(
+            <>
+                {
+                    <div className="downArrowContainer">
+                        <img onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
+                    </div>
+                }
+                {
+							//Hide landingpage video on FFMobile because it will not autoplay
+							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
+						<div
+						className={videoContainerClasses}
+						dangerouslySetInnerHTML={{
+							__html: `
+							<video
+							class="${videoClasses}"
+							${this.props.configuration.videoLoop ? 'loop="true"' : ''}
+							muted='muted'
+							autoplay='true'
+							playsinline='playsinline'
+							preload="metadata"
+							>
+							<source src='/videos/NIRMA_2_Patio_High_Cinemagraphic.mp4' type="video/mp4" />
+							</video>`
+						}}
+					/>
+				}
+            </>
+        )
+    }
+}
 export default Slide;

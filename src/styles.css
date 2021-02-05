@@ -199,7 +199,7 @@ body {
 .fixed-headers {
   position: absolute;
   transform: translateY(1px);
-  z-index: 12313;
+  z-index: 1;
   height: 20vh;
   overflow: hidden;
 }
@@ -429,6 +429,20 @@ body {
   height: 100vh;
   width: 100vw;
   object-position: top right;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-patio .downArrowContainer {
+  position: absolute;
+  bottom: 50px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-patio .downArrowContainer .downArrow {
+  opacity: 0;
+  animation-fill-mode: forwards, none;
+  animation-name: fadeInDriftDownArrow, upAndDown;
+  animation-iteration-count: 1, infinite;
+  animation-duration: 1s, 2s;
+  animation-delay: 0.5s, 1.5s;
+  animation-timing-function: linear, ease-in-out;
+  cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.runAnimationOnce .videoContainer .background-video.videoZoomEffect {
   transform: scale(1);

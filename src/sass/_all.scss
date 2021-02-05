@@ -59,7 +59,7 @@ body {
 .fixed-headers {
     position: absolute;
     transform: translateY(1px);
-    z-index: 12313;
+    z-index: 1;
     height: $header-height;
     overflow: hidden;
     .fixed-header-inner {
@@ -299,6 +299,22 @@ body {
                         height: 100vh;
                         width: 100vw;
                         object-position: top right;
+                    }
+                }
+                &patio {
+                    .downArrowContainer {
+                        position: absolute;
+                        bottom: 50px;
+                        .downArrow {
+                            opacity: 0;
+                            animation-fill-mode: forwards, none;
+                            animation-name: fadeInDriftDownArrow, upAndDown;
+                            animation-iteration-count: 1, infinite;
+                            animation-duration: 1s, 2s;
+                            animation-delay: 0.5s, 1.5s;
+                            animation-timing-function: linear, ease-in-out;
+                            cursor: pointer;
+                        }
                     }
                 }
             }

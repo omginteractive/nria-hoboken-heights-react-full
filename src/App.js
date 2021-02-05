@@ -1,11 +1,13 @@
 import React from 'react';
 // import flypilotFetchWPRestAPI from './flypilotFetchWPRestAPI.js';
 import modules from './assets/modules';
+import flypilotFetchWPRestAPI from './assets/page.js';
 import Slide from './assets/Slide';
 import MobileMenu from './assets/MobileMenu';
 import Header from './assets/Header';
 import $ from 'jquery'
 import _ from "lodash";
+
 
 class App extends React.Component {
   constructor(props) {
@@ -32,30 +34,7 @@ class App extends React.Component {
 			
 
 			
-        slides: [{
-            slideTemplate: 'home',
-            styles: {
-                background: "#000",
-            },
-            
-        }, {
-            slideTemplate: 'exteriorLightToggle',
-            styles: {
-                background: "#fff",
-            },
-            slideClasses: "fullWidthVideo",
-            // video: './NIRMA_1_Exterior_High_Cinemagraphic.mp4',
-            videoLoop: true,
-            videoZoomEffect: true,
-        }, {
-            slideTemplate: 'fountainPen',
-            styles: {
-                background: "#fff",
-            },
-            slideClasses: "fullWidthVideo",
-            // videoLoop: true,
-            // videoZoomEffect: true,
-        }],
+        slides: null,
         mobileMenuOpen: false
     }
 
@@ -132,6 +111,12 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+        flypilotFetchWPRestAPI().then((result)=> {
+            this.setState({
+              slides: result
+            });
+        })
+
     	window.addEventListener('keydown', (event) => {
 			if (!event.target.classList.contains('input')) {
 				if (event.code === "ArrowUp") this.prevSlide()
@@ -301,7 +286,10 @@ class App extends React.Component {
 		// } else {
 		// 	this.prevSlide();
 		// }
-	}
+    }
+    watchForTransitionStart(e){
+        console.log(e)
+    }
 	watchForEventEnd(e) {
         //The onTransitionEnd event triggers many properties and not only for .slides_inner . We only want to run this function for the transform property
 		const isSlidesInner = e.target.classList.contains('slides_inner');
@@ -557,14 +545,9 @@ class App extends React.Component {
 		}
 	}
     render() {
-        // let headerOptions = {
-            // 	addCornerLogo: true,
-            // 	addDarkCornerLogo: true,
-            // 	fixedHeader: true
-            // }
         const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
 
-        const $slides = this.state.slides.map((slide, idx) =>
+        const $slides = this.state.slides == null ? null : this.state.slides.map((slide, idx) =>
             <Slide isFirefoxAndroid={isFirefoxAndroid}
                 showPrivacyPolicy={this.privacyPolicyModalOpen.bind(this)}
                 horizontalSlide={this.slideHorizontal.bind(this)}
@@ -625,7 +608,7 @@ class App extends React.Component {
                         className={slides_inner_classes}
                         style={innerStyle}
                         onTransitionEnd={e => this.watchForEventEnd(e)}>
-                        {$slides}
+                        {this.state.slides != null && $slides}
                     </div>
                 </div>
             </div>
