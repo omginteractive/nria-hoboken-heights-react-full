@@ -186,6 +186,11 @@ body {
     transition: width 1s;
     &.open {
         width: 100vw;
+        .mobileMenuLinks {
+            > a {
+                transform: translateX(0);
+            }
+        }
     }
     .fixed-header {
         position: absolute;
@@ -195,11 +200,25 @@ body {
         position: absolute;
         left: calc(50px + #{$side-margin});
         top: calc(50px + #{$header-height});
+        
+        @for $i from 1 through 10 {
+
+            $animation_duration: 0.6s;
+            $delay_before_animation: 0.1s;
+            $interval_between_animation: 0.1s;
+            $timing: $i*$interval_between_animation + $delay_before_animation;
+            > a:nth-child(#{$i}) {
+                transition: transform $animation_duration linear $timing;
+            }
+        }
         > a {
             display: block;
             color: #ffffff;
             text-decoration: none;
             height: 60px;
+            transform: translateX(-170%);
+            
+            
             > h2 {
                 line-height: 1.4em;
                 transform-origin: left;
