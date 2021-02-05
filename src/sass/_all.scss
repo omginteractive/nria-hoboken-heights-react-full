@@ -116,6 +116,9 @@ body {
             opacity: 1;
         }
     }
+    .inquiry-link {
+        cursor: pointer;
+    }
     .corner-logo-wrapper .text,
     .inquiry-link {
         transition: color $slideAnimationDuration;

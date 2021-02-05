@@ -254,6 +254,9 @@ body {
 .fixed-header.light-inquiry .corner-logo.dark {
   opacity: 1;
 }
+.fixed-header .inquiry-link {
+  cursor: pointer;
+}
 .fixed-header .corner-logo-wrapper .text,
 .fixed-header .inquiry-link {
   transition: color 1400ms;
