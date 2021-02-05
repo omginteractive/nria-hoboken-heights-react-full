@@ -531,6 +531,7 @@ body {
             // }
             .videoContainer {
                 pointer-events: none;
+                width: 100%;
                 &.compact {
                     width: calc(100vw - #{$side-margin}*2);
                     height: 80%;

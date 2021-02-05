@@ -539,6 +539,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide .videoContainer {
   pointer-events: none;
+  width: 100%;
 }
 .slides_wrapper .slides_inner .slide .videoContainer.compact {
   width: calc(100vw - 7.5vw*2);
