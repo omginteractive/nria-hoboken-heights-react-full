@@ -13,7 +13,7 @@ const flypilotFetchWPRestAPI = async () => {
         slideClasses: "fullWidthVideo",
         // video: './NIRMA_1_Exterior_High_Cinemagraphic.mp4',
         videoLoop: true,
-        videoZoomEffect: true,
+        videoZoomEffect: true
     }, {
         slideTemplate: 'fountainPen',
         styles: {
@@ -22,6 +22,7 @@ const flypilotFetchWPRestAPI = async () => {
         slideClasses: "fullWidthVideo",
         // videoLoop: true,
         // videoZoomEffect: true,
+        headerTheme: 'light-inquiry'
     }, {
         slideTemplate: 'patio',
         styles: {
@@ -30,6 +31,7 @@ const flypilotFetchWPRestAPI = async () => {
         slideClasses: "fullWidthVideo",
         // videoLoop: true,
         // videoZoomEffect: true,
+        headerTheme: 'light'
     }]
     return SLIDES
   }

@@ -227,11 +227,47 @@ body {
 .fixed-header.dark .separator {
   border-left: 0.5462802649px solid #000;
 }
+.fixed-header.dark .corner-logo.dark {
+  opacity: 1;
+}
 .fixed-header.light {
   color: #fff;
 }
 .fixed-header.light .separator {
   border-left: 0.5462802649px solid #fff;
+}
+.fixed-header.light .hamburger .line {
+  border-color: #fff;
+}
+.fixed-header.light .corner-logo.light {
+  opacity: 1;
+}
+.fixed-header.light-inquiry {
+  color: #000;
+}
+.fixed-header.light-inquiry .separator {
+  border-left: 0.5462802649px solid #000;
+}
+.fixed-header.light-inquiry .inquiry-link {
+  color: #ffffff;
+}
+.fixed-header.light-inquiry .corner-logo.dark {
+  opacity: 1;
+}
+.fixed-header .corner-logo-wrapper .text,
+.fixed-header .inquiry-link {
+  transition: color 1400ms;
+}
+.fixed-header .corner-logo-wrapper .separator,
+.fixed-header .hamburger .line {
+  transition: border-color 1400ms;
+}
+.fixed-header .corner-logo-wrapper .corner-logo {
+  position: absolute;
+}
+.fixed-header .corner-logo {
+  opacity: 0;
+  transition: opacity 1400ms;
 }
 .fixed-header .closeBtn {
   cursor: pointer;

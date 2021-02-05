@@ -82,11 +82,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+    //Set for different fixed header themes
     &.dark {
         color: #000;
         .separator {
             border-left: 0.5462802649px solid #000;
+        }
+        .corner-logo.dark {
+            opacity: 1;
         }
     }
     &.light {
@@ -94,6 +97,41 @@ body {
         .separator {
             border-left: 0.5462802649px solid #fff;
         }
+        .hamburger .line {
+            border-color: #fff;
+        }
+        .corner-logo.light {
+            opacity: 1;
+        }
+    }
+    &.light-inquiry {
+        color: #000;
+        .separator {
+            border-left: 0.5462802649px solid #000;
+        }
+        .inquiry-link {
+            color: #ffffff;
+        }
+        .corner-logo.dark {
+            opacity: 1;
+        }
+    }
+    .corner-logo-wrapper .text,
+    .inquiry-link {
+        transition: color $slideAnimationDuration;
+    }
+    .corner-logo-wrapper .separator,
+    .hamburger .line {
+        transition: border-color $slideAnimationDuration;
+    }
+    .corner-logo-wrapper {
+        .corner-logo {
+            position: absolute;
+        }
+    }
+    .corner-logo {
+        opacity: 0;
+        transition: opacity $slideAnimationDuration;
     }
     $menuBtnWidth: 33px;
     $menuBtnHorizontalPadding: 15px;

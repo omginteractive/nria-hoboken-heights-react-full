@@ -545,6 +545,8 @@ class App extends React.Component {
 		}
 	}
     render() {
+        const headerTheme = this.state.slides ? this.state.slides[this.state.currIdx].headerTheme : 'dark'
+        
         const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
 
         const $slides = this.state.slides == null ? null : this.state.slides.map((slide, idx) =>
@@ -587,7 +589,7 @@ class App extends React.Component {
                     <div className="fixed-headers">
                         <div className='fixed-header-inner'>
                             <div className='fixed-header-wrapper'>
-                                <Header toggleMobileMenu={this.toggleMobileMenu.bind(this)} />
+                                <Header toggleMobileMenu={this.toggleMobileMenu.bind(this)} theme={headerTheme} />
                             </div>
                             {/* <div className='fixed-header-wrapper'>
                                 <header className='fixed-header'>

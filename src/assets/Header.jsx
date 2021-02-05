@@ -18,7 +18,7 @@ class Header extends Component {
     render(){
         const defaultTheme = 'dark'
         const theme = this.props.theme ? this.props.theme : defaultTheme
-        const logoToUse = theme === 'dark' ? this.darkLogo : this.lightLogo
+
         let fixedHeaderClasses = 'fixed-header ' + theme
         return (
             <header className={fixedHeaderClasses}>
@@ -34,7 +34,11 @@ class Header extends Component {
 
                 <div className="corner-logo-wrapper">
                     <div className="text">HOBOKEN HEIGHTS<div className="separator"></div></div>
-                    <img className="corner-logo" src={require('./' + logoToUse).default} />
+                    <div className="corner-logo-wrapper">
+                        <img className="corner-logo light" src={require('./' + this.lightLogo).default} />
+                        <img className="corner-logo dark" src={require('./' + this.darkLogo).default} />
+                    </div>
+
                 </div>
                 <div className="inquiry-link">INQUIRE NOW</div>
             </header>
