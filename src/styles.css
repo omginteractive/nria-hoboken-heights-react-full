@@ -340,6 +340,36 @@ body {
 .mobile-menu.open .copyright {
   animation-delay: 0.7s;
 }
+.mobile-menu.open .mobileMenuLinks > a:nth-child(1) {
+  transition: transform 0.6s linear 0.2s;
+}
+.mobile-menu.open .mobileMenuLinks > a:nth-child(2) {
+  transition: transform 0.6s linear 0.3s;
+}
+.mobile-menu.open .mobileMenuLinks > a:nth-child(3) {
+  transition: transform 0.6s linear 0.4s;
+}
+.mobile-menu.open .mobileMenuLinks > a:nth-child(4) {
+  transition: transform 0.6s linear 0.5s;
+}
+.mobile-menu.open .mobileMenuLinks > a:nth-child(5) {
+  transition: transform 0.6s linear 0.6s;
+}
+.mobile-menu.open .mobileMenuLinks > a:nth-child(6) {
+  transition: transform 0.6s linear 0.7s;
+}
+.mobile-menu.open .mobileMenuLinks > a:nth-child(7) {
+  transition: transform 0.6s linear 0.8s;
+}
+.mobile-menu.open .mobileMenuLinks > a:nth-child(8) {
+  transition: transform 0.6s linear 0.9s;
+}
+.mobile-menu.open .mobileMenuLinks > a:nth-child(9) {
+  transition: transform 0.6s linear 1s;
+}
+.mobile-menu.open .mobileMenuLinks > a:nth-child(10) {
+  transition: transform 0.6s linear 1.1s;
+}
 .mobile-menu .fixed-header {
   position: absolute;
 }
@@ -349,35 +379,8 @@ body {
   left: calc(50px + 7.5vw);
   top: calc(50px + 20vh);
 }
-.mobile-menu .mobileMenuLinks > a:nth-child(1) {
-  transition: transform 0.6s linear 0.2s;
-}
-.mobile-menu .mobileMenuLinks > a:nth-child(2) {
-  transition: transform 0.6s linear 0.3s;
-}
-.mobile-menu .mobileMenuLinks > a:nth-child(3) {
-  transition: transform 0.6s linear 0.4s;
-}
-.mobile-menu .mobileMenuLinks > a:nth-child(4) {
-  transition: transform 0.6s linear 0.5s;
-}
-.mobile-menu .mobileMenuLinks > a:nth-child(5) {
-  transition: transform 0.6s linear 0.6s;
-}
-.mobile-menu .mobileMenuLinks > a:nth-child(6) {
-  transition: transform 0.6s linear 0.7s;
-}
-.mobile-menu .mobileMenuLinks > a:nth-child(7) {
-  transition: transform 0.6s linear 0.8s;
-}
-.mobile-menu .mobileMenuLinks > a:nth-child(8) {
-  transition: transform 0.6s linear 0.9s;
-}
-.mobile-menu .mobileMenuLinks > a:nth-child(9) {
-  transition: transform 0.6s linear 1s;
-}
-.mobile-menu .mobileMenuLinks > a:nth-child(10) {
-  transition: transform 0.6s linear 1.1s;
+.mobile-menu .mobileMenuLinks > a {
+  transition: transform 0s linear 1s;
 }
 .mobile-menu .mobileMenuLinks > a {
   display: block;
@@ -387,6 +390,7 @@ body {
   transform: translateX(-170%);
 }
 .mobile-menu .mobileMenuLinks > a > h2 {
+  white-space: nowrap;
   line-height: 1.4em;
   transform-origin: left;
   transition: transform 0.4s, color 0.4s;
@@ -399,10 +403,11 @@ body {
 .mobile-menu .mobileMenuContact {
   color: #ffffff;
   position: absolute;
-  right: 7.5vw;
   bottom: 10vh;
   text-align: right;
   white-space: nowrap;
+  left: 100vw;
+  transform: translateX(calc(-100% - 7.5vw));
 }
 .mobile-menu .mobileMenuContact .socialMedias {
   display: flex;
