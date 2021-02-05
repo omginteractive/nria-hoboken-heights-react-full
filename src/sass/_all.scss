@@ -191,6 +191,22 @@ body {
                 transform: translateX(0);
             }
         }
+        .socialMedias,
+        .address,
+        .copyright {
+            position: relative;
+            animation-fill-mode: forwards;
+            animation-name: fadeInDriftUp;
+            animation-duration: 0.7s;
+            opacity: 0;
+        }
+        .socialMedias {
+            animation-delay: 0.5s;
+        }
+        .address,
+        .copyright {
+            animation-delay: 0.7s;
+        }
     }
     .fixed-header {
         position: absolute;
@@ -238,6 +254,7 @@ body {
         bottom: $header-height/2;
         text-align: right;
         white-space: nowrap;//prevent line breaks
+        
         .socialMedias {
             display: flex;
             justify-content: flex-end;
@@ -252,6 +269,7 @@ body {
             .separator {
                 margin: 0 4px;
             }
+            
         }
         .address {
             line-height: 1.4em;
