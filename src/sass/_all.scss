@@ -393,6 +393,7 @@ body {
                     .downArrowContainer {
                         position: absolute;
                         bottom: 50px;
+                        z-index: 1;//needed for visibility on patio slide
                         .downArrow {
                             opacity: 0;
                             animation-fill-mode: forwards, none;

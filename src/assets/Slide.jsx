@@ -83,7 +83,10 @@ class Slide extends Component {
                     <SlideFountainPen configuration={slideObj} slideCount={this.props.slideCount} curridx={this.props.currIdx} />
                 }
                 {slideObj.slideTemplate === 'patio' &&
-                    <SlidePatio configuration={slideObj} />
+                    <SlidePatio methods={slideMethods} configuration={slideObj} />
+                }
+                {slideObj.slideTemplate === 'amenities' &&
+                    <SlideAmenities configuration={slideObj} />
                 }
             </div>
         )
@@ -106,6 +109,7 @@ class SlideHome extends Component {
         )
     }
 }
+
 class SlideExteriorLightToggle extends Component {
     constructor(props) {
         super(props)
@@ -268,4 +272,21 @@ class SlidePatio extends Component {
         )
     }
 }
+class SlideAmenities extends Component {
+    nextSlide(){
+        this.props.methods.scrollToNextSlide()
+    }
+    render(){
+        
+        return(
+            <>
+                <img className="animatedLogo" src={animatedLogo} alt=""/>
+                <div className="downArrowContainer">
+                    <img onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
+                </div>
+            </>
+        )
+    }
+}
+
 export default Slide;

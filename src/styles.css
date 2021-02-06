@@ -527,6 +527,7 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-patio .downArrowContainer {
   position: absolute;
   bottom: 50px;
+  z-index: 1;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-patio .downArrowContainer .downArrow {
   opacity: 0;
