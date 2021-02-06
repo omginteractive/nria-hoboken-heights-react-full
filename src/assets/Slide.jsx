@@ -273,17 +273,30 @@ class SlidePatio extends Component {
     }
 }
 class SlideAmenities extends Component {
-    nextSlide(){
-        this.props.methods.scrollToNextSlide()
-    }
     render(){
         
         return(
             <>
-                <img className="animatedLogo" src={animatedLogo} alt=""/>
-                <div className="downArrowContainer">
-                    <img onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
-                </div>
+                <section className="amenities">
+                    <div className="amenities__details">
+                        <h2>Luxury Skyline Front Amenities & Services</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <div className="btn dark">Inquire now</div>
+                    </div>
+                    <div className="amenities__list">
+                        <ul>
+                            <li>Bar</li>
+                            <li>Children</li>
+                            <li>Corridor</li>
+                            <li>Gym</li>
+                            <li>Grills</li>
+                            <li>Movie</li>
+                            <li>Patio</li>
+                            <li>Pool</li>
+                        </ul>
+                    </div>
+                </section>
             </>
         )
     }

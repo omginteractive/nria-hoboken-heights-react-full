@@ -406,6 +406,57 @@ body {
                         }
                     }
                 }
+                &amenities {
+                    .amenities {
+                        position: absolute;
+                        left: 7.5vw;
+                        width: calc(100% - 15vw);
+                        top: 20vh;
+                        height: 70vh;
+                        display: flex;
+                        &__details {
+                            background-color: #000000;
+                            padding: 30px;
+                            flex-basis: 70%;
+                            color: #ffffff;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            > h2 {
+                                width: 400px;
+                                line-height: 1.4em;
+                            }
+                            > p {
+                                margin-top: 1em;
+                                font-family: "Gotham-Thin", sans-serif;
+                                font-weight: 200;
+                            }
+                            .btn {
+                                margin-top: 1em;
+                            }
+                        }
+                        &__list {
+                            padding: 10px;
+                            flex-basis: 30%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            text-align: center;
+                            text-transform: uppercase;
+                            line-height: 2.8em;
+                            font-size: 14px;
+                            > ul {
+                                > li {
+                                    cursor: pointer;
+                                    &:hover {
+                                        font-weight: bold;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
             &.runAnimationOnce {
                 .videoContainer {
