@@ -88,6 +88,9 @@ class Slide extends Component {
                 {slideObj.slideTemplate === 'amenities' &&
                     <SlideAmenities configuration={slideObj} />
                 }
+                {slideObj.slideTemplate === 'amenitiesDetail' &&
+                    <SlideAmenitiesDetail configuration={slideObj} />
+                }
             </div>
         )
     }
@@ -295,6 +298,32 @@ class SlideAmenities extends Component {
                             <li>Patio</li>
                             <li>Pool</li>
                         </ul>
+                    </div>
+                </section>
+            </>
+        )
+    }
+}
+
+
+class SlideAmenitiesDetail extends Component {
+    render(){
+        
+        return (
+            <>
+                <section className="amenities_detail">
+                    <img className="amenities_detail__image" src={require('./images/amenities/Pool.png').default} />
+                    
+                    <div className="amenities_detail__more_info">
+                        <div className="amenities_detail__name">
+                            <h3>Luxury Pool<br />With Manhattan's<br />View
+                                <img className="amenities_detail__description_toggler" src={require('./images/amenities/Button+.svg').default} />
+                            </h3>
+                            
+                        </div>
+                        <div className="amenities_detail__description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        </div>
                     </div>
                 </section>
             </>

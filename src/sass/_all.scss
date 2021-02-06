@@ -457,6 +457,47 @@ body {
                         }
                     }
                 }
+                &amenitiesDetail {
+                    .amenities_detail {
+                        &__image {
+                            // object-fit: cover;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100vw;
+                            height: 100vh;
+                        }
+                        &__more_info {
+                            color: #ffffff;
+                            position: absolute;
+                            bottom: 0;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            text-align: center;
+                            display: flex;
+                            align-items: center;
+                            flex-direction: column;
+                        }
+                        &__name {
+                            text-transform: uppercase;
+                            font-size: 30px;
+                            margin-bottom: 1em;
+                        }
+                        &__description_toggler {
+                            height: 24px;
+                            margin-left: 5px;
+                            position: relative;
+                            top: 2px;
+                            cursor: pointer;
+                        }
+                        &__description {
+                            line-height: 1.4em;
+                            padding: 20px 20vw;
+                            background: rgb(0,0,0);
+                            background: linear-gradient(0deg, rgba(0,0,0,0.6937149859943977) 0%, rgba(0,0,0,0.4108018207282913) 89%, rgba(0,0,0,0) 100%);
+                        }
+                    }
+                }
             }
             &.runAnimationOnce {
                 .videoContainer {
