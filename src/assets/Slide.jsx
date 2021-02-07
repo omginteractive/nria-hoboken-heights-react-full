@@ -315,7 +315,6 @@ class SlideAmenitiesDetail extends Component {
         super(props)
         this.state = {
             descriptionVisible: false,
-            currIdx: this.props.idx,
             image: null,
             image1IsNew: false,
         }

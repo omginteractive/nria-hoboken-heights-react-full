@@ -25,6 +25,18 @@
     }
 }
 
+@mixin amenityDetailActiveAnimation() {
+    .amenities_detail__image.new {
+        transform: scale(1.15);//same scale as in zoomOut animation declaration
+        $animation_element_duration: 0.9s;
+        animation-fill-mode: forwards;
+        animation-name: zoomOut;
+        animation-duration: $animation_element_duration;
+        animation-delay: 0.5s;
+        animation-timing-function: ease-out;
+    }
+}
+
 @font-face {
 	src: url("assets/fonts/Gotham-Thin.otf");
 	font-family: "Gotham-Thin";
@@ -510,13 +522,13 @@ body {
                             height: 100vh;
                             transition: opacity $amenitiesTransitionDuration, transform 0s linear $amenitiesTransitionDuration;
                             opacity: 0;
-                            transform: scale(1.4);
+                            // transform: scale(1.07);
                             &.old {
                             }
                             &.new {
                                 opacity: 1;
-                                transform: scale(1);
-                                transition: opacity $amenitiesTransitionDuration, transform $amenitiesTransitionDuration;
+                                // transform: scale(1.4);
+                                transition: opacity $amenitiesTransitionDuration, transform 0s;
                             }
                         }
                         &__more_info {
@@ -600,6 +612,9 @@ body {
                         }
                     }
                 }
+            }
+            &.activeSlide {
+                @include amenityDetailActiveAnimation();
             }
             .btn {
                 cursor: pointer;

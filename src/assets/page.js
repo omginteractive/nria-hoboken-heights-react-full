@@ -44,7 +44,7 @@ const flypilotFetchWPRestAPI = async () => {
     }, {
         slideTemplate: 'amenitiesDetail',
         styles: {
-            background: "#fff",
+            background: "#000",
         },
         amenities: [{
             title_line1: "Luxury Pool",
