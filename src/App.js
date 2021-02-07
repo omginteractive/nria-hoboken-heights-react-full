@@ -35,7 +35,8 @@ class App extends React.Component {
 
 			
         slides: null,
-        mobileMenuOpen: false
+        mobileMenuOpen: false,
+        amenityDetailsSlideIdx: 0 //default to first amenity for details page
     }
 
         this.watchForEventEnd = this.watchForEventEnd.bind(this);
@@ -543,12 +544,16 @@ class App extends React.Component {
 		if (this.state.privacyPolicyFadeType === "out") {
 			this.privacyPolicyModalRemove();
 		}
-	}
+    }
+    setAmenityOnDetailsSlide(idx){
+        this.setState({
+			amenityDetailsSlideIdx: idx
+		 });
+    }
     render() {
         const headerTheme = this.state.slides ? this.state.slides[this.state.currIdx].headerTheme : 'dark'
         
         const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
-
         const $slides = this.state.slides == null ? null : this.state.slides.map((slide, idx) =>
             <Slide isFirefoxAndroid={isFirefoxAndroid}
                 showPrivacyPolicy={this.privacyPolicyModalOpen.bind(this)}
@@ -566,8 +571,10 @@ class App extends React.Component {
                 slideCount={idx}
                 obj={slide}
                 isCurrent={idx == this.state.currIdx}
-                isPlaying={this.state.isPlaying}></Slide>
+                setAmenityDetailsSlideIdx={this.setAmenityOnDetailsSlide.bind(this)}
+                amenityDetailsSlideIdx={this.state.amenityDetailsSlideIdx}></Slide>
         )
+
         const isFirstOrSecondSlide = this.state.currIdx == 0 || this.state.currIdx == 1
         const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + ((this.state.currIdx-1) * 100) + 'vh)'}
             

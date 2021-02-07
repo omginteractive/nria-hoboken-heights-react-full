@@ -1,15 +1,14 @@
-import { Component } from 'react';
+import {Component} from 'react';
 import animatedLogo from '../assets/images/Motion_logo.gif';
 import downArrow from '../assets/images/downarrow.svg';
 
 class Slide extends Component {
     constructor(props) {
         super(props);
-    
         this.state = {
 			styles: this.props.obj.styles,
 			type: this.props.obj.slideTemplate,
-		}
+        }
     }
     handleTheScroll = e => {
         let element = e.target
@@ -19,9 +18,13 @@ class Slide extends Component {
 
     scrollToNextSlide() {
 		const {goToNextSlide} = this.props;
-		goToNextSlide();
+        goToNextSlide();
     }
-    
+    setAmenityOnDetailsSlide(idx){
+        const {setAmenityDetailsSlideIdx} = this.props;
+        setAmenityDetailsSlideIdx(idx)
+        this.scrollToNextSlide()
+    }
     render(){
         const slideObj = this.props.obj;
         const slideMethods = {
@@ -33,9 +36,8 @@ class Slide extends Component {
 		let centerBottomClasses = "centerBottom";
 
 		const isCurrent = this.props.isCurrent;
-		
-		
-		slideClasses += slideObj.slideClasses !== undefined ? " " + slideObj.slideClasses : '';
+
+        slideClasses += slideObj.slideClasses !== undefined ? " " + slideObj.slideClasses : '';
 		if(isCurrent) slideClasses += " runAnimations activeSlide";
 		if(this.props.slideViewed) slideClasses += " runAnimationOnce";
 		if(slideObj.videoZoomEffect) videoClasses += ' videoZoomEffect'
@@ -86,10 +88,10 @@ class Slide extends Component {
                     <SlidePatio methods={slideMethods} configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'amenities' &&
-                    <SlideAmenities configuration={slideObj} />
+                    <SlideAmenities setAmenityOnDetailsSlide={this.setAmenityOnDetailsSlide.bind(this)} configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'amenitiesDetail' &&
-                    <SlideAmenitiesDetail configuration={slideObj} />
+                    <SlideAmenitiesDetail idx={this.props.amenityDetailsSlideIdx} configuration={slideObj} />
                 }
             </div>
         )
@@ -101,12 +103,11 @@ class SlideHome extends Component {
         this.props.methods.scrollToNextSlide()
     }
     render(){
-        
         return(
             <>
                 <img className="animatedLogo" src={animatedLogo} alt=""/>
                 <div className="downArrowContainer">
-                    <img onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
+                    <img alt='Down Arrow' onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
                 </div>
             </>
         )
@@ -145,7 +146,7 @@ class SlideExteriorLightToggle extends Component {
                     </div>
                     <div className="corner-logo-wrapper">
                         <div className="text">HOBOKEN HEIGHTS<div className="separator"></div></div>
-                        <img className="corner-logo" src={require('./images/logos/NIRMA_Logo_Symbol_Black.png').default} />
+                        <img alt="Hoboken Heights Logo" className="corner-logo" src={require('./images/logos/NIRMA_Logo_Symbol_Black.png').default} />
                     </div>
                     <div className="inquiry-link">INQUIRE NOW</div>
                 </header>
@@ -248,7 +249,7 @@ class SlidePatio extends Component {
             <>
                 {
                     <div className="downArrowContainer">
-                        <img onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
+                        <img alt="Down Arrow" onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
                     </div>
                 }
                 {
@@ -276,8 +277,11 @@ class SlidePatio extends Component {
     }
 }
 class SlideAmenities extends Component {
+    setAmenityDetail(idx){
+        const {setAmenityOnDetailsSlide} = this.props;
+        setAmenityOnDetailsSlide(idx);
+    }
     render(){
-        
         return(
             <>
                 <section className="amenities">
@@ -289,14 +293,14 @@ class SlideAmenities extends Component {
                     </div>
                     <div className="amenities__list">
                         <ul>
-                            <li>Bar</li>
-                            <li>Children</li>
-                            <li>Corridor</li>
-                            <li>Gym</li>
-                            <li>Grills</li>
-                            <li>Movie</li>
-                            <li>Patio</li>
-                            <li>Pool</li>
+                            <li onClick={() => this.setAmenityDetail(0)}>Bar</li>
+                            <li onClick={() => this.setAmenityDetail(1)}>Children</li>
+                            <li onClick={() => this.setAmenityDetail(2)}>Corridor</li>
+                            <li onClick={() => this.setAmenityDetail(1)}>Gym</li>
+                            <li onClick={() => this.setAmenityDetail(2)}>Grills</li>
+                            <li onClick={() => this.setAmenityDetail(0)}>Movie</li>
+                            <li onClick={() => this.setAmenityDetail(1)}>Patio</li>
+                            <li onClick={() => this.setAmenityDetail(0)}>Pool</li>
                         </ul>
                     </div>
                 </section>
@@ -311,7 +315,7 @@ class SlideAmenitiesDetail extends Component {
         super(props)
         this.state = {
             descriptionVisible: false,
-            currIdx: 0,
+            currIdx: this.props.idx,
             image: null,
             image1IsNew: false,
         }
@@ -322,6 +326,15 @@ class SlideAmenitiesDetail extends Component {
         })
         this.setAmenityData(this.state.currIdx)
     }
+    componentDidUpdate(){
+        if(this.state.lastPropsIdx !== this.props.idx) {
+            this.setState({
+                //this was necessary to have something to compare props.idx changes to
+                lastPropsIdx: this.props.idx
+            })
+            this.setAmenityData(this.props.idx)
+        }
+    }
     setAmenityData(newIdx){
         const title = this.props.configuration.amenities[newIdx].title
         const description = this.props.configuration.amenities[newIdx].description
@@ -330,7 +343,6 @@ class SlideAmenitiesDetail extends Component {
         this.setState({
             title: title,
             description: description,
-            image: image,
             currIdx: newIdx,
             image1IsNew: image1IsNew
         })
@@ -352,11 +364,11 @@ class SlideAmenitiesDetail extends Component {
         })
     }
     nextAmenity(){
-        const nextIdx = this.state.currIdx == this.props.configuration.amenities.length - 1 ? 0  : this.state.currIdx + 1
+        const nextIdx = this.state.currIdx === this.props.configuration.amenities.length - 1 ? 0  : this.state.currIdx + 1
         this.setAmenityData(nextIdx)
     }
     prevAmenity(){
-        const prevIdx = this.state.currIdx == 0 ? this.props.configuration.amenities.length - 1 : this.state.currIdx - 1
+        const prevIdx = this.state.currIdx === 0 ? this.props.configuration.amenities.length - 1 : this.state.currIdx - 1
         this.setAmenityData(prevIdx)
     }
     render(){
@@ -368,20 +380,19 @@ class SlideAmenitiesDetail extends Component {
         image1_classes += this.state.image1IsNew ? 'new' : 'old'
         let image2_classes = 'amenities_detail__image '
         image2_classes += !this.state.image1IsNew ? 'new' : 'old'
-
         return (
             <>
                 <section className="amenities_detail">
-                    <img onClick={this.nextAmenity.bind(this)} className="amenities_detail__arrow amenities_detail__arrow--right" src={require('./images/amenities/rightArrow.svg').default} />
-                    <img onClick={this.prevAmenity.bind(this)} className="amenities_detail__arrow amenities_detail__arrow--left" src={require('./images/amenities/rightArrow.svg').default} />
-                    <img src={this.state.image1 && require('./'+this.state.image1).default} className={image1_classes}  />
-                    <img src={this.state.image2 && require('./' + this.state.image2).default} className={image2_classes}  />
+                    <img alt="Right Arrow" onClick={this.nextAmenity.bind(this)} className="amenities_detail__arrow amenities_detail__arrow--right" src={require('./images/amenities/rightArrow.svg').default} />
+                    <img alt="Left Arrow" onClick={this.prevAmenity.bind(this)} className="amenities_detail__arrow amenities_detail__arrow--left" src={require('./images/amenities/rightArrow.svg').default} />
+                    <img alt="" src={this.state.image1 && require('./'+this.state.image1).default} className={image1_classes}  />
+                    <img alt="" src={this.state.image2 && require('./' + this.state.image2).default} className={image2_classes}  />
                     <div className="amenities_detail__more_info">
                         <div className="amenities_detail__name">
                             <h3>
                                 <span dangerouslySetInnerHTML={{
 							    __html: `${this.state.title}`
-						        }} /><img onClick={this.toggleDetailDescription.bind(this)} className="amenities_detail__description_toggler" src={require('./'+toggleButtonSrc).default} />
+						        }} /><img alt="" onClick={this.toggleDetailDescription.bind(this)} className="amenities_detail__description_toggler" src={require('./'+toggleButtonSrc).default} />
                             </h3>
                         </div>
                         <div className={descriptionClasses}>
