@@ -616,11 +616,14 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  transition: opacity 1s;
+  transition: opacity 1s, transform 0s linear 1s;
   opacity: 0;
+  transform: scale(1.4);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__image.new {
   opacity: 1;
+  transform: scale(1);
+  transition: opacity 1s, transform 1s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info {
   color: #ffffff;

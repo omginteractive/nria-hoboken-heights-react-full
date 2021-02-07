@@ -508,12 +508,15 @@ body {
                             left: 0;
                             width: 100vw;
                             height: 100vh;
-                            transition: opacity $amenitiesTransitionDuration;
+                            transition: opacity $amenitiesTransitionDuration, transform 0s linear $amenitiesTransitionDuration;
                             opacity: 0;
+                            transform: scale(1.4);
                             &.old {
                             }
                             &.new {
                                 opacity: 1;
+                                transform: scale(1);
+                                transition: opacity $amenitiesTransitionDuration, transform $amenitiesTransitionDuration;
                             }
                         }
                         &__more_info {
