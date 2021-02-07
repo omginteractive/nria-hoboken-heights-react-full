@@ -466,12 +466,12 @@ body {
                             top: 50%;
                             cursor: pointer;
                             &--right {
-                                right: 30px;
                                 transform: translateY(-50%);
+                                transition: right 0.2s;
                             }
                             &--left {
-                                left: 30px;
-                                transform: rotate(180deg) translateY(50%)
+                                transform: rotate(180deg) translateY(50%);
+                                transition: left 0.2s;
                             }
                         }
                         &__image {

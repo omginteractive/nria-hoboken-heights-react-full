@@ -319,6 +319,14 @@ class SlideAmenitiesDetail extends Component {
             image: null,
             image1IsNew: false,
         }
+        this.defaultArrowDistanceFromEdge = "40px"
+        this.clickedArrowDistanceFromEdge = "25px"
+        this.state.rightArrowStyles= {
+            right: this.defaultArrowDistanceFromEdge
+        }
+        this.state.leftArrowStyles= {
+            left: this.defaultArrowDistanceFromEdge
+        }
     }
     componentDidMount(){
         this.props.configuration.amenities.forEach((amenity) => {
@@ -371,6 +379,36 @@ class SlideAmenitiesDetail extends Component {
         const prevIdx = this.state.currIdx === 0 ? this.props.configuration.amenities.length - 1 : this.state.currIdx - 1
         this.setAmenityData(prevIdx)
     }
+    animateRightArrow(){
+        this.setState({
+            rightArrowStyles: {
+                right: this.clickedArrowDistanceFromEdge
+            }
+        })
+        this.nextAmenity()
+    }
+    resetRightArrow(){
+        this.setState({
+            rightArrowStyles: {
+                right: this.defaultArrowDistanceFromEdge
+            }
+        })
+    }
+    animateLeftArrow(){
+        this.setState({
+            leftArrowStyles: {
+                left: this.clickedArrowDistanceFromEdge
+            }
+        })
+        this.prevAmenity()
+    }
+    resetLeftArrow(){
+        this.setState({
+            leftArrowStyles: {
+                left: this.defaultArrowDistanceFromEdge
+            }
+        })
+    }
     render(){
         const toggleButtonSrc = this.state.descriptionVisible ? 'images/amenities/Button-.svg' : 'images/amenities/Button+.svg'
         let descriptionClasses = 'amenities_detail__description'
@@ -383,8 +421,8 @@ class SlideAmenitiesDetail extends Component {
         return (
             <>
                 <section className="amenities_detail">
-                    <img alt="Right Arrow" onClick={this.nextAmenity.bind(this)} className="amenities_detail__arrow amenities_detail__arrow--right" src={require('./images/amenities/rightArrow.svg').default} />
-                    <img alt="Left Arrow" onClick={this.prevAmenity.bind(this)} className="amenities_detail__arrow amenities_detail__arrow--left" src={require('./images/amenities/rightArrow.svg').default} />
+                    <img onTransitionEnd={this.resetRightArrow.bind(this)} alt="Right Arrow" onClick={this.animateRightArrow.bind(this)} style={this.state.rightArrowStyles} className="amenities_detail__arrow amenities_detail__arrow--right" src={require('./images/amenities/rightArrow.svg').default} />
+                    <img onTransitionEnd={this.resetLeftArrow.bind(this)} alt="Left Arrow" onClick={this.animateLeftArrow.bind(this)} style={this.state.leftArrowStyles} className="amenities_detail__arrow amenities_detail__arrow--left" src={require('./images/amenities/rightArrow.svg').default} />
                     <img alt="" src={this.state.image1 && require('./'+this.state.image1).default} className={image1_classes}  />
                     <img alt="" src={this.state.image2 && require('./' + this.state.image2).default} className={image2_classes}  />
                     <div className="amenities_detail__more_info">

@@ -593,12 +593,12 @@ body {
   cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__arrow--right {
-  right: 30px;
   transform: translateY(-50%);
+  transition: right 0.2s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__arrow--left {
-  left: 30px;
   transform: rotate(180deg) translateY(50%);
+  transition: left 0.2s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__image {
   position: absolute;
