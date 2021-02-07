@@ -307,22 +307,87 @@ class SlideAmenities extends Component {
 
 
 class SlideAmenitiesDetail extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            descriptionVisible: false,
+            currIdx: 0,
+            image: null,
+            image1IsNew: false,
+        }
+    }
+    componentDidMount(){
+        this.props.configuration.amenities.forEach((amenity) => {
+            const img = new Image().src = require('./'+amenity.image).default
+        })
+        this.setAmenityData(this.state.currIdx)
+    }
+    setAmenityData(newIdx){
+        const title = this.props.configuration.amenities[newIdx].title
+        const description = this.props.configuration.amenities[newIdx].description
+        const image = this.props.configuration.amenities[newIdx].image
+        const image1IsNew = !this.state.image1IsNew
+        this.setState({
+            title: title,
+            description: description,
+            image: image,
+            currIdx: newIdx,
+            image1IsNew: image1IsNew
+        })
+        if(image1IsNew){
+            this.setState({
+                image1: image,
+            })
+        }
+        else {
+            this.setState({
+                image2: image,
+            })
+        }
+    }
+    toggleDetailDescription(){
+        const newDescriptionState = !this.state.descriptionVisible
+        this.setState({
+            descriptionVisible: newDescriptionState
+        })
+    }
+    nextAmenity(){
+        const nextIdx = this.state.currIdx == this.props.configuration.amenities.length - 1 ? 0  : this.state.currIdx + 1
+        this.setAmenityData(nextIdx)
+    }
+    prevAmenity(){
+        const prevIdx = this.state.currIdx == 0 ? this.props.configuration.amenities.length - 1 : this.state.currIdx - 1
+        this.setAmenityData(prevIdx)
+    }
     render(){
-        
+        const toggleButtonSrc = this.state.descriptionVisible ? 'images/amenities/Button-.svg' : 'images/amenities/Button+.svg'
+        let descriptionClasses = 'amenities_detail__description'
+        descriptionClasses += this.state.descriptionVisible ? ' visible' : ''
+
+        let image1_classes = 'amenities_detail__image '
+        image1_classes += this.state.image1IsNew ? 'new' : 'old'
+        let image2_classes = 'amenities_detail__image '
+        image2_classes += !this.state.image1IsNew ? 'new' : 'old'
+
         return (
             <>
                 <section className="amenities_detail">
-                    <img className="amenities_detail__image" src={require('./images/amenities/Pool.png').default} />
-                    
+                    <img onClick={this.nextAmenity.bind(this)} className="amenities_detail__arrow amenities_detail__arrow--right" src={require('./images/amenities/rightArrow.svg').default} />
+                    <img onClick={this.prevAmenity.bind(this)} className="amenities_detail__arrow amenities_detail__arrow--left" src={require('./images/amenities/rightArrow.svg').default} />
+                    <img src={this.state.image1 && require('./'+this.state.image1).default} className={image1_classes}  />
+                    <img src={this.state.image2 && require('./' + this.state.image2).default} className={image2_classes}  />
                     <div className="amenities_detail__more_info">
                         <div className="amenities_detail__name">
-                            <h3>Luxury Pool<br />With Manhattan's<br />View
-                                <img className="amenities_detail__description_toggler" src={require('./images/amenities/Button+.svg').default} />
+                            <h3>
+                                <span dangerouslySetInnerHTML={{
+							    __html: `${this.state.title}`
+						        }} /><img onClick={this.toggleDetailDescription.bind(this)} className="amenities_detail__description_toggler" src={require('./'+toggleButtonSrc).default} />
                             </h3>
-                            
                         </div>
-                        <div className="amenities_detail__description">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <div className={descriptionClasses}>
+                            <div className="text">
+                                <p>{this.state.description}</p>
+                            </div>
                         </div>
                     </div>
                 </section>

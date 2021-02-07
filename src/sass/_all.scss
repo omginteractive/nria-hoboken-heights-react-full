@@ -458,7 +458,22 @@ body {
                     }
                 }
                 &amenitiesDetail {
+                    $amenitiesTransitionDuration: 1s;
                     .amenities_detail {
+                        &__arrow {
+                            position: absolute;
+                            z-index: 1;
+                            top: 50%;
+                            cursor: pointer;
+                            &--right {
+                                right: 30px;
+                                transform: translateY(-50%);
+                            }
+                            &--left {
+                                left: 30px;
+                                transform: rotate(180deg) translateY(50%)
+                            }
+                        }
                         &__image {
                             // object-fit: cover;
                             position: absolute;
@@ -466,6 +481,13 @@ body {
                             left: 0;
                             width: 100vw;
                             height: 100vh;
+                            transition: opacity $amenitiesTransitionDuration;
+                            opacity: 0;
+                            &.old {
+                            }
+                            &.new {
+                                opacity: 1;
+                            }
                         }
                         &__more_info {
                             color: #ffffff;
@@ -492,9 +514,18 @@ body {
                         }
                         &__description {
                             line-height: 1.4em;
-                            padding: 20px 20vw;
                             background: rgb(0,0,0);
-                            background: linear-gradient(0deg, rgba(0,0,0,0.6937149859943977) 0%, rgba(0,0,0,0.4108018207282913) 89%, rgba(0,0,0,0) 100%);
+                            background: linear-gradient(0deg, rgba(0,0,0,0.8937149859943977) 0%, rgba(0,0,0,0.2108018207282913) 89%, rgba(0,0,0,0) 100%);
+                            width: 100vw;
+                            max-height: 0;
+                            transition: all 0.5s;
+                            &.visible {
+                                max-height: 300px;
+                            }
+                            .text {
+                                padding: 20px 20vw;
+
+                            }
                         }
                     }
                 }
