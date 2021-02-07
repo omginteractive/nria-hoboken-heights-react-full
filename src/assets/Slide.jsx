@@ -335,24 +335,31 @@ class SlideAmenitiesDetail extends Component {
         this.setAmenityData(this.state.currIdx)
     }
     componentDidUpdate(){
-        if(this.state.lastPropsIdx !== this.props.idx) {
+        const newIdxFromPropsHasChanged = this.state.lastPropsIdx !== this.props.idx
+
+        if(newIdxFromPropsHasChanged) {
             this.setState({
-                //this was necessary to have something to compare props.idx changes to
-                lastPropsIdx: this.props.idx
+                lastPropsIdx: this.props.idx,
             })
             this.setAmenityData(this.props.idx)
         }
     }
     setAmenityData(newIdx){
-        const title = this.props.configuration.amenities[newIdx].title
+        if(newIdx === this.state.currIdx) return
+        const title_line1 = this.props.configuration.amenities[newIdx].title_line1
+        const title_line2 = this.props.configuration.amenities[newIdx].title_line2
+        const title_line3 = this.props.configuration.amenities[newIdx].title_line3
         const description = this.props.configuration.amenities[newIdx].description
         const image = this.props.configuration.amenities[newIdx].image
         const image1IsNew = !this.state.image1IsNew
         this.setState({
-            title: title,
+            title_line1: title_line1,
+            title_line2: title_line2,
+            title_line3: title_line3,
             description: description,
             currIdx: newIdx,
-            image1IsNew: image1IsNew
+            image1IsNew: image1IsNew,
+            runAmenityNameAnimation: true
         })
         if(image1IsNew){
             this.setState({
@@ -371,13 +378,16 @@ class SlideAmenitiesDetail extends Component {
             descriptionVisible: newDescriptionState
         })
     }
-    nextAmenity(){
-        const nextIdx = this.state.currIdx === this.props.configuration.amenities.length - 1 ? 0  : this.state.currIdx + 1
-        this.setAmenityData(nextIdx)
-    }
-    prevAmenity(){
-        const prevIdx = this.state.currIdx === 0 ? this.props.configuration.amenities.length - 1 : this.state.currIdx - 1
-        this.setAmenityData(prevIdx)
+    changeAmenity(delta){
+        const prevSlide = delta < 0
+        let nextAmenity
+        if(prevSlide){
+            nextAmenity = this.state.currIdx === 0 ? this.props.configuration.amenities.length - 1 : this.state.currIdx - 1
+        }
+        else {
+            nextAmenity = this.state.currIdx === this.props.configuration.amenities.length - 1 ? 0  : this.state.currIdx + 1
+        }
+        this.setAmenityData(nextAmenity)
     }
     animateRightArrow(){
         this.setState({
@@ -385,7 +395,7 @@ class SlideAmenitiesDetail extends Component {
                 right: this.clickedArrowDistanceFromEdge
             }
         })
-        this.nextAmenity()
+        this.changeAmenity(1)
     }
     resetRightArrow(){
         this.setState({
@@ -400,7 +410,7 @@ class SlideAmenitiesDetail extends Component {
                 left: this.clickedArrowDistanceFromEdge
             }
         })
-        this.prevAmenity()
+        this.changeAmenity(-1)
     }
     resetLeftArrow(){
         this.setState({
@@ -408,6 +418,14 @@ class SlideAmenitiesDetail extends Component {
                 left: this.defaultArrowDistanceFromEdge
             }
         })
+    }
+    amenityNameAnimationEnded(){
+        this.setState({
+            runAmenityNameAnimation: false
+        })
+    }
+    activateAmenity(dotIdx){
+        this.setAmenityData(dotIdx)
     }
     render(){
         const toggleButtonSrc = this.state.descriptionVisible ? 'images/amenities/Button-.svg' : 'images/amenities/Button+.svg'
@@ -418,6 +436,8 @@ class SlideAmenitiesDetail extends Component {
         image1_classes += this.state.image1IsNew ? 'new' : 'old'
         let image2_classes = 'amenities_detail__image '
         image2_classes += !this.state.image1IsNew ? 'new' : 'old'
+        let amenities_detail_name_classes = 'amenities_detail__name'
+        amenities_detail_name_classes += this.state.runAmenityNameAnimation ? ' runAnimation' : ''
         return (
             <>
                 <section className="amenities_detail">
@@ -426,12 +446,20 @@ class SlideAmenitiesDetail extends Component {
                     <img alt="" src={this.state.image1 && require('./'+this.state.image1).default} className={image1_classes}  />
                     <img alt="" src={this.state.image2 && require('./' + this.state.image2).default} className={image2_classes}  />
                     <div className="amenities_detail__more_info">
-                        <div className="amenities_detail__name">
+                        <div className={amenities_detail_name_classes}>
                             <h3>
-                                <span dangerouslySetInnerHTML={{
-							    __html: `${this.state.title}`
-						        }} /><img alt="" onClick={this.toggleDetailDescription.bind(this)} className="amenities_detail__description_toggler" src={require('./'+toggleButtonSrc).default} />
+                                {this.state.title_line1 && <span>{this.state.title_line1}</span>}
+                                {this.state.title_line2 && <span>{this.state.title_line2}</span>}
+                                {this.state.title_line3 && <span>{this.state.title_line3}</span>}
+                                <img onAnimationEnd={this.amenityNameAnimationEnded.bind(this)}  alt="" onClick={this.toggleDetailDescription.bind(this)} className="amenities_detail__description_toggler" src={require('./'+toggleButtonSrc).default} />
                             </h3>
+                        </div>
+                        <div className="amenities_detail__more_info__dots">
+                            {this.props.configuration.amenities.map((amenity, i) => {
+                                let dotClasses = 'dot'
+                                dotClasses += i === this.state.currIdx ? ' active' : ''
+                                return (<div key={i} onClick={() => this.activateAmenity(i)} className={dotClasses} />)
+                            })}
                         </div>
                         <div className={descriptionClasses}>
                             <div className="text">
