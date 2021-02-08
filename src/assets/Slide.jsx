@@ -356,10 +356,11 @@ class SlideAmenitiesDetail extends Component {
         const image = this.props.configuration.amenities[newIdx].image
         const image1IsNew = !this.state.image1IsNew
         this.setState({
-            description: description,
+            // description: description,
             currIdx: newIdx,
             image1IsNew: image1IsNew,
-            amenityNameVisibility: false
+            amenityNameVisibility: false,
+            descriptionVisible: false
         })
         if(image1IsNew){
             this.setState({
@@ -388,11 +389,12 @@ class SlideAmenitiesDetail extends Component {
         const title_line1 = this.props.configuration.amenities[newIdx].title_line1
         const title_line2 = this.props.configuration.amenities[newIdx].title_line2
         const title_line3 = this.props.configuration.amenities[newIdx].title_line3
-
+        const description = this.props.configuration.amenities[newIdx].description
         this.setState({
             title_line1: title_line1,
             title_line2: title_line2,
             title_line3: title_line3,
+            description: description,
         });
     }
     toggleDetailDescription(){
