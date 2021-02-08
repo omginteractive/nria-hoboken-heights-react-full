@@ -754,18 +754,19 @@ body {
   position: absolute;
   top: 20vh;
   width: 100vw;
-  height: 30vh;
+  height: 18vh;
   padding-left: 7.5vw;
   padding-right: 7.5vw;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__bottom {
   position: absolute;
-  top: 50vh;
+  top: 38vh;
   width: 100vw;
-  height: 50vh;
+  height: 62vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #000000;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input {
   width: calc(40vw + 20px);
@@ -860,12 +861,16 @@ body {
   position: relative;
   left: -3vw;
   top: 20px;
-  color: #ffffff;
+  color: #ccc;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li {
   width: 6vw;
   text-align: center;
   position: relative;
+  transition: color 0.3s;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li.active {
+  color: #fff;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li:before {
   position: absolute;
@@ -885,6 +890,12 @@ body {
   height: 100%;
   width: 100vw;
   object-fit: cover;
+  transition: opacity 1s, transform 0s linear 1s;
+  opacity: 0;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__image.new {
+  opacity: 1;
+  transition: opacity 1s, transform 0s;
 }
 .slides_wrapper .slides_inner .slide.runAnimationOnce .videoContainer .background-video.videoZoomEffect {
   transform: scale(1);

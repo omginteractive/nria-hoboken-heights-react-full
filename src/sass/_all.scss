@@ -629,7 +629,7 @@ body {
                     }
                 }
                 &views {
-                    $top_section_height: 30vh;
+                    $top_section_height: 18vh;
                     .views_section {
                         position: absolute;
                         top: 0;
@@ -655,6 +655,7 @@ body {
                             display: flex;
                             align-items: center;
                             justify-content: center;
+                            background-color: #000000;
                         }
                         &__timeSlider {
                             $sliderThumbWidth: 20px;
@@ -763,11 +764,15 @@ body {
                             position: relative;
                             left: -3vw;
                             top: 20px;
-                            color: #ffffff;
+                            color: #ccc;
                             > li {
                                 width: 6vw;
                                 text-align: center;
                                 position: relative;
+                                transition: color 0.3s;
+                                &.active {
+                                    color: #fff;
+                                }
                                 &:before {
                                     position: absolute;
                                     top: -33px;
@@ -783,11 +788,22 @@ body {
                             }
                         }
                         &__image {
+                            $viewsTransitionDuration: 1s;
                             position: absolute;
                             top: 0;
                             height: 100%;
                             width: 100vw;
                             object-fit: cover;
+                            transition: opacity $viewsTransitionDuration, transform 0s linear $viewsTransitionDuration;
+                            opacity: 0;
+                            // transform: scale(1.07);
+                            &.old {
+                            }
+                            &.new {
+                                opacity: 1;
+                                // transform: scale(1.4);
+                                transition: opacity $viewsTransitionDuration, transform 0s;
+                            }
                         }
                     }
                 }

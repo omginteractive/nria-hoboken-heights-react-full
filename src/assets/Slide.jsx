@@ -106,13 +106,16 @@ class SlideViews extends Component {
         super(props);
         this.state = {
             timeSliderValue: 0,
-            activeView: 0
+            activeView: null,
+            image: null,
         }
+        
     }
     componentDidMount(){
         this.props.configuration.views.forEach((view) => {
             const img = new Image().src = require('./'+view.image).default
         })
+        this.setNewTime(0)
     }
     handleTimeChange(event){
         const rangeValue = event.target.value
@@ -140,11 +143,32 @@ class SlideViews extends Component {
     setNewTime(key){
         this.setState({
             timeSliderValue: key,
-            activeView: key,
         })
+        if(key == this.state.activeView) return
+        const image1IsNew = !this.state.image1IsNew
+        this.setState({
+            activeView: key,
+            image1IsNew: image1IsNew,
+        })
+        const image = this.props.configuration.views[key].image
+        if(image1IsNew){
+            this.setState({
+                image1: image,
+            })
+        }
+        else {
+            this.setState({
+                image2: image,
+            })
+        }
     }
 
     render(){
+        let image1_classes = 'views_section__image '
+        image1_classes += this.state.image1IsNew ? 'new' : 'old'
+        let image2_classes = 'views_section__image '
+        image2_classes += !this.state.image1IsNew ? 'new' : 'old'
+        
         return(
             <>
                 <section className="views_section">
@@ -154,14 +178,17 @@ class SlideViews extends Component {
                     </div>
                     <div className="views_section__bottom">
                         {this.props.configuration.views &&
-                                <img className="views_section__image" src={require('./'+this.props.configuration.views[this.state.activeView].image).default} alt=""/>
-                            
+                            <>
+                                <img alt="" src={this.state.image1 && require('./'+this.state.image1).default} className={image1_classes}  />
+                                <img alt="" src={this.state.image2 && require('./' + this.state.image2).default} className={image2_classes}  />
+                            </>
                         }
                         <div className="views_section__timeSlider">
                             <input onMouseUp={this.handleMouseUp.bind(this)} onChange={this.handleTimeChange.bind(this)} type="range" min="0" max={this.props.configuration.views.length - 1} step="0.005" value={this.state.timeSliderValue}/>
                             <ul className="views_section__timeList">
                                 {this.props.configuration.views.map((view, i) => {
-                                    return (<li key={i}>{view.displayTime} {view.ampm}</li>)
+                                    const listClasses = i == this.state.activeView ? 'active' : ''
+                                    return (<li className={listClasses} key={i}>{view.displayTime} {view.ampm}</li>)
                                 })}
                             </ul>
                         </div>
