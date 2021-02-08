@@ -736,6 +736,11 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description .text {
   padding: 30px 20vw 40px;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info_btn {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
 .slides_wrapper .slides_inner .slide.runAnimationOnce .videoContainer .background-video.videoZoomEffect {
   transform: scale(1);
   transition: object-position 1400ms linear 0s, transform 1.2s ease-out 1.2s;
@@ -800,6 +805,10 @@ body {
   text-transform: uppercase;
   padding: 15px;
   width: 170px;
+}
+.slides_wrapper .slides_inner .slide .btn:hover {
+  background-color: #ffffff;
+  color: #000000;
 }
 .slides_wrapper .slides_inner .slide .btn.dark {
   background-color: #000;

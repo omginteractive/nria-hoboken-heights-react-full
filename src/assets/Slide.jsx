@@ -449,6 +449,7 @@ class SlideAmenitiesDetail extends Component {
     }
     render(){
         const toggleButtonSrc = this.state.descriptionVisible ? 'images/amenities/Button-.svg' : 'images/amenities/Button+.svg'
+        const hasMoreInfoBtn = this.props.configuration.amenities[this.state.currIdx] && this.props.configuration.amenities[this.state.currIdx].moreInfoBtn
         let descriptionClasses = 'amenities_detail__description'
         descriptionClasses += this.state.descriptionVisible ? ' visible' : ''
 
@@ -460,6 +461,7 @@ class SlideAmenitiesDetail extends Component {
         amenities_detail_name_classes += !this.state.amenityNameVisibility ? ' runFadeOutAnimation' : ' runFadeInAnimation'
 
         let amenities_detail__more_info_classes = 'amenities_detail__more_info'
+        
         return (
             <>
                 <section className="amenities_detail">
@@ -489,6 +491,10 @@ class SlideAmenitiesDetail extends Component {
                             </div>
                         </div>
                     </div>
+                    {hasMoreInfoBtn && 
+                        <div className="amenities_detail__more_info_btn btn">More Info</div>
+                    }
+                    
                 </section>
             </>
         )

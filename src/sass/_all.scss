@@ -621,6 +621,11 @@ body {
 
                             }
                         }
+                        &__more_info_btn {
+                            position: absolute;
+                            bottom: 30px;
+                            right: 30px;
+                        }
                     }
                 }
             }
@@ -660,6 +665,10 @@ body {
                 text-transform: uppercase;
                 padding: 15px;
                 width: 170px;
+                &:hover {
+                    background-color: #ffffff;
+                    color: #000000;
+                }
                 &.dark {
                     background-color: #000;
                     color: #ffffff;
