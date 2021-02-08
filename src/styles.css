@@ -767,9 +767,6 @@ body {
   align-items: center;
   justify-content: center;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__bottom > img {
-  display: none;
-}
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input {
   width: calc(40vw + 20px);
   margin: 0;
@@ -863,6 +860,7 @@ body {
   position: relative;
   left: -3vw;
   top: 20px;
+  color: #ffffff;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li {
   width: 6vw;
@@ -880,6 +878,13 @@ body {
   height: 20px;
   background: #b2b2b2;
   border-radius: 50%;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__image {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100vw;
+  object-fit: cover;
 }
 .slides_wrapper .slides_inner .slide.runAnimationOnce .videoContainer .background-video.videoZoomEffect {
   transform: scale(1);

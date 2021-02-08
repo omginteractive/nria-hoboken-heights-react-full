@@ -80,32 +80,32 @@ const flypilotFetchWPRestAPI = async () => {
             {
                 displayTime: '6:00',
                 ampm: 'AM',
-                img: ''
+                image: "images/view/01.jpg"
             },
             {
                 displayTime: '8:00',
                 ampm: 'AM',
-                img: ''
+                image: "images/view/02.jpg"
             },
             {
                 displayTime: '11:00',
                 ampm: 'AM',
-                img: ''
+                image: "images/view/03.jpg"
             },
             {
                 displayTime: '6:00',
                 ampm: 'PM',
-                img: ''
+                image: "images/view/04.jpg"
             },
             {
                 displayTime: '8:00',
                 ampm: 'PM',
-                img: ''
+                image: "images/view/05.jpg"
             },
             {
                 displayTime: '11:00',
                 ampm: 'PM',
-                img: ''
+                image: "images/view/06.jpg"
             },
     ]
     }]

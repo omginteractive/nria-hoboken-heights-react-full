@@ -105,24 +105,43 @@ class SlideViews extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            timeSliderValue: 0
+            timeSliderValue: 0,
+            activeView: 0
         }
     }
-    handleTimeChange(event){
-        this.setState({
-            timeSliderValue: event.target.value
+    componentDidMount(){
+        this.props.configuration.views.forEach((view) => {
+            const img = new Image().src = require('./'+view.image).default
         })
     }
-    handleMouseUp(event){
-        if(!isInt(event.target.value)){
-            const closestInt = Math.round(event.target.value);
+    handleTimeChange(event){
+        const rangeValue = event.target.value
+        
+        if(this.isInt(rangeValue)){
+            //when the user is dragging thumb and ends up exactly on an int value, not a float
+            this.setNewTime(rangeValue)
+        }
+        else {
             this.setState({
-                timeSliderValue: closestInt
+                timeSliderValue: rangeValue
             })
         }
-        function isInt(n) {
-            return n % 1 === 0;
+    }
+    handleMouseUp(event){
+        const rangeValue = event.target.value
+        if(!this.isInt(rangeValue)){
+            const closestInt = Math.round(rangeValue);
+            this.setNewTime(closestInt)
         }
+    }
+    isInt(n) {
+        return n % 1 === 0;
+    }
+    setNewTime(key){
+        this.setState({
+            timeSliderValue: key,
+            activeView: key,
+        })
     }
 
     render(){
@@ -134,9 +153,12 @@ class SlideViews extends Component {
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
                     <div className="views_section__bottom">
-                        <img src={animatedLogo} alt=""/>
+                        {this.props.configuration.views &&
+                                <img className="views_section__image" src={require('./'+this.props.configuration.views[this.state.activeView].image).default} alt=""/>
+                            
+                        }
                         <div className="views_section__timeSlider">
-                            <input onMouseUp={this.handleMouseUp.bind(this)} onChange={this.handleTimeChange.bind(this)} type="range" min="1" max={this.props.configuration.views.length} step="0.005" value={this.state.timeSliderValue}/>
+                            <input onMouseUp={this.handleMouseUp.bind(this)} onChange={this.handleTimeChange.bind(this)} type="range" min="0" max={this.props.configuration.views.length - 1} step="0.005" value={this.state.timeSliderValue}/>
                             <ul className="views_section__timeList">
                                 {this.props.configuration.views.map((view, i) => {
                                     return (<li key={i}>{view.displayTime} {view.ampm}</li>)
