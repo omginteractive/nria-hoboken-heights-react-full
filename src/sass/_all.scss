@@ -1,27 +1,37 @@
-@mixin amenityDetailNameAnimation() {
+@mixin amenityDetailNameSet() {
 	> h3 {
         > span {
             $animation_element_duration: 0.6s;
-            $animation_incremental_delay: 0.2s;
+            $animation_incremental_delay: 0.1s;
+            $additional_delay: 0.1s;
             animation-fill-mode: forwards;
             animation-name: fadeInDriftUp;
             animation-duration: $animation_element_duration;
             opacity: 0;
             @for $i from 1 through 3 {
                 &:nth-of-type(#{$i}){
-                    animation-delay: $animation_incremental_delay*$i;
+                    animation-delay: $animation_incremental_delay*$i + $additional_delay;
                     + img {
                         animation-fill-mode: forwards;
                         animation-name: fadeInDriftUpTop2;
-                        animation-duration:$animation_element_duration;
-                        animation-delay: $animation_incremental_delay*($i+1);
+                        animation-duration: $animation_element_duration;
+                        animation-delay: $animation_incremental_delay*($i+1) + $additional_delay;
                         opacity: 0;
                     }
                 }
             }
-            
         }
-        
+    }
+}
+
+@mixin amenityDetailNameHide() {
+	> h3 {
+        > span,
+        > span + img {
+            animation-fill-mode: forwards;
+            animation-name: fadeOut;
+            animation-duration: 0.8s;
+        }
     }
 }
 
@@ -492,6 +502,7 @@ body {
                                         font-weight: bold;
                                     }
                                 }
+                                
                             }
                         }
                     }
@@ -541,6 +552,12 @@ body {
                             display: flex;
                             align-items: center;
                             flex-direction: column;
+                            // &.transitioning {
+                            //     color: #000000;
+                            //     .amenities_detail__name > h3 > span {
+                            //         // opacity: 0;
+                            //     }
+                            // }
                             &__dots {
                                 position: absolute;
                                 bottom: 15px;
@@ -563,13 +580,18 @@ body {
                             font-size: 30px;
                             // margin-bottom: 1em;
                             position: relative;
-                            &.runAnimation {
-                                @include amenityDetailNameAnimation();
+                            &.runFadeOutAnimation {
+                                @include amenityDetailNameHide();
+                            }
+                            &.runFadeInAnimation{
+                                @include amenityDetailNameSet();
                             }
                             > h3 {
                                 > span {
+                                    opacity: 1;
                                     display: block;
                                     position: relative;
+                                    transition: opacity 0.6s;
                                 }
                                 > span:last-of-type {
                                     display: inline;
@@ -586,16 +608,16 @@ body {
                         &__description {
                             line-height: 1.4em;
                             background: rgb(0,0,0);
-                            background: linear-gradient(0deg, rgba(0,0,0,0.8937149859943977) 0%, rgba(0,0,0,0.2108018207282913) 89%, rgba(0,0,0,0) 100%);
+                            background: linear-gradient(0deg, rgba(0, 0, 0, 0.923714986) 0%, rgba(0, 0, 0, 0.4908018207) 69%, rgba(0, 0, 0, 0.2908018207) 89%, rgba(0, 0, 0, 0) 100%);
                             width: 100vw;
                             max-height: 0;
-                            transition: max-height 0.5s;
+                            transition: max-height 0.8s;
                             margin-top: 2em;
                             &.visible {
-                                max-height: 300px;
+                                max-height: 200px;
                             }
                             .text {
-                                padding: 0 20vw 40px;
+                                padding: 30px 20vw 40px;
 
                             }
                         }
@@ -615,6 +637,19 @@ body {
             }
             &.activeSlide {
                 @include amenityDetailActiveAnimation();
+                .amenities__list > ul > li{
+                    $animation_incremental_delay: 0.2s;
+                    animation-fill-mode: forwards;
+                    animation-name: fadeInDriftUp;
+                    animation-duration: 0.5s;
+                    opacity: 0;
+                    position: relative;
+                    @for $i from 1 through 12 {
+                        &:nth-of-type(#{$i}){
+                            animation-delay: $animation_incremental_delay*$i;
+                        }
+                    }
+                }
             }
             .btn {
                 cursor: pointer;

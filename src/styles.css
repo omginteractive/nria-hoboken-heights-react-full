@@ -663,45 +663,53 @@ body {
   font-size: 30px;
   position: relative;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runAnimation > h3 > span {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeOutAnimation > h3 > span,
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeOutAnimation > h3 > span + img {
+  animation-fill-mode: forwards;
+  animation-name: fadeOut;
+  animation-duration: 0.8s;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeInAnimation > h3 > span {
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUp;
   animation-duration: 0.6s;
   opacity: 0;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runAnimation > h3 > span:nth-of-type(1) {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeInAnimation > h3 > span:nth-of-type(1) {
   animation-delay: 0.2s;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runAnimation > h3 > span:nth-of-type(1) + img {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeInAnimation > h3 > span:nth-of-type(1) + img {
+  animation-fill-mode: forwards;
+  animation-name: fadeInDriftUpTop2;
+  animation-duration: 0.6s;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeInAnimation > h3 > span:nth-of-type(2) {
+  animation-delay: 0.3s;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeInAnimation > h3 > span:nth-of-type(2) + img {
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUpTop2;
   animation-duration: 0.6s;
   animation-delay: 0.4s;
   opacity: 0;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runAnimation > h3 > span:nth-of-type(2) {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeInAnimation > h3 > span:nth-of-type(3) {
   animation-delay: 0.4s;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runAnimation > h3 > span:nth-of-type(2) + img {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeInAnimation > h3 > span:nth-of-type(3) + img {
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUpTop2;
   animation-duration: 0.6s;
-  animation-delay: 0.6s;
-  opacity: 0;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runAnimation > h3 > span:nth-of-type(3) {
-  animation-delay: 0.6s;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runAnimation > h3 > span:nth-of-type(3) + img {
-  animation-fill-mode: forwards;
-  animation-name: fadeInDriftUpTop2;
-  animation-duration: 0.6s;
-  animation-delay: 0.8s;
+  animation-delay: 0.5s;
   opacity: 0;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name > h3 > span {
+  opacity: 1;
   display: block;
   position: relative;
+  transition: opacity 0.6s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name > h3 > span:last-of-type {
   display: inline;
@@ -716,17 +724,17 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description {
   line-height: 1.4em;
   background: black;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.893714986) 0%, rgba(0, 0, 0, 0.2108018207) 89%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.923714986) 0%, rgba(0, 0, 0, 0.4908018207) 69%, rgba(0, 0, 0, 0.2908018207) 89%, rgba(0, 0, 0, 0) 100%);
   width: 100vw;
   max-height: 0;
-  transition: max-height 0.5s;
+  transition: max-height 0.8s;
   margin-top: 2em;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description.visible {
-  max-height: 300px;
+  max-height: 200px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description .text {
-  padding: 0 20vw 40px;
+  padding: 30px 20vw 40px;
 }
 .slides_wrapper .slides_inner .slide.runAnimationOnce .videoContainer .background-video.videoZoomEffect {
   transform: scale(1);
@@ -739,6 +747,49 @@ body {
   animation-duration: 0.9s;
   animation-delay: 0.5s;
   animation-timing-function: ease-out;
+}
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li {
+  animation-fill-mode: forwards;
+  animation-name: fadeInDriftUp;
+  animation-duration: 0.5s;
+  opacity: 0;
+  position: relative;
+}
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(1) {
+  animation-delay: 0.2s;
+}
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(2) {
+  animation-delay: 0.4s;
+}
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(3) {
+  animation-delay: 0.6s;
+}
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(4) {
+  animation-delay: 0.8s;
+}
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(5) {
+  animation-delay: 1s;
+}
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(6) {
+  animation-delay: 1.2s;
+}
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(7) {
+  animation-delay: 1.4s;
+}
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(8) {
+  animation-delay: 1.6s;
+}
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(9) {
+  animation-delay: 1.8s;
+}
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(10) {
+  animation-delay: 2s;
+}
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(11) {
+  animation-delay: 2.2s;
+}
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(12) {
+  animation-delay: 2.4s;
 }
 .slides_wrapper .slides_inner .slide .btn {
   cursor: pointer;

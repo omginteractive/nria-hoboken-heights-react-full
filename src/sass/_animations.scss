@@ -24,6 +24,13 @@
 	100% {top: 0;opacity: 1;}
 }
 
+// @keyframes fadeOutInDriftUp {
+//     0%   {opacity: 1;}
+//     50% {opacity: 0;}
+//     51% {top: 15px; opacity: 0;}
+
+// 	100% {top: 0;opacity: 1;}
+// }
 //Used for animating amenity detail toggle button
 @keyframes fadeInDriftUpTop2 {
 	0%   {top: 15px;opacity: 0;}

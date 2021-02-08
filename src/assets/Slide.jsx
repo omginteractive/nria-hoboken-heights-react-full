@@ -91,7 +91,7 @@ class Slide extends Component {
                     <SlideAmenities setAmenityOnDetailsSlide={this.setAmenityOnDetailsSlide.bind(this)} configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'amenitiesDetail' &&
-                    <SlideAmenitiesDetail idx={this.props.amenityDetailsSlideIdx} configuration={slideObj} />
+                    <SlideAmenitiesDetail isCurrent={isCurrent} idx={this.props.amenityDetailsSlideIdx} configuration={slideObj} />
                 }
             </div>
         )
@@ -317,6 +317,7 @@ class SlideAmenitiesDetail extends Component {
             descriptionVisible: false,
             image: null,
             image1IsNew: false,
+            title_line1: ' '//animation doesnt work without this
         }
         this.defaultArrowDistanceFromEdge = "40px"
         this.clickedArrowDistanceFromEdge = "25px"
@@ -332,19 +333,22 @@ class SlideAmenitiesDetail extends Component {
             const img = new Image().src = require('./'+amenity.image).default
         })
         this.setAmenityData(this.state.currIdx)
+        this.setAmenityTitle()
     }
     componentDidUpdate(){
-        const newIdxFromPropsHasChanged = this.state.lastPropsIdx !== this.props.idx
+        const newIdxFromPropsHasChanged = this.props.isCurrent && this.state.lastPropsIdx !== this.props.idx
 
         if(newIdxFromPropsHasChanged) {
             this.setState({
                 lastPropsIdx: this.props.idx,
             })
             this.setAmenityData(this.props.idx)
+            this.setAmenityTitle()
         }
     }
     setAmenityData(newIdx){
         if(newIdx === this.state.currIdx) return
+
         const title_line1 = this.props.configuration.amenities[newIdx].title_line1
         const title_line2 = this.props.configuration.amenities[newIdx].title_line2
         const title_line3 = this.props.configuration.amenities[newIdx].title_line3
@@ -352,13 +356,10 @@ class SlideAmenitiesDetail extends Component {
         const image = this.props.configuration.amenities[newIdx].image
         const image1IsNew = !this.state.image1IsNew
         this.setState({
-            title_line1: title_line1,
-            title_line2: title_line2,
-            title_line3: title_line3,
             description: description,
             currIdx: newIdx,
             image1IsNew: image1IsNew,
-            runAmenityNameAnimation: true
+            amenityNameVisibility: false
         })
         if(image1IsNew){
             this.setState({
@@ -370,6 +371,29 @@ class SlideAmenitiesDetail extends Component {
                 image2: image,
             })
         }
+    }
+    transitioningAmenityComplete= e => {
+        if(e.animationName == 'fadeOut'){
+            this.setAmenityTitle()
+            this.setState({
+                amenityNameVisibility: true
+            })
+        }
+        else if(e.animationName == 'fadeInDriftUp') {
+        }
+    }
+    setAmenityTitle(){
+        const newIdx = this.state.currIdx
+        if(typeof this.props.configuration.amenities[newIdx] == 'undefined') return
+        const title_line1 = this.props.configuration.amenities[newIdx].title_line1
+        const title_line2 = this.props.configuration.amenities[newIdx].title_line2
+        const title_line3 = this.props.configuration.amenities[newIdx].title_line3
+
+        this.setState({
+            title_line1: title_line1,
+            title_line2: title_line2,
+            title_line3: title_line3,
+        });
     }
     toggleDetailDescription(){
         const newDescriptionState = !this.state.descriptionVisible
@@ -418,11 +442,6 @@ class SlideAmenitiesDetail extends Component {
             }
         })
     }
-    amenityNameAnimationEnded(){
-        this.setState({
-            runAmenityNameAnimation: false
-        })
-    }
     activateAmenity(dotIdx){
         this.setAmenityData(dotIdx)
     }
@@ -436,7 +455,9 @@ class SlideAmenitiesDetail extends Component {
         let image2_classes = 'amenities_detail__image '
         image2_classes += !this.state.image1IsNew ? 'new' : 'old'
         let amenities_detail_name_classes = 'amenities_detail__name'
-        amenities_detail_name_classes += this.state.runAmenityNameAnimation ? ' runAnimation' : ''
+        amenities_detail_name_classes += !this.state.amenityNameVisibility ? ' runFadeOutAnimation' : ' runFadeInAnimation'
+
+        let amenities_detail__more_info_classes = 'amenities_detail__more_info'
         return (
             <>
                 <section className="amenities_detail">
@@ -444,13 +465,13 @@ class SlideAmenitiesDetail extends Component {
                     <img onTransitionEnd={this.resetLeftArrow.bind(this)} alt="Left Arrow" onClick={this.animateLeftArrow.bind(this)} style={this.state.leftArrowStyles} className="amenities_detail__arrow amenities_detail__arrow--left" src={require('./images/amenities/rightArrow.svg').default} />
                     <img alt="" src={this.state.image1 && require('./'+this.state.image1).default} className={image1_classes}  />
                     <img alt="" src={this.state.image2 && require('./' + this.state.image2).default} className={image2_classes}  />
-                    <div className="amenities_detail__more_info">
+                    <div className={amenities_detail__more_info_classes}>
                         <div className={amenities_detail_name_classes}>
                             <h3>
-                                {this.state.title_line1 && <span>{this.state.title_line1}</span>}
+                                {this.state.title_line1 && <span onAnimationEnd={this.transitioningAmenityComplete.bind(this)} >{this.state.title_line1}</span>}
                                 {this.state.title_line2 && <span>{this.state.title_line2}</span>}
                                 {this.state.title_line3 && <span>{this.state.title_line3}</span>}
-                                <img onAnimationEnd={this.amenityNameAnimationEnded.bind(this)}  alt="" onClick={this.toggleDetailDescription.bind(this)} className="amenities_detail__description_toggler" src={require('./'+toggleButtonSrc).default} />
+                                <img alt="" onClick={this.toggleDetailDescription.bind(this)} className="amenities_detail__description_toggler" src={require('./'+toggleButtonSrc).default} />
                             </h3>
                         </div>
                         <div className="amenities_detail__more_info__dots">
