@@ -628,6 +628,164 @@ body {
                         }
                     }
                 }
+                &views {
+                    $top_section_height: 30vh;
+                    .views_section {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100vw;
+                        height: 100vh;
+                        display: flex;
+                        flex-direction: column;
+                        $sliderLineColor: #b2b2b2;
+                        &__top {
+                            position: absolute;
+                            top: $header-height;
+                            width: 100vw;
+                            height: $top_section_height;
+                            padding-left: $side-margin;
+                            padding-right: $side-margin;
+                        }
+                        &__bottom {
+                            position: absolute;
+                            top: $top_section_height + $header-height;
+                            width: 100vw;
+                            height: 100vh - $top_section_height - $header-height;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            > img {
+                                display: none;
+                            }
+                        }
+                        &__timeSlider {
+                            $sliderThumbWidth: 20px;
+                            $sliderHeight: 1px;
+                            $sliderWidth: calc(40vw + #{$sliderThumbWidth});
+                            $thumbColor: #000;
+                            $thumbBorderRadius: 50%;
+                            $thumbBorder: solid 1px #fff;
+                            > input {
+                                width: $sliderWidth;
+                                margin: 0;
+                                -webkit-appearance: none;
+                                position: relative;
+                                left: -$sliderThumbWidth/2;
+
+                                /* fix for FF unable to apply focus style bug  */
+                                border: none 0 transparent;
+                                /*required for proper track sizing in FF*/
+                                width: $sliderWidth;
+                                &::-webkit-slider-runnable-track {
+                                    width: $sliderWidth;
+                                    height: $sliderHeight;
+                                    background: $sliderLineColor;
+                                    border: none;
+                                }
+                                &::-webkit-slider-thumb {
+                                    -webkit-appearance: none;
+                                    border: $thumbBorder;
+                                    border: $thumbBorder;
+                                    height: $sliderThumbWidth;
+                                    width: $sliderThumbWidth;
+                                    border-radius: $thumbBorderRadius;
+                                    background: $thumbColor;
+                                    margin-top: -$sliderThumbWidth/2;
+                                    position: relative;
+                                    z-index: 1;//to appear above tick lines
+                                }
+                                &:focus {
+                                    outline: none;
+                                }
+                                &:focus::-webkit-slider-runnable-track {
+                                    background: $sliderLineColor;
+                                }
+                                &::-moz-range-track {
+                                    width: $sliderThumbWidth;
+                                    height: $sliderHeight;
+                                    background: $sliderLineColor;
+                                    border: none;
+                                }
+                                &::-moz-range-thumb {
+                                    border: $thumbBorder;
+                                    height: $sliderThumbWidth;
+                                    width: $sliderThumbWidth;
+                                    border-radius: $thumbBorderRadius;
+                                    background: $thumbColor;
+                                }
+                                
+                                /*hide the outline behind the border*/
+                                &:-moz-focusring {
+                                    outline: 1px solid white;
+                                    outline-offset: -1px;
+                                }
+                                &:focus::-moz-range-track {
+                                    background: $sliderLineColor;
+                                }
+                                &::-ms-track {/* for ie */
+                                    width: $sliderWidth;
+                                    height: 5px;
+                                    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+                                    background: transparent;
+                                    
+                                    /*leave room for the larger thumb to overflow with a transparent border */
+                                    border-color: transparent;
+                                    // border-width: 6px 0;
+
+                                    /*remove default tick marks*/
+                                    color: transparent;
+                                }
+                                &::-ms-fill-lower {
+                                    background: $sliderLineColor;
+                                    // border-radius: 10px;
+                                }
+                                &::-ms-fill-upper {
+                                    background: $sliderLineColor;
+                                    // border-radius: 10px;
+                                }
+                                &::-ms-thumb {
+                                    border: $thumbBorder;
+                                    height: $sliderThumbWidth;
+                                    width: $sliderThumbWidth;
+                                    border-radius: $thumbBorderRadius;
+                                    background: $thumbColor;
+                                }
+                                &:focus::-ms-fill-lower {
+                                    background: $sliderLineColor;
+                                }
+                                &:focus::-ms-fill-upper {
+                                    background: $sliderLineColor;
+                                }
+                            }
+                        }
+                        &__timeList {
+                            display: flex;
+                            justify-content: space-between;
+                            width: calc(46vw);
+                            position: relative;
+                            left: -3vw;
+                            top: 20px;
+                            > li {
+                                width: 6vw;
+                                text-align: center;
+                                position: relative;
+                                &:before {
+                                    position: absolute;
+                                    top: -33px;
+                                    right: 0;
+                                    left: 0;
+                                    content: "";
+                                    margin: 0 auto;
+                                    width: 1px;
+                                    height: 20px;
+                                    background: $sliderLineColor;
+                                    border-radius: 50%;
+                                }
+                            }
+                        }
+                    }
+                }
             }
             &.runAnimationOnce {
                 .videoContainer {

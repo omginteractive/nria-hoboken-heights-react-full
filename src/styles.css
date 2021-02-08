@@ -741,6 +741,146 @@ body {
   bottom: 30px;
   right: 30px;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__top {
+  position: absolute;
+  top: 20vh;
+  width: 100vw;
+  height: 30vh;
+  padding-left: 7.5vw;
+  padding-right: 7.5vw;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__bottom {
+  position: absolute;
+  top: 50vh;
+  width: 100vw;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__bottom > img {
+  display: none;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input {
+  width: calc(40vw + 20px);
+  margin: 0;
+  -webkit-appearance: none;
+  position: relative;
+  left: -10px;
+  /* fix for FF unable to apply focus style bug  */
+  border: none 0 transparent;
+  /*required for proper track sizing in FF*/
+  width: calc(40vw + 20px);
+  /*hide the outline behind the border*/
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-webkit-slider-runnable-track {
+  width: calc(40vw + 20px);
+  height: 1px;
+  background: #b2b2b2;
+  border: none;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: solid 1px #fff;
+  border: solid 1px #fff;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #000;
+  margin-top: -10px;
+  position: relative;
+  z-index: 1;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus {
+  outline: none;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus::-webkit-slider-runnable-track {
+  background: #b2b2b2;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-moz-range-track {
+  width: 20px;
+  height: 1px;
+  background: #b2b2b2;
+  border: none;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-moz-range-thumb {
+  border: solid 1px #fff;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #000;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:-moz-focusring {
+  outline: 1px solid white;
+  outline-offset: -1px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus::-moz-range-track {
+  background: #b2b2b2;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-ms-track {
+  /* for ie */
+  width: calc(40vw + 20px);
+  height: 5px;
+  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+  background: transparent;
+  /*leave room for the larger thumb to overflow with a transparent border */
+  border-color: transparent;
+  /*remove default tick marks*/
+  color: transparent;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-ms-fill-lower {
+  background: #b2b2b2;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-ms-fill-upper {
+  background: #b2b2b2;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-ms-thumb {
+  border: solid 1px #fff;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #000;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus::-ms-fill-lower {
+  background: #b2b2b2;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus::-ms-fill-upper {
+  background: #b2b2b2;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList {
+  display: flex;
+  justify-content: space-between;
+  width: calc(46vw);
+  position: relative;
+  left: -3vw;
+  top: 20px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li {
+  width: 6vw;
+  text-align: center;
+  position: relative;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li:before {
+  position: absolute;
+  top: -33px;
+  right: 0;
+  left: 0;
+  content: "";
+  margin: 0 auto;
+  width: 1px;
+  height: 20px;
+  background: #b2b2b2;
+  border-radius: 50%;
+}
 .slides_wrapper .slides_inner .slide.runAnimationOnce .videoContainer .background-video.videoZoomEffect {
   transform: scale(1);
   transition: object-position 1400ms linear 0s, transform 1.2s ease-out 1.2s;
