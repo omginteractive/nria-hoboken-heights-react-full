@@ -96,109 +96,26 @@ class Slide extends Component {
                 {slideObj.slideTemplate === 'views' &&
                     <SlideViews configuration={slideObj} />
                 }
+                {slideObj.slideTemplate === 'residencePenthouse' &&
+                    <SlideResidencePenthouse />
+                }
             </div>
         )
     }
 }
 
-class SlideViews extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            timeSliderValue: 0,
-            activeView: null,
-            image: null,
-        }
-        
-    }
-    componentDidMount(){
-        this.props.configuration.views.forEach((view) => {
-            const img = new Image().src = require('./'+view.image).default
-        })
-        this.setNewTime(0)
-    }
-    handleTimeChange(event){
-        const rangeValue = event.target.value
-        
-        if(this.isInt(rangeValue)){
-            //when the user is dragging thumb and ends up exactly on an int value, not a float
-            this.setNewTime(rangeValue)
-        }
-        else {
-            this.setState({
-                timeSliderValue: rangeValue
-            })
-        }
-    }
-    handleMouseUp(event){
-        const rangeValue = event.target.value
-        if(!this.isInt(rangeValue)){
-            const closestInt = Math.round(rangeValue);
-            this.setNewTime(closestInt)
-        }
-    }
-    isInt(n) {
-        return n % 1 === 0;
-    }
-    setNewTime(key){
-        this.setState({
-            timeSliderValue: key,
-        })
-        if(key == this.state.activeView) return
-        const image1IsNew = !this.state.image1IsNew
-        this.setState({
-            activeView: key,
-            image1IsNew: image1IsNew,
-        })
-        const image = this.props.configuration.views[key].image
-        if(image1IsNew){
-            this.setState({
-                image1: image,
-            })
-        }
-        else {
-            this.setState({
-                image2: image,
-            })
-        }
-    }
-
+class SlideResidencePenthouse extends Component {
+    
     render(){
-        let image1_classes = 'views_section__image '
-        image1_classes += this.state.image1IsNew ? 'new' : 'old'
-        let image2_classes = 'views_section__image '
-        image2_classes += !this.state.image1IsNew ? 'new' : 'old'
-        
         return(
             <>
-                <section className="views_section">
-                    <div className="views_section__top">
-                        <h2>Signature Views 24/7</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div>
-                    <div className="views_section__bottom">
-                        {this.props.configuration.views &&
-                            <>
-                                <img alt="" src={this.state.image1 && require('./'+this.state.image1).default} className={image1_classes}  />
-                                <img alt="" src={this.state.image2 && require('./' + this.state.image2).default} className={image2_classes}  />
-                            </>
-                        }
-                        <div className="views_section__timeSlider">
-                            <input onMouseUp={this.handleMouseUp.bind(this)} onChange={this.handleTimeChange.bind(this)} type="range" min="0" max={this.props.configuration.views.length - 1} step="0.005" value={this.state.timeSliderValue}/>
-                            <ul className="views_section__timeList">
-                                {this.props.configuration.views.map((view, i) => {
-                                    const listClasses = i == this.state.activeView ? 'active' : ''
-                                    return (<li className={listClasses} key={i}>{view.displayTime} {view.ampm}</li>)
-                                })}
-                            </ul>
-                        </div>
-                    </div>
-                </section>
+                <div className="btn">Residences</div>
+                <div className="btn">Penthouses</div>
+                
             </>
         )
     }
 }
-
 class SlideHome extends Component {
     nextSlide(){
         this.props.methods.scrollToNextSlide()
@@ -596,6 +513,104 @@ class SlideAmenitiesDetail extends Component {
                         <div className="amenities_detail__more_info_btn btn">More Info</div>
                     }
                     
+                </section>
+            </>
+        )
+    }
+}
+
+class SlideViews extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            timeSliderValue: 0,
+            activeView: null,
+            image: null,
+        }
+        
+    }
+    componentDidMount(){
+        this.props.configuration.views.forEach((view) => {
+            const img = new Image().src = require('./'+view.image).default
+        })
+        this.setNewTime(0)
+    }
+    handleTimeChange(event){
+        const rangeValue = event.target.value
+        
+        if(this.isInt(rangeValue)){
+            //when the user is dragging thumb and ends up exactly on an int value, not a float
+            this.setNewTime(rangeValue)
+        }
+        else {
+            this.setState({
+                timeSliderValue: rangeValue
+            })
+        }
+    }
+    handleMouseUp(event){
+        const rangeValue = event.target.value
+        if(!this.isInt(rangeValue)){
+            const closestInt = Math.round(rangeValue);
+            this.setNewTime(closestInt)
+        }
+    }
+    isInt(n) {
+        return n % 1 === 0;
+    }
+    setNewTime(key){
+        this.setState({
+            timeSliderValue: key,
+        })
+        if(key == this.state.activeView) return
+        const image1IsNew = !this.state.image1IsNew
+        this.setState({
+            activeView: key,
+            image1IsNew: image1IsNew,
+        })
+        const image = this.props.configuration.views[key].image
+        if(image1IsNew){
+            this.setState({
+                image1: image,
+            })
+        }
+        else {
+            this.setState({
+                image2: image,
+            })
+        }
+    }
+
+    render(){
+        let image1_classes = 'views_section__image '
+        image1_classes += this.state.image1IsNew ? 'new' : 'old'
+        let image2_classes = 'views_section__image '
+        image2_classes += !this.state.image1IsNew ? 'new' : 'old'
+        
+        return(
+            <>
+                <section className="views_section">
+                    <div className="views_section__top">
+                        <h2>Signature Views 24/7</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                    <div className="views_section__bottom">
+                        {this.props.configuration.views &&
+                            <>
+                                <img alt="" src={this.state.image1 && require('./'+this.state.image1).default} className={image1_classes}  />
+                                <img alt="" src={this.state.image2 && require('./' + this.state.image2).default} className={image2_classes}  />
+                            </>
+                        }
+                        <div className="views_section__timeSlider">
+                            <input onMouseUp={this.handleMouseUp.bind(this)} onChange={this.handleTimeChange.bind(this)} type="range" min="0" max={this.props.configuration.views.length - 1} step="0.005" value={this.state.timeSliderValue}/>
+                            <ul className="views_section__timeList">
+                                {this.props.configuration.views.map((view, i) => {
+                                    const listClasses = i == this.state.activeView ? 'active' : ''
+                                    return (<li className={listClasses} key={i}>{view.displayTime} {view.ampm}</li>)
+                                })}
+                            </ul>
+                        </div>
+                    </div>
                 </section>
             </>
         )

@@ -107,7 +107,13 @@ const flypilotFetchWPRestAPI = async () => {
                 ampm: 'PM',
                 image: "images/view/06.jpg"
             },
-    ]
+        ]
+    },{
+        slideTemplate: 'residencePenthouse',
+        styles: {
+            background: "#000",
+        },
+        headerTheme: 'light'
     }]
     return SLIDES
   }
