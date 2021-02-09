@@ -534,6 +534,9 @@ body {
                             transition: opacity 0s linear $amenitiesTransitionDuration, transform 0s linear $amenitiesTransitionDuration;
                             opacity: 0;
                             // transform: scale(1.07);
+                            width: 100vw;
+                            height: 100vh;
+                            object-fit: cover;
                             &.old {
                             }
                             &.new {
@@ -657,7 +660,6 @@ body {
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            background-color: greenyellow;
                         }
                         &__timeSlider {
                             $sliderThumbWidth: 20px;
@@ -849,6 +851,9 @@ body {
 
                 .residencePenthouseFullscreenImage {
                     @include fullScreenImageScaleDownOnArrival();
+                    width: 100vw;
+                    height: 100vh;
+                    object-fit: cover;
                 }
             }
             .btn {

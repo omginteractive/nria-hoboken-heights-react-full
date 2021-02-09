@@ -627,6 +627,9 @@ body {
   height: 100vh;
   transition: opacity 0s linear 1.3s, transform 0s linear 1.3s;
   opacity: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__image.new {
   z-index: 1;
@@ -769,7 +772,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: greenyellow;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input {
   width: calc(40vw + 20px);
@@ -968,6 +970,9 @@ body {
   animation-duration: 0.9s;
   animation-delay: 0.5s;
   animation-timing-function: ease-out;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
 }
 .slides_wrapper .slides_inner .slide .btn {
   cursor: pointer;
