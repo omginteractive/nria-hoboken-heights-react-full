@@ -100,7 +100,7 @@ class Slide extends Component {
                     <SlideResidencePenthouse />
                 }
                 {slideObj.slideTemplate === 'residencePenthouseFullscreen' &&
-                    <SlideResidencePenthouseFullscreen />
+                    <SlideResidencePenthouseFullscreen  methods={slideMethods} configuration={slideObj}  />
                 }
             </div>
         )
@@ -108,27 +108,26 @@ class Slide extends Component {
 }
 
 class SlideResidencePenthouseFullscreen extends Component {
-    
+    nextSlide(){
+        this.props.methods.scrollToNextSlide()
+    }
     render(){
+        let videoContainerClasses = 'videoContainer'
+        let videoClasses = 'background-video'
+        if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect startZoomedIn'
         return(
             <>
-                <div className="btn">Residences</div>
-                <div className="btn">Penthouses</div>
+                {
+                    <div className="downArrowContainer">
+                        <img alt="Down Arrow" onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
+                    </div>
+                }
+                <img className='residencePenthouseFullscreenImage' alt="" src={require('./'+'images/penthouse/penthouse.jpg').default} />
             </>
         )
     }
 }
-class SlideResidencePenthouse extends Component {
-    
-    render(){
-        return(
-            <>
-                <div className="btn">Residences</div>
-                <div className="btn">Penthouses</div>
-            </>
-        )
-    }
-}
+
 class SlideHome extends Component {
     nextSlide(){
         this.props.methods.scrollToNextSlide()
@@ -625,6 +624,18 @@ class SlideViews extends Component {
                         </div>
                     </div>
                 </section>
+            </>
+        )
+    }
+}
+
+class SlideResidencePenthouse extends Component {
+    
+    render(){
+        return(
+            <>
+                <div className="btn">Residences</div>
+                <div className="btn">Penthouses</div>
             </>
         )
     }

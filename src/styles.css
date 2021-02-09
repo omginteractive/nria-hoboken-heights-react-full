@@ -542,12 +542,12 @@ body {
   width: 100vw;
   object-position: top right;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-patio .downArrowContainer {
+.slides_wrapper .slides_inner .slide.slideTemplate-patio .downArrowContainer, .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen .downArrowContainer {
   position: absolute;
   bottom: 50px;
   z-index: 1;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-patio .downArrowContainer .downArrow {
+.slides_wrapper .slides_inner .slide.slideTemplate-patio .downArrowContainer .downArrow, .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen .downArrowContainer .downArrow {
   opacity: 0;
   animation-fill-mode: forwards, none;
   animation-name: fadeInDriftDownArrow, upAndDown;
@@ -960,6 +960,14 @@ body {
 }
 .slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(12) {
   animation-delay: 2.4s;
+}
+.slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseFullscreenImage {
+  transform: scale(1.15);
+  animation-fill-mode: forwards;
+  animation-name: zoomOut;
+  animation-duration: 0.9s;
+  animation-delay: 0.5s;
+  animation-timing-function: ease-out;
 }
 .slides_wrapper .slides_inner .slide .btn {
   cursor: pointer;

@@ -35,16 +35,14 @@
     }
 }
 
-@mixin amenityDetailActiveAnimation() {
-    .amenities_detail__image.new {
-        transform: scale(1.15);//same scale as in zoomOut animation declaration
-        $animation_element_duration: 0.9s;
-        animation-fill-mode: forwards;
-        animation-name: zoomOut;
-        animation-duration: $animation_element_duration;
-        animation-delay: 0.5s;
-        animation-timing-function: ease-out;
-    }
+@mixin fullScreenImageScaleDownOnArrival() {
+    transform: scale(1.15);//same scale as in zoomOut animation declaration
+    $animation_element_duration: 0.9s;
+    animation-fill-mode: forwards;
+    animation-name: zoomOut;
+    animation-duration: $animation_element_duration;
+    animation-delay: 0.5s;
+    animation-timing-function: ease-out;
 }
 
 @font-face {
@@ -438,7 +436,8 @@ body {
                         object-position: top right;
                     }
                 }
-                &patio {
+                &patio,
+                &residencePenthouseFullscreen {
                     .downArrowContainer {
                         position: absolute;
                         bottom: 50px;
@@ -831,7 +830,9 @@ body {
                 }
             }
             &.activeSlide {
-                @include amenityDetailActiveAnimation();
+                .amenities_detail__image.new {
+                    @include fullScreenImageScaleDownOnArrival();
+                }
                 .amenities__list > ul > li{
                     $animation_incremental_delay: 0.2s;
                     animation-fill-mode: forwards;
@@ -844,6 +845,10 @@ body {
                             animation-delay: $animation_incremental_delay*$i;
                         }
                     }
+                }
+
+                .residencePenthouseFullscreenImage {
+                    @include fullScreenImageScaleDownOnArrival();
                 }
             }
             .btn {
