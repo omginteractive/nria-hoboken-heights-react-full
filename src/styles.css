@@ -911,6 +911,14 @@ body {
   height: 100vh;
   object-fit: cover;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail {
+  display: flex;
+  margin-top: 20vh;
+  height: calc(100vh - 20vh);
+  width: 100vw;
+  padding-left: 7.5vw;
+  padding-right: 7.5vw;
+}
 .slides_wrapper .slides_inner .slide.runAnimationOnce .videoContainer .background-video.videoZoomEffect {
   transform: scale(1);
   transition: object-position 1400ms linear 0s, transform 1.2s ease-out 1.2s;

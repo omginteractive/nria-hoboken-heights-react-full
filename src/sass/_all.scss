@@ -823,7 +823,16 @@ body {
                         height: 100vh;
                         object-fit: cover;
                     }
-
+                }
+                &residencePenthouseDetail {
+                    .residencePenthouseDetail {
+                        display: flex;
+                        margin-top: $header-height;
+                        height: calc(100vh - #{$header-height});
+                        width: 100vw;
+                        padding-left: $side-margin;
+                        padding-right: $side-margin;
+                    }
                 }
             }
             &.runAnimationOnce {

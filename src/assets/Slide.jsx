@@ -104,7 +104,7 @@ class Slide extends Component {
                     <SlideResidencePenthouseFullscreen  methods={slideMethods} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'residencePenthouseDetail' &&
-                    <SlideResidencePenthouseDetail  methods={slideMethods} configuration={slideObj}  />
+                    <SlideResidencePenthouseDetail  configuration={slideObj}  />
                 }
             </div>
         )
@@ -112,18 +112,35 @@ class Slide extends Component {
 }
 
 class SlideResidencePenthouseDetail extends Component {
-    nextSlide(){
-        this.props.methods.scrollToNextSlide()
-    }
     render(){
         return(
             <>
-                {
-                    <div className="downArrowContainer">
-                        <img alt="Down Arrow" onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
+                <section className="residencePenthouseDetail">
+                    <div className="residencePenthouseDetail__details">
+                        <h2>Exclusive Luxury Penthouses</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <div className="residencePenthouseDetail__features_list">
+                            <div className="headling">Features:</div>
+                            <ul>
+                                <li>Lorem Ipsum Lorem Ipsum</li>
+                                <li>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</li>
+                                <li>Lorem Ipsum Lorem Ipsum</li>
+                                <li>Lorem Ipsum Lorem Ipsum Lorem</li>
+                                <li>Lorem Ipsum</li>
+                                <li>Lorem Ipsum Lorem Ipsum Lorem Ipsum</li>
+                                <li>Lorem Ipsum Lorem</li>
+                                <li>Lorem Ipsum Lorem Ipsum</li>
+                            </ul>
+                        </div>
+                        <div className="residencePenthouseDetail__arrow_button_co">
+                            <div className="leftArrow">left arrow</div>
+                            <div className="btn light">Inquire now</div>
+                        </div>
                     </div>
-                }
-                <img className='residencePenthouseFullscreenImage' alt="" src={require('./'+'images/penthouse/penthouse.jpg').default} />
+                    <div className="residencePenthouseDetail__image_container">
+                        <img src={require('./'+'images/penthouse/penthouse.jpg').default} alt=""/>
+                    </div>
+                </section>
             </>
         )
     }
