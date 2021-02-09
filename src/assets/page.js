@@ -120,6 +120,12 @@ const flypilotFetchWPRestAPI = async () => {
             background: "#000",
         },
         headerTheme: 'light'
+    },{
+        slideTemplate: 'residencePenthouseDetail',
+        styles: {
+            background: "#fff",
+        },
+        headerTheme: 'dark'
     }]
     return SLIDES
   }

@@ -7,7 +7,8 @@ class Slide extends Component {
         super(props);
         this.state = {
 			styles: this.props.obj.styles,
-			type: this.props.obj.slideTemplate,
+            type: this.props.obj.slideTemplate,
+            residencePenthouse: 'penthouse'
         }
     }
     handleTheScroll = e => {
@@ -102,19 +103,19 @@ class Slide extends Component {
                 {slideObj.slideTemplate === 'residencePenthouseFullscreen' &&
                     <SlideResidencePenthouseFullscreen  methods={slideMethods} configuration={slideObj}  />
                 }
+                {slideObj.slideTemplate === 'residencePenthouseDetail' &&
+                    <SlideResidencePenthouseDetail  methods={slideMethods} configuration={slideObj}  />
+                }
             </div>
         )
     }
 }
 
-class SlideResidencePenthouseFullscreen extends Component {
+class SlideResidencePenthouseDetail extends Component {
     nextSlide(){
         this.props.methods.scrollToNextSlide()
     }
     render(){
-        let videoContainerClasses = 'videoContainer'
-        let videoClasses = 'background-video'
-        if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect startZoomedIn'
         return(
             <>
                 {
@@ -127,6 +128,7 @@ class SlideResidencePenthouseFullscreen extends Component {
         )
     }
 }
+
 
 class SlideHome extends Component {
     nextSlide(){
@@ -641,4 +643,21 @@ class SlideResidencePenthouse extends Component {
     }
 }
 
+class SlideResidencePenthouseFullscreen extends Component {
+    nextSlide(){
+        this.props.methods.scrollToNextSlide()
+    }
+    render(){
+        return(
+            <>
+                {
+                    <div className="downArrowContainer">
+                        <img alt="Down Arrow" onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
+                    </div>
+                }
+                <img className='residencePenthouseFullscreenImage' alt="" src={require('./'+'images/penthouse/penthouse.jpg').default} />
+            </>
+        )
+    }
+}
 export default Slide;

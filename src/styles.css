@@ -627,8 +627,6 @@ body {
   height: 100vh;
   transition: opacity 0s linear 1.3s, transform 0s linear 1.3s;
   opacity: 0;
-  width: 100vw;
-  height: 100vh;
   object-fit: cover;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__image.new {
@@ -908,6 +906,11 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouse .btn {
   margin: 0 15px;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen .residencePenthouseFullscreenImage {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
 .slides_wrapper .slides_inner .slide.runAnimationOnce .videoContainer .background-video.videoZoomEffect {
   transform: scale(1);
   transition: object-position 1400ms linear 0s, transform 1.2s ease-out 1.2s;
@@ -970,9 +973,6 @@ body {
   animation-duration: 0.9s;
   animation-delay: 0.5s;
   animation-timing-function: ease-out;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
 }
 .slides_wrapper .slides_inner .slide .btn {
   cursor: pointer;

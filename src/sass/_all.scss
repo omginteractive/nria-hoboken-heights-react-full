@@ -534,8 +534,6 @@ body {
                             transition: opacity 0s linear $amenitiesTransitionDuration, transform 0s linear $amenitiesTransitionDuration;
                             opacity: 0;
                             // transform: scale(1.07);
-                            width: 100vw;
-                            height: 100vh;
                             object-fit: cover;
                             &.old {
                             }
@@ -819,6 +817,14 @@ body {
                         margin: 0 15px;
                     }
                 }
+                &residencePenthouseFullscreen {
+                    .residencePenthouseFullscreenImage {
+                        width: 100vw;
+                        height: 100vh;
+                        object-fit: cover;
+                    }
+
+                }
             }
             &.runAnimationOnce {
                 .videoContainer {
@@ -851,9 +857,6 @@ body {
 
                 .residencePenthouseFullscreenImage {
                     @include fullScreenImageScaleDownOnArrival();
-                    width: 100vw;
-                    height: 100vh;
-                    object-fit: cover;
                 }
             }
             .btn {
