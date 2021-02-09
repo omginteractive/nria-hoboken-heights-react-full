@@ -608,6 +608,7 @@ body {
   position: absolute;
   z-index: 1;
   top: 50%;
+  z-index: 2;
   cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__arrow--right {
@@ -624,14 +625,16 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  transition: opacity 1.3s, transform 0s linear 1.3s;
+  transition: opacity 0s linear 1.3s, transform 0s linear 1.3s;
   opacity: 0;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__image.new {
+  z-index: 1;
   opacity: 1;
   transition: opacity 1.3s, transform 0s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info {
+  z-index: 2;
   color: #ffffff;
   position: absolute;
   bottom: 0;
@@ -766,7 +769,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #000000;
+  background-color: greenyellow;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input {
   width: calc(40vw + 20px);
@@ -774,6 +777,7 @@ body {
   -webkit-appearance: none;
   position: relative;
   left: -10px;
+  z-index: 2;
   /* fix for FF unable to apply focus style bug  */
   border: none 0 transparent;
   /*required for proper track sizing in FF*/
@@ -862,6 +866,7 @@ body {
   left: -3vw;
   top: 20px;
   color: #ccc;
+  z-index: 1;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li {
   width: 6vw;
@@ -890,12 +895,13 @@ body {
   height: 100%;
   width: 100vw;
   object-fit: cover;
-  transition: opacity 1s, transform 0s linear 1s;
+  transition: opacity 0s linear 1s, transform 0s linear 1s;
   opacity: 0;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__image.new {
+  z-index: 1;
   opacity: 1;
-  transition: opacity 1s, transform 0s;
+  transition: opacity 1s linear, transform 0s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouse .btn {
   margin: 0 15px;

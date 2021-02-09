@@ -514,6 +514,7 @@ body {
                             position: absolute;
                             z-index: 1;
                             top: 50%;
+                            z-index: 2;
                             cursor: pointer;
                             &--right {
                                 transform: translateY(-50%);
@@ -531,18 +532,20 @@ body {
                             left: 0;
                             width: 100vw;
                             height: 100vh;
-                            transition: opacity $amenitiesTransitionDuration, transform 0s linear $amenitiesTransitionDuration;
+                            transition: opacity 0s linear $amenitiesTransitionDuration, transform 0s linear $amenitiesTransitionDuration;
                             opacity: 0;
                             // transform: scale(1.07);
                             &.old {
                             }
                             &.new {
+                                z-index: 1;
                                 opacity: 1;
                                 // transform: scale(1.4);
                                 transition: opacity $amenitiesTransitionDuration, transform 0s;
                             }
                         }
                         &__more_info {
+                            z-index: 2;
                             color: #ffffff;
                             position: absolute;
                             bottom: 0;
@@ -655,7 +658,7 @@ body {
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            background-color: #000000;
+                            background-color: greenyellow;
                         }
                         &__timeSlider {
                             $sliderThumbWidth: 20px;
@@ -670,7 +673,7 @@ body {
                                 -webkit-appearance: none;
                                 position: relative;
                                 left: -$sliderThumbWidth/2;
-
+                                z-index: 2;
                                 /* fix for FF unable to apply focus style bug  */
                                 border: none 0 transparent;
                                 /*required for proper track sizing in FF*/
@@ -765,6 +768,7 @@ body {
                             left: -3vw;
                             top: 20px;
                             color: #ccc;
+                            z-index: 1;
                             > li {
                                 width: 6vw;
                                 text-align: center;
@@ -794,15 +798,17 @@ body {
                             height: 100%;
                             width: 100vw;
                             object-fit: cover;
-                            transition: opacity $viewsTransitionDuration, transform 0s linear $viewsTransitionDuration;
+                            transition: opacity 0s linear $viewsTransitionDuration, transform 0s linear $viewsTransitionDuration;
                             opacity: 0;
+                            
                             // transform: scale(1.07);
                             &.old {
                             }
                             &.new {
+                                z-index: 1;
                                 opacity: 1;
                                 // transform: scale(1.4);
-                                transition: opacity $viewsTransitionDuration, transform 0s;
+                                transition: opacity $viewsTransitionDuration linear, transform 0s;
                             }
                         }
                     }

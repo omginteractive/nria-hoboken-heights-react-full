@@ -99,11 +99,25 @@ class Slide extends Component {
                 {slideObj.slideTemplate === 'residencePenthouse' &&
                     <SlideResidencePenthouse />
                 }
+                {slideObj.slideTemplate === 'residencePenthouseFullscreen' &&
+                    <SlideResidencePenthouseFullscreen />
+                }
             </div>
         )
     }
 }
 
+class SlideResidencePenthouseFullscreen extends Component {
+    
+    render(){
+        return(
+            <>
+                <div className="btn">Residences</div>
+                <div className="btn">Penthouses</div>
+            </>
+        )
+    }
+}
 class SlideResidencePenthouse extends Component {
     
     render(){
@@ -111,7 +125,6 @@ class SlideResidencePenthouse extends Component {
             <>
                 <div className="btn">Residences</div>
                 <div className="btn">Penthouses</div>
-                
             </>
         )
     }
