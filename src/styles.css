@@ -278,6 +278,7 @@ body {
 .fixed-header .corner-logo-wrapper .text,
 .fixed-header .inquiry-link {
   transition: color 1400ms;
+  font-size: 15px;
 }
 .fixed-header .corner-logo-wrapper .separator,
 .fixed-header .hamburger .line {
@@ -293,7 +294,7 @@ body {
 .fixed-header .closeBtn {
   cursor: pointer;
   height: 25px;
-  width: calc(15px*2 + 33px);
+  width: calc(15px*2 + 25px);
   padding: 0 15px;
 }
 .fixed-header .hamburger {
@@ -302,16 +303,17 @@ body {
   transition: transform 0.5s linear 1400ms;
 }
 .fixed-header .hamburger .line {
-  border-top: solid 4px #000;
-  width: 33px;
+  border-top: solid 1px #000;
+  width: 25px;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 .fixed-header .corner-logo-wrapper {
   height: 60px;
   display: flex;
 }
 .fixed-header .corner-logo-wrapper .corner-logo {
-  width: 110px;
+  width: 96px;
 }
 .fixed-header .corner-logo-wrapper .text {
   letter-spacing: 5px;
@@ -320,9 +322,8 @@ body {
   align-items: center;
 }
 .fixed-header .corner-logo-wrapper .text .separator {
-  margin: 0 12px;
-  height: 42px;
-  margin: 0 24px;
+  height: 41px;
+  margin: 0 26px;
   width: 1px;
 }
 
@@ -492,7 +493,7 @@ body {
   transform: translateY(-100%);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-home .animatedLogo {
-  width: 250px;
+  width: 350px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-home .downArrowContainer {
   position: absolute;
@@ -510,8 +511,8 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights {
   position: absolute;
-  top: calc(20vh + 30px);
-  right: calc(7.5vw + 30px);
+  top: calc(20vh + 80px);
+  right: calc(7.5vw + 75px);
   z-index: 1;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights:hover,
@@ -1138,7 +1139,12 @@ body {
   z-index: 1;
   text-transform: uppercase;
   padding: 15px;
-  width: 170px;
+  width: 217px;
+  height: 66px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .slides_wrapper .slides_inner .slide .btn:hover {
   background-color: #ffffff;
