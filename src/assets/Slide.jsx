@@ -123,8 +123,8 @@ class SlideDevelopmentTeam extends Component {
         return(
             <section className='developmentTeam'>
                 <div className="left">
-                    <h2 className='developmentTeam__page_title'>Development Team Story</h2>
                     <div className="textGroup">
+                        <h2 className='developmentTeam__page_title'>Development Team Story</h2>
                         <div class='developmentTeam__paragraph'>For more than a decade, National Realty Investment Advisors - NRIA has delivered and continues to build upon a history of exceptional performance as a vertically-integrated real estate investment, management and development firm. We have extensive experience with full-service construction and complete renovation of planned unit townhomes, single-family luxury residences, condominiums, multifamily, and mixed-use rental developments strategically located in many of the most dynamic urban markets across the East Coast. Our team's collective depth of knowledge within these specific markets continues to yield compelling opportunities across the real estate investment risk spectrum.</div>
                         <div className="developmentTeam__headline">Real estate investment company overview</div>
                         <div class='developmentTeam__paragraph'>Founded in 2006, NRIA has grown to be one of the nation's leading specialists in institutional-caliber private real estate investment management with over $1.25B AUM, focusing on luxury townhome, condominium and multifamily acquisition and development in many supply constrained, high barrier-to-entry markets along the east coast.</div>
