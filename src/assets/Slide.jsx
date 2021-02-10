@@ -112,11 +112,27 @@ class Slide extends Component {
 }
 
 class SlideResidencePenthouseDetail extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            imageExpanded: false
+        }
+    }
+    
+    toggleImageExpansion(){
+        const newImageState = !this.state.imageExpanded
+        this.setState({
+            imageExpanded: newImageState
+        })
+    }
     render(){
+        let details_classes = 'residencePenthouseDetail'
+        details_classes += this.state.imageExpanded ? ' expandImage' : ''
+
         return(
             <>
-                <section className="residencePenthouseDetail">
-                    <div className="residencePenthouseDetail__details">
+                <section className={details_classes}>
+                    <div className='residencePenthouseDetail__details'>
                         <h2>Exclusive Luxury Penthouses</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         <div className="residencePenthouseDetail__features_list">
@@ -132,10 +148,13 @@ class SlideResidencePenthouseDetail extends Component {
                                 <li>Lorem Ipsum Lorem Ipsum</li>
                             </ul>
                         </div>
-                        <div className="residencePenthouseDetail__arrow_button_co">
+                        <div className="residencePenthouseDetail__arrow_button_container">
                             <div className="leftArrow">left arrow</div>
                             <div className="btn light">Inquire now</div>
                         </div>
+                    </div>
+                    <div onClick={this.toggleImageExpansion.bind(this)} className="residencePenthouseDetail__expand_toggler">
+                        <div >+</div>
                     </div>
                     <div className="residencePenthouseDetail__image_container">
                         <img src={require('./'+'images/penthouse/penthouse.jpg').default} alt=""/>

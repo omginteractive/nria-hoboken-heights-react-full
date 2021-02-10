@@ -195,7 +195,7 @@ body {
         cursor: pointer;
         transform: translateY(0);
         transition: transform 0.5s linear $slideAnimationDuration;
-        padding: 0 $menuBtnHorizontalPadding;
+        // padding: 0 $menuBtnHorizontalPadding;
         // pointer-events: all;//because .mobileMenu has none
         .line {
             border-top: solid 4px #000;
@@ -829,9 +829,38 @@ body {
                         display: flex;
                         margin-top: $header-height;
                         height: calc(100vh - #{$header-height});
-                        width: 100vw;
-                        padding-left: $side-margin;
-                        padding-right: $side-margin;
+                        width: calc(100vw - #{$side-margin}*2);
+                        &__details {
+                            flex-basis: 60%;
+                            padding-right: $content-padding;
+                            transition: flex-basis 1s;
+                        }
+                        &__image_container {
+                            flex-basis: 40%;
+                            transition: flex-basis 1s;
+                            > img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                object-position: right;
+                            }
+                        }
+                        &__expand_toggler {
+                            cursor: pointer;
+                            background-color: #ddd;
+                            color: #ffffff;
+                            display: flex;
+                            align-items: center;
+                            padding: 3px;
+                        }
+                        &.expandImage {
+                            .residencePenthouseDetail__details {
+                                flex-basis: 30%;
+                            }
+                            .residencePenthouseDetail__image_container {
+                                flex-basis: 70%;
+                            }
+                        }
                     }
                 }
             }
