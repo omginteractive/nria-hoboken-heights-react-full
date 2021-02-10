@@ -1,6 +1,7 @@
 import {Component} from 'react';
 import animatedLogo from '../assets/images/Motion_logo.gif';
 import downArrow from '../assets/images/downarrow.svg';
+import leftArrowBlack from '../assets/images/leftArrowBlack.svg';
 
 class Slide extends Component {
     constructor(props) {
@@ -149,14 +150,16 @@ class SlideResidencePenthouseDetail extends Component {
                             </ul>
                         </div>
                         <div className="residencePenthouseDetail__arrow_button_container">
-                            <div className="leftArrow">left arrow</div>
+                            <div className="leftArrowContainer">
+                                <img alt='Left Arrow' className="leftArrow" src={leftArrowBlack}></img>
+                            </div>
                             <div className="btn light">Inquire now</div>
                         </div>
                     </div>
-                    <div onClick={this.toggleImageExpansion.bind(this)} className="residencePenthouseDetail__expand_toggler">
-                        <div >+</div>
-                    </div>
                     <div className="residencePenthouseDetail__image_container">
+                        <div onClick={this.toggleImageExpansion.bind(this)} className="residencePenthouseDetail__expand_toggler">
+                            <div >+</div>
+                        </div>
                         <img src={require('./'+'images/penthouse/penthouse.jpg').default} alt=""/>
                     </div>
                 </section>

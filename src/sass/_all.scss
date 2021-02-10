@@ -826,23 +826,35 @@ body {
                 }
                 &residencePenthouseDetail {
                     .residencePenthouseDetail {
-                        display: flex;
+                        $expand_toggler_width: 20px;
+                        $starting_leftside_width: 40vw;
                         margin-top: $header-height;
+                        $content_width: calc(100vw - #{$side-margin}*2);
                         height: calc(100vh - #{$header-height});
-                        width: calc(100vw - #{$side-margin}*2);
+                        width: calc(#{$content_width});
                         &__details {
-                            flex-basis: 60%;
                             padding-right: $content-padding;
-                            transition: flex-basis 1s;
+                            position: absolute;
+                            width: calc(#{$content_width} - #{$starting_leftside_width});
+                            > h2 {
+                                margin-bottom: $content-padding;
+                            }
                         }
                         &__image_container {
-                            flex-basis: 40%;
-                            transition: flex-basis 1s;
+                            transition: width 1s;
+                            position: absolute;
+                            width: calc(#{$content_width} - calc(#{$content_width} - #{$starting_leftside_width}));
+                            right: 7.5vw;
+                            height: calc(100vh - #{$header-height});
+                            overflow: hidden;
                             > img {
-                                width: 100%;
+                                width: calc(#{$content_width});
                                 height: 100%;
                                 object-fit: cover;
                                 object-position: right;
+                                position: absolute;
+                                right: 0;
+                                
                             }
                         }
                         &__expand_toggler {
@@ -852,14 +864,46 @@ body {
                             display: flex;
                             align-items: center;
                             padding: 3px;
+                            height: 100%;
+                            position: absolute;
+                            width: $expand_toggler_width;
+                            z-index: 1;
+                        }
+                        &__features_list {
+                            margin-bottom: $content-padding;
+                            .headling {
+                                font-weight: bold;
+                                text-transform: uppercase;
+                                margin-top: $content-padding;
+                                margin-bottom: $content-padding;
+                            }
+                            > ul {
+                                > li {
+                                    line-height: 1.4em;
+                                    &:before {
+                                        content: '- '
+                                    }
+                                }
+                            }
+                        }
+                        &__arrow_button_container {
+                            display: flex;
+                            align-content: center;
+                            .leftArrowContainer {
+                                .leftArrow {
+                                    width: 40px;
+                                    margin-right: $content-padding;
+                                }
+                            }
                         }
                         &.expandImage {
-                            .residencePenthouseDetail__details {
-                                flex-basis: 30%;
-                            }
                             .residencePenthouseDetail__image_container {
-                                flex-basis: 70%;
+                                width: calc(100vw - #{$side-margin}*2);
+                            //     flex-basis: 0%;
                             }
+                            // .residencePenthouseDetail__image_container {
+                            //     flex-basis: 100%;
+                            // }
                         }
                     }
                 }
@@ -917,6 +961,15 @@ body {
                         background-color: #fff;
                         color: #000;
                         border-color: #000;
+                    }
+                }
+                &.light {
+                    color: #000;
+                    background-color: #fff;
+                    border-color: #000;
+                    &:hover {
+                        color: #ffffff;
+                        background-color: #000;
                     }
                 }
             }
