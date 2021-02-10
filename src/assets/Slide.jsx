@@ -638,7 +638,7 @@ class SlideViews extends Component {
                             </>
                         }
                         <div className="views_section__timeSlider">
-                            <input onMouseUp={this.handleMouseUp.bind(this)} onChange={this.handleTimeChange.bind(this)} type="range" min="0" max={this.props.configuration.views.length - 1} step="0.005" value={this.state.timeSliderValue}/>
+                            <input onMouseUp={this.handleMouseUp.bind(this)} onTouchEnd={this.handleMouseUp.bind(this)} onChange={this.handleTimeChange.bind(this)} type="range" min="0" max={this.props.configuration.views.length - 1} step="0.005" value={this.state.timeSliderValue}/>
                             <ul className="views_section__timeList">
                                 {this.props.configuration.views.map((view, i) => {
                                     const listClasses = i == this.state.activeView ? 'active' : ''
@@ -677,7 +677,7 @@ class SlideResidencePenthouseFullscreen extends Component {
                         <img alt="Down Arrow" onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
                     </div>
                 }
-                <img className='residencePenthouseFullscreenImage' alt="" src={require('./'+'images/penthouse/penthouse.jpg').default} />
+                <img className='residencePenthouseFullscreenImage' alt="" src={require('./'+'images/penthouse/penthousebed.png').default} />
             </>
         )
     }

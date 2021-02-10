@@ -656,7 +656,6 @@ body {
                                 position: absolute;
                                 bottom: 0;
                                 padding: 30px 20vw calc(#{$dots-bottom} + 32px);
-
                             }
                         }
                         &__more_info_btn {
@@ -702,6 +701,8 @@ body {
                             $thumbColor: #000;
                             $thumbBorderRadius: 50%;
                             $thumbBorder: solid 1px #fff;
+                            position: absolute;
+                            bottom: 12vh;
                             > input {
                                 width: $sliderWidth;
                                 margin: 0;
@@ -802,15 +803,16 @@ body {
                             position: relative;
                             left: -3vw;
                             top: 20px;
-                            color: #ccc;
+                            color: #fff;
                             z-index: 1;
+                            font-size: 18px;
                             > li {
                                 width: 6vw;
                                 text-align: center;
                                 position: relative;
-                                transition: color 0.3s;
+                                font-family: "Gotham-Light", sans-serif;
                                 &.active {
-                                    color: #fff;
+                                    font-family: 'Gotham-Book';
                                 }
                                 &:before {
                                     position: absolute;
