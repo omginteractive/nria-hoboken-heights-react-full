@@ -244,7 +244,7 @@ body {
   position: absolute;
   transform: translateY(1px);
   z-index: 1;
-  height: 20vh;
+  height: 12.8vh;
   overflow: hidden;
 }
 .fixed-headers .fixed-header-inner .fixed-header-wrapper {
@@ -259,8 +259,8 @@ body {
   color: #fff;
   top: 0;
   width: 85vw;
-  height: 20vh;
-  left: 7.5vw;
+  height: 12.8vh;
+  left: 6.3vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -420,8 +420,8 @@ body {
 .mobile-menu .mobileMenuLinks {
   color: #ffffff;
   position: absolute;
-  left: calc(50px + 7.5vw);
-  top: calc(50px + 20vh);
+  left: calc(50px + 6.3vw);
+  top: calc(50px + 12.8vh);
 }
 .mobile-menu .mobileMenuLinks > a {
   transition: transform 0s linear 1s;
@@ -447,11 +447,11 @@ body {
 .mobile-menu .mobileMenuContact {
   color: #ffffff;
   position: absolute;
-  bottom: 10vh;
+  bottom: 6.4vh;
   text-align: right;
   white-space: nowrap;
   left: 100vw;
-  transform: translateX(calc(-100% - 7.5vw));
+  transform: translateX(calc(-100% - 6.3vw));
 }
 .mobile-menu .mobileMenuContact .socialMedias {
   display: flex;
@@ -526,8 +526,8 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights {
   position: absolute;
-  top: calc(20vh + 80px);
-  right: calc(7.5vw + 75px);
+  top: calc(12.8vh + 80px);
+  right: calc(6.3vw + 75px);
   z-index: 1;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights:hover,
@@ -537,9 +537,9 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection {
   position: absolute;
-  left: calc(50px + 7.5vw);
-  top: calc(50px + 20vh);
-  height: calc(100vh - 20vh*2);
+  left: calc(50px + 6.3vw);
+  top: calc(50px + 12.8vh);
+  height: calc(100vh - 12.8vh*2);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -563,8 +563,9 @@ body {
   position: absolute;
   left: 7.5vw;
   width: calc(100% - 15vw);
-  top: 20vh;
+  top: 12.8vh;
   height: 70vh;
+  height: calc(100vh - 11.2vh - 12.8vh);
   display: flex;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details {
@@ -654,7 +655,8 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info__dots {
   position: absolute;
-  bottom: 15px;
+  bottom: 8.2vh;
+  z-index: 1;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info__dots .dot {
   height: 10px;
@@ -670,8 +672,17 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name {
   text-transform: uppercase;
-  font-size: 30px;
-  position: relative;
+  font-size: 40px;
+  line-height: 48px;
+  font-family: "Gotham-Light", sans-serif;
+  z-index: 1;
+  position: absolute;
+  bottom: calc(8.2vh + 20px);
+  transition: bottom 1s;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.riseForDescription {
+  bottom: calc(8.2vh + 140px + 20px);
+  transition: bottom 0.5s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeOutAnimation > h3 > span,
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeOutAnimation > h3 > span + img {
@@ -715,6 +726,9 @@ body {
   animation-delay: 0.5s;
   opacity: 0;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name > h3 {
+  position: relative;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name > h3 > span {
   opacity: 1;
   display: block;
@@ -725,31 +739,38 @@ body {
   display: inline;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_toggler {
-  height: 24px;
-  margin-left: 5px;
+  height: 30px;
+  margin-left: 10px;
   position: relative;
   top: 2px;
   cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description {
   line-height: 1.4em;
-  background: black;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.923714986) 0%, rgba(0, 0, 0, 0.4908018207) 69%, rgba(0, 0, 0, 0.2908018207) 89%, rgba(0, 0, 0, 0) 100%);
   width: 100vw;
-  max-height: 0;
-  transition: max-height 0.8s;
-  margin-top: 2em;
+  background-repeat: no-repeat;
+  height: 0;
+  transition: height 0.8s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description.visible {
-  max-height: 200px;
+  height: calc(8.2vh + 20px + 140px + 100px);
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description.visible .text {
+  opacity: 1;
+  transition: opacity 0.5s ease 0.5s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description .text {
-  padding: 30px 20vw 40px;
+  opacity: 0;
+  transition: opacity 0.5s;
+  position: absolute;
+  bottom: 0;
+  padding: 30px 20vw calc(8.2vh + 32px);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info_btn {
   position: absolute;
   bottom: 30px;
   right: 30px;
+  z-index: 2;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section {
   position: absolute;
@@ -762,17 +783,17 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__top {
   position: absolute;
-  top: 20vh;
+  top: 12.8vh;
   width: 100vw;
   height: 18vh;
-  padding-left: 7.5vw;
-  padding-right: 7.5vw;
+  padding-left: 6.3vw;
+  padding-right: 6.3vw;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__bottom {
   position: absolute;
-  top: 38vh;
+  top: 30.8vh;
   width: 100vw;
-  height: 62vh;
+  height: 69.2vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -918,14 +939,14 @@ body {
   object-fit: cover;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail {
-  margin-top: 20vh;
-  height: calc(100vh - 20vh);
-  width: calc(calc(100vw - 7.5vw*2));
+  margin-top: 12.8vh;
+  height: calc(100vh - 12.8vh);
+  width: calc(calc(100vw - 6.3vw*2));
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__details {
   padding-right: 38px;
   position: absolute;
-  width: calc(calc(100vw - 7.5vw*2) - 40vw);
+  width: calc(calc(100vw - 6.3vw*2) - 40vw);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__details > h2 {
   margin-bottom: 38px;
@@ -933,13 +954,13 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container {
   transition: width 1s;
   position: absolute;
-  width: calc(calc(100vw - 7.5vw*2) - calc(calc(100vw - 7.5vw*2) - 40vw));
+  width: calc(calc(100vw - 6.3vw*2) - calc(calc(100vw - 6.3vw*2) - 40vw));
   right: 7.5vw;
-  height: calc(100vh - 20vh);
+  height: calc(100vh - 12.8vh);
   overflow: hidden;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container > img {
-  width: calc(calc(100vw - 7.5vw*2));
+  width: calc(calc(100vw - 6.3vw*2));
   height: 100%;
   object-fit: cover;
   object-position: right;
@@ -982,14 +1003,14 @@ body {
   margin-right: 38px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail.expandImage .residencePenthouseDetail__image_container {
-  width: calc(100vw - 7.5vw*2);
+  width: calc(100vw - 6.3vw*2);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam {
   display: flex;
-  padding-left: 7.5vw;
-  padding-right: 7.5vw;
+  padding-left: 6.3vw;
+  padding-right: 6.3vw;
   position: absolute;
-  top: 20vh;
+  top: 12.8vh;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__page_title, .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__headline, .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__paragraph {
   margin-bottom: 38px;
@@ -1179,7 +1200,7 @@ body {
   width: 100%;
 }
 .slides_wrapper .slides_inner .slide .videoContainer.compact {
-  width: calc(100vw - 7.5vw*2);
+  width: calc(100vw - 6.3vw*2);
   height: 80%;
   bottom: 0;
   position: absolute;

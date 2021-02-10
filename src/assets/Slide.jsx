@@ -503,6 +503,9 @@ class SlideAmenitiesDetail extends Component {
         const hasMoreInfoBtn = this.props.configuration.amenities[this.state.currIdx] && this.props.configuration.amenities[this.state.currIdx].moreInfoBtn
         let descriptionClasses = 'amenities_detail__description'
         descriptionClasses += this.state.descriptionVisible ? ' visible' : ''
+        const descriptionStyles = {
+            backgroundImage: 'url('+require('./images/amenities/blackgradient.png').default+')',
+        }
 
         let image1_classes = 'amenities_detail__image '
         image1_classes += this.state.image1IsNew ? 'new' : 'old'
@@ -510,7 +513,7 @@ class SlideAmenitiesDetail extends Component {
         image2_classes += !this.state.image1IsNew ? 'new' : 'old'
         let amenities_detail_name_classes = 'amenities_detail__name'
         amenities_detail_name_classes += !this.state.amenityNameVisibility ? ' runFadeOutAnimation' : ' runFadeInAnimation'
-
+        amenities_detail_name_classes += this.state.descriptionVisible ? ' riseForDescription' : ''
         let amenities_detail__more_info_classes = 'amenities_detail__more_info'
         
         return (
@@ -536,7 +539,7 @@ class SlideAmenitiesDetail extends Component {
                                 return (<div key={i} onClick={() => this.activateAmenity(i)} className={dotClasses} />)
                             })}
                         </div>
-                        <div className={descriptionClasses}>
+                        <div className={descriptionClasses} style={descriptionStyles}>
                             <div className="text">
                                 <p>{this.state.description}</p>
                             </div>
