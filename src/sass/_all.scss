@@ -80,8 +80,18 @@ h2 {
     text-transform: uppercase;
     font-size: 40px;
     font-family: "Gotham-Thin";
+    line-height: 48px;
+    margin-bottom: $content-padding;
 }
 
+p {
+    font-size: 18px;
+    font-family: "Gotham-Light", sans-serif;
+    line-height: 21.6px;
+    + p {
+        margin-top: 32px;
+    }
+}
 
 * {
     box-sizing: border-box;
@@ -103,6 +113,24 @@ body {
      */
     overflow: hidden;
 }
+
+.downArrowContainer {
+    position: absolute;
+    bottom: $down-arrow-bottom;
+    z-index: 1;//needed for visibility on patio slide
+    .downArrow {
+        opacity: 0;
+        animation-fill-mode: forwards, none;
+        animation-name: fadeInDriftDownArrow, upAndDown;
+        animation-iteration-count: 1, infinite;
+        animation-duration: 1s, 2s;
+        animation-timing-function: linear, ease-in-out;
+        cursor: pointer;
+    }
+}
+
+
+
 .fixed-headers {
     position: absolute;
     transform: translateY(1px);
@@ -385,19 +413,8 @@ body {
                     .animatedLogo {
                         width: 350px;
                     }
-                    .downArrowContainer {
-                        position: absolute;
-                        bottom: 50px;
-                        .downArrow {
-                            opacity: 0;
-                            animation-fill-mode: forwards, none;
-                            animation-name: fadeInDriftDownArrow, upAndDown;
-                            animation-iteration-count: 1, infinite;
-                            animation-duration: 1s, 2s;
-                            animation-delay: 2s, 3s;
-                            animation-timing-function: linear, ease-in-out;
-                            cursor: pointer;
-                        }
+                    .downArrowContainer .downArrow {
+                        animation-delay: 2s, 3s;
                     }
                 }
                 &exteriorLightToggle {
@@ -422,13 +439,12 @@ body {
                         display: flex;
                         flex-direction: column;
                         justify-content: center;
+                        width: 52%;
                         > p {
-                            margin-top: 1em;
                             text-align: justify;
-                            width: 50%;
                         }
                         .btn {
-                            margin-top: 1em;
+                            margin-top: $content-padding;
                         }
                     }
                     .videoContainer .background-video {
@@ -439,20 +455,8 @@ body {
                 }
                 &patio,
                 &residencePenthouseFullscreen {
-                    .downArrowContainer {
-                        position: absolute;
-                        bottom: 50px;
-                        z-index: 1;//needed for visibility on patio slide
-                        .downArrow {
-                            opacity: 0;
-                            animation-fill-mode: forwards, none;
-                            animation-name: fadeInDriftDownArrow, upAndDown;
-                            animation-iteration-count: 1, infinite;
-                            animation-duration: 1s, 2s;
-                            animation-delay: 0.5s, 1.5s;
-                            animation-timing-function: linear, ease-in-out;
-                            cursor: pointer;
-                        }
+                    .downArrowContainer .downArrow {
+                        animation-delay: 0.5s, 1.5s;
                     }
                 }
                 &amenities {
@@ -465,7 +469,7 @@ body {
                         display: flex;
                         &__details {
                             background-color: #000000;
-                            padding: 30px;
+                            padding: 80px;
                             flex-basis: 70%;
                             color: #ffffff;
                             display: flex;
@@ -476,12 +480,11 @@ body {
                                 line-height: 1.4em;
                             }
                             > p {
-                                margin-top: 1em;
                                 font-family: "Gotham-Thin", sans-serif;
                                 font-weight: 200;
                             }
                             .btn {
-                                margin-top: 1em;
+                                margin-top: $content-padding;
                             }
                         }
                         &__list {
@@ -494,12 +497,17 @@ body {
                             text-align: center;
                             text-transform: uppercase;
                             line-height: 2.8em;
-                            font-size: 14px;
+                            font-size: 15px;
                             > ul {
                                 > li {
+                                    font-family: 'Gotham-Book';
                                     cursor: pointer;
+                                    line-height: 15px;
+                                    transition: font-size 0.1s;
+                                    padding: 24px 0;
                                     &:hover {
-                                        font-weight: bold;
+                                        font-family: 'Gotham-Medium';
+                                        font-size: 18px;
                                     }
                                 }
                                 

@@ -191,6 +191,17 @@ h2 {
   text-transform: uppercase;
   font-size: 40px;
   font-family: "Gotham-Thin";
+  line-height: 48px;
+  margin-bottom: 38px;
+}
+
+p {
+  font-size: 18px;
+  font-family: "Gotham-Light", sans-serif;
+  line-height: 21.6px;
+}
+p + p {
+  margin-top: 32px;
 }
 
 * {
@@ -212,6 +223,21 @@ body {
    * This has caused issues before and may need to get disabled
    */
   overflow: hidden;
+}
+
+.downArrowContainer {
+  position: absolute;
+  bottom: 48px;
+  z-index: 1;
+}
+.downArrowContainer .downArrow {
+  opacity: 0;
+  animation-fill-mode: forwards, none;
+  animation-name: fadeInDriftDownArrow, upAndDown;
+  animation-iteration-count: 1, infinite;
+  animation-duration: 1s, 2s;
+  animation-timing-function: linear, ease-in-out;
+  cursor: pointer;
 }
 
 .fixed-headers {
@@ -495,19 +521,8 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-home .animatedLogo {
   width: 350px;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-home .downArrowContainer {
-  position: absolute;
-  bottom: 50px;
-}
 .slides_wrapper .slides_inner .slide.slideTemplate-home .downArrowContainer .downArrow {
-  opacity: 0;
-  animation-fill-mode: forwards, none;
-  animation-name: fadeInDriftDownArrow, upAndDown;
-  animation-iteration-count: 1, infinite;
-  animation-duration: 1s, 2s;
   animation-delay: 2s, 3s;
-  animation-timing-function: linear, ease-in-out;
-  cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights {
   position: absolute;
@@ -528,34 +543,21 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 52%;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection > p {
-  margin-top: 1em;
   text-align: justify;
-  width: 50%;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection .btn {
-  margin-top: 1em;
+  margin-top: 38px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .videoContainer .background-video {
   height: 100vh;
   width: 100vw;
   object-position: top right;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-patio .downArrowContainer, .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen .downArrowContainer {
-  position: absolute;
-  bottom: 50px;
-  z-index: 1;
-}
 .slides_wrapper .slides_inner .slide.slideTemplate-patio .downArrowContainer .downArrow, .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen .downArrowContainer .downArrow {
-  opacity: 0;
-  animation-fill-mode: forwards, none;
-  animation-name: fadeInDriftDownArrow, upAndDown;
-  animation-iteration-count: 1, infinite;
-  animation-duration: 1s, 2s;
   animation-delay: 0.5s, 1.5s;
-  animation-timing-function: linear, ease-in-out;
-  cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities {
   position: absolute;
@@ -567,7 +569,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details {
   background-color: #000000;
-  padding: 30px;
+  padding: 80px;
   flex-basis: 70%;
   color: #ffffff;
   display: flex;
@@ -579,12 +581,11 @@ body {
   line-height: 1.4em;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details > p {
-  margin-top: 1em;
   font-family: "Gotham-Thin", sans-serif;
   font-weight: 200;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details .btn {
-  margin-top: 1em;
+  margin-top: 38px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__list {
   padding: 10px;
@@ -596,13 +597,18 @@ body {
   text-align: center;
   text-transform: uppercase;
   line-height: 2.8em;
-  font-size: 14px;
+  font-size: 15px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__list > ul > li {
+  font-family: "Gotham-Book";
   cursor: pointer;
+  line-height: 15px;
+  transition: font-size 0.1s;
+  padding: 24px 0;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__list > ul > li:hover {
-  font-weight: bold;
+  font-family: "Gotham-Medium";
+  font-size: 18px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__arrow {
   position: absolute;
@@ -917,12 +923,12 @@ body {
   width: calc(calc(100vw - 7.5vw*2));
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__details {
-  padding-right: 30px;
+  padding-right: 38px;
   position: absolute;
   width: calc(calc(100vw - 7.5vw*2) - 40vw);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__details > h2 {
-  margin-bottom: 30px;
+  margin-bottom: 38px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container {
   transition: width 1s;
@@ -953,13 +959,13 @@ body {
   z-index: 1;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list {
-  margin-bottom: 30px;
+  margin-bottom: 38px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list .heading {
   font-weight: bold;
   text-transform: uppercase;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 38px;
+  margin-bottom: 38px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list > ul > li {
   line-height: 1.4em;
@@ -973,7 +979,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__arrow_button_container .leftArrowContainer .leftArrow {
   width: 40px;
-  margin-right: 30px;
+  margin-right: 38px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail.expandImage .residencePenthouseDetail__image_container {
   width: calc(100vw - 7.5vw*2);
@@ -986,7 +992,7 @@ body {
   top: 20vh;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__page_title, .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__headline, .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__paragraph {
-  margin-bottom: 30px;
+  margin-bottom: 38px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__headline {
   font-weight: bold;
