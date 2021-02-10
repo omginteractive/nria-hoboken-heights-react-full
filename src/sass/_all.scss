@@ -907,6 +907,43 @@ body {
                         }
                     }
                 }
+                &developmentTeam {
+                    .developmentTeam {
+                        display: flex;
+                        padding-left: $side-margin;
+                        padding-right: $side-margin;
+                        position: absolute;
+                        top: 20vh;
+                        &__page_title,
+                        &__headline,
+                        &__paragraph {
+                            margin-bottom: $content-padding;
+                        }
+                        &__headline {
+                            font-weight: bold;
+                            text-transform: uppercase;
+                        }
+                        &__button_group {
+                            display: flex;
+                            .btn {
+                                margin-right: 20px;
+                            }
+                        }
+                        &__copyright_logo_container {
+                            display: flex;
+                            justify-content: space-between;
+                            .copyright {
+                                font-size: 12px;
+                            }
+                        }
+                        .left {
+                            flex-basis: 50%;
+                        }
+                        .right {
+                            flex-basis: 50%;
+                        }
+                    }
+                }
             }
             &.runAnimationOnce {
                 .videoContainer {
@@ -975,6 +1012,36 @@ body {
                         animation-delay: $animation_base_delay + $animation_incremental_delay * 4;
                     }
 
+                }
+                .developmentTeam {
+                    $animation_duration: 0.6s;
+                    $animation_base_delay: 0.6s;
+                    $animation_incremental_delay: 0.2s;
+                    $textGroupObjectCount: 4;
+                    &__page_title,
+                    &__headline,
+                    &__paragraph,
+                    .developmentTeam__button_group .btn {
+                        position: relative;
+                        animation-fill-mode: forwards;
+                        animation-name: fadeInDriftUp;
+                        animation-duration: $animation_duration;
+                        opacity: 0;
+                    }
+                    .textGroup > div {
+                        @for $i from 1 through $textGroupObjectCount {
+                            &:nth-of-type(#{$i}){
+                                animation-delay: $animation_incremental_delay*$i + $animation_base_delay;
+                            }
+                        }
+                    }
+                    .developmentTeam__button_group > .btn {
+                        @for $i from 1 through 4 {
+                            &:nth-of-type(#{$i}){
+                                animation-delay: $animation_incremental_delay*$i + $animation_base_delay + $animation_incremental_delay*$textGroupObjectCount;
+                            }
+                        }
+                    }
                 }
             }
             .btn {

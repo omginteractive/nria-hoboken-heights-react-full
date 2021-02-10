@@ -107,68 +107,48 @@ class Slide extends Component {
                 {slideObj.slideTemplate === 'residencePenthouseDetail' &&
                     <SlideResidencePenthouseDetail  configuration={slideObj}  />
                 }
+                {slideObj.slideTemplate === 'developmentTeam' &&
+                    <SlideDevelopmentTeam  configuration={slideObj}  />
+                }
             </div>
         )
     }
 }
 
-class SlideResidencePenthouseDetail extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            imageExpanded: false
-        }
-    }
-    
-    toggleImageExpansion(){
-        const newImageState = !this.state.imageExpanded
-        this.setState({
-            imageExpanded: newImageState
-        })
-    }
-    render(){
-        let details_classes = 'residencePenthouseDetail'
-        details_classes += this.state.imageExpanded ? ' expandImage' : ''
 
+
+
+class SlideDevelopmentTeam extends Component {
+    render(){
         return(
-            <>
-                <section className={details_classes}>
-                    <div className='residencePenthouseDetail__details'>
-                        <h2>Exclusive Luxury Penthouses</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <div className="residencePenthouseDetail__features_list">
-                            <div className="heading">Features:</div>
-                            <ul>
-                                <li>Lorem Ipsum Lorem Ipsum</li>
-                                <li>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</li>
-                                <li>Lorem Ipsum Lorem Ipsum</li>
-                                <li>Lorem Ipsum Lorem Ipsum Lorem</li>
-                                <li>Lorem Ipsum</li>
-                                <li>Lorem Ipsum Lorem Ipsum Lorem Ipsum</li>
-                                <li>Lorem Ipsum Lorem</li>
-                                <li>Lorem Ipsum Lorem Ipsum</li>
-                            </ul>
-                        </div>
-                        <div className="residencePenthouseDetail__arrow_button_container">
-                            <div className="leftArrowContainer">
-                                <img alt='Left Arrow' className="leftArrow" src={leftArrowBlack}></img>
-                            </div>
-                            <div className="btn light">Inquire now</div>
+            <section className='developmentTeam'>
+                <div className="left">
+                    <h2 className='developmentTeam__page_title'>Development Team Story</h2>
+                    <div className="textGroup">
+                        <div class='developmentTeam__paragraph'>For more than a decade, National Realty Investment Advisors - NRIA has delivered and continues to build upon a history of exceptional performance as a vertically-integrated real estate investment, management and development firm. We have extensive experience with full-service construction and complete renovation of planned unit townhomes, single-family luxury residences, condominiums, multifamily, and mixed-use rental developments strategically located in many of the most dynamic urban markets across the East Coast. Our team's collective depth of knowledge within these specific markets continues to yield compelling opportunities across the real estate investment risk spectrum.</div>
+                        <div className="developmentTeam__headline">Real estate investment company overview</div>
+                        <div class='developmentTeam__paragraph'>Founded in 2006, NRIA has grown to be one of the nation's leading specialists in institutional-caliber private real estate investment management with over $1.25B AUM, focusing on luxury townhome, condominium and multifamily acquisition and development in many supply constrained, high barrier-to-entry markets along the east coast.</div>
+                        <div class='developmentTeam__paragraph'>An evolving through-cycle management commitment to long-term growth through active market, property/project-type, and sector selection allows our diversified investment strategy to continually deliver high, low-volatile returns. As a result, not only has our liquidity profile as a real estate investment & development firm incrementally improved, it has laid a solid function for significatnt future growth.</div>
+                    </div>
+                    <div className="developmentTeam__button_group">
+                        <div className="btn light">NRIA</div>
+                        <div className="btn light">NR Living</div>
+                        <div className="btn light">NRIA EB-5</div>
+                    </div>
+                </div>
+                <div className="right">
+                    <div className="video">video</div>
+                    <div className="developmentTeam__copyright_logo_container">
+                        <div className="copyright">&copy; National Realty Investment Advisors, LLC. All rights reserved</div>
+                        <div className="nriaLogo">
+                            <img alt="NRIA Logo" src={require('./images/logos/logo_NRIA.png').default} />
                         </div>
                     </div>
-                    <div className="residencePenthouseDetail__image_container">
-                        <div onClick={this.toggleImageExpansion.bind(this)} className="residencePenthouseDetail__expand_toggler">
-                            <div >+</div>
-                        </div>
-                        <img src={require('./'+'images/penthouse/penthouse.jpg').default} alt=""/>
-                    </div>
-                </section>
-            </>
+                </div>
+            </section>
         )
     }
 }
-
-
 class SlideHome extends Component {
     nextSlide(){
         this.props.methods.scrollToNextSlide()
@@ -699,4 +679,61 @@ class SlideResidencePenthouseFullscreen extends Component {
         )
     }
 }
+
+class SlideResidencePenthouseDetail extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            imageExpanded: false
+        }
+    }
+
+    toggleImageExpansion(){
+        const newImageState = !this.state.imageExpanded
+        this.setState({
+            imageExpanded: newImageState
+        })
+    }
+    render(){
+        let details_classes = 'residencePenthouseDetail'
+        details_classes += this.state.imageExpanded ? ' expandImage' : ''
+
+        return(
+            <>
+                <section className={details_classes}>
+                    <div className='residencePenthouseDetail__details'>
+                        <h2>Exclusive Luxury Penthouses</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <div className="residencePenthouseDetail__features_list">
+                            <div className="heading">Features:</div>
+                            <ul>
+                                <li>Lorem Ipsum Lorem Ipsum</li>
+                                <li>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</li>
+                                <li>Lorem Ipsum Lorem Ipsum</li>
+                                <li>Lorem Ipsum Lorem Ipsum Lorem</li>
+                                <li>Lorem Ipsum</li>
+                                <li>Lorem Ipsum Lorem Ipsum Lorem Ipsum</li>
+                                <li>Lorem Ipsum Lorem</li>
+                                <li>Lorem Ipsum Lorem Ipsum</li>
+                            </ul>
+                        </div>
+                        <div className="residencePenthouseDetail__arrow_button_container">
+                            <div className="leftArrowContainer">
+                                <img alt='Left Arrow' className="leftArrow" src={leftArrowBlack}></img>
+                            </div>
+                            <div className="btn light">Inquire now</div>
+                        </div>
+                    </div>
+                    <div className="residencePenthouseDetail__image_container">
+                        <div onClick={this.toggleImageExpansion.bind(this)} className="residencePenthouseDetail__expand_toggler">
+                            <div >+</div>
+                        </div>
+                        <img src={require('./'+'images/penthouse/penthouse.jpg').default} alt=""/>
+                    </div>
+                </section>
+            </>
+        )
+    }
+}
+
 export default Slide;
