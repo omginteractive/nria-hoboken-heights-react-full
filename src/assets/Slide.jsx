@@ -121,6 +121,9 @@ class Slide extends Component {
                 {slideObj.slideTemplate === 'videoDiscover' &&
                     <SlideVideoDiscover  methods={slideMethods} configuration={slideObj}  />
                 }
+                {slideObj.slideTemplate === 'neighborhoodCommunity' &&
+                    <SlideNeighborhoodCommunity  configuration={slideObj}  />
+                }
             </div>
         )
     }
@@ -168,6 +171,29 @@ class SlideVideoDiscover extends Component {
 }
 
 
+class SlideNeighborhoodCommunity extends Component {
+    
+    render(){
+        return(
+            <>
+                <section className="neighborhoodCommunity">
+                    <div className="left">
+                        <img alt="neighborhood" src={require('./images/residence/residence.png').default} />
+                    </div>
+                    <div className="right">
+                        <h2>Hoboken Heights Neighborhood and Community</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <div className="button_container">
+                            <div className="btn light">Lorem ipsum</div>
+                            <div className="btn light">Lorem ipsum</div>
+                        </div>
+                    </div>
+                </section>
+            </>
+        )
+    }
+}
 class SlideHome extends Component {
     nextSlide(){
         this.props.methods.scrollToNextSlide()
@@ -841,7 +867,7 @@ class SlideDevelopmentTeam extends Component {
                 <div className="right">
                 <h2 className='developmentTeam__page_title invisible'>Development Team Story</h2>
                     <div className="video">
-                    <img alt="video" src={require('./images/video_placeholder.png').default} />
+                        <img alt="video" src={require('./images/video_placeholder.png').default} />
                     </div>
                     <div className="developmentTeam__copyright_logo_container">
                         <div className="copyright">&copy; National Realty Investment Advisors, LLC. All rights reserved</div>

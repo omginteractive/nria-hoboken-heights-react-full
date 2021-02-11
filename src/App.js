@@ -17,7 +17,7 @@ class App extends React.Component {
         slidesViewed: [0],
         scrollDebouncer: null,
         transitiongState: 0, // 0 for false -1 for up 1 for down
-        currIdx: 4,
+        currIdx: 9,
         previousScrollVal: 0,
         peakScrollVal: 0,
         readyForScroll: 1,

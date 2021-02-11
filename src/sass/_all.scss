@@ -865,7 +865,7 @@ body {
                 }
                 &residencePenthouse {
                     .btn {
-                        margin: 0 15px;
+                        margin: 0 $button-spacing/2;
                     }
                 }
                 &residencePenthouseFullscreen {
@@ -943,7 +943,7 @@ body {
                             .leftArrowContainer {
                                 .leftArrow {
                                     width: 40px;
-                                    margin-right: $content-padding;
+                                    margin-right: $button-spacing;
                                 }
                             }
                         }
@@ -978,7 +978,7 @@ body {
                             display: flex;
                             margin-bottom: $content-padding;
                             .btn {
-                                margin-right: 20px;
+                                margin-right: $button-spacing;
                             }
                         }
                         &__copyright_logo_container {
@@ -1021,7 +1021,7 @@ body {
                     // background-position: left bottom;
                     // background-size: contain;
                     // background-repeat: no-repeat;
-                    position: absolute;
+                    // position: absolute;
                     color: #ffffff;
                     .founderSlideContainer {
                         position: absolute;
@@ -1096,6 +1096,38 @@ body {
                     .founderTagline,
                     .benefitPair {
                         opacity: 0;
+                    }
+                }
+                &neighborhoodCommunity {
+                    .neighborhoodCommunity {
+                        display: flex;
+                        width: calc(100% - #{$side-margin}*2);
+                        top: calc(#{$header-height});
+                        position: absolute;
+                        left: $side-margin;
+                        
+                        .left {
+                            > img {
+                                width: 100%;
+                            }
+                        }
+                        .right {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: flex-end;
+                            flex-basis: 30%;
+                            padding-left: $content-padding;
+                        }
+                        .button_container {
+                            display: flex;
+                            margin-top: $content-padding;
+                            margin-bottom: $content-padding;
+                            .btn {
+                                + .btn {
+                                    margin-left: $button-spacing;
+                                }
+                            }
+                        }
                     }
                 }
             }
