@@ -3,9 +3,9 @@ $soundOptionsButtonWidth: 86px;
 $cornerLogoAnimateDistance: 260px;
 $cornerMusicPlayerChildElementWidth: 140px;
 $slideAnimationDuration: 1400ms;
-$header-height: 12.8vh;
+$header-height: 12.8vh;//Changes here need to be reflected in calculateMapAspectLockRatio()
+$side-margin: 6.3vw;//Changes here need to be reflected in calculateMapAspectLockRatio()
 $bottom-space: 11.2vh;
-$side-margin: 6.3vw;
 $content-padding: 38px;
 $down-arrow-bottom: 48px;
 $color-bronze: #a6682f;

@@ -17,7 +17,7 @@ class App extends React.Component {
         slidesViewed: [0],
         scrollDebouncer: null,
         transitiongState: 0, // 0 for false -1 for up 1 for down
-        currIdx: 9,
+        currIdx: 13,
         previousScrollVal: 0,
         peakScrollVal: 0,
         readyForScroll: 1,
@@ -132,8 +132,23 @@ class App extends React.Component {
 			this.timerHandle = null;
 			window.addEventListener('resize', () => this.handleResizeOnAndroid())
         }
+        window.addEventListener('resize', () => this.handleResize())
+        this.calculateMapAspectLockRatio()
 	}
-
+    handleResize(){
+        this.calculateMapAspectLockRatio()
+    }
+    calculateMapAspectLockRatio(){
+        const maximumLockRatio = 2
+        const sideMarginsVWPercent = 0.063
+        const headerVHPercent = 0.128
+        const mapWidth = document.documentElement.clientWidth - document.documentElement.clientWidth*sideMarginsVWPercent*2
+        const mapHeight = document.documentElement.clientHeight - document.documentElement.clientHeight*headerVHPercent
+        const mapHeightLocked = mapWidth/mapHeight < maximumLockRatio
+        
+        console.log(mapWidth, mapHeight, mapWidth/mapHeight)
+        this.setState({ mapHeightLocked: mapHeightLocked });
+    }
 	/*
 	 * handleResizeOnAndroid() is used due to android soft keyboards changing the 
 	 * viewport height which causes the page to suddenly shift.
@@ -580,7 +595,9 @@ class App extends React.Component {
                 setAmenityDetailsSlideIdx={this.setAmenityOnDetailsSlide.bind(this)}
                 setResidencePenthousePath={this.setResidencePenthouse.bind(this)}
                 residencePenthousePath={this.state.residencePenthouse}
-                amenityDetailsSlideIdx={this.state.amenityDetailsSlideIdx}></Slide>
+                amenityDetailsSlideIdx={this.state.amenityDetailsSlideIdx}
+                mapHeightLocked={this.state.mapHeightLocked}
+                ></Slide>
         )
 
         const isFirstOrSecondSlide = this.state.currIdx == 0 || this.state.currIdx == 1

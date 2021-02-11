@@ -1121,7 +1121,6 @@ body {
                         .button_container {
                             display: flex;
                             margin-top: $content-padding;
-                            margin-bottom: $content-padding;
                             .btn {
                                 + .btn {
                                     margin-left: $button-spacing;
@@ -1130,8 +1129,50 @@ body {
                         }
                     }
                 }
+                &map {
+                    .mapSection {
+                        display: flex;
+                        width: calc(100% - #{$side-margin}*2);
+                        top: calc(#{$header-height});
+                        position: absolute;
+                        left: $side-margin;
+                        &.heightLocked {
+                            .mapMotionLogo {
+                                top: 49vh;
+                                left: 50vh;
+                            }
+                        }
+                        &.heightNotLocked {
+                            .mapMotionLogo {
+                                left: 25vw;
+                                top: 24vw;
+                                
+                            }
+                        }
+                        .mapBackground {
+                            width: 100%;
+                            .map {
+                                width: 100%;
+                                height: 100vh;
+                                object-fit: cover;
+                                object-position: top left;
+                            }
+                        }
+                        .mapMotionLogo {
+                            border: white solid 1px;
+                            position: absolute;
+                            > img {
+                                position: absolute;
+                                transform: translate(-43px, -66px);
+                            }
+                        }
+                    }
+                }
             }
             &.runAnimationOnce {
+                .mapMotionLogo {
+                    display: block;
+                }
                 .videoContainer {
                     .background-video {
                         &.videoZoomEffect {

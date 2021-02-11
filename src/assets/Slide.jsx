@@ -124,12 +124,33 @@ class Slide extends Component {
                 {slideObj.slideTemplate === 'neighborhoodCommunity' &&
                     <SlideNeighborhoodCommunity  configuration={slideObj}  />
                 }
+                {slideObj.slideTemplate === 'map' &&
+                    <SlideMap mapHeightLocked={this.props.mapHeightLocked} configuration={slideObj}  />
+                }
             </div>
         )
     }
 }
 
 
+class SlideMap extends Component {
+    render(){
+        let mapSectionClasses = 'mapSection'
+        mapSectionClasses += this.props.mapHeightLocked ? ' heightLocked' : ' heightNotLocked'
+        return(
+            <>
+                <section className={mapSectionClasses}>
+                    <div className="mapBackground">
+                        <img src={require('./images/map/map01.jpg').default} alt="" className='map'/>
+                    </div>
+                    <div className="mapMotionLogo">
+                        <img src={require('./images/map/Motion_logo.gif').default} alt="" className="map"/>
+                    </div>
+                </section>
+            </>
+        )
+    }
+}
 class SlideVideoDiscover extends Component {
     nextSlide(){
         this.props.methods.scrollToNextSlide()
