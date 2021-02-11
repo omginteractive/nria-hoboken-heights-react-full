@@ -1425,11 +1425,15 @@ body {
 }
 
 @media screen and (min-width: 769px) and (max-height: 700px) {
-  .slideTemplate-founders .founderSlideWrapper .founderHeadline {
+  .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper {
+    justify-content: flex-start;
+    top: 12.8vh;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper .founderHeadline {
     width: 400px;
     margin-bottom: 10px;
   }
-  .slideTemplate-founders .founderSlideWrapper .founderBenefits .benefitPair {
+  .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper .founderBenefits .benefitPair {
     margin-top: 10px;
   }
 }
