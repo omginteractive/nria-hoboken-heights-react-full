@@ -9,7 +9,6 @@ class Slide extends Component {
         this.state = {
 			styles: this.props.obj.styles,
             type: this.props.obj.slideTemplate,
-            residencePenthouse: 'penthouse'
         }
     }
     handleTheScroll = e => {
@@ -25,6 +24,11 @@ class Slide extends Component {
     setAmenityOnDetailsSlide(idx){
         const {setAmenityDetailsSlideIdx} = this.props;
         setAmenityDetailsSlideIdx(idx)
+        this.scrollToNextSlide(true)
+    }
+    setResidencePenthousePath(option){
+        const {setResidencePenthousePath} = this.props;
+        setResidencePenthousePath(option)
         this.scrollToNextSlide(true)
     }
     render(){
@@ -100,13 +104,13 @@ class Slide extends Component {
                     <SlideViews configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'residencePenthouse' &&
-                    <SlideResidencePenthouse />
+                    <SlideResidencePenthouse setResidencePenthousePath={this.setResidencePenthousePath.bind(this)} methods={slideMethods}  />
                 }
                 {slideObj.slideTemplate === 'residencePenthouseFullscreen' &&
-                    <SlideResidencePenthouseFullscreen residencePenthouse={this.state.residencePenthouse}  methods={slideMethods} configuration={slideObj}  />
+                    <SlideResidencePenthouseFullscreen residencePenthouse={this.props.residencePenthousePath}  methods={slideMethods} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'residencePenthouseDetail' &&
-                    <SlideResidencePenthouseDetail residencePenthouse={this.state.residencePenthouse} configuration={slideObj}  />
+                    <SlideResidencePenthouseDetail residencePenthouse={this.props.residencePenthousePath} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'developmentTeam' &&
                     <SlideDevelopmentTeam  configuration={slideObj}  />
@@ -695,12 +699,15 @@ class SlideViews extends Component {
 }
 
 class SlideResidencePenthouse extends Component {
-    
+    setResidencePenthousePath = option => {
+        const {setResidencePenthousePath} = this.props;
+        setResidencePenthousePath(option);
+    }
     render(){
         return(
             <>
-                <div className="btn">Residences</div>
-                <div className="btn">Penthouses</div>
+                <div onClick={() => this.setResidencePenthousePath('residence')} className="btn">Residences</div>
+                <div onClick={() => this.setResidencePenthousePath('penthouse')} className="btn">Penthouses</div>
             </>
         )
     }
@@ -711,7 +718,7 @@ class SlideResidencePenthouseFullscreen extends Component {
         this.props.methods.scrollToNextSlide()
     }
     render(){
-        const fullscreenImage = this.props.residencePenthouse == 'penthouse' ? 'images/penthouse/penthousebed.png' : ''
+        const fullscreenImage = this.props.residencePenthouse == 'penthouse' ? 'images/penthouse/penthousebed.png' : 'images/residence/residence.png'
         return(
             <>
                 {
@@ -742,10 +749,11 @@ class SlideResidencePenthouseDetail extends Component {
     render(){
         let details_classes = 'residencePenthouseDetail'
         details_classes += this.state.imageExpanded ? ' expandImage' : ''
-        const isPenthouse = this.props.residencePenthouse == 'penthouse' ? 'images/penthouse/penthousebed.png' : ''
-        const image = isPenthouse ? 'images/penthouse/penthouse.jpg' : ''
-        const page_title = isPenthouse ? 'Exclusive Luxury Penthouses' : ''
-        const page_description = isPenthouse ? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' : ''
+        const isPenthouse = this.props.residencePenthouse === 'penthouse'
+        
+        const image = isPenthouse ? 'images/penthouse/penthouse.jpg' : 'images/residence/residence.png'
+        const page_title = isPenthouse ? 'Exclusive Luxury Penthouses' : 'Our Residences'
+        const page_description = isPenthouse ? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
         const featuresArray = isPenthouse ? [
             'Lorem Ipsum Lorem Ipsum',
             'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum',
@@ -756,7 +764,16 @@ class SlideResidencePenthouseDetail extends Component {
             'Lorem Ipsum Lorem',
             'Lorem Ipsum Lorem Ipsum',
             ] : 
-            []
+            [
+                'Residence Ipsum Lorem Ipsum',
+                'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum',
+                'Lorem Ipsum Lorem Ipsum',
+                'Lorem Ipsum Lorem Ipsum Lorem',
+                'Lorem Ipsum',
+                'Lorem Ipsum Lorem Ipsum Lorem Ipsum',
+                'Lorem Ipsum Lorem',
+                'Lorem Ipsum Lorem Ipsum',
+                ]
         return(
             <>
                 <section className={details_classes}>

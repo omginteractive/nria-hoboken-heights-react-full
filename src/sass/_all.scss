@@ -939,6 +939,7 @@ body {
                         &__arrow_button_container {
                             display: flex;
                             align-items: center;
+                            margin-bottom: $content-padding;
                             .leftArrowContainer {
                                 .leftArrow {
                                     width: 40px;
@@ -975,6 +976,7 @@ body {
                         }
                         &__button_group {
                             display: flex;
+                            margin-bottom: $content-padding;
                             .btn {
                                 margin-right: 20px;
                             }

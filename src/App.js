@@ -36,7 +36,8 @@ class App extends React.Component {
 			
         slides: null,
         mobileMenuOpen: false,
-        amenityDetailsSlideIdx: 0 //default to first amenity for details page
+        amenityDetailsSlideIdx: 0, //default to first amenity for details page
+        residencePenthouse: 'penthouse',//default option
     }
 
         this.watchForEventEnd = this.watchForEventEnd.bind(this);
@@ -550,6 +551,11 @@ class App extends React.Component {
 			amenityDetailsSlideIdx: idx
 		 });
     }
+    setResidencePenthouse(option){
+        this.setState({
+            residencePenthouse: option
+        })
+    }
     render() {
         const headerTheme = this.state.slides ? this.state.slides[this.state.currIdx].headerTheme : 'dark'
         
@@ -572,6 +578,8 @@ class App extends React.Component {
                 obj={slide}
                 isCurrent={idx == this.state.currIdx}
                 setAmenityDetailsSlideIdx={this.setAmenityOnDetailsSlide.bind(this)}
+                setResidencePenthousePath={this.setResidencePenthouse.bind(this)}
+                residencePenthousePath={this.state.residencePenthouse}
                 amenityDetailsSlideIdx={this.state.amenityDetailsSlideIdx}></Slide>
         )
 
