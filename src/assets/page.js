@@ -22,7 +22,8 @@ const flypilotFetchWPRestAPI = async () => {
         slideClasses: "fullWidthVideo",
         // videoLoop: true,
         // videoZoomEffect: true,
-        headerTheme: 'light-inquiry'
+        headerTheme: 'light-inquiry',
+        enableScrolling: true,
     }, {
         slideTemplate: 'patio',
         styles: {
@@ -40,7 +41,8 @@ const flypilotFetchWPRestAPI = async () => {
         // slideClasses: "fullWidthVideo",
         // videoLoop: true,
         // videoZoomEffect: true,
-        headerTheme: 'dark'
+        headerTheme: 'dark',
+        enableScrolling: true,
     }, {
         slideTemplate: 'amenitiesDetail',
         styles: {
@@ -125,13 +127,37 @@ const flypilotFetchWPRestAPI = async () => {
         styles: {
             background: "#fff",
         },
-        headerTheme: 'dark'
-    },{
+        headerTheme: 'dark',
+        enableScrolling: true,
+    }
+    ,{
         slideTemplate: 'developmentTeam',
         styles: {
             background: "#fff",
         },
-        headerTheme: 'dark'
+        headerTheme: 'dark',
+        enableScrolling: true,
+    }
+    ,{
+        slideTemplate: 'founders',
+        styles: {
+            background: "rgb(21, 22, 23)",
+        },
+        enableScrolling: true,
+        headerTheme: 'light',
+        founderImage: 'images/foundersClub.png',
+        founderHeadline: 'Gold Founding Members',
+        founderTagline: '1st 10 Contracts',
+        founderBenefits: [
+            "$300,000 Seller's Concession (Penthouses)",
+            "$150,000 Seller's Concession (Standard Units)",
+            "Seller Contribution - 6 Months of HOA Fees",
+            "Preselection Of Interior Designs",
+            "Bronze Plaque Noting Gold Founder On The Building",
+            "Selection Of Premium Parking Spaces - 3 Spots Penthouse / 2 Spots Standard",
+            "Complimentary Pool Badges/Key Fob - Duration Of Ownership/Transferable with Unit",
+            "Complimentary Golf Club Access - Duration Of Ownership/Transferable with Unit"
+        ],
     }]
     return SLIDES
   }

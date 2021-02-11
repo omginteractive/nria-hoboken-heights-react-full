@@ -96,6 +96,16 @@ table {
     opacity: 1;
   }
 }
+@keyframes fadeInDriftUpFounderSlide {
+  0% {
+    top: 50px;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
 @keyframes fadeInDriftUpTop2 {
   0% {
     top: 15px;
@@ -504,6 +514,9 @@ body {
   position: relative;
   overflow: hidden;
 }
+.slides_wrapper .slides_inner .slide.enableScrolling {
+  overflow: scroll;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-home {
   position: absolute;
   top: 0;
@@ -564,18 +577,19 @@ body {
   left: 7.5vw;
   width: calc(100% - 15vw);
   top: 12.8vh;
-  height: 70vh;
   height: calc(100vh - 11.2vh - 12.8vh);
   display: flex;
+  align-items: flex-start;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details {
   background-color: #000000;
-  padding: 80px;
+  padding: 9.6vh 4.1vw;
   flex-basis: 70%;
   color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-height: calc(100vh - 12.8vh - 11.2vh);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details > h2 {
   width: 400px;
@@ -599,6 +613,7 @@ body {
   text-transform: uppercase;
   line-height: 2.8em;
   font-size: 15px;
+  min-height: calc(100vh - 12.8vh - 11.2vh);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__list > ul > li {
   font-family: "Gotham-Book";
@@ -994,7 +1009,7 @@ body {
   margin-bottom: 38px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list > ul > li {
-  line-height: 1.4em;
+  line-height: 40px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list > ul > li:before {
   content: "- ";
@@ -1062,9 +1077,168 @@ body {
   position: absolute;
   right: 0;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-founders {
+  position: absolute;
+  color: #ffffff;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer {
+  position: absolute;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer .founderHeadline {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 40px;
+  margin-bottom: 20px;
+  font-family: "Gotham-Thin", sans-serif;
+  font-weight: 200;
+  line-height: 1.4em;
+  width: 1px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer .founderTagline {
+  color: #a6682f;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-family: "Gotham-Light", sans-serif;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer .founderBenefits {
+  font-size: 18px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  font-family: "Gotham-Light", sans-serif;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer .founderBenefits .benefitPair {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer .founderBenefits .benefitPair .count {
+  color: #151617;
+  background-color: #a6682f;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  line-height: 34px;
+  text-align: center;
+  flex-shrink: 0;
+  font-family: "Gotham-Bold";
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer .founderBenefits .benefitPair .benefit {
+  margin-left: 10px;
+  width: 100%;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer {
+  height: 100%;
+  width: 100vw;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-founders .founderImage {
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  height: 120%;
+  opacity: 0;
+  transition: bottom 1.2s ease-in-out 0.7s, left 1.2s ease-in-out 0.7s, opacity 1.2s linear 0.7s, transform 1.2s ease-out 0.7s;
+  transform: scale(1.5);
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  left: 46%;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-founders .founderHeadline,
+.slides_wrapper .slides_inner .slide.slideTemplate-founders .founderTagline,
+.slides_wrapper .slides_inner .slide.slideTemplate-founders .benefitPair {
+  opacity: 0;
+}
 .slides_wrapper .slides_inner .slide.runAnimationOnce .videoContainer .background-video.videoZoomEffect {
   transform: scale(1);
   transition: object-position 1400ms linear 0s, transform 1.2s ease-out 1.2s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders {
+  /* background-position: 0% 0%;*/
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderImage {
+  opacity: 1;
+  bottom: 0;
+  left: 0;
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  transform: scale(1);
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderHeadline {
+  animation-delay: 1.4s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderTagline {
+  animation-delay: 1.5s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderHeadline,
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderTagline {
+  position: relative;
+  animation-fill-mode: forwards;
+  animation-name: fadeInDriftUpFounderSlide;
+  animation-duration: 0.75s;
+  opacity: 0;
+  animation-timing-function: ease-in-out;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(1) {
+  animation-delay: 1.68s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(2) {
+  animation-delay: 1.76s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(3) {
+  animation-delay: 1.84s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(4) {
+  animation-delay: 1.92s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(5) {
+  animation-delay: 2s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(6) {
+  animation-delay: 2.08s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(7) {
+  animation-delay: 2.16s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(8) {
+  animation-delay: 2.24s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(9) {
+  animation-delay: 2.32s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(10) {
+  animation-delay: 2.4s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(11) {
+  animation-delay: 2.48s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(12) {
+  animation-delay: 2.56s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(13) {
+  animation-delay: 2.64s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(14) {
+  animation-delay: 2.72s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(15) {
+  animation-delay: 2.8s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(16) {
+  animation-delay: 2.88s;
+}
+.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits .benefitPair {
+  position: relative;
+  animation-fill-mode: forwards;
+  animation-name: fadeInDriftUpFounderSlide;
+  animation-duration: 0.75s;
+  opacity: 0;
+  animation-timing-function: ease-in-out;
 }
 .slides_wrapper .slides_inner .slide.activeSlide .amenities_detail__image.new {
   transform: scale(1.15);

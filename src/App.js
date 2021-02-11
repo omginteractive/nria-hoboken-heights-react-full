@@ -318,15 +318,15 @@ class App extends React.Component {
 		const isStopped = document.body.classList.contains("resize-animation-stopper");
 		return isStopped;
 	}
-	nextSlide() {
+	nextSlide(noRequireScroll = false) {
 		const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
 		const videosPlayed = this.state.videosPlayed
 		if (this.isTransitioning() || this.animationsStopped() || (isFirefoxAndroid && !videosPlayed)) {
 			return;
 		}
-		if(this.state.slides[this.state.currIdx].enableScrolling) {
-			const scrollBottom = document.querySelector('.activeSlide').scrollHeight - document.querySelector('.activeSlide').offsetHeight - document.querySelector('.activeSlide').scrollTop;
-			if(scrollBottom > 0) {//scrollBottom can be negative
+		if(this.state.slides[this.state.currIdx].enableScrolling && !noRequireScroll) {
+            const scrollBottom = document.querySelector('.activeSlide').scrollHeight - document.querySelector('.activeSlide').offsetHeight - document.querySelector('.activeSlide').scrollTop;
+            if(scrollBottom > 0) {//scrollBottom can be negative
 				return;
 			}
 		}
