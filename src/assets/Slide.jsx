@@ -118,82 +118,56 @@ class Slide extends Component {
                 {slideObj.slideTemplate === 'founders' &&
                     <SlideFounders  configuration={slideObj}  />
                 }
+                {slideObj.slideTemplate === 'videoDiscover' &&
+                    <SlideVideoDiscover  methods={slideMethods} configuration={slideObj}  />
+                }
             </div>
         )
     }
 }
 
-class SlideFounders extends Component {
 
+class SlideVideoDiscover extends Component {
+    nextSlide(){
+        this.props.methods.scrollToNextSlide()
+    }
     render(){
-        const founderImage = this.props.configuration.founderImage
-        const founderHeadline = this.props.configuration.founderHeadline
-        const founderTagline = this.props.configuration.founderTagline
-        const founderBenefits = this.props.configuration.founderBenefits
+        let videoContainerClasses = 'videoContainer'
+        let videoClasses = 'background-video'
+        if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect startZoomedIn'
         return(
             <>
-                <div className="founderSlideContainer">
-                    <img className="founderImage" src={require('./'+founderImage).default} alt=""/>
-                    <div className="founderSlideWrapper">
-                    {founderHeadline &&
-                        <p className="founderHeadline">{founderHeadline}</p>
-                    }
-                    {founderTagline &&
-                        <p className="founderTagline">{founderTagline}</p>
-                    }
-                    {founderBenefits &&
-                        <div className="founderBenefits">
-                            {Object.entries(founderBenefits).map(([key, value]) => {
-                                return(
-                                <div key={key} className="benefitPair">
-                                    <div className="count">{parseInt(key)+1}</div>
-                                    <div className="benefit">{value}</div>
-                                </div>
-                                )
-                            })}
-                        </div>
-                    }
+                {
+                    <div className="downArrowContainer">
+                        <img alt="Down Arrow" onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
                     </div>
-                </div>
+                }
+                {
+							//Hide landingpage video on FFMobile because it will not autoplay
+							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
+						<div
+						className={videoContainerClasses}
+						dangerouslySetInnerHTML={{
+							__html: `
+							<video
+							class="${videoClasses}"
+							${this.props.configuration.videoLoop ? 'loop="true"' : ''}
+							muted='muted'
+							autoplay='true'
+							playsinline='playsinline'
+							preload="metadata"
+							>
+							<source src='/videos/NRIMA_SITE_VIDEO DISCOVER.mp4' type="video/mp4" />
+							</video>`
+						}}
+					/>
+				}
             </>
         )
     }
 }
 
-class SlideDevelopmentTeam extends Component {
-    render(){
-        return(
-            <section className='developmentTeam'>
-                <div className="left">
-                    <div className="textGroup">
-                        <h2 className='developmentTeam__page_title'>Development Team Story</h2>
-                        <p className='developmentTeam__paragraph'>For more than a decade, National Realty Investment Advisors - NRIA has delivered and continues to build upon a history of exceptional performance as a vertically-integrated real estate investment, management and development firm. We have extensive experience with full-service construction and complete renovation of planned unit townhomes, single-family luxury residences, condominiums, multifamily, and mixed-use rental developments strategically located in many of the most dynamic urban markets across the East Coast. Our team's collective depth of knowledge within these specific markets continues to yield compelling opportunities across the real estate investment risk spectrum.</p>
-                        <div className="developmentTeam__headline">Real estate investment company overview</div>
-                        <p className='developmentTeam__paragraph'>Founded in 2006, NRIA has grown to be one of the nation's leading specialists in institutional-caliber private real estate investment management with over $1.25B AUM, focusing on luxury townhome, condominium and multifamily acquisition and development in many supply constrained, high barrier-to-entry markets along the east coast.</p>
-                        <p className='developmentTeam__paragraph'>An evolving through-cycle management commitment to long-term growth through active market, property/project-type, and sector selection allows our diversified investment strategy to continually deliver high, low-volatile returns. As a result, not only has our liquidity profile as a real estate investment & development firm incrementally improved, it has laid a solid function for significatnt future growth.</p>
-                    </div>
-                    <div className="developmentTeam__button_group">
-                        <div className="btn light">NRIA</div>
-                        <div className="btn light">NR Living</div>
-                        <div className="btn light">NRIA EB-5</div>
-                    </div>
-                </div>
-                <div className="right">
-                <h2 className='developmentTeam__page_title invisible'>Development Team Story</h2>
-                    <div className="video">
-                    <img alt="video" src={require('./images/video_placeholder.png').default} />
-                    </div>
-                    <div className="developmentTeam__copyright_logo_container">
-                        <div className="copyright">&copy; National Realty Investment Advisors, LLC. All rights reserved</div>
-                        <div className="nriaLogo">
-                            <img alt="NRIA Logo" src={require('./images/logos/logo_NRIA.png').default} />
-                        </div>
-                    </div>
-                </div>
-            </section>
-        )
-    }
-}
+
 class SlideHome extends Component {
     nextSlide(){
         this.props.methods.scrollToNextSlide()
@@ -372,6 +346,7 @@ class SlidePatio extends Component {
         )
     }
 }
+
 class SlideAmenities extends Component {
     setAmenityDetail(idx){
         const {setAmenityOnDetailsSlide} = this.props;
@@ -803,6 +778,79 @@ class SlideResidencePenthouseDetail extends Component {
                     </div>
                 </section>
             </>
+        )
+    }
+}
+
+
+class SlideFounders extends Component {
+
+    render(){
+        const founderImage = this.props.configuration.founderImage
+        const founderHeadline = this.props.configuration.founderHeadline
+        const founderTagline = this.props.configuration.founderTagline
+        const founderBenefits = this.props.configuration.founderBenefits
+        return(
+            <>
+                <div className="founderSlideContainer">
+                    <img className="founderImage" src={require('./'+founderImage).default} alt=""/>
+                    <div className="founderSlideWrapper">
+                    {founderHeadline &&
+                        <p className="founderHeadline">{founderHeadline}</p>
+                    }
+                    {founderTagline &&
+                        <p className="founderTagline">{founderTagline}</p>
+                    }
+                    {founderBenefits &&
+                        <div className="founderBenefits">
+                            {Object.entries(founderBenefits).map(([key, value]) => {
+                                return(
+                                <div key={key} className="benefitPair">
+                                    <div className="count">{parseInt(key)+1}</div>
+                                    <div className="benefit">{value}</div>
+                                </div>
+                                )
+                            })}
+                        </div>
+                    }
+                    </div>
+                </div>
+            </>
+        )
+    }
+}
+
+class SlideDevelopmentTeam extends Component {
+    render(){
+        return(
+            <section className='developmentTeam'>
+                <div className="left">
+                    <div className="textGroup">
+                        <h2 className='developmentTeam__page_title'>Development Team Story</h2>
+                        <p className='developmentTeam__paragraph'>For more than a decade, National Realty Investment Advisors - NRIA has delivered and continues to build upon a history of exceptional performance as a vertically-integrated real estate investment, management and development firm. We have extensive experience with full-service construction and complete renovation of planned unit townhomes, single-family luxury residences, condominiums, multifamily, and mixed-use rental developments strategically located in many of the most dynamic urban markets across the East Coast. Our team's collective depth of knowledge within these specific markets continues to yield compelling opportunities across the real estate investment risk spectrum.</p>
+                        <div className="developmentTeam__headline">Real estate investment company overview</div>
+                        <p className='developmentTeam__paragraph'>Founded in 2006, NRIA has grown to be one of the nation's leading specialists in institutional-caliber private real estate investment management with over $1.25B AUM, focusing on luxury townhome, condominium and multifamily acquisition and development in many supply constrained, high barrier-to-entry markets along the east coast.</p>
+                        <p className='developmentTeam__paragraph'>An evolving through-cycle management commitment to long-term growth through active market, property/project-type, and sector selection allows our diversified investment strategy to continually deliver high, low-volatile returns. As a result, not only has our liquidity profile as a real estate investment & development firm incrementally improved, it has laid a solid function for significatnt future growth.</p>
+                    </div>
+                    <div className="developmentTeam__button_group">
+                        <div className="btn light">NRIA</div>
+                        <div className="btn light">NR Living</div>
+                        <div className="btn light">NRIA EB-5</div>
+                    </div>
+                </div>
+                <div className="right">
+                <h2 className='developmentTeam__page_title invisible'>Development Team Story</h2>
+                    <div className="video">
+                    <img alt="video" src={require('./images/video_placeholder.png').default} />
+                    </div>
+                    <div className="developmentTeam__copyright_logo_container">
+                        <div className="copyright">&copy; National Realty Investment Advisors, LLC. All rights reserved</div>
+                        <div className="nriaLogo">
+                            <img alt="NRIA Logo" src={require('./images/logos/logo_NRIA.png').default} />
+                        </div>
+                    </div>
+                </div>
+            </section>
         )
     }
 }

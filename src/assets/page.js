@@ -158,6 +158,12 @@ const flypilotFetchWPRestAPI = async () => {
             "Complimentary Pool Badges/Key Fob - Duration Of Ownership/Transferable with Unit",
             "Complimentary Golf Club Access - Duration Of Ownership/Transferable with Unit"
         ],
+    },{
+        slideTemplate: 'videoDiscover',
+        styles: {
+            background: "#fff",
+        },
+        headerTheme: 'light',
     }]
     return SLIDES
   }
