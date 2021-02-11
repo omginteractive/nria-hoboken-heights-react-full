@@ -552,10 +552,9 @@ body {
   position: absolute;
   left: calc(50px + 6.3vw);
   top: calc(50px + 12.8vh);
-  height: calc(100vh - 12.8vh*2);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin-top: 6vh;
   width: 52%;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection > p {
@@ -564,8 +563,14 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection .btn {
   margin-top: 38px;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .videoContainer {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .videoContainer .background-video {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   object-position: top right;
 }
