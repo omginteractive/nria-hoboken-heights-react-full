@@ -102,10 +102,10 @@ class Slide extends Component {
                     <SlideResidencePenthouse />
                 }
                 {slideObj.slideTemplate === 'residencePenthouseFullscreen' &&
-                    <SlideResidencePenthouseFullscreen  methods={slideMethods} configuration={slideObj}  />
+                    <SlideResidencePenthouseFullscreen residencePenthouse={this.state.residencePenthouse}  methods={slideMethods} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'residencePenthouseDetail' &&
-                    <SlideResidencePenthouseDetail  configuration={slideObj}  />
+                    <SlideResidencePenthouseDetail residencePenthouse={this.state.residencePenthouse} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'developmentTeam' &&
                     <SlideDevelopmentTeam  configuration={slideObj}  />
@@ -125,10 +125,10 @@ class SlideDevelopmentTeam extends Component {
                 <div className="left">
                     <div className="textGroup">
                         <h2 className='developmentTeam__page_title'>Development Team Story</h2>
-                        <div class='developmentTeam__paragraph'>For more than a decade, National Realty Investment Advisors - NRIA has delivered and continues to build upon a history of exceptional performance as a vertically-integrated real estate investment, management and development firm. We have extensive experience with full-service construction and complete renovation of planned unit townhomes, single-family luxury residences, condominiums, multifamily, and mixed-use rental developments strategically located in many of the most dynamic urban markets across the East Coast. Our team's collective depth of knowledge within these specific markets continues to yield compelling opportunities across the real estate investment risk spectrum.</div>
+                        <p class='developmentTeam__paragraph'>For more than a decade, National Realty Investment Advisors - NRIA has delivered and continues to build upon a history of exceptional performance as a vertically-integrated real estate investment, management and development firm. We have extensive experience with full-service construction and complete renovation of planned unit townhomes, single-family luxury residences, condominiums, multifamily, and mixed-use rental developments strategically located in many of the most dynamic urban markets across the East Coast. Our team's collective depth of knowledge within these specific markets continues to yield compelling opportunities across the real estate investment risk spectrum.</p>
                         <div className="developmentTeam__headline">Real estate investment company overview</div>
-                        <div class='developmentTeam__paragraph'>Founded in 2006, NRIA has grown to be one of the nation's leading specialists in institutional-caliber private real estate investment management with over $1.25B AUM, focusing on luxury townhome, condominium and multifamily acquisition and development in many supply constrained, high barrier-to-entry markets along the east coast.</div>
-                        <div class='developmentTeam__paragraph'>An evolving through-cycle management commitment to long-term growth through active market, property/project-type, and sector selection allows our diversified investment strategy to continually deliver high, low-volatile returns. As a result, not only has our liquidity profile as a real estate investment & development firm incrementally improved, it has laid a solid function for significatnt future growth.</div>
+                        <p class='developmentTeam__paragraph'>Founded in 2006, NRIA has grown to be one of the nation's leading specialists in institutional-caliber private real estate investment management with over $1.25B AUM, focusing on luxury townhome, condominium and multifamily acquisition and development in many supply constrained, high barrier-to-entry markets along the east coast.</p>
+                        <p class='developmentTeam__paragraph'>An evolving through-cycle management commitment to long-term growth through active market, property/project-type, and sector selection allows our diversified investment strategy to continually deliver high, low-volatile returns. As a result, not only has our liquidity profile as a real estate investment & development firm incrementally improved, it has laid a solid function for significatnt future growth.</p>
                     </div>
                     <div className="developmentTeam__button_group">
                         <div className="btn light">NRIA</div>
@@ -137,7 +137,10 @@ class SlideDevelopmentTeam extends Component {
                     </div>
                 </div>
                 <div className="right">
-                    <div className="video">video</div>
+                <h2 className='developmentTeam__page_title invisible'>Development Team Story</h2>
+                    <div className="video">
+                    <img alt="video" src={require('./images/video_placeholder.png').default} />
+                    </div>
                     <div className="developmentTeam__copyright_logo_container">
                         <div className="copyright">&copy; National Realty Investment Advisors, LLC. All rights reserved</div>
                         <div className="nriaLogo">
@@ -670,6 +673,7 @@ class SlideResidencePenthouseFullscreen extends Component {
         this.props.methods.scrollToNextSlide()
     }
     render(){
+        const fullscreenImage = this.props.residencePenthouse == 'penthouse' ? 'images/penthouse/penthousebed.png' : ''
         return(
             <>
                 {
@@ -677,7 +681,7 @@ class SlideResidencePenthouseFullscreen extends Component {
                         <img alt="Down Arrow" onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
                     </div>
                 }
-                <img className='residencePenthouseFullscreenImage' alt="" src={require('./'+'images/penthouse/penthousebed.png').default} />
+                <img className='residencePenthouseFullscreenImage' alt="" src={require('./'+fullscreenImage).default} />
             </>
         )
     }
@@ -700,24 +704,33 @@ class SlideResidencePenthouseDetail extends Component {
     render(){
         let details_classes = 'residencePenthouseDetail'
         details_classes += this.state.imageExpanded ? ' expandImage' : ''
-
+        const isPenthouse = this.props.residencePenthouse == 'penthouse' ? 'images/penthouse/penthousebed.png' : ''
+        const image = isPenthouse ? 'images/penthouse/penthouse.jpg' : ''
+        const page_title = isPenthouse ? 'Exclusive Luxury Penthouses' : ''
+        const page_description = isPenthouse ? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' : ''
+        const featuresArray = isPenthouse ? [
+            'Lorem Ipsum Lorem Ipsum',
+            'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum',
+            'Lorem Ipsum Lorem Ipsum',
+            'Lorem Ipsum Lorem Ipsum Lorem',
+            'Lorem Ipsum',
+            'Lorem Ipsum Lorem Ipsum Lorem Ipsum',
+            'Lorem Ipsum Lorem',
+            'Lorem Ipsum Lorem Ipsum',
+            ] : 
+            []
         return(
             <>
                 <section className={details_classes}>
                     <div className='residencePenthouseDetail__details'>
-                        <h2>Exclusive Luxury Penthouses</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h2>{page_title}</h2>
+                        <p>{page_description}</p>
                         <div className="residencePenthouseDetail__features_list">
                             <div className="heading">Features:</div>
                             <ul>
-                                <li>Lorem Ipsum Lorem Ipsum</li>
-                                <li>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</li>
-                                <li>Lorem Ipsum Lorem Ipsum</li>
-                                <li>Lorem Ipsum Lorem Ipsum Lorem</li>
-                                <li>Lorem Ipsum</li>
-                                <li>Lorem Ipsum Lorem Ipsum Lorem Ipsum</li>
-                                <li>Lorem Ipsum Lorem</li>
-                                <li>Lorem Ipsum Lorem Ipsum</li>
+                                {featuresArray.map((feature, i) => {
+                                    return (<li key={i}>{feature}</li>)
+                                })}
                             </ul>
                         </div>
                         <div className="residencePenthouseDetail__arrow_button_container">
@@ -729,9 +742,9 @@ class SlideResidencePenthouseDetail extends Component {
                     </div>
                     <div className="residencePenthouseDetail__image_container">
                         <div onClick={this.toggleImageExpansion.bind(this)} className="residencePenthouseDetail__expand_toggler">
-                            <div >+</div>
+                            <div><img src={require('./'+'images/expand+.svg').default} alt=""/></div>
                         </div>
-                        <img src={require('./'+'images/penthouse/penthouse.jpg').default} alt=""/>
+                        <img src={require('./'+image).default} alt=""/>
                     </div>
                 </section>
             </>

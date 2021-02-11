@@ -258,7 +258,7 @@ body {
   position: fixed;
   color: #fff;
   top: 0;
-  width: 85vw;
+  width: calc(100vw - 6.3vw*2);
   height: 12.8vh;
   left: 6.3vw;
   display: flex;
@@ -974,14 +974,14 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__expand_toggler {
   cursor: pointer;
-  background-color: #ddd;
+  background-color: #d9d9d9;
   color: #ffffff;
   display: flex;
   align-items: center;
-  padding: 3px;
+  justify-content: center;
+  padding: 11px;
   height: 100%;
   position: absolute;
-  width: 20px;
   z-index: 1;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list {
@@ -1012,8 +1012,8 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam {
   display: flex;
-  padding-left: 6.3vw;
-  padding-right: 6.3vw;
+  left: 6.3vw;
+  width: calc(100vw - 6.3vw*2);
   position: absolute;
   top: 12.8vh;
 }
@@ -1021,8 +1021,8 @@ body {
   margin-bottom: 38px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__headline {
-  font-weight: bold;
   text-transform: uppercase;
+  font-family: "Gotham-Medium";
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__button_group {
   display: flex;
@@ -1035,13 +1035,32 @@ body {
   justify-content: space-between;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__copyright_logo_container .copyright {
-  font-size: 12px;
+  font-size: 13px;
+  font-family: "Gotham-Light", sans-serif;
+  margin-top: 25px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__copyright_logo_container .nriaLogo > img {
+  margin-top: 30px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__page_title {
+  width: 1px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__page_title.invisible {
+  opacity: 0;
+  animation: none;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .video > img {
+  width: 100%;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .left {
-  flex-basis: 50%;
+  width: 50%;
+  position: absolute;
+  left: 0;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .right {
-  flex-basis: 50%;
+  width: 50%;
+  position: absolute;
+  right: 0;
 }
 .slides_wrapper .slides_inner .slide.runAnimationOnce .videoContainer .background-video.videoZoomEffect {
   transform: scale(1);
@@ -1135,6 +1154,9 @@ body {
   animation-name: fadeInDriftUp;
   animation-duration: 0.6s;
   opacity: 0;
+}
+.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .textGroup {
+  padding-right: 38px;
 }
 .slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .textGroup :nth-child(1) {
   animation-delay: 0.8s;

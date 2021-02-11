@@ -151,7 +151,7 @@ body {
     position: fixed;
     color: #fff;
     top: 0;
-    width: 85vw;
+    width: calc(100vw - #{$side-margin}*2);
     height: $header-height;
     left: $side-margin;
     display: flex;
@@ -702,7 +702,7 @@ body {
                             $thumbBorderRadius: 50%;
                             $thumbBorder: solid 1px #fff;
                             position: absolute;
-                            bottom: 12vh;
+                        bottom: 12vh;
                             > input {
                                 width: $sliderWidth;
                                 margin: 0;
@@ -864,7 +864,6 @@ body {
                 }
                 &residencePenthouseDetail {
                     .residencePenthouseDetail {
-                        $expand_toggler_width: 20px;
                         $starting_leftside_width: 40vw;
                         margin-top: $header-height;
                         $content_width: calc(100vw - #{$side-margin}*2);
@@ -897,14 +896,14 @@ body {
                         }
                         &__expand_toggler {
                             cursor: pointer;
-                            background-color: #ddd;
+                            background-color: #d9d9d9;
                             color: #ffffff;
                             display: flex;
                             align-items: center;
-                            padding: 3px;
+                            justify-content: center;
+                            padding: 11px;
                             height: 100%;
                             position: absolute;
-                            width: $expand_toggler_width;
                             z-index: 1;
                         }
                         &__features_list {
@@ -948,8 +947,8 @@ body {
                 &developmentTeam {
                     .developmentTeam {
                         display: flex;
-                        padding-left: $side-margin;
-                        padding-right: $side-margin;
+                        left: $side-margin;
+                        width: calc(100vw - #{$side-margin}*2);
                         position: absolute;
                         top: $header-height;
                         &__page_title,
@@ -958,8 +957,8 @@ body {
                             margin-bottom: $content-padding;
                         }
                         &__headline {
-                            font-weight: bold;
                             text-transform: uppercase;
+                            font-family: 'Gotham-Medium';
                         }
                         &__button_group {
                             display: flex;
@@ -971,14 +970,35 @@ body {
                             display: flex;
                             justify-content: space-between;
                             .copyright {
-                                font-size: 12px;
+                                font-size: 13px;
+                                font-family: "Gotham-Light", sans-serif;
+                                margin-top: 25px;
+                            }
+                            .nriaLogo > img {
+                                margin-top: 30px;
+                            }
+                        }
+                        &__page_title {
+                            width: 1px;
+                            &.invisible {
+                                opacity: 0;
+                                animation: none;
+                            }
+                        }
+                        .video {
+                            > img {
+                                width: 100%;
                             }
                         }
                         .left {
-                            flex-basis: 50%;
+                            width: 50%;
+                            position: absolute;
+                            left: 0;
                         }
                         .right {
-                            flex-basis: 50%;
+                            width: 50%;
+                            position: absolute;
+                            right: 0;
                         }
                     }
                 }
@@ -1067,6 +1087,7 @@ body {
                         opacity: 0;
                     }
                     .textGroup {
+                        padding-right: $content-padding;
                         @for $i from 1 through $textGroupObjectCount {
                             :nth-child(#{$i}){
                                 animation-delay: $animation_incremental_delay*$i + $animation_base_delay;
