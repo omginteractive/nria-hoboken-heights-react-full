@@ -15,6 +15,12 @@ class MobileMenu extends Component {
         const {toggleMobileMenu} = this.props;
         toggleMobileMenu();
     }
+    goToContactSlide(){
+        const {goToContactSlide} = this.props;
+        goToContactSlide();
+        this.toggleMobileMenu();
+    }
+
     
     render(){
         const isOpen = this.props.open
@@ -22,7 +28,7 @@ class MobileMenu extends Component {
         mobileMenuClasses += this.props.open ? ' open' : ''
 		return(
             <div className={mobileMenuClasses}>
-                <Header theme='light' open={true} toggleMobileMenu={this.toggleMobileMenu.bind(this)} />
+                <Header goToContactSlide={this.goToContactSlide.bind(this)}  theme='light' open={true} toggleMobileMenu={this.toggleMobileMenu.bind(this)} />
                 <div className="mobileMenuLinks">
                     <div className="linksWrapper">
                         <a onClick={() => this.goToSlide(2)} href="#"><h2>Property</h2></a>

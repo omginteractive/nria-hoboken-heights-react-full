@@ -15,6 +15,12 @@ class Header extends Component {
         const {toggleMobileMenu} = this.props;
 		toggleMobileMenu();
     }
+
+    slideToContact(){
+        const {goToContactSlide} = this.props;
+        goToContactSlide()
+    }
+
     render(){
         const defaultTheme = 'dark'
         const theme = this.props.theme ? this.props.theme : defaultTheme
@@ -40,7 +46,7 @@ class Header extends Component {
                     </div>
 
                 </div>
-                <div className="inquiry-link">INQUIRE NOW</div>
+                <div onClick={this.slideToContact.bind(this)} className="inquiry-link">INQUIRE NOW</div>
             </header>
         )
     }

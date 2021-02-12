@@ -22,6 +22,10 @@ class Slide extends Component {
 		const {goToNextSlide} = this.props;
         goToNextSlide(noRequireScroll);
     }
+    goToContactSlide(){
+        const {goToContactSlide} = this.props;
+        goToContactSlide();
+    }
     setAmenityOnDetailsSlide(idx){
         const {setAmenityDetailsSlideIdx} = this.props;
         setAmenityDetailsSlideIdx(idx)
@@ -58,6 +62,7 @@ class Slide extends Component {
         const slideObj = this.props.obj;
         const slideMethods = {
             scrollToNextSlide: this.scrollToNextSlide.bind(this),
+            goToContactSlide: this.goToContactSlide.bind(this),
         }
 		let slideClasses = "slide "
 		let videoClasses = 'background-video'
@@ -109,16 +114,16 @@ class Slide extends Component {
                     <SlideHome methods={slideMethods} />
                 }
                 {slideObj.slideTemplate === 'exteriorLightToggle' && 
-                    <SlideExteriorLightToggle configuration={slideObj} />
+                    <SlideExteriorLightToggle methods={slideMethods}  configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'fountainPen' &&
-                    <SlideFountainPen configuration={slideObj} slideCount={this.props.slideCount} curridx={this.props.currIdx} />
+                    <SlideFountainPen methods={slideMethods} configuration={slideObj} slideCount={this.props.slideCount} curridx={this.props.currIdx} />
                 }
                 {slideObj.slideTemplate === 'patio' &&
                     <SlidePatio methods={slideMethods} configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'amenities' &&
-                    <SlideAmenities setAmenityOnDetailsSlide={this.setAmenityOnDetailsSlide.bind(this)} configuration={slideObj} />
+                    <SlideAmenities methods={slideMethods} setAmenityOnDetailsSlide={this.setAmenityOnDetailsSlide.bind(this)} configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'amenitiesDetail' &&
                     <SlideAmenitiesDetail isCurrent={isCurrent} idx={this.props.amenityDetailsSlideIdx} configuration={slideObj} />
@@ -133,7 +138,7 @@ class Slide extends Component {
                     <SlideResidencePenthouseFullscreen residencePenthouse={this.props.residencePenthousePath}  methods={slideMethods} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'residencePenthouseDetail' &&
-                    <SlideResidencePenthouseDetail residencePenthouse={this.props.residencePenthousePath} configuration={slideObj}  />
+                    <SlideResidencePenthouseDetail methods={slideMethods} residencePenthouse={this.props.residencePenthousePath} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'developmentTeam' &&
                     <SlideDevelopmentTeam  configuration={slideObj}  />
@@ -598,7 +603,7 @@ class SlideExteriorLightToggle extends Component {
                         <div className="text">HOBOKEN HEIGHTS<div className="separator"></div></div>
                         <img alt="Hoboken Heights Logo" className="corner-logo" src={require('./images/logos/NIRMA_Logo_Symbol_Black.png').default} />
                     </div>
-                    <div className="inquiry-link">INQUIRE NOW</div>
+                    <div onClick={this.props.methods.goToContactSlide.bind(this)} className="inquiry-link">INQUIRE NOW</div>
                 </header>
                 <div onClick={this.toggleLights.bind(this)} className="toggleLights btn">{lightButtonText}</div>
                 {
@@ -658,7 +663,7 @@ class SlideFountainPen extends Component {
                         <h2>4 State-of-the-art Buildings<br />55 Residences | 9 Penthouses</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <div className="btn dark">Inquire now</div>
+                        <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn dark">Inquire now</div>
                     </div>
                 }
                 {
@@ -740,7 +745,7 @@ class SlideAmenities extends Component {
                         <h2>Luxury Skyline Front Amenities & Services</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <div className="btn dark">Inquire now</div>
+                        <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn dark">Inquire now</div>
                     </div>
                     <div className="amenities__list">
                         <ul>
@@ -1170,7 +1175,7 @@ class SlideResidencePenthouseDetail extends Component {
                             <div className="leftArrowContainer">
                                 <img alt='Left Arrow' className="leftArrow" src={leftArrowBlack}></img>
                             </div>
-                            <div className="btn light">Inquire now</div>
+                            <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn light">Inquire now</div>
                         </div>
                     </div>
                     <div onWheel={this.handleWheelEvent.bind(this)} className="residencePenthouseDetail__image_container">

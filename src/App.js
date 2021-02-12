@@ -19,6 +19,7 @@ class App extends React.Component {
         scrollDebouncer: null,
         transitiongState: 0, // 0 for false -1 for up 1 for down
         currIdx: 0,
+        contactSlideIdx: 15,
         previousScrollVal: 0,
         peakScrollVal: 0,
         readyForScroll: 1,
@@ -347,6 +348,15 @@ class App extends React.Component {
 		const isStopped = document.body.classList.contains("resize-animation-stopper");
 		return isStopped;
     }
+    goToContactSlide(){
+        const idx = this.state.contactSlideIdx
+        if(this.state.currIdx == idx) return
+        this.setState({
+			transitiongState: 1,
+			currIdx: idx
+        });
+        this.handleSlideChange(idx)
+    }
     goToSlide(idx){
         if(this.state.currIdx == idx) return
         this.setState({
@@ -631,6 +641,7 @@ class App extends React.Component {
                 amenityDetailsSlideIdx={this.state.amenityDetailsSlideIdx}
                 mapHeightLocked={this.state.mapHeightLocked}
                 createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)}
+                goToContactSlide={this.goToContactSlide.bind(this)}
                 ></Slide>
         )
 
@@ -645,7 +656,7 @@ class App extends React.Component {
             if(this.state.slideHasScrolled) slidesWrapperClasses += ' scrolled'
         return (
             <div id="page" className={pageClasses}>
-                <MobileMenu open={this.state.mobileMenuOpen} toggleMobileMenu={this.toggleMobileMenu.bind(this)} goToSlideIdx={this.goToSlide.bind(this)} />
+                <MobileMenu goToContactSlide={this.goToContactSlide.bind(this)} open={this.state.mobileMenuOpen} toggleMobileMenu={this.toggleMobileMenu.bind(this)} goToSlideIdx={this.goToSlide.bind(this)} />
                     <div className={slidesWrapperClasses}
                         onTouchStart={this.handleTouchStart.bind(this)}
                         onTouchMove={this.handleTouchMove.bind(this)}
@@ -655,7 +666,7 @@ class App extends React.Component {
                     <div className="fixed-headers">
                         <div className='fixed-header-inner'>
                             <div className='fixed-header-wrapper'>
-                                <Header toggleMobileMenu={this.toggleMobileMenu.bind(this)} theme={headerTheme} />
+                                <Header goToContactSlide={this.goToContactSlide.bind(this)} toggleMobileMenu={this.toggleMobileMenu.bind(this)} theme={headerTheme} />
                             </div>
                             {/* <div className='fixed-header-wrapper'>
                                 <header className='fixed-header'>
