@@ -1013,9 +1013,9 @@ class SlideViews extends Component {
     }
 
     render(){
-        let image1_classes = 'views_section__image '
+        let image1_classes = 'views_section__image startZoomedIn '
         image1_classes += this.state.image1IsNew ? 'new' : 'old'
-        let image2_classes = 'views_section__image '
+        let image2_classes = 'views_section__image startZoomedIn '
         image2_classes += !this.state.image1IsNew ? 'new' : 'old'
         
         return(

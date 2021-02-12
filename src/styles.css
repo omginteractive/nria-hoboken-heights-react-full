@@ -1002,7 +1002,7 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__image.new {
   z-index: 1;
   opacity: 1;
-  transition: opacity 1s linear, transform 0s;
+  transition: opacity 1s linear, transform 0.5s linear 0.5s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouse .btn {
   margin: 0 21px;
@@ -1898,6 +1898,26 @@ body {
 }
 .slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(4) {
   animation-delay: 2.4s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-views .views_section__top > h2,
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-views .views_section__top > p {
+  position: relative;
+  animation-fill-mode: forwards;
+  animation-name: fadeInDriftUp;
+  animation-duration: 0.6s;
+  opacity: 0;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-views .views_section__top :nth-child(1) {
+  animation-delay: 0.4s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-views .views_section__top :nth-child(2) {
+  animation-delay: 0.6s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-views .views_section__top :nth-child(3) {
+  animation-delay: 0.8s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-views .views_section__image {
+  transform: scale(1);
 }
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-residencePenthouse .btn {
   position: relative;

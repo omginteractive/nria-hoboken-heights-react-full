@@ -900,15 +900,12 @@ body {
                             object-fit: cover;
                             transition: opacity 0s linear $viewsTransitionDuration, transform 0s linear $viewsTransitionDuration;
                             opacity: 0;
-                            
-                            // transform: scale(1.07);
                             &.old {
                             }
                             &.new {
                                 z-index: 1;
                                 opacity: 1;
-                                // transform: scale(1.4);
-                                transition: opacity $viewsTransitionDuration linear, transform 0s;
+                                transition: opacity $viewsTransitionDuration linear, transform 0.5s linear 0.5s;
                             }
                         }
                     }
@@ -1854,6 +1851,30 @@ body {
                                 animation-delay: $animation_incremental_delay*$i + $animation_base_delay + $animation_incremental_delay*$textGroupObjectCount;
                             }
                         }
+                    }
+                }
+                &.slideTemplate-views {
+                    $animation_duration: 0.6s;
+                    $animation_base_delay: 0.2s;
+                    $animation_incremental_delay: 0.2s;
+
+                    .views_section__top {
+                        > h2,
+                        > p {
+                            position: relative;
+                            animation-fill-mode: forwards;
+                            animation-name: fadeInDriftUp;
+                            animation-duration: $animation_duration;
+                            opacity: 0;
+                        }
+                        @for $i from 1 through 3 {
+                            :nth-child(#{$i}){
+                                animation-delay: $animation_incremental_delay*$i + $animation_base_delay;
+                            }
+                        }
+                    }
+                    .views_section__image {
+                        transform: scale(1);
                     }
                 }
                 &.slideTemplate-residencePenthouse {
