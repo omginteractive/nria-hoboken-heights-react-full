@@ -782,6 +782,7 @@ class SlideAmenitiesDetail extends Component {
     componentDidMount(){
         this.props.configuration.amenities.forEach((amenity) => {
             const img = new Image().src = require('./'+amenity.image).default
+            
         })
         this.setAmenityData(this.state.currIdx)
         this.setAmenityTitle()

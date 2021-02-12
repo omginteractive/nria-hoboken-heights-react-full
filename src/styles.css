@@ -258,6 +258,7 @@ body {
   position: absolute;
   top: 30px;
   right: 30px;
+  margin-right: 7px;
   cursor: pointer;
 }
 .submittedFormOverlay .closeBtn > img {

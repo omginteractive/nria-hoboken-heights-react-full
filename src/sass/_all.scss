@@ -135,7 +135,8 @@ body {
 	.closeBtn {
 		position: absolute;
 		top: 30px;
-		right: 30px;
+        right: 30px;
+        margin-right: 7px;//compensate because svg is 18px wide but the hamburger is 25px wide
 		cursor: pointer;
 		> img {
 			width: 30px;
