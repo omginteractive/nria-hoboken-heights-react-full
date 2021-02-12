@@ -1141,13 +1141,7 @@ body {
   position: absolute;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer .founderHeadline {
-  text-transform: uppercase;
-  color: #fff;
-  font-size: 40px;
   margin-bottom: 20px;
-  font-family: "Gotham-Thin", sans-serif;
-  font-weight: 200;
-  line-height: 1.4em;
   width: 1px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer .founderTagline {
@@ -1979,7 +1973,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide .videoContainer.compact {
   width: calc(100vw - 6.3vw*2);
-  height: 80%;
+  height: calc(100vh - 12.8vh);
   bottom: 0;
   position: absolute;
   overflow: hidden;

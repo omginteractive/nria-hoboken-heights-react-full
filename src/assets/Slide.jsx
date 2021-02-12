@@ -1198,7 +1198,7 @@ class SlideFounders extends Component {
                     <img className="founderImage" src={require('./'+founderImage).default} alt=""/>
                     <div className="founderSlideWrapper">
                     {founderHeadline &&
-                        <p className="founderHeadline">{founderHeadline}</p>
+                        <h2 className="founderHeadline">{founderHeadline}</h2>
                     }
                     {founderTagline &&
                         <p className="founderTagline">{founderTagline}</p>
