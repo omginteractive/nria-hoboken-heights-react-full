@@ -6,10 +6,14 @@ class MobileMenu extends Component {
         super(props);
     
     }
-    
+    goToSlide(idx){
+        const {goToSlideIdx} = this.props;
+        goToSlideIdx(idx)
+        this.toggleMobileMenu()
+    }
     toggleMobileMenu(){
         const {toggleMobileMenu} = this.props;
-		toggleMobileMenu();
+        toggleMobileMenu();
     }
     
     render(){
@@ -20,14 +24,14 @@ class MobileMenu extends Component {
             <div className={mobileMenuClasses}>
                 <Header theme='light' open={true} toggleMobileMenu={this.toggleMobileMenu.bind(this)} />
                 <div className="mobileMenuLinks">
-                    <a href="#"><h2>Property</h2></a>
-                    <a href="#"><h2>Amenities</h2></a>
-                    <a href="#"><h2>The View</h2></a>
-                    <a href="#"><h2>Residences & Penthouses</h2></a>
-                    <a href="#"><h2>Availability</h2></a>
-                    <a href="#"><h2>Development Team Story</h2></a>
-                    <a href="#"><h2>Discover</h2></a>
-                    <a href="#"><h2>Contact</h2></a>
+                    <a onClick={() => this.goToSlide(2)} href="#"><h2>Property</h2></a>
+                    <a onClick={() => this.goToSlide(4)} href="#"><h2>Amenities</h2></a>
+                    <a onClick={() => this.goToSlide(6)} href="#"><h2>The View</h2></a>
+                    <a onClick={() => this.goToSlide(8)} href="#"><h2>Residences & Penthouses</h2></a>
+                    <a onClick={() => this.goToSlide(13)} href="#"><h2>Availability</h2></a>
+                    <a onClick={() => this.goToSlide(10)} href="#"><h2>Development Team Story</h2></a>
+                    <a onClick={() => this.goToSlide(12)} href="#"><h2>Discover</h2></a>
+                    <a onClick={() => this.goToSlide(15)} href="#"><h2>Contact</h2></a>
                 </div>
                 <div className="mobileMenuContact">
                     <div className="socialMedias">

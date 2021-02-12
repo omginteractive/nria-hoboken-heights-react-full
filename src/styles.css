@@ -1002,7 +1002,7 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__image.new {
   z-index: 1;
   opacity: 1;
-  transition: opacity 1s linear, transform 0.5s linear 0.5s;
+  transition: opacity 1s linear, transform 1s linear 0.6s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouse .btn {
   margin: 0 21px;
@@ -1214,7 +1214,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity .left > img {
   width: 100%;
-  transition: transform 0.8s linear 0.5s;
+  transition: transform 0.8s linear 0.6s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity .right {
   display: flex;
@@ -1290,6 +1290,7 @@ body {
   right: 0;
   height: calc(100vh - 12.8vh);
   z-index: 2;
+  width: 44px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle .rotatedText {
   pointer-events: none;
@@ -1636,7 +1637,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide.runAnimationOnce .videoContainer .background-video.videoZoomEffect {
   transform: scale(1);
-  transition: object-position 1400ms linear 0s, transform 1.2s ease-out 1.2s;
+  transition: object-position 1400ms linear 0s, transform 1400ms ease-out 0.6s;
 }
 .slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders {
   /* background-position: 0% 0%;*/

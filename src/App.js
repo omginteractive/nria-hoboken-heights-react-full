@@ -346,7 +346,15 @@ class App extends React.Component {
 	animationsStopped() {
 		const isStopped = document.body.classList.contains("resize-animation-stopper");
 		return isStopped;
-	}
+    }
+    goToSlide(idx){
+        if(this.state.currIdx == idx) return
+        this.setState({
+			transitiongState: 1,
+			currIdx: idx
+        });
+        this.handleSlideChange(idx)
+    }
 	nextSlide(noRequireScroll = false) {
         const querySelector = typeof this.state.slides[this.state.currIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.state.slides[this.state.currIdx].enableScrollingQuerySelector
         const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
@@ -637,7 +645,7 @@ class App extends React.Component {
             if(this.state.slideHasScrolled) slidesWrapperClasses += ' scrolled'
         return (
             <div id="page" className={pageClasses}>
-                <MobileMenu open={this.state.mobileMenuOpen} toggleMobileMenu={this.toggleMobileMenu.bind(this)} />
+                <MobileMenu open={this.state.mobileMenuOpen} toggleMobileMenu={this.toggleMobileMenu.bind(this)} goToSlideIdx={this.goToSlide.bind(this)} />
                     <div className={slidesWrapperClasses}
                         onTouchStart={this.handleTouchStart.bind(this)}
                         onTouchMove={this.handleTouchMove.bind(this)}
