@@ -191,6 +191,8 @@ class SlideMap extends Component {
         satelliteImageContainerClasses += this.state.satelliteMapEnabled ? ' visible' : ''
 
         const locationListings = this.props.configuration.locationListings
+
+        const toggleBarText = this.state.satelliteMapEnabled ? 'Location View' : 'Satellite View'
         return(
             <>
                 <section className={mapSectionClasses}>
@@ -204,7 +206,7 @@ class SlideMap extends Component {
                         <img src={require('./images/map/Motion_logo.gif').default} alt="" className="map"/>
                     </div>
                     <div onClick={this.toggleMap.bind(this)} className="satelliteToggle vertical_toggle_column">
-                        <div className="rotatedText">Satellite View</div>
+                        <div className="rotatedText">{toggleBarText}</div>
                     </div>
                     <div className="mapSection__locationList">
                         {locationListings.map((amenity, idx) => {
