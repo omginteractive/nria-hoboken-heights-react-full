@@ -1203,6 +1203,7 @@ body {
   top: calc(12.8vh);
   position: absolute;
   left: 6.3vw;
+  padding-bottom: 38px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity .left > img {
   width: 100%;

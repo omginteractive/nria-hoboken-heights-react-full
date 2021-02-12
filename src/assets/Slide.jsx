@@ -256,7 +256,8 @@ class SlideVideoDiscover extends Component {
 							muted='muted'
 							autoplay='true'
 							playsinline='playsinline'
-							preload="metadata"
+                            preload="metadata"
+                            loop="true"
 							>
 							<source src='/videos/NRIMA_SITE_VIDEO DISCOVER.mp4' type="video/mp4" />
 							</video>`
@@ -519,13 +520,12 @@ class ContactForm extends Component {
 }
 
 class SlideNeighborhoodCommunity extends Component {
-    
     render(){
         return(
             <>
                 <section className="neighborhoodCommunity">
                     <div className="left">
-                        <img alt="neighborhood" src={require('./images/residence/residence.png').default} />
+                        <img alt="neighborhood" src={require('./images/neighborhood.png').default} />
                     </div>
                     <div className="right">
                         <h2>Hoboken Heights Neighborhood and Community</h2>

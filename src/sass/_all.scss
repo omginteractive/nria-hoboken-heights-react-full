@@ -1154,7 +1154,7 @@ body {
                         top: calc(#{$header-height});
                         position: absolute;
                         left: $side-margin;
-                        
+                        padding-bottom: $content-padding;
                         .left {
                             > img {
                                 width: 100%;
