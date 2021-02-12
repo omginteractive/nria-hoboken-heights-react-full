@@ -134,17 +134,38 @@ class Slide extends Component {
 
 
 class SlideMap extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            satelliteMapEnabled: false,
+        }
+    }
+    toggleMap(){
+        const newState = !this.state.satelliteMapEnabled
+        this.setState({
+            satelliteMapEnabled: newState
+        })
+    }
     render(){
         let mapSectionClasses = 'mapSection'
         mapSectionClasses += this.props.mapHeightLocked ? ' heightLocked' : ' heightNotLocked'
+
+        let satelliteImageContainerClasses = 'satelliteImageContainer'
+        satelliteImageContainerClasses += this.state.satelliteMapEnabled ? ' visible' : ''
         return(
             <>
                 <section className={mapSectionClasses}>
                     <div className="mapBackground">
                         <img src={require('./images/map/map01.jpg').default} alt="" className='map'/>
+                        <div className={satelliteImageContainerClasses}>
+                            <img src={require('./images/map/map02.jpg').default} alt="" className='map'/>
+                        </div>
                     </div>
                     <div className="mapMotionLogo">
                         <img src={require('./images/map/Motion_logo.gif').default} alt="" className="map"/>
+                    </div>
+                    <div onClick={this.toggleMap.bind(this)} className="satelliteToggle vertical_toggle_column">
+                        <div className="rotatedText">Satellite View</div>
                     </div>
                 </section>
             </>
@@ -818,7 +839,7 @@ class SlideResidencePenthouseDetail extends Component {
                         </div>
                     </div>
                     <div className="residencePenthouseDetail__image_container">
-                        <div onClick={this.toggleImageExpansion.bind(this)} className="residencePenthouseDetail__expand_toggler">
+                        <div onClick={this.toggleImageExpansion.bind(this)} className="residencePenthouseDetail__expand_toggler vertical_toggle_column">
                             <div><img src={require('./'+'images/expand+.svg').default} alt=""/></div>
                         </div>
                         <img src={require('./'+image).default} alt=""/>

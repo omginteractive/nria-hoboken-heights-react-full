@@ -376,6 +376,21 @@ body {
         }
     }
 }
+.vertical_toggle_column {
+    cursor: pointer;
+    background-color: $vertical-toggler-color;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    font-size: 13px;
+    line-height: 15.6;
+    font-family: 'Gotham-Medium';
+}
 .slide .fixed-header {
     z-index: 0;
     display: none;
@@ -908,16 +923,16 @@ body {
                             }
                         }
                         &__expand_toggler {
-                            cursor: pointer;
-                            background-color: #d9d9d9;
-                            color: #ffffff;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            padding: 11px;
-                            height: 100%;
-                            position: absolute;
-                            z-index: 1;
+                            // cursor: pointer;
+                            // background-color: $vertical-toggler-color;
+                            // color: #ffffff;
+                            // display: flex;
+                            // align-items: center;
+                            // justify-content: center;
+                            // padding: 11px;
+                            // height: 100%;
+                            // position: absolute;
+                            // z-index: 1;
                         }
                         &__features_list {
                             margin-bottom: $content-padding;
@@ -1149,6 +1164,21 @@ body {
                                 
                             }
                         }
+                        .satelliteToggle {
+                            right: 0;
+                            height: calc(100vh - #{$header-height});
+                            .rotatedText {
+                                pointer-events: none;
+                                transform: rotate(270deg);
+                                position: absolute;
+                                width: 25vh;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                text-transform: uppercase;
+                                height: 22px;
+                            }
+                        }
                         .mapBackground {
                             width: 100%;
                             .map {
@@ -1156,6 +1186,21 @@ body {
                                 height: 100vh;
                                 object-fit: cover;
                                 object-position: top left;
+                            }
+                            .satelliteImageContainer {
+                                position: absolute;
+                                top: 0;
+                                width: 100%;
+                                overflow: hidden;
+                                > img {
+                                    transform: translateX(100%);
+                                    transition: transform 1s;
+                                }
+                                &.visible {
+                                    > img {
+                                        transform: translateX(0);
+                                    }
+                                }
                             }
                         }
                         .mapMotionLogo {

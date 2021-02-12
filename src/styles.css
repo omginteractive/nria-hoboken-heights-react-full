@@ -491,6 +491,22 @@ body {
   line-height: 1.4em;
 }
 
+.vertical_toggle_column {
+  cursor: pointer;
+  background-color: #d9d9d9;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  font-size: 13px;
+  line-height: 15.6;
+  font-family: "Gotham-Medium";
+}
+
 .slide .fixed-header {
   z-index: 0;
   display: none;
@@ -992,18 +1008,6 @@ body {
   position: absolute;
   right: 0;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__expand_toggler {
-  cursor: pointer;
-  background-color: #d9d9d9;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 11px;
-  height: 100%;
-  position: absolute;
-  z-index: 1;
-}
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list {
   margin-bottom: 38px;
 }
@@ -1197,6 +1201,21 @@ body {
   left: 25vw;
   top: 24vw;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle {
+  right: 0;
+  height: calc(100vh - 12.8vh);
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle .rotatedText {
+  pointer-events: none;
+  transform: rotate(270deg);
+  position: absolute;
+  width: 25vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  height: 22px;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground {
   width: 100%;
 }
@@ -1205,6 +1224,19 @@ body {
   height: 100vh;
   object-fit: cover;
   object-position: top left;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer > img {
+  transform: translateX(100%);
+  transition: transform 1s;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer.visible > img {
+  transform: translateX(0);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo {
   border: white solid 1px;
