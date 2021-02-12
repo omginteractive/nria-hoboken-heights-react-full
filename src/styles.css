@@ -625,8 +625,10 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .videoContainer .background-video {
   height: 100%;
-  width: 100vw;
+  width: 100%;
   object-position: top right;
+  min-width: 100vw;
+  min-height: 100vh;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-patio .downArrowContainer .downArrow, .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen .downArrowContainer .downArrow {
   animation-delay: 0.5s, 1.5s;
