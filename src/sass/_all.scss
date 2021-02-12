@@ -539,14 +539,16 @@ body {
                         display: flex;
                         align-items: flex-start;
                         &__details {
+                            overflow: scroll;
                             background-color: #000000;
                             padding: 9.6vh 4.1vw;
                             flex-basis: 70%;
                             color: #ffffff;
                             display: flex;
                             flex-direction: column;
-                            justify-content: center;
-                            min-height: calc(100vh - #{$header-height} - #{$bottom-space});
+                            // justify-content: center;
+                            // height: calc(100vh - #{$header-height} - #{$bottom-space});
+                            height: calc(100vh - #{$header-height});
                             > h2 {
                                 width: 400px;
                                 line-height: 1.4em;
@@ -570,14 +572,16 @@ body {
                             text-transform: uppercase;
                             line-height: 2.8em;
                             font-size: 15px;
-                            min-height: calc(100vh - #{$header-height} - #{$bottom-space});
+                            // min-height: calc(100vh - #{$header-height} - #{$bottom-space});
+                            height: calc(100vh - #{$header-height});
                             > ul {
                                 > li {
                                     font-family: 'Gotham-Book';
                                     cursor: pointer;
                                     line-height: 15px;
                                     transition: font-size 0.1s;
-                                    padding: 24px 0;
+                                    // padding: 24px 0;
+                                    padding: 2.2vh 0;
                                     &:hover {
                                         font-family: 'Gotham-Medium';
                                         font-size: 18px;

@@ -643,14 +643,14 @@ body {
   align-items: flex-start;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details {
+  overflow: scroll;
   background-color: #000000;
   padding: 9.6vh 4.1vw;
   flex-basis: 70%;
   color: #ffffff;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: calc(100vh - 12.8vh - 11.2vh);
+  height: calc(100vh - 12.8vh);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details > h2 {
   width: 400px;
@@ -674,14 +674,14 @@ body {
   text-transform: uppercase;
   line-height: 2.8em;
   font-size: 15px;
-  min-height: calc(100vh - 12.8vh - 11.2vh);
+  height: calc(100vh - 12.8vh);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__list > ul > li {
   font-family: "Gotham-Book";
   cursor: pointer;
   line-height: 15px;
   transition: font-size 0.1s;
-  padding: 24px 0;
+  padding: 2.2vh 0;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__list > ul > li:hover {
   font-family: "Gotham-Medium";
