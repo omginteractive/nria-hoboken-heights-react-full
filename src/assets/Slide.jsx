@@ -30,7 +30,10 @@ class Slide extends Component {
     setResidencePenthousePath(option){
         const {setResidencePenthousePath} = this.props;
         setResidencePenthousePath(option)
-        this.scrollToNextSlide(true)
+        setTimeout(() => {
+            this.scrollToNextSlide(true)
+        })
+        
     }
     createHubspotForm(){
 		const {createHubspotContactForm} = this.props;
@@ -1066,6 +1069,12 @@ class SlideResidencePenthouse extends Component {
 }
 
 class SlideResidencePenthouseFullscreen extends Component {
+    componentDidMount(){
+        //preload images
+        new Image().src = require('./'+'images/penthouse/penthousebed.png').default
+        new Image().src = require('./'+'images/residence/residence.png').default
+        
+    }
     nextSlide(noRequireScroll = false){
         this.props.methods.scrollToNextSlide(noRequireScroll)
     }

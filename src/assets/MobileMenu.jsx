@@ -28,7 +28,7 @@ class MobileMenu extends Component {
                         <a onClick={() => this.goToSlide(2)} href="#"><h2>Property</h2></a>
                         <a onClick={() => this.goToSlide(4)} href="#"><h2>Amenities</h2></a>
                         <a onClick={() => this.goToSlide(6)} href="#"><h2>The View</h2></a>
-                        <a onClick={() => this.goToSlide(8)} href="#"><h2>Residences & Penthouses</h2></a>
+                        <a onClick={() => this.goToSlide(7)} href="#"><h2>Residences & Penthouses</h2></a>
                         <a onClick={() => this.goToSlide(13)} href="#"><h2>Availability</h2></a>
                         <a onClick={() => this.goToSlide(10)} href="#"><h2>Development Team Story</h2></a>
                         <a onClick={() => this.goToSlide(12)} href="#"><h2>Discover</h2></a>
