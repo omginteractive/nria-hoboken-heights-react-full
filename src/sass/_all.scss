@@ -1856,6 +1856,23 @@ body {
                         }
                     }
                 }
+                &.slideTemplate-residencePenthouse {
+                    $animation_duration: 0.6s;
+                    $animation_base_delay: 0.2s;
+                    $animation_incremental_delay: 0.2s;
+                    .btn {
+                        position: relative;
+                        animation-fill-mode: forwards;
+                        animation-name: fadeInDriftUp;
+                        animation-duration: $animation_duration;
+                        opacity: 0;
+                        @for $i from 1 through 2 {
+                            &:nth-of-type(#{$i}){
+                                animation-delay: $animation_incremental_delay*$i + $animation_base_delay + $animation_incremental_delay;
+                            }
+                        }
+                    }
+                }
                 &.slideTemplate-neighborhoodCommunity {
                     $animation_duration: 0.6s;
                     $animation_base_delay: 0.6s;

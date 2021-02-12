@@ -1899,6 +1899,19 @@ body {
 .slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(4) {
   animation-delay: 2.4s;
 }
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-residencePenthouse .btn {
+  position: relative;
+  animation-fill-mode: forwards;
+  animation-name: fadeInDriftUp;
+  animation-duration: 0.6s;
+  opacity: 0;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-residencePenthouse .btn:nth-of-type(1) {
+  animation-delay: 0.6s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-residencePenthouse .btn:nth-of-type(2) {
+  animation-delay: 0.8s;
+}
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .left > img {
   transform: scale(1);
 }
