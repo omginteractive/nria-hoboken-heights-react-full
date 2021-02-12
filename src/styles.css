@@ -1201,9 +1201,51 @@ body {
   left: 25vw;
   top: 24vw;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection__locationList {
+  position: absolute;
+  color: #fff;
+  top: 46px;
+  left: 51px;
+  font-size: 13px;
+  font-family: "Gotham-Light";
+  z-index: 1;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection__locationList .titleDistanceWrapper {
+  display: flex;
+  cursor: pointer;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection__locationList .locationListing + .locationListing {
+  margin-top: 24px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection__locationList .locationListing.active .locationTitle {
+  font-family: "Gotham-Medium";
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection__locationList .locationListing.active .description {
+  max-height: 70px;
+  transition: max-height 0.5s linear, opacity 0.5s linear 0.5s, margin-top 0.5s linear;
+  opacity: 1;
+  margin-top: 24px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection__locationList .locationListing .locationTitle {
+  text-transform: uppercase;
+  margin-right: 1em;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection__locationList .locationListing .locationDistance {
+  margin-right: 38px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection__locationList .locationListing .description {
+  transition: max-height 0.5s linear 0.5s, opacity 0.5s, margin-top 0.5s linear 0.5s;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 14.4px;
+  width: 249px;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle {
   right: 0;
   height: calc(100vh - 12.8vh);
+  z-index: 2;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle .rotatedText {
   pointer-events: none;
@@ -1230,15 +1272,22 @@ body {
   top: 0;
   width: 100%;
   overflow: hidden;
+  transition: z-index 0.5s linear 0.2s;
+  z-index: 0;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer > img {
   transform: translateX(100%);
   transition: transform 1s;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer.visible {
+  z-index: 2;
+  transition: z-index 0.5s linear;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer.visible > img {
   transform: translateX(0);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo {
+  z-index: 2;
   border: white solid 1px;
   position: absolute;
 }

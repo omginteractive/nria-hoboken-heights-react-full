@@ -1146,6 +1146,7 @@ body {
                 }
                 &map {
                     .mapSection {
+                        $animationDuration: 0.5s;
                         display: flex;
                         width: calc(100% - #{$side-margin}*2);
                         top: calc(#{$header-height});
@@ -1164,9 +1165,56 @@ body {
                                 
                             }
                         }
+                        &__locationList {
+                            position: absolute;
+                            color: #fff;
+                            top: 46px;
+                            left: 51px;
+                            font-size: 13px;
+                            font-family: "Gotham-Light";
+                            z-index: 1;
+                            .titleDistanceWrapper {
+                                display: flex;
+                                cursor: pointer;
+                            }
+                            .locationListing {
+                                + .locationListing {
+                                    margin-top: 24px;
+                                }
+                                &.active {
+                                    .locationTitle {
+                                        font-family: 'Gotham-Medium';
+                                    }
+                                    .description {
+                                        max-height: 70px;
+                                        transition: max-height $animationDuration linear, opacity $animationDuration linear $animationDuration, margin-top $animationDuration linear, ;
+                                        opacity: 1;
+                                        margin-top: 24px;
+                                    }
+                                }
+                                .locationTitle {
+                                    text-transform: uppercase;
+                                    margin-right: 1em;
+                                }
+                                .locationDistance {
+                                    margin-right: $content-padding;
+                                }
+                                .description {
+                                    transition: max-height $animationDuration linear $animationDuration, opacity $animationDuration, margin-top $animationDuration linear $animationDuration;
+                                    opacity: 0;
+                                    max-height: 0;
+                                    overflow: hidden;
+                                    
+                                    font-size: 12px;
+                                    line-height: 14.4px;
+                                    width: 249px;
+                                }
+                            }
+                        }
                         .satelliteToggle {
                             right: 0;
                             height: calc(100vh - #{$header-height});
+                            z-index: 2;
                             .rotatedText {
                                 pointer-events: none;
                                 transform: rotate(270deg);
@@ -1192,11 +1240,15 @@ body {
                                 top: 0;
                                 width: 100%;
                                 overflow: hidden;
+                                transition: z-index $animationDuration linear 0.2s;//this prevents clickability problems with .locationList
+                                z-index: 0;
                                 > img {
                                     transform: translateX(100%);
                                     transition: transform 1s;
                                 }
                                 &.visible {
+                                    z-index: 2;
+                                    transition: z-index $animationDuration linear;//this prevents clickability problems with .locationList
                                     > img {
                                         transform: translateX(0);
                                     }
@@ -1204,6 +1256,7 @@ body {
                             }
                         }
                         .mapMotionLogo {
+                            z-index: 2;
                             border: white solid 1px;
                             position: absolute;
                             > img {

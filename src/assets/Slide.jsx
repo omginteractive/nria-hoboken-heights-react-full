@@ -138,6 +138,7 @@ class SlideMap extends Component {
         super(props)
         this.state = {
             satelliteMapEnabled: false,
+            enabledListings: []
         }
     }
     toggleMap(){
@@ -146,12 +147,27 @@ class SlideMap extends Component {
             satelliteMapEnabled: newState
         })
     }
+    toggleListing(idx){
+        const enabledListingsClone = [...this.state.enabledListings];
+        const index = enabledListingsClone.indexOf(idx)
+        if (index !== -1) {
+            enabledListingsClone.splice(index, 1);
+            this.setState({enabledListings: enabledListingsClone});
+        }
+        else {
+            this.setState({
+                enabledListings: this.state.enabledListings.concat(idx)
+            })
+        }
+    }
     render(){
         let mapSectionClasses = 'mapSection'
         mapSectionClasses += this.props.mapHeightLocked ? ' heightLocked' : ' heightNotLocked'
 
         let satelliteImageContainerClasses = 'satelliteImageContainer'
         satelliteImageContainerClasses += this.state.satelliteMapEnabled ? ' visible' : ''
+
+        const locationListings = this.props.configuration.locationListings
         return(
             <>
                 <section className={mapSectionClasses}>
@@ -166,6 +182,23 @@ class SlideMap extends Component {
                     </div>
                     <div onClick={this.toggleMap.bind(this)} className="satelliteToggle vertical_toggle_column">
                         <div className="rotatedText">Satellite View</div>
+                    </div>
+                    <div className="mapSection__locationList">
+                        {locationListings.map((amenity, idx) => {
+                            const isActive = this.state.enabledListings.indexOf(idx) !== -1
+                            const locationListingClasses =  isActive ? 'locationListing active' : 'locationListing'
+                            const toggleSymbol = isActive ? '-' : '+'
+                            return (
+                            <div key={idx} onClick={() => this.toggleListing(idx)}  className={locationListingClasses}>
+                                <div className="titleDistanceWrapper">
+                                    <div className="locationTitle">Lorem Ipsum</div>
+                                    <div className="locationDistance">(10 mins)</div>
+                                    <div className="toggleButton">{toggleSymbol}</div>
+                                </div>
+                                <div className="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                            </div>
+                            )
+                        })}
                     </div>
                 </section>
             </>
