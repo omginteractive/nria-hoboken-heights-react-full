@@ -801,6 +801,7 @@ body {
                                     margin-top: -$sliderThumbWidth/2;
                                     position: relative;
                                     z-index: 1;//to appear above tick lines
+                                    cursor: pointer;
                                 }
                                 &:focus {
                                     outline: none;
@@ -820,6 +821,7 @@ body {
                                     width: $sliderThumbWidth;
                                     border-radius: $thumbBorderRadius;
                                     background: $thumbColor;
+                                    cursor: pointer;
                                 }
                                 
                                 /*hide the outline behind the border*/
@@ -857,6 +859,7 @@ body {
                                     width: $sliderThumbWidth;
                                     border-radius: $thumbBorderRadius;
                                     background: $thumbColor;
+                                    cursor: pointer;
                                 }
                                 &:focus::-ms-fill-lower {
                                     background: $sliderLineColor;

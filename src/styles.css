@@ -905,6 +905,7 @@ body {
   margin-top: -10px;
   position: relative;
   z-index: 1;
+  cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus {
   outline: none;
@@ -924,6 +925,7 @@ body {
   width: 20px;
   border-radius: 50%;
   background: #000;
+  cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:-moz-focusring {
   outline: 1px solid white;
@@ -955,6 +957,7 @@ body {
   width: 20px;
   border-radius: 50%;
   background: #000;
+  cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus::-ms-fill-lower {
   background: #b2b2b2;
