@@ -252,8 +252,9 @@ body {
     .closeBtn {
         cursor: pointer;
         height: 25px;
-        width: calc(#{$menuBtnHorizontalPadding}*2 + #{$menuBtnWidth});
-        padding: 0 $menuBtnHorizontalPadding;
+        // width: calc(#{$menuBtnHorizontalPadding}*2 + #{$menuBtnWidth});
+        width: 18px;
+        // padding: 0 $menuBtnHorizontalPadding;
     }
     .hamburger {
         cursor: pointer;
@@ -302,8 +303,10 @@ body {
     &.open {
         width: 100vw;
         .mobileMenuLinks {
-            > a {
-                transform: translateX(0);
+            .linksWrapper {
+                > a {
+                    transform: translateX(0);
+                }
             }
         }
         .socialMedias,
@@ -323,14 +326,15 @@ body {
             animation-delay: 0.7s;
         }
         .mobileMenuLinks {
-
-            @for $i from 1 through 10 {
-                $animation_duration: 0.6s;
-                $delay_before_animation: 0.1s;
-                $interval_between_animation: 0.1s;
-                $timing: $i*$interval_between_animation + $delay_before_animation;
-                > a:nth-child(#{$i}) {
-                    transition: transform $animation_duration linear $timing;
+            .linksWrapper {
+                @for $i from 1 through 10 {
+                    $animation_duration: 0.6s;
+                    $delay_before_animation: 0.1s;
+                    $interval_between_animation: 0.1s;
+                    $timing: $i*$interval_between_animation + $delay_before_animation;
+                    > a:nth-child(#{$i}) {
+                        transition: transform $animation_duration linear $timing;
+                    }
                 }
             }
         }
@@ -340,31 +344,33 @@ body {
         position: absolute;
     }
     .mobileMenuLinks {
-        color: #ffffff;
+        height: 100vh;
+        display: flex;
+        align-items: center;
         position: absolute;
-        left: calc(50px + #{$side-margin});
-        top: calc(50px + #{$header-height});
-        
-        > a {
-            transition: transform 0s linear $menu_animation_duration;
-        }
-        > a {
-            display: block;
+        left: $side-margin;
+        .linksWrapper {
             color: #ffffff;
-            text-decoration: none;
-            height: 60px;
-            transform: translateX(-170%);
-            
-            
-            > h2 {
-                white-space: nowrap;
-                line-height: 1.4em;
-                transform-origin: left;
-                transition: transform 0.4s, color 0.4s;
-                color: rgba(255, 255, 255, 0.5);
-                &:hover {
-                    transform: scale(1.3);
-                    color: #fff;
+            > a {
+                transition: transform 0s linear $menu_animation_duration;
+            }
+            > a {
+                display: block;
+                color: #ffffff;
+                text-decoration: none;
+                transform: translateX(-170%);
+                > h2 {
+                    // line-height: 100px;
+                    line-height: 9.2vh;
+                    white-space: nowrap;
+                    margin-bottom: 0;
+                    transform-origin: left;
+                    transition: transform 0.4s, color 0.4s;
+                    color: rgba(255, 255, 255, 0.5);
+                    &:hover {
+                        transform: scale(1.3);
+                        color: #fff;
+                    }
                 }
             }
         }
