@@ -287,7 +287,6 @@ class App extends React.Component {
 		this.setState({previousScrollVal: deltaY});
 	}
 	handleScrollEvent(evt) {
-        // console.log(1)
 		// const deltaY = evt.deltaY;
 		// this.throttleOnScroll(deltaY);
 		// this.debounceOnScroll(deltaY);
@@ -308,8 +307,8 @@ class App extends React.Component {
 		// else {
 		// 	this.throttleOnScroll(deltaY);
 		// }
-		this.throttleOnScroll(deltaY);
-		// this.debounceOnScroll(deltaY);
+        this.throttleOnScroll(deltaY);
+        // this.debounceOnScroll(deltaY);
 		return;
 		// const isScrollingDown = deltaY > 0;
 		// if (isScrollingDown) {
@@ -349,13 +348,14 @@ class App extends React.Component {
 		return isStopped;
 	}
 	nextSlide(noRequireScroll = false) {
-		const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
+        const querySelector = typeof this.state.slides[this.state.currIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.state.slides[this.state.currIdx].enableScrollingQuerySelector
+        const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
 		const videosPlayed = this.state.videosPlayed
 		if (this.isTransitioning() || this.animationsStopped() || (isFirefoxAndroid && !videosPlayed)) {
 			return;
 		}
 		if(this.state.slides[this.state.currIdx].enableScrolling && !noRequireScroll) {
-            const scrollBottom = document.querySelector('.activeSlide').scrollHeight - document.querySelector('.activeSlide').offsetHeight - document.querySelector('.activeSlide').scrollTop;
+            const scrollBottom = document.querySelector(querySelector).scrollHeight - document.querySelector(querySelector).offsetHeight - document.querySelector(querySelector).scrollTop;
             if(scrollBottom > 0) {//scrollBottom can be negative
 				return;
 			}
@@ -373,8 +373,9 @@ class App extends React.Component {
 	prevSlide() {
 		if (this.isTransitioning() || this.animationsStopped()) {
 			return;
-		}
-		const positionIsNotAtTopOfSlide = document.querySelector('.activeSlide').scrollTop !== 0;
+        }
+        const querySelector = typeof this.state.slides[this.state.currIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.state.slides[this.state.currIdx].enableScrollingQuerySelector
+		const positionIsNotAtTopOfSlide = document.querySelector(querySelector).scrollTop !== 0;
 		if(positionIsNotAtTopOfSlide) {
 			return;
 		}

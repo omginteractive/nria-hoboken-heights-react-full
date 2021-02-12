@@ -68,7 +68,7 @@ const flypilotFetchWPRestAPI = async () => {
         // slideClasses: "fullWidthVideo",
         // videoLoop: true,
         // videoZoomEffect: true,
-        headerTheme: 'light'
+        headerTheme: 'light',
     }, {
         slideTemplate: 'views',
         styles: {
@@ -129,6 +129,7 @@ const flypilotFetchWPRestAPI = async () => {
         },
         headerTheme: 'dark',
         enableScrolling: true,
+        enableScrollingQuerySelector: '.residencePenthouseDetail__details',
     }
     ,{
         slideTemplate: 'developmentTeam',

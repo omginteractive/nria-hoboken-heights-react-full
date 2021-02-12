@@ -229,8 +229,8 @@ class SlideMap extends Component {
     }
 }
 class SlideVideoDiscover extends Component {
-    nextSlide(){
-        this.props.methods.scrollToNextSlide()
+    nextSlide(noRequireScroll = false){
+        this.props.methods.scrollToNextSlide(noRequireScroll)
     }
     render(){
         let videoContainerClasses = 'videoContainer'
@@ -542,8 +542,8 @@ class SlideNeighborhoodCommunity extends Component {
     }
 }
 class SlideHome extends Component {
-    nextSlide(){
-        this.props.methods.scrollToNextSlide()
+    nextSlide(noRequireScroll = false){
+        this.props.methods.scrollToNextSlide(noRequireScroll)
     }
     render(){
         return(
@@ -681,8 +681,8 @@ class SlideFountainPen extends Component {
 
 
 class SlidePatio extends Component {
-    nextSlide(){
-        this.props.methods.scrollToNextSlide()
+    nextSlide(noRequireScroll = false){
+        this.props.methods.scrollToNextSlide(noRequireScroll)
     }
     render(){
         let videoContainerClasses = 'videoContainer'
@@ -1062,8 +1062,8 @@ class SlideResidencePenthouse extends Component {
 }
 
 class SlideResidencePenthouseFullscreen extends Component {
-    nextSlide(){
-        this.props.methods.scrollToNextSlide()
+    nextSlide(noRequireScroll = false){
+        this.props.methods.scrollToNextSlide(noRequireScroll)
     }
     render(){
         const fullscreenImage = this.props.residencePenthouse == 'penthouse' ? 'images/penthouse/penthousebed.png' : 'images/residence/residence.png'
@@ -1087,7 +1087,11 @@ class SlideResidencePenthouseDetail extends Component {
             imageExpanded: false
         }
     }
-
+    handleWheelEvent = e => {
+        const wheelAmt = e.deltaY
+        const currentDetailsScrollDistance = document.querySelectorAll('.residencePenthouseDetail__details')[0].scrollTop
+        document.querySelectorAll('.residencePenthouseDetail__details')[0].scrollTop = currentDetailsScrollDistance + wheelAmt
+    }
     toggleImageExpansion(){
         const newImageState = !this.state.imageExpanded
         this.setState({
@@ -1143,7 +1147,7 @@ class SlideResidencePenthouseDetail extends Component {
                             <div className="btn light">Inquire now</div>
                         </div>
                     </div>
-                    <div className="residencePenthouseDetail__image_container">
+                    <div onWheel={this.handleWheelEvent.bind(this)} className="residencePenthouseDetail__image_container">
                         <div onClick={this.toggleImageExpansion.bind(this)} className="residencePenthouseDetail__expand_toggler vertical_toggle_column">
                             <div><img src={require('./'+'images/expand+.svg').default} alt=""/></div>
                         </div>

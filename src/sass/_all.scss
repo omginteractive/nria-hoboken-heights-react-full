@@ -932,6 +932,8 @@ body {
                             padding-right: $content-padding;
                             position: absolute;
                             width: calc(#{$content_width} - #{$starting_leftside_width});
+                            overflow: scroll;
+                            height: calc(100vh - #{$header-height});
                             > h2 {
                                 margin-bottom: $content-padding;
                             }

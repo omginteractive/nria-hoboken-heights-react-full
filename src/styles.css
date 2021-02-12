@@ -1017,6 +1017,8 @@ body {
   padding-right: 38px;
   position: absolute;
   width: calc(calc(100vw - 6.3vw*2) - 40vw);
+  overflow: scroll;
+  height: calc(100vh - 12.8vh);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__details > h2 {
   margin-bottom: 38px;
