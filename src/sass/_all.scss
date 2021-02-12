@@ -750,6 +750,9 @@ body {
                         display: flex;
                         flex-direction: column;
                         $sliderLineColor: #b2b2b2;
+                        $hideSliderColor: transparent;
+                        $sliderTargetWidth: 40vw;
+                        $labelDistanceFromRangeLine: 20px;
                         &__top {
                             position: absolute;
                             top: $header-height;
@@ -769,15 +772,25 @@ body {
                         }
                         &__timeSlider {
                             $sliderThumbWidth: 20px;
-                            $sliderHeight: 1px;
-                            $sliderWidth: calc(40vw + #{$sliderThumbWidth});
+                            $visibleSliderHeight: 1px;
+                            $sliderHeight: 20px;
+                            $sliderActualWidth: calc(#{$sliderTargetWidth} + #{$sliderThumbWidth});
                             $thumbColor: #000;
                             $thumbBorderRadius: 50%;
                             $thumbBorder: solid 1px #fff;
                             position: absolute;
-                        bottom: 12vh;
+                            bottom: 12vh;
+                            .visibleSliderLine {
+                                background: $sliderLineColor;
+                                height: $visibleSliderHeight;
+                                width: $sliderTargetWidth;
+                                z-index: 1;
+                                position: relative;
+                                bottom: $labelDistanceFromRangeLine + $visibleSliderHeight;
+                            }
                             > input {
-                                width: $sliderWidth;
+                                background-color: $hideSliderColor;
+                                width: $sliderActualWidth;
                                 margin: 0;
                                 -webkit-appearance: none;
                                 position: relative;
@@ -786,11 +799,15 @@ body {
                                 /* fix for FF unable to apply focus style bug  */
                                 border: none 0 transparent;
                                 /*required for proper track sizing in FF*/
-                                width: $sliderWidth;
+                                width: $sliderActualWidth;
                                 &::-webkit-slider-runnable-track {
-                                    width: $sliderWidth;
+                                    position: relative;
+                                    top: $sliderHeight/2;
+                                    width: $sliderActualWidth;
                                     height: $sliderHeight;
-                                    background: $sliderLineColor;
+                                    // background: $sliderLineColor;
+                                    -webkit-appearance: none;
+                                    background: transparent;
                                     border: none;
                                 }
                                 &::-webkit-slider-thumb {
@@ -801,8 +818,9 @@ body {
                                     width: $sliderThumbWidth;
                                     border-radius: $thumbBorderRadius;
                                     background: $thumbColor;
-                                    margin-top: -$sliderThumbWidth/2;
+                                    // margin-top: $sliderHeight - $sliderThumbWidth/2;
                                     position: relative;
+                                    bottom: $sliderThumbWidth/2 - $sliderHeight/2;
                                     z-index: 1;//to appear above tick lines
                                     cursor: pointer;
                                 }
@@ -810,12 +828,14 @@ body {
                                     outline: none;
                                 }
                                 &:focus::-webkit-slider-runnable-track {
-                                    background: $sliderLineColor;
+                                    background: $hideSliderColor;
                                 }
                                 &::-moz-range-track {
+                                    position: relative;
+                                    top: $sliderHeight/2;
                                     width: $sliderThumbWidth;
                                     height: $sliderHeight;
-                                    background: $sliderLineColor;
+                                    background: $hideSliderColor;
                                     border: none;
                                 }
                                 &::-moz-range-thumb {
@@ -833,10 +853,12 @@ body {
                                     outline-offset: -1px;
                                 }
                                 &:focus::-moz-range-track {
-                                    background: $sliderLineColor;
+                                    background: $hideSliderColor;
                                 }
                                 &::-ms-track {/* for ie */
-                                    width: $sliderWidth;
+                                    position: relative;
+                                    top: $sliderHeight/2;
+                                    width: $sliderActualWidth;
                                     height: 5px;
                                     /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
                                     background: transparent;
@@ -849,12 +871,10 @@ body {
                                     color: transparent;
                                 }
                                 &::-ms-fill-lower {
-                                    background: $sliderLineColor;
-                                    // border-radius: 10px;
+                                    background: $hideSliderColor;
                                 }
                                 &::-ms-fill-upper {
-                                    background: $sliderLineColor;
-                                    // border-radius: 10px;
+                                    background: $hideSliderColor;
                                 }
                                 &::-ms-thumb {
                                     border: $thumbBorder;
@@ -865,25 +885,26 @@ body {
                                     cursor: pointer;
                                 }
                                 &:focus::-ms-fill-lower {
-                                    background: $sliderLineColor;
+                                    background: $hideSliderColor;
                                 }
                                 &:focus::-ms-fill-upper {
-                                    background: $sliderLineColor;
+                                    background: $hideSliderColor;
                                 }
                             }
                         }
                         &__timeList {
+                            $timeWordWidth: 6vw;
                             display: flex;
                             justify-content: space-between;
-                            width: calc(46vw);
+                            width: calc(#{$sliderTargetWidth} + #{$timeWordWidth});
                             position: relative;
-                            left: -3vw;
-                            top: 20px;
+                            left: -$timeWordWidth/2;
+                            top: $labelDistanceFromRangeLine;
                             color: #fff;
                             z-index: 1;
                             font-size: 18px;
                             > li {
-                                width: 6vw;
+                                width: $timeWordWidth;
                                 text-align: center;
                                 position: relative;
                                 font-family: "Gotham-Light", sans-serif;

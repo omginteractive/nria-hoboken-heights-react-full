@@ -877,7 +877,16 @@ body {
   position: absolute;
   bottom: 12vh;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider .visibleSliderLine {
+  background: #b2b2b2;
+  height: 1px;
+  width: 40vw;
+  z-index: 1;
+  position: relative;
+  bottom: 21px;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input {
+  background-color: transparent;
   width: calc(40vw + 20px);
   margin: 0;
   -webkit-appearance: none;
@@ -891,9 +900,12 @@ body {
   /*hide the outline behind the border*/
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-webkit-slider-runnable-track {
+  position: relative;
+  top: 10px;
   width: calc(40vw + 20px);
-  height: 1px;
-  background: #b2b2b2;
+  height: 20px;
+  -webkit-appearance: none;
+  background: transparent;
   border: none;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-webkit-slider-thumb {
@@ -904,8 +916,8 @@ body {
   width: 20px;
   border-radius: 50%;
   background: #000;
-  margin-top: -10px;
   position: relative;
+  bottom: 0px;
   z-index: 1;
   cursor: pointer;
 }
@@ -913,12 +925,14 @@ body {
   outline: none;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus::-webkit-slider-runnable-track {
-  background: #b2b2b2;
+  background: transparent;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-moz-range-track {
+  position: relative;
+  top: 10px;
   width: 20px;
-  height: 1px;
-  background: #b2b2b2;
+  height: 20px;
+  background: transparent;
   border: none;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-moz-range-thumb {
@@ -934,10 +948,12 @@ body {
   outline-offset: -1px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus::-moz-range-track {
-  background: #b2b2b2;
+  background: transparent;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-ms-track {
   /* for ie */
+  position: relative;
+  top: 10px;
   width: calc(40vw + 20px);
   height: 5px;
   /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
@@ -948,10 +964,10 @@ body {
   color: transparent;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-ms-fill-lower {
-  background: #b2b2b2;
+  background: transparent;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-ms-fill-upper {
-  background: #b2b2b2;
+  background: transparent;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-ms-thumb {
   border: solid 1px #fff;
@@ -962,15 +978,15 @@ body {
   cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus::-ms-fill-lower {
-  background: #b2b2b2;
+  background: transparent;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus::-ms-fill-upper {
-  background: #b2b2b2;
+  background: transparent;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList {
   display: flex;
   justify-content: space-between;
-  width: calc(46vw);
+  width: calc(40vw + 6vw);
   position: relative;
   left: -3vw;
   top: 20px;

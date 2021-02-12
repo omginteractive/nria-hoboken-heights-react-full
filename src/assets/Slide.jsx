@@ -1046,6 +1046,7 @@ class SlideViews extends Component {
                                     return (<li className={listClasses} key={i}>{view.displayTime} {view.ampm}</li>)
                                 })}
                             </ul>
+                            <div className="visibleSliderLine"></div>
                         </div>
                     </div>
                 </section>
