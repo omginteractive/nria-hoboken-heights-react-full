@@ -481,6 +481,7 @@ body {
                 }
                 &fountainPen {
                     .textSection {
+                        z-index: 1;
                         position: absolute;
                         left: calc(50px + #{$side-margin});
                         top: calc(50px + #{$header-height});
@@ -1701,6 +1702,66 @@ body {
                 }
             }
             &.activeSlide {
+                
+            }
+            .btn {
+                cursor: pointer;
+                text-align: center;
+                border: rgba(255, 255, 255, 0.7) solid 1px;
+                color: #fff;
+                z-index: 1;
+                text-transform: uppercase;
+                padding: 15px;
+                width: 217px;
+                height: 66px;
+                font-size: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &:hover {
+                    background-color: #ffffff;
+                    color: #000000;
+                }
+                &.dark {
+                    background-color: #000;
+                    color: #ffffff;
+                    &:hover {
+                        background-color: #fff;
+                        color: #000;
+                        border-color: #000;
+                    }
+                }
+                &.light {
+                    color: #000;
+                    background-color: #fff;
+                    border-color: #000;
+                    &:hover {
+                        color: #ffffff;
+                        background-color: #000;
+                    }
+                }
+            }
+            &.runAnimations {
+                &.slideTemplate-fountainPen {
+                    $animation_incremental_delay: 0.2s;
+                    $animation_base_delay: 0.4s;
+                    .textSection {
+                        > h2,
+                        > p,
+                        .btn {
+                            animation-fill-mode: forwards;
+                            animation-name: fadeInDriftUp;
+                            animation-duration: 0.5s;
+                            opacity: 0;
+                            position: relative;
+                        }
+                        @for $i from 1 through 4 {
+                            :nth-child(#{$i}){
+                                animation-delay: $animation_base_delay + $animation_incremental_delay*$i;
+                            }
+                        }
+                    }
+                }
                 .amenities_detail__image.new {
                     @include fullScreenImageScaleDownOnArrival();
                 }
@@ -1786,43 +1847,6 @@ body {
                                 animation-delay: $animation_incremental_delay*$i + $animation_base_delay + $animation_incremental_delay*$textGroupObjectCount;
                             }
                         }
-                    }
-                }
-            }
-            .btn {
-                cursor: pointer;
-                text-align: center;
-                border: rgba(255, 255, 255, 0.7) solid 1px;
-                color: #fff;
-                z-index: 1;
-                text-transform: uppercase;
-                padding: 15px;
-                width: 217px;
-                height: 66px;
-                font-size: 15px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                &:hover {
-                    background-color: #ffffff;
-                    color: #000000;
-                }
-                &.dark {
-                    background-color: #000;
-                    color: #ffffff;
-                    &:hover {
-                        background-color: #fff;
-                        color: #000;
-                        border-color: #000;
-                    }
-                }
-                &.light {
-                    color: #000;
-                    background-color: #fff;
-                    border-color: #000;
-                    &:hover {
-                        color: #ffffff;
-                        background-color: #000;
                     }
                 }
             }

@@ -594,6 +594,7 @@ body {
   color: #000;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection {
+  z-index: 1;
   position: absolute;
   left: calc(50px + 6.3vw);
   top: calc(50px + 12.8vh);
@@ -1708,125 +1709,6 @@ body {
   opacity: 0;
   animation-timing-function: ease-in-out;
 }
-.slides_wrapper .slides_inner .slide.activeSlide .amenities_detail__image.new {
-  transform: scale(1.15);
-  animation-fill-mode: forwards;
-  animation-name: zoomOut;
-  animation-duration: 0.9s;
-  animation-delay: 0.5s;
-  animation-timing-function: ease-out;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li {
-  animation-fill-mode: forwards;
-  animation-name: fadeInDriftUp;
-  animation-duration: 0.5s;
-  opacity: 0;
-  position: relative;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(1) {
-  animation-delay: 0.2s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(2) {
-  animation-delay: 0.4s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(3) {
-  animation-delay: 0.6s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(4) {
-  animation-delay: 0.8s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(5) {
-  animation-delay: 1s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(6) {
-  animation-delay: 1.2s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(7) {
-  animation-delay: 1.4s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(8) {
-  animation-delay: 1.6s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(9) {
-  animation-delay: 1.8s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(10) {
-  animation-delay: 2s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(11) {
-  animation-delay: 2.2s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(12) {
-  animation-delay: 2.4s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseFullscreenImage {
-  transform: scale(1.15);
-  animation-fill-mode: forwards;
-  animation-name: zoomOut;
-  animation-duration: 0.9s;
-  animation-delay: 0.5s;
-  animation-timing-function: ease-out;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__details > h2, .slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__details > p, .slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__features_list .heading, .slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__features_list > ul, .slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__arrow_button_container {
-  position: relative;
-  animation-fill-mode: forwards;
-  animation-name: fadeInDriftUp;
-  animation-duration: 0.6s;
-  opacity: 0;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__details > h2 {
-  animation-delay: 0.6s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__details > p {
-  animation-delay: 0.8s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__features_list .heading {
-  animation-delay: 1s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__features_list > ul {
-  animation-delay: 1.2s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__arrow_button_container {
-  animation-delay: 1.4s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam__page_title, .slides_wrapper .slides_inner .slide.activeSlide .developmentTeam__headline, .slides_wrapper .slides_inner .slide.activeSlide .developmentTeam__paragraph,
-.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .developmentTeam__button_group .btn {
-  position: relative;
-  animation-fill-mode: forwards;
-  animation-name: fadeInDriftUp;
-  animation-duration: 0.6s;
-  opacity: 0;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .textGroup {
-  padding-right: 38px;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .textGroup :nth-child(1) {
-  animation-delay: 0.8s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .textGroup :nth-child(2) {
-  animation-delay: 1s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .textGroup :nth-child(3) {
-  animation-delay: 1.2s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .textGroup :nth-child(4) {
-  animation-delay: 1.4s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .textGroup :nth-child(5) {
-  animation-delay: 1.6s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(1) {
-  animation-delay: 1.8s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(2) {
-  animation-delay: 2s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(3) {
-  animation-delay: 2.2s;
-}
-.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(4) {
-  animation-delay: 2.4s;
-}
 .slides_wrapper .slides_inner .slide .btn {
   cursor: pointer;
   text-align: center;
@@ -1863,6 +1745,146 @@ body {
 .slides_wrapper .slides_inner .slide .btn.light:hover {
   color: #ffffff;
   background-color: #000;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection > h2,
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection > p,
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection .btn {
+  animation-fill-mode: forwards;
+  animation-name: fadeInDriftUp;
+  animation-duration: 0.5s;
+  opacity: 0;
+  position: relative;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection :nth-child(1) {
+  animation-delay: 0.6s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection :nth-child(2) {
+  animation-delay: 0.8s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection :nth-child(3) {
+  animation-delay: 1s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection :nth-child(4) {
+  animation-delay: 1.2s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .amenities_detail__image.new {
+  transform: scale(1.15);
+  animation-fill-mode: forwards;
+  animation-name: zoomOut;
+  animation-duration: 0.9s;
+  animation-delay: 0.5s;
+  animation-timing-function: ease-out;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li {
+  animation-fill-mode: forwards;
+  animation-name: fadeInDriftUp;
+  animation-duration: 0.5s;
+  opacity: 0;
+  position: relative;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(1) {
+  animation-delay: 0.2s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(2) {
+  animation-delay: 0.4s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(3) {
+  animation-delay: 0.6s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(4) {
+  animation-delay: 0.8s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(5) {
+  animation-delay: 1s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(6) {
+  animation-delay: 1.2s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(7) {
+  animation-delay: 1.4s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(8) {
+  animation-delay: 1.6s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(9) {
+  animation-delay: 1.8s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(10) {
+  animation-delay: 2s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(11) {
+  animation-delay: 2.2s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(12) {
+  animation-delay: 2.4s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseFullscreenImage {
+  transform: scale(1.15);
+  animation-fill-mode: forwards;
+  animation-name: zoomOut;
+  animation-duration: 0.9s;
+  animation-delay: 0.5s;
+  animation-timing-function: ease-out;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__details > h2, .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__details > p, .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__features_list .heading, .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__features_list > ul, .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__arrow_button_container {
+  position: relative;
+  animation-fill-mode: forwards;
+  animation-name: fadeInDriftUp;
+  animation-duration: 0.6s;
+  opacity: 0;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__details > h2 {
+  animation-delay: 0.6s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__details > p {
+  animation-delay: 0.8s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__features_list .heading {
+  animation-delay: 1s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__features_list > ul {
+  animation-delay: 1.2s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__arrow_button_container {
+  animation-delay: 1.4s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam__page_title, .slides_wrapper .slides_inner .slide.runAnimations .developmentTeam__headline, .slides_wrapper .slides_inner .slide.runAnimations .developmentTeam__paragraph,
+.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group .btn {
+  position: relative;
+  animation-fill-mode: forwards;
+  animation-name: fadeInDriftUp;
+  animation-duration: 0.6s;
+  opacity: 0;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup {
+  padding-right: 38px;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup :nth-child(1) {
+  animation-delay: 0.8s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup :nth-child(2) {
+  animation-delay: 1s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup :nth-child(3) {
+  animation-delay: 1.2s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup :nth-child(4) {
+  animation-delay: 1.4s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup :nth-child(5) {
+  animation-delay: 1.6s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(1) {
+  animation-delay: 1.8s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(2) {
+  animation-delay: 2s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(3) {
+  animation-delay: 2.2s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(4) {
+  animation-delay: 2.4s;
 }
 .slides_wrapper .slides_inner .slide .videoContainer {
   pointer-events: none;
