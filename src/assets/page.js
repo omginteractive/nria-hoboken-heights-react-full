@@ -209,6 +209,13 @@ const flypilotFetchWPRestAPI = async () => {
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
             }
     ]
+    },{
+        slideTemplate: 'contact',
+        styles: {
+            background: "#fff",
+        },
+        headerTheme: 'dark',
+        enableScrolling: true,
     }]
     return SLIDES
   }

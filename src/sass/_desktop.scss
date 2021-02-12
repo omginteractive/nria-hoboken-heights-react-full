@@ -1,0 +1,79 @@
+.mobile-only {
+    display: none !important;
+}
+
+
+.contactPageWrapper {
+    .contactForm {
+        .headline {
+            font-size: 16px;
+            letter-spacing: 3px;
+            color: #000;
+            font-family: "Gotham-Bold", sans-serif;
+            font-weight: 700;
+        }
+        .hubspotFormWrapper {
+            .hs-nested-form-fix .hs-form {
+                .hs-submit {
+                    .actions {
+                        .hs-button {
+                            text-transform: uppercase;
+                            font-size: 15px;
+                            letter-spacing: 3px;
+                            line-height: 18px;
+                            border-bottom: #000 solid 1px;
+                            padding-bottom: 4px;
+                            &:hover {
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+                .select2-container--default {
+                    margin-top: 16px;
+                    .select2-selection--single {
+                        .select2-selection__arrow {
+                            top: 5px;
+                            right: 18px;
+                        }
+                    }
+                }
+                .hs-form-field .hs-input::-webkit-input-placeholder { /* WebKit browsers */
+                    color: transparent;
+                }
+                .hs-form-field .hs-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+                   color: transparent;
+                }
+                .hs-form-field .hs-input::-moz-placeholder { /* Mozilla Firefox 19+ */
+                   color: transparent;
+                }
+                .hs-form-field .hs-input:-ms-input-placeholder { /* Internet Explorer 10+ */
+                   color: transparent;
+                }
+                .select2-selection__placeholder {
+                    color: transparent;
+                }
+            }
+        }
+        
+        .form-control .select2-container--default .select2-selection--single .select2-selection__arrow {
+            top: 5px;
+            right: 18px;
+        }
+        .form-control .input::-webkit-input-placeholder { /* WebKit browsers */
+            color: transparent;
+        }
+        .form-control .input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+           color: transparent;
+        }
+        .form-control .input::-moz-placeholder { /* Mozilla Firefox 19+ */
+           color: transparent;
+        }
+        .form-control .input:-ms-input-placeholder { /* Internet Explorer 10+ */
+           color: transparent;
+        }
+        .select2-selection__placeholder {
+            color: transparent;
+        }
+    }
+}

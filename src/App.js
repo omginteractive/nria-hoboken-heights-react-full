@@ -7,6 +7,7 @@ import MobileMenu from './assets/MobileMenu';
 import Header from './assets/Header';
 import $ from 'jquery'
 import _ from "lodash";
+window.jQuery = $;
 
 
 class App extends React.Component {
@@ -17,7 +18,7 @@ class App extends React.Component {
         slidesViewed: [0],
         scrollDebouncer: null,
         transitiongState: 0, // 0 for false -1 for up 1 for down
-        currIdx: 13,
+        currIdx: 14,
         previousScrollVal: 0,
         peakScrollVal: 0,
         readyForScroll: 1,
@@ -119,6 +120,20 @@ class App extends React.Component {
             });
         })
 
+        const hubspotscript = document.createElement("script");
+        hubspotscript.src = "https://js.hsforms.net/forms/v2.js";
+        hubspotscript.async = true;
+        hubspotscript.onload = () => console.log('loaded');
+        document.body.appendChild(hubspotscript);
+        
+        const select2script = document.createElement("script");
+        select2script.src = "https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js";
+        select2script.async = true;
+        select2script.onload = () => console.log('loaded');
+        document.body.appendChild(select2script);
+        
+        
+
     	window.addEventListener('keydown', (event) => {
 			if (!event.target.classList.contains('input')) {
 				if (event.code === "ArrowUp") this.prevSlide()
@@ -146,7 +161,6 @@ class App extends React.Component {
         const mapHeight = document.documentElement.clientHeight - document.documentElement.clientHeight*headerVHPercent
         const mapHeightLocked = mapWidth/mapHeight < maximumLockRatio
         
-        console.log(mapWidth, mapHeight, mapWidth/mapHeight)
         this.setState({ mapHeightLocked: mapHeightLocked });
     }
 	/*
@@ -512,28 +526,38 @@ class App extends React.Component {
 	}
 
 	createHubspotForm(){
-		// let self = this
-		// const recaptcha_branding = `<div class='recaptcha_branding'>This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</div>`;
-		// hbspt.forms.create({
-		// 	portalId: "5163160",
-		// 	formId: "4c41114a-2807-4884-b5e9-d6b49d56d217",
-		// 	target: '#hubspotFormWrapper',
-		// 	onFormSubmit: function($form) {
-		// 		$('#page').addClass('formSubmitted')
-		// 		const formHeight = $('.contactPageWrapper .contactForm').outerHeight()
-		// 		$('.contactPageWrapper .contactForm').outerHeight(formHeight)
-		// 	},
-		// 	onFormReady: function(){
-		// 		$("#hubspotFormWrapper .form-columns-0").append(recaptcha_branding);
-
-		// 		$( ".hs-input" ).on('focusout', function() {
-		// 			self.setState({ inputFocusOutEvent: true });
-		// 		})
-		// 	},
-		// 	onFormSubmitted: function() {
-		// 		self.createHubspotForm()
-		// 	}
-		// });
+        let self = this
+        let jQuery = $
+        const recaptcha_branding = `<div class='recaptcha_branding'>This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</div>`;
+        if(window.hbspt) {
+            window.hbspt.forms.create({
+                portalId: "5163160",
+                formId: "4c41114a-2807-4884-b5e9-d6b49d56d217",
+                target: '#hubspotFormWrapper',
+                onFormSubmit: function($form) {
+                    jQuery('#page').addClass('formSubmitted')
+                    const formHeight = jQuery('.contactPageWrapper .contactForm').outerHeight()
+                    jQuery('.contactPageWrapper .contactForm').outerHeight(formHeight)
+                },
+                onFormReady: function(){
+                    jQuery("#hubspotFormWrapper .form-columns-0").append(recaptcha_branding);
+    
+                    jQuery( ".hs-input" ).on('focusout', function() {
+                        self.setState({ inputFocusOutEvent: true });
+                    })
+                },
+                onFormSubmitted: function() {
+                    self.createHubspotForm()
+                }
+            })
+        }
+        else {
+            setTimeout(function(){
+                self.createHubspotForm()
+            }, 5000)
+            
+        }
+		
 	}
 
 	handleSlideScroll = (hasScrolled) => {
@@ -597,6 +621,7 @@ class App extends React.Component {
                 residencePenthousePath={this.state.residencePenthouse}
                 amenityDetailsSlideIdx={this.state.amenityDetailsSlideIdx}
                 mapHeightLocked={this.state.mapHeightLocked}
+                createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)}
                 ></Slide>
         )
 
