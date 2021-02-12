@@ -583,10 +583,9 @@ body {
                         $name-rise-distance: 140px;
                         &__arrow {
                             position: absolute;
-                            z-index: 1;
                             top: 50%;
-                            z-index: 2;
                             cursor: pointer;
+                            z-index: 3;//above dark cloud
                             &--right {
                                 transform: translateY(-50%);
                                 transition: right 0.2s;

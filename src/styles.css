@@ -678,10 +678,9 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__arrow {
   position: absolute;
-  z-index: 1;
   top: 50%;
-  z-index: 2;
   cursor: pointer;
+  z-index: 3;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__arrow--right {
   transform: translateY(-50%);
