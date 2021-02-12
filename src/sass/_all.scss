@@ -952,10 +952,11 @@ body {
                                 object-position: right;
                                 position: absolute;
                                 right: 0;
-                                
+                                z-index: 1;//to be above inquiry button on slide change
                             }
                         }
                         &__expand_toggler {
+                            z-index: 2;
                             // cursor: pointer;
                             // background-color: $vertical-toggler-color;
                             // color: #ffffff;

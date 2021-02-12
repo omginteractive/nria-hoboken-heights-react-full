@@ -1091,6 +1091,17 @@ class SlideResidencePenthouseDetail extends Component {
         const wheelAmt = e.deltaY
         const currentDetailsScrollDistance = document.querySelectorAll('.residencePenthouseDetail__details')[0].scrollTop
         document.querySelectorAll('.residencePenthouseDetail__details')[0].scrollTop = currentDetailsScrollDistance + wheelAmt
+            
+        if(this.state.imageExpanded){
+            const querySelector = '.residencePenthouseDetail__details'
+            if(wheelAmt < 0) {
+                document.querySelector(querySelector).scrollTop = 0//scroll to top of slide to trigger prevSlide as scroll motion continues
+            }
+            else {
+                const bottomScrollValue = document.querySelector(querySelector).scrollHeight - document.querySelector(querySelector).offsetHeight
+                document.querySelector(querySelector).scrollTop = bottomScrollValue
+            }
+        }
     }
     toggleImageExpansion(){
         const newImageState = !this.state.imageExpanded

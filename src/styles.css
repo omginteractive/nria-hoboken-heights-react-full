@@ -1038,6 +1038,10 @@ body {
   object-position: right;
   position: absolute;
   right: 0;
+  z-index: 1;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__expand_toggler {
+  z-index: 2;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list {
   margin-bottom: 38px;
