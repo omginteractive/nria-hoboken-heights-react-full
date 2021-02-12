@@ -436,7 +436,7 @@ class ContactForm extends Component {
 				<div className="submittedFormOverlay">
 					<div className="text">THANK YOU!</div>
 					<div className="closeBtn" onClick={this.resetForm}>
-						<img src='/assets/images/form_close_btn.svg' />
+						<img src={require('./images/form_close_btn.svg').default} />
 					</div>
 				</div>
 				<div className='headline'>FOR INFORMATION PLEASE FILL THE FORM BELOW</div>
