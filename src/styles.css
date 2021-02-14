@@ -610,9 +610,9 @@ body {
   height: calc(100vh);
   padding-top: calc(50px + 12.8vh);
   top: 0;
-  width: 100%;
-  padding-right: calc(40% + 6.3vw);
+  padding-right: calc(30% + 6.3vw);
   overflow: scroll;
+  width: calc(100vw - 6.3vw*2);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection > p {
   text-align: justify;
@@ -1994,6 +1994,7 @@ body {
   animation-delay: 2s;
 }
 .slides_wrapper .slides_inner .slide .videoContainer {
+  height: 100vh;
   pointer-events: none;
   width: 100%;
 }
