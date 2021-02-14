@@ -605,23 +605,28 @@ body {
   z-index: 1;
   position: absolute;
   left: calc(50px + 6.3vw);
-  top: calc(50px + 12.8vh);
   display: flex;
   flex-direction: column;
-  margin-top: 6vh;
-  width: 52%;
+  height: calc(100vh);
+  padding-top: calc(50px + 12.8vh);
+  top: 0;
+  width: 100%;
+  padding-right: 40%;
+  overflow: scroll;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection > p {
   text-align: justify;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection .btn {
   margin-top: 38px;
+  margin-bottom: 38px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .videoContainer {
   position: absolute;
   z-index: 0;
   top: 0;
   right: 0;
+  width: auto;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .videoContainer .background-video {
   height: 100%;
@@ -629,6 +634,9 @@ body {
   object-position: top right;
   min-width: 100vw;
   min-height: 100vh;
+  object-fit: contain;
+  height: 100vh;
+  width: auto;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-patio .downArrowContainer .downArrow, .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen .downArrowContainer .downArrow {
   animation-delay: 0.5s, 1.5s;

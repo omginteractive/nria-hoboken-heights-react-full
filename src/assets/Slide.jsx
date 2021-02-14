@@ -3,6 +3,7 @@ import animatedLogo from '../assets/images/Motion_logo.gif';
 import downArrow from '../assets/images/downarrow.svg';
 import leftArrowBlack from '../assets/images/leftArrowBlack.svg';
 import $ from 'jquery'
+import _ from "lodash";
 
 class Slide extends Component {
     constructor(props) {
@@ -449,81 +450,7 @@ class ContactForm extends Component {
 				</div>
 				<div className='headline'>FOR INFORMATION PLEASE FILL THE FORM BELOW</div>
 				<div className="hubspotFormWrapper" id="hubspotFormWrapper">
-
 				</div>
-				{/* <div className="two-input-group">
-					<div className="form-control">
-						<label className="label">First Name*</label>
-						<input className="input"
-							name="first_name"
-							type="text"
-							value={this.state.first_name}
-							onChange={this.handleInputChange}
-							placeholder="First Name*" />
-					</div>
-					<div className="form-control">
-						<label className="label">Last Name*</label>
-						<input className="input"
-							name="last_name"
-							type="text"
-							value={this.state.last_name}
-							onChange={this.handleInputChange}
-							placeholder="Last Name*" />
-					</div>
-				</div>
-				<div className="form-control">
-					<label className="label">E-mail*</label>
-					<input className="input"
-						name="email"
-						type="text"
-						value={this.state.email}
-						onChange={this.handleInputChange}
-						placeholder="E-mail*" />
-				</div>
-				<div className="form-control">
-					<label className="label">Mobile Phone Number*</label>
-					<input className="input"
-						name="mobilephone"
-						type="text"
-						value={this.state.mobilephone}
-						onChange={this.handleInputChange}
-						placeholder="Mobile Phone Number*" />
-				</div>
-				<div className="form-control">
-					<label className="label">How did you hear of us?*</label>
-					<select style={select2Styles}
-						className='how_you_heard'
-						value={this.state.how_you_heard}
-						name="how_you_heard"
-						onChange={this.handleInputChange}
-						ref='how_you_heard'
-						>
-
-						<option className='emptyOption'></option>
-						<option value="Google">Google</option>
-						<option value="Friend">Friend</option>
-						<option value="Newspaper">Newspaper</option>
-					</select>
-				</div>
-				<div className="form-control">
-					<label className="label">How may we help you?*</label>
-					<textarea className="input textarea" 
-						name="how_can_we_help"
-						type="text"
-						value={this.state.how_can_we_help}
-						onChange={this.handleInputChange}
-						placeholder="How may we help you?*" />
-				</div>
-				<div className="fine-print">NOTE: By filling out this contact form, I give you my permission to contact me via email, cell phone, or text until I opt out of any such communications.</div>
-				<div className="rightArrowContainer">
-					<img className='rightArrow not-mobile' src='/assets/images/rightarrow.svg' onClick={this.handleSubmit} />
-					<img className='logo mobile-only' src='/assets/images/NRIA_Logo--White.png' />
-					<div className="mobileRightArrowContainer mobile-only" onClick={this.handleSubmit}>
-						<div className="text gotham-medium">SEND</div>
-						<img className='rightArrow' src='/assets/images/mobileSubmitArrow.svg' />
-					</div>
-					
-				</div> */}
 			</form>
 		);
 	}
@@ -652,6 +579,32 @@ class SlideExteriorLightToggle extends Component {
 }
 
 class SlideFountainPen extends Component {
+    constructor(props) {
+        super(props)
+        // const 
+        // this.throttleVideoParallax = _.throttle(parallaxVideo, 1);
+    }
+    lockingVideoPosition() {
+        // const parentSelector = '.slideTemplate-fountainPen'
+        // const textHeight = document.querySelector(parentSelector + ' .textSection').offsetHeight
+        // const textHeightMarginTop = parseFloat(window.getComputedStyle(document.querySelector(parentSelector + ' .textSection')).marginTop)
+        // const textTop = parseFloat(window.getComputedStyle(document.querySelector('.slideTemplate-fountainPen .textSection')).top)
+        // const potentialHeight = textHeight + textHeightMarginTop + textTop
+        // const videoHeight = document.querySelector(parentSelector + ' .background-video').clientHeight
+        // const currentScrollDistance = document.querySelector(parentSelector).scrollTop;
+        // const slideHeight = document.querySelector('.slideTemplate-fountainPen').offsetHeight
+        // const scrolledPercent = currentScrollDistance/(potentialHeight - slideHeight)
+        // const totalScrollDistance = potentialHeight - videoHeight
+        // const videoTopPosition = scrolledPercent * totalScrollDistance
+        // console.log(videoTopPosition)
+        // // document.querySelector('.slideTemplate-fountainPen .videoContainer').style.top = videoTopPosition + 'px'
+        // document.querySelector('.slideTemplate-fountainPen .videoContainer').style.transform = 'translateY('+videoTopPosition+'px)'
+        // // window.getComputedStyle(document.querySelector('.slideTemplate-fountainPen .background-video')).top = scrolledPercent * totalScrollDistance
+    }
+    handleWheel(){
+        this.lockingVideoPosition()
+        // this.throttleVideoParallax()
+    }
     render(){
         let videoContainerClasses = 'videoContainer'
         let videoClasses = 'background-video'
@@ -659,7 +612,7 @@ class SlideFountainPen extends Component {
         return(
             <> 
                 {
-                    <div className="textSection">
+                    <div onWheel={() =>this.handleWheel()}     className="textSection">
                         <h2>4 State-of-the-art Buildings<br />55 Residences | 9 Penthouses</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

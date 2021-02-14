@@ -657,12 +657,12 @@ class App extends React.Component {
         return (
             <div id="page" className={pageClasses}>
                 <MobileMenu goToContactSlide={this.goToContactSlide.bind(this)} open={this.state.mobileMenuOpen} toggleMobileMenu={this.toggleMobileMenu.bind(this)} goToSlideIdx={this.goToSlide.bind(this)} />
-                    <div className={slidesWrapperClasses}
-                        onTouchStart={this.handleTouchStart.bind(this)}
-                        onTouchMove={this.handleTouchMove.bind(this)}
-                        onTouchEnd={this.handleTouchEnd.bind(this)}
-                        onWheel={this.handleWheelEvent.bind(this)}
-                        onScroll={this.handleScrollEvent.bind(this)}>
+                <div className={slidesWrapperClasses}
+                    onTouchStart={this.handleTouchStart.bind(this)}
+                    onTouchMove={this.handleTouchMove.bind(this)}
+                    onTouchEnd={this.handleTouchEnd.bind(this)}
+                    onWheel={this.handleWheelEvent.bind(this)}
+                    onScroll={this.handleScrollEvent.bind(this)}>
                     <div className="fixed-headers">
                         <div className='fixed-header-inner'>
                             <div className='fixed-header-wrapper'>

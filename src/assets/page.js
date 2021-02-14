@@ -24,6 +24,7 @@ const flypilotFetchWPRestAPI = async () => {
         // videoZoomEffect: true,
         headerTheme: 'light-inquiry',
         enableScrolling: true,
+        enableScrollingQuerySelector: '.slideTemplate-fountainPen .textSection',
     }, {
         slideTemplate: 'patio',
         styles: {
