@@ -507,7 +507,7 @@ body {
                         padding-top: calc(50px + #{$header-height});
                         top: 0;
                         width: 100%;
-                        padding-right: 40%;
+                        padding-right: calc(40% + #{$side-margin});
                         overflow: scroll;
                         > p {
                             text-align: justify;
