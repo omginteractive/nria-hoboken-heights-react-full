@@ -653,7 +653,7 @@ class App extends React.Component {
         pageClasses += this.state.isiPhone ? ' iPhone' : '';
         pageClasses +=  isFirefoxAndroid ? ' firefoxAndroid' : '';
         let slidesWrapperClasses = "slides_wrapper";
-            if(this.state.slideHasScrolled) slidesWrapperClasses += ' scrolled'
+        if(this.state.slideHasScrolled) slidesWrapperClasses += ' scrolled'
         return (
             <div id="page" className={pageClasses}>
                 <MobileMenu goToContactSlide={this.goToContactSlide.bind(this)} open={this.state.mobileMenuOpen} toggleMobileMenu={this.toggleMobileMenu.bind(this)} goToSlideIdx={this.goToSlide.bind(this)} />

@@ -297,6 +297,11 @@ body {
   overflow: hidden;
 }
 
+.slides_wrapper.scrolled .halfwhitebgElement {
+  background-color: #fff;
+  width: 50vw;
+}
+
 .fixed-header {
   z-index: 999999999999;
   position: fixed;
@@ -308,11 +313,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-.fixed-header.halfwhitebg .halfwhitebgElement {
-  background-color: #fff;
-  width: 50vw;
-  transition: background-color 0.5s linear calc(1400ms - 0.5s);
 }
 .fixed-header.dark {
   color: #000;
@@ -349,7 +349,6 @@ body {
 }
 .fixed-header .halfwhitebgElement {
   width: 0;
-  transition: width 0s linear 1400ms;
   width: 50vw;
   background-color: transparent;
   height: 100%;

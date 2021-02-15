@@ -182,6 +182,12 @@ body {
         }
     }
 }
+.slides_wrapper.scrolled {
+    .halfwhitebgElement {
+        background-color: #fff;
+        width: 50vw;
+    }
+}
 .fixed-header {
     z-index: 999999999999;
     position: fixed;
@@ -194,13 +200,7 @@ body {
     align-items: center;
     justify-content: space-between;
     //Set for different fixed header themes
-    &.halfwhitebg {
-        .halfwhitebgElement {
-            background-color: #fff;
-            width: 50vw;
-            transition: background-color 0.5s linear calc(#{$slideAnimationDuration} - 0.5s);
-        }
-    }
+    
     &.dark {
         color: #000;
         .separator {
@@ -236,8 +236,6 @@ body {
     }
     .halfwhitebgElement {
         width: 0;
-        
-        transition: width 0s linear $slideAnimationDuration;
         width: 50vw;
         background-color: transparent;
         height: 100%;
