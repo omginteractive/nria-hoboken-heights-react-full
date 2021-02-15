@@ -406,6 +406,8 @@ body {
             justify-content: flex-end;
             font-weight: bold;
             text-transform: uppercase;
+            font-family: 'Gotham-Medium';
+
             .socialMedia {
                 > a {
                     color: #ffffff;
@@ -420,6 +422,9 @@ body {
         .address {
             line-height: 1.4em;
             margin: 40px 0;
+            .line-break {
+                display: none;
+            }
             .phoneNum {
                 font-weight: bold;
                 > a {
@@ -430,6 +435,15 @@ body {
         }
         .copyright {
             line-height: 1.4em;
+        }
+        .socialMedias,
+        .address,
+        .copyright {
+            font-size: 15px;
+        }
+        .address,
+        .copyright {
+            font-family: "Gotham-Light", sans-serif;
         }
     }
 }
