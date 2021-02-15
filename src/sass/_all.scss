@@ -183,7 +183,8 @@ body {
     }
 }
 .slides_wrapper.scrolled {
-    .halfwhitebgElement {
+    
+    .halfwhitebg .halfwhitebgElement {
         background-color: #fff;
         width: 50vw;
     }
@@ -844,35 +845,19 @@ body {
                                 border: none 0 transparent;
                                 /*required for proper track sizing in FF*/
                                 width: $sliderActualWidth;
+                                height: $sliderHeight;
+                                top: $sliderHeight/2;
                                 &::-webkit-slider-runnable-track {
                                     position: relative;
-                                    top: $sliderHeight/2;
+                                    // top: $sliderHeight/2;
                                     width: $sliderActualWidth;
                                     height: $sliderHeight;
                                     // background: $sliderLineColor;
                                     -webkit-appearance: none;
                                     background: transparent;
                                     border: none;
-                                }
-                                &::-webkit-slider-thumb {
-                                    -webkit-appearance: none;
-                                    border: $thumbBorder;
-                                    border: $thumbBorder;
-                                    height: $sliderThumbWidth;
-                                    width: $sliderThumbWidth;
-                                    border-radius: $thumbBorderRadius;
-                                    background: $thumbColor;
-                                    // margin-top: $sliderHeight - $sliderThumbWidth/2;
-                                    position: relative;
-                                    bottom: $sliderThumbWidth/2 - $sliderHeight/2;
-                                    z-index: 1;//to appear above tick lines
-                                    cursor: pointer;
-                                }
-                                &:focus {
-                                    outline: none;
-                                }
-                                &:focus::-webkit-slider-runnable-track {
-                                    background: $hideSliderColor;
+                                    // bottom: $sliderThumbWidth/2;
+                                    
                                 }
                                 &::-moz-range-track {
                                     position: relative;
@@ -882,23 +867,7 @@ body {
                                     background: $hideSliderColor;
                                     border: none;
                                 }
-                                &::-moz-range-thumb {
-                                    border: $thumbBorder;
-                                    height: $sliderThumbWidth;
-                                    width: $sliderThumbWidth;
-                                    border-radius: $thumbBorderRadius;
-                                    background: $thumbColor;
-                                    cursor: pointer;
-                                }
                                 
-                                /*hide the outline behind the border*/
-                                &:-moz-focusring {
-                                    outline: 1px solid white;
-                                    outline-offset: -1px;
-                                }
-                                &:focus::-moz-range-track {
-                                    background: $hideSliderColor;
-                                }
                                 &::-ms-track {/* for ie */
                                     position: relative;
                                     top: $sliderHeight/2;
@@ -914,11 +883,31 @@ body {
                                     /*remove default tick marks*/
                                     color: transparent;
                                 }
-                                &::-ms-fill-lower {
+                                &:focus::-moz-range-track {
                                     background: $hideSliderColor;
                                 }
-                                &::-ms-fill-upper {
+                                &:focus::-webkit-slider-runnable-track {
                                     background: $hideSliderColor;
+                                }
+                                &::-webkit-slider-thumb {
+                                    -webkit-appearance: none;
+                                    border: $thumbBorder;
+                                    height: $sliderThumbWidth;
+                                    width: $sliderThumbWidth;
+                                    border-radius: $thumbBorderRadius;
+                                    background: $thumbColor;
+                                    // margin-top: $sliderHeight - $sliderThumbWidth/2;
+                                    position: relative;
+                                    z-index: 1;//to appear above tick lines
+                                    cursor: pointer;
+                                }
+                                &::-moz-range-thumb {
+                                    border: $thumbBorder;
+                                    height: $sliderThumbWidth;
+                                    width: $sliderThumbWidth;
+                                    border-radius: $thumbBorderRadius;
+                                    background: $thumbColor;
+                                    cursor: pointer;
                                 }
                                 &::-ms-thumb {
                                     border: $thumbBorder;
@@ -928,6 +917,26 @@ body {
                                     background: $thumbColor;
                                     cursor: pointer;
                                 }
+                                &:focus {
+                                    outline: none;
+                                }
+                                
+                                
+                                
+                                
+                                /*hide the outline behind the border*/
+                                &:-moz-focusring {
+                                    outline: 1px solid white;
+                                    outline-offset: -1px;
+                                }
+                                
+                                &::-ms-fill-lower {
+                                    background: $hideSliderColor;
+                                }
+                                &::-ms-fill-upper {
+                                    background: $hideSliderColor;
+                                }
+                                
                                 &:focus::-ms-fill-lower {
                                     background: $hideSliderColor;
                                 }

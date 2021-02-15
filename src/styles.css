@@ -297,7 +297,7 @@ body {
   overflow: hidden;
 }
 
-.slides_wrapper.scrolled .halfwhitebgElement {
+.slides_wrapper.scrolled .halfwhitebg .halfwhitebgElement {
   background-color: #fff;
   width: 50vw;
 }
@@ -931,35 +931,17 @@ body {
   border: none 0 transparent;
   /*required for proper track sizing in FF*/
   width: calc(40vw + 20px);
+  height: 20px;
+  top: 10px;
   /*hide the outline behind the border*/
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-webkit-slider-runnable-track {
   position: relative;
-  top: 10px;
   width: calc(40vw + 20px);
   height: 20px;
   -webkit-appearance: none;
   background: transparent;
   border: none;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  border: solid 1px #fff;
-  border: solid 1px #fff;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background: #000;
-  position: relative;
-  bottom: 0px;
-  z-index: 1;
-  cursor: pointer;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus {
-  outline: none;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus::-webkit-slider-runnable-track {
-  background: transparent;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-moz-range-track {
   position: relative;
@@ -968,21 +950,6 @@ body {
   height: 20px;
   background: transparent;
   border: none;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-moz-range-thumb {
-  border: solid 1px #fff;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background: #000;
-  cursor: pointer;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:-moz-focusring {
-  outline: 1px solid white;
-  outline-offset: -1px;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus::-moz-range-track {
-  background: transparent;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-ms-track {
   /* for ie */
@@ -997,11 +964,30 @@ body {
   /*remove default tick marks*/
   color: transparent;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-ms-fill-lower {
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus::-moz-range-track {
   background: transparent;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-ms-fill-upper {
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus::-webkit-slider-runnable-track {
   background: transparent;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: solid 1px #fff;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #000;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-moz-range-thumb {
+  border: solid 1px #fff;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #000;
+  cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-ms-thumb {
   border: solid 1px #fff;
@@ -1010,6 +996,19 @@ body {
   border-radius: 50%;
   background: #000;
   cursor: pointer;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus {
+  outline: none;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:-moz-focusring {
+  outline: 1px solid white;
+  outline-offset: -1px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-ms-fill-lower {
+  background: transparent;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-ms-fill-upper {
+  background: transparent;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input:focus::-ms-fill-lower {
   background: transparent;
