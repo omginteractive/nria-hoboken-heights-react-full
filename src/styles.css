@@ -1179,13 +1179,12 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer .founderBenefits {
   font-size: 18px;
   padding-right: 20px;
-  padding-bottom: 10px;
   font-family: "Gotham-Light", sans-serif;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer .founderBenefits .benefitPair {
   display: flex;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 1.4vh;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer .founderBenefits .benefitPair .count {
   color: #151617;
@@ -1222,6 +1221,7 @@ body {
   position: absolute;
   left: 46%;
   overflow: scroll;
+  top: 12.8vh;
   height: calc(100vh - 12.8vh);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderHeadline,
