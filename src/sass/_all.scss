@@ -195,7 +195,11 @@ body {
     justify-content: space-between;
     //Set for different fixed header themes
     &.halfwhitebg {
-        background: linear-gradient(90deg, #ffffff 54vw, transparent 46vw)
+        .halfwhitebgElement {
+            background-color: #fff;
+            width: 50vw;
+            transition: background-color 0.5s linear calc(#{$slideAnimationDuration} - 0.5s);
+        }
     }
     &.dark {
         color: #000;
@@ -229,6 +233,16 @@ body {
         .corner-logo.dark {
             opacity: 1;
         }
+    }
+    .halfwhitebgElement {
+        width: 0;
+        
+        transition: width 0s linear $slideAnimationDuration;
+        width: 50vw;
+        background-color: transparent;
+        height: 100%;
+        z-index: -1;
+        position: absolute;
     }
     .inquiry-link {
         cursor: pointer;
@@ -1796,6 +1810,7 @@ body {
                 }
             }
             &.runAnimations {
+                
                 &.slideTemplate-fountainPen {
                     $animation_incremental_delay: 0.2s;
                     $animation_base_delay: 0.4s;

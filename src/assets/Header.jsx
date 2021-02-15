@@ -24,10 +24,11 @@ class Header extends Component {
     render(){
         const defaultTheme = 'dark'
         const theme = this.props.theme ? this.props.theme : defaultTheme
-        
+
         let fixedHeaderClasses = 'fixed-header ' + theme
         return (
             <header className={fixedHeaderClasses}>
+                <div className="halfwhitebgElement"></div>
                 {this.props.open && 
                     <img className="closeBtn" onClick={this.toggleMobileMenu.bind(this)} src={require('./' + this.lightCloseBtn).default} />
                 }
