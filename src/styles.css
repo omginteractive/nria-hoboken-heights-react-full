@@ -1216,12 +1216,13 @@ body {
   transform: scale(1.5);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper {
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: absolute;
   left: 46%;
+  overflow: scroll;
+  height: calc(100vh - 12.8vh);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderHeadline,
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderTagline,

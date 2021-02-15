@@ -147,6 +147,7 @@ const flypilotFetchWPRestAPI = async () => {
             background: "rgb(21, 22, 23)",
         },
         enableScrolling: true,
+        enableScrollingQuerySelector: '.slideTemplate-founders .founderSlideWrapper',
         headerTheme: 'light',
         founderImage: 'images/foundersClub.png',
         founderHeadline: 'Gold Founding Members',
