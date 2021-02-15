@@ -59,11 +59,27 @@ class Slide extends Component {
 		showPrivacyPolicy()
     }
     
+    delegateScroll(wheelAmt, elementToDelegateScroll, defaultScroll = false){
+        const currentDetailsScrollDistance = elementToDelegateScroll.scrollTop
+        elementToDelegateScroll.scrollTop = currentDetailsScrollDistance + wheelAmt
+        if(defaultScroll){
+            if(wheelAmt < 0) {
+                elementToDelegateScroll.scrollTop = 0//scroll to top of slide to trigger prevSlide as scroll motion continues
+            }
+            else {
+                const bottomScrollValue = elementToDelegateScroll.scrollHeight - elementToDelegateScroll.offsetHeight
+                elementToDelegateScroll.scrollTop = bottomScrollValue
+            }
+        }
+    }
+
     render(){
         const slideObj = this.props.obj;
         const slideMethods = {
             scrollToNextSlide: this.scrollToNextSlide.bind(this),
             goToContactSlide: this.goToContactSlide.bind(this),
+            delegateScroll: this.delegateScroll.bind(this),
+
         }
 		let slideClasses = "slide "
 		let videoClasses = 'background-video'
@@ -690,6 +706,13 @@ class SlideAmenities extends Component {
         const {setAmenityOnDetailsSlide} = this.props;
         setAmenityOnDetailsSlide(idx);
     }
+    handleWheelEvent = e => {
+        const wheelAmt = e.deltaY
+        const querySelector = '.amenities__details'
+        const elementToDelegateScroll = document.querySelectorAll(querySelector)[0]
+        this.props.methods.delegateScroll(wheelAmt, elementToDelegateScroll)
+    }
+    
     render(){
         return(
             <>
@@ -700,7 +723,7 @@ class SlideAmenities extends Component {
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn dark">Inquire now</div>
                     </div>
-                    <div className="amenities__list">
+                    <div onWheel={this.handleWheelEvent.bind(this)}  className="amenities__list">
                         <ul>
                             <li onClick={() => this.setAmenityDetail(0)}>Bar</li>
                             <li onClick={() => this.setAmenityDetail(1)}>Children</li>
@@ -1060,21 +1083,12 @@ class SlideResidencePenthouseDetail extends Component {
             imageExpanded: false
         }
     }
+    
     handleWheelEvent = e => {
         const wheelAmt = e.deltaY
-        const currentDetailsScrollDistance = document.querySelectorAll('.residencePenthouseDetail__details')[0].scrollTop
-        document.querySelectorAll('.residencePenthouseDetail__details')[0].scrollTop = currentDetailsScrollDistance + wheelAmt
-            
-        if(this.state.imageExpanded){
-            const querySelector = '.residencePenthouseDetail__details'
-            if(wheelAmt < 0) {
-                document.querySelector(querySelector).scrollTop = 0//scroll to top of slide to trigger prevSlide as scroll motion continues
-            }
-            else {
-                const bottomScrollValue = document.querySelector(querySelector).scrollHeight - document.querySelector(querySelector).offsetHeight
-                document.querySelector(querySelector).scrollTop = bottomScrollValue
-            }
-        }
+        const querySelector = '.residencePenthouseDetail__details'
+        const elementToDelegateScroll = document.querySelectorAll(querySelector)[0]
+        this.props.methods.delegateScroll(wheelAmt, elementToDelegateScroll, this.state.imageExpanded)
     }
     toggleImageExpansion(){
         const newImageState = !this.state.imageExpanded
