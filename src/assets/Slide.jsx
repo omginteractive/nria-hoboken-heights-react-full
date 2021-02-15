@@ -186,7 +186,7 @@ class SlideMap extends Component {
         super(props)
         this.state = {
             satelliteMapEnabled: false,
-            enabledListings: []
+            enabledListing: null
         }
     }
     toggleMap(){
@@ -196,17 +196,23 @@ class SlideMap extends Component {
         })
     }
     toggleListing(idx){
-        const enabledListingsClone = [...this.state.enabledListings];
-        const index = enabledListingsClone.indexOf(idx)
-        if (index !== -1) {
-            enabledListingsClone.splice(index, 1);
-            this.setState({enabledListings: enabledListingsClone});
-        }
-        else {
-            this.setState({
-                enabledListings: this.state.enabledListings.concat(idx)
-            })
-        }
+        // const enabledListingsClone = [...this.state.enabledListings];
+        // const index = enabledListingsClone.indexOf(idx)
+        // if (index !== -1) {
+        //     enabledListingsClone.splice(index, 1);
+        //     this.setState({enabledListings: enabledListingsClone});
+        // }
+        // else {
+        //     this.setState({
+        //         enabledListings: this.state.enabledListings.concat(idx)
+        //     })
+        // }
+        const indexIsEnabled = this.state.enabledListing == idx
+        const newState = indexIsEnabled ? null : idx
+        this.setState({
+                enabledListing: idx
+        })
+
     }
     render(){
         let mapSectionClasses = 'mapSection'
@@ -235,7 +241,7 @@ class SlideMap extends Component {
                     </div>
                     <div className="mapSection__locationList">
                         {locationListings.map((amenity, idx) => {
-                            const isActive = this.state.enabledListings.indexOf(idx) !== -1
+                            const isActive = this.state.enabledListing ==idx
                             const locationListingClasses =  isActive ? 'locationListing active' : 'locationListing'
                             const toggleSymbol = isActive ? '-' : '+'
                             return (
