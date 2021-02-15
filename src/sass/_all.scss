@@ -194,6 +194,9 @@ body {
     align-items: center;
     justify-content: space-between;
     //Set for different fixed header themes
+    &.halfwhitebg {
+        background: linear-gradient(90deg, #ffffff 54vw, transparent 46vw)
+    }
     &.dark {
         color: #000;
         .separator {

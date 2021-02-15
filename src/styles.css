@@ -309,6 +309,9 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+.fixed-header.halfwhitebg {
+  background: linear-gradient(90deg, #ffffff 54vw, transparent 46vw);
+}
 .fixed-header.dark {
   color: #000;
 }

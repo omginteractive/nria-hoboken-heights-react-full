@@ -218,7 +218,7 @@ const flypilotFetchWPRestAPI = async () => {
         styles: {
             background: "#fff",
         },
-        headerTheme: 'dark',
+        headerTheme: 'dark halfwhitebg',
         enableScrolling: true,
     }]
     return SLIDES
