@@ -805,13 +805,24 @@ body {
                         $hideSliderColor: transparent;
                         $sliderTargetWidth: 40vw;
                         $labelDistanceFromRangeLine: 20px;
+
+                        top: $header-height;
+                        height: calc(100vh - #{$header-height});
                         &__top {
                             position: absolute;
                             top: $header-height;
                             width: 100vw;
-                            height: $top_section_height;
+                            // height: $top_section_height;
                             padding-left: $side-margin;
                             padding-right: $side-margin;
+
+                            //This will make it so the top section extends into the bottom when the text wont fit in the top
+                            background: #fff;
+                            height: auto;
+                            z-index: 2;
+                            // min-height: $top_section_height;
+                            padding-bottom: $content-padding;
+                            position: static;
                         }
                         &__bottom {
                             position: absolute;
@@ -821,6 +832,10 @@ body {
                             display: flex;
                             align-items: center;
                             justify-content: center;
+
+                            position: relative;
+                            top: auto;
+                            height: 100%;
                         }
                         &__timeSlider {
                             $sliderThumbWidth: 20px;

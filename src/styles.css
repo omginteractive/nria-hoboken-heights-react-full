@@ -894,14 +894,20 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  top: 12.8vh;
+  height: calc(100vh - 12.8vh);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__top {
   position: absolute;
   top: 12.8vh;
   width: 100vw;
-  height: 18vh;
   padding-left: 6.3vw;
   padding-right: 6.3vw;
+  background: #fff;
+  height: auto;
+  z-index: 2;
+  padding-bottom: 38px;
+  position: static;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__bottom {
   position: absolute;
@@ -911,6 +917,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  top: auto;
+  height: 100%;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider {
   position: absolute;
