@@ -118,6 +118,14 @@ body {
     transform: scale(1.07);
 }
 
+.hideScrollbars {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 .submittedFormOverlay {
 	display: none;
 	background: #000;
@@ -483,11 +491,8 @@ body {
             justify-content: center;
             position: relative;
             overflow: hidden;
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-            &::-webkit-scrollbar {
-                display: none;
-            }
+            @extend .hideScrollbars;
+
             &.enableScrolling {
                 overflow: scroll;
             }
@@ -545,12 +550,7 @@ body {
                         padding-right: calc(30% + #{$side-margin});
                         overflow: scroll;
                         width: calc(100vw - #{$side-margin}*2);
-
-                        -ms-overflow-style: none;  /* IE and Edge */
-                        scrollbar-width: none;  /* Firefox */
-                        &::-webkit-scrollbar {
-                            display: none;
-                        }
+                        @extend .hideScrollbars;
                         > p {
                             text-align: justify;
                         }
@@ -1236,6 +1236,7 @@ body {
                         overflow: scroll;
                         top: $header-height;
                         height: calc(100vh - #{$header-height});
+                        @extend .hideScrollbars;
                     }
                     .founderHeadline,
                     .founderTagline,

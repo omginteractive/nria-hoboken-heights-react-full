@@ -239,6 +239,16 @@ body {
   transform: scale(1.07);
 }
 
+.hideScrollbars, .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper, .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection, .slides_wrapper .slides_inner .slide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+.hideScrollbars::-webkit-scrollbar, .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper::-webkit-scrollbar, .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection::-webkit-scrollbar, .slides_wrapper .slides_inner .slide::-webkit-scrollbar {
+  display: none;
+}
+
 .submittedFormOverlay {
   display: none;
   background: #000;
@@ -592,13 +602,6 @@ body {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
-}
-.slides_wrapper .slides_inner .slide::-webkit-scrollbar {
-  display: none;
 }
 .slides_wrapper .slides_inner .slide.enableScrolling {
   overflow: scroll;
@@ -646,13 +649,6 @@ body {
   padding-right: calc(30% + 6.3vw);
   overflow: scroll;
   width: calc(100vw - 6.3vw*2);
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection::-webkit-scrollbar {
-  display: none;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection > p {
   text-align: justify;
