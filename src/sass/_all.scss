@@ -590,6 +590,7 @@ body {
                         display: flex;
                         align-items: flex-start;
                         &__details {
+                            @extend .hideScrollbars;
                             overflow: scroll;
                             background-color: #000000;
                             padding: 9.6vh 4.1vw;
@@ -1023,6 +1024,7 @@ body {
                         height: calc(100vh - #{$header-height});
                         width: calc(#{$content_width});
                         &__details {
+                            @extend .hideScrollbars;
                             padding-right: $content-padding;
                             position: absolute;
                             width: calc(#{$content_width} - #{$starting_leftside_width});

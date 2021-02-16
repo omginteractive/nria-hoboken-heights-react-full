@@ -239,13 +239,13 @@ body {
   transform: scale(1.07);
 }
 
-.hideScrollbars, .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper, .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection, .slides_wrapper .slides_inner .slide {
+.hideScrollbars, .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper, .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__details, .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details, .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection, .slides_wrapper .slides_inner .slide {
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
 }
-.hideScrollbars::-webkit-scrollbar, .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper::-webkit-scrollbar, .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection::-webkit-scrollbar, .slides_wrapper .slides_inner .slide::-webkit-scrollbar {
+.hideScrollbars::-webkit-scrollbar, .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper::-webkit-scrollbar, .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__details::-webkit-scrollbar, .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details::-webkit-scrollbar, .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection::-webkit-scrollbar, .slides_wrapper .slides_inner .slide::-webkit-scrollbar {
   display: none;
 }
 
