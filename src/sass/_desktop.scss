@@ -88,3 +88,10 @@
         }
     }
 }
+
+@media screen and (min-width: 769px) and (max-width: 1030px) {//To make sure map image isnt too large on small screens
+	.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo > img {
+        height: 87px;
+        transform: translate(-25px,-37px);
+    }
+}
