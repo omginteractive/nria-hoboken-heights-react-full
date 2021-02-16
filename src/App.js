@@ -374,8 +374,8 @@ class App extends React.Component {
 		}
 		if(this.state.slides[this.state.currIdx].enableScrolling && !noRequireScroll) {
             const scrollBottom = document.querySelector(querySelector).scrollHeight - document.querySelector(querySelector).offsetHeight - document.querySelector(querySelector).scrollTop;
-            if(scrollBottom > 0) {//scrollBottom can be negative
-				return;
+            if(scrollBottom > 1) {//scrollBottom can be negative. It also sometimes needs to scroll because 1 is the lowest value as in .amenities__details
+                return;
 			}
 		}
 		const newIdx = this.state.currIdx + 1;

@@ -196,7 +196,7 @@ body {
         width: 55%;//prevents covering of vertical line in contact page
         background-color: #fff;
         height: $header-height;
-        top: 1400vh;
+        top: $contactFormDistanceFromTop;
         z-index: 1;
     }
 }
