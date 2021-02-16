@@ -28,7 +28,6 @@ class Header extends Component {
         let fixedHeaderClasses = 'fixed-header ' + theme
         return (
             <header className={fixedHeaderClasses}>
-                <div className="halfwhitebgElement"></div>
                 {this.props.open && 
                     <img className="closeBtn" onClick={this.toggleMobileMenu.bind(this)} src={require('./' + this.lightCloseBtn).default} />
                 }

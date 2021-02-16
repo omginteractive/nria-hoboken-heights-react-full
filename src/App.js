@@ -687,6 +687,7 @@ class App extends React.Component {
                         className={slides_inner_classes}
                         style={innerStyle}
                         onTransitionEnd={e => this.watchForEventEnd(e)}>
+                            <div className='contactSlideWhiteHeader'></div>
                         {this.state.slides != null && $slides}
                     </div>
                 </div>

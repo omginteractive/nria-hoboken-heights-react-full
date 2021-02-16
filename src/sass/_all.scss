@@ -177,7 +177,7 @@ body {
 
 .fixed-headers {
     position: absolute;
-    transform: translateY(1px);
+    // transform: translateY(1px);
     z-index: 1;
     height: $header-height;
     overflow: hidden;
@@ -190,11 +190,14 @@ body {
         }
     }
 }
-.slides_wrapper.scrolled {
-    
-    .halfwhitebg .halfwhitebgElement {
+.slides_inner {
+    .contactSlideWhiteHeader {
+        position: absolute;
+        width: 55%;//prevents covering of vertical line in contact page
         background-color: #fff;
-        width: 50vw;
+        height: $header-height;
+        top: 1400vh;
+        z-index: 1;
     }
 }
 .fixed-header {
@@ -242,14 +245,6 @@ body {
         .corner-logo.dark {
             opacity: 1;
         }
-    }
-    .halfwhitebgElement {
-        width: 0;
-        width: 50vw;
-        background-color: transparent;
-        height: 100%;
-        z-index: -1;
-        position: absolute;
     }
     .inquiry-link {
         cursor: pointer;
