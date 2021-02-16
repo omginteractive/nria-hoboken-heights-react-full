@@ -838,7 +838,7 @@ body {
                                 width: $sliderTargetWidth;
                                 z-index: 1;
                                 position: relative;
-                                bottom: $labelDistanceFromRangeLine + $visibleSliderHeight;
+                                bottom: $labelDistanceFromRangeLine + $sliderHeight;
                             }
                             > input {
                                 background-color: $hideSliderColor;
@@ -963,6 +963,7 @@ body {
                             color: #fff;
                             z-index: 1;
                             font-size: 18px;
+                            height: 2em;//sets the tallest height that will be needed when the screen is small enough to cause the times to break to 2 lines
                             > li {
                                 width: $timeWordWidth;
                                 text-align: center;

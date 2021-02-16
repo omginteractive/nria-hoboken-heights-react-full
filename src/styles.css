@@ -922,7 +922,7 @@ body {
   width: 40vw;
   z-index: 1;
   position: relative;
-  bottom: 21px;
+  bottom: 40px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input {
   background-color: transparent;
@@ -1031,6 +1031,7 @@ body {
   color: #fff;
   z-index: 1;
   font-size: 18px;
+  height: 2em;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li {
   width: 6vw;
