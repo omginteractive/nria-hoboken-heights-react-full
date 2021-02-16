@@ -1,0 +1,558 @@
+@mixin placeholder {
+    ::-webkit-input-placeholder {@content}
+    :-moz-placeholder           {@content}
+    ::-moz-placeholder          {@content}
+    :-ms-input-placeholder      {@content}  
+}
+
+@keyframes rightbounce {
+	0% {transform: translateX(0);}
+	25% {transform: translateX(5px);}
+	50% {transform: translateX(0);}
+	100% {transform: translateX(0);}
+}
+@keyframes leftbounce {
+	0% {transform: translateX(0);}
+	25% {transform: translateX(-5px);}
+	50% {transform: translateX(0);}
+	100% {transform: translateX(0);}
+}
+.left_arrow_bouncing,
+.right_arrow_bouncing {
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    width: 34px;
+    height: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+}
+.left_arrow_bouncing {
+    animation-name: leftbounce;
+    margin-right: 10px;
+}
+.right_arrow_bouncing {
+    animation-name: rightbounce;
+    margin-left: 10px;
+}
+
+.privacyPolicyModal .privacyPolicyContainer {
+    width: 90%;
+    height: 90%;
+    padding: 20px;
+}
+html,
+body {
+    /*
+     * this is used only to prevent pull-to-refresh which can be triggered 
+     * anytime the user tries to scroll up on a touch device
+     * 
+     * This also prevents an issue where the background color of the body is 
+     * exposed during overscroll/elasticscroll behavior on iOS
+     * 
+     */
+    overflow: hidden;
+}
+body {
+    // overflow: hidden;
+    overscroll-behavior-y: contain;//this is used only to prevent pull-to-refresh which can be triggered anytime the user tries to scroll up on a touch device
+    // height: calc(100vh + 1px);//possible fix for iOS address bar not hiding
+    // background-color: #000000;//possible fix for iOS address bar not hiding
+}
+
+#page {
+    //Mobile Browser specific issues because the bottom toolbar doesnt disappear when scrolling
+    &.iPhone {
+        position: fixed;//this prevents a bouncing effec
+        .mobileMenu {
+            // position: fixed;
+        }
+    }
+    &.iPhone,
+    &.firefoxAndroid {
+        .slides_wrapper .slides_inner .slide {
+            .centerBottom {
+                bottom: 17vh;
+            }
+            .center .contactButton {
+                margin-bottom: 80px;
+            }
+            .contactPageWrapper .mobilePrivacyPolicy {
+                padding-bottom: 165px;
+            }
+        }
+    }
+}
+
+.formSubmitted {
+    .submittedFormOverlay.mobile-only {
+        position: fixed;
+    }
+}
+.slide_idx_0 {
+    + .musicplayer_container + .mobileMenu .hamburger {
+        transform: translateY(-50px);
+        transition: transform 0s;
+    }
+}
+.mobile-video-position-left {
+    .mobile-content-center,
+    .mobile-content-right {
+        opacity: 0;
+        // transition: opacity 0s;
+    }
+}
+.mobile-video-position-center {
+    .mobile-content-left,
+    .mobile-content-right {
+        opacity: 0;
+        // transition: opacity 0s;
+    }
+}
+.mobile-video-position-right {
+    .mobile-content-center,
+    .mobile-content-left {
+        opacity: 0;
+        // transition: opacity 0s;
+        
+    }
+}
+
+//This was necessary to fade out h1 tags when leaving a slide
+.mobile-video-position-left .mobile-content-left,
+.mobile-video-position-center .mobile-content-center,
+.mobile-video-position-right .mobile-content-right {
+    &:not(.animate) {
+        > h1 {
+            animation-duration: 0.5s;
+            animation-name: fadeOut;
+        }
+    }
+}
+
+
+ 
+.slide.runAnimations .centerBottom > h1 {
+    opacity: 1;
+    animation-name: none;//prevents desktop animation from running (which doesnt require .animate parent)
+}
+.slide .centerBottom {
+    bottom: 17vh;
+    > h1 {
+        // opacity: 0;
+        top: 0;
+        // transition: opacity 0.5s;
+    }
+}
+
+.centerBottom {
+    &.mobile-only {
+        &.animate {
+            > h1 {
+                opacity: 0;
+                position: relative;
+				animation-fill-mode: forwards;
+				animation-name: fadeInDriftUp;
+				animation-duration: 0.7s;
+				animation-delay: 0.5s;
+				+ h1 {
+					animation-delay: 0.7s;
+				}
+            }
+        }
+    }
+}
+.centerBottom {
+    .line {
+        position: relative;
+        opacity: 1;
+        top: 80px;
+        transition: top 0s linear 1.2s, opacity 1s;
+    }
+}
+
+.runAnimations {
+    .centerBottom {
+        .line {
+            top: 0;
+            transition: top 0.5s linear 0.8s;
+        }
+    }
+}
+.mobile-content-center,
+.mobile-content-right,
+.mobile-content-left {
+    opacity: 1;
+    transition: opacity 0.4s;
+    
+}
+
+.mobileMenu {
+    display: flex;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    color: #fff;
+    pointer-events: none;//to prevent covering up input selection
+    
+    .hamburgerWrapper {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+    }
+    .hamburger {
+        transform: translateY(0);
+        transition: transform 0.5s linear $slideAnimationDuration;
+        padding: 30px 15px 15px 15px;
+        pointer-events: all;//because .mobileMenu has none
+        // &.darkMode {
+        //     .line {
+        //         border-top-color: #000;
+        //     }
+        // }
+        .line {
+            border-top: solid 4px #fff;
+            width: 33px;
+            margin-bottom: 10px;
+        }
+    }
+    .expandedMobileMenu {
+        position: absolute;
+        width: 100%;
+        background: #000;
+        padding: 0 25px;
+        display: flex;
+        align-items: center;
+        transform: translateY(-80px);
+        transition: transform 0.5s, height 0s linear 0.5s;
+        height: 0;
+        overflow: hidden;
+        &.open {
+            overflow: visible;
+            height: 80px;
+            transition: transform 0.5s, height 0s;
+            transform: translateY(0);
+            pointer-events: all;//because .mobileMenu has none
+        }
+        .menuItemsContainer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 40px;
+            
+            .text {
+                font-size: 12px;
+                letter-spacing: 2px;
+                line-height: 1.4em;
+                
+                @media screen and (max-width: 398px) {
+                    width: min-content;
+                }
+            }
+            .separator {
+                height: 33px;
+                margin: 0 5px;
+            }
+            .logo {
+                > img {
+                    height: 35px;
+                    margin: 0 5px;
+                }
+            }
+            .sound,
+            .contact,
+            .close_btn {
+                > img {
+                    height: 25px;
+                    margin-left :5px;
+                }
+            }
+        }
+    }
+}
+
+.corner_content_wrapper {
+    display: none;
+}
+.musicplayer_container .musicplayer .landing_page_sound_player {
+    font-size: 12px;
+    .settings {
+        margin-top: 10px;
+    }
+}
+.slides_wrapper {
+    .corner-logo-wrapper {
+        display: none;
+    }
+    .slides_inner {
+        .slide {
+            &.slideTemplate-{
+                &exteriorLightToggle {
+                    .toggleLights {
+                        display: none;
+                    }
+                    
+                    .videoContainer {
+                        width: auto;
+                        height: 100vh;
+                        &.lightsOff {
+                            display: none;
+                        }
+                    }
+                }
+
+            }
+            &.backgroundFrame {
+                background-size: cover;
+            }
+            &.mobile-video-position- {
+                &left {
+                    .videoContainer {
+                        transform: translateX(33%);
+                    }
+                    
+                }
+                &center {
+                    .videoContainer {
+                        transform: translateX(0%);
+                    }
+                }
+                &right {
+                    .videoContainer {
+                        transform: translateX(-33%);
+                    }
+                }
+            }
+            .videoContainer {
+                transition: transform 0.8s;
+                .background-video {
+                    object-position: center;
+                    width: auto;
+                }
+            }
+            .founderSlideWrapper {
+                width: 100%;
+                height: calc(100% - 63px);
+                // left: 0;
+                // top: 63px;
+                position: static;//was causing scroll issues
+                padding-top: 30px;
+                padding-left: 30px;
+                padding-right: 15px;
+                .founderHeadline {
+                    font-size: 30px;
+                    margin-bottom: 10px;
+                    width: 100%;//stop forcing text to break each word
+                }
+                .founderTagline,
+                .founderBenefits {
+                    font-size: 16px;
+                }
+            }
+            
+            .contactPageWrapper {
+                .contactForm {
+                    .headline {
+                        font-size: 14px;
+                        letter-spacing: 4.17px;
+                        color: #fff;
+			
+                    }
+                    .hubspotFormWrapper {
+                        .hs-nested-form-fix {
+                            .hs-form {
+                                .hs-submit {
+                                    .actions {
+                                        .hs-button {
+                                            background-size: contain;
+                                            background-repeat: no-repeat;
+                                            color: transparent;
+                                            height: 37px;
+                                            background-position: center;
+                                            width: 51px;
+                                        }
+                                    }
+                                }
+                                .form-columns-0 {//fine print
+                                    font-size: 9px;
+                                    margin-top: 14px;
+                                }
+                                .form-columns-2 {
+                                    .hs-form-field {
+                                        width: 100%;
+                                        > label,
+                                        .input,
+                                        .hs-error-msgs {
+                                            margin-right: 0;
+                                            margin-left: 0;
+                                        }
+                                    }
+                                }
+                                .hs-form-field {
+                                    margin-top: 21px;
+                                    @include placeholder {
+                                        color: #000;
+                                    }
+                                    > label {
+                                        display: none;
+                                    }
+                                    .input > input,
+                                    .input > textarea {
+                                        height: 68px;
+                                        margin-top: 0;
+                                        padding: 11px;
+                                        font-size: 15px;
+                                        color: #000000;
+                                        
+                                        &.textarea {
+                                            height: 136px;
+                                        }
+                                    }
+                                    .select2-container--default {
+                                        width: 100% !important;
+                                        .select2-selection--single {
+                                            height: 68px;
+                                            display: flex;
+                                            align-items: center;
+                                            position: relative;
+                                            
+                                            .select2-selection__arrow {
+                                                top: auto;
+                                                > b {
+                                                    border-width: 12px 8px 0 8px;
+                                                    margin-left: -20px;
+                                                }
+                                            }
+                                            .select2-selection__rendered {
+                                                font-size: 15px;
+                                                color: #000000;
+                                                .select2-selection__placeholder {
+                                                    color: #000000;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    position: static;
+                    width: 100%;
+                    margin-bottom: 0;
+                    &.submitted .submittedFormOverlay {
+                        position: fixed;
+                        .text {
+                            transform: translateY(200vh);
+                            font-size: 15.5px;
+                        }
+                        .closeBtn {
+                            transform: translateY(400vh);
+                            > img {
+                                width: 16px;
+                            }
+                        }
+                    }
+                    
+                    .fine-print {
+                        font-size: 9px;
+                        margin-top: 14px;
+                    }
+                    .rightArrowContainer {
+                        justify-content: space-between;
+                        .logo {
+                            height: 55px;
+                        }
+                    }
+                    .mobileRightArrowContainer {
+                        display: flex;
+                        align-items: center;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        .text {
+                            margin-right: 20px;
+                            font-size: 17px;
+                            letter-spacing: 4.4px;
+                        }
+                        .rightArrow {
+                            height: 17px;
+                        }
+                    }
+                    .form-control {
+                        margin-top: 21px;
+                        @include placeholder {
+                            color: #000;
+                        }
+                        .select2-container--default .select2-selection--single {
+                            height: 68px;
+                            display: flex;
+                            align-items: center;
+                            .select2-selection__arrow {
+                                top: auto;
+                                > b {
+                                    border-width: 12px 8px 0 8px;
+                                    margin-left: -20px;
+                                }
+                            }
+                            .select2-selection__rendered {
+                                font-size: 15px;
+                                color: #000000;
+                                .select2-selection__placeholder {
+                                    color: #000000;
+                                }
+                            }
+                        }
+                        
+                        
+                        .label {
+                            display: none;
+                        }
+                        .input {
+                            height: 68px;
+                            margin-top: 0;
+                            padding: 11px;
+                            font-size: 15px;
+                            color: #000000;
+                            
+                            &.textarea {
+                                height: 136px;
+                            }
+                        }
+                    }
+                    .two-input-group {
+                        flex-direction: column;
+                        .form-control {
+                            + .form-control {
+                                margin-left: 0;
+                            }
+                        }
+                    }
+                }
+                .mobilePrivacyPolicy {
+                    background: #000;
+                    color: #fff;
+                    padding: 65px 0;
+                    text-align: center;
+                    line-height: 1.4em;
+                    font-size: 14px;
+                    .contactInfo {
+                        > a {
+                            color: #fff;
+                            font-weight: bold;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+           
+            .center {
+                // width: 82vw;
+                > h1 {
+                    text-align: justify;
+                }
+            }
+            
+        }
+    }
+}
+

@@ -125,6 +125,9 @@ class Slide extends Component {
 			centerImageStyles = slideObj.centerImageStylesMobile
 		}
 
+        let right_arrow_bouncing = <div className='right_arrow_bouncing' onClick={() => this.slideHorizontal('right')}/>
+		let left_arrow_bouncing = <div className='left_arrow_bouncing' onClick={() => this.slideHorizontal('left')}/>
+
 		return(
             <div className={slideClasses} style={slideStyles} onScroll={this.handleTheScroll}>
                 {slideObj.slideTemplate === 'home' && 
@@ -538,6 +541,8 @@ class SlideExteriorLightToggle extends Component {
     render(){
         let videoContainerClasses = 'videoContainer'
         videoContainerClasses += ' compact'
+        const videoContainerClassesLightsOn = videoContainerClasses + ' lightsOn'
+        const videoContainerClassesLightsOff = videoContainerClasses + ' lightsOff'
         let videoClasses = 'background-video'
         let lightButtonText = this.state.lightsOn ? 'Turn Off' : 'Turn On'
         if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect startZoomedIn'
@@ -559,7 +564,7 @@ class SlideExteriorLightToggle extends Component {
 							//Hide landingpage video on FFMobile because it will not autoplay
 							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
 						<div
-						className={videoContainerClasses}
+						className={videoContainerClassesLightsOn}
 						dangerouslySetInnerHTML={{
 							__html: `
 							<video
@@ -579,7 +584,7 @@ class SlideExteriorLightToggle extends Component {
 							//Hide landingpage video on FFMobile because it will not autoplay
 							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
 						<div
-						className={videoContainerClasses}
+						className={videoContainerClassesLightsOff}
 						dangerouslySetInnerHTML={{
 							__html: `
 							<video

@@ -2173,6 +2173,500 @@ body {
     display: none !important;
   }
 }
+@media screen and (max-width: 768px), screen and (max-height: 415px) and (orientation: landscape) {
+  @keyframes rightbounce {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(5px);
+    }
+    50% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  @keyframes leftbounce {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-5px);
+    }
+    50% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  .left_arrow_bouncing,
+.right_arrow_bouncing {
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    width: 34px;
+    height: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .left_arrow_bouncing {
+    animation-name: leftbounce;
+    margin-right: 10px;
+  }
+
+  .right_arrow_bouncing {
+    animation-name: rightbounce;
+    margin-left: 10px;
+  }
+
+  .privacyPolicyModal .privacyPolicyContainer {
+    width: 90%;
+    height: 90%;
+    padding: 20px;
+  }
+
+  html,
+body {
+    /*
+     * this is used only to prevent pull-to-refresh which can be triggered 
+     * anytime the user tries to scroll up on a touch device
+     * 
+     * This also prevents an issue where the background color of the body is 
+     * exposed during overscroll/elasticscroll behavior on iOS
+     * 
+     */
+    overflow: hidden;
+  }
+
+  body {
+    overscroll-behavior-y: contain;
+  }
+
+  #page.iPhone {
+    position: fixed;
+  }
+  #page.iPhone .slides_wrapper .slides_inner .slide .centerBottom, #page.firefoxAndroid .slides_wrapper .slides_inner .slide .centerBottom {
+    bottom: 17vh;
+  }
+  #page.iPhone .slides_wrapper .slides_inner .slide .center .contactButton, #page.firefoxAndroid .slides_wrapper .slides_inner .slide .center .contactButton {
+    margin-bottom: 80px;
+  }
+  #page.iPhone .slides_wrapper .slides_inner .slide .contactPageWrapper .mobilePrivacyPolicy, #page.firefoxAndroid .slides_wrapper .slides_inner .slide .contactPageWrapper .mobilePrivacyPolicy {
+    padding-bottom: 165px;
+  }
+
+  .formSubmitted .submittedFormOverlay.mobile-only {
+    position: fixed;
+  }
+
+  .slide_idx_0 + .musicplayer_container + .mobileMenu .hamburger {
+    transform: translateY(-50px);
+    transition: transform 0s;
+  }
+
+  .mobile-video-position-left .mobile-content-center,
+.mobile-video-position-left .mobile-content-right {
+    opacity: 0;
+  }
+
+  .mobile-video-position-center .mobile-content-left,
+.mobile-video-position-center .mobile-content-right {
+    opacity: 0;
+  }
+
+  .mobile-video-position-right .mobile-content-center,
+.mobile-video-position-right .mobile-content-left {
+    opacity: 0;
+  }
+
+  .mobile-video-position-left .mobile-content-left:not(.animate) > h1,
+.mobile-video-position-center .mobile-content-center:not(.animate) > h1,
+.mobile-video-position-right .mobile-content-right:not(.animate) > h1 {
+    animation-duration: 0.5s;
+    animation-name: fadeOut;
+  }
+
+  .slide.runAnimations .centerBottom > h1 {
+    opacity: 1;
+    animation-name: none;
+  }
+
+  .slide .centerBottom {
+    bottom: 17vh;
+  }
+  .slide .centerBottom > h1 {
+    top: 0;
+  }
+
+  .centerBottom.mobile-only.animate > h1 {
+    opacity: 0;
+    position: relative;
+    animation-fill-mode: forwards;
+    animation-name: fadeInDriftUp;
+    animation-duration: 0.7s;
+    animation-delay: 0.5s;
+  }
+  .centerBottom.mobile-only.animate > h1 + h1 {
+    animation-delay: 0.7s;
+  }
+
+  .centerBottom .line {
+    position: relative;
+    opacity: 1;
+    top: 80px;
+    transition: top 0s linear 1.2s, opacity 1s;
+  }
+
+  .runAnimations .centerBottom .line {
+    top: 0;
+    transition: top 0.5s linear 0.8s;
+  }
+
+  .mobile-content-center,
+.mobile-content-right,
+.mobile-content-left {
+    opacity: 1;
+    transition: opacity 0.4s;
+  }
+
+  .mobileMenu {
+    display: flex;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    color: #fff;
+    pointer-events: none;
+  }
+  .mobileMenu .hamburgerWrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+  .mobileMenu .hamburger {
+    transform: translateY(0);
+    transition: transform 0.5s linear 1400ms;
+    padding: 30px 15px 15px 15px;
+    pointer-events: all;
+  }
+  .mobileMenu .hamburger .line {
+    border-top: solid 4px #fff;
+    width: 33px;
+    margin-bottom: 10px;
+  }
+  .mobileMenu .expandedMobileMenu {
+    position: absolute;
+    width: 100%;
+    background: #000;
+    padding: 0 25px;
+    display: flex;
+    align-items: center;
+    transform: translateY(-80px);
+    transition: transform 0.5s, height 0s linear 0.5s;
+    height: 0;
+    overflow: hidden;
+  }
+  .mobileMenu .expandedMobileMenu.open {
+    overflow: visible;
+    height: 80px;
+    transition: transform 0.5s, height 0s;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+  .mobileMenu .expandedMobileMenu .menuItemsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 40px;
+  }
+  .mobileMenu .expandedMobileMenu .menuItemsContainer .text {
+    font-size: 12px;
+    letter-spacing: 2px;
+    line-height: 1.4em;
+  }
+}
+@media screen and (max-width: 768px) and (max-width: 398px), screen and (max-height: 415px) and (orientation: landscape) and (max-width: 398px) {
+  .mobileMenu .expandedMobileMenu .menuItemsContainer .text {
+    width: min-content;
+  }
+}
+@media screen and (max-width: 768px), screen and (max-height: 415px) and (orientation: landscape) {
+  .mobileMenu .expandedMobileMenu .menuItemsContainer .separator {
+    height: 33px;
+    margin: 0 5px;
+  }
+}
+@media screen and (max-width: 768px), screen and (max-height: 415px) and (orientation: landscape) {
+  .mobileMenu .expandedMobileMenu .menuItemsContainer .logo > img {
+    height: 35px;
+    margin: 0 5px;
+  }
+}
+@media screen and (max-width: 768px), screen and (max-height: 415px) and (orientation: landscape) {
+  .mobileMenu .expandedMobileMenu .menuItemsContainer .sound > img,
+.mobileMenu .expandedMobileMenu .menuItemsContainer .contact > img,
+.mobileMenu .expandedMobileMenu .menuItemsContainer .close_btn > img {
+    height: 25px;
+    margin-left: 5px;
+  }
+}
+@media screen and (max-width: 768px), screen and (max-height: 415px) and (orientation: landscape) {
+  .corner_content_wrapper {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px), screen and (max-height: 415px) and (orientation: landscape) {
+  .musicplayer_container .musicplayer .landing_page_sound_player {
+    font-size: 12px;
+  }
+  .musicplayer_container .musicplayer .landing_page_sound_player .settings {
+    margin-top: 10px;
+  }
+}
+@media screen and (max-width: 768px), screen and (max-height: 415px) and (orientation: landscape) {
+  .slides_wrapper .corner-logo-wrapper {
+    display: none;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights {
+    display: none;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .videoContainer {
+    width: auto;
+    height: 100vh;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .videoContainer.lightsOff {
+    display: none;
+  }
+  .slides_wrapper .slides_inner .slide.backgroundFrame {
+    background-size: cover;
+  }
+  .slides_wrapper .slides_inner .slide.mobile-video-position-left .videoContainer {
+    transform: translateX(33%);
+  }
+  .slides_wrapper .slides_inner .slide.mobile-video-position-center .videoContainer {
+    transform: translateX(0%);
+  }
+  .slides_wrapper .slides_inner .slide.mobile-video-position-right .videoContainer {
+    transform: translateX(-33%);
+  }
+  .slides_wrapper .slides_inner .slide .videoContainer {
+    transition: transform 0.8s;
+  }
+  .slides_wrapper .slides_inner .slide .videoContainer .background-video {
+    object-position: center;
+    width: auto;
+  }
+  .slides_wrapper .slides_inner .slide .founderSlideWrapper {
+    width: 100%;
+    height: calc(100% - 63px);
+    position: static;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 15px;
+  }
+  .slides_wrapper .slides_inner .slide .founderSlideWrapper .founderHeadline {
+    font-size: 30px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .slides_wrapper .slides_inner .slide .founderSlideWrapper .founderTagline,
+.slides_wrapper .slides_inner .slide .founderSlideWrapper .founderBenefits {
+    font-size: 16px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm {
+    position: static;
+    width: 100%;
+    margin-bottom: 0;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .headline {
+    font-size: 14px;
+    letter-spacing: 4.17px;
+    color: #fff;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-submit .actions .hs-button {
+    background-size: contain;
+    background-repeat: no-repeat;
+    color: transparent;
+    height: 37px;
+    background-position: center;
+    width: 51px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-0 {
+    font-size: 9px;
+    margin-top: 14px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field {
+    width: 100%;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field > label,
+.slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field .input,
+.slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field .hs-error-msgs {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field {
+    margin-top: 21px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field ::-webkit-input-placeholder {
+    color: #000;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field :-moz-placeholder {
+    color: #000;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field ::-moz-placeholder {
+    color: #000;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field :-ms-input-placeholder {
+    color: #000;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field > label {
+    display: none;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field .input > input,
+.slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field .input > textarea {
+    height: 68px;
+    margin-top: 0;
+    padding: 11px;
+    font-size: 15px;
+    color: #000000;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field .input > input.textarea,
+.slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field .input > textarea.textarea {
+    height: 136px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field .select2-container--default {
+    width: 100% !important;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field .select2-container--default .select2-selection--single {
+    height: 68px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field .select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: auto;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field .select2-container--default .select2-selection--single .select2-selection__arrow > b {
+    border-width: 12px 8px 0 8px;
+    margin-left: -20px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field .select2-container--default .select2-selection--single .select2-selection__rendered {
+    font-size: 15px;
+    color: #000000;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field .select2-container--default .select2-selection--single .select2-selection__rendered .select2-selection__placeholder {
+    color: #000000;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm.submitted .submittedFormOverlay {
+    position: fixed;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm.submitted .submittedFormOverlay .text {
+    transform: translateY(200vh);
+    font-size: 15.5px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm.submitted .submittedFormOverlay .closeBtn {
+    transform: translateY(400vh);
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm.submitted .submittedFormOverlay .closeBtn > img {
+    width: 16px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .fine-print {
+    font-size: 9px;
+    margin-top: 14px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .rightArrowContainer {
+    justify-content: space-between;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .rightArrowContainer .logo {
+    height: 55px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .mobileRightArrowContainer {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .mobileRightArrowContainer .text {
+    margin-right: 20px;
+    font-size: 17px;
+    letter-spacing: 4.4px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .mobileRightArrowContainer .rightArrow {
+    height: 17px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .form-control {
+    margin-top: 21px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .form-control ::-webkit-input-placeholder {
+    color: #000;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .form-control :-moz-placeholder {
+    color: #000;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .form-control ::-moz-placeholder {
+    color: #000;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .form-control :-ms-input-placeholder {
+    color: #000;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .form-control .select2-container--default .select2-selection--single {
+    height: 68px;
+    display: flex;
+    align-items: center;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .form-control .select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: auto;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .form-control .select2-container--default .select2-selection--single .select2-selection__arrow > b {
+    border-width: 12px 8px 0 8px;
+    margin-left: -20px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .form-control .select2-container--default .select2-selection--single .select2-selection__rendered {
+    font-size: 15px;
+    color: #000000;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .form-control .select2-container--default .select2-selection--single .select2-selection__rendered .select2-selection__placeholder {
+    color: #000000;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .form-control .label {
+    display: none;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .form-control .input {
+    height: 68px;
+    margin-top: 0;
+    padding: 11px;
+    font-size: 15px;
+    color: #000000;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .form-control .input.textarea {
+    height: 136px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .two-input-group {
+    flex-direction: column;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .two-input-group .form-control + .form-control {
+    margin-left: 0;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .mobilePrivacyPolicy {
+    background: #000;
+    color: #fff;
+    padding: 65px 0;
+    text-align: center;
+    line-height: 1.4em;
+    font-size: 14px;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .mobilePrivacyPolicy .contactInfo > a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .slides_wrapper .slides_inner .slide .center > h1 {
+    text-align: justify;
+  }
+}
 /*
 @media screen and (min-width: 769px) and (max-height: 1080px) {
 	//Fixes for contact form slide on smaller screens
