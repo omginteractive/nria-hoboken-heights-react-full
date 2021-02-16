@@ -592,6 +592,13 @@ body {
   justify-content: center;
   position: relative;
   overflow: hidden;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+.slides_wrapper .slides_inner .slide::-webkit-scrollbar {
+  display: none;
 }
 .slides_wrapper .slides_inner .slide.enableScrolling {
   overflow: scroll;
@@ -630,7 +637,7 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection {
   z-index: 1;
   position: absolute;
-  left: calc(50px + 6.3vw);
+  left: calc(6.3vw);
   display: flex;
   flex-direction: column;
   height: calc(100vh);
@@ -639,6 +646,13 @@ body {
   padding-right: calc(30% + 6.3vw);
   overflow: scroll;
   width: calc(100vw - 6.3vw*2);
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection::-webkit-scrollbar {
+  display: none;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection > p {
   text-align: justify;

@@ -483,6 +483,11 @@ body {
             justify-content: center;
             position: relative;
             overflow: hidden;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+            &::-webkit-scrollbar {
+                display: none;
+            }
             &.enableScrolling {
                 overflow: scroll;
             }
@@ -524,7 +529,7 @@ body {
                     .textSection {
                         z-index: 1;
                         position: absolute;
-                        left: calc(50px + #{$side-margin});
+                        left: calc(#{$side-margin});
                         // top: calc(50px + #{$header-height});
                         // height: calc(100vh - #{$header-height}*2);
                         display: flex;
@@ -540,6 +545,12 @@ body {
                         padding-right: calc(30% + #{$side-margin});
                         overflow: scroll;
                         width: calc(100vw - #{$side-margin}*2);
+
+                        -ms-overflow-style: none;  /* IE and Edge */
+                        scrollbar-width: none;  /* Firefox */
+                        &::-webkit-scrollbar {
+                            display: none;
+                        }
                         > p {
                             text-align: justify;
                         }
