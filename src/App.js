@@ -137,10 +137,25 @@ class App extends React.Component {
 
     	window.addEventListener('keydown', (event) => {
 			if (!event.target.classList.contains('input')) {
-				if (event.code === "ArrowUp") this.prevSlide()
-				else if (event.code === "ArrowDown") this.nextSlide()
-				else if (event.code === "ArrowLeft") this.prevSlide()
-				else if (event.code === "ArrowRight") this.nextSlide()
+                let needScroll = false
+                const keyboardCommand = event.code
+				if (keyboardCommand === "ArrowUp") needScroll = this.prevSlide()
+				else if (keyboardCommand === "ArrowDown") needScroll = this.nextSlide()
+				else if (keyboardCommand === "ArrowLeft") needScroll = this.prevSlide()
+				else if (keyboardCommand === "ArrowRight") needScroll = this.nextSlide()
+
+                if(needScroll == 'needScroll') {
+                    const scrollDistance = 20
+                    const elementToScroll = this.state.slides[this.state.currIdx].enableScrollingQuerySelector ? this.state.slides[this.state.currIdx].enableScrollingQuerySelector : '.slide.activeSlide'
+                    if(keyboardCommand === "ArrowDown" || keyboardCommand === "ArrowRight") {
+                        const originalScroll = document.querySelectorAll(elementToScroll)[0].scrollTop
+                        document.querySelectorAll(elementToScroll)[0].scrollTop = originalScroll + scrollDistance
+                    }
+                    else if(keyboardCommand === "ArrowUp" || keyboardCommand === "ArrowLeft"){
+                        const originalScroll = document.querySelectorAll(elementToScroll)[0].scrollTop
+                        document.querySelectorAll(elementToScroll)[0].scrollTop = originalScroll - scrollDistance
+                    }
+                }
 			}
         });
 		//See handleResizeOnAndroid() for details
@@ -370,17 +385,17 @@ class App extends React.Component {
         const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
 		const videosPlayed = this.state.videosPlayed
 		if (this.isTransitioning() || this.animationsStopped() || (isFirefoxAndroid && !videosPlayed)) {
-			return;
+			return
 		}
 		if(this.state.slides[this.state.currIdx].enableScrolling && !noRequireScroll) {
             const scrollBottom = document.querySelector(querySelector).scrollHeight - document.querySelector(querySelector).offsetHeight - document.querySelector(querySelector).scrollTop;
             if(scrollBottom > 1) {//scrollBottom can be negative. It also sometimes needs to scroll because 1 is the lowest value as in .amenities__details
-                return;
+                return 'needScroll'
 			}
 		}
 		const newIdx = this.state.currIdx + 1;
 		if (newIdx >= this.state.slides.length) {
-			return;
+			return
 		}
 		this.setState({
 			transitiongState: 1,
@@ -390,16 +405,16 @@ class App extends React.Component {
 	}
 	prevSlide() {
 		if (this.isTransitioning() || this.animationsStopped()) {
-			return;
+			return
         }
         const querySelector = typeof this.state.slides[this.state.currIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.state.slides[this.state.currIdx].enableScrollingQuerySelector
 		const positionIsNotAtTopOfSlide = document.querySelector(querySelector).scrollTop !== 0;
 		if(positionIsNotAtTopOfSlide) {
-			return;
+			return 'needScroll'
 		}
 		const newIdx = this.state.currIdx - 1;
 		if (newIdx < 0) {
-			return;
+			return
 		}
 		this.setState({
 			transitiongState: -1,

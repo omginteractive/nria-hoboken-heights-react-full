@@ -1376,7 +1376,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .map {
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 12.8vh);
   object-fit: cover;
   object-position: top left;
 }
