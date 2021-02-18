@@ -2216,6 +2216,22 @@ body {
     line-height: 1.4em;
   }
 
+  .mobile-menu .mobileMenuLinks .linksWrapper {
+    text-align: center;
+  }
+  .mobile-menu .mobileMenuContact {
+    width: 100vw;
+    transform: translateX(0);
+    left: auto;
+  }
+  .mobile-menu .mobileMenuContact .socialMedias {
+    justify-content: center;
+  }
+  .mobile-menu .mobileMenuContact .address,
+.mobile-menu .mobileMenuContact .copyright {
+    display: none;
+  }
+
   .left_arrow_bouncing,
 .right_arrow_bouncing {
     animation-duration: 1s;
@@ -2503,6 +2519,9 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-patio .videoContainer .background-video {
     width: 100%;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-patio .downArrowContainer .downArrow {
+    display: none;
   }
   .slides_wrapper .slides_inner .slide.backgroundFrame {
     background-size: cover;

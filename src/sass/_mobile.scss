@@ -22,6 +22,23 @@ h2 {
     font-size: 24px;
     line-height: 1.4em;
 }
+.mobile-menu {
+    .mobileMenuLinks .linksWrapper {
+        text-align: center;
+    }
+    .mobileMenuContact {
+        width: 100vw;
+        transform: translateX(0);
+        left: auto;
+        .socialMedias {
+            justify-content: center;
+        }
+        .address,
+        .copyright {
+            display: none;
+        }
+    }
+}
 .left_arrow_bouncing,
 .right_arrow_bouncing {
     animation-duration: 1s;
@@ -374,6 +391,9 @@ body {
                     background-color: #000;
                     .videoContainer .background-video {
                         width: 100%;
+                    }
+                    .downArrowContainer .downArrow {
+                        display: none;
                     }
                 }
             }
