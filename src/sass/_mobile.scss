@@ -17,6 +17,11 @@
 	50% {transform: translateX(0);}
 	100% {transform: translateX(0);}
 }
+
+h2 {
+    font-size: 24px;
+    line-height: 1.4em;
+}
 .left_arrow_bouncing,
 .right_arrow_bouncing {
     animation-duration: 1s;
@@ -69,6 +74,18 @@ body {
         .hamburger .line {
             border-color: #fff;
         }
+    }
+    &.darkMobile {
+        color: #000;
+        .separator {
+            border-left: 0.5462802649px solid #000;
+        }
+        .hamburger .line {
+            border-color: #000;
+        }
+    }
+    .inquiry-link {
+        display: none;
     }
 }
 
@@ -339,7 +356,18 @@ body {
                             transition: opacity 0.5s, top 0s linear $slideAnimationDuration;
                         }
                     }
-                    
+                }
+                &fountainPen {
+                    $videoHeightRatio: .5625;//If the video is 100pxw it will be 56.25ox tall
+                    .videoContainer .background-video {
+                        min-height: auto;
+                        height: auto;
+                        width: 100vw;
+                    }
+                    .textSection {
+                        padding-right: 0;
+                        padding-top: calc(100vw * #{$videoHeightRatio});
+                    }
                 }
             }
             &.backgroundFrame {

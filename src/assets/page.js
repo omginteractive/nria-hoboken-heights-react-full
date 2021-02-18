@@ -42,6 +42,7 @@ const flypilotFetchWPRestAPI = async () => {
         headerTheme: 'light-inquiry',
         enableScrolling: true,
         enableScrollingQuerySelector: '.slideTemplate-fountainPen .textSection',
+        headerThemeMobile: 'darkMobile'
     }, {
         slideTemplate: 'patio',
         styles: {

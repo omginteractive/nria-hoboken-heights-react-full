@@ -92,7 +92,7 @@ class Slide extends Component {
 		if(isCurrent) slideClasses += " runAnimations activeSlide";
 		if(this.props.slideViewed) slideClasses += " runAnimationOnce";
 		if(slideObj.videoZoomEffect) videoClasses += ' videoZoomEffect'
-		slideClasses += slideObj.videoMobileStartPosition ? ' mobile-video-position-' + slideObj.videoMobileStartPosition : ' mobile-video-position-left'
+		slideClasses += slideObj.videoMobileStartPosition ? ' mobile-video-position-' + slideObj.videoMobileStartPosition : ' mobile-video-position-center'
 		slideClasses += slideObj.contactFormSlide ? ' contactFormSlide' : '';
 		slideClasses += slideObj.enableScrolling ? ' enableScrolling' : '';
 		slideClasses += ' slideTemplate-' + slideObj.slideTemplate;
