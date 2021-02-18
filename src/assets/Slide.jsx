@@ -125,9 +125,6 @@ class Slide extends Component {
 			centerImageStyles = slideObj.centerImageStylesMobile
 		}
 
-        let right_arrow_bouncing = <div className='right_arrow_bouncing' onClick={() => this.slideHorizontal('right')}/>
-		let left_arrow_bouncing = <div className='left_arrow_bouncing' onClick={() => this.slideHorizontal('left')}/>
-
 		return(
             <div className={slideClasses} style={slideStyles} onScroll={this.handleTheScroll}>
                 {slideObj.slideTemplate === 'home' && 
@@ -546,6 +543,17 @@ class SlideExteriorLightToggle extends Component {
         let videoClasses = 'background-video'
         let lightButtonText = this.state.lightsOn ? 'Turn Off' : 'Turn On'
         if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect startZoomedIn'
+
+        const right_arrow_styles = {
+            backgroundImage: 'url('+require('./images/right-arrow-bouncing.svg').default+')'
+        }
+        const left_arrow_styles = {
+            backgroundImage: 'url('+require('./images/left-arrow-bouncing.svg').default+')',
+            backgroundPosition: 'right'
+        }
+        const right_arrow_bouncing = <div className='right_arrow_bouncing' style={right_arrow_styles} onClick={() => this.slideHorizontal('right')}/>
+		const left_arrow_bouncing = <div className='left_arrow_bouncing' style={left_arrow_styles} onClick={() => this.slideHorizontal('left')}/>
+
         return(
             <>
                 <header className='fixed-header'>
@@ -599,6 +607,15 @@ class SlideExteriorLightToggle extends Component {
 							</video>`
 						}}
 					/>
+				}
+                {this.props.configuration.mobileHasDifferentContent &&
+					<div className={"centerBottom mobile-only"}>
+						<h1 style={this.props.configuration.mobileContent.centerBottom.lineStyles} className="line" >
+							{this.props.configuration.mobileContent.centerBottom.line1LeftArrowBouncing && left_arrow_bouncing}
+							<div dangerouslySetInnerHTML={{ __html: this.props.configuration.mobileContent.centerBottom.line1}} />
+							{this.props.configuration.mobileContent.centerBottom.line1RightArrowBouncing && right_arrow_bouncing}
+						</h1>
+					</div>
 				}
             </>
         )

@@ -51,7 +51,7 @@ class MobileMenu extends Component {
                             <a href='#' target="_blank">Instagram</a>
                         </div>
                     </div>
-                    <div className="address">1300 Manhattan Avenue Union City, NJ 07087 <br class='line-break' /><span className="separator">|</span> Manhattan Avenue Capital 1300, LLC<br />Richard Stabile | RE/MAX Real Estate Limited | <span className='phoneNum'><a href='tel:2014007487'>201-400-7487</a></span></div>
+                    <div className="address">1300 Manhattan Avenue Union City, NJ 07087 <br className='line-break' /><span className="separator">|</span> Manhattan Avenue Capital 1300, LLC<br />Richard Stabile | RE/MAX Real Estate Limited | <span className='phoneNum'><a href='tel:2014007487'>201-400-7487</a></span></div>
                     <div className="copyright">&copy; 2020 Hoboken Heights. All rights reserved.</div>
                 </div>
             </div>

@@ -14,20 +14,20 @@ const flypilotFetchWPRestAPI = async () => {
         // video: './NIRMA_1_Exterior_High_Cinemagraphic.mp4',
         videoLoop: true,
         videoZoomEffect: true,
-        videoMobileStartPosition: 'left',
+        videoMobileStartPosition: 'center',
         mobileHorizontalVideoSlideEnabled: true,
         mobileHasDifferentContent: true,
 		mobileContent: {
-			left: {
-				centerBottom: {
-					line1: "SWIPE ",
-					line1RightArrowBouncing: true,
-					lineStyles: {
-						display: 'flex',
-						alignItems: 'center'
-					},
-				}
-			},
+			centerBottom: {
+                line1: "SWIPE ",
+                line1RightArrowBouncing: true,
+                line1LeftArrowBouncing: true,
+                lineStyles: {
+                    display: 'flex',
+                    alignItems: 'center',
+                    color: '#fff'
+                },
+            }
 		},
         videoMobileStartPosition: 'center',
     }, {

@@ -1800,6 +1800,9 @@ body {
   opacity: 0;
   animation-timing-function: ease-in-out;
 }
+.slides_wrapper .slides_inner .slide .centerBottom {
+  position: absolute;
+}
 .slides_wrapper .slides_inner .slide .btn {
   cursor: pointer;
   text-align: center;
@@ -2430,6 +2433,11 @@ body {
   .slides_wrapper .corner-logo-wrapper {
     display: none;
   }
+  .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-exteriorLightToggle .centerBottom > h1 {
+    opacity: 1;
+    transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
+    top: 0;
+  }
   .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights {
     display: none;
   }
@@ -2439,6 +2447,11 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .videoContainer.lightsOff {
     display: none;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .centerBottom > h1 {
+    opacity: 0;
+    top: 15px;
+    transition: opacity 0.5s, top 0s linear 1400ms;
   }
   .slides_wrapper .slides_inner .slide.backgroundFrame {
     background-size: cover;

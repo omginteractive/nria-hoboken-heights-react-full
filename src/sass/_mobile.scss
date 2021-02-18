@@ -287,6 +287,26 @@ body {
     }
     .slides_inner {
         .slide {
+            &.runAnimations {
+                &.slideTemplate-{
+                    &exteriorLightToggle {
+                        .centerBottom {
+                            > h1 {
+                                opacity: 1;
+                                // opacity: 0;
+                                // position: relative;
+                                // animation-fill-mode: forwards;
+                                // animation-name: fadeInDriftUp;
+                                // animation-duration: 0.7s;
+                                // animation-delay: 0.5s;
+                                transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
+                                top: 0;
+
+                            }
+                        }
+                    }
+                }    
+            }
             &.slideTemplate-{
                 &exteriorLightToggle {
                     .toggleLights {
@@ -300,6 +320,14 @@ body {
                             display: none;
                         }
                     }
+                    .centerBottom {
+                        > h1 {
+                            opacity: 0;
+                            top: 15px;
+                            transition: opacity 0.5s, top 0s linear $slideAnimationDuration;
+                        }
+                    }
+                    
                 }
 
             }
