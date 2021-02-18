@@ -338,6 +338,7 @@ body {
             }
             &.slideTemplate-{
                 &exteriorLightToggle {
+                    background-color: #000;
                     .toggleLights {
                         display: none;
                     }
@@ -367,6 +368,12 @@ body {
                     .textSection {
                         padding-right: 0;
                         padding-top: calc(100vw * #{$videoHeightRatio});
+                    }
+                }
+                &patio {
+                    background-color: #000;
+                    .videoContainer .background-video {
+                        width: 100%;
                     }
                 }
             }

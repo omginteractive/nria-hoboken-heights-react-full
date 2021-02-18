@@ -621,6 +621,9 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-home .downArrowContainer .downArrow {
   animation-delay: 2s, 3s;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle {
+  background: #fff;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights {
   position: absolute;
   top: calc(12.8vh + 80px);
@@ -668,6 +671,9 @@ body {
   object-fit: contain;
   height: 100vh;
   width: auto;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-patio {
+  background-color: #fff;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-patio .downArrowContainer .downArrow, .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen .downArrowContainer .downArrow {
   animation-delay: 0.5s, 1.5s;
@@ -2465,6 +2471,9 @@ body {
     transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
     top: 0;
   }
+  .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle {
+    background-color: #000;
+  }
   .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights {
     display: none;
   }
@@ -2488,6 +2497,12 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection {
     padding-right: 0;
     padding-top: calc(100vw * 0.5625);
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-patio {
+    background-color: #000;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-patio .videoContainer .background-video {
+    width: 100%;
   }
   .slides_wrapper .slides_inner .slide.backgroundFrame {
     background-size: cover;

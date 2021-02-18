@@ -7,9 +7,6 @@ const flypilotFetchWPRestAPI = async () => {
         
     }, {
         slideTemplate: 'exteriorLightToggle',
-        styles: {
-            background: "#fff",
-        },
         slideClasses: "fullWidthVideo",
         // video: './NIRMA_1_Exterior_High_Cinemagraphic.mp4',
         videoLoop: true,
@@ -45,13 +42,12 @@ const flypilotFetchWPRestAPI = async () => {
         headerThemeMobile: 'darkMobile'
     }, {
         slideTemplate: 'patio',
-        styles: {
-            background: "#fff",
-        },
         slideClasses: "fullWidthVideo",
         videoLoop: true,
         videoZoomEffect: true,
-        headerTheme: 'light'
+        headerTheme: 'light',
+        videoMobileStartPosition: 'center',
+        mobileHorizontalVideoSlideEnabled: true,
     }, {
         slideTemplate: 'amenities',
         styles: {
