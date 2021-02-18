@@ -630,7 +630,11 @@ class App extends React.Component {
         })
     }
     render() {
-        const headerTheme = this.state.slides ? this.state.slides[this.state.currIdx].headerTheme : 'dark'
+        const hasHeaderTheme = this.state.slides && this.state.slides[this.state.currIdx].headerTheme
+        const hasHeaderThemeMobile = this.state.slides && this.state.slides[this.state.currIdx].headerThemeMobile
+
+        const headerTheme = hasHeaderTheme ? this.state.slides[this.state.currIdx].headerTheme : 'dark'
+        const headerThemeMobile = hasHeaderThemeMobile ? this.state.slides[this.state.currIdx].headerThemeMobile : ''
         
         const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
         const $slides = this.state.slides == null ? null : this.state.slides.map((slide, idx) =>
@@ -681,7 +685,7 @@ class App extends React.Component {
                     <div className="fixed-headers">
                         <div className='fixed-header-inner'>
                             <div className='fixed-header-wrapper'>
-                                <Header goToContactSlide={this.goToContactSlide.bind(this)} toggleMobileMenu={this.toggleMobileMenu.bind(this)} theme={headerTheme} />
+                                <Header goToContactSlide={this.goToContactSlide.bind(this)} toggleMobileMenu={this.toggleMobileMenu.bind(this)} theme={headerTheme} themeMobile={headerThemeMobile} />
                             </div>
                             {/* <div className='fixed-header-wrapper'>
                                 <header className='fixed-header'>

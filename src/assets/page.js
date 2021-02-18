@@ -30,6 +30,7 @@ const flypilotFetchWPRestAPI = async () => {
             }
 		},
         videoMobileStartPosition: 'center',
+        headerThemeMobile: 'lightMobile'
     }, {
         slideTemplate: 'fountainPen',
         styles: {

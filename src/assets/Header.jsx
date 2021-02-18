@@ -24,8 +24,9 @@ class Header extends Component {
     render(){
         const defaultTheme = 'dark'
         const theme = this.props.theme ? this.props.theme : defaultTheme
+        const themeMobile = this.props.themeMobile ? this.props.themeMobile : ''
 
-        let fixedHeaderClasses = 'fixed-header ' + theme
+        let fixedHeaderClasses = 'fixed-header ' + theme + ' ' + themeMobile
         return (
             <header className={fixedHeaderClasses}>
                 {this.props.open && 

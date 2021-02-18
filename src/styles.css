@@ -2248,6 +2248,16 @@ body {
     overscroll-behavior-y: contain;
   }
 
+  .fixed-header.lightMobile {
+    color: #fff;
+  }
+  .fixed-header.lightMobile .separator {
+    border-left: 0.5462802649px solid #fff;
+  }
+  .fixed-header.lightMobile .hamburger .line {
+    border-color: #fff;
+  }
+
   #page.iPhone {
     position: fixed;
   }

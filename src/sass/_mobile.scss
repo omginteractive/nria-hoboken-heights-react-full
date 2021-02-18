@@ -60,6 +60,18 @@ body {
     // background-color: #000000;//possible fix for iOS address bar not hiding
 }
 
+.fixed-header {
+    &.lightMobile {
+        color: #fff;
+        .separator {
+            border-left: 0.5462802649px solid #fff;
+        }
+        .hamburger .line {
+            border-color: #fff;
+        }
+    }
+}
+
 #page {
     //Mobile Browser specific issues because the bottom toolbar doesnt disappear when scrolling
     &.iPhone {
@@ -329,7 +341,6 @@ body {
                     }
                     
                 }
-
             }
             &.backgroundFrame {
                 background-size: cover;
