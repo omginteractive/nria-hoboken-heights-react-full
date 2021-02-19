@@ -19,6 +19,7 @@ class App extends React.Component {
         scrollDebouncer: null,
         transitiongState: 0, // 0 for false -1 for up 1 for down
         currIdx: 0,
+        currIdxMobile: 0,
         contactSlideIdx: 15,
         previousScrollVal: 0,
         peakScrollVal: 0,
@@ -40,6 +41,9 @@ class App extends React.Component {
         mobileMenuOpen: false,
         amenityDetailsSlideIdx: 0, //default to first amenity for details page
         residencePenthouse: 'penthouse',//default option
+        isMobileDevice: null,
+        desktopKeys: [],
+        mobileKeys: []
     }
 
         this.watchForEventEnd = this.watchForEventEnd.bind(this);
@@ -53,8 +57,6 @@ class App extends React.Component {
 		// this.debounceOnScroll = _.throttle(this.debounceOnScroll.bind(this), 3500, {leading: true, trailing:true});
 
 
-		
-	
 		/*
 		 * Browser wheel event inconsistencies
 		 * 
@@ -118,9 +120,8 @@ class App extends React.Component {
         flypilotFetchWPRestAPI().then((result)=> {
             this.setState({
               slides: result
-            });
+            }, ()=> this.createResponsiveIndices());
         })
-
         const hubspotscript = document.createElement("script");
         hubspotscript.src = "https://js.hsforms.net/forms/v2.js";
         hubspotscript.async = true;
@@ -133,8 +134,6 @@ class App extends React.Component {
         select2script.onload = () => console.log('loaded');
         document.body.appendChild(select2script);
         
-        
-
     	window.addEventListener('keydown', (event) => {
 			if (!event.target.classList.contains('input')) {
                 let needScroll = false
@@ -146,7 +145,8 @@ class App extends React.Component {
 
                 if(needScroll == 'needScroll') {
                     const scrollDistance = 20
-                    const elementToScroll = this.state.slides[this.state.currIdx].enableScrollingQuerySelector ? this.state.slides[this.state.currIdx].enableScrollingQuerySelector : '.slide.activeSlide'
+                    const deviceSlideIdx = this.findDeviceSlideIdx(this.state.currIdx)
+                    const elementToScroll = this.state.slides[deviceSlideIdx].enableScrollingQuerySelector ? this.state.slides[deviceSlideIdx].enableScrollingQuerySelector : '.slide.activeSlide'
                     if(keyboardCommand === "ArrowDown" || keyboardCommand === "ArrowRight") {
                         const originalScroll = document.querySelectorAll(elementToScroll)[0].scrollTop
                         document.querySelectorAll(elementToScroll)[0].scrollTop = originalScroll + scrollDistance
@@ -164,10 +164,12 @@ class App extends React.Component {
 			window.addEventListener('resize', () => this.handleResizeOnAndroid())
         }
         window.addEventListener('resize', () => this.handleResize())
-        this.calculateMapAspectLockRatio()
+        this.handleResize()
 	}
     handleResize(){
         this.calculateMapAspectLockRatio()
+        const isMobile = window.innerWidth < 769
+        this.setState({ isMobileDevice: isMobile });
     }
     calculateMapAspectLockRatio(){
         const maximumLockRatio = 2
@@ -380,19 +382,56 @@ class App extends React.Component {
         });
         this.handleSlideChange(idx)
     }
-	nextSlide(noRequireScroll = false) {
-        const querySelector = typeof this.state.slides[this.state.currIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.state.slides[this.state.currIdx].enableScrollingQuerySelector
+    createResponsiveIndices(){
+        //This is run immediately the slides state is set
+        //Works in tandem with findDeviceSlideIdx()
+        const slides = this.state.slides
+        const desktopKeys = slides.map((slide, i) => {
+            if(!slide.mobileOnly) return i
+            return null
+        }).filter(function(key){
+            if(Number.isInteger(key)) return true
+            return false
+        })
+
+        const mobileKeys = slides.map((slide, i) => {
+            if(!slide.desktopOnly) return i
+            return null
+        }).filter(function(key){
+            if(Number.isInteger(key)) return true
+            return false
+        })
+        this.setState({ 
+            desktopKeys,
+            mobileKeys
+         });
+        
+    }
+    findDeviceSlideIdx(idx){
+        /* 
+         * Because the mobile and desktop version have some slides that are unique to each environment
+         * We need a way to find the index of the environment which we are on
+         */
+        const isMobile = this.state.isMobileDevice
+        if(isMobile) return this.state.mobileKeys[idx]
+        return this.state.desktopKeys[idx]
+    }	
+    nextSlide(noRequireScroll = false) {
+        const deviceSlideIdx = this.findDeviceSlideIdx(this.state.currIdx)
+        const querySelector = typeof this.state.slides[deviceSlideIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.state.slides[deviceSlideIdx].enableScrollingQuerySelector
         const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
 		const videosPlayed = this.state.videosPlayed
 		if (this.isTransitioning() || this.animationsStopped() || (isFirefoxAndroid && !videosPlayed)) {
 			return
 		}
-		if(this.state.slides[this.state.currIdx].enableScrolling && !noRequireScroll) {
+		if(this.state.slides[deviceSlideIdx].enableScrolling && !noRequireScroll) {
             const scrollBottom = document.querySelector(querySelector).scrollHeight - document.querySelector(querySelector).offsetHeight - document.querySelector(querySelector).scrollTop;
             if(scrollBottom > 1) {//scrollBottom can be negative. It also sometimes needs to scroll because 1 is the lowest value as in .amenities__details
                 return 'needScroll'
 			}
 		}
+        //All of the above is used to prevent a slide change if necessary
+
 		const newIdx = this.state.currIdx + 1;
 		if (newIdx >= this.state.slides.length) {
 			return
@@ -407,7 +446,8 @@ class App extends React.Component {
 		if (this.isTransitioning() || this.animationsStopped()) {
 			return
         }
-        const querySelector = typeof this.state.slides[this.state.currIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.state.slides[this.state.currIdx].enableScrollingQuerySelector
+        const deviceSlideIdx = this.findDeviceSlideIdx(this.state.currIdx)
+        const querySelector = typeof this.state.slides[deviceSlideIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.state.slides[deviceSlideIdx].enableScrollingQuerySelector
 		const positionIsNotAtTopOfSlide = document.querySelector(querySelector).scrollTop !== 0;
 		if(positionIsNotAtTopOfSlide) {
 			return 'needScroll'
@@ -512,9 +552,9 @@ class App extends React.Component {
 				break;
 			case 'right':
 				this.slideHorizontal('right');
-        break;
-      default:
-        break;
+            break;
+                default:
+            break;
 		}
 
 	}
@@ -527,9 +567,9 @@ class App extends React.Component {
 		$("html, body").animate({ scrollTop: 0 })//possible fix to hide address bar on iPhone when body is > 100vh
 	}
 	slideHorizontal(direction){
-		const key = this.state.currIdx;
-		const mobileHorizontalVideoSlideEnabled = this.state.slides[key].mobileHorizontalVideoSlideEnabled;
-		if(!mobileHorizontalVideoSlideEnabled) return
+        const key = this.findDeviceSlideIdx(this.state.currIdx)
+        const mobileHorizontalVideoSlideEnabled = this.state.slides[key].mobileHorizontalVideoSlideEnabled
+        if(!mobileHorizontalVideoSlideEnabled) return
 
 		const videoMobileStartPosition = this.state.slides[key].videoMobileStartPosition
 		let newVideoMobileStartPosition
@@ -630,11 +670,12 @@ class App extends React.Component {
         })
     }
     render() {
-        const hasHeaderTheme = this.state.slides && this.state.slides[this.state.currIdx].headerTheme
-        const hasHeaderThemeMobile = this.state.slides && this.state.slides[this.state.currIdx].headerThemeMobile
+        const deviceSlideIdx = this.findDeviceSlideIdx(this.state.currIdx)
+        const hasHeaderTheme = this.state.slides && this.state.slides[deviceSlideIdx] && this.state.slides[deviceSlideIdx].headerTheme
+        const hasHeaderThemeMobile = this.state.slides && this.state.slides[deviceSlideIdx] && this.state.slides[deviceSlideIdx].headerThemeMobile
 
-        const headerTheme = hasHeaderTheme ? this.state.slides[this.state.currIdx].headerTheme : 'dark'
-        const headerThemeMobile = hasHeaderThemeMobile ? this.state.slides[this.state.currIdx].headerThemeMobile : ''
+        const headerTheme = hasHeaderTheme ? this.state.slides[deviceSlideIdx].headerTheme : 'dark'
+        const headerThemeMobile = hasHeaderThemeMobile ? this.state.slides[deviceSlideIdx].headerThemeMobile : ''
         
         const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
         const $slides = this.state.slides == null ? null : this.state.slides.map((slide, idx) =>

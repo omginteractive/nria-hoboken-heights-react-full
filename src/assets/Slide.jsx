@@ -109,7 +109,9 @@ class Slide extends Component {
 		slideClasses += slideObj.contactFormSlide ? ' contactFormSlide' : '';
 		slideClasses += slideObj.enableScrolling ? ' enableScrolling' : '';
 		slideClasses += ' slideTemplate-' + slideObj.slideTemplate;
-        
+        slideClasses += slideObj.mobileOnly === true ? ' mobile-only' : ''
+        slideClasses += slideObj.desktopOnly === true ? ' desktop-only' : ''
+
         if(slideObj.centerTextClasses) {
 			centerTextClasses += ' ' + slideObj.centerTextClasses;
 		}
@@ -129,6 +131,8 @@ class Slide extends Component {
 			centerTextStyles = slideObj.centerTextStylesMobile
 			slideStyles = {...this.state.styles, ...slideObj.stylesMobile}
 		}
+
+        
 
 		let centerImageStyles;
 		if(window.innerWidth > 768){
@@ -756,16 +760,23 @@ class SlideAmenities extends Component {
     }
     
     render(){
+        const amenitiesListAdditionalClasses = this.props.configuration.amenitiesListAdditionalClasses
+        const amenitiesDetailAdditionalClasses = this.props.configuration.amenitiesDetailAdditionalClasses
+        let amenitiesListClasses = 'amenities__list ' 
+        amenitiesListClasses += amenitiesListAdditionalClasses ? amenitiesListAdditionalClasses : ''
+        let amenitiesDetailsClasses = 'amenities__details ' 
+        amenitiesDetailsClasses += amenitiesDetailAdditionalClasses ? amenitiesDetailAdditionalClasses : ''
+
         return(
             <>
                 <section className="amenities">
-                    <div className="amenities__details">
+                    <div className={amenitiesDetailsClasses}>
                         <h2>Luxury Skyline Front Amenities & Services</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn dark">Inquire now</div>
                     </div>
-                    <div onWheel={this.handleWheelEvent.bind(this)}  className="amenities__list">
+                    <div onWheel={this.handleWheelEvent.bind(this)}  className={amenitiesListClasses}>
                         <ul>
                             <li onClick={() => this.setAmenityDetail(0)}>Bar</li>
                             <li onClick={() => this.setAmenityDetail(1)}>Children</li>

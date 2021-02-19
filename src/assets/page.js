@@ -5,7 +5,8 @@ const flypilotFetchWPRestAPI = async () => {
             background: "#000",
         },
         
-    }, {
+    },
+    {
         slideTemplate: 'exteriorLightToggle',
         slideClasses: "fullWidthVideo",
         // video: './NIRMA_1_Exterior_High_Cinemagraphic.mp4',
@@ -66,12 +67,35 @@ const flypilotFetchWPRestAPI = async () => {
         styles: {
             background: "#fff",
         },
+        headerTheme: 'dark',
+        enableScrolling: true,
+        enableScrollingQuerySelector: '.amenities__details',
+        mobileOnly: true,
+        amenitiesListAdditionalClasses: 'not-mobile',
+        headerTheme: 'dark',
+    }, {
+        slideTemplate: 'amenities',
+        styles: {
+            background: "#fff",
+        },
+        enableScrolling: true,
+        enableScrollingQuerySelector: '.amenities__list',
+        mobileOnly: true,
+        headerTheme: 'dark',
+        amenitiesDetailAdditionalClasses: 'not-mobile',
+    }, {
+        slideTemplate: 'amenities',
+        styles: {
+            background: "#fff",
+        },
         // slideClasses: "fullWidthVideo",
         // videoLoop: true,
         // videoZoomEffect: true,
         headerTheme: 'dark',
         enableScrolling: true,
         enableScrollingQuerySelector: '.amenities__details',
+        desktopOnly: true,
+        
     }, {
         slideTemplate: 'amenitiesDetail',
         styles: {
