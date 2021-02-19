@@ -694,7 +694,7 @@ class App extends React.Component {
                 key={idx}
                 slideCount={idx}
                 obj={slide}
-                isCurrent={idx == this.state.currIdx}
+                isCurrent={idx == deviceSlideIdx}
                 setAmenityDetailsSlideIdx={this.setAmenityOnDetailsSlide.bind(this)}
                 setResidencePenthousePath={this.setResidencePenthouse.bind(this)}
                 residencePenthousePath={this.state.residencePenthouse}
