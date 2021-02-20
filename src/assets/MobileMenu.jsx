@@ -2,10 +2,6 @@ import { Component } from 'react';
 import Header from './Header';
 
 class MobileMenu extends Component {
-    constructor(props) {
-        super(props);
-    
-    }
     goToSlide(idx){
         const {goToSlideIdx} = this.props;
         goToSlideIdx(idx)
@@ -31,14 +27,14 @@ class MobileMenu extends Component {
                 <Header goToContactSlide={this.goToContactSlide.bind(this)}  theme='light' open={true} toggleMobileMenu={this.toggleMobileMenu.bind(this)} />
                 <div className="mobileMenuLinks">
                     <div className="linksWrapper">
-                        <a onClick={() => this.goToSlide(2)} href="#"><h2>Property</h2></a>
-                        <a onClick={() => this.goToSlide(4)} href="#"><h2>Amenities</h2></a>
-                        <a onClick={() => this.goToSlide(6)} href="#"><h2>The View</h2></a>
-                        <a onClick={() => this.goToSlide(7)} href="#"><h2>Residences & Penthouses</h2></a>
-                        <a onClick={() => this.goToSlide(13)} href="#"><h2>Availability</h2></a>
-                        <a onClick={() => this.goToSlide(10)} href="#"><h2>Development Team Story</h2></a>
-                        <a onClick={() => this.goToSlide(12)} href="#"><h2>Discover</h2></a>
-                        <a onClick={() => this.goToSlide(15)} href="#"><h2>Contact</h2></a>
+                        <div className='link' onClick={() => this.goToSlide(2)}><h2>Property</h2></div>
+                        <div className='link' onClick={() => this.goToSlide(4)}><h2>Amenities</h2></div>
+                        <div className='link' onClick={() => this.goToSlide(6)}><h2>The View</h2></div>
+                        <div className='link' onClick={() => this.goToSlide(7)}><h2>Residences & Penthouses</h2></div>
+                        <div className='link' onClick={() => this.goToSlide(13)}><h2>Availability</h2></div>
+                        <div className='link' onClick={() => this.goToSlide(10)}><h2>Development Team Story</h2></div>
+                        <div className='link' onClick={() => this.goToSlide(12)}><h2>Discover</h2></div>
+                        <div className='link' onClick={() => this.goToSlide(15)}><h2>Contact</h2></div>
                     </div>
                 </div>
                 <div className="mobileMenuContact">

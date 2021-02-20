@@ -492,6 +492,17 @@ body {
                         }
                     }
                 }
+                &residencePenthouse {
+                    flex-direction: column;
+                    .btn {
+                        margin: 21px 0;
+                    }
+                }
+                &residencePenthouseFullscreen {
+                    .downArrowContainer {
+                        display: none;
+                    }
+                }
             }
             &.backgroundFrame {
                 background-size: cover;

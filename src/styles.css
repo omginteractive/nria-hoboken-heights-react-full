@@ -426,7 +426,7 @@ body {
 .mobile-menu.open {
   width: 100vw;
 }
-.mobile-menu.open .mobileMenuLinks .linksWrapper > a {
+.mobile-menu.open .mobileMenuLinks .linksWrapper .link {
   transform: translateX(0);
 }
 .mobile-menu.open .socialMedias,
@@ -2606,6 +2606,15 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-webkit-slider-runnable-track {
     height: calc(40vh + 20px);
     width: 20px;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouse {
+    flex-direction: column;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouse .btn {
+    margin: 21px 0;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen .downArrowContainer {
+    display: none;
   }
   .slides_wrapper .slides_inner .slide.backgroundFrame {
     background-size: cover;

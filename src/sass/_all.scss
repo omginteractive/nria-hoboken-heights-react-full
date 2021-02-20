@@ -324,7 +324,7 @@ body {
         width: 100vw;
         .mobileMenuLinks {
             .linksWrapper {
-                > a {
+                .link {
                     transform: translateX(0);
                 }
             }

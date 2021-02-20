@@ -172,7 +172,22 @@ const flypilotFetchWPRestAPI = async () => {
         styles: {
             background: "#000",
         },
-        headerTheme: 'light'
+        headerTheme: 'light',
+        videoMobileStartPosition: 'center',
+        mobileHorizontalVideoSlideEnabled: true,
+        mobileHasDifferentContent: true,
+		mobileContent: {
+			centerBottom: {
+                line1: "SWIPE ",
+                line1RightArrowBouncing: true,
+                line1LeftArrowBouncing: true,
+                lineStyles: {
+                    display: 'flex',
+                    alignItems: 'center',
+                    color: '#fff'
+                },
+            }
+		}
     },{
         slideTemplate: 'residencePenthouseDetail',
         styles: {

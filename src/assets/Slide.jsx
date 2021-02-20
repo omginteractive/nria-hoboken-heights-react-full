@@ -3,7 +3,7 @@ import animatedLogo from '../assets/images/Motion_logo.gif';
 import downArrow from '../assets/images/downarrow.svg';
 import leftArrowBlack from '../assets/images/leftArrowBlack.svg';
 import $ from 'jquery'
-import _ from "lodash";
+// import _ from "lodash";
 
 class Slide extends Component {
     constructor(props) {
@@ -224,7 +224,7 @@ class SlideMap extends Component {
         //         enabledListings: this.state.enabledListings.concat(idx)
         //     })
         // }
-        const indexIsEnabled = this.state.enabledListing == idx
+        const indexIsEnabled = this.state.enabledListing === idx
         const newState = indexIsEnabled ? null : idx
         this.setState({
                 enabledListing: idx
@@ -258,7 +258,7 @@ class SlideMap extends Component {
                     </div>
                     <div className="mapSection__locationList">
                         {locationListings.map((amenity, idx) => {
-                            const isActive = this.state.enabledListing ==idx
+                            const isActive = this.state.enabledListing === idx
                             const locationListingClasses =  isActive ? 'locationListing active' : 'locationListing'
                             const toggleSymbol = isActive ? '-' : '+'
                             return (

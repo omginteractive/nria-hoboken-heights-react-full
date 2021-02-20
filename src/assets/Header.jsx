@@ -30,7 +30,7 @@ class Header extends Component {
         return (
             <header className={fixedHeaderClasses}>
                 {this.props.open && 
-                    <img className="closeBtn" onClick={this.toggleMobileMenu.bind(this)} src={require('./' + this.lightCloseBtn).default} />
+                    <img alt='Close Button' className="closeBtn" onClick={this.toggleMobileMenu.bind(this)} src={require('./' + this.lightCloseBtn).default} />
                 }
                 {!this.props.open && 
                     <div className="hamburger" onClick={this.toggleMobileMenu.bind(this)}>
@@ -42,8 +42,8 @@ class Header extends Component {
                 <div className="corner-logo-wrapper">
                     <div className="text">HOBOKEN HEIGHTS<div className="separator"></div></div>
                     <div className="corner-logo-wrapper">
-                        <img className="corner-logo light" src={require('./' + this.lightLogo).default} />
-                        <img className="corner-logo dark" src={require('./' + this.darkLogo).default} />
+                        <img alt='Hoboken Heights Logo Light' className="corner-logo light" src={require('./' + this.lightLogo).default} />
+                        <img alt='Hoboken Heights Logo Dark' className="corner-logo dark" src={require('./' + this.darkLogo).default} />
                     </div>
 
                 </div>

@@ -85,27 +85,27 @@ class App extends React.Component {
 		*/
 		let browser;
 		const user_agent = navigator.userAgent.toLowerCase();
-		if (user_agent.indexOf('windows') != -1){
+		if (user_agent.indexOf('windows') !== -1){
 			this.state.operating_sys = 'windows';
 		}
-		else if(navigator.userAgent.indexOf('OPR') != -1 || navigator.userAgent.indexOf('Opera') != -1) {
+		else if(navigator.userAgent.indexOf('OPR') !== -1 || navigator.userAgent.indexOf('Opera') !== -1) {
 			this.state.operating_sys = 'opera';
 		}
-		else if (user_agent.indexOf('android') != -1){
+		else if (user_agent.indexOf('android') !== -1){
 			this.state.operating_sys = 'android';
 		}
-		else if (user_agent.indexOf('macintosh') != -1){
+		else if (user_agent.indexOf('macintosh') !== -1){
 			this.state.operating_sys = 'macintosh';
 		}
 
-		if (user_agent.indexOf('safari') != -1) {
+		if (user_agent.indexOf('safari') !== -1) {
 			if (user_agent.indexOf('chrome') > -1) {
 				browser= 'chrome';
 			} else {
 				browser ='safari';
 			}
 		}
-		else if (user_agent.indexOf('firefox') != -1) {
+		else if (user_agent.indexOf('firefox') !== -1) {
 			browser ='firefox';
 		}
 		this.state.browser= browser;
@@ -113,7 +113,7 @@ class App extends React.Component {
 		this.mobileMenuElement = React.createRef()
 		this.headerElement = React.createRef()
 
-		this.state.isiPhone = navigator.platform== "iPhone"
+		this.state.isiPhone = navigator.platform === "iPhone"
     }
 
     componentDidMount() {
@@ -143,7 +143,7 @@ class App extends React.Component {
 				else if (keyboardCommand === "ArrowLeft") needScroll = this.prevSlide()
 				else if (keyboardCommand === "ArrowRight") needScroll = this.nextSlide()
 
-                if(needScroll == 'needScroll') {
+                if(needScroll === 'needScroll') {
                     const scrollDistance = 20
                     const deviceSlideIdx = this.findDeviceSlideIdx(this.state.currIdx)
                     const elementToScroll = this.state.slides[deviceSlideIdx].enableScrollingQuerySelector ? this.state.slides[deviceSlideIdx].enableScrollingQuerySelector : '.slide.activeSlide'
@@ -282,7 +282,7 @@ class App extends React.Component {
 		this.scrollDebouncer = null
 	}
 	throttleOnScroll(deltaY) {
-        if(this.scrollDebouncer != null) {
+        if(this.scrollDebouncer !== null) {
 			clearTimeout(this.scrollDebouncer)
 		}
 		this.scrollDebouncer=setTimeout(this.enableScroll.bind(this),500);
@@ -367,7 +367,7 @@ class App extends React.Component {
     }
     goToContactSlide(){
         const idx = this.state.contactSlideIdx
-        if(this.state.currIdx == idx) return
+        if(this.state.currIdx === idx) return
         this.setState({
 			transitiongState: 1,
 			currIdx: idx
@@ -375,7 +375,7 @@ class App extends React.Component {
         this.handleSlideChange(idx)
     }
     goToSlide(idx){
-        if(this.state.currIdx == idx) return
+        if(this.state.currIdx === idx) return
         this.setState({
 			transitiongState: 1,
 			currIdx: idx
@@ -421,12 +421,13 @@ class App extends React.Component {
         const querySelector = typeof this.state.slides[deviceSlideIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.state.slides[deviceSlideIdx].enableScrollingQuerySelector
         const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
 		const videosPlayed = this.state.videosPlayed
-		if (this.isTransitioning() || this.animationsStopped() || (isFirefoxAndroid && !videosPlayed)) {
+        if (this.isTransitioning() || this.animationsStopped() || (isFirefoxAndroid && !videosPlayed)) {
 			return
 		}
 		if(this.state.slides[deviceSlideIdx].enableScrolling && !noRequireScroll) {
             const scrollBottom = document.querySelector(querySelector).scrollHeight - document.querySelector(querySelector).offsetHeight - document.querySelector(querySelector).scrollTop;
             if(scrollBottom > 1) {//scrollBottom can be negative. It also sometimes needs to scroll because 1 is the lowest value as in .amenities__details
+                // document.querySelector(querySelector).scrollTop = document.querySelector(querySelector).scrollTop + 200
                 return 'needScroll'
 			}
 		}
@@ -534,12 +535,12 @@ class App extends React.Component {
 			touchState: 2,
 			touchDirection: mainTouchDirection
 		});
-		if(mainTouchDirection === 'up') {
+		// if(mainTouchDirection === 'up') {
 			
-		}
-		else if(mainTouchDirection === 'down') {
-			this.nextSlide();
-		}
+		// }
+		// else if(mainTouchDirection === 'down') {
+		// 	this.nextSlide();
+		// }
 		switch(mainTouchDirection) {
 			case 'up':
 				this.prevSlide();
@@ -684,9 +685,7 @@ class App extends React.Component {
                 horizontalSlide={this.slideHorizontal.bind(this)}
                 onSlideScroll={this.handleSlideScroll}
                 scrollToFirstSlide={this.firstSlide}
-                createHubspotContactForm={this.createHubspotForm.bind(this)}
                 formCleared={this.contactFormCleared.bind(this)}
-                formSubmitted={this.contactFormSubmitted.bind(this)}
                 currIdx={this.state.currIdx}
                 slideViewed={this.state.slidesViewed.includes(idx)}
                 goToNextSlide={this.nextSlide}
@@ -694,18 +693,20 @@ class App extends React.Component {
                 key={idx}
                 slideCount={idx}
                 obj={slide}
-                isCurrent={idx == deviceSlideIdx}
+                isCurrent={idx === deviceSlideIdx}
                 setAmenityDetailsSlideIdx={this.setAmenityOnDetailsSlide.bind(this)}
                 setResidencePenthousePath={this.setResidencePenthouse.bind(this)}
                 residencePenthousePath={this.state.residencePenthouse}
                 amenityDetailsSlideIdx={this.state.amenityDetailsSlideIdx}
                 mapHeightLocked={this.state.mapHeightLocked}
-                createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)}
+                createHubspotContactForm={this.createHubspotForm.bind(this)}
+                formCleared={this.contactFormCleared.bind(this)}
+                formSubmitted={this.contactFormSubmitted.bind(this)}
                 goToContactSlide={this.goToContactSlide.bind(this)}
                 ></Slide>
         )
 
-        const isFirstOrSecondSlide = this.state.currIdx == 0 || this.state.currIdx == 1
+        const isFirstOrSecondSlide = this.state.currIdx === 0 || this.state.currIdx === 1
         const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + ((this.state.currIdx-1) * 100) + 'vh)'}
             
         let slides_inner_classes = "slides_inner slide_idx_"+this.state.currIdx;
@@ -748,7 +749,7 @@ class App extends React.Component {
                         style={innerStyle}
                         onTransitionEnd={e => this.watchForEventEnd(e)}>
                             <div className='contactSlideWhiteHeader'></div>
-                        {this.state.slides != null && $slides}
+                        {this.state.slides !== null && $slides}
                     </div>
                 </div>
             </div>
