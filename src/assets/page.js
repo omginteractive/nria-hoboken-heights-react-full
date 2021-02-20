@@ -27,7 +27,6 @@ const flypilotFetchWPRestAPI = async () => {
                 },
             }
 		},
-        videoMobileStartPosition: 'center',
         headerThemeMobile: 'lightMobile'
     }, {
         slideTemplate: 'fountainPen',
@@ -72,7 +71,6 @@ const flypilotFetchWPRestAPI = async () => {
         enableScrollingQuerySelector: '.amenities__details',
         mobileOnly: true,
         amenitiesListAdditionalClasses: 'not-mobile',
-        headerTheme: 'dark',
     }, {
         slideTemplate: 'amenities',
         styles: {

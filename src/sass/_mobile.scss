@@ -418,7 +418,11 @@ body {
                             flex-basis: 100%;
                         }
                     }
-                        
+                }
+                &amenitiesDetail {
+                    .amenities_detail__more_info_btn {
+                        display: none;
+                    }
                 }
             }
             &.backgroundFrame {

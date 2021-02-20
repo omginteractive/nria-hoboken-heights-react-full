@@ -2546,6 +2546,9 @@ body {
     width: 100vw;
     flex-basis: 100%;
   }
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info_btn {
+    display: none;
+  }
   .slides_wrapper .slides_inner .slide.backgroundFrame {
     background-size: cover;
   }
