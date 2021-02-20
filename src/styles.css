@@ -941,7 +941,6 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input {
   background-color: transparent;
-  width: calc(40vw + 20px);
   margin: 0;
   -webkit-appearance: none;
   position: relative;
@@ -2279,6 +2278,9 @@ body {
     overscroll-behavior-y: contain;
   }
 
+  .fixed-header {
+    height: 50px;
+  }
   .fixed-header.lightMobile {
     color: #fff;
   }
@@ -2548,6 +2550,62 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info_btn {
     display: none;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section {
+    display: block;
+    top: 50px;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__top {
+    height: calc(100vh - 50vh - 50px);
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__top > p {
+    font-size: 12px;
+    line-height: 1.2em;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList {
+    flex-direction: column;
+    height: calc(50vh - 6vh);
+    width: 2em;
+    left: auto;
+    right: 100px;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li {
+    width: 82px;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li:before {
+    top: calc(0.5em - 1px);
+    left: 93px;
+    width: 20px;
+    height: 1px;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section .visibleSliderLine {
+    width: 1px;
+    height: calc(40vh + 20px / 2);
+    bottom: auto;
+    top: calc(5vh - 20px / 2);
+    position: absolute;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider {
+    top: 0;
+    bottom: auto;
+    right: 6vw;
+    height: 50vh;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input {
+    writing-mode: bt-lr;
+    /* IE */
+    -webkit-appearance: slider-vertical;
+    /* WebKit */
+    height: calc(40vh + 20px);
+    width: 20px;
+    transform: rotate(180deg);
+    position: absolute;
+    left: -8px;
+    top: calc(5vh - 20px/2);
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-webkit-slider-runnable-track {
+    height: calc(40vh + 20px);
+    width: 20px;
   }
   .slides_wrapper .slides_inner .slide.backgroundFrame {
     background-size: cover;

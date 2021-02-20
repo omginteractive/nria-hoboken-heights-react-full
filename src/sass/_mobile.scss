@@ -1,3 +1,5 @@
+$header-height: 50px;
+
 @mixin placeholder {
     ::-webkit-input-placeholder {@content}
     :-moz-placeholder           {@content}
@@ -85,6 +87,7 @@ body {
 }
 
 .fixed-header {
+    height: $header-height;
     &.lightMobile {
         color: #fff;
         .separator {
@@ -422,6 +425,71 @@ body {
                 &amenitiesDetail {
                     .amenities_detail__more_info_btn {
                         display: none;
+                    }
+                }
+                &views {
+                    .views_section {
+                        $sliderThumbWidth: 20px;
+                        $visibleSliderWidth: 1px;
+                        $sliderWidth: 20px;
+                        $sliderTargetHeight: 40vh;
+                        $sliderActualHeight: calc(#{$sliderTargetHeight} + #{$sliderThumbWidth});
+                        $imageHeight: 50vh;
+                        display: block;
+                        top: $header-height;
+                        &__top {
+                            height: calc(100vh - #{$imageHeight} - #{$header-height});
+                            
+                            > p {
+                                font-size: 12px;
+                                line-height: 1.2em;
+                            }
+                        }
+                        &__bottom {
+                        }
+                        &__timeList {
+                            flex-direction: column;
+                            height: calc(50vh - 6vh);
+                            width: 2em;
+                            left: auto;
+                            right: 100px;
+                            > li {
+                                width: 82px;
+                                &:before {
+                                    top: calc(0.5em - 1px);
+                                    left: 93px;
+                                    width: 20px;
+                                    height: 1px;
+                                }
+                            }
+                        }
+                        .visibleSliderLine {
+                            width: $visibleSliderWidth;
+                            height: calc(#{$sliderTargetHeight} + #{$sliderThumbWidth} / 2);
+                            bottom: auto;
+                            top: calc(5vh - #{$sliderThumbWidth} / 2);
+                            position: absolute;
+                        }
+                        &__timeSlider {
+                            top: 0;
+                            bottom: auto;
+                            right: 6vw;
+                            height: 50vh;
+                            > input {
+                                writing-mode: bt-lr; /* IE */
+                                -webkit-appearance: slider-vertical; /* WebKit */
+                                height: $sliderActualHeight;
+                                width: $sliderWidth;
+                                transform: rotate(180deg);
+                                position: absolute;
+                                left: -8px;
+                                top: calc(5vh - #{$sliderThumbWidth}/2);
+                                &::-webkit-slider-runnable-track {
+                                    height: $sliderActualHeight;
+                                    width: $sliderWidth;
+                                }
+                            }
+                        }
                     }
                 }
             }
