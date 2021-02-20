@@ -499,8 +499,29 @@ body {
                     }
                 }
                 &residencePenthouseFullscreen {
+                    &.mobile-video-position-{
+                        &left {
+                            .fullscreenImageWrapper {
+                                transform: translateX(33%);
+                            }
+                        }
+                        &center {
+                            .fullscreenImageWrapper {
+                                transform: translateX(0);
+                            }
+                        }
+                        &right {
+                            .fullscreenImageWrapper {
+                                transform: translateX(-33%);
+                            }
+                        }
+                    }
                     .downArrowContainer {
                         display: none;
+                    }
+                    .fullscreenImageWrapper {
+                        transition: transform 0.8s;
+                        
                     }
                 }
             }

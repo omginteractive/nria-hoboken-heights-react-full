@@ -326,6 +326,7 @@ body {
             .linksWrapper {
                 .link {
                     transform: translateX(0);
+                    cursor: pointer;
                 }
             }
         }
@@ -371,10 +372,10 @@ body {
         left: $side-margin;
         .linksWrapper {
             color: #ffffff;
-            > a {
+            .link {
                 transition: transform 0s linear $menu_animation_duration;
             }
-            > a {
+            .link {
                 display: block;
                 color: #ffffff;
                 text-decoration: none;

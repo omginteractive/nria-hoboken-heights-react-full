@@ -169,7 +169,7 @@ class Slide extends Component {
                     <SlideResidencePenthouse setResidencePenthousePath={this.setResidencePenthousePath.bind(this)} methods={slideMethods}  />
                 }
                 {slideObj.slideTemplate === 'residencePenthouseFullscreen' &&
-                    <SlideResidencePenthouseFullscreen residencePenthouse={this.props.residencePenthousePath}  methods={slideMethods} configuration={slideObj}  />
+                    <SlideResidencePenthouseFullscreen mobileArrows={mobileArrows} residencePenthouse={this.props.residencePenthousePath}  methods={slideMethods} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'residencePenthouseDetail' &&
                     <SlideResidencePenthouseDetail methods={slideMethods} residencePenthouse={this.props.residencePenthousePath} configuration={slideObj}  />
@@ -1123,7 +1123,18 @@ class SlideResidencePenthouseFullscreen extends Component {
                         <img alt="Down Arrow" onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
                     </div>
                 }
-                <img className='residencePenthouseFullscreenImage' alt="" src={require('./'+fullscreenImage).default} />
+                <div className="fullscreenImageWrapper">
+                    <img className='residencePenthouseFullscreenImage' alt="" src={require('./'+fullscreenImage).default} />
+                </div>
+                {this.props.configuration.mobileHasDifferentContent &&
+					<div className={"centerBottom mobile-only"}>
+						<h1 style={this.props.configuration.mobileContent.centerBottom.lineStyles} className="line" >
+							{this.props.configuration.mobileContent.centerBottom.line1LeftArrowBouncing && this.props.mobileArrows.left_arrow_bouncing}
+							<div dangerouslySetInnerHTML={{ __html: this.props.configuration.mobileContent.centerBottom.line1}} />
+							{this.props.configuration.mobileContent.centerBottom.line1RightArrowBouncing && this.props.mobileArrows.right_arrow_bouncing}
+						</h1>
+					</div>
+				}
             </>
         )
     }
