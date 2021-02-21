@@ -2683,6 +2683,12 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .right .developmentTeam__page_title {
     display: none;
   }
+  .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper {
+    left: 0;
+    height: 100vh;
+    top: 50px;
+    justify-content: flex-start;
+  }
   .slides_wrapper .slides_inner .slide.backgroundFrame {
     background-size: cover;
   }

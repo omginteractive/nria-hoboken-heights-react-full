@@ -574,6 +574,14 @@ body {
                         }
                     }
                 }
+                &founders {
+                    .founderSlideWrapper {
+                        left: 0;
+                        height: 100vh;
+                        top: $header-height;
+                        justify-content: flex-start;
+                    }
+                }
             }
             &.backgroundFrame {
                 background-size: cover;
