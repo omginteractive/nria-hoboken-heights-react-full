@@ -232,6 +232,8 @@ const flypilotFetchWPRestAPI = async () => {
         headerTheme: 'dark',
         enableScrolling: true,
         rightSideAdditionalClasses: 'not-mobile',
+        buttonGroupAdditionalClasses: 'not-mobile',
+
     }
     ,{
         slideTemplate: 'developmentTeam',
@@ -240,7 +242,7 @@ const flypilotFetchWPRestAPI = async () => {
         },
         headerTheme: 'dark',
         enableScrolling: true,
-        leftSideAdditionalClasses: 'not-mobile',
+        textGroupAdditionalClasses: 'not-mobile',
         mobileOnly: true,
     }
     ,{

@@ -509,7 +509,7 @@ body {
                         height: 100vh;
                         width: 100vw;
                         display: flex;
-    justify-content: center;
+                        justify-content: center;
                         &__details {
                             width: calc(100vw - #{$content-padding}*2);
                             height: 100vh;
@@ -528,6 +528,16 @@ body {
                         }
                         &__expand_toggler {
                             display: none;
+                        }
+                    }
+                }
+                &developmentTeam {
+                    .developmentTeam {
+                        .left {
+                            width: calc(100vw - #{$content-padding});
+                        }
+                        .right {
+                            width: calc(100vw - #{$content-padding}*2);
                         }
                     }
                 }

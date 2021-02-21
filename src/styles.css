@@ -2643,6 +2643,12 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__expand_toggler {
     display: none;
   }
+  .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .left {
+    width: calc(100vw - 38px);
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .right {
+    width: calc(100vw - 38px*2);
+  }
   .slides_wrapper .slides_inner .slide.backgroundFrame {
     background-size: cover;
   }
