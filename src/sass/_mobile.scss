@@ -508,8 +508,11 @@ body {
                         margin-top: 0;
                         height: 100vh;
                         width: 100vw;
+                        display: flex;
+    justify-content: center;
                         &__details {
                             width: calc(100vw - #{$content-padding}*2);
+                            height: 100vh;
                         }
                         &__image_container {
                             width: 100%;
