@@ -2685,7 +2685,7 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper {
     left: 0;
-    height: 100vh;
+    height: calc(100vh - 50px);
     top: 50px;
     justify-content: flex-start;
   }

@@ -577,7 +577,7 @@ body {
                 &founders {
                     .founderSlideWrapper {
                         left: 0;
-                        height: 100vh;
+                        height: calc(100vh - #{$header-height});
                         top: $header-height;
                         justify-content: flex-start;
                     }
