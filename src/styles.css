@@ -2707,6 +2707,9 @@ body {
     margin-left: 0;
     margin-top: 42px;
   }
+  .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field + .hs-form-field .input {
+    margin-left: 0;
+  }
   .slides_wrapper .slides_inner .slide.backgroundFrame {
     background-size: cover;
   }

@@ -609,6 +609,12 @@ body {
                         }
                     }
                 }
+                &contact {
+                    
+                    .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field + .hs-form-field .input {
+                        margin-left: 0;
+                    }
+                }
             }
             &.backgroundFrame {
                 background-size: cover;
