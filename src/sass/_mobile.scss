@@ -356,6 +356,18 @@ body {
                             }
                         }
                     }
+                    &developmentTeam {
+                        $animation_base_delay: 0.6s;
+                        $animation_incremental_delay: 0.2s;
+                    
+                        .developmentTeam__button_group > .btn {
+                            @for $i from 1 through 4 {
+                                &:nth-of-type(#{$i}){
+                                    animation-delay: $animation_incremental_delay*$i + $animation_base_delay;
+                                }
+                            }
+                        }
+                    }
                 }    
             }
             &.slideTemplate-{
@@ -533,11 +545,25 @@ body {
                 }
                 &developmentTeam {
                     .developmentTeam {
+                        flex-direction: column;
+                        &__button_group {
+                            flex-direction: column;
+                            align-items: center;
+                            .btn {
+                                margin-right: 0;
+                                margin-bottom: 10px;
+                            }
+                        }
                         .left {
+                            position: static;
                             width: calc(100vw - #{$content-padding});
                         }
                         .right {
+                            position: static;
                             width: calc(100vw - #{$content-padding}*2);
+                            .developmentTeam__page_title {
+                                display: none;
+                            }
                         }
                     }
                 }

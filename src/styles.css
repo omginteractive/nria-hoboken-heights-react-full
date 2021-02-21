@@ -2494,6 +2494,18 @@ body {
     transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
     top: 0;
   }
+  .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-developmentTeam .developmentTeam__button_group > .btn:nth-of-type(1) {
+    animation-delay: 0.8s;
+  }
+  .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-developmentTeam .developmentTeam__button_group > .btn:nth-of-type(2) {
+    animation-delay: 1s;
+  }
+  .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-developmentTeam .developmentTeam__button_group > .btn:nth-of-type(3) {
+    animation-delay: 1.2s;
+  }
+  .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-developmentTeam .developmentTeam__button_group > .btn:nth-of-type(4) {
+    animation-delay: 1.4s;
+  }
   .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle {
     background-color: #000;
   }
@@ -2643,11 +2655,27 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__expand_toggler {
     display: none;
   }
+  .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam {
+    flex-direction: column;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__button_group {
+    flex-direction: column;
+    align-items: center;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__button_group .btn {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
   .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .left {
+    position: static;
     width: calc(100vw - 38px);
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .right {
+    position: static;
     width: calc(100vw - 38px*2);
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .right .developmentTeam__page_title {
+    display: none;
   }
   .slides_wrapper .slides_inner .slide.backgroundFrame {
     background-size: cover;
