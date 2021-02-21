@@ -1277,9 +1277,14 @@ class SlideFounders extends Component {
 
 class SlideDevelopmentTeam extends Component {
     render(){
+        let leftSideClasses = 'left '
+        leftSideClasses += this.props.configuration.leftSideAdditionalClasses ? this.props.configuration.leftSideAdditionalClasses : ''
+        let rightSideClasses = 'right '
+        rightSideClasses += this.props.configuration.rightSideAdditionalClasses ? this.props.configuration.rightSideAdditionalClasses : ''
+        
         return(
             <section className='developmentTeam'>
-                <div className="left">
+                <div className={leftSideClasses}>
                     <div className="textGroup">
                         <h2 className='developmentTeam__page_title'>Development Team Story</h2>
                         <p className='developmentTeam__paragraph'>For more than a decade, National Realty Investment Advisors - NRIA has delivered and continues to build upon a history of exceptional performance as a vertically-integrated real estate investment, management and development firm. We have extensive experience with full-service construction and complete renovation of planned unit townhomes, single-family luxury residences, condominiums, multifamily, and mixed-use rental developments strategically located in many of the most dynamic urban markets across the East Coast. Our team's collective depth of knowledge within these specific markets continues to yield compelling opportunities across the real estate investment risk spectrum.</p>
@@ -1293,7 +1298,7 @@ class SlideDevelopmentTeam extends Component {
                         <div className="btn light">NRIA EB-5</div>
                     </div>
                 </div>
-                <div className="right">
+                <div className={rightSideClasses}>
                 <h2 className='developmentTeam__page_title invisible'>Development Team Story</h2>
                     <div className="video">
                         <img alt="video" src={require('./images/video_placeholder.png').default} />
