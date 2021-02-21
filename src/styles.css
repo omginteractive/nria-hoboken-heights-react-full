@@ -2489,6 +2489,9 @@ body {
   .slides_wrapper .corner-logo-wrapper {
     display: none;
   }
+  .slides_wrapper .slides_inner .contactSlideWhiteHeader {
+    top: 1600vh;
+  }
   .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-exteriorLightToggle .centerBottom > h1 {
     opacity: 1;
     transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
@@ -2656,11 +2659,14 @@ body {
     display: none;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam {
+    width: 100vw;
+    left: 0;
     flex-direction: column;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__button_group {
     flex-direction: column;
     align-items: center;
+    width: 100vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__button_group .btn {
     margin-right: 0;
@@ -2668,11 +2674,11 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .left {
     position: static;
-    width: calc(100vw - 38px);
+    width: 100vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .right {
     position: static;
-    width: calc(100vw - 38px*2);
+    width: 100vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .right .developmentTeam__page_title {
     display: none;
