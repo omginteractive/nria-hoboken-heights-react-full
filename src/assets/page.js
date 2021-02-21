@@ -196,6 +196,33 @@ const flypilotFetchWPRestAPI = async () => {
         headerTheme: 'dark',
         enableScrolling: true,
         enableScrollingQuerySelector: '.residencePenthouseDetail__details',
+        imageContainerAdditionalClasses: 'not-mobile',
+    }
+    ,{
+        slideTemplate: 'residencePenthouseDetail',
+        styles: {
+            background: "#fff",
+        },
+        headerTheme: 'light',
+        enableScrolling: true,
+        enableScrollingQuerySelector: '.residencePenthouseDetail__details',
+        imageDetailsAdditionalClasses: 'not-mobile',
+        mobileOnly: true,
+        mobileHorizontalVideoSlideEnabled: true,
+        videoMobileStartPosition: 'center',
+        mobileHasDifferentContent: true,
+		mobileContent: {
+			centerBottom: {
+                line1: "SWIPE ",
+                line1RightArrowBouncing: true,
+                line1LeftArrowBouncing: true,
+                lineStyles: {
+                    display: 'flex',
+                    alignItems: 'center',
+                    color: '#fff'
+                },
+            }
+		},
     }
     ,{
         slideTemplate: 'developmentTeam',

@@ -172,7 +172,7 @@ class Slide extends Component {
                     <SlideResidencePenthouseFullscreen mobileArrows={mobileArrows} residencePenthouse={this.props.residencePenthousePath}  methods={slideMethods} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'residencePenthouseDetail' &&
-                    <SlideResidencePenthouseDetail methods={slideMethods} residencePenthouse={this.props.residencePenthousePath} configuration={slideObj}  />
+                    <SlideResidencePenthouseDetail mobileArrows={mobileArrows} methods={slideMethods} residencePenthouse={this.props.residencePenthousePath} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'developmentTeam' &&
                     <SlideDevelopmentTeam  configuration={slideObj}  />
@@ -1187,11 +1187,16 @@ class SlideResidencePenthouseDetail extends Component {
                 'Lorem Ipsum Lorem Ipsum Lorem Ipsum',
                 'Lorem Ipsum Lorem',
                 'Lorem Ipsum Lorem Ipsum',
-                ]
+            ]
+        let imageContainerClasses = 'residencePenthouseDetail__image_container '
+        imageContainerClasses += this.props.configuration.imageContainerAdditionalClasses ? this.props.configuration.imageContainerAdditionalClasses : ''
+        let residencePenthouseDetailsClasses = 'residencePenthouseDetail__details '
+        residencePenthouseDetailsClasses += this.props.configuration.imageDetailsAdditionalClasses ? this.props.configuration.imageDetailsAdditionalClasses : ''
+
         return(
             <>
                 <section className={details_classes}>
-                    <div className='residencePenthouseDetail__details'>
+                    <div className={residencePenthouseDetailsClasses}>
                         <h2>{page_title}</h2>
                         <p>{page_description}</p>
                         <div className="residencePenthouseDetail__features_list">
@@ -1209,12 +1214,23 @@ class SlideResidencePenthouseDetail extends Component {
                             <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn light">Inquire now</div>
                         </div>
                     </div>
-                    <div onWheel={this.handleWheelEvent.bind(this)} className="residencePenthouseDetail__image_container">
+                    <div onWheel={this.handleWheelEvent.bind(this)} className={imageContainerClasses}>
                         <div onClick={this.toggleImageExpansion.bind(this)} className="residencePenthouseDetail__expand_toggler vertical_toggle_column">
                             <div><img src={require('./'+'images/expand+.svg').default} alt=""/></div>
                         </div>
-                        <img src={require('./'+image).default} alt=""/>
+                        <div className="fullscreenImageWrapper">
+                            <img src={require('./'+image).default} alt=""/>
+                        </div>
                     </div>
+                    {this.props.configuration.mobileHasDifferentContent &&
+                        <div className={"centerBottom mobile-only"}>
+                            <h1 style={this.props.configuration.mobileContent.centerBottom.lineStyles} className="line" >
+                                {this.props.configuration.mobileContent.centerBottom.line1LeftArrowBouncing && this.props.mobileArrows.left_arrow_bouncing}
+                                <div dangerouslySetInnerHTML={{ __html: this.props.configuration.mobileContent.centerBottom.line1}} />
+                                {this.props.configuration.mobileContent.centerBottom.line1RightArrowBouncing && this.props.mobileArrows.right_arrow_bouncing}
+                            </h1>
+                        </div>
+                    }
                 </section>
             </>
         )

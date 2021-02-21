@@ -2614,32 +2614,49 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouse .btn {
     margin: 21px 0;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen.mobile-video-position-left .fullscreenImageWrapper {
-    transform: translateX(33%);
-  }
-  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen.mobile-video-position-center .fullscreenImageWrapper {
-    transform: translateX(0);
-  }
-  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen.mobile-video-position-right .fullscreenImageWrapper {
-    transform: translateX(-33%);
-  }
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen .downArrowContainer {
     display: none;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen .fullscreenImageWrapper {
-    transition: transform 0.8s;
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail {
+    margin-top: 0;
+    height: 100vh;
+    width: 100vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__details {
+    width: calc(100vw - 38px*2);
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container {
+    width: 100%;
+    height: 100vh;
+    right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container > img {
+    width: 100vw;
+    height: 100vh;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__expand_toggler {
+    display: none;
   }
   .slides_wrapper .slides_inner .slide.backgroundFrame {
     background-size: cover;
   }
-  .slides_wrapper .slides_inner .slide.mobile-video-position-left .videoContainer {
+  .slides_wrapper .slides_inner .slide.mobile-video-position-left .videoContainer,
+.slides_wrapper .slides_inner .slide.mobile-video-position-left .fullscreenImageWrapper {
     transform: translateX(33%);
   }
-  .slides_wrapper .slides_inner .slide.mobile-video-position-center .videoContainer {
+  .slides_wrapper .slides_inner .slide.mobile-video-position-center .videoContainer,
+.slides_wrapper .slides_inner .slide.mobile-video-position-center .fullscreenImageWrapper {
     transform: translateX(0%);
   }
-  .slides_wrapper .slides_inner .slide.mobile-video-position-right .videoContainer {
+  .slides_wrapper .slides_inner .slide.mobile-video-position-right .videoContainer,
+.slides_wrapper .slides_inner .slide.mobile-video-position-right .fullscreenImageWrapper {
     transform: translateX(-33%);
+  }
+  .slides_wrapper .slides_inner .slide .fullscreenImageWrapper {
+    transition: transform 0.8s;
   }
   .slides_wrapper .slides_inner .slide .videoContainer {
     transition: transform 0.8s;

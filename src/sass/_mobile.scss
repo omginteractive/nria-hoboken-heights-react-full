@@ -499,29 +499,33 @@ body {
                     }
                 }
                 &residencePenthouseFullscreen {
-                    &.mobile-video-position-{
-                        &left {
-                            .fullscreenImageWrapper {
-                                transform: translateX(33%);
-                            }
-                        }
-                        &center {
-                            .fullscreenImageWrapper {
-                                transform: translateX(0);
-                            }
-                        }
-                        &right {
-                            .fullscreenImageWrapper {
-                                transform: translateX(-33%);
-                            }
-                        }
-                    }
                     .downArrowContainer {
                         display: none;
                     }
-                    .fullscreenImageWrapper {
-                        transition: transform 0.8s;
-                        
+                }
+                &residencePenthouseDetail {
+                    .residencePenthouseDetail {
+                        margin-top: 0;
+                        height: 100vh;
+                        width: 100vw;
+                        &__details {
+                            width: calc(100vw - #{$content-padding}*2);
+                        }
+                        &__image_container {
+                            width: 100%;
+                            height: 100vh;
+                            right: auto;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            > img {
+                                width: 100vw;
+                                height: 100vh;
+                            }
+                        }
+                        &__expand_toggler {
+                            display: none;
+                        }
                     }
                 }
             }
@@ -530,21 +534,27 @@ body {
             }
             &.mobile-video-position- {
                 &left {
-                    .videoContainer {
+                    .videoContainer,
+                    .fullscreenImageWrapper {
                         transform: translateX(33%);
                     }
                     
                 }
                 &center {
-                    .videoContainer {
+                    .videoContainer,
+                    .fullscreenImageWrapper {
                         transform: translateX(0%);
                     }
                 }
                 &right {
-                    .videoContainer {
+                    .videoContainer,
+                    .fullscreenImageWrapper {
                         transform: translateX(-33%);
                     }
                 }
+            }
+            .fullscreenImageWrapper {
+                transition: transform 0.8s;
             }
             .videoContainer {
                 transition: transform 0.8s;
