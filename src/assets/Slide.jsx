@@ -286,6 +286,9 @@ class SlideVideoDiscover extends Component {
         let videoContainerClasses = 'videoContainer'
         let videoClasses = 'background-video'
         if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect startZoomedIn'
+
+        let desktopVideoClasses = videoClasses + ' not-mobile'
+        let mobileVideoClasses = videoClasses + ' mobile-only'
         return(
             <>
                 {
@@ -301,7 +304,7 @@ class SlideVideoDiscover extends Component {
 						dangerouslySetInnerHTML={{
 							__html: `
 							<video
-							class="${videoClasses}"
+							class="${desktopVideoClasses}"
 							${this.props.configuration.videoLoop ? 'loop="true"' : ''}
 							muted='muted'
 							autoplay='true'
@@ -310,6 +313,27 @@ class SlideVideoDiscover extends Component {
                             loop="true"
 							>
 							<source src='/videos/NRIMA_SITE_VIDEO DISCOVER.mp4' type="video/mp4" />
+							</video>`
+						}}
+                        />
+				}
+                {
+							//Hide landingpage video on FFMobile because it will not autoplay
+							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
+						<div
+						className={videoContainerClasses}
+						dangerouslySetInnerHTML={{
+							__html: `
+							<video
+							class="${mobileVideoClasses}"
+							${this.props.configuration.videoLoop ? 'loop="true"' : ''}
+							muted='muted'
+							autoplay='true'
+							playsinline='playsinline'
+                            preload="metadata"
+                            loop="true"
+							>
+							<source src='/videos/NRIMA_SITE_VIDEO DISCOVER MOBILE.mp4' type="video/mp4" />
 							</video>`
 						}}
 					/>

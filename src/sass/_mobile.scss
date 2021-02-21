@@ -582,6 +582,11 @@ body {
                         justify-content: flex-start;
                     }
                 }
+                &videoDiscover {
+                    .videoContainer .background-video {
+                        width: 100vw;
+                    }
+                }
             }
             &.backgroundFrame {
                 background-size: cover;
