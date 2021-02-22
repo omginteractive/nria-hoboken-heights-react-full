@@ -2490,7 +2490,7 @@ body {
     display: none;
   }
   .slides_wrapper .slides_inner .contactSlideWhiteHeader {
-    top: 1600vh;
+    top: 1700vh;
   }
   .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-exteriorLightToggle .centerBottom > h1 {
     opacity: 1;
@@ -2706,6 +2706,44 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity .right .button_container .btn + .btn {
     margin-left: 0;
     margin-top: 42px;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection {
+    width: 100vw;
+    top: 0;
+    left: 0;
+    height: 100vh;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection.heightLocked .mapMotionLogo {
+    top: 359px;
+    left: calc(50vw - 70px);
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle {
+    bottom: 0;
+    right: auto;
+    height: 44px;
+    z-index: 2;
+    width: 100vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle .rotatedText {
+    transform: rotate(0deg);
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground {
+    display: flex;
+    justify-content: center;
+    transform: translateX(200px);
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .map {
+    object-position: left top;
+    width: 1270px;
+    height: auto;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo {
+    top: 350px;
+    left: 209px;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo > img {
+    height: 100px;
+    transform: translate(-26px, -51px);
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field + .hs-form-field .input {
     margin-left: 0;

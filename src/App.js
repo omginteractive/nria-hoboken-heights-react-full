@@ -177,7 +177,7 @@ class App extends React.Component {
         const headerVHPercent = 0.128
         const mapWidth = document.documentElement.clientWidth - document.documentElement.clientWidth*sideMarginsVWPercent*2
         const mapHeight = document.documentElement.clientHeight - document.documentElement.clientHeight*headerVHPercent
-        const mapHeightLocked = mapWidth/mapHeight < maximumLockRatio
+        const mapHeightLocked = mapWidth/mapHeight < maximumLockRatio || this.state.isMobileDevice
         
         this.setState({ mapHeightLocked: mapHeightLocked });
     }

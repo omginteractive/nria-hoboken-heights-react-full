@@ -338,7 +338,7 @@ body {
     }
     .slides_inner {
         .contactSlideWhiteHeader {
-            top: 1600vh;
+            top: 1700vh;
         }
         .slide {
             &.runAnimations {
@@ -605,6 +605,48 @@ body {
                                     }
 
                                 }
+                            }
+                        }
+                    }
+                }
+                &map {
+                    .mapSection {
+                        width: 100vw;
+                        top: 0;
+                        left: 0;
+                        height: 100vh;
+                        &.heightLocked {
+                            .mapMotionLogo {
+                                top: 359px;
+                                left: calc(50vw - 70px);//position of dot
+                            }
+                        }
+                        .satelliteToggle {
+                            bottom: 0;
+                            right: auto;
+                            height: 44px;
+                            z-index: 2;
+                            width: 100vw;
+                            .rotatedText {
+                                transform: rotate(0deg);
+                            }
+                        }
+                        .mapBackground {
+                            display: flex;
+                            justify-content: center;
+                            transform: translateX(200px);
+                            .map {
+                                object-position: left top;
+                                width: 1270px;
+                                height: auto;
+                            }
+                        }
+                        .mapMotionLogo {
+                            top: 350px;
+                            left: 209px;
+                            > img {
+                                height: 100px;
+                                transform: translate(-26px, -51px);//offset logo to move map marker onto dot of mapMotionLogo
                             }
                         }
                     }

@@ -285,6 +285,7 @@ const flypilotFetchWPRestAPI = async () => {
             background: "#fff",
         },
         headerTheme: 'dark',
+        desktopOnly: true,
         locationListings: [
             {
                 title: 'Lorem Ipsum',
@@ -317,6 +318,15 @@ const flypilotFetchWPRestAPI = async () => {
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
             }
     ]
+    },
+    {
+        slideTemplate: 'map',
+        styles: {
+            background: "#fff",
+        },
+        headerTheme: 'light',
+        locationListings: [],
+        mobileOnly: true,
     },{
         slideTemplate: 'contact',
         styles: {
