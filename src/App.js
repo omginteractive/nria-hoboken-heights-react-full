@@ -759,9 +759,19 @@ class App extends React.Component {
         pageClasses +=  isFirefoxAndroid ? ' firefoxAndroid' : '';
         let slidesWrapperClasses = "slides_wrapper";
         if(this.state.slideHasScrolled) slidesWrapperClasses += ' scrolled'
+
+        const thisSlideDeviceIdx = this.findDeviceSlideIdx(this.state.currIdx)
+        let finalIdxOfDevice
+        if(this.state.isMobileDevice){
+            finalIdxOfDevice = this.state.mobileKeys.length -1
+        }
+        else {
+            finalIdxOfDevice = this.state.desktopKeys.length -1
+        }
+
         return (
             <div id="page" className={pageClasses}>
-                <MobileMenu goToContactSlide={this.goToContactSlide.bind(this)} open={this.state.mobileMenuOpen} toggleMobileMenu={this.toggleMobileMenu.bind(this)} goToSlideIdx={this.goToSlide.bind(this)} />
+                <MobileMenu contactFormSlideIdx={finalIdxOfDevice} goToContactSlide={this.goToContactSlide.bind(this)} open={this.state.mobileMenuOpen} toggleMobileMenu={this.toggleMobileMenu.bind(this)} goToSlideIdx={this.goToSlide.bind(this)} />
                 <div className={slidesWrapperClasses}
                     onTouchStart={this.handleTouchStart.bind(this)}
                     onTouchMove={this.handleTouchMove.bind(this)}
