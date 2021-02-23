@@ -2528,7 +2528,6 @@ body {
     display: none;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .videoContainer {
-    width: auto;
     height: 100vh;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .videoContainer.lightsOff {
@@ -2557,9 +2556,6 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-patio {
     background-color: #000;
-  }
-  .slides_wrapper .slides_inner .slide.slideTemplate-patio .videoContainer .background-video {
-    width: 100%;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-patio .downArrowContainer .downArrow {
     display: none;
@@ -2650,6 +2646,9 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen .downArrowContainer {
     display: none;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen .residencePenthouseFullscreenImage {
+    width: auto;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail {
     margin-top: 0;
@@ -2790,6 +2789,7 @@ body {
   }
   .slides_wrapper .slides_inner .slide .videoContainer {
     transition: transform 0.8s;
+    width: auto;
   }
   .slides_wrapper .slides_inner .slide .videoContainer .background-video {
     object-position: center;

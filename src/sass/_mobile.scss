@@ -382,7 +382,7 @@ body {
                     }
                     
                     .videoContainer {
-                        width: auto;
+                        // width: auto;
                         height: 100vh;
                         &.lightsOff {
                             display: none;
@@ -419,7 +419,7 @@ body {
                 &patio {
                     background-color: #000;
                     .videoContainer .background-video {
-                        width: 100%;
+                        // width: 100%;
                     }
                     .downArrowContainer .downArrow {
                         display: none;
@@ -525,6 +525,9 @@ body {
                 &residencePenthouseFullscreen {
                     .downArrowContainer {
                         display: none;
+                    }
+                    .residencePenthouseFullscreenImage {
+                        width: auto;
                     }
                 }
                 &residencePenthouseDetail {
@@ -708,6 +711,7 @@ body {
             }
             .videoContainer {
                 transition: transform 0.8s;
+                width: auto;
                 .background-video {
                     object-position: center;
                     width: auto;
