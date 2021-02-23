@@ -151,7 +151,7 @@ class Slide extends Component {
                     <SlideExteriorLightToggle mobileArrows={mobileArrows} methods={slideMethods}  configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'fountainPen' &&
-                    <SlideFountainPen methods={slideMethods} configuration={slideObj} slideCount={this.props.slideCount} curridx={this.props.currIdx} />
+                    <SlideFountainPen methods={slideMethods} configuration={slideObj} curridx={this.props.currIdx} />
                 }
                 {slideObj.slideTemplate === 'patio' &&
                     <SlidePatio mobileArrows={mobileArrows} methods={slideMethods} configuration={slideObj} />

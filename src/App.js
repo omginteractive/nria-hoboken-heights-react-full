@@ -253,7 +253,6 @@ class App extends React.Component {
 		if(this.state.videosPlayed) return
 		const allVideos = document.querySelectorAll('.background-video')
 		allVideos.forEach(function(video){
-            console.log(video)
 			const playPromise = video.play()
 			if (playPromise !== undefined) {
 				playPromise.then(function() {
@@ -355,9 +354,10 @@ class App extends React.Component {
 		return this.state.transitiongState !== 0 || this.state.touchState === 2;
 	}
 	addIdxToViewedSlides(idx) {
-		if(this.state.slidesViewed.includes(idx)) return;
+        const realSlideIdx = this.findDeviceSlideIdx(idx)
+		if(this.state.slidesViewed.includes(realSlideIdx)) return;
 
-		let slidesViewedArray = this.state.slidesViewed.concat(idx);
+		let slidesViewedArray = this.state.slidesViewed.concat(realSlideIdx);
 		this.setState({ slidesViewed: slidesViewedArray })
 	}
 
@@ -692,7 +692,7 @@ class App extends React.Component {
                 goToNextSlide={this.nextSlide}
                 scrollToLastSlide={this.lastSlide}
                 key={idx}
-                slideCount={idx}
+                // slideCount={idx}
                 obj={slide}
                 isCurrent={idx === deviceSlideIdx}
                 setAmenityDetailsSlideIdx={this.setAmenityOnDetailsSlide.bind(this)}
