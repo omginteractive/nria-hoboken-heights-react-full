@@ -66,7 +66,7 @@ const flypilotFetchWPRestAPI = async () => {
         styles: {
             background: "#fff",
         },
-        headerTheme: 'dark',
+        headerTheme: 'light',
         enableScrolling: true,
         enableScrollingQuerySelector: '.amenities__details',
         mobileOnly: true,
@@ -272,6 +272,7 @@ const flypilotFetchWPRestAPI = async () => {
             background: "#fff",
         },
         headerTheme: 'light',
+        videoLoop: true,
     },{
         slideTemplate: 'neighborhoodCommunity',
         styles: {
@@ -334,6 +335,15 @@ const flypilotFetchWPRestAPI = async () => {
         },
         headerTheme: 'dark',
         enableScrolling: true,
+        desktopOnly: true,
+    },{
+        slideTemplate: 'contact',
+        styles: {
+            background: "#fff",
+        },
+        headerTheme: 'light',
+        enableScrolling: true,
+        mobileOnly: true,
     }]
     return SLIDES
   }

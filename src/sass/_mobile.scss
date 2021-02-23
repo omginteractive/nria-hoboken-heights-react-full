@@ -1,4 +1,5 @@
 $header-height: 50px;
+$content-padding: 20px;
 
 @mixin placeholder {
     ::-webkit-input-placeholder {@content}
@@ -25,6 +26,9 @@ $header-height: 50px;
 h2 {
     font-size: 24px;
     line-height: 1.4em;
+}
+.downArrowContainer {
+    bottom: 100px;
 }
 .mobile-menu {
     .mobileMenuLinks .linksWrapper {
@@ -88,6 +92,8 @@ body {
 
 .fixed-header {
     height: $header-height;
+    left: $content-padding;
+    width: calc(100vw - #{$content-padding}*2);
     &.lightMobile {
         color: #fff;
         .separator {
@@ -414,6 +420,8 @@ body {
                     .textSection {
                         padding-right: 0;
                         padding-top: calc(100vw * #{$videoHeightRatio});
+                        padding-left: 0;
+                        width: calc(100vw - #{$content-padding}*2);
                     }
                 }
                 &patio {
@@ -435,6 +443,8 @@ body {
                             height: 100vh;
                             width: 100vw;
                             flex-basis: 100%;
+                            padding-left: $content-padding;
+                            padding-right: $content-padding;
                             > h2 {
                                 width: auto;
                             }
@@ -463,7 +473,7 @@ body {
                         top: $header-height;
                         &__top {
                             height: calc(100vh - #{$imageHeight} - #{$header-height});
-                            
+                            padding-left: $content-padding;
                             > p {
                                 font-size: 12px;
                                 line-height: 1.2em;
@@ -539,7 +549,8 @@ body {
                         justify-content: center;
                         &__details {
                             width: calc(100vw - #{$content-padding}*2);
-                            height: 100vh;
+                            height: calc(100vh - #{$header-height});
+                            margin-top: $header-height;
                         }
                         &__image_container {
                             width: 100%;
@@ -563,6 +574,7 @@ body {
                         width: 100vw;
                         left: 0;
                         flex-direction: column;
+                        top: $header-height;
                         &__button_group {
                             flex-direction: column;
                             align-items: center;
@@ -572,10 +584,16 @@ body {
                                 margin-bottom: 10px;
                             }
                         }
+                        &__copyright_logo_container {
+                            padding: 0 $content-padding;
+                        }
+                        .textGroup {
+                            padding-right: $content-padding;
+                        }
                         .left {
                             position: static;
                             width: 100vw;
-                            
+                            padding-left: $content-padding;
                         }
                         .right {
                             position: static;
@@ -592,6 +610,7 @@ body {
                         height: calc(100vh - #{$header-height});
                         top: $header-height;
                         justify-content: flex-start;
+                        padding: 0 $content-padding;
                     }
                 }
                 &videoDiscover {
@@ -602,10 +621,15 @@ body {
                 &neighborhoodCommunity {
                     .neighborhoodCommunity {
                         flex-direction: column;
+                        left: $content-padding;
+                        top: $header-height;
+                        width: calc(100vw - #{$content-padding}*2);
+                        padding-bottom: $content-padding;
                         .left {
                             order: 2;
                         }
                         .right {
+                            padding: 0;
                             .button_container {
                                 flex-direction: column;
                                 align-items: center;
