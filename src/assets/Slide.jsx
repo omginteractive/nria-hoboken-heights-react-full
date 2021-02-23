@@ -190,7 +190,10 @@ class Slide extends Component {
                     <SlideMap mapHeightLocked={this.props.mapHeightLocked} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'contact' &&
-                    <SlideContactForm createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)} showPrivacyPolicy={this.openPrivacyPolicyModal.bind(this)}  configuration={slideObj}  />
+                    <SlideContactForm mobileVersion={false} createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)} showPrivacyPolicy={this.openPrivacyPolicyModal.bind(this)}  configuration={slideObj}  />
+                }
+                {slideObj.slideTemplate === 'contactMobile' &&
+                    <SlideContactForm mobileVersion={true} createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)} showPrivacyPolicy={this.openPrivacyPolicyModal.bind(this)}  configuration={slideObj}  />
                 }
             </div>
         )
@@ -376,7 +379,7 @@ class SlideContactForm extends Component {
         return(
             <>
                 <div className="contactPageWrapper">
-                    <ContactForm createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)} />
+                    <ContactForm mobileVersion={this.props.mobileVersion} createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)} />
                     <div className="privacyPolicy not-mobile">
                         <div className="verticalLineContainer">
                             <div className="verticalLine" />
@@ -426,7 +429,6 @@ class ContactForm extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.resetForm = this.resetForm.bind(this);
 	}
-	
 
 	componentDidMount() {
 		//This is a fix to detect changes on the select2
@@ -506,6 +508,9 @@ class ContactForm extends Component {
 				});
 			}
 		}
+
+        const isMobileVersion = this.props.mobileVersion
+        const hubspotFormWrapperId = isMobileVersion ? 'hubspotFormWrapperMobile' : 'hubspotFormWrapper'
 		return (
 			<form className={contactFormClasses}>
 				<div className="submittedFormOverlay">
@@ -515,7 +520,7 @@ class ContactForm extends Component {
 					</div>
 				</div>
 				<div className='headline'>FOR INFORMATION PLEASE FILL THE FORM BELOW</div>
-				<div className="hubspotFormWrapper" id="hubspotFormWrapper">
+				<div className="hubspotFormWrapper" id={hubspotFormWrapperId}>
 				</div>
 			</form>
 		);

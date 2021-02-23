@@ -337,7 +337,7 @@ const flypilotFetchWPRestAPI = async () => {
         enableScrolling: true,
         desktopOnly: true,
     },{
-        slideTemplate: 'contact',
+        slideTemplate: 'contactMobile',
         styles: {
             background: "#fff",
         },
