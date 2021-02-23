@@ -589,11 +589,12 @@ body {
                         }
                         .textGroup {
                             padding-right: $content-padding;
+                            padding-left: $content-padding;
                         }
                         .left {
                             position: static;
                             width: 100vw;
-                            padding-left: $content-padding;
+                            // padding-left: 0;
                         }
                         .right {
                             position: static;
