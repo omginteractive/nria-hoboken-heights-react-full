@@ -2733,8 +2733,8 @@ body {
     height: 100vh;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection.heightLocked .mapMotionLogo {
-    top: 359px;
-    left: calc(50vw - 70px);
+    top: 459px;
+    left: calc(50vw + 40px);
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle {
     bottom: 0;
@@ -2749,18 +2749,13 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground {
     display: flex;
     justify-content: center;
-    transform: translateX(200px);
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .map {
-    object-position: left top;
+    object-position: center top;
     width: 1270px;
     height: auto;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer {
-    left: -200px;
-  }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer > img {
-    right: 200px;
     position: relative;
     transform: translate(0px, 100vh);
   }

@@ -619,7 +619,7 @@ body {
                     }
                 }
                 &map {
-                    $mapOffset: 200px;
+                    // $mapOffset: 200px;
                     .mapSection {
                         width: 100vw;
                         top: 0;
@@ -627,8 +627,8 @@ body {
                         height: 100vh;
                         &.heightLocked {
                             .mapMotionLogo {
-                                top: 359px;
-                                left: calc(50vw - 70px);//position of dot
+                                top: 459px;
+                                left: calc(50vw + 40px);//position of dot
                             }
                         }
                         .satelliteToggle {
@@ -644,19 +644,19 @@ body {
                         .mapBackground {
                             display: flex;
                             justify-content: center;
-                            transform: translateX($mapOffset);
+                            // transform: translateX($mapOffset);
                             .map {
-                                object-position: left top;
+                                object-position: center top;
                                 width: 1270px;
                                 height: auto;
                             }
                             .satelliteImageContainer {
-                                left: -$mapOffset;
+                                // left: -$mapOffset;
                                 &.visible {
 
                                 }
                                 > img {
-                                    right: 200px;
+                                    // right: 200px;
                                     position: relative;
                                     transform: translate(0px, 100vh);
                                 }
