@@ -253,6 +253,7 @@ class App extends React.Component {
 		if(this.state.videosPlayed) return
 		const allVideos = document.querySelectorAll('.background-video')
 		allVideos.forEach(function(video){
+            console.log(video)
 			const playPromise = video.play()
 			if (playPromise !== undefined) {
 				playPromise.then(function() {

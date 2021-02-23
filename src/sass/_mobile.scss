@@ -338,6 +338,7 @@ body {
     }
     .slides_inner {
         .contactSlideWhiteHeader {
+            display: none;
             top: 1700vh;
         }
         .slide {
@@ -397,10 +398,18 @@ body {
                 }
                 &fountainPen {
                     $videoHeightRatio: .5625;//If the video is 100pxw it will be 56.25ox tall
-                    .videoContainer .background-video {
-                        min-height: auto;
+                    .videoContainer {
                         height: auto;
-                        width: 100vw;
+                        width: 400px;
+                        max-height: 100vh;
+                        overflow: hidden;
+                        .background-video {
+                            width: 100%;
+                            min-width: 100%;
+                            min-height: auto;
+                            height: auto;
+                            // width: 100vw;
+                        }
                     }
                     .textSection {
                         padding-right: 0;

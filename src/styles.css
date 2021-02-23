@@ -636,10 +636,21 @@ body {
   background-color: #fff;
   color: #000;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .motionSignature {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .motionSignature > img {
+  max-width: 100%;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection {
+  padding-top: 0;
+  width: 100%;
   z-index: 1;
   position: absolute;
-  left: calc(6.3vw);
+  padding-right: 6.3vw;
+  padding-left: 6.3vw;
   display: flex;
   flex-direction: column;
   height: calc(100vh);
@@ -2490,6 +2501,7 @@ body {
     display: none;
   }
   .slides_wrapper .slides_inner .contactSlideWhiteHeader {
+    display: none;
     top: 1700vh;
   }
   .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-exteriorLightToggle .centerBottom > h1 {
@@ -2527,10 +2539,17 @@ body {
     top: 15px;
     transition: opacity 0.5s, top 0s linear 1400ms;
   }
+  .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .videoContainer {
+    height: auto;
+    width: 400px;
+    max-height: 100vh;
+    overflow: hidden;
+  }
   .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .videoContainer .background-video {
+    width: 100%;
+    min-width: 100%;
     min-height: auto;
     height: auto;
-    width: 100vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection {
     padding-right: 0;

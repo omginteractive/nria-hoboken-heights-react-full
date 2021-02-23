@@ -528,10 +528,22 @@ body {
                     }
                 }
                 &fountainPen {
+                    .motionSignature {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        > img {
+                            max-width: 100%;
+                        }
+                    }
                     .textSection {
+                        padding-top: 0;
+                        width: 100%;
                         z-index: 1;
                         position: absolute;
-                        left: calc(#{$side-margin});
+                        // left: calc(#{$side-margin});
+                        padding-right: $side-margin;
+                        padding-left: $side-margin;
                         // top: calc(50px + #{$header-height});
                         // height: calc(100vh - #{$header-height}*2);
                         display: flex;

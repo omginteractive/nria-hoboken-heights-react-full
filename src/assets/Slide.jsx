@@ -685,21 +685,28 @@ class SlideFountainPen extends Component {
         let videoContainerClasses = 'videoContainer'
         let videoClasses = 'background-video'
         // if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect'
+
+        let videoContainerClassesMobile = videoContainerClasses + ' mobile-only'
+        let videoContainerClassesDesktop = videoContainerClasses + ' not-mobile'
         return(
             <> 
                 {
                     <div onWheel={() =>this.handleWheel()}     className="textSection">
+                        <div className="motionSignature mobile-only">
+                            <img src={require('./images/Motion_signature.gif').default} alt="" />
+                        </div>
                         <h2>4 State-of-the-art Buildings<br />55 Residences | 9 Penthouses</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn dark">Inquire now</div>
                     </div>
                 }
+                
                 {
 							//Hide landingpage video on FFMobile because it will not autoplay
 							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
 						<div
-						className={videoContainerClasses}
+						className={videoContainerClassesDesktop}
 						dangerouslySetInnerHTML={{
 							__html: `
 							<video
@@ -714,6 +721,7 @@ class SlideFountainPen extends Component {
 							</video>`
 						}}
 					/>
+                    
 				}
             </>
         )
