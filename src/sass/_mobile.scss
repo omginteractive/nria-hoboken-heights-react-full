@@ -619,6 +619,7 @@ body {
                     }
                 }
                 &map {
+                    $mapOffset: 200px;
                     .mapSection {
                         width: 100vw;
                         top: 0;
@@ -643,11 +644,22 @@ body {
                         .mapBackground {
                             display: flex;
                             justify-content: center;
-                            transform: translateX(200px);
+                            transform: translateX($mapOffset);
                             .map {
                                 object-position: left top;
                                 width: 1270px;
                                 height: auto;
+                            }
+                            .satelliteImageContainer {
+                                left: -$mapOffset;
+                                &.visible {
+
+                                }
+                                > img {
+                                    right: 200px;
+                                    position: relative;
+                                    transform: translate(0px, 100vh);
+                                }
                             }
                         }
                         .mapMotionLogo {

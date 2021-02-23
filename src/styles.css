@@ -2756,6 +2756,14 @@ body {
     width: 1270px;
     height: auto;
   }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer {
+    left: -200px;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer > img {
+    right: 200px;
+    position: relative;
+    transform: translate(0px, 100vh);
+  }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo {
     top: 350px;
     left: 209px;
