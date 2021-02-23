@@ -339,7 +339,7 @@ class SlideVideoDiscover extends Component {
                             preload="metadata"
                             loop="true"
 							>
-							<source src='/videos/NRIMA_SITE_VIDEO DISCOVER MOBILE.mp4' type="video/mp4" />
+							<source src='/videos/NRIMA_SITE_VIDEO DISCOVER Mobile.mp4' type="video/mp4" />
 							</video>`
 						}}
 					/>
