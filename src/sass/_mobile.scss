@@ -650,17 +650,19 @@ body {
                             // transform: translateX($mapOffset);
                             .map {
                                 object-position: center top;
-                                width: 1270px;
+                                width: 864px;
                                 height: auto;
                             }
                             .satelliteImageContainer {
                                 // left: -$mapOffset;
+                                display: flex;
+                                justify-content: center;
                                 &.visible {
 
                                 }
                                 > img {
                                     // right: 200px;
-                                    position: relative;
+                                    // position: relative;
                                     transform: translate(0px, 100vh);
                                 }
                             }

@@ -2751,11 +2751,14 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .map {
     object-position: center top;
-    width: 1270px;
+    width: 864px;
     height: auto;
   }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer {
+    display: flex;
+    justify-content: center;
+  }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer > img {
-    position: relative;
     transform: translate(0px, 100vh);
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo {
