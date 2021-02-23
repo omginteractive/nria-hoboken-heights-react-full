@@ -435,7 +435,17 @@ class App extends React.Component {
         //All of the above is used to prevent a slide change if necessary
 
 		const newIdx = this.state.currIdx + 1;
-		if (newIdx >= this.state.slides.length) {
+        const thisSlideDeviceIdx = this.findDeviceSlideIdx(this.state.currIdx)
+        let finalIdxOfDevice
+        if(this.state.isMobileDevice){
+            finalIdxOfDevice = this.state.mobileKeys[this.state.mobileKeys.length - 1]
+        }
+        else {
+            finalIdxOfDevice = this.state.desktopKeys[this.state.desktopKeys.length - 1]
+        }
+        
+        const thisSlideIsFinalSlide = thisSlideDeviceIdx == finalIdxOfDevice
+		if (thisSlideIsFinalSlide) {
 			return
 		}
 		this.setState({
