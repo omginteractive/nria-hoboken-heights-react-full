@@ -2528,6 +2528,7 @@ body {
     display: none;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .videoContainer {
+    width: auto;
     height: 100vh;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .videoContainer.lightsOff {
