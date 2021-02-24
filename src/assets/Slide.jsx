@@ -257,7 +257,7 @@ class SlideMap extends Component {
                     </div>
                     <div className="mapMotionLogo">
                         <img src={require('./images/map/Motion_logo.gif').default} alt="" className="map not-mobile"/>
-                        <img src={require('./images/map/Motion_logo_mobile.gif').default} alt="" className="map mobile-only"/>
+                        <img src={require('./images/map/Motion_logo_mobile_animateonce.gif').default} alt="" className="map mobile-only"/>
                     </div>
                     <div onClick={this.toggleMap.bind(this)} className="satelliteToggle vertical_toggle_column">
                         <div className="rotatedText">{toggleBarText}</div>
@@ -700,7 +700,7 @@ class SlideFountainPen extends Component {
                 {
                     <div onWheel={() =>this.handleWheel()}     className="textSection">
                         <div className="motionSignature mobile-only">
-                            <img src={require('./images/Motion_signature.gif').default} alt="" />
+                            <img src={require('./images/Motion_signature_animateonce.gif').default} alt="" />
                         </div>
                         <h2>4 State-of-the-art Buildings<br />55 Residences | 9 Penthouses</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
