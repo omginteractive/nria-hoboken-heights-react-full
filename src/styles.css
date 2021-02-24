@@ -2204,6 +2204,21 @@ body {
   }
 }
 @media screen and (max-width: 768px), screen and (max-height: 415px) and (orientation: landscape) {
+  .noSelect, .mobileMenuLinks .linksWrapper .link,
+.closeBtn,
+.hamburger,
+.amenities_detail__arrow,
+.amenities_detail__description_toggler,
+.downArrowContainer .downArrow {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   @keyframes rightbounce {
     0% {
       transform: translateX(0);
@@ -2287,23 +2302,6 @@ body {
     padding: 20px;
   }
 
-  html,
-body {
-    /*
-     * this is used only to prevent pull-to-refresh which can be triggered 
-     * anytime the user tries to scroll up on a touch device
-     * 
-     * This also prevents an issue where the background color of the body is 
-     * exposed during overscroll/elasticscroll behavior on iOS
-     * 
-     */
-    overflow: hidden;
-  }
-
-  body {
-    overscroll-behavior-y: contain;
-  }
-
   .fixed-header {
     height: 50px;
     left: 20px;
@@ -2329,6 +2327,23 @@ body {
   }
   .fixed-header .inquiry-link {
     display: none;
+  }
+
+  body {
+    overscroll-behavior-y: contain;
+  }
+
+  html,
+body {
+    /*
+     * this is used only to prevent pull-to-refresh which can be triggered 
+     * anytime the user tries to scroll up on a touch device
+     * 
+     * This also prevents an issue where the background color of the body is 
+     * exposed during overscroll/elasticscroll behavior on iOS
+     * 
+     */
+    overflow: hidden;
   }
 
   #page.iPhone {

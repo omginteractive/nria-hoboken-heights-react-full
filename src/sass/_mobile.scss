@@ -1,6 +1,25 @@
 $header-height: 50px;
 $content-padding: 20px;
 
+
+.noSelect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.mobileMenuLinks .linksWrapper .link,
+.closeBtn,
+.hamburger,
+.amenities_detail__arrow,
+.amenities_detail__description_toggler,
+.downArrowContainer .downArrow {
+    @extend .noSelect;
+}
+
 @mixin placeholder {
     ::-webkit-input-placeholder {@content}
     :-moz-placeholder           {@content}
@@ -71,24 +90,8 @@ h2 {
     height: 90%;
     padding: 20px;
 }
-html,
-body {
-    /*
-     * this is used only to prevent pull-to-refresh which can be triggered 
-     * anytime the user tries to scroll up on a touch device
-     * 
-     * This also prevents an issue where the background color of the body is 
-     * exposed during overscroll/elasticscroll behavior on iOS
-     * 
-     */
-    overflow: hidden;
-}
-body {
-    // overflow: hidden;
-    overscroll-behavior-y: contain;//this is used only to prevent pull-to-refresh which can be triggered anytime the user tries to scroll up on a touch device
-    // height: calc(100vh + 1px);//possible fix for iOS address bar not hiding
-    // background-color: #000000;//possible fix for iOS address bar not hiding
-}
+
+
 
 .fixed-header {
     height: $header-height;
@@ -115,6 +118,26 @@ body {
     .inquiry-link {
         display: none;
     }
+}
+
+body {
+    // overflow: hidden;
+    overscroll-behavior-y: contain;//this is used only to prevent pull-to-refresh which can be triggered anytime the user tries to scroll up on a touch device
+    // height: calc(100vh + 1px);//possible fix for iOS address bar not hiding
+    // background-color: #000000;//possible fix for iOS address bar not hiding
+}
+
+html,
+body {
+    /*
+     * this is used only to prevent pull-to-refresh which can be triggered 
+     * anytime the user tries to scroll up on a touch device
+     * 
+     * This also prevents an issue where the background color of the body is 
+     * exposed during overscroll/elasticscroll behavior on iOS
+     * 
+     */
+    overflow: hidden;
 }
 
 #page {
