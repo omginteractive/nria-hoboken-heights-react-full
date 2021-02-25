@@ -73,6 +73,9 @@ class Slide extends Component {
         }
     }
 
+    slideHorizontal(direction) {
+		this.props.horizontalSlide(direction);
+	}
     render(){
         const slideObj = this.props.obj;
         const slideMethods = {
