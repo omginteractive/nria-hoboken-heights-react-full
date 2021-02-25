@@ -2618,6 +2618,25 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info_btn {
     display: none;
   }
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name {
+    bottom: calc(8.2vh + 20px);
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.riseForDescription {
+    bottom: calc(8.2vh + 180px + 20px);
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name > h3 {
+    font-size: 24px;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description .text {
+    padding: 10px 10vw calc(8.2vh + 32px);
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description .text > p {
+    font-size: 12px;
+    line-height: 1.4em;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info__dots {
+    bottom: 8.2vh;
+  }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section {
     display: block;
     top: 50px;

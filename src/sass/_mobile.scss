@@ -480,9 +480,39 @@ body {
                     }
                 }
                 &amenitiesDetail {
-                    .amenities_detail__more_info_btn {
-                        display: none;
+                    $dots-bottom: 8.2vh;
+                    $name-bottom: 20px;
+                    $name-rise-distance: 180px;
+                    .amenities_detail {
+                        &__more_info_btn {
+                            display: none;
+                        }
+                        &__name {
+                            bottom: calc(#{$dots-bottom} + #{$name-bottom});
+                            &.riseForDescription {
+                                bottom: calc(#{$dots-bottom} + #{$name-rise-distance} + #{$name-bottom});
+                            }
+                            > h3 {
+                                font-size: 24px;
+                            }
+                        }
+                        &__description {
+                            .text {
+                                padding: 10px 10vw calc(#{$dots-bottom} + 32px);
+                                > p {
+                                font-size: 12px;
+                                line-height: 1.4em;
+                                }
+                            }
+                        }
+                        &__more_info {
+                            &__dots {
+                                bottom: $dots-bottom;
+                            }
+                        }
                     }
+                    
+                    
                 }
                 &views {
                     .views_section {
