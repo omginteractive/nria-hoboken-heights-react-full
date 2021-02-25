@@ -580,25 +580,38 @@ class App extends React.Component {
 	slideHorizontal(direction){
         const key = this.findDeviceSlideIdx(this.state.currIdx)
         const mobileHorizontalVideoSlideEnabled = this.state.slides[key].mobileHorizontalVideoSlideEnabled
-        if(!mobileHorizontalVideoSlideEnabled) return
 
-		const videoMobileStartPosition = this.state.slides[key].videoMobileStartPosition
-		let newVideoMobileStartPosition
-		
-		if(direction === 'right') {
-			if(videoMobileStartPosition === 'left') newVideoMobileStartPosition = 'center'
-			else if(videoMobileStartPosition === 'center') newVideoMobileStartPosition = 'right'
-			else return
-		}
-		else {
-			if(videoMobileStartPosition === 'right') newVideoMobileStartPosition = 'center'
-			else if(videoMobileStartPosition === 'center') newVideoMobileStartPosition = 'left'
-			else return
-		}
+        const isAmenitiesDetailSlide = this.state.slides[key].slideTemplate === 'amenitiesDetail'
+        if(!mobileHorizontalVideoSlideEnabled && !isAmenitiesDetailSlide) return
 
-		const slidesStateCopy = this.state.slides
-		slidesStateCopy[key].videoMobileStartPosition = newVideoMobileStartPosition
-		this.setState({ slides: slidesStateCopy })
+        if(mobileHorizontalVideoSlideEnabled) {
+            const videoMobileStartPosition = this.state.slides[key].videoMobileStartPosition
+            let newVideoMobileStartPosition
+            
+            if(direction === 'right') {
+                if(videoMobileStartPosition === 'left') newVideoMobileStartPosition = 'center'
+                else if(videoMobileStartPosition === 'center') newVideoMobileStartPosition = 'right'
+                else return
+            }
+            else {
+                if(videoMobileStartPosition === 'right') newVideoMobileStartPosition = 'center'
+                else if(videoMobileStartPosition === 'center') newVideoMobileStartPosition = 'left'
+                else return
+            }
+    
+            const slidesStateCopy = this.state.slides
+            slidesStateCopy[key].videoMobileStartPosition = newVideoMobileStartPosition
+            this.setState({ slides: slidesStateCopy })
+        }
+        else if(isAmenitiesDetailSlide){
+            const currAmenitiesDetailIdx = this.state.amenityDetailsSlideIdx
+            if(direction === 'right') {
+                this.setAmenityOnDetailsSlide(currAmenitiesDetailIdx + 1)
+            }
+            else {
+                this.setAmenityOnDetailsSlide(currAmenitiesDetailIdx - 1)
+            }
+        }
 	}
 	contactFormSubmitted(){
 		this.setState({ formSubmitted: true })

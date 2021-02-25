@@ -27,10 +27,12 @@ class Slide extends Component {
         const {goToContactSlide} = this.props;
         goToContactSlide();
     }
-    setAmenityOnDetailsSlide(idx){
+    setAmenityOnDetailsSlide(idx, nextSlide = true){
         const {setAmenityDetailsSlideIdx} = this.props;
         setAmenityDetailsSlideIdx(idx)
-        this.scrollToNextSlide(true)
+
+        if(nextSlide) this.scrollToNextSlide(true)
+        
     }
     setResidencePenthousePath(option){
         const {setResidencePenthousePath} = this.props;
@@ -163,7 +165,7 @@ class Slide extends Component {
                     <SlideAmenities methods={slideMethods} setAmenityOnDetailsSlide={this.setAmenityOnDetailsSlide.bind(this)} configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'amenitiesDetail' &&
-                    <SlideAmenitiesDetail isCurrent={isCurrent} idx={this.props.amenityDetailsSlideIdx} configuration={slideObj} />
+                    <SlideAmenitiesDetail setAmenityOnDetailsSlide={this.setAmenityOnDetailsSlide.bind(this)} isCurrent={isCurrent} idx={this.props.amenityDetailsSlideIdx} configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'views' &&
                     <SlideViews configuration={slideObj} />
@@ -877,6 +879,11 @@ class SlideAmenitiesDetail extends Component {
     }
     setAmenityData(newIdx){
         if(newIdx === this.state.currIdx) return
+        
+
+        //This is to fix horizontal touch event slides
+        if(newIdx === -1) newIdx = this.props.configuration.amenities.length - 1
+        else if(newIdx === this.props.configuration.amenities.length) newIdx = 0
 
         const title_line1 = this.props.configuration.amenities[newIdx].title_line1
         const title_line2 = this.props.configuration.amenities[newIdx].title_line2
@@ -901,6 +908,10 @@ class SlideAmenitiesDetail extends Component {
                 image2: image,
             })
         }
+
+        //Set newIdx on App component state
+        const {setAmenityOnDetailsSlide} = this.props;
+        setAmenityOnDetailsSlide(newIdx, false);
     }
     transitioningAmenityComplete= e => {
         if(e.animationName == 'fadeOut'){
@@ -943,7 +954,7 @@ class SlideAmenitiesDetail extends Component {
         }
         this.setAmenityData(nextAmenity)
     }
-    animateRightArrow(){
+    animateRightArrowAndChangeAmenity(){
         this.setState({
             rightArrowStyles: {
                 right: this.clickedArrowDistanceFromEdge
@@ -958,7 +969,7 @@ class SlideAmenitiesDetail extends Component {
             }
         })
     }
-    animateLeftArrow(){
+    animateLeftArrowAndChangeAmenity(){
         this.setState({
             leftArrowStyles: {
                 left: this.clickedArrowDistanceFromEdge
@@ -997,8 +1008,8 @@ class SlideAmenitiesDetail extends Component {
         return (
             <>
                 <section className="amenities_detail">
-                    <img onTransitionEnd={this.resetRightArrow.bind(this)} alt="Right Arrow" onClick={this.animateRightArrow.bind(this)} style={this.state.rightArrowStyles} className="amenities_detail__arrow amenities_detail__arrow--right" src={require('./images/amenities/rightArrow.svg').default} />
-                    <img onTransitionEnd={this.resetLeftArrow.bind(this)} alt="Left Arrow" onClick={this.animateLeftArrow.bind(this)} style={this.state.leftArrowStyles} className="amenities_detail__arrow amenities_detail__arrow--left" src={require('./images/amenities/rightArrow.svg').default} />
+                    <img onTransitionEnd={this.resetRightArrow.bind(this)} alt="Right Arrow" onClick={this.animateRightArrowAndChangeAmenity.bind(this)} style={this.state.rightArrowStyles} className="amenities_detail__arrow amenities_detail__arrow--right" src={require('./images/amenities/rightArrow.svg').default} />
+                    <img onTransitionEnd={this.resetLeftArrow.bind(this)} alt="Left Arrow" onClick={this.animateLeftArrowAndChangeAmenity.bind(this)} style={this.state.leftArrowStyles} className="amenities_detail__arrow amenities_detail__arrow--left" src={require('./images/amenities/rightArrow.svg').default} />
                     <img alt="" src={this.state.image1 && require('./'+this.state.image1).default} className={image1_classes}  />
                     <img alt="" src={this.state.image2 && require('./' + this.state.image2).default} className={image2_classes}  />
                     <div className={amenities_detail__more_info_classes}>
