@@ -300,6 +300,9 @@ class SlideVideoDiscover extends Component {
 
         let desktopVideoClasses = videoClasses + ' not-mobile'
         let mobileVideoClasses = videoClasses + ' mobile-only'
+
+        let desktopVideoContainerClasses = videoContainerClasses + ' not-mobile'
+        let mobilevideoContainerClasses = videoContainerClasses + ' mobile-only'
         return(
             <>
                 {
@@ -311,7 +314,7 @@ class SlideVideoDiscover extends Component {
 							//Hide landingpage video on FFMobile because it will not autoplay
 							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
 						<div
-						className={videoContainerClasses}
+						className={desktopVideoContainerClasses}
 						dangerouslySetInnerHTML={{
 							__html: `
 							<video
@@ -332,7 +335,7 @@ class SlideVideoDiscover extends Component {
 							//Hide landingpage video on FFMobile because it will not autoplay
 							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
 						<div
-						className={videoContainerClasses}
+						className={mobilevideoContainerClasses}
 						dangerouslySetInnerHTML={{
 							__html: `
 							<video

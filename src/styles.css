@@ -2780,6 +2780,8 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-videoDiscover .videoContainer .background-video {
     width: 100vw;
+    height: 100vh;
+    object-fit: cover;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity {
     flex-direction: column;
