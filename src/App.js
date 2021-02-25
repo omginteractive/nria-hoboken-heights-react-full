@@ -20,7 +20,6 @@ class App extends React.Component {
         transitiongState: 0, // 0 for false -1 for up 1 for down
         currIdx: 0,
         currIdxMobile: 0,
-        contactSlideIdx: 15,
         previousScrollVal: 0,
         peakScrollVal: 0,
         readyForScroll: 1,
@@ -367,13 +366,13 @@ class App extends React.Component {
 		return isStopped;
     }
     goToContactSlide(){
-        const idx = this.state.contactSlideIdx
-        if(this.state.currIdx === idx) return
+        const contactIdx = this.getFinalIdxOfDevice()
+        if(this.state.currIdx === contactIdx) return
         this.setState({
 			transitiongState: 1,
-			currIdx: idx
+			currIdx: contactIdx
         });
-        this.handleSlideChange(idx)
+        this.handleSlideChange(contactIdx)
     }
     goToSlide(idx){
         if(this.state.currIdx === idx) return
@@ -714,6 +713,16 @@ class App extends React.Component {
             residencePenthouse: option
         })
     }
+    getFinalIdxOfDevice(){
+        let finalIdxOfDevice
+        if(this.state.isMobileDevice){
+            finalIdxOfDevice = this.state.mobileKeys.length -1
+        }
+        else {
+            finalIdxOfDevice = this.state.desktopKeys.length -1
+        }
+        return finalIdxOfDevice
+    }
     render() {
         const deviceSlideIdx = this.findDeviceSlideIdx(this.state.currIdx)
         const hasHeaderTheme = this.state.slides && this.state.slides[deviceSlideIdx] && this.state.slides[deviceSlideIdx].headerTheme
@@ -760,14 +769,9 @@ class App extends React.Component {
         let slidesWrapperClasses = "slides_wrapper";
         if(this.state.slideHasScrolled) slidesWrapperClasses += ' scrolled'
 
-        const thisSlideDeviceIdx = this.findDeviceSlideIdx(this.state.currIdx)
-        let finalIdxOfDevice
-        if(this.state.isMobileDevice){
-            finalIdxOfDevice = this.state.mobileKeys.length -1
-        }
-        else {
-            finalIdxOfDevice = this.state.desktopKeys.length -1
-        }
+        // const thisSlideDeviceIdx = this.findDeviceSlideIdx(this.state.currIdx)
+        const finalIdxOfDevice = this.getFinalIdxOfDevice()
+        
 
         return (
             <div id="page" className={pageClasses}>
