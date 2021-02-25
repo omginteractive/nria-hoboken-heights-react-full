@@ -2316,6 +2316,12 @@ body {
   .fixed-header.lightMobile .hamburger .line {
     border-color: #fff;
   }
+  .fixed-header.lightMobile .corner-logo.dark {
+    opacity: 0;
+  }
+  .fixed-header.lightMobile .corner-logo.light {
+    opacity: 1;
+  }
   .fixed-header.darkMobile {
     color: #000;
   }
@@ -2327,6 +2333,25 @@ body {
   }
   .fixed-header .inquiry-link {
     display: none;
+  }
+  .fixed-header .corner-logo-wrapper .text {
+    width: 135px;
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+  .fixed-header .corner-logo-wrapper .text .separator {
+    margin: 0 10px;
+  }
+  .fixed-header .corner-logo-wrapper .corner-logo-images {
+    height: 60px;
+    display: flex;
+    align-items: center;
+  }
+  .fixed-header .corner-logo-wrapper .corner-logo-images .corner-logo {
+    width: 50px;
+  }
+  .fixed-header .contact > img {
+    width: 25px;
   }
 
   body {
@@ -2528,9 +2553,6 @@ body {
   }
 }
 @media screen and (max-width: 768px), screen and (max-height: 415px) and (orientation: landscape) {
-  .slides_wrapper .corner-logo-wrapper {
-    display: none;
-  }
   .slides_wrapper .slides_inner .contactSlideWhiteHeader {
     display: none;
     top: 1700vh;

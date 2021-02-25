@@ -41,12 +41,13 @@ class Header extends Component {
 
                 <div className="corner-logo-wrapper">
                     <div className="text">HOBOKEN HEIGHTS<div className="separator"></div></div>
-                    <div className="corner-logo-wrapper">
+                    <div className="corner-logo-images">
                         <img alt='Hoboken Heights Logo Light' className="corner-logo light" src={require('./' + this.lightLogo).default} />
                         <img alt='Hoboken Heights Logo Dark' className="corner-logo dark" src={require('./' + this.darkLogo).default} />
                     </div>
 
                 </div>
+                <div className="mobile-only contact"><img src={require('./images/mobile_mail.svg').default} alt="" /></div>
                 <div onClick={this.slideToContact.bind(this)} className="inquiry-link">INQUIRE NOW</div>
             </header>
         )
