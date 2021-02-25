@@ -47,7 +47,8 @@ class Header extends Component {
                     </div>
 
                 </div>
-                <div className="mobile-only contact"><img src={require('./images/mobile_mail.svg').default} alt="" /></div>
+                <div className="mobile-only contact light"><img src={require('./images/mobile_mail.svg').default} alt="" /></div>
+                <div className="mobile-only contact dark"><img src={require('./images/mobile_mail_black.svg').default} alt="" /></div>
                 <div onClick={this.slideToContact.bind(this)} className="inquiry-link">INQUIRE NOW</div>
             </header>
         )

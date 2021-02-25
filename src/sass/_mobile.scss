@@ -97,6 +97,34 @@ h2 {
     height: $header-height;
     left: $content-padding;
     width: calc(100vw - #{$content-padding}*2);
+    justify-content: center;
+    &.dark,
+    &.light-inquiry {
+        .contact.light {
+            opacity: 0;
+        }
+    }
+    &.light {
+        .contact.dark {
+            opacity: 0;
+        }
+    }
+    &.light.darkMobile {
+        .contact.light {
+            opacity: 0;
+        }
+        .contact.dark {
+            opacity: 1;
+        }
+    }
+    &.dark.lightMobile {
+        .contact.light {
+            opacity: 1;
+        }
+        .contact.dark {
+            opacity: 0;
+        }
+    }
     &.lightMobile {
         color: #fff;
         .separator {
@@ -140,13 +168,21 @@ h2 {
             align-items: center;
             .corner-logo {
                 width: 50px;
+                // position: static;
             }
         }
     }
     .contact {
+        position: absolute;
+        right: 0;
+        transition: opacity $slideAnimationDuration;
         > img {
             width: 25px;
         }
+    }
+    .hamburger {
+        position: absolute;
+        left: 0;
     }
 }
 

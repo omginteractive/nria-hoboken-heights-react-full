@@ -2306,6 +2306,25 @@ body {
     height: 50px;
     left: 20px;
     width: calc(100vw - 20px*2);
+    justify-content: center;
+  }
+  .fixed-header.dark .contact.light, .fixed-header.light-inquiry .contact.light {
+    opacity: 0;
+  }
+  .fixed-header.light .contact.dark {
+    opacity: 0;
+  }
+  .fixed-header.light.darkMobile .contact.light {
+    opacity: 0;
+  }
+  .fixed-header.light.darkMobile .contact.dark {
+    opacity: 1;
+  }
+  .fixed-header.dark.lightMobile .contact.light {
+    opacity: 1;
+  }
+  .fixed-header.dark.lightMobile .contact.dark {
+    opacity: 0;
   }
   .fixed-header.lightMobile {
     color: #fff;
@@ -2350,8 +2369,17 @@ body {
   .fixed-header .corner-logo-wrapper .corner-logo-images .corner-logo {
     width: 50px;
   }
+  .fixed-header .contact {
+    position: absolute;
+    right: 0;
+    transition: opacity 1400ms;
+  }
   .fixed-header .contact > img {
     width: 25px;
+  }
+  .fixed-header .hamburger {
+    position: absolute;
+    left: 0;
   }
 
   body {
