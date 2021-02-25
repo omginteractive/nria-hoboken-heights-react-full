@@ -2626,6 +2626,11 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name > h3 {
     font-size: 24px;
+    line-height: 1.4em;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_toggler {
+    height: 24px;
+    top: 4px;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description .text {
     padding: 10px 10vw calc(8.2vh + 32px);
