@@ -2350,6 +2350,10 @@ body {
   .fixed-header.darkMobile .hamburger .line {
     border-color: #000;
   }
+  .fixed-header .closeBtn {
+    left: 0;
+    position: absolute;
+  }
   .fixed-header .inquiry-link {
     display: none;
   }
