@@ -784,7 +784,6 @@ class App extends React.Component {
 
         // const thisSlideDeviceIdx = this.findDeviceSlideIdx(this.state.currIdx)
         const finalIdxOfDevice = this.getFinalIdxOfDevice()
-        
 
         return (
             <div id="page" className={pageClasses}>

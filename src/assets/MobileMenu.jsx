@@ -31,11 +31,11 @@ class MobileMenu extends Component {
                     <div className="linksWrapper">
                         <div className='link' onClick={() => this.goToSlide(2)}><h2>Property</h2></div>
                         <div className='link' onClick={() => this.goToSlide(4)}><h2>Amenities</h2></div>
-                        <div className='link' onClick={() => this.goToSlide(6)}><h2>The View</h2></div>
-                        <div className='link' onClick={() => this.goToSlide(7)}><h2>Residences & Penthouses</h2></div>
+                        <div className='link' onClick={() => this.goToSlide(8)}><h2>The View</h2></div>
+                        <div className='link' onClick={() => this.goToSlide(9)}><h2>Residences & Penthouses</h2></div>
                         <div className='link' onClick={() => this.goToSlide(13)}><h2>Availability</h2></div>
-                        <div className='link' onClick={() => this.goToSlide(10)}><h2>Development Team Story</h2></div>
-                        <div className='link' onClick={() => this.goToSlide(12)}><h2>Discover</h2></div>
+                        <div className='link' onClick={() => this.goToSlide(13)}><h2>Development Team Story</h2></div>
+                        <div className='link' onClick={() => this.goToSlide(16)}><h2>Discover</h2></div>
                         <div className='link' onClick={() => this.goToSlide(contactFormSlideIdx)}><h2>Contact</h2></div>
                     </div>
                 </div>
