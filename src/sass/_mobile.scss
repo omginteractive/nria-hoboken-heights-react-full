@@ -157,13 +157,19 @@ h2 {
     .inquiry-link {
         display: none;
     }
+    $separator_margin: 10px;
     .corner-logo-wrapper {
+        //this excess width is used for centering logo/text. 
+        //This is to take into consideration the space lost due to the logo being absolutely positioned
+        //logo needs to be position absolute so it is able to crossfade
+        width: 175px;
         .text {
             width: 135px;
             font-size: 8px;
             letter-spacing: 2px;
             .separator {
-                margin: 0 10px;
+                margin: 0 $separator_margin;
+                height: 20px;
             }
         }
         .corner-logo-images {

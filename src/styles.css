@@ -2357,6 +2357,9 @@ body {
   .fixed-header .inquiry-link {
     display: none;
   }
+  .fixed-header .corner-logo-wrapper {
+    width: 175px;
+  }
   .fixed-header .corner-logo-wrapper .text {
     width: 135px;
     font-size: 8px;
@@ -2364,6 +2367,7 @@ body {
   }
   .fixed-header .corner-logo-wrapper .text .separator {
     margin: 0 10px;
+    height: 20px;
   }
   .fixed-header .corner-logo-wrapper .corner-logo-images {
     height: 60px;
