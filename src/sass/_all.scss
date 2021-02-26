@@ -353,7 +353,7 @@ body {
                     $delay_before_animation: 0.1s;
                     $interval_between_animation: 0.1s;
                     $timing: $i*$interval_between_animation + $delay_before_animation;
-                    > a:nth-child(#{$i}) {
+                    > div:nth-child(#{$i}) {
                         transition: transform $animation_duration linear $timing;
                     }
                 }
