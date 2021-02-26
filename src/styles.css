@@ -652,7 +652,6 @@ body {
   z-index: 1;
   position: absolute;
   padding-right: 6.3vw;
-  padding-left: 6.3vw;
   display: flex;
   flex-direction: column;
   height: calc(100vh);
@@ -661,9 +660,6 @@ body {
   padding-right: calc(30% + 6.3vw);
   overflow: scroll;
   width: calc(100vw - 6.3vw*2);
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection > p {
-  text-align: justify;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection .btn {
   margin-top: 38px;
