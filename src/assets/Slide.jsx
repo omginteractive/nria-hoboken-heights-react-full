@@ -566,7 +566,7 @@ class SlideHome extends Component {
     render(){
         return(
             <>
-                <img className="animatedLogo" src={animatedLogo} alt=""/>
+                <img className="animatedLogo" src={animatedLogo} alt="" onClick={this.nextSlide.bind(this)} />
                 <div className="downArrowContainer">
                     <img alt='Down Arrow' onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
                 </div>

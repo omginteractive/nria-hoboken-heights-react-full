@@ -619,6 +619,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-home .animatedLogo {
   width: 350px;
+  cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-home .downArrowContainer .downArrow {
   animation-delay: 2s, 3s;
