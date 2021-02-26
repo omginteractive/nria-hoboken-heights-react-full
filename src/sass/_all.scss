@@ -269,9 +269,11 @@ body {
     }
     $menuBtnWidth: 25px;
     $menuBtnHorizontalPadding: 15px;
+    $closeBtnHeight: 18px;
     .closeBtn {
         cursor: pointer;
-        height: 25px;
+        height: $closeBtnHeight;
+        margin-right: $menuBtnWidth - $closeBtnHeight;
         // width: calc(#{$menuBtnHorizontalPadding}*2 + #{$menuBtnWidth});
         width: 18px;
         // padding: 0 $menuBtnHorizontalPadding;
