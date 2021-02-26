@@ -877,7 +877,7 @@ class SlideAmenitiesDetail extends Component {
                 lastPropsIdx: this.props.idx,
             })
             this.setAmenityData(this.props.idx)
-            this.setAmenityTitle()
+            // this.setAmenityTitle()//changed title too early when switching slides
         }
     }
     setAmenityData(newIdx){
@@ -888,10 +888,10 @@ class SlideAmenitiesDetail extends Component {
         if(newIdx === -1) newIdx = this.props.configuration.amenities.length - 1
         else if(newIdx === this.props.configuration.amenities.length) newIdx = 0
 
-        const title_line1 = this.props.configuration.amenities[newIdx].title_line1
-        const title_line2 = this.props.configuration.amenities[newIdx].title_line2
-        const title_line3 = this.props.configuration.amenities[newIdx].title_line3
-        const description = this.props.configuration.amenities[newIdx].description
+        // const title_line1 = this.props.configuration.amenities[newIdx].title_line1
+        // const title_line2 = this.props.configuration.amenities[newIdx].title_line2
+        // const title_line3 = this.props.configuration.amenities[newIdx].title_line3
+        // const description = this.props.configuration.amenities[newIdx].description
         const image = this.props.configuration.amenities[newIdx].image
         const image1IsNew = !this.state.image1IsNew
         this.setState({
@@ -916,17 +916,22 @@ class SlideAmenitiesDetail extends Component {
         const {setAmenityOnDetailsSlide} = this.props;
         setAmenityOnDetailsSlide(newIdx, false);
     }
-    transitioningAmenityComplete= e => {
+    transitioningAmenityComplete = e => {
+        
+        console.log(e)
         if(e.animationName == 'fadeOut'){
+            console.log('faded Out')
             this.setAmenityTitle()
             this.setState({
                 amenityNameVisibility: true
             })
         }
         else if(e.animationName == 'fadeInDriftUp') {
+            console.log('faded In drift up')
         }
     }
     setAmenityTitle(){
+        console.log('setting title')
         const newIdx = this.state.currIdx
         if(typeof this.props.configuration.amenities[newIdx] == 'undefined') return
         const title_line1 = this.props.configuration.amenities[newIdx].title_line1
