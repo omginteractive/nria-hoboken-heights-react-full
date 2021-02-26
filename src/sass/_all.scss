@@ -264,6 +264,7 @@ body {
         }
     }
     .corner-logo {
+        cursor: pointer;
         opacity: 0;
         transition: opacity $slideAnimationDuration;
     }
@@ -303,7 +304,7 @@ body {
             width: 300px;
             display: flex;
             align-items: center;
-            
+            cursor: pointer;
             .separator {
                 height: 41px;
                 margin: 0 26px;

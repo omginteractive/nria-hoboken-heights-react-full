@@ -797,7 +797,7 @@ class App extends React.Component {
                     <div className="fixed-headers">
                         <div className='fixed-header-inner'>
                             <div className='fixed-header-wrapper'>
-                                <Header goToContactSlide={this.goToContactSlide.bind(this)} toggleMobileMenu={this.toggleMobileMenu.bind(this)} theme={headerTheme} themeMobile={headerThemeMobile} />
+                                <Header goToSlide={this.goToSlide.bind(this)} goToContactSlide={this.goToContactSlide.bind(this)} toggleMobileMenu={this.toggleMobileMenu.bind(this)} theme={headerTheme} themeMobile={headerThemeMobile} />
                             </div>
                             {/* <div className='fixed-header-wrapper'>
                                 <header className='fixed-header'>

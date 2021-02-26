@@ -376,6 +376,7 @@ body {
   position: absolute;
 }
 .fixed-header .corner-logo {
+  cursor: pointer;
   opacity: 0;
   transition: opacity 1400ms;
 }
@@ -408,6 +409,7 @@ body {
   width: 300px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .fixed-header .corner-logo-wrapper .text .separator {
   height: 41px;

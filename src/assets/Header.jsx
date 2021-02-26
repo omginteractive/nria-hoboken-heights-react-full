@@ -21,6 +21,13 @@ class Header extends Component {
         goToContactSlide()
     }
 
+    handleHeaderLogoClick(){
+        //This should change location to second homepage slide directly if not on homepage
+        const {goToSlide} = this.props;
+        goToSlide(1)
+        console.log(1)
+    }
+
     render(){
         const defaultTheme = 'dark'
         const theme = this.props.theme ? this.props.theme : defaultTheme
@@ -40,10 +47,10 @@ class Header extends Component {
                 }
 
                 <div className="corner-logo-wrapper">
-                    <div className="text">HOBOKEN HEIGHTS<div className="separator"></div></div>
+                    <div className="text" onClick={this.handleHeaderLogoClick.bind(this)}>HOBOKEN HEIGHTS<div className="separator"></div></div>
                     <div className="corner-logo-images">
-                        <img alt='Hoboken Heights Logo Light' className="corner-logo light" src={require('./' + this.lightLogo).default} />
-                        <img alt='Hoboken Heights Logo Dark' className="corner-logo dark" src={require('./' + this.darkLogo).default} />
+                        <img alt='Hoboken Heights Logo Light' className="corner-logo light" src={require('./' + this.lightLogo).default} onClick={this.handleHeaderLogoClick.bind(this)} />
+                        <img alt='Hoboken Heights Logo Dark' className="corner-logo dark" src={require('./' + this.darkLogo).default} onClick={this.handleHeaderLogoClick.bind(this)} />
                     </div>
 
                 </div>
