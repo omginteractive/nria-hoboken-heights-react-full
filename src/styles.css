@@ -694,23 +694,25 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities {
   position: absolute;
-  left: 6.3vw;
-  width: calc(100% - 15vw);
   top: 12.8vh;
-  height: calc(100vh - 11.2vh - 12.8vh);
   display: flex;
   align-items: flex-start;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details_wrapper {
+  padding-left: 6.3vw;
+  flex-basis: 70%;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details, .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__list {
+  height: calc(100vh - 12.8vh - 11.2962962963vh);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details {
   overflow: scroll;
   background-color: #000000;
   padding: 0 4.2708333333vw;
-  flex-basis: 70%;
   color: #ffffff;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  height: calc(100vh - 12.8vh - 11.2962962963vh);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details > h2 {
   width: 400px;
@@ -734,7 +736,6 @@ body {
   text-transform: uppercase;
   line-height: 2.8em;
   font-size: 15px;
-  height: calc(100vh - 12.8vh);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__list > ul > li {
   font-family: "Gotham-Book";
