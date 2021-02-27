@@ -704,10 +704,11 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details {
   overflow: scroll;
   background-color: #000000;
-  padding: 9.6vh 4.1vw;
+  padding: 0 4.2708333333vw;
   flex-basis: 70%;
   color: #ffffff;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   height: calc(100vh - 12.8vh - 11.2962962963vh);
 }

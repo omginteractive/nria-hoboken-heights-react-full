@@ -614,10 +614,11 @@ body {
                             @extend .hideScrollbars;
                             overflow: scroll;
                             background-color: #000000;
-                            padding: 9.6vh 4.1vw;
+                            padding: 0 calc_vw(82);
                             flex-basis: 70%;
                             color: #ffffff;
                             display: flex;
+                            justify-content: center;
                             flex-direction: column;
                             // justify-content: center;
                             // height: calc(100vh - #{$header-height} - #{$bottom-space});
