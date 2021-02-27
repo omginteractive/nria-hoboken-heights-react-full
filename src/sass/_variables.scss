@@ -1,3 +1,17 @@
+@function calc_vh($px) {
+    $base_height: 1080;
+    $vh_height: $px / $base_height;
+    
+    @return $vh_height * 100vh;
+}
+
+@function calc_vw($px) {
+    $base_width: 1920;
+    $vw_width: $px / $base_width;
+    
+    @return $vw_width * 100vw;
+}
+
 $separator-line-height: 42px;
 $soundOptionsButtonWidth: 86px;
 $cornerLogoAnimateDistance: 260px;

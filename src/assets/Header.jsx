@@ -24,8 +24,9 @@ class Header extends Component {
     handleHeaderLogoClick(){
         //This should change location to second homepage slide directly if not on homepage
         const {goToSlide} = this.props;
-        goToSlide(1)
-        console.log(1)
+        if(goToSlide) {//This checks to see if function exists. It will exist for the normal fixed header but not for the mobile header
+            goToSlide(1)
+        }
     }
 
     render(){

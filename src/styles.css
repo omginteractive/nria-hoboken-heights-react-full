@@ -305,6 +305,10 @@ body {
   width: 100vw;
   overflow: hidden;
 }
+.fixed-headers .fixed-header-inner .fixed-header-wrapper .fixed-header .corner-logo-wrapper .text,
+.fixed-headers .fixed-header-inner .fixed-header-wrapper .fixed-header .corner-logo-wrapper .corner-logo {
+  cursor: pointer;
+}
 
 .slides_inner .contactSlideWhiteHeader {
   position: absolute;
@@ -376,7 +380,6 @@ body {
   position: absolute;
 }
 .fixed-header .corner-logo {
-  cursor: pointer;
   opacity: 0;
   transition: opacity 1400ms;
 }
@@ -409,7 +412,6 @@ body {
   width: 300px;
   display: flex;
   align-items: center;
-  cursor: pointer;
 }
 .fixed-header .corner-logo-wrapper .text .separator {
   height: 41px;
@@ -657,7 +659,7 @@ body {
   display: flex;
   flex-direction: column;
   height: calc(100vh);
-  padding-top: calc(50px + 12.8vh);
+  padding-top: calc(23.7037037037vh);
   top: 0;
   padding-right: calc(30% + 6.3vw);
   overflow: scroll;

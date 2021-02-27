@@ -187,6 +187,14 @@ body {
             height: 100vh;
             width: 100vw;
             overflow: hidden;
+            .fixed-header {
+                .corner-logo-wrapper {
+                    .text,
+                    .corner-logo {
+                        cursor: pointer;
+                    }
+                }
+            }
         }
     }
 }
@@ -264,7 +272,6 @@ body {
         }
     }
     .corner-logo {
-        cursor: pointer;
         opacity: 0;
         transition: opacity $slideAnimationDuration;
     }
@@ -304,7 +311,7 @@ body {
             width: 300px;
             display: flex;
             align-items: center;
-            cursor: pointer;
+            
             .separator {
                 height: 41px;
                 margin: 0 26px;
@@ -551,7 +558,7 @@ body {
                         display: flex;
                         flex-direction: column;
                         height: calc(100vh);
-                        padding-top: calc(50px + #{$header-height});
+                        padding-top: calc(#{calc_vh(256)});
                         top: 0;
                         padding-right: calc(30% + #{$side-margin});
                         overflow: scroll;
