@@ -694,7 +694,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities {
   position: absolute;
-  left: 7.5vw;
+  left: 6.3vw;
   width: calc(100% - 15vw);
   top: 12.8vh;
   height: calc(100vh - 11.2vh - 12.8vh);
