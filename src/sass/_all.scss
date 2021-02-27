@@ -621,7 +621,7 @@ body {
                             flex-direction: column;
                             // justify-content: center;
                             // height: calc(100vh - #{$header-height} - #{$bottom-space});
-                            height: calc(100vh - #{$header-height});
+                            height: calc(100vh - #{$header-height} - #{calc_vh(122)});
                             > h2 {
                                 width: 400px;
                                 line-height: 1.4em;

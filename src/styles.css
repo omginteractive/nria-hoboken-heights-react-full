@@ -709,7 +709,7 @@ body {
   color: #ffffff;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 12.8vh);
+  height: calc(100vh - 12.8vh - 11.2962962963vh);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details > h2 {
   width: 400px;
