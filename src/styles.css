@@ -1985,32 +1985,24 @@ body {
 .slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup {
   padding-right: 38px;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup :nth-child(1) {
+.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup .developmentTeam__page_title {
   animation-delay: 0.8s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup :nth-child(2) {
+.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup .developmentTeam__paragraph,
+.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup .developmentTeam__headline {
   animation-delay: 1s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup :nth-child(3) {
-  animation-delay: 1.2s;
-}
-.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup :nth-child(4) {
-  animation-delay: 1.4s;
-}
-.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup :nth-child(5) {
-  animation-delay: 1.6s;
+.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(0) {
+  animation-delay: 1s;
 }
 .slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(1) {
-  animation-delay: 1.8s;
+  animation-delay: 1.2s;
 }
 .slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(2) {
-  animation-delay: 2s;
+  animation-delay: 1.4s;
 }
 .slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(3) {
-  animation-delay: 2.2s;
-}
-.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(4) {
-  animation-delay: 2.4s;
+  animation-delay: 1.6s;
 }
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-views .views_section__top > h2,
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-views .views_section__top > p {

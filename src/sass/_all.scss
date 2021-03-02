@@ -1986,16 +1986,18 @@ body {
                     }
                     .textGroup {
                         padding-right: $content-padding;
-                        @for $i from 1 through $textGroupObjectCount {
-                            :nth-child(#{$i}){
-                                animation-delay: $animation_incremental_delay*$i + $animation_base_delay;
-                            }
+                        .developmentTeam__page_title {
+                            animation-delay: $animation_base_delay + $animation_incremental_delay*1;
+                        }
+                        .developmentTeam__paragraph,
+                        .developmentTeam__headline {
+                            animation-delay: $animation_base_delay + $animation_incremental_delay*2;
                         }
                     }
                     .developmentTeam__button_group > .btn {
-                        @for $i from 1 through 4 {
+                        @for $i from 0 through 3 {
                             &:nth-of-type(#{$i}){
-                                animation-delay: $animation_incremental_delay*$i + $animation_base_delay + $animation_incremental_delay*$textGroupObjectCount;
+                                animation-delay: $animation_base_delay + $animation_incremental_delay*2 + $animation_incremental_delay*$i;
                             }
                         }
                     }
