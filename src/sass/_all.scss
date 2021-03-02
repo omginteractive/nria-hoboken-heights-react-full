@@ -2064,16 +2064,17 @@ body {
                             opacity: 0;
                         }
                         .textGroup {
-                            @for $i from 1 through $textGroupObjectCount {
-                                :nth-child(#{$i}){
-                                    animation-delay: $animation_incremental_delay*$i + $animation_base_delay;
-                                }
+                            > h2 {
+                                animation-delay: $animation_base_delay + $animation_incremental_delay*1;
+                            }
+                            > p {
+                                animation-delay: $animation_base_delay + $animation_incremental_delay*2;
                             }
                         }
                         .button_container > .btn {
                             @for $i from 1 through 4 {
                                 &:nth-of-type(#{$i}){
-                                    animation-delay: $animation_incremental_delay*$i + $animation_base_delay + $animation_incremental_delay*$textGroupObjectCount;
+                                    animation-delay: $animation_base_delay + $animation_incremental_delay*2 + $animation_incremental_delay*$i;
                                 }
                             }
                         }

@@ -2049,26 +2049,23 @@ body {
   animation-duration: 0.6s;
   opacity: 0;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .textGroup :nth-child(1) {
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .textGroup > h2 {
   animation-delay: 0.8s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .textGroup :nth-child(2) {
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .textGroup > p {
   animation-delay: 1s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .textGroup :nth-child(3) {
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .button_container > .btn:nth-of-type(1) {
   animation-delay: 1.2s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .button_container > .btn:nth-of-type(1) {
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .button_container > .btn:nth-of-type(2) {
   animation-delay: 1.4s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .button_container > .btn:nth-of-type(2) {
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .button_container > .btn:nth-of-type(3) {
   animation-delay: 1.6s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .button_container > .btn:nth-of-type(3) {
-  animation-delay: 1.8s;
-}
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .button_container > .btn:nth-of-type(4) {
-  animation-delay: 2s;
+  animation-delay: 1.8s;
 }
 .slides_wrapper .slides_inner .slide .videoContainer {
   height: 100vh;
