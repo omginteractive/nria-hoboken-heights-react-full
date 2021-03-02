@@ -1300,6 +1300,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity .left {
   overflow: hidden;
+  flex-basis: 57.11%;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity .left > img {
   width: 100%;
@@ -1309,8 +1310,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  flex-basis: 30%;
-  padding-left: 38px;
+  flex-basis: 42.88%;
+  padding-left: 2.944vw;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity .button_container {
   display: flex;
