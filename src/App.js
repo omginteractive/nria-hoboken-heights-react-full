@@ -787,7 +787,13 @@ class App extends React.Component {
 
         return (
             <div id="page" className={pageClasses}>
-                <MobileMenu contactFormSlideIdx={finalIdxOfDevice} goToContactSlide={this.goToContactSlide.bind(this)} open={this.state.mobileMenuOpen} toggleMobileMenu={this.toggleMobileMenu.bind(this)} goToSlideIdx={this.goToSlide.bind(this)} />
+                <MobileMenu
+                    contactFormSlideIdx={finalIdxOfDevice}
+                    goToContactSlide={this.goToContactSlide.bind(this)}
+                    open={this.state.mobileMenuOpen}
+                    toggleMobileMenu={this.toggleMobileMenu.bind(this)}
+                    goToSlideIdx={this.goToSlide.bind(this)}
+                    isMobileDevice={this.state.isMobileDevice} />
                 <div className={slidesWrapperClasses}
                     onTouchStart={this.handleTouchStart.bind(this)}
                     onTouchMove={this.handleTouchMove.bind(this)}
