@@ -1225,8 +1225,9 @@ class SlideResidencePenthouseDetail extends Component {
         })
     }
     render(){
+        const imageIsExpanded = this.state.imageExpanded
         let details_classes = 'residencePenthouseDetail'
-        details_classes += this.state.imageExpanded ? ' expandImage' : ''
+        details_classes += imageIsExpanded ? ' expandImage' : ''
         const isPenthouse = this.props.residencePenthouse === 'penthouse'
         
         const image = isPenthouse ? 'images/penthouse/penthouse.jpg' : 'images/residence/residence.png'
@@ -1280,7 +1281,12 @@ class SlideResidencePenthouseDetail extends Component {
                     </div>
                     <div onWheel={this.handleWheelEvent.bind(this)} className={imageContainerClasses}>
                         <div onClick={this.toggleImageExpansion.bind(this)} className="residencePenthouseDetail__expand_toggler vertical_toggle_column">
-                            <div><img src={require('./'+'images/expand+.svg').default} alt=""/></div>
+                            {imageIsExpanded && 
+                                <div><img src={require('./'+'images/toggleExpansion-.svg').default} alt=""/></div>
+                            }
+                            {!imageIsExpanded && 
+                                <div><img src={require('./'+'images/toggleExpansion+.svg').default} alt=""/></div>
+                            }
                         </div>
                         <div className="fullscreenImageWrapper">
                             <img src={require('./'+image).default} alt=""/>
