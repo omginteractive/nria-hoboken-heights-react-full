@@ -927,7 +927,7 @@ body {
   padding-right: 6.3vw;
   background: #fff;
   height: auto;
-  z-index: 2;
+  z-index: 4;
   padding-bottom: 38px;
   position: static;
 }
@@ -943,6 +943,9 @@ body {
   top: auto;
   height: 100%;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__bottom.isTransitioning .views_section__timeSlider {
+  pointer-events: none;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider {
   position: absolute;
   bottom: 12vh;
@@ -951,7 +954,7 @@ body {
   background: #b2b2b2;
   height: 1px;
   width: 40vw;
-  z-index: 1;
+  z-index: 3;
   position: relative;
   bottom: 40px;
 }
@@ -961,7 +964,7 @@ body {
   -webkit-appearance: none;
   position: relative;
   left: -10px;
-  z-index: 2;
+  z-index: 4;
   /* fix for FF unable to apply focus style bug  */
   border: none 0 transparent;
   /*required for proper track sizing in FF*/
@@ -1013,7 +1016,7 @@ body {
   border-radius: 50%;
   background: #000;
   position: relative;
-  z-index: 1;
+  z-index: 3;
   cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-moz-range-thumb {
@@ -1059,7 +1062,7 @@ body {
   left: -3vw;
   top: 20px;
   color: #fff;
-  z-index: 1;
+  z-index: 3;
   font-size: 18px;
   height: 2em;
 }
@@ -1090,13 +1093,17 @@ body {
   height: 100%;
   width: 100vw;
   object-fit: cover;
-  transition: opacity 0s linear 1s, transform 0s linear 1s;
   opacity: 0;
+  transition: opacity 0s, transform 1s linear 0.6s;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__image.new {
-  z-index: 1;
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__image.active {
+  z-index: 2;
   opacity: 1;
   transition: opacity 1s linear, transform 1s linear 0.6s;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__image.previouslyActive {
+  z-index: 1;
+  opacity: 1;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouse .btn {
   margin: 0 21px;

@@ -922,14 +922,14 @@ class SlideAmenitiesDetail extends Component {
         
         console.log(e)
         if(e.animationName == 'fadeOut'){
-            console.log('faded Out')
+            // console.log('faded Out')
             this.setAmenityTitle()
             this.setState({
                 amenityNameVisibility: true
             })
         }
         else if(e.animationName == 'fadeInDriftUp') {
-            console.log('faded In drift up')
+            // console.log('faded In drift up')
         }
     }
     setAmenityTitle(){
@@ -1061,13 +1061,14 @@ class SlideViews extends Component {
             timeSliderValue: 0,
             activeView: null,
             image: null,
+            previousActiveKey: null
         }
         
     }
     componentDidMount(){
-        this.props.configuration.views.forEach((view) => {
-            const img = new Image().src = require('./'+view.image).default
-        })
+        // this.props.configuration.views.forEach((view) => {
+        //     const img = new Image().src = require('./'+view.image).default
+        // })
         this.setNewTime(0)
     }
     handleTimeChange(event){
@@ -1097,31 +1098,45 @@ class SlideViews extends Component {
         this.setState({
             timeSliderValue: key,
         })
-        if(key == this.state.activeView) return
-        const image1IsNew = !this.state.image1IsNew
+        const previousKey = this.state.activeView
+        if(key == previousKey) return
+        console.log('transitioning')
+        // const image1IsNew = !this.state.image1IsNew
         this.setState({
             activeView: key,
-            image1IsNew: image1IsNew,
+            // image1IsNew: image1IsNew,
+            previousActiveKey: previousKey,
+            isTransitioning: true
         })
-        const image = this.props.configuration.views[key].image
-        if(image1IsNew){
-            this.setState({
-                image1: image,
-            })
-        }
-        else {
-            this.setState({
-                image2: image,
-            })
-        }
+        // const image = this.props.configuration.views[key].image
+        // if(image1IsNew){
+        //     this.setState({
+        //         image1: image,
+        //     })
+        // }
+        // else {
+        //     this.setState({
+        //         image2: image,
+        //     })
+        // }
     }
-
-    render(){
-        let image1_classes = 'views_section__image startZoomedIn '
-        image1_classes += this.state.image1IsNew ? 'new' : 'old'
-        let image2_classes = 'views_section__image startZoomedIn '
-        image2_classes += !this.state.image1IsNew ? 'new' : 'old'
+    handleTransitionEnd  = e => {
+        console.log('transitionended')
+        console.log(e)
+        if(e.propertyName == 'opacity'){
+            
+        }
         
+        this.setState({
+            isTransitioning: false,
+            previousActiveKey: null
+        })
+    }
+    render(){
+        const mapped_images_classes = 'views_section__image startZoomedIn'
+        const activeImageKey = this.state.activeView
+        const isTransitioning = this.state.isTransitioning
+        const views_section__bottom_classes = isTransitioning ? 'views_section__bottom isTransitioning' : 'views_section__bottom'
         return(
             <>
                 <section className="views_section">
@@ -1129,11 +1144,17 @@ class SlideViews extends Component {
                         <h2>Signature Views 24/7</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     </div>
-                    <div className="views_section__bottom">
+                    <div className={views_section__bottom_classes}>
                         {this.props.configuration.views &&
                             <>
-                                <img alt="" src={this.state.image1 && require('./'+this.state.image1).default} className={image1_classes}  />
-                                <img alt="" src={this.state.image2 && require('./' + this.state.image2).default} className={image2_classes}  />
+                                {this.props.configuration.views.map((view, i) => {
+                                    const isActiveImage = i == activeImageKey
+                                    const isPreviouslyActiveImage = i == this.state.previousActiveKey
+                                    let imageClasses = mapped_images_classes
+                                    if(isActiveImage) imageClasses = mapped_images_classes + ' active'
+                                    else if(isPreviouslyActiveImage) imageClasses = mapped_images_classes + ' previouslyActive'
+                                    return (<img key={view.image} alt={view.displayTime} src={require('./' + view.image).default} className={imageClasses} onTransitionEnd={this.handleTransitionEnd.bind(this)} />)
+                                })}       
                             </>
                         }
                         <div className="views_section__timeSlider">

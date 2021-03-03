@@ -841,7 +841,7 @@ body {
                             //This will make it so the top section extends into the bottom when the text wont fit in the top
                             background: #fff;
                             height: auto;
-                            z-index: 2;
+                            z-index: 4;
                             // min-height: $top_section_height;
                             padding-bottom: $content-padding;
                             position: static;
@@ -858,6 +858,11 @@ body {
                             position: relative;
                             top: auto;
                             height: 100%;
+                            &.isTransitioning {
+                                .views_section__timeSlider {
+                                    pointer-events: none;
+                                }
+                            }
                         }
                         &__timeSlider {
                             $sliderThumbWidth: 20px;
@@ -873,7 +878,7 @@ body {
                                 background: $sliderLineColor;
                                 height: $visibleSliderHeight;
                                 width: $sliderTargetWidth;
-                                z-index: 1;
+                                z-index: 3;
                                 position: relative;
                                 bottom: $labelDistanceFromRangeLine + $sliderHeight;
                             }
@@ -883,7 +888,7 @@ body {
                                 -webkit-appearance: none;
                                 position: relative;
                                 left: -$sliderThumbWidth/2;
-                                z-index: 2;
+                                z-index: 4;
                                 /* fix for FF unable to apply focus style bug  */
                                 border: none 0 transparent;
                                 /*required for proper track sizing in FF*/
@@ -941,7 +946,7 @@ body {
                                     background: $thumbColor;
                                     // margin-top: $sliderHeight - $sliderThumbWidth/2;
                                     position: relative;
-                                    z-index: 1;//to appear above tick lines
+                                    z-index: 3;//to appear above tick lines
                                     cursor: pointer;
                                 }
                                 &::-moz-range-thumb {
@@ -997,7 +1002,7 @@ body {
                             left: -$timeWordWidth/2;
                             top: $labelDistanceFromRangeLine;
                             color: #fff;
-                            z-index: 1;
+                            z-index: 3;
                             font-size: 18px;
                             height: 2em;//sets the tallest height that will be needed when the screen is small enough to cause the times to break to 2 lines
                             > li {
@@ -1029,14 +1034,16 @@ body {
                             height: 100%;
                             width: 100vw;
                             object-fit: cover;
-                            transition: opacity 0s linear $viewsTransitionDuration, transform 0s linear $viewsTransitionDuration;
                             opacity: 0;
-                            &.old {
-                            }
-                            &.new {
-                                z-index: 1;
+                            transition: opacity 0s, transform $viewsTransitionDuration linear $midSlidingAnimationDelay;
+                            &.active {
+                                z-index: 2;
                                 opacity: 1;
                                 transition: opacity $viewsTransitionDuration linear, transform $viewsTransitionDuration linear $midSlidingAnimationDelay;
+                            }
+                            &.previouslyActive {
+                                z-index: 1;
+                                opacity: 1;
                             }
                         }
                     }
