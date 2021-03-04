@@ -1,4 +1,5 @@
 import {Component} from 'react';
+import React from 'react';
 import animatedLogo from '../assets/images/Motion_logo.gif';
 import downArrow from '../assets/images/downarrow.svg';
 import leftArrowBlack from '../assets/images/leftArrowBlack.svg';
@@ -156,7 +157,7 @@ class Slide extends Component {
                     <SlideExteriorLightToggle mobileArrows={mobileArrows} methods={slideMethods}  configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'fountainPen' &&
-                    <SlideFountainPen methods={slideMethods} configuration={slideObj} curridx={this.props.currIdx} />
+                    <SlideFountainPen isCurrent={isCurrent} methods={slideMethods} configuration={slideObj} curridx={this.props.currIdx} />
                 }
                 {slideObj.slideTemplate === 'patio' &&
                     <SlidePatio mobileArrows={mobileArrows} methods={slideMethods} configuration={slideObj} />
@@ -674,6 +675,7 @@ class SlideFountainPen extends Component {
         super(props)
         // const 
         // this.throttleVideoParallax = _.throttle(parallaxVideo, 1);
+        this.videoContainerRef = React.createRef()
     }
     lockingVideoPosition() {
         // const parentSelector = '.slideTemplate-fountainPen'
@@ -696,6 +698,9 @@ class SlideFountainPen extends Component {
         this.lockingVideoPosition()
         // this.throttleVideoParallax()
     }
+    replayVideo() {
+        this.videoContainerRef.current.children[0].play()
+    }
     render(){
         let videoContainerClasses = 'videoContainer'
         let videoClasses = 'background-video'
@@ -703,6 +708,7 @@ class SlideFountainPen extends Component {
 
         let videoContainerClassesMobile = videoContainerClasses + ' mobile-only'
         let videoContainerClassesDesktop = videoContainerClasses + ' not-mobile'
+        if(this.props.isCurrent) this.replayVideo()
         return(
             <> 
                 {
@@ -721,6 +727,7 @@ class SlideFountainPen extends Component {
 							//Hide landingpage video on FFMobile because it will not autoplay
 							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
 						<div
+                        ref={this.videoContainerRef}
 						className={videoContainerClassesDesktop}
 						dangerouslySetInnerHTML={{
 							__html: `
