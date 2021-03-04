@@ -1477,6 +1477,7 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy .contactInfo .copyright {
   font-size: 15px;
   line-height: 25px;
+  font-family: "Gotham-Light";
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-contact .privacyPolicy .contactInfo .phone, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy .contactInfo .phone {
   font-family: "Gotham-Bold";
@@ -1507,7 +1508,7 @@ body {
   top: 175px;
   background-color: #000;
   padding: 53px;
-  width: 44vw;
+  width: 44.4270833333vw;
   margin-bottom: 53px;
   color: #FFFFFF;
 }
@@ -1543,7 +1544,6 @@ body {
   line-height: 1.4em;
   color: #fff;
   margin-top: 18px;
-  letter-spacing: 1px;
   font-family: "Gotham-Light";
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-0 .recaptcha_branding, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-0 .recaptcha_branding {
@@ -2109,11 +2109,10 @@ body {
   }
 
   .contactPageWrapper .contactForm .headline {
-    font-size: 16px;
-    letter-spacing: 3px;
+    font-size: 13.89px;
+    letter-spacing: 4.17px;
     color: #FFFFFF;
-    font-family: "Gotham-Bold", sans-serif;
-    font-weight: 700;
+    font-family: "Gotham-Book", sans-serif;
   }
   .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-submit .actions .hs-button {
     text-transform: uppercase;

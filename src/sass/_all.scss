@@ -1488,6 +1488,7 @@ body {
                             .copyright  {
                                 font-size: 15px;
                                 line-height: 25px;
+                                font-family: "Gotham-Light";
                             }
                             .phone {
                                 font-family: "Gotham-Bold";
@@ -1522,7 +1523,7 @@ body {
                         top: 175px;
                         background-color: #000;
                         padding: 53px;
-                        width: 44vw;
+                        width: calc_vw(853);
                         margin-bottom: 53px;
                         color: #FFFFFF;
                         .hubspotFormWrapper {
@@ -1564,7 +1565,7 @@ body {
                                         line-height: 1.4em;
                                         color: #fff;
                                         margin-top: 18px;
-                                        letter-spacing: 1px;
+                                        // letter-spacing: 1px;
                                         font-family: "Gotham-Light";
                                         .recaptcha_branding {
                                             margin-top: 10px;
