@@ -620,10 +620,10 @@ body {
                             @extend .hideScrollbars;
                             overflow: scroll;
                             background-color: #000000;
-                            padding: 0 calc_vw(82);
+                            padding: calc_vw(104.4) calc_vw(82) calc_vw(88.81);
                             color: #ffffff;
                             display: flex;
-                            justify-content: center;
+                            justify-content: flex-start;
                             flex-direction: column;
                             > h2 {
                                 width: 400px;

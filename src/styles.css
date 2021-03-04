@@ -708,10 +708,10 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details {
   overflow: scroll;
   background-color: #000000;
-  padding: 0 4.2708333333vw;
+  padding: 5.4375vw 4.2708333333vw 4.6255208333vw;
   color: #ffffff;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details > h2 {

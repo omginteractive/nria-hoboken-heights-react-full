@@ -919,8 +919,6 @@ class SlideAmenitiesDetail extends Component {
         setAmenityOnDetailsSlide(newIdx, false);
     }
     transitioningAmenityComplete = e => {
-        
-        console.log(e)
         if(e.animationName == 'fadeOut'){
             // console.log('faded Out')
             this.setAmenityTitle()
@@ -933,7 +931,6 @@ class SlideAmenitiesDetail extends Component {
         }
     }
     setAmenityTitle(){
-        console.log('setting title')
         const newIdx = this.state.currIdx
         if(typeof this.props.configuration.amenities[newIdx] == 'undefined') return
         const title_line1 = this.props.configuration.amenities[newIdx].title_line1
@@ -1100,7 +1097,6 @@ class SlideViews extends Component {
         })
         const previousKey = this.state.activeView
         if(key == previousKey) return
-        console.log('transitioning')
         // const image1IsNew = !this.state.image1IsNew
         this.setState({
             activeView: key,
@@ -1121,12 +1117,6 @@ class SlideViews extends Component {
         // }
     }
     handleTransitionEnd  = e => {
-        console.log('transitionended')
-        console.log(e)
-        if(e.propertyName == 'opacity'){
-            
-        }
-        
         this.setState({
             isTransitioning: false,
             previousActiveKey: null
