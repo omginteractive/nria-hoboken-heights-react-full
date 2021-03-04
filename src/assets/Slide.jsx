@@ -673,9 +673,28 @@ class SlideExteriorLightToggle extends Component {
 class SlideFountainPen extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            newArrival: true,
+        }
         // const 
         // this.throttleVideoParallax = _.throttle(parallaxVideo, 1);
         this.videoContainerRef = React.createRef()
+    }
+    
+    componentDidUpdate(){
+        const isOnThisSlide = this.props.isCurrent
+        const newArrival = this.state.newArrival
+        if(isOnThisSlide && newArrival){
+            this.replayVideo()
+            this.setState({
+                newArrival: false,
+            })
+        }
+        else if(!isOnThisSlide && !newArrival){
+            this.setState({
+                newArrival: true,
+            })
+        }
     }
     lockingVideoPosition() {
         // const parentSelector = '.slideTemplate-fountainPen'
@@ -708,7 +727,7 @@ class SlideFountainPen extends Component {
 
         let videoContainerClassesMobile = videoContainerClasses + ' mobile-only'
         let videoContainerClassesDesktop = videoContainerClasses + ' not-mobile'
-        if(this.props.isCurrent) this.replayVideo()
+        // if(this.props.isCurrent) this.replayVideo()
         return(
             <> 
                 {
