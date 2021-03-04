@@ -1912,6 +1912,17 @@ body {
             }
             &.runAnimations {
                 
+                &.slideTemplate-exteriorLightToggle {
+                    .videoContainer {
+                        .background-video {
+                            &.videoZoomEffectRepeat {
+                                transform: scale(1);
+                                //the object-position transitions are only used in mobile but for simplicity they are set here
+                                transition: object-position $slideAnimationDuration linear 0s, transform $slideAnimationDuration ease-out $midSlidingAnimationDelay;
+                            }
+                        }
+                    }
+                }
                 &.slideTemplate-fountainPen {
                     $animation_incremental_delay: 0.2s;
                     $animation_base_delay: 0.4s;
@@ -2118,7 +2129,7 @@ body {
                     height: 100%;
                     object-fit: cover;
                     //the object-position transitions are only used in mobile but for simplicity they are set here
-                    transition: object-position $slideAnimationDuration linear 0s;
+                    transition: object-position $slideAnimationDuration linear 0s, transform 0s linear $slideAnimationDuration;
                 }
             }
         }

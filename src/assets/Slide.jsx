@@ -599,7 +599,7 @@ class SlideExteriorLightToggle extends Component {
         const videoContainerClassesLightsOff = videoContainerClasses + ' lightsOff'
         let videoClasses = 'background-video'
         let lightButtonText = this.state.lightsOn ? 'Turn Off' : 'Turn On'
-        if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect startZoomedIn'
+        if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffectRepeat startZoomedIn'
 
         return(
             <>
