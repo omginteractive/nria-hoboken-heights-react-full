@@ -1911,18 +1911,6 @@ body {
                 }
             }
             &.runAnimations {
-                
-                &.slideTemplate-exteriorLightToggle {
-                    .videoContainer {
-                        .background-video {
-                            &.videoZoomEffectRepeat {
-                                transform: scale(1);
-                                //the object-position transitions are only used in mobile but for simplicity they are set here
-                                transition: object-position $slideAnimationDuration linear 0s, transform $slideAnimationDuration ease-out $midSlidingAnimationDelay;
-                            }
-                        }
-                    }
-                }
                 &.slideTemplate-fountainPen {
                     $animation_incremental_delay: 0.2s;
                     $animation_base_delay: 0.4s;
@@ -1940,6 +1928,15 @@ body {
                             :nth-child(#{$i}){
                                 animation-delay: $animation_base_delay + $animation_incremental_delay*$i;
                             }
+                        }
+                    }
+                }
+                .videoContainer {
+                    .background-video {
+                        &.videoZoomEffectRepeat {
+                            transform: scale(1);
+                            //the object-position transitions are only used in mobile but for simplicity they are set here
+                            transition: object-position $slideAnimationDuration linear 0s, transform $slideAnimationDuration ease-out $midSlidingAnimationDelay;
                         }
                     }
                 }

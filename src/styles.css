@@ -1885,10 +1885,6 @@ body {
   color: #ffffff;
   background-color: #000;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-exteriorLightToggle .videoContainer .background-video.videoZoomEffectRepeat {
-  transform: scale(1);
-  transition: object-position 1400ms linear 0s, transform 1400ms ease-out 0.6s;
-}
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection > h2,
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection > p,
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection .btn {
@@ -1909,6 +1905,10 @@ body {
 }
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection :nth-child(4) {
   animation-delay: 1.2s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations .videoContainer .background-video.videoZoomEffectRepeat {
+  transform: scale(1);
+  transition: object-position 1400ms linear 0s, transform 1400ms ease-out 0.6s;
 }
 .slides_wrapper .slides_inner .slide.runAnimations .amenities_detail__image.new {
   transform: scale(1.15);

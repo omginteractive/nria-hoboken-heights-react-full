@@ -777,7 +777,7 @@ class SlidePatio extends Component {
     render(){
         let videoContainerClasses = 'videoContainer'
         let videoClasses = 'background-video'
-        if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect startZoomedIn'
+        if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffectRepeat startZoomedIn'
         return(
             <>
                 {
