@@ -1269,16 +1269,15 @@ class SlideResidencePenthouseDetail extends Component {
         
         const image = isPenthouse ? 'images/penthouse/penthouse.jpg' : 'images/residence/residence.png'
         const page_title = isPenthouse ? 'Exclusive Luxury Penthouses' : 'Our Residences'
-        const page_description = isPenthouse ? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+        const page_description = isPenthouse ? 'The Penthouse condominium units at Hoboken Heights offer the most spectacular panoramic views of the Hudson River and New York City skyline. Whether you’re cooking in the kitchen with chef’s grade appliances, eating in the open dining area, or relaxing in the living room, that panoramic view will be all around you. Top-of-the-line finishes in our bedrooms and bathrooms will ensure your total comfort and ease. You’ll have plenty of options to design your living space to be perfect for you.' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
         const featuresArray = isPenthouse ? [
-            'Lorem Ipsum Lorem Ipsum',
-            'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum',
-            'Lorem Ipsum Lorem Ipsum',
-            'Lorem Ipsum Lorem Ipsum Lorem',
-            'Lorem Ipsum',
-            'Lorem Ipsum Lorem Ipsum Lorem Ipsum',
-            'Lorem Ipsum Lorem',
-            'Lorem Ipsum Lorem Ipsum',
+            'Panoramic views of the New York City skyline ',
+            'Spacious open plan living ',
+            '4 Bedrooms, 4.5 Bathrooms ',
+            'High-end appliances ',
+            'Two-car garage with private elevator ',
+            'Expansive glass-enclosed terrace ',
+            'Optional smart home technology',
             ] : 
             [
                 'Residence Ipsum Lorem Ipsum',
@@ -1313,7 +1312,7 @@ class SlideResidencePenthouseDetail extends Component {
                             <div className="leftArrowContainer">
                                 <img alt='Left Arrow' className="leftArrow" src={leftArrowBlack}></img>
                             </div>
-                            <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn light">Inquire now</div>
+                            <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn light">Floor Plans</div>
                         </div>
                     </div>
                     <div onWheel={this.handleWheelEvent.bind(this)} className={imageContainerClasses}>

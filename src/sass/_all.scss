@@ -1062,7 +1062,7 @@ body {
                 }
                 &residencePenthouseDetail {
                     .residencePenthouseDetail {
-                        $starting_leftside_width: 40vw;
+                        $starting_leftside_width: calc_vw(797);
                         margin-top: $header-height;
                         $content_width: calc(100vw - #{$side-margin}*2);
                         $paragraph_font_size: 18px;
@@ -1072,13 +1072,15 @@ body {
                         width: calc(#{$content_width});
                         &__details {
                             @extend .hideScrollbars;
-                            padding-right: $content-padding;
+                            padding-right: calc_vw(52.23);
                             position: absolute;
-                            width: calc(#{$content_width} - #{$starting_leftside_width});
+                            width: $starting_leftside_width;
                             overflow: scroll;
                             height: calc(100vh - #{$header-height});
                             > h2 {
-                                margin-bottom: $content-padding;
+                                margin-bottom: 40px;
+                                width: 400px;//Forces line break of Penthouses
+                                line-height: 59px;
                             }
                             > p {
                                 font-size: 18px;
@@ -1088,18 +1090,21 @@ body {
                         &__image_container {
                             transition: width 1s;
                             position: absolute;
-                            width: calc(#{$content_width} - calc(#{$content_width} - #{$starting_leftside_width}));
-                            right: 7.5vw;
+                            width: calc(#{$content_width} - #{$starting_leftside_width});
+                            right: $side-margin;
                             height: calc(100vh - #{$header-height});
                             overflow: hidden;
-                            > img {
-                                width: calc(#{$content_width});
+                            .fullscreenImageWrapper {
                                 height: 100%;
-                                object-fit: cover;
-                                object-position: right;
-                                position: absolute;
-                                right: 0;
-                                z-index: 1;//to be above inquiry button on slide change
+                                > img {
+                                    width: calc(#{$content_width});
+                                    height: 100%;
+                                    object-fit: cover;
+                                    object-position: right;
+                                    position: absolute;
+                                    right: 0;
+                                    z-index: 1;//to be above inquiry button on slide change
+                                }
                             }
                         }
                         &__expand_toggler {
@@ -1116,11 +1121,13 @@ body {
                             // z-index: 1;
                         }
                         &__features_list {
-                            margin-bottom: $content-padding;
+                            margin-bottom: 62px;
                             $feature_font_size: 18px;
-                            $feature_line_height: 40px;
+                            $feature_line_height: 39px;
                             $space_above_feature: ($feature_line_height - $feature_font_size)/2;
                             > ul {
+                                margin-left: 32px;
+                                font-family: "Gotham-Light", sans-serif;
                                 > li {
                                     font-size: $feature_font_size;
                                     line-height: $feature_line_height;
@@ -1132,7 +1139,7 @@ body {
                             .heading {
                                 font-size: 18px;
                                 text-transform: uppercase;
-                                margin-top: $content-padding;
+                                margin-top: 55px;
                                 margin-bottom: $content-padding - $space_above_feature;
                                 font-family: 'Gotham-Medium';
                             }
