@@ -6,8 +6,8 @@ class Header extends Component {
         this.state = {
           
         }
-        this.darkLogo = 'images/logos/NIRMA_Logo_Symbol_Black.png'
-        this.lightLogo = 'images/logos/NIRMA_Logo_Symbol_White.png'
+        this.darkLogo = 'images/logos/Logo-small-black.svg'
+        this.lightLogo = 'images/logos/Logo-small-white.svg'
         this.lightCloseBtn = 'images/mobile_menu_x.svg'
         
     }
