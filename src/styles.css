@@ -948,12 +948,13 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider {
   position: absolute;
-  bottom: 12vh;
+  bottom: 3.0208333333vw;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider .visibleSliderLine {
+  left: 3vw;
   background: #b2b2b2;
   height: 1px;
-  width: 40vw;
+  width: 40.1078125vw;
   z-index: 3;
   position: relative;
   bottom: 40px;
@@ -963,19 +964,19 @@ body {
   margin: 0;
   -webkit-appearance: none;
   position: relative;
-  left: -10px;
+  left: calc(6vw/2 - 20px/2);
   z-index: 4;
   /* fix for FF unable to apply focus style bug  */
   border: none 0 transparent;
   /*required for proper track sizing in FF*/
-  width: calc(40vw + 20px);
+  width: calc(40.1078125vw + 20px);
   height: 20px;
   top: 10px;
   /*hide the outline behind the border*/
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-webkit-slider-runnable-track {
   position: relative;
-  width: calc(40vw + 20px);
+  width: calc(40.1078125vw + 20px);
   height: 20px;
   -webkit-appearance: none;
   background: transparent;
@@ -993,7 +994,7 @@ body {
   /* for ie */
   position: relative;
   top: 10px;
-  width: calc(40vw + 20px);
+  width: calc(40.1078125vw + 20px);
   height: 5px;
   /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
   background: transparent;
@@ -1057,23 +1058,27 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList {
   display: flex;
   justify-content: space-between;
-  width: calc(40vw + 6vw);
+  width: calc(40.1078125vw + 6vw);
   position: relative;
-  left: -3vw;
   top: 20px;
   color: #fff;
   z-index: 3;
   font-size: 18px;
   height: 2em;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList .ampm {
+  font-size: 10px;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li {
   width: 6vw;
   text-align: center;
   position: relative;
   font-family: "Gotham-Light", sans-serif;
+  opacity: 0.5;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li.active {
   font-family: "Gotham-Book";
+  opacity: 1;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li:before {
   position: absolute;

@@ -825,9 +825,9 @@ body {
                         flex-direction: column;
                         $sliderLineColor: #b2b2b2;
                         $hideSliderColor: transparent;
-                        $sliderTargetWidth: 40vw;
+                        $sliderTargetWidth: calc_vw(770.07);
                         $labelDistanceFromRangeLine: 20px;
-
+                        $timeWordWidth: 6vw;
                         top: $header-height;
                         height: calc(100vh - #{$header-height});
                         &__top {
@@ -872,9 +872,11 @@ body {
                             $thumbColor: #000;
                             $thumbBorderRadius: 50%;
                             $thumbBorder: solid 1px #fff;
+                            
                             position: absolute;
-                            bottom: 12vh;
+                            bottom: calc_vw(58);
                             .visibleSliderLine {
+                                left: $timeWordWidth/2;
                                 background: $sliderLineColor;
                                 height: $visibleSliderHeight;
                                 width: $sliderTargetWidth;
@@ -887,7 +889,8 @@ body {
                                 margin: 0;
                                 -webkit-appearance: none;
                                 position: relative;
-                                left: -$sliderThumbWidth/2;
+                                // left: -$sliderThumbWidth/2;
+                                left: calc(#{$timeWordWidth}/2 - #{$sliderThumbWidth}/2);
                                 z-index: 4;
                                 /* fix for FF unable to apply focus style bug  */
                                 border: none 0 transparent;
@@ -994,24 +997,29 @@ body {
                             }
                         }
                         &__timeList {
-                            $timeWordWidth: 6vw;
+                            
                             display: flex;
                             justify-content: space-between;
                             width: calc(#{$sliderTargetWidth} + #{$timeWordWidth});
                             position: relative;
-                            left: -$timeWordWidth/2;
+                            // left: -$timeWordWidth/2;
                             top: $labelDistanceFromRangeLine;
                             color: #fff;
                             z-index: 3;
                             font-size: 18px;
                             height: 2em;//sets the tallest height that will be needed when the screen is small enough to cause the times to break to 2 lines
+                            .ampm {
+                                font-size: 10px;
+                            }
                             > li {
                                 width: $timeWordWidth;
                                 text-align: center;
                                 position: relative;
                                 font-family: "Gotham-Light", sans-serif;
+                                opacity: 0.5;
                                 &.active {
                                     font-family: 'Gotham-Book';
+                                    opacity: 1;
                                 }
                                 &:before {
                                     position: absolute;
