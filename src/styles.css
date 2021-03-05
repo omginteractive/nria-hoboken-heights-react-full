@@ -1191,6 +1191,9 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__page_title, .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__headline, .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__paragraph {
   margin-bottom: 38px;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__paragraph {
+  line-height: 25px;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__headline {
   text-transform: uppercase;
   font-family: "Gotham-Medium";
@@ -1209,13 +1212,14 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__copyright_logo_container .copyright {
   font-size: 13px;
   font-family: "Gotham-Light", sans-serif;
-  margin-top: 25px;
+  margin-top: 24px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__copyright_logo_container .nriaLogo > img {
   margin-top: 30px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__page_title {
   width: 1px;
+  line-height: 59px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__page_title.invisible {
   opacity: 0;
@@ -1225,12 +1229,15 @@ body {
   width: 100%;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .left {
-  width: 50%;
+  width: 46.1979166667vw;
   position: absolute;
   left: 0;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .left .textGroup {
+  padding-right: 2.8484375vw;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .right {
-  width: 50%;
+  width: 40.7411458333vw;
   position: absolute;
   right: 0;
 }
@@ -1999,9 +2006,6 @@ body {
   animation-name: fadeInDriftUp;
   animation-duration: 0.6s;
   opacity: 0;
-}
-.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup {
-  padding-right: 38px;
 }
 .slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup .developmentTeam__page_title {
   animation-delay: 0.8s;

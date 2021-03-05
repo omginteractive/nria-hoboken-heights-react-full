@@ -1171,6 +1171,9 @@ body {
                         &__paragraph {
                             margin-bottom: $content-padding;
                         }
+                        &__paragraph {
+                            line-height: 25px;
+                        }
                         &__headline {
                             text-transform: uppercase;
                             font-family: 'Gotham-Medium';
@@ -1188,7 +1191,7 @@ body {
                             .copyright {
                                 font-size: 13px;
                                 font-family: "Gotham-Light", sans-serif;
-                                margin-top: 25px;
+                                margin-top: 24px;
                             }
                             .nriaLogo > img {
                                 margin-top: 30px;
@@ -1196,6 +1199,7 @@ body {
                         }
                         &__page_title {
                             width: 1px;
+                            line-height: 59px;
                             &.invisible {
                                 opacity: 0;
                                 animation: none;
@@ -1207,12 +1211,16 @@ body {
                             }
                         }
                         .left {
-                            width: 50%;
+                            // width: 50%;
+                            width: calc_vw(887);
                             position: absolute;
                             left: 0;
+                            .textGroup {
+                                padding-right: calc_vw(54.69);
+                            }
                         }
                         .right {
-                            width: 50%;
+                            width: calc_vw(782.23);
                             position: absolute;
                             right: 0;
                         }
@@ -2014,7 +2022,6 @@ body {
                         opacity: 0;
                     }
                     .textGroup {
-                        padding-right: $content-padding;
                         .developmentTeam__page_title {
                             animation-delay: $animation_base_delay + $animation_incremental_delay*1;
                         }
