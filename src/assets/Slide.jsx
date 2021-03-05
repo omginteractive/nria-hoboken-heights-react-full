@@ -1408,9 +1408,10 @@ class SlideDevelopmentTeam extends Component {
                     </div>
                 </div>
                 <div className={rightSideClasses}>
-                <h2 className='developmentTeam__page_title invisible'>Development Team Story</h2>
+                    <h2 className='developmentTeam__page_title invisible'>Development Team Story</h2>
                     <div className="video">
-                        <img alt="video" src={require('./images/video_placeholder.png').default} />
+                        <div style={{padding:'56.25% 0 0 0',position:'relative'}}><iframe src="https://player.vimeo.com/video/459377741?color=ffffff&title=0&byline=0&portrait=0" style={{position:'absolute',top:'0',left:'0',width:'100%',height:'100%'}} frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                        {/* <img alt="video" src={require('./images/video_placeholder.png').default} /> */}
                     </div>
                     <div className="developmentTeam__copyright_logo_container">
                         <div className="copyright">&copy; National Realty Investment Advisors, LLC. All rights reserved</div>
