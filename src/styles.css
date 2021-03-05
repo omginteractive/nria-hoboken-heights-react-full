@@ -1094,12 +1094,12 @@ body {
   width: 100vw;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 0s, transform 1s linear 0.6s;
+  transition: opacity 0s, transform 0.6s linear 0.6s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__image.active {
   z-index: 2;
   opacity: 1;
-  transition: opacity 1s linear, transform 1s linear 0.6s;
+  transition: opacity 0.6s linear, transform 0.6s linear 0.6s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__image.previouslyActive {
   z-index: 1;
