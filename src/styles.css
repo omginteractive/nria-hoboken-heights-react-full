@@ -1545,6 +1545,7 @@ body {
   color: #fff;
   margin-top: 18px;
   font-family: "Gotham-Light";
+  max-width: none;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-0 .recaptcha_branding, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-0 .recaptcha_branding {
   margin-top: 10px;
