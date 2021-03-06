@@ -19,7 +19,7 @@ class MobileMenu extends Component {
 
     
     render(){
-        const isOpen = this.props.open
+        // const isOpen = this.props.open
         const isMobile = this.props.isMobileDevice
         let mobileMenuClasses = 'mobile-menu'
         mobileMenuClasses += this.props.open ? ' open' : ''

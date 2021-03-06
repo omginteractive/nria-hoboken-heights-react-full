@@ -88,9 +88,9 @@ class Slide extends Component {
 
         }
 		let slideClasses = "slide "
-		let videoClasses = 'background-video'
-		let centerTextClasses = 'center';
-		let centerBottomClasses = "centerBottom";
+		// let videoClasses = 'background-video'
+		// let centerTextClasses = 'center';
+		// let centerBottomClasses = "centerBottom";
 
         const right_arrow_styles = {
             backgroundImage: 'url('+require('./images/right-arrow-bouncing.svg').default+')'
@@ -110,7 +110,7 @@ class Slide extends Component {
         slideClasses += slideObj.slideClasses !== undefined ? " " + slideObj.slideClasses : '';
 		if(isCurrent) slideClasses += " runAnimations activeSlide";
 		if(this.props.slideViewed) slideClasses += " runAnimationOnce";
-		if(slideObj.videoZoomEffect) videoClasses += ' videoZoomEffect'
+		// if(slideObj.videoZoomEffect) videoClasses += ' videoZoomEffect'
 		slideClasses += slideObj.videoMobileStartPosition ? ' mobile-video-position-' + slideObj.videoMobileStartPosition : ' mobile-video-position-center'
 		slideClasses += slideObj.contactFormSlide ? ' contactFormSlide' : '';
 		slideClasses += slideObj.enableScrolling ? ' enableScrolling' : '';
@@ -118,35 +118,35 @@ class Slide extends Component {
         slideClasses += slideObj.mobileOnly === true ? ' mobile-only' : ''
         slideClasses += slideObj.desktopOnly === true ? ' desktop-only' : ''
 
-        if(slideObj.centerTextClasses) {
-			centerTextClasses += ' ' + slideObj.centerTextClasses;
-		}
+        // if(slideObj.centerTextClasses) {
+		// 	centerTextClasses += ' ' + slideObj.centerTextClasses;
+		// }
 
 		if(slideObj.mobileHasDifferentContent) {
-			centerTextClasses += ' not-mobile';
-			centerBottomClasses += ' not-mobile';
+			// centerTextClasses += ' not-mobile';
+			// centerBottomClasses += ' not-mobile';
 		}
 		
-		let centerTextStyles;
+		// let centerTextStyles;
 		let slideStyles;
 		if(window.innerWidth > 768){
-			centerTextStyles = slideObj.centerTextStyles
+			// centerTextStyles = slideObj.centerTextStyles
 			slideStyles = this.state.styles
 		}
 		else {
-			centerTextStyles = slideObj.centerTextStylesMobile
+			// centerTextStyles = slideObj.centerTextStylesMobile
 			slideStyles = {...this.state.styles, ...slideObj.stylesMobile}
 		}
 
         
 
-		let centerImageStyles;
-		if(window.innerWidth > 768){
-			centerImageStyles = slideObj.centerImageStyles
-		}
-		else {
-			centerImageStyles = slideObj.centerImageStylesMobile
-		}
+		// let centerImageStyles;
+		// if(window.innerWidth > 768){
+		// 	centerImageStyles = slideObj.centerImageStyles
+		// }
+		// else {
+		// 	centerImageStyles = slideObj.centerImageStylesMobile
+		// }
 
 		return(
             <div className={slideClasses} style={slideStyles} onScroll={this.handleTheScroll}>
@@ -233,10 +233,10 @@ class SlideMap extends Component {
         //         enabledListings: this.state.enabledListings.concat(idx)
         //     })
         // }
-        const indexIsEnabled = this.state.enabledListing === idx
-        const newState = indexIsEnabled ? null : idx
+        // const indexIsEnabled = this.state.enabledListing === idx
+        // const newState = indexIsEnabled ? null : idx
         this.setState({
-                enabledListing: idx
+            enabledListing: idx
         })
 
     }
@@ -394,7 +394,7 @@ class SlideContactForm extends Component {
                             <div className="verticalLine" />
                         </div>
                         
-                        <img className='logo' src={require('./'+contactLogo).default}  />
+                        <img className='logo' alt='logo' src={require('./'+contactLogo).default}  />
                         <div className="contactInfo">
                             <div className="address">{companyAddress}</div>
                             <div className="address">{companyName}</div>
@@ -402,7 +402,7 @@ class SlideContactForm extends Component {
                             <div className="address">{agentCompany}</div>
                             <div className="phone">{agentPhoneNumber}</div>
                             <div className="copyright">{rightsReserved}</div>
-                            <a target="_blank" onClick={this.openPrivacyPolicyModal.bind(this)} className="btn light">{buttonText}</a>
+                            <a href='' target="_blank" onClick={this.openPrivacyPolicyModal.bind(this)} className="btn light">{buttonText}</a>
                         </div>
                     </div>
                     <div className="mobilePrivacyPolicy mobile-only">
@@ -496,9 +496,9 @@ class ContactForm extends Component {
 		// if(this.state.formSubmitted){
 		// 	contactFormClasses += ' submitted'
 		// }
-		const select2Styles = {
-			width:"100%"
-		}
+		// const select2Styles = {
+		// 	width:"100%"
+		// }
         const select2Exists = jQuery.fn.select2
         const select2Initialized = jQuery('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').hasClass("select2-hidden-accessible")
 		if(!select2Initialized && select2Exists) {
@@ -725,7 +725,7 @@ class SlideFountainPen extends Component {
         let videoClasses = 'background-video'
         // if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect'
 
-        let videoContainerClassesMobile = videoContainerClasses + ' mobile-only'
+        // let videoContainerClassesMobile = videoContainerClasses + ' mobile-only'
         let videoContainerClassesDesktop = videoContainerClasses + ' not-mobile'
         // if(this.props.isCurrent) this.replayVideo()
         return(
@@ -945,14 +945,14 @@ class SlideAmenitiesDetail extends Component {
         setAmenityOnDetailsSlide(newIdx, false);
     }
     transitioningAmenityComplete = e => {
-        if(e.animationName == 'fadeOut'){
+        if(e.animationName === 'fadeOut'){
             // console.log('faded Out')
             this.setAmenityTitle()
             this.setState({
                 amenityNameVisibility: true
             })
         }
-        else if(e.animationName == 'fadeInDriftUp') {
+        else if(e.animationName === 'fadeInDriftUp') {
             // console.log('faded In drift up')
         }
     }
@@ -1122,7 +1122,7 @@ class SlideViews extends Component {
             timeSliderValue: key,
         })
         const previousKey = this.state.activeView
-        if(key == previousKey) return
+        if(key === previousKey) return
         // const image1IsNew = !this.state.image1IsNew
         this.setState({
             activeView: key,
@@ -1164,8 +1164,8 @@ class SlideViews extends Component {
                         {this.props.configuration.views &&
                             <>
                                 {this.props.configuration.views.map((view, i) => {
-                                    const isActiveImage = i == activeImageKey
-                                    const isPreviouslyActiveImage = i == this.state.previousActiveKey
+                                    const isActiveImage = i === activeImageKey
+                                    const isPreviouslyActiveImage = i === this.state.previousActiveKey
                                     let imageClasses = mapped_images_classes
                                     if(isActiveImage) imageClasses = mapped_images_classes + ' active'
                                     else if(isPreviouslyActiveImage) imageClasses = mapped_images_classes + ' previouslyActive'
@@ -1177,7 +1177,7 @@ class SlideViews extends Component {
                             <input onMouseUp={this.handleMouseUp.bind(this)} onTouchEnd={this.handleMouseUp.bind(this)} onChange={this.handleTimeChange.bind(this)} type="range" min="0" max={this.props.configuration.views.length - 1} step="0.005" value={this.state.timeSliderValue}/>
                             <ul className="views_section__timeList">
                                 {this.props.configuration.views.map((view, i) => {
-                                    const listClasses = i == this.state.activeView ? 'active' : ''
+                                    const listClasses = i === this.state.activeView ? 'active' : ''
                                     return (<li className={listClasses} key={i}>{view.displayTime} <span className='ampm'>{view.ampm}</span></li>)
                                 })}
                             </ul>
@@ -1206,17 +1206,22 @@ class SlideResidencePenthouse extends Component {
 }
 
 class SlideResidencePenthouseFullscreen extends Component {
+    constructor(props) {
+        super(props)
+        this.penthouseImage = 'images/penthouse/penthousebed.png'
+        this.residenceImage = 'images/residence/residence.png'
+    }
     componentDidMount(){
         //preload images
-        new Image().src = require('./'+'images/penthouse/penthousebed.png').default
-        new Image().src = require('./'+'images/residence/residence.png').default
+        new Image().src = require('./'+this.penthouseImage).default
+        new Image().src = require('./'+this.residenceImage).default
         
     }
     nextSlide(noRequireScroll = false){
         this.props.methods.scrollToNextSlide(noRequireScroll)
     }
     render(){
-        const fullscreenImage = this.props.residencePenthouse == 'penthouse' ? 'images/penthouse/penthousebed.png' : 'images/residence/residence.png'
+        const fullscreenImage = this.props.residencePenthouse === 'penthouse' ? this.penthouseImage : this.residenceImage
         return(
             <>
                 {
@@ -1247,6 +1252,8 @@ class SlideResidencePenthouseDetail extends Component {
         this.state = {
             imageExpanded: false
         }
+        this.toggleExpansionMinus = 'images/toggleExpansion-.svg'
+        this.toggleExpansionPlus = 'images/toggleExpansion+.svg'
     }
     
     handleWheelEvent = e => {
@@ -1318,10 +1325,10 @@ class SlideResidencePenthouseDetail extends Component {
                     <div onWheel={this.handleWheelEvent.bind(this)} className={imageContainerClasses}>
                         <div onClick={this.toggleImageExpansion.bind(this)} className="residencePenthouseDetail__expand_toggler vertical_toggle_column">
                             {imageIsExpanded && 
-                                <div><img src={require('./'+'images/toggleExpansion-.svg').default} alt=""/></div>
+                                <div><img src={require('./'+this.toggleExpansionMinus).default} alt="minus"/></div>
                             }
                             {!imageIsExpanded && 
-                                <div><img src={require('./'+'images/toggleExpansion+.svg').default} alt=""/></div>
+                                <div><img src={require('./'+this.toggleExpansionPlus).default} alt="plus"/></div>
                             }
                         </div>
                         <div className="fullscreenImageWrapper">
@@ -1409,7 +1416,7 @@ class SlideDevelopmentTeam extends Component {
                 <div className={rightSideClasses}>
                     <h2 className='developmentTeam__page_title invisible'>Development Team Story</h2>
                     <div className="video">
-                        <div style={{padding:'56.25% 0 0 0',position:'relative'}}><iframe src="https://player.vimeo.com/video/459377741?color=ffffff&title=0&byline=0&portrait=0" style={{position:'absolute',top:'0',left:'0',width:'100%',height:'100%'}} frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                        <div style={{padding:'56.25% 0 0 0',position:'relative'}}><iframe title='Development Video' src="https://player.vimeo.com/video/459377741?color=ffffff&title=0&byline=0&portrait=0" style={{position:'absolute',top:'0',left:'0',width:'100%',height:'100%'}} frameBorder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
                         {/* <img alt="video" src={require('./images/video_placeholder.png').default} /> */}
                     </div>
                     <div className="developmentTeam__copyright_logo_container">

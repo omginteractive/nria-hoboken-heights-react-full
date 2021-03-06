@@ -1,6 +1,6 @@
 import React from 'react';
 // import flypilotFetchWPRestAPI from './flypilotFetchWPRestAPI.js';
-import modules from './assets/modules';
+// import modules from './assets/modules';
 import flypilotFetchWPRestAPI from './assets/page.js';
 import Slide from './assets/Slide';
 import MobileMenu from './assets/MobileMenu';
@@ -443,7 +443,7 @@ class App extends React.Component {
             finalIdxOfDevice = this.state.desktopKeys[this.state.desktopKeys.length - 1]
         }
         
-        const thisSlideIsFinalSlide = thisSlideDeviceIdx == finalIdxOfDevice
+        const thisSlideIsFinalSlide = thisSlideDeviceIdx === finalIdxOfDevice
 		if (thisSlideIsFinalSlide) {
 			return
 		}
@@ -505,7 +505,7 @@ class App extends React.Component {
 
 	handleSlideChange(newIdx){
 		this.addIdxToViewedSlides(newIdx);
-		const isLastSlide = newIdx === this.state.slides.length -1
+		// const isLastSlide = newIdx === this.state.slides.length -1
 		// this.mobileMenuElement.current.closeMobileMenu()
 		// const notOnLastSlide = this.state.currIdx != this.state.slides.length - 1
 		// if(isLastSlide) this.headerElement.current.activatePhantomLogo()
@@ -766,7 +766,6 @@ class App extends React.Component {
                 amenityDetailsSlideIdx={this.state.amenityDetailsSlideIdx}
                 mapHeightLocked={this.state.mapHeightLocked}
                 createHubspotContactForm={this.createHubspotForm.bind(this)}
-                formCleared={this.contactFormCleared.bind(this)}
                 formSubmitted={this.contactFormSubmitted.bind(this)}
                 goToContactSlide={this.goToContactSlide.bind(this)}
                 ></Slide>
