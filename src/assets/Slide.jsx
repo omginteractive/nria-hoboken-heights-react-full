@@ -730,7 +730,6 @@ class SlideFountainPen extends Component {
         this.videoContainerRef.current.children[0].play()
     }
     render(){
-        console.log('fountain render')
         let videoContainerClasses = 'videoContainer'
         let videoClasses = 'background-video'
         // if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect'
@@ -781,6 +780,9 @@ class SlideFountainPen extends Component {
 
 
 class SlidePatio extends Component {
+    shouldComponentUpdate(nextProps, nextState){
+        return false
+    }
     nextSlide(noRequireScroll = false){
         this.props.methods.scrollToNextSlide(noRequireScroll)
     }
@@ -832,6 +834,9 @@ class SlidePatio extends Component {
 }
 
 class SlideAmenities extends Component {
+    shouldComponentUpdate(nextProps, nextState){
+        return false
+    }
     setAmenityDetail(idx){
         const {setAmenityOnDetailsSlide} = this.props;
         setAmenityOnDetailsSlide(idx);
@@ -899,10 +904,24 @@ class SlideAmenitiesDetail extends Component {
             left: this.defaultArrowDistanceFromEdge
         }
     }
+    shouldComponentUpdate(nextProps, nextState){
+        const amenityNameVisibilityChanged = this.state.amenityNameVisibility !== nextState.amenityNameVisibility
+        const currIdxChanged = this.state.currIdx !== nextState.currIdx
+        const descriptionChanged = this.state.description !== nextState.description
+        const descriptionVisibleChanged = this.state.descriptionVisible !== nextState.descriptionVisible
+        const image1Changed = this.state.image1 !== nextState.image1
+        const image1IsNewChanged = this.state.image1IsNew !== nextState.image1IsNew
+        const image2Changed = this.state.image2 !== nextState.image2
+        const title_line1Changed = this.state.title_line1 !== nextState.title_line1
+        const title_line2Changed = this.state.title_line2 !== nextState.title_line2
+        const title_line3Changed = this.state.title_line3 !== nextState.title_line3
+        const slidePresenceChanged = this.props.isCurrent !== nextProps.isCurrent
+        const amenityChanged = amenityNameVisibilityChanged || currIdxChanged || descriptionChanged || descriptionVisibleChanged || image1Changed || image1IsNewChanged || image2Changed || title_line1Changed || title_line2Changed || title_line3Changed || slidePresenceChanged
+        return amenityChanged
+    }
     componentDidMount(){
         this.props.configuration.amenities.forEach((amenity) => {
             const img = new Image().src = require('./'+amenity.image).default
-            
         })
         this.setAmenityData(this.state.currIdx)
         this.setAmenityTitle()
@@ -920,7 +939,6 @@ class SlideAmenitiesDetail extends Component {
     }
     setAmenityData(newIdx){
         if(newIdx === this.state.currIdx) return
-        
 
         //This is to fix horizontal touch event slides
         if(newIdx === -1) newIdx = this.props.configuration.amenities.length - 1
@@ -1047,7 +1065,7 @@ class SlideAmenitiesDetail extends Component {
         amenities_detail_name_classes += !this.state.amenityNameVisibility ? ' runFadeOutAnimation' : ' runFadeInAnimation'
         amenities_detail_name_classes += this.state.descriptionVisible ? ' riseForDescription' : ''
         let amenities_detail__more_info_classes = 'amenities_detail__more_info'
-        
+        console.log('render')
         return (
             <>
                 <section className="amenities_detail">
@@ -1096,7 +1114,14 @@ class SlideViews extends Component {
             image: null,
             previousActiveKey: null
         }
-        
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        const viewChanged = this.state.activeView !== nextState.activeView
+        const sliderChanged = this.state.timeSliderValue !== nextState.timeSliderValue
+        const isTransitioningChanged = this.state.isTransitioning !== nextState.isTransitioning
+
+        return true
+        // return viewChanged || sliderChanged
     }
     componentDidMount(){
         // this.props.configuration.views.forEach((view) => {
@@ -1128,11 +1153,15 @@ class SlideViews extends Component {
         return n % 1 === 0;
     }
     setNewTime(key){
+        console.log('setting key', key)
         this.setState({
             timeSliderValue: key,
         })
         const previousKey = this.state.activeView
-        if(key === previousKey) return
+        if(key === previousKey) {
+            console.log('same as previous')
+            return
+        }
         // const image1IsNew = !this.state.image1IsNew
         this.setState({
             activeView: key,
