@@ -1950,7 +1950,7 @@ body {
                             opacity: 0;
                             position: relative;
                         }
-                        @for $i from 1 through 4 {
+                        @for $i from 1 through 5 {
                             :nth-child(#{$i}){
                                 animation-delay: $animation_base_delay + $animation_incremental_delay*$i;
                             }
