@@ -561,6 +561,9 @@ class SlideNeighborhoodCommunity extends Component {
     }
 }
 class SlideHome extends Component {
+    shouldComponentUpdate(){
+        return false
+    }
     nextSlide(noRequireScroll = false){
         this.props.methods.scrollToNextSlide(noRequireScroll)
     }
@@ -586,7 +589,10 @@ class SlideExteriorLightToggle extends Component {
         this.lightsOffVideo= '/videos/NIRMA_1_Exterior_High_OFF_Cinemagraphic.mp4'
         this.lightsOnVideo= '/videos/NIRMA_1_Exterior_High_Cinemagraphic.mp4'
     }
-
+    shouldComponentUpdate(nextProps, nextState){
+        const lightStateChanged = this.state.lightsOn !== nextState.lightsOn
+        return lightStateChanged
+    }
     toggleLights(){
         const newLightsState = !this.state.lightsOn
         this.setState({
@@ -680,7 +686,10 @@ class SlideFountainPen extends Component {
         // this.throttleVideoParallax = _.throttle(parallaxVideo, 1);
         this.videoContainerRef = React.createRef()
     }
-    
+    shouldComponentUpdate(nextProps, nextState){
+        const slidePresenceChanged = this.props.isCurrent !== nextProps.isCurrent
+        return slidePresenceChanged
+    }
     componentDidUpdate(){
         const isOnThisSlide = this.props.isCurrent
         const newArrival = this.state.newArrival
@@ -721,6 +730,7 @@ class SlideFountainPen extends Component {
         this.videoContainerRef.current.children[0].play()
     }
     render(){
+        console.log('fountain render')
         let videoContainerClasses = 'videoContainer'
         let videoClasses = 'background-video'
         // if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect'
