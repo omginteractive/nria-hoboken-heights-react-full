@@ -2642,6 +2642,12 @@ body {
   .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-developmentTeam .developmentTeam__button_group > .btn:nth-of-type(4) {
     animation-delay: 1.4s;
   }
+  .slides_wrapper .slides_inner .slide.slideTemplate-home .animatedLogo {
+    width: 47.037037037vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-home .downArrowContainer {
+    display: none;
+  }
   .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle {
     background-color: #000;
   }

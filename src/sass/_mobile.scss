@@ -1,6 +1,20 @@
 $header-height: 50px;
 $content-padding: 20px;
 
+@function calc_vh($px) {
+    $base_height: 1920;
+    $vh_height: $px / $base_height;
+    
+    @return $vh_height * 100vh;
+}
+
+@function calc_vw($px) {
+    $base_width: 1080;
+    $vw_width: $px / $base_width;
+    
+    @return $vw_width * 100vw;
+}
+
 
 .noSelect {
     -webkit-touch-callout: none;
@@ -486,6 +500,14 @@ body {
                 }    
             }
             &.slideTemplate-{
+                &home {
+                    .animatedLogo {
+                        width: calc_vw(508);
+                    }
+                    .downArrowContainer {
+                        display: none;
+                    }
+                }
                 &exteriorLightToggle {
                     background-color: #000;
                     .toggleLights {

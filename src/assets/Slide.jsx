@@ -215,6 +215,11 @@ class SlideMap extends Component {
             enabledListing: null
         }
     }
+    shouldComponentUpdate(nextProps, nextState){
+        const mapChanged = this.state.satelliteMapEnabled !== nextState.satelliteMapEnabled
+        const enabledListingChanged = this.state.enabledListing !== nextState.enabledListing
+        return mapChanged || enabledListingChanged
+    }
     toggleMap(){
         const newState = !this.state.satelliteMapEnabled
         this.setState({
@@ -291,6 +296,9 @@ class SlideMap extends Component {
     }
 }
 class SlideVideoDiscover extends Component {
+    shouldComponentUpdate(nextProps, nextState){
+        return false
+    }
     nextSlide(noRequireScroll = false){
         this.props.methods.scrollToNextSlide(noRequireScroll)
     }
@@ -360,6 +368,9 @@ class SlideVideoDiscover extends Component {
 
 
 class SlideContactForm extends Component {
+    shouldComponentUpdate(nextProps, nextState){
+        return false
+    }
     createHubspotForm(){
 		const {createHubspotContactForm} = this.props;
 		createHubspotContactForm();
@@ -537,6 +548,9 @@ class ContactForm extends Component {
 }
 
 class SlideNeighborhoodCommunity extends Component {
+    shouldComponentUpdate(nextProps, nextState){
+        return false
+    }
     render(){
         return(
             <>
@@ -1065,7 +1079,6 @@ class SlideAmenitiesDetail extends Component {
         amenities_detail_name_classes += !this.state.amenityNameVisibility ? ' runFadeOutAnimation' : ' runFadeInAnimation'
         amenities_detail_name_classes += this.state.descriptionVisible ? ' riseForDescription' : ''
         let amenities_detail__more_info_classes = 'amenities_detail__more_info'
-        console.log('render')
         return (
             <>
                 <section className="amenities_detail">
@@ -1131,10 +1144,10 @@ class SlideViews extends Component {
     }
     handleTimeChange(event){
         const rangeValue = event.target.value
-        
+        if(rangeValue === this.state.activeView ) return
         if(this.isInt(rangeValue)){
-            //when the user is dragging thumb and ends up exactly on an int value, not a float
-            this.setNewTime(rangeValue)
+            //when the user is dragging thumb and ends up exactly on an int value, not a float. setting time here caused problems on desktop
+            // this.setNewTime(rangeValue)
         }
         else {
             this.setState({
@@ -1144,16 +1157,17 @@ class SlideViews extends Component {
     }
     handleMouseUp(event){
         const rangeValue = event.target.value
+        let newTime
         if(!this.isInt(rangeValue)){
-            const closestInt = Math.round(rangeValue);
-            this.setNewTime(closestInt)
+            newTime = Math.round(rangeValue)
         }
+        else newTime = parseInt(rangeValue)
+        this.setNewTime(newTime)
     }
     isInt(n) {
         return n % 1 === 0;
     }
     setNewTime(key){
-        console.log('setting key', key)
         this.setState({
             timeSliderValue: key,
         })
@@ -1230,6 +1244,9 @@ class SlideViews extends Component {
 }
 
 class SlideResidencePenthouse extends Component {
+    shouldComponentUpdate(nextProps, nextState){
+        return false
+    }
     setResidencePenthousePath = option => {
         const {setResidencePenthousePath} = this.props;
         setResidencePenthousePath(option);
@@ -1249,6 +1266,9 @@ class SlideResidencePenthouseFullscreen extends Component {
         super(props)
         this.penthouseImage = 'images/penthouse/penthousebed.png'
         this.residenceImage = 'images/residence/residence.png'
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        return false
     }
     componentDidMount(){
         //preload images
@@ -1295,6 +1315,10 @@ class SlideResidencePenthouseDetail extends Component {
         this.toggleExpansionPlus = 'images/toggleExpansion+.svg'
     }
     
+    shouldComponentUpdate(nextProps, nextState){
+        const imageExpandedChanged = this.state.imageExpanded !== nextState.imageExpanded
+        return imageExpandedChanged
+    }
     handleWheelEvent = e => {
         const wheelAmt = e.deltaY
         const querySelector = '.residencePenthouseDetail__details'
@@ -1390,44 +1414,12 @@ class SlideResidencePenthouseDetail extends Component {
 }
 
 
-class SlideFounders extends Component {
 
-    render(){
-        const founderImage = this.props.configuration.founderImage
-        const founderHeadline = this.props.configuration.founderHeadline
-        const founderTagline = this.props.configuration.founderTagline
-        const founderBenefits = this.props.configuration.founderBenefits
-        return(
-            <>
-                <div className="founderSlideContainer">
-                    <img className="founderImage" src={require('./'+founderImage).default} alt=""/>
-                    <div className="founderSlideWrapper">
-                    {founderHeadline &&
-                        <h2 className="founderHeadline">{founderHeadline}</h2>
-                    }
-                    {founderTagline &&
-                        <p className="founderTagline">{founderTagline}</p>
-                    }
-                    {founderBenefits &&
-                        <div className="founderBenefits">
-                            {Object.entries(founderBenefits).map(([key, value]) => {
-                                return(
-                                <div key={key} className="benefitPair">
-                                    <div className="count">{parseInt(key)+1}</div>
-                                    <div className="benefit">{value}</div>
-                                </div>
-                                )
-                            })}
-                        </div>
-                    }
-                    </div>
-                </div>
-            </>
-        )
-    }
-}
 
 class SlideDevelopmentTeam extends Component {
+    shouldComponentUpdate(nextProps, nextState){
+        return false
+    }
     render(){
         let textGroupClasses = 'textGroup '
         textGroupClasses += this.props.configuration.textGroupAdditionalClasses ? this.props.configuration.textGroupAdditionalClasses : ''
@@ -1466,6 +1458,45 @@ class SlideDevelopmentTeam extends Component {
                     </div>
                 </div>
             </section>
+        )
+    }
+}
+
+class SlideFounders extends Component {
+    shouldComponentUpdate(nextProps, nextState){
+        return false
+    }
+    render(){
+        const founderImage = this.props.configuration.founderImage
+        const founderHeadline = this.props.configuration.founderHeadline
+        const founderTagline = this.props.configuration.founderTagline
+        const founderBenefits = this.props.configuration.founderBenefits
+        return(
+            <>
+                <div className="founderSlideContainer">
+                    <img className="founderImage" src={require('./'+founderImage).default} alt=""/>
+                    <div className="founderSlideWrapper">
+                    {founderHeadline &&
+                        <h2 className="founderHeadline">{founderHeadline}</h2>
+                    }
+                    {founderTagline &&
+                        <p className="founderTagline">{founderTagline}</p>
+                    }
+                    {founderBenefits &&
+                        <div className="founderBenefits">
+                            {Object.entries(founderBenefits).map(([key, value]) => {
+                                return(
+                                <div key={key} className="benefitPair">
+                                    <div className="count">{parseInt(key)+1}</div>
+                                    <div className="benefit">{value}</div>
+                                </div>
+                                )
+                            })}
+                        </div>
+                    }
+                    </div>
+                </div>
+            </>
         )
     }
 }
