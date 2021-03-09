@@ -2284,8 +2284,17 @@ body {
   }
 
   h2 {
-    font-size: 24px;
-    line-height: 1.4em;
+    margin-bottom: 3.7037037037vw;
+    font-size: 4.6296296296vw;
+    line-height: 6.7592592593vw;
+  }
+
+  p {
+    font-size: 2.7777777778vw;
+    line-height: 3.7037037037vw;
+  }
+  p + p {
+    margin-top: 5.5555555556vw;
   }
 
   .downArrowContainer {
@@ -2377,8 +2386,7 @@ body {
     color: #000;
   }
   .fixed-header.darkMobile .separator {
-    border-left: 0.5462802649px solid #000;
-    opacity: 0;
+    border-left: 0.5462802649px solid #fff;
   }
   .fixed-header.darkMobile .hamburger .line {
     border-color: #000;

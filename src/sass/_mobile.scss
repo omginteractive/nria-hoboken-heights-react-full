@@ -17,7 +17,6 @@
 $header-height: 50px;
 $content-padding: calc_vw(53.96);
 
-
 .noSelect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -59,9 +58,18 @@ $content-padding: calc_vw(53.96);
     display: none !important;
 }
 h2 {
-    font-size: 24px;
-    line-height: 1.4em;
+    margin-bottom: calc_vw(40);
+    font-size: calc_vw(50);
+    line-height: calc_vw(73);
 }
+p {
+    font-size: calc_vw(30);
+    line-height: calc_vw(40);
+    + p {
+        margin-top: calc_vw(60);
+    }
+}
+
 .downArrowContainer {
     bottom: 100px;
 }
@@ -161,8 +169,7 @@ h2 {
     &.darkMobile {
         color: #000;
         .separator {
-            border-left: 0.5462802649px solid #000;
-            opacity: 0;
+            border-left: 0.5462802649px solid #fff;//hidden
         }
         .hamburger .line {
             border-color: #000;
