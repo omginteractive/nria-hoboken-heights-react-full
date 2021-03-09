@@ -759,8 +759,9 @@ class SlideFountainPen extends Component {
                             <img src={require('./images/Motion_signature_animateonce.gif').default} alt="" />
                         </div>
                         <h2>4 State-of-the-art Buildings<br />55 Residences | 9 Penthouses</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-                        <p>Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat</p>
+                        <p>You won’t find any housing in Union City with more living space and more luxury amenities than the new condominiums of Hoboken Heights. These new state-of-the-art buildings are being constructed on top of one of the last remaining development sites on the Palisade cliffs overlooking Hoboken with sweeping views of the Hudson River and Manhattan skyline.</p>
+                        <p>“Hoboken Heights will be the Crown Jewel of the area with four towers and panoramic views of New York City and the Hudson River,” says Richard Stabile, SVP of NJ Development for NRIA. “This private, gated-enclave, just minutes away from the Lincoln Tunnel and PATH, will be like nothing the market has seen.” </p>
+                        <p>Residents will love the view, take comfort in their spacious homes and enjoy amenities like an indoor pool with walk-out sundeck, grills, a private gym, golf simulation area, a children’s playroom, and a lounge with a movie screening room and bar.</p>
                         <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn dark">Inquire now</div>
                     </div>
                 }

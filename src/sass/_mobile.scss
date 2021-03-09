@@ -162,6 +162,7 @@ h2 {
         color: #000;
         .separator {
             border-left: 0.5462802649px solid #000;
+            opacity: 0;
         }
         .hamburger .line {
             border-color: #000;
@@ -561,7 +562,14 @@ body {
                         padding-right: 0;
                         padding-top: calc(100vw * #{$videoHeightRatio});
                         padding-left: 0;
-                        width: calc(100vw - #{$content-padding}*2);
+                        width: 100vw;
+                        > h2,
+                        > p {
+                            padding: 0 $content-padding;
+                        }
+                        .btn {
+                            margin: calc_vw(55) $content-padding;
+                        }
                     }
                 }
                 &patio {
