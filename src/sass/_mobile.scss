@@ -642,6 +642,7 @@ body {
                             height: 100vh;
                             width: 100vw;
                             flex-basis: 100%;
+                            font-size: calc_vw(37.5);
                             > ul > li {
                                 line-height: calc_vw(40);
                                 padding: calc_vw(54.5) 0;

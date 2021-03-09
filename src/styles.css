@@ -2762,6 +2762,7 @@ body {
     height: 100vh;
     width: 100vw;
     flex-basis: 100%;
+    font-size: 3.4722222222vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities .amenities__list > ul > li {
     line-height: 3.7037037037vw;
