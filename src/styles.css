@@ -2714,6 +2714,7 @@ body {
     padding-top: calc(100vw * 0.5625);
     padding-left: 0;
     width: 100vw;
+    align-items: flex-start;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection > h2,
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection > p {
