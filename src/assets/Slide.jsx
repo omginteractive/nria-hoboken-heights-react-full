@@ -749,7 +749,8 @@ class SlideFountainPen extends Component {
         // if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffect'
 
         // let videoContainerClassesMobile = videoContainerClasses + ' mobile-only'
-        let videoContainerClassesDesktop = videoContainerClasses + ' not-mobile'
+        // let videoContainerClassesDesktop = videoContainerClasses + ' not-mobile'
+        let videoContainerClassesDesktop = videoContainerClasses
         // if(this.props.isCurrent) this.replayVideo()
         return(
             <> 
@@ -877,8 +878,8 @@ class SlideAmenities extends Component {
                     <div className="amenities__details_wrapper">
                         <div className={amenitiesDetailsClasses}>
                             <h2>Luxury Skyline Front Amenities & Services</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <p>Residents of Hoboken Heights will have a more spectacular view of the Hudson River and New York City skyline than those in Manhattan. This new, safe, private, gated enclave is being built high atop a Palisade cliff in Union City. It’s just minutes away from the Lincoln Tunnel and PATH, giving you easy access to New York City and the surrounding suburbs in New Jersey.</p>
+                            <p>Residents can exercise, de-stress and relax in the indoor swimming pool and walk-out sundeck, private gym with weight room, and the Peloton and yoga studios. There’s no backyard to mow, but there are grills and patios for enjoying dinner overlooking the Manhattan skyline. Condo residents will love the large lounge area with a full bar and plenty of comfy space for hanging out with friends. Children will have fun in the playroom. Families and friends will enjoy watching movies in the screening room.</p>
                             <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn dark">Inquire now</div>
                         </div>
                     </div>

@@ -68,20 +68,20 @@ const flypilotFetchWPRestAPI = async () => {
         },
         headerTheme: 'light',
         enableScrolling: true,
-        enableScrollingQuerySelector: '.amenities__details',
+        // enableScrollingQuerySelector: '.amenities__details',
         mobileOnly: true,
-        amenitiesListAdditionalClasses: 'not-mobile',
+        // amenitiesListAdditionalClasses: 'not-mobile',
     }, {
-        slideTemplate: 'amenities',
-        styles: {
-            background: "#fff",
-        },
-        enableScrolling: true,
-        enableScrollingQuerySelector: '.amenities__list',
-        mobileOnly: true,
-        headerTheme: 'dark',
-        amenitiesDetailAdditionalClasses: 'not-mobile',
-    }, {
+    //     slideTemplate: 'amenities',
+    //     styles: {
+    //         background: "#fff",
+    //     },
+    //     enableScrolling: true,
+    //     enableScrollingQuerySelector: '.amenities__list',
+    //     mobileOnly: true,
+    //     headerTheme: 'dark',
+    //     amenitiesDetailAdditionalClasses: 'not-mobile',
+    // }, {
         slideTemplate: 'amenities',
         styles: {
             background: "#fff",
