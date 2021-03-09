@@ -1136,7 +1136,6 @@ body {
   line-height: 59px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__details > p {
-  font-size: 18px;
   line-height: 25px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container {
@@ -2873,7 +2872,29 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__details {
     width: calc(100vw - 9.8148148148vw*2);
     height: calc(100vh - 50px);
-    margin-top: 50px;
+    margin-top: 19.4444444444vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__details > h2 {
+    width: 52.5vw;
+    line-height: 6.7592592593vw;
+    margin-bottom: 5.112962963vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__details > p {
+    line-height: 3.7037037037vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list {
+    margin-bottom: 8.8888888889vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list .heading {
+    margin: 5.5555555556vw 0;
+    font-size: 2.7777777778vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list > ul {
+    margin-left: 0;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list > ul > li {
+    font-size: 2.7777777778vw;
+    line-height: 5.8333333333vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container {
     width: 100%;
@@ -2886,6 +2907,9 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container > img {
     width: 100vw;
     height: 100vh;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__arrow_button_container .leftArrowContainer {
+    display: none;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__expand_toggler {
     display: none;

@@ -777,7 +777,29 @@ body {
                         &__details {
                             width: calc(100vw - #{$content-padding}*2);
                             height: calc(100vh - #{$header-height});
-                            margin-top: $header-height;
+                            margin-top: $header-space-for-content;
+                            > h2 {
+                                width: calc_vw(567);
+                                line-height: calc_vw(73);
+                                margin-bottom: calc_vw(55.22);
+                            }
+                            > p {
+                                line-height: calc_vw(40);
+                            }
+                        }
+                        &__features_list {
+                            margin-bottom: calc_vw(96);
+                            .heading {
+                                margin: calc_vw(60) 0;
+                                font-size: calc_vw(30);
+                            }
+                            > ul {
+                                margin-left: 0;
+                                > li {
+                                    font-size: calc_vw(30);
+                                    line-height: calc_vw(63);
+                                }
+                            }
                         }
                         &__image_container {
                             width: 100%;
@@ -789,6 +811,11 @@ body {
                             > img {
                                 width: 100vw;
                                 height: 100vh;
+                            }
+                        }
+                        &__arrow_button_container {
+                            .leftArrowContainer {
+                                display: none;
                             }
                         }
                         &__expand_toggler {
