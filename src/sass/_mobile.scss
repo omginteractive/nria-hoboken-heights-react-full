@@ -17,7 +17,7 @@
 $header-height: 50px;
 $header-padding: calc_vw(53.96);
 $content-padding: calc_vw(106);
-
+$header-space-for-content: calc_vw(210);
 .noSelect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -622,7 +622,7 @@ body {
                                 align-items: flex-start;//to keep button from spanning width
                                 padding-left: $content-padding;
                                 padding-right: $content-padding;
-                                padding-top: calc_vw(210);
+                                padding-top: $header-space-for-content;
                                 padding-bottom: calc_vw(101);
                                 .btn {
                                     margin-top: calc_vw(101);
@@ -697,9 +697,9 @@ body {
                         $sliderActualHeight: calc(#{$sliderTargetHeight} + #{$sliderThumbWidth});
                         $imageHeight: 50vh;
                         display: block;
-                        top: $header-height;
+                        top: $header-space-for-content;
                         &__top {
-                            height: calc(100vh - #{$imageHeight} - #{$header-height});
+                            height: auto;
                             padding-left: $content-padding;
                             > p {
                                 font-size: 12px;

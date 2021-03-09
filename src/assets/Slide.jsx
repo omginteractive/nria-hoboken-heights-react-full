@@ -1213,7 +1213,7 @@ class SlideViews extends Component {
                 <section className="views_section">
                     <div className="views_section__top">
                         <h2>Signature Views 24/7</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p>Hoboken Heights is being built on one of the last remaining development sites on the Palisade cliffs overlooking Hoboken with sweeping panoramic views of the Hudson River and the New York City skyline. As breathtaking as the view is in the daylight, it’s quite spectacular to see the city lit up at night. You’ll be amazed at the beauty of sunrise as it slowly lights up the dark metropolis and brings the Hudson River Valley back to life for another day. Residents will enjoy this stunning view from every room in their condo because of the staggered wall design.</p>
                     </div>
                     <div className={views_section__bottom_classes}>
                         {this.props.configuration.views &&

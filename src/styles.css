@@ -2796,10 +2796,10 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section {
     display: block;
-    top: 50px;
+    top: 19.4444444444vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__top {
-    height: calc(100vh - 50vh - 50px);
+    height: auto;
     padding-left: 9.8148148148vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__top > p {
