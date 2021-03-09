@@ -25,10 +25,10 @@ class MobileMenu extends Component {
         mobileMenuClasses += this.props.open ? ' open' : ''
 
         const contactFormSlideIdx = this.props.contactFormSlideIdx
-        const viewLink = isMobile ? 7 : 6
-        const residencePenthouseLink = isMobile ? 8 : 7
-        const developmentTeamLink = isMobile ? 12 : 10
-        const discoverLink = isMobile ? 16 : 13
+        const viewLink = isMobile ? 6 : 6
+        const residencePenthouseLink = isMobile ? 7 : 7
+        const developmentTeamLink = isMobile ? 11 : 10
+        const discoverLink = isMobile ? 15 : 13
 		return(
             <div className={mobileMenuClasses}>
                 <Header goToContactSlide={this.goToContactSlide.bind(this)}  theme='light' open={true} toggleMobileMenu={this.toggleMobileMenu.bind(this)} />
