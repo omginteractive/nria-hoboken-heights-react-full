@@ -1,5 +1,3 @@
-$header-height: 50px;
-$content-padding: 20px;
 
 @function calc_vh($px) {
     $base_height: 1920;
@@ -14,6 +12,10 @@ $content-padding: 20px;
     
     @return $vw_width * 100vw;
 }
+
+
+$header-height: 50px;
+$content-padding: calc_vw(53.96);
 
 
 .noSelect {
@@ -85,18 +87,19 @@ h2 {
     animation-duration: 1s;
     animation-iteration-count: infinite;
     width: 34px;
-    height: 16px;
+    height: calc_vw(33.97);
     background-size: contain;
     background-repeat: no-repeat;
+
     
 }
 .left_arrow_bouncing {
     animation-name: leftbounce;
-    margin-right: 10px;
+    margin-right: calc_vw(41);
 }
 .right_arrow_bouncing {
     animation-name: rightbounce;
-    margin-left: 10px;
+    margin-left: calc_vw(41);
 }
 
 .privacyPolicyModal .privacyPolicyContainer {
@@ -112,6 +115,7 @@ h2 {
     left: $content-padding;
     width: calc(100vw - #{$content-padding}*2);
     justify-content: center;
+
     &.dark,
     &.light-inquiry {
         .contact.light {
@@ -171,19 +175,22 @@ h2 {
     .inquiry-link {
         display: none;
     }
-    $separator_margin: 10px;
+    $separator_margin: calc_vw(41.93);
     .corner-logo-wrapper {
         //this excess width is used for centering logo/text. 
         //This is to take into consideration the space lost due to the logo being absolutely positioned
         //logo needs to be position absolute so it is able to crossfade
-        width: 175px;
+        width: calc_vw(566.38);
+        
         .text {
-            width: 135px;
-            font-size: 8px;
-            letter-spacing: 2px;
+            width: calc_vw(440);
+            font-size: calc_vw(23.04);
+            letter-spacing: calc_vw(6.91);
+            line-height: calc_vw(27.65);
             .separator {
                 margin: 0 $separator_margin;
-                height: 20px;
+                height: calc_vw(65.91);
+                width: calc_vw(0.86);
             }
         }
         .corner-logo-images {
@@ -191,7 +198,7 @@ h2 {
             display: flex;
             align-items: center;
             .corner-logo {
-                width: 50px;
+                width: calc_vw(151.4);
                 // position: static;
             }
         }
@@ -201,12 +208,17 @@ h2 {
         right: 0;
         transition: opacity $slideAnimationDuration;
         > img {
-            width: 25px;
+            width: calc_vw(50);
         }
     }
     .hamburger {
         position: absolute;
         left: 0;
+        .line {
+            width: calc_vw(58.23);
+            margin-top: calc_vh(27.06);
+            margin-bottom: calc_vh(27.06);
+        }
     }
 }
 
@@ -526,6 +538,7 @@ body {
                             opacity: 0;
                             top: 15px;
                             transition: opacity 0.5s, top 0s linear $slideAnimationDuration;
+                            font-size: calc_vw(35);
                         }
                     }
                 }
