@@ -99,27 +99,68 @@ const flypilotFetchWPRestAPI = async () => {
         styles: {
             background: "#000",
         },
-        amenities: [{
-            title_line1: "Luxury Pool",
-            title_line2: "With Manhattan's",
-            title_line3: "View",
-            image: "images/amenities/Pool.png",
-            description: "Pool Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        },{
-            title_line1: "Fitness Center",
-            image: "images/amenities/Fitness.png",
-            description: "Fitness Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        }
-        ,{
-            title_line1: "First Class Grills",
-            image: "images/amenities/Grills.png",
-            description: "Grills Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-            // moreInfoBtn: true
-        }],
         // slideClasses: "fullWidthVideo",
         // videoLoop: true,
         // videoZoomEffect: true,
         headerTheme: 'light',
+        amenities: [
+            {
+                title_line1: "GO OUT FOR DRINKS WITH ",
+                title_line2: "FRIENDS WITHOUT LEAVING ",
+                title_line3: "THE BUILDING",
+                image: "images/amenities/Pool.png",
+                description: "You could meet up with your friends at a bar in Manhattan or you could make them Manhattan’s or their favorite cocktails in an exquisite bar and lounge inside your condominium complex. Serveyour guests with style from a full-sized bar. Relax with drinks and socialize in the lounge area, which, of course, includes a large screen television."
+            },
+            {
+                title_line1: "Luxury Pool",
+                title_line2: "With Manhattan's",
+                title_line3: "View",
+                image: "images/amenities/Pool.png",
+                description: "You have never gone swimming in a more beautiful indoor pool with such a stunning view of the Manhattan skyline. This relaxing oasis will melt your stress away. Exercise in the pool or take it easy in the soothing, hot whirlpool. Feel free to sit back and relax in the lounge chairs situated around the pool."
+            },
+            {
+                title_line1: "PLAYROOM: FUN FOR ",
+                title_line2: "THE KIDS, RELIEF FOR ",
+                title_line3: "THE PARENTS",
+                image: "images/amenities/Pool.png",
+                description: "Need something fun to do with the kids? Check out the exciting Children’s Lounge that features a climbing wall, monkey bars, and plenty of space for having fun. There’s a TV for cartoons, a library of children’s books and table space for doing crafts. Your kids will love this safe, brightly colored, fun-themed space designed just for them."
+            },
+            {
+                title_line1: "BOARDROOM-LIKE ",
+                title_line2: "SPACE FOR PRIVATE",
+                title_line3: "MEETINGS",
+                image: "images/amenities/Pool.png",
+                description: "When you need to meet with members of your team from work or volunteer organization, you can take advantage of the beautifully appointed meeting room. The boardroom table easily accommodates five, ten or up to twenty people. There’s room for making presentations or showing video on a large screen TV. The room is well-lit and very professional so you can focus on closing the deal."
+            },
+            {
+                title_line1: "MAKE EXERCISE ",
+                title_line2: "CONVENIENT WITH ",
+                title_line3: "A GYM AT HOME",
+                image: "images/amenities/Fitness.png",
+                description: "Why drive to a gym only to see other patrons in the mirror? We’veset up exercise bikes and treadmills that look out floor-to-ceiling windows giving you a wide view of the Hudson River and Manhattan skyline. Get an intense cardio workout on our elliptical machines or head into the weight room for some serious weight training."
+            },
+            {
+                title_line1: "GRILLED DINNERS ON THE ",
+                title_line2: "DECK WITH A VIEW THAT FEW  ",
+                title_line3: "RESTAURANTS CAN RIVAL",
+                image: "images/amenities/Grills.png",
+                description: "You’re not going to miss out on the backyard BBQ experience. We’ve included top-of-the-line grills on a spacious outdoor deck. Grill your food and enjoy dining outdoors with a spectacular view of the New York City skyline. And unlike the backyard, you won’t ever have to worry about mowing the grass. Just cook, relax, and enjoy.",
+            },
+            {
+                title_line1: "MINI THEATER FOR  ",
+                title_line2: "MAXIMUM VIEWING ",
+                title_line3: "PLEASURE",
+                image: "images/amenities/Grills.png",
+                description: "When you want to watch a great movie, we’ll save you all the hassles of going out to a theater and meeting up as a group by giving you access to our movie screening room. Up to twelve guests can relax in comfortable leather chairs and enjoy watching a new movie together on the big screen.",
+            },
+            {
+                title_line1: "ENJOY THE OUTDOORS ON ",
+                title_line2: "THE PATIO (WITHOUT THE  ",
+                title_line3: "BACKYARD RESPONSIBILITIES)",
+                image: "images/amenities/Grills.png",
+                description: "Around our indoor swimming pool where the water is always just the right temperature, we have a spacious walk-out sundeck where you can get some fresh air, hang out and enjoy some company, or just sit and relax in chaise lounge sofas and chairs. Enjoy reading a book in the sunlight or sitting around the fire pit at night.",
+            },
+        ],
     }, {
         slideTemplate: 'views',
         styles: {
