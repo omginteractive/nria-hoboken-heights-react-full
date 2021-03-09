@@ -756,7 +756,7 @@ body {
                 &residencePenthouse {
                     flex-direction: column;
                     .btn {
-                        margin: 21px 0;
+                        margin: calc_vw(97/2) 0;
                     }
                 }
                 &residencePenthouseFullscreen {
