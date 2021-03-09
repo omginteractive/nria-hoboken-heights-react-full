@@ -74,8 +74,20 @@ p {
     bottom: 100px;
 }
 .mobile-menu {
-    .mobileMenuLinks .linksWrapper {
-        text-align: center;
+    .contact {
+        opacity: 0;
+    }
+    .mobileMenuLinks {
+        left: 0;
+        .linksWrapper {
+            text-align: center;
+            width: 100vw;
+            .link {
+                > h2 {
+                    line-height: calc_vw(137.5);
+                }
+            }
+        }
     }
     .mobileMenuContact {
         width: 100vw;
@@ -83,6 +95,10 @@ p {
         left: auto;
         .socialMedias {
             justify-content: center;
+            font-size: calc_vw(30);
+            .separator {
+                margin: 0 calc_vw(20);
+            }
         }
         .address,
         .copyright {

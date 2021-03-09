@@ -2301,8 +2301,18 @@ body {
     bottom: 100px;
   }
 
+  .mobile-menu .contact {
+    opacity: 0;
+  }
+  .mobile-menu .mobileMenuLinks {
+    left: 0;
+  }
   .mobile-menu .mobileMenuLinks .linksWrapper {
     text-align: center;
+    width: 100vw;
+  }
+  .mobile-menu .mobileMenuLinks .linksWrapper .link > h2 {
+    line-height: 12.7314814815vw;
   }
   .mobile-menu .mobileMenuContact {
     width: 100vw;
@@ -2311,6 +2321,10 @@ body {
   }
   .mobile-menu .mobileMenuContact .socialMedias {
     justify-content: center;
+    font-size: 2.7777777778vw;
+  }
+  .mobile-menu .mobileMenuContact .socialMedias .separator {
+    margin: 0 1.8518518519vw;
   }
   .mobile-menu .mobileMenuContact .address,
 .mobile-menu .mobileMenuContact .copyright {
