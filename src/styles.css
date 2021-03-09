@@ -2395,6 +2395,9 @@ body {
   .fixed-header.lightMobile .corner-logo.light {
     opacity: 1;
   }
+  .fixed-header.dark .separator {
+    border-left: 0.5462802649px solid #fff;
+  }
   .fixed-header.darkMobile {
     color: #000;
   }
