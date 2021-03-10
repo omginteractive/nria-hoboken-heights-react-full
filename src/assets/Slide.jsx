@@ -196,11 +196,11 @@ class Slide extends Component {
                     <SlideMap mapHeightLocked={this.props.mapHeightLocked} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'contact' &&
-                    <SlideContactForm mobileVersion={false} createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)} showPrivacyPolicy={this.openPrivacyPolicyModal.bind(this)}  configuration={slideObj}  />
+                    <SlideContactForm createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)} showPrivacyPolicy={this.openPrivacyPolicyModal.bind(this)}  configuration={slideObj}  />
                 }
-                {slideObj.slideTemplate === 'contactMobile' &&
+                {/* {slideObj.slideTemplate === 'contactMobile' &&
                     <SlideContactForm mobileVersion={true} createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)} showPrivacyPolicy={this.openPrivacyPolicyModal.bind(this)}  configuration={slideObj}  />
-                }
+                } */}
             </div>
         )
     }
@@ -368,8 +368,22 @@ class SlideVideoDiscover extends Component {
 
 
 class SlideContactForm extends Component {
+    constructor(props) {
+		super(props);
+		this.state = {
+			select2Activated: false,
+		}
+	}
     shouldComponentUpdate(nextProps, nextState){
+        if(!this.state.select2Activated){
+            return true //this will make sure we render the child component ContactForm to add select2
+        }
         return false
+    }
+    activateSelect2State(){
+        this.setState({
+			select2Activated: true
+		});
     }
     createHubspotForm(){
 		const {createHubspotContactForm} = this.props;
@@ -399,7 +413,8 @@ class SlideContactForm extends Component {
         return(
             <>
                 <div className="contactPageWrapper">
-                    <ContactForm mobileVersion={this.props.mobileVersion} createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)} />
+                    {/* mobileVersion={this.props.mobileVersion} */}
+                    <ContactForm activateSelect2State={this.activateSelect2State.bind(this)} select2Activated={this.state.select2Activated} createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)} />
                     <div className="privacyPolicy not-mobile">
                         <div className="verticalLineContainer">
                             <div className="verticalLine" />
@@ -458,6 +473,10 @@ class ContactForm extends Component {
         this.createHubspotForm()//this is used to create the form on load
 	}
 
+    handleSelect2Activation(){
+		const {activateSelect2State} = this.props;
+		activateSelect2State();
+    }
 	createHubspotForm(){
 		const {createHubspotContactForm} = this.props;
 		createHubspotContactForm();
@@ -512,25 +531,24 @@ class ContactForm extends Component {
 		// }
         const select2Exists = jQuery.fn.select2
         const select2Initialized = jQuery('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').hasClass("select2-hidden-accessible")
-		if(!select2Initialized && select2Exists) {
-            jQuery('.how_you_heard').select2({
+        const hubspotFormExists = jQuery('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').length
+		if(!select2Initialized && select2Exists && hubspotFormExists) {
+            jQuery('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').select2({
 				placeholder: "How did you hear of us?*",
 				width: 'resolve',
 				minimumResultsForSearch: -1
 			});
-			const hubspotFormExists = jQuery('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').length
-			if(hubspotFormExists) {
-                const disabledOptionText = jQuery('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217 option:disabled')[0].innerHTML
-				jQuery('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').select2({
-					placeholder: disabledOptionText,
-					width: 'resolve',
-					minimumResultsForSearch: -1
-				});
-			}
+            const disabledOptionText = jQuery('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217 option:disabled')[0].innerHTML
+            jQuery('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').select2({
+                placeholder: disabledOptionText,
+                width: 'resolve',
+                minimumResultsForSearch: -1
+            });
+			this.handleSelect2Activation()
 		}
 
-        const isMobileVersion = this.props.mobileVersion
-        const hubspotFormWrapperId = isMobileVersion ? 'hubspotFormWrapperMobile' : 'hubspotFormWrapper'
+        // const isMobileVersion = this.props.mobileVersion
+        // const hubspotFormWrapperId = isMobileVersion ? 'hubspotFormWrapperMobile' : 'hubspotFormWrapper'
 		return (
 			<form className={contactFormClasses}>
 				<div className="submittedFormOverlay">
@@ -540,7 +558,7 @@ class ContactForm extends Component {
 					</div>
 				</div>
 				<div className='headline'>FOR INFORMATION PLEASE FILL THE FORM BELOW</div>
-				<div className="hubspotFormWrapper" id={hubspotFormWrapperId}>
+				<div className="hubspotFormWrapper" id='hubspotFormWrapper'>
 				</div>
 			</form>
 		);

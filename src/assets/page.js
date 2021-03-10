@@ -370,21 +370,23 @@ const flypilotFetchWPRestAPI = async () => {
         locationListings: [],
         mobileOnly: true,
     },{
+    //     slideTemplate: 'contact',
+    //     styles: {
+    //         background: "#fff",
+    //     },
+    //     headerTheme: 'dark',
+    //     enableScrolling: true,
+    //     // desktopOnly: true,
+    // },{
         slideTemplate: 'contact',
         styles: {
             background: "#fff",
         },
+        // headerTheme: 'light',
         headerTheme: 'dark',
+        headerThemeMobile: 'lightMobile',
         enableScrolling: true,
-        desktopOnly: true,
-    },{
-        slideTemplate: 'contactMobile',
-        styles: {
-            background: "#fff",
-        },
-        headerTheme: 'light',
-        enableScrolling: true,
-        mobileOnly: true,
+        // mobileOnly: true,
     }]
     return SLIDES
   }
