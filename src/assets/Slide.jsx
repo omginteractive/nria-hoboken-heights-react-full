@@ -459,6 +459,7 @@ class ContactForm extends Component {
 			how_you_heard: '',
 			how_can_we_help: '',
 			// formSubmitted: '',
+            select2Activated: false,
 		}
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -472,7 +473,32 @@ class ContactForm extends Component {
         })
         this.createHubspotForm()//this is used to create the form on load
 	}
+    componentDidUpdate(){
+        if(!this.state.select2Activated) {
 
+            const select2Exists = $.fn.select2
+            const select2Initialized = $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').hasClass("select2-hidden-accessible")
+            const hubspotFormExists = $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').length
+            if(!select2Initialized && select2Exists && hubspotFormExists) {
+                $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').select2({
+                    placeholder: "How did you hear of us?*",
+                    width: 'resolve',
+                    minimumResultsForSearch: -1
+                });
+                const disabledOptionText = $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217 option:disabled')[0].innerHTML
+                $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').select2({
+                    placeholder: disabledOptionText,
+                    width: 'resolve',
+                    minimumResultsForSearch: -1
+                });
+                this.setState({
+                    select2Activated: true
+                });
+                this.handleSelect2Activation()
+            }
+        }
+        
+    }
     handleSelect2Activation(){
 		const {activateSelect2State} = this.props;
 		activateSelect2State();
@@ -529,27 +555,8 @@ class ContactForm extends Component {
 		// const select2Styles = {
 		// 	width:"100%"
 		// }
-        const select2Exists = jQuery.fn.select2
-        const select2Initialized = jQuery('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').hasClass("select2-hidden-accessible")
-        const hubspotFormExists = jQuery('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').length
-		if(!select2Initialized && select2Exists && hubspotFormExists) {
-            jQuery('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').select2({
-				placeholder: "How did you hear of us?*",
-				width: 'resolve',
-				minimumResultsForSearch: -1
-			});
-            const disabledOptionText = jQuery('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217 option:disabled')[0].innerHTML
-            jQuery('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').select2({
-                placeholder: disabledOptionText,
-                width: 'resolve',
-                minimumResultsForSearch: -1
-            });
-			this.handleSelect2Activation()
-		}
-
-        // const isMobileVersion = this.props.mobileVersion
-        // const hubspotFormWrapperId = isMobileVersion ? 'hubspotFormWrapperMobile' : 'hubspotFormWrapper'
-		return (
+        
+        return (
 			<form className={contactFormClasses}>
 				<div className="submittedFormOverlay">
 					<div className="text">THANK YOU!</div>
