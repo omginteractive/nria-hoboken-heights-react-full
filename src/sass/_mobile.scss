@@ -1051,11 +1051,15 @@ body {
             
             .contactPageWrapper {
                 .contactForm {
+                    padding-top: $header-space-for-content;
+                    padding-left: calc_vw(111.86);
+                    padding-right: calc_vw(111.86);
                     .headline {
-                        font-size: 14px;
+                        font-size: calc_vw(35);
+                        line-height: calc_vw(42);
                         letter-spacing: 4.17px;
                         color: #fff;
-			
+                        margin-bottom: 0;
                     }
                     .hubspotFormWrapper {
                         .hs-nested-form-fix {
@@ -1073,8 +1077,13 @@ body {
                                     }
                                 }
                                 .form-columns-0 {//fine print
-                                    font-size: 9px;
+                                    font-size: calc_vw(18.78);
+                                    line-height: calc_vw(22.98);
                                     margin-top: 14px;
+                                    .hs-richtext.hs-main-font-element > p {
+                                        font-size: calc_vw(18.78) !important;
+                                        line-height: calc_vw(22.98);
+                                    }
                                 }
                                 .form-columns-2 {
                                     .hs-form-field {
@@ -1087,8 +1096,9 @@ body {
                                         }
                                     }
                                 }
+                                
                                 .hs-form-field {
-                                    margin-top: 21px;
+                                    margin-top: calc_vw(43);
                                     @include placeholder {
                                         color: #000;
                                     }
@@ -1097,12 +1107,12 @@ body {
                                     }
                                     .input > input,
                                     .input > textarea {
-                                        height: 68px;
+                                        height: calc_vw(136);
                                         margin-top: 0;
-                                        padding: 11px;
-                                        font-size: 15px;
+                                        padding: calc_vw(44) 0 calc_vw(44) calc_vw(49);
+                                        font-size: calc_vw(30);
                                         color: #000000;
-                                        
+                                        letter-spacing: 0;
                                         &.textarea {
                                             height: 136px;
                                         }
@@ -1110,7 +1120,7 @@ body {
                                     .select2-container--default {
                                         width: 100% !important;
                                         .select2-selection--single {
-                                            height: 68px;
+                                            height: calc_vw(136);
                                             display: flex;
                                             align-items: center;
                                             position: relative;
@@ -1123,7 +1133,8 @@ body {
                                                 }
                                             }
                                             .select2-selection__rendered {
-                                                font-size: 15px;
+                                                font-size: calc_vw(30);
+                                                letter-spacing: 0;
                                                 color: #000000;
                                                 .select2-selection__placeholder {
                                                     color: #000000;
@@ -1227,15 +1238,15 @@ body {
                     }
                 }
                 .mobilePrivacyPolicy {
-                    background: #000;
-                    color: #fff;
-                    padding: 65px 0;
+                    background: #fff;
+                    color: #000;
+                    padding: calc_vw(128) 0;
                     text-align: center;
-                    line-height: 1.4em;
-                    font-size: 14px;
+                    line-height: calc_vw(41.7);
+                    font-size: calc_vw(27.44);
                     .contactInfo {
                         > a {
-                            color: #fff;
+                            color: #000;
                             font-weight: bold;
                             text-decoration: none;
                         }
