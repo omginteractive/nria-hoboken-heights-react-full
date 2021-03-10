@@ -816,13 +816,17 @@ body {
                         &__image_container {
                             width: 100%;
                             height: 100vh;
-                            right: auto;
+                            // right: auto;
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            > img {
-                                width: 100vw;
-                                height: 100vh;
+                            overflow: visible;
+                            position: static;
+                            .fullscreenImageWrapper {
+                                > img {
+                                    width: auto;
+                                    position: static;
+                                }
                             }
                         }
                         &__arrow_button_container {

@@ -1428,15 +1428,6 @@ class SlideResidencePenthouseDetail extends Component {
                             <img src={require('./'+image).default} alt=""/>
                         </div>
                     </div>
-                    {this.props.configuration.mobileHasDifferentContent &&
-                        <div className={"centerBottom mobile-only"}>
-                            <h1 style={this.props.configuration.mobileContent.centerBottom.lineStyles} className="line" >
-                                {this.props.configuration.mobileContent.centerBottom.line1LeftArrowBouncing && this.props.mobileArrows.left_arrow_bouncing}
-                                <div dangerouslySetInnerHTML={{ __html: this.props.configuration.mobileContent.centerBottom.line1}} />
-                                {this.props.configuration.mobileContent.centerBottom.line1RightArrowBouncing && this.props.mobileArrows.right_arrow_bouncing}
-                            </h1>
-                        </div>
-                    }
                 </section>
             </>
         )

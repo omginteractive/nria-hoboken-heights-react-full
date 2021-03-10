@@ -252,18 +252,6 @@ const flypilotFetchWPRestAPI = async () => {
         mobileHorizontalVideoSlideEnabled: true,
         videoMobileStartPosition: 'center',
         mobileHasDifferentContent: true,
-		mobileContent: {
-			centerBottom: {
-                line1: "SWIPE ",
-                line1RightArrowBouncing: true,
-                line1LeftArrowBouncing: true,
-                lineStyles: {
-                    display: 'flex',
-                    alignItems: 'center',
-                    color: '#fff'
-                },
-            }
-		},
     }
     ,{
         slideTemplate: 'developmentTeam',
