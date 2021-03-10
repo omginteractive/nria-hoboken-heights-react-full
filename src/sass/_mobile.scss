@@ -922,6 +922,34 @@ body {
                         }
                     }
                 }
+                &founders {
+                    .founderSlideContainer .founderSlideWrapper {
+                        width: 100%;
+                        height: calc(100% - 63px);
+                        // left: 0;
+                        // top: 63px;
+                        position: static;//was causing scroll issues
+                        padding-top: $header-space-for-content;
+                        padding-left: calc_vw(103);
+                        padding-right: 15px;
+                        .founderHeadline {
+                            font-size: calc_vw(50);
+                            margin-bottom: calc_vw(30);
+                            width: 100%;//stop forcing text to break each word
+                        }
+                        .founderTagline,
+                        .founderBenefits {
+                            font-size: calc_vw(30);
+                            line-height: calc_vw(51);
+                        }
+                        .founderBenefits .benefitPair .count {
+                            width: calc_vw(53.67);
+                            height: calc_vw(53.67);
+                            font-size: calc_vw(24.89);
+                            line-height: calc_vw(53.67);
+                        }
+                    }
+                }
                 &map {
                     // $mapOffset: 200px;
                     .mapSection {
@@ -1029,26 +1057,6 @@ body {
                     width: auto;
                 }
             }
-            .founderSlideWrapper {
-                width: 100%;
-                height: calc(100% - 63px);
-                // left: 0;
-                // top: 63px;
-                position: static;//was causing scroll issues
-                padding-top: 30px;
-                padding-left: 30px;
-                padding-right: 15px;
-                .founderHeadline {
-                    font-size: 30px;
-                    margin-bottom: 10px;
-                    width: 100%;//stop forcing text to break each word
-                }
-                .founderTagline,
-                .founderBenefits {
-                    font-size: 16px;
-                }
-            }
-            
             .contactPageWrapper {
                 .contactForm {
                     padding-top: $header-space-for-content;
