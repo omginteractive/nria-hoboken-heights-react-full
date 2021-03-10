@@ -290,13 +290,13 @@ body {
     &.firefoxAndroid {
         .slides_wrapper .slides_inner .slide {
             .centerBottom {
-                bottom: 17vh;
+                // bottom: 17vh;
             }
             .center .contactButton {
-                margin-bottom: 80px;
+                // margin-bottom: 80px;
             }
             .contactPageWrapper .mobilePrivacyPolicy {
-                padding-bottom: 165px;
+                // padding-bottom: 165px;
             }
         }
     }
@@ -1112,6 +1112,9 @@ body {
                     .hubspotFormWrapper {
                         .hs-nested-form-fix {
                             .hs-form {
+                                .hs-error-msg {
+                                    font-size: calc_vw(25);
+                                }
                                 .hs-submit {
                                     .actions {
                                         .hs-button {

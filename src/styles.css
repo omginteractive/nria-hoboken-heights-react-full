@@ -2478,16 +2478,6 @@ body {
   #page.iPhone {
     position: fixed;
   }
-  #page.iPhone .slides_wrapper .slides_inner .slide .centerBottom, #page.firefoxAndroid .slides_wrapper .slides_inner .slide .centerBottom {
-    bottom: 17vh;
-  }
-  #page.iPhone .slides_wrapper .slides_inner .slide .center .contactButton, #page.firefoxAndroid .slides_wrapper .slides_inner .slide .center .contactButton {
-    margin-bottom: 80px;
-  }
-  #page.iPhone .slides_wrapper .slides_inner .slide .contactPageWrapper .mobilePrivacyPolicy, #page.firefoxAndroid .slides_wrapper .slides_inner .slide .contactPageWrapper .mobilePrivacyPolicy {
-    padding-bottom: 165px;
-  }
-
   .formSubmitted .submittedFormOverlay.mobile-only {
     position: fixed;
   }
@@ -3150,6 +3140,9 @@ body {
     margin-bottom: 0;
     width: 50vw;
     letter-spacing: 0;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-error-msg {
+    font-size: 2.3148148148vw;
   }
   .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-submit .actions .hs-button {
     background-size: contain;
