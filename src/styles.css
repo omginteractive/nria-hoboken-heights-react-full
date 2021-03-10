@@ -2974,16 +2974,19 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity {
     flex-direction: column;
-    left: 9.8148148148vw;
-    top: 50px;
-    width: calc(100vw - 9.8148148148vw*2);
-    padding-bottom: 9.8148148148vw;
+    left: 0;
+    top: 19.4444444444vw;
+    width: 100vw;
+    padding-bottom: 0;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity .left {
     order: 2;
+    margin-top: 12.4074074074vw;
+    display: flex;
+    align-items: flex-end;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity .right {
-    padding: 0;
+    padding: 0 9.8148148148vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity .right .button_container {
     flex-direction: column;

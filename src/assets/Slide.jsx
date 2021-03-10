@@ -561,8 +561,11 @@ class SlideNeighborhoodCommunity extends Component {
                     <div className="right">
                         <div className="textGroup">
                             <h2>Hoboken Heights Neighborhood and Community</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <p>People looking to buy homes in Hoboken or Jersey City often look up the hill and ask, “What’s up there?” </p>
+                            <p>Union City is situated on top of the ridge of the lower Hudson Palisades, a line of steep cliffs along the west side of the lower Hudson River in Northeastern New Jersey. Hoboken Heights is a new gated community being built on a Palisade cliff, perfect for people looking for high quality housing while staying closely connected to Manhattan. </p>
+                            <p>Every luxury condominium in Hoboken Heights will offer expansive views of the New York skyline and Hudson River. Breathtaking views! You’ll be close to Manhattan but with a view of the New York skyline that you can’t get in Manhattan. </p>
+                            <p>Hoboken Heights is a short distance away from the western mouth of the Lincoln Tunnel, putting you closer to Times Square than anywhere you could live in Brooklyn. </p>
+                            <p>Union City is compact in size, just 1.29 square miles, and has a population around 68,000, but features a good number of parks, including Firefighter’s Memorial Park on Palisade Avenue. It has a Walk Score of 96 and Transit Score of 80, making it easy to get around locally in addition to quick access to Manhattan.</p>
                         </div>
                         {/* <div className="button_container">
                             <div className="btn light">Lorem ipsum</div>

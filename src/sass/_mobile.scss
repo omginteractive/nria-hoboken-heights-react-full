@@ -895,15 +895,18 @@ body {
                 &neighborhoodCommunity {
                     .neighborhoodCommunity {
                         flex-direction: column;
-                        left: $content-padding;
-                        top: $header-height;
-                        width: calc(100vw - #{$content-padding}*2);
-                        padding-bottom: $content-padding;
+                        left: 0;
+                        top: $header-space-for-content;
+                        width: 100vw;
+                        padding-bottom: 0;
                         .left {
                             order: 2;
+                            margin-top: calc_vw(134);
+                            display: flex;//to have image placed at bottom
+                            align-items: flex-end;
                         }
                         .right {
-                            padding: 0;
+                            padding:  0 $content-padding;
                             .button_container {
                                 flex-direction: column;
                                 align-items: center;
