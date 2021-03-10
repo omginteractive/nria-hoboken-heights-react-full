@@ -402,7 +402,7 @@ class SlideContactForm extends Component {
 		showPrivacyPolicy()
 	}
     render(){
-        const contactLogo = 'images/NRLiving.png'
+        const contactLogo = 'images/logos/NRLiving.png'
         const companyAddress = '1300 Manhattan Avenue Union City, NJ 07087'
         const companyName = 'Manhattan Avenue Capital 1300, LLC'
         const agentName = 'Richard Stabile'
@@ -567,6 +567,7 @@ class ContactForm extends Component {
 				<div className='headline'>FOR INFORMATION PLEASE FILL THE FORM BELOW</div>
 				<div className="hubspotFormWrapper" id='hubspotFormWrapper'>
 				</div>
+                <img className='mobile-only nriaLogo' src={require('./images/logos/NRLiving--White.png').default} />
 			</form>
 		);
 	}

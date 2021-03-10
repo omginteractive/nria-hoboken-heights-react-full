@@ -3131,9 +3131,15 @@ body {
     padding-top: 19.4444444444vw;
     padding-left: 10.3574074074vw;
     padding-right: 10.3574074074vw;
+    padding-bottom: 11.0185185185vw;
     position: static;
     width: 100%;
     margin-bottom: 0;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .nriaLogo {
+    width: 20.5555555556vw;
+    transform: translateY(-50%);
+    position: absolute;
   }
   .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .headline {
     font-size: 3.2407407407vw;
@@ -3141,14 +3147,19 @@ body {
     letter-spacing: 4.17px;
     color: #fff;
     margin-bottom: 0;
+    width: 50vw;
+    letter-spacing: 0;
   }
   .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-submit .actions .hs-button {
     background-size: contain;
     background-repeat: no-repeat;
-    color: transparent;
-    height: 37px;
-    background-position: center;
-    width: 51px;
+    color: #fff;
+    font-size: 3.2407407407vw;
+    text-transform: uppercase;
+    height: 3.5185185185vw;
+    background-image: url("assets/images/right-arrow-bouncing.svg");
+    padding-right: 8.3333333333vw;
+    transform: translateY(50%);
   }
   .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-0 {
     font-size: 1.7388888889vw;
@@ -3170,6 +3181,9 @@ body {
   }
   .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field {
     margin-top: 3.9814814815vw;
+  }
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field.hs_recaptcha {
+    padding-top: 4.9074074074vw;
   }
   .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field ::-webkit-input-placeholder {
     color: #000;
@@ -3195,9 +3209,8 @@ body {
     color: #000000;
     letter-spacing: 0;
   }
-  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field .input > input.textarea,
-.slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field .input > textarea.textarea {
-    height: 136px;
+  .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field .input > textarea {
+    height: 19.9074074074vw;
   }
   .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field .select2-container--default {
     width: 100% !important;
@@ -3216,6 +3229,7 @@ body {
     margin-left: -20px;
   }
   .slides_wrapper .slides_inner .slide .contactPageWrapper .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-form-field .select2-container--default .select2-selection--single .select2-selection__rendered {
+    padding-left: 4.0740740741vw;
     font-size: 2.7777777778vw;
     letter-spacing: 0;
     color: #000000;

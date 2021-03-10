@@ -816,7 +816,6 @@ body {
                         &__image_container {
                             width: 100%;
                             height: 100vh;
-                            // right: auto;
                             display: flex;
                             align-items: center;
                             justify-content: center;
@@ -1094,12 +1093,20 @@ body {
                     padding-top: $header-space-for-content;
                     padding-left: calc_vw(111.86);
                     padding-right: calc_vw(111.86);
+                    padding-bottom: calc_vw(119);
+                    .nriaLogo {
+                        width: calc_vw(222);
+                        transform: translateY(-50%);
+                        position: absolute;
+                    }
                     .headline {
                         font-size: calc_vw(35);
                         line-height: calc_vw(42);
                         letter-spacing: 4.17px;
                         color: #fff;
                         margin-bottom: 0;
+                        width: calc_vw(540);
+                        letter-spacing: 0;
                     }
                     .hubspotFormWrapper {
                         .hs-nested-form-fix {
@@ -1109,10 +1116,13 @@ body {
                                         .hs-button {
                                             background-size: contain;
                                             background-repeat: no-repeat;
-                                            color: transparent;
-                                            height: 37px;
-                                            background-position: center;
-                                            width: 51px;
+                                            color: #fff;
+                                            font-size: calc_vw(35);
+                                            text-transform: uppercase;
+                                            height: calc_vw(38);
+                                            background-image: url("assets/images/right-arrow-bouncing.svg");
+                                            padding-right: calc_vw(90);
+                                            transform: translateY(50%);
                                         }
                                     }
                                 }
@@ -1139,6 +1149,10 @@ body {
                                 
                                 .hs-form-field {
                                     margin-top: calc_vw(43);
+                                    &.hs_recaptcha {
+                                        padding-top: calc_vw(53);//68 in XD minus 38/2 (38 is height of submit btn)
+
+                                    }
                                     @include placeholder {
                                         color: #000;
                                     }
@@ -1153,9 +1167,9 @@ body {
                                         font-size: calc_vw(30);
                                         color: #000000;
                                         letter-spacing: 0;
-                                        &.textarea {
-                                            height: 136px;
-                                        }
+                                    }
+                                    .input > textarea {
+                                        height: calc_vw(215);
                                     }
                                     .select2-container--default {
                                         width: 100% !important;
@@ -1173,6 +1187,7 @@ body {
                                                 }
                                             }
                                             .select2-selection__rendered {
+                                                padding-left: calc_vw(44);
                                                 font-size: calc_vw(30);
                                                 letter-spacing: 0;
                                                 color: #000000;
