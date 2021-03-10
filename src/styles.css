@@ -2940,6 +2940,29 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__copyright_logo_container {
     padding: 0 9.8148148148vw;
   }
+  .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__paragraph {
+    line-height: 3.7037037037vw;
+    font-size: 2.7777777778vw;
+    margin-bottom: 3.7037037037vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__headline {
+    font-size: 2.7777777778vw;
+    margin-bottom: 3.7037037037vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__button_group .btn {
+    margin-bottom: 5.5472222222vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__copyright_logo_container {
+    padding-bottom: 11.4731481481vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__copyright_logo_container .copyright {
+    width: 52.7777777778vw;
+    font-size: 2.3148148148vw;
+    line-height: 2.5925925926vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__copyright_logo_container .nriaLogo > img {
+    width: 14.325vw;
+  }
   .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .textGroup {
     padding-right: 9.8148148148vw;
     padding-left: 9.8148148148vw;
@@ -2947,7 +2970,7 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .textGroup .developmentTeam__page_title {
     line-height: 6.7592592593vw;
     width: auto;
-    margin-bottom: 6.0185185185vw;
+    margin-bottom: 6.1018518519vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .left {
     position: static;
@@ -3090,6 +3113,7 @@ body {
     line-height: 10vw;
     width: auto;
     height: auto;
+    min-width: 32.8703703704vw;
   }
   .slides_wrapper .slides_inner .slide .fullscreenImageWrapper {
     transition: transform 0.8s;

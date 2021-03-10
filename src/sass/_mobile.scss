@@ -853,13 +853,40 @@ body {
                         &__copyright_logo_container {
                             padding: 0 $content-padding;
                         }
+                        &__paragraph {
+                            line-height: calc_vw(40);
+                            font-size: calc_vw(30);
+                            margin-bottom: calc_vw(40);
+                        }
+                        &__headline {
+                            font-size: calc_vw(30);
+                            margin-bottom: calc_vw(40);
+                        }
+                        &__button_group {
+                            .btn {
+                                margin-bottom: calc_vw(59.91);
+                            }
+                        }
+                        &__copyright_logo_container {
+                            padding-bottom: calc_vw(123.91);
+                            .copyright {
+                                width: calc_vw(570);
+                                font-size: calc_vw(25);
+                                line-height: calc_vw(28);
+                            }
+                            .nriaLogo {
+                                > img {
+                                    width: calc_vw(154.71);
+                                }
+                            }
+                        }
                         .textGroup {
                             padding-right: $content-padding;
                             padding-left: $content-padding;
                             .developmentTeam__page_title {
                                 line-height: calc_vw(73);
                                 width: auto;
-                                margin-bottom: calc_vw(65);
+                                margin-bottom: calc_vw(65.9);
                             }
                         }
                         .left {
@@ -1045,6 +1072,7 @@ body {
                 line-height: calc_vw(108);
                 width: auto;
                 height: auto;
+                min-width: calc_vw(355);
             }
             .fullscreenImageWrapper {
                 transition: transform 0.8s;
