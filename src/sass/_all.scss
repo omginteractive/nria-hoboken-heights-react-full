@@ -264,7 +264,7 @@ body {
     }
     .corner-logo-wrapper .separator,
     .hamburger .line {
-        transition: border-color $slideAnimationDuration;
+        transition: border-color $slideAnimationDuration, opacity $slideAnimationDuration;
     }
     .corner-logo-wrapper {
         .corner-logo {

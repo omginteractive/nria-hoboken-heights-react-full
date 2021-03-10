@@ -167,6 +167,9 @@ p {
         .contact.dark {
             opacity: 0;
         }
+        .separator {
+            opacity: 1;
+        }
     }
     &.lightMobile {
         color: #fff;
@@ -185,13 +188,15 @@ p {
     }
     &.dark {
         .separator {
-            border-left: 0.5462802649px solid #fff;//hidden
+            // border-left: 0.5462802649px solid #fff;//hidden
+            opacity: 0;
         }
     }
     &.darkMobile {
         color: #000;
         .separator {
-            border-left: 0.5462802649px solid #fff;//hidden
+            // border-left: 0.5462802649px solid #fff;//hidden
+            opacity: 0;
         }
         .hamburger .line {
             border-color: #000;
@@ -835,7 +840,7 @@ body {
                         width: 100vw;
                         left: 0;
                         flex-direction: column;
-                        top: $header-height;
+                        top: $header-space-for-content;
                         &__button_group {
                             flex-direction: column;
                             align-items: center;
@@ -851,6 +856,11 @@ body {
                         .textGroup {
                             padding-right: $content-padding;
                             padding-left: $content-padding;
+                            .developmentTeam__page_title {
+                                line-height: calc_vw(73);
+                                width: auto;
+                                margin-bottom: calc_vw(65);
+                            }
                         }
                         .left {
                             position: static;
