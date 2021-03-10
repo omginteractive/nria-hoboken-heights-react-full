@@ -86,6 +86,7 @@ p {
             .link {
                 > h2 {
                     line-height: calc_vw(137.5);
+                    transform-origin: center;
                 }
             }
         }

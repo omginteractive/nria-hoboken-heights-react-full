@@ -2312,6 +2312,7 @@ body {
   }
   .mobile-menu .mobileMenuLinks .linksWrapper .link > h2 {
     line-height: 12.7314814815vw;
+    transform-origin: center;
   }
   .mobile-menu .mobileMenuContact {
     width: 100vw;
