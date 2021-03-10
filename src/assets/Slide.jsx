@@ -270,8 +270,8 @@ class SlideMap extends Component {
                         <img src={require('./images/map/Motion_logo.gif').default} alt="" className="map not-mobile"/>
                         <img src={require('./images/map/Motion_logo_mobile_animateonce.gif').default} alt="" className="map mobile-only"/>
                     </div>
-                    <div onClick={this.toggleMap.bind(this)} className="satelliteToggle vertical_toggle_column">
-                        <div className="rotatedText">{toggleBarText}</div>
+                    <div onClick={this.toggleMap.bind(this)} className="satelliteToggle vertical_toggle_column noSelect">
+                        <div className="rotatedText noSelect">{toggleBarText}</div>
                     </div>
                     <div className="mapSection__locationList">
                         {locationListings.map((amenity, idx) => {
