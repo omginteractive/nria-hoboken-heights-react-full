@@ -1,4 +1,10 @@
 const flypilotFetchWPRestAPI = async () => {
+    const residencePenthouseDetailImages = [
+        "images/view/01.jpg",
+        "images/view/02.jpg",
+        "images/view/03.jpg",
+        "images/view/04.jpg"
+    ]
     const SLIDES = [{
         slideTemplate: 'home',
         styles: {
@@ -238,6 +244,7 @@ const flypilotFetchWPRestAPI = async () => {
         enableScrolling: true,
         enableScrollingQuerySelector: '.residencePenthouseDetail__details',
         imageContainerAdditionalClasses: 'not-mobile',
+        images: residencePenthouseDetailImages
     }
     ,{
         slideTemplate: 'residencePenthouseDetail',
@@ -252,6 +259,7 @@ const flypilotFetchWPRestAPI = async () => {
         mobileHorizontalVideoSlideEnabled: true,
         videoMobileStartPosition: 'center',
         mobileHasDifferentContent: true,
+        images: residencePenthouseDetailImages
     }
     ,{
         slideTemplate: 'developmentTeam',

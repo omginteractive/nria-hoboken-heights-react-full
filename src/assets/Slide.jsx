@@ -1141,7 +1141,6 @@ class SlideAmenitiesDetail extends Component {
                     {hasMoreInfoBtn && 
                         <div className="amenities_detail__more_info_btn btn">More Info</div>
                     }
-                    
                 </section>
             </>
         )
@@ -1360,6 +1359,9 @@ class SlideResidencePenthouseDetail extends Component {
             imageExpanded: newImageState
         })
     }
+    activateImage(){
+        
+    }
     render(){
         const imageIsExpanded = this.state.imageExpanded
         let details_classes = 'residencePenthouseDetail'
@@ -1426,6 +1428,13 @@ class SlideResidencePenthouseDetail extends Component {
                         <div className="fullscreenImageWrapper">
                             <img src={require('./'+image).default} alt=""/>
                         </div>
+                    </div>
+                    <div className="residencePenthouseDetail__dots">
+                        {this.props.configuration.images.map((image, i) => {
+                            let dotClasses = 'dot'
+                            dotClasses += i === this.state.currIdx ? ' active' : ''
+                            return (<div key={i} onClick={() => this.activateImage(i)} className={dotClasses} />)
+                        })}
                     </div>
                 </section>
             </>
