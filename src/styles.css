@@ -696,17 +696,17 @@ body {
   position: absolute;
   top: 12.8vh;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details_wrapper {
   padding-left: 6.3vw;
   flex-basis: 70%;
+  padding-bottom: 11.2962962963vh;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details, .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__list {
-  height: calc(100vh - 12.8vh - 11.2962962963vh);
+  min-height: calc(100vh - 12.8vh - 11.2962962963vh);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details {
-  overflow: scroll;
   background-color: #000000;
   padding: 9.2592592593vh 4.2708333333vw 8.2231481481vh;
   color: #ffffff;

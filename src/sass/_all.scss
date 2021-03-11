@@ -607,18 +607,19 @@ body {
                         position: absolute;
                         top: $header-height;
                         display: flex;
-                        align-items: flex-start;
+                        align-items: center;
                         &__details_wrapper {
                             padding-left: $side-margin;
                             flex-basis: 70%;
+                            padding-bottom: $empty_bottom_space;
                         }
                         &__details,
                         &__list {
-                            height: calc(100vh - #{$header-height} - #{$empty_bottom_space});
+                            min-height: calc(100vh - #{$header-height} - #{$empty_bottom_space});
                         }
                         &__details {
                             @extend .hideScrollbars;
-                            overflow: scroll;
+                            // overflow: scroll;
                             background-color: #000000;
                             padding: calc_vh(100) calc_vw(82) calc_vh(88.81);
                             color: #ffffff;
