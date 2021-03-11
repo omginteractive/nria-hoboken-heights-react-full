@@ -1368,7 +1368,6 @@ class SlideResidencePenthouseDetail extends Component {
     activateImage(idx){
         const isSameIdx = this.state.currIdx === idx
         const prevIdxNotYetDeactivated = this.state.prevIdx !== null
-        console.log(prevIdxNotYetDeactivated, this.state.prevIdx)
         if(this.state.isTransitioning || isSameIdx || prevIdxNotYetDeactivated) return false
         const prevIdx = this.state.currIdx
         this.setState({

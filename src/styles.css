@@ -1182,7 +1182,7 @@ body {
   z-index: 1;
   transform: translateY(-100%);
   transition: transform 0s, opacity 0s;
-  opacity: 0;
+  opacity: 0.3;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container .fullscreenImageWrapper .fullscreenImage.active {
   transform: translateY(0%);
