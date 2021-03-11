@@ -1099,7 +1099,7 @@ class SlideAmenitiesDetail extends Component {
         let descriptionClasses = 'amenities_detail__description'
         descriptionClasses += this.state.descriptionVisible ? ' visible' : ''
         const descriptionStyles = {
-            backgroundImage: 'url('+require('./images/amenities/blackgradient.png').default+')',
+            // backgroundImage: 'url('+require('./images/amenities/blackgradient.png').default+')',
         }
 
         let image1_classes = 'amenities_detail__image '

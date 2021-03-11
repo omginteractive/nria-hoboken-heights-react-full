@@ -883,6 +883,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description {
   line-height: 1.4em;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.69) 28%, rgba(255, 255, 255, 0) 100%);
   width: 100vw;
   background-repeat: no-repeat;
   height: 0;
@@ -890,6 +891,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description.visible {
   height: calc(8.2vh + 20px + 140px + 100px);
+  opacity: 1;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description.visible .text {
   opacity: 1;
