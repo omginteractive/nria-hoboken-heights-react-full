@@ -17,7 +17,9 @@ class MobileMenu extends Component {
         this.toggleMobileMenu();
     }
 
-    
+    shouldComponentUpdate(nextProps, nextState){
+        return nextProps.open != this.props.open
+    }
     render(){
         // const isOpen = this.props.open
         const isMobile = this.props.isMobileDevice
