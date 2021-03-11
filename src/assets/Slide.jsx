@@ -85,7 +85,6 @@ class Slide extends Component {
             scrollToNextSlide: this.scrollToNextSlide.bind(this),
             goToContactSlide: this.goToContactSlide.bind(this),
             delegateScroll: this.delegateScroll.bind(this),
-
         }
 		let slideClasses = "slide "
 		// let videoClasses = 'background-video'
@@ -917,11 +916,11 @@ class SlideAmenities extends Component {
                             <li onClick={() => this.setAmenityDetail(0)}>Bar</li>
                             <li onClick={() => this.setAmenityDetail(1)}>Children</li>
                             <li onClick={() => this.setAmenityDetail(2)}>Corridor</li>
-                            <li onClick={() => this.setAmenityDetail(1)}>Gym</li>
-                            <li onClick={() => this.setAmenityDetail(2)}>Grills</li>
-                            <li onClick={() => this.setAmenityDetail(0)}>Movie</li>
-                            <li onClick={() => this.setAmenityDetail(1)}>Patio</li>
-                            <li onClick={() => this.setAmenityDetail(0)}>Pool</li>
+                            <li onClick={() => this.setAmenityDetail(3)}>Gym</li>
+                            <li onClick={() => this.setAmenityDetail(4)}>Grills</li>
+                            <li onClick={() => this.setAmenityDetail(5)}>Movie</li>
+                            <li onClick={() => this.setAmenityDetail(6)}>Patio</li>
+                            <li onClick={() => this.setAmenityDetail(7)}>Pool</li>
                         </ul>
                     </div>
                 </section>
@@ -1164,8 +1163,7 @@ class SlideViews extends Component {
         const sliderChanged = this.state.timeSliderValue !== nextState.timeSliderValue
         const isTransitioningChanged = this.state.isTransitioning !== nextState.isTransitioning
 
-        return true
-        // return viewChanged || sliderChanged
+        return viewChanged || sliderChanged || isTransitioningChanged
     }
     componentDidMount(){
         // this.props.configuration.views.forEach((view) => {

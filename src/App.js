@@ -768,6 +768,7 @@ class App extends React.Component {
                 createHubspotContactForm={this.createHubspotForm.bind(this)}
                 formSubmitted={this.contactFormSubmitted.bind(this)}
                 goToContactSlide={this.goToContactSlide.bind(this)}
+                isTransitioning={this.isTransitioning()}
                 ></Slide>
         )
 

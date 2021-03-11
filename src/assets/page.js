@@ -112,13 +112,6 @@ const flypilotFetchWPRestAPI = async () => {
                 description: "You could meet up with your friends at a bar in Manhattan or you could make them Manhattan’s or their favorite cocktails in an exquisite bar and lounge inside your condominium complex. Serveyour guests with style from a full-sized bar. Relax with drinks and socialize in the lounge area, which, of course, includes a large screen television."
             },
             {
-                title_line1: "Luxury Pool",
-                title_line2: "With Manhattan's",
-                title_line3: "View",
-                image: "images/amenities/Pool.png",
-                description: "You have never gone swimming in a more beautiful indoor pool with such a stunning view of the Manhattan skyline. This relaxing oasis will melt your stress away. Exercise in the pool or take it easy in the soothing, hot whirlpool. Feel free to sit back and relax in the lounge chairs situated around the pool."
-            },
-            {
                 title_line1: "PLAYROOM: FUN FOR ",
                 title_line2: "THE KIDS, RELIEF FOR ",
                 title_line3: "THE PARENTS",
@@ -159,6 +152,13 @@ const flypilotFetchWPRestAPI = async () => {
                 title_line3: "BACKYARD RESPONSIBILITIES)",
                 image: "images/amenities/Grills.png",
                 description: "Around our indoor swimming pool where the water is always just the right temperature, we have a spacious walk-out sundeck where you can get some fresh air, hang out and enjoy some company, or just sit and relax in chaise lounge sofas and chairs. Enjoy reading a book in the sunlight or sitting around the fire pit at night.",
+            },
+            {
+                title_line1: "Luxury Pool",
+                title_line2: "With Manhattan's",
+                title_line3: "View",
+                image: "images/amenities/Pool.png",
+                description: "You have never gone swimming in a more beautiful indoor pool with such a stunning view of the Manhattan skyline. This relaxing oasis will melt your stress away. Exercise in the pool or take it easy in the soothing, hot whirlpool. Feel free to sit back and relax in the lounge chairs situated around the pool."
             },
         ],
     }, {
