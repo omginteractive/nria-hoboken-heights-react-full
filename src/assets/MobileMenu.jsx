@@ -3,7 +3,7 @@ import Header from './Header';
 
 class MobileMenu extends Component {
     shouldComponentUpdate(nextProps, nextState){
-        const menuStatusChanged = nextProps.open != this.props.open
+        const menuStatusChanged = nextProps.open !== this.props.open
         return menuStatusChanged
     }
     goToSlide(idx){

@@ -11,8 +11,12 @@ class Slide extends Component {
         super(props);
         this.state = {
 			styles: this.props.obj.styles,
-            type: this.props.obj.slideTemplate,
+            // type: this.props.obj.slideTemplate,
         }
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        const isCurrent = this.props.isCurrent;
+        return isCurrent
     }
     handleTheScroll = e => {
         let element = e.target
@@ -546,7 +550,7 @@ class ContactForm extends Component {
 	}
 
     render(){
-		let jQuery = $
+		// let jQuery = $
 		let contactFormClasses = 'contactForm';
 		// if(this.state.formSubmitted){
 		// 	contactFormClasses += ' submitted'
@@ -1295,7 +1299,7 @@ class SlideResidencePenthouseFullscreen extends Component {
         this.residenceImage = 'images/residence/residence.png'
     }
     shouldComponentUpdate(nextProps, nextState){
-        const residencePenthouseChanged = nextProps.residencePenthouse != this.props.residencePenthouse
+        const residencePenthouseChanged = nextProps.residencePenthouse !== this.props.residencePenthouse
         return residencePenthouseChanged
     }
     componentDidMount(){
@@ -1348,9 +1352,9 @@ class SlideResidencePenthouseDetail extends Component {
     
     shouldComponentUpdate(nextProps, nextState){
         const imageExpandedChanged = this.state.imageExpanded !== nextState.imageExpanded
-        const currIdxChanged = nextState.currIdx != this.state.currIdx
-        const prevIdxChanged = nextState.prevIdx != this.state.prevIdx
-        const residencePenthouseChanged = nextProps.residencePenthouse != this.props.residencePenthouse
+        const currIdxChanged = nextState.currIdx !== this.state.currIdx
+        const prevIdxChanged = nextState.prevIdx !== this.state.prevIdx
+        const residencePenthouseChanged = nextProps.residencePenthouse !== this.props.residencePenthouse
         return imageExpandedChanged || currIdxChanged || residencePenthouseChanged || prevIdxChanged
     }
     handleWheelEvent = e => {
@@ -1424,7 +1428,7 @@ class SlideResidencePenthouseDetail extends Component {
                             <div className="heading">Features:</div>
                             <ul>
                                 {featuresArray.map((feature, i) => {
-                                    return (<li key={i}>{feature}</li>)
+                                    return (<li key={i+feature}>{feature}</li>)
                                 })}
                             </ul>
                         </div>
@@ -1449,7 +1453,7 @@ class SlideResidencePenthouseDetail extends Component {
                                 let imgClasses = 'fullscreenImage'
                                 imgClasses += i === this.state.currIdx ? ' active' : ''
                                 imgClasses += i === this.state.prevIdx ? ' deactivating' : ''
-                                return (<img onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={require('./'+image).default} alt="Residence Penthouse Image"/>)
+                                return (<img key={i+'fullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={require('./'+image).default} alt="Residence Penthouse"/>)
                             })}
                         </div>
                     </div>

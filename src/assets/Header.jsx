@@ -12,8 +12,8 @@ class Header extends Component {
         
     }
     shouldComponentUpdate(nextProps, nextState){
-        const themeChanged = nextProps.theme != this.props.theme
-        const mobileThemeChanged = nextProps.themeMobile != this.props.themeMobile
+        const themeChanged = nextProps.theme !== this.props.theme
+        const mobileThemeChanged = nextProps.themeMobile !== this.props.themeMobile
         return themeChanged || mobileThemeChanged
     }
     toggleMobileMenu(){

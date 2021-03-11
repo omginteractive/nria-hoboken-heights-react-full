@@ -746,7 +746,8 @@ class App extends React.Component {
         
         const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
         const $slides = this.state.slides == null ? null : this.state.slides.map((slide, idx) =>
-            <Slide isFirefoxAndroid={isFirefoxAndroid}
+            <Slide 
+                // isFirefoxAndroid={isFirefoxAndroid}
                 showPrivacyPolicy={this.privacyPolicyModalOpen.bind(this)}
                 horizontalSlide={this.slideHorizontal.bind(this)}
                 onSlideScroll={this.handleSlideScroll}
@@ -755,7 +756,7 @@ class App extends React.Component {
                 currIdx={this.state.currIdx}
                 slideViewed={this.state.slidesViewed.includes(idx)}
                 goToNextSlide={this.nextSlide}
-                scrollToLastSlide={this.lastSlide}
+                // scrollToLastSlide={this.lastSlide}
                 key={idx}
                 // slideCount={idx}
                 obj={slide}
@@ -768,7 +769,7 @@ class App extends React.Component {
                 createHubspotContactForm={this.createHubspotForm.bind(this)}
                 formSubmitted={this.contactFormSubmitted.bind(this)}
                 goToContactSlide={this.goToContactSlide.bind(this)}
-                isTransitioning={this.isTransitioning()}
+                // isTransitioning={this.isTransitioning()}
                 ></Slide>
         )
 
