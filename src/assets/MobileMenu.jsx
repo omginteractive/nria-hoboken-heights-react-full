@@ -2,6 +2,10 @@ import { Component } from 'react';
 import Header from './Header';
 
 class MobileMenu extends Component {
+    shouldComponentUpdate(nextProps, nextState){
+        const menuStatusChanged = nextProps.open != this.props.open
+        return menuStatusChanged
+    }
     goToSlide(idx){
         const {goToSlideIdx} = this.props;
         goToSlideIdx(idx)
@@ -15,10 +19,6 @@ class MobileMenu extends Component {
         const {goToContactSlide} = this.props;
         goToContactSlide();
         this.toggleMobileMenu();
-    }
-
-    shouldComponentUpdate(nextProps, nextState){
-        return nextProps.open != this.props.open
     }
     render(){
         // const isOpen = this.props.open

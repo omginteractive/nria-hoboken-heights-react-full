@@ -11,6 +11,11 @@ class Header extends Component {
         this.lightCloseBtn = 'images/mobile_menu_x.svg'
         
     }
+    shouldComponentUpdate(nextProps, nextState){
+        const themeChanged = nextProps.theme != this.props.theme
+        const mobileThemeChanged = nextProps.themeMobile != this.props.themeMobile
+        return themeChanged || mobileThemeChanged
+    }
     toggleMobileMenu(){
         const {toggleMobileMenu} = this.props;
 		toggleMobileMenu();
@@ -30,6 +35,7 @@ class Header extends Component {
     }
 
     render(){
+        console.log('head')
         const defaultTheme = 'dark'
         const theme = this.props.theme ? this.props.theme : defaultTheme
         const themeMobile = this.props.themeMobile ? this.props.themeMobile : ''
