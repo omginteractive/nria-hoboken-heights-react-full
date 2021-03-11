@@ -1128,7 +1128,9 @@ body {
                             overflow: hidden;
                             .fullscreenImageWrapper {
                                 height: 100%;
-                                > img {
+                                background-color: #fff;
+                                .fullscreenImage {
+                                    $image_animation_duration: 1.2s;
                                     width: calc(#{$content_width});
                                     height: 100%;
                                     object-fit: cover;
@@ -1136,11 +1138,26 @@ body {
                                     position: absolute;
                                     right: 0;
                                     z-index: 1;//to be above inquiry button on slide change
+                                    transform: translateY(-100%);
+                                    transition: transform 0s, opacity 0s;
+                                    opacity: 0;
+                                    &.active {
+                                        transform: translateY(0%);
+                                        z-index: 3;
+                                        transition: transform $image_animation_duration, opacity $image_animation_duration;
+                                        opacity: 1;
+                                    }
+                                    &.deactivating {
+                                        z-index: 2;
+                                        transform: translateY(100%);
+                                        
+                                        transition: transform $image_animation_duration, opacity $image_animation_duration;
+                                    }
                                 }
                             }
                         }
                         &__expand_toggler {
-                            z-index: 2;
+                            z-index: 4;
                             // cursor: pointer;
                             // background-color: $vertical-toggler-color;
                             // color: #ffffff;

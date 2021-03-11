@@ -545,7 +545,7 @@ class ContactForm extends Component {
 		scrollToFirstSlide()
 	}
 
-    render() {
+    render(){
 		let jQuery = $
 		let contactFormClasses = 'contactForm';
 		// if(this.state.formSubmitted){
@@ -972,7 +972,6 @@ class SlideAmenitiesDetail extends Component {
     }
     componentDidUpdate(){
         const newIdxFromPropsHasChanged = this.props.isCurrent && this.state.lastPropsIdx !== this.props.idx
-
         if(newIdxFromPropsHasChanged) {
             this.setState({
                 lastPropsIdx: this.props.idx,
@@ -1339,7 +1338,9 @@ class SlideResidencePenthouseDetail extends Component {
         super(props)
         this.state = {
             imageExpanded: false,
-            currIdx: 0
+            currIdx: 0,
+            prevIdx: null,
+            isTransitioning: null,
         }
         this.toggleExpansionMinus = 'images/toggleExpansion-.svg'
         this.toggleExpansionPlus = 'images/toggleExpansion+.svg'
@@ -1348,8 +1349,9 @@ class SlideResidencePenthouseDetail extends Component {
     shouldComponentUpdate(nextProps, nextState){
         const imageExpandedChanged = this.state.imageExpanded !== nextState.imageExpanded
         const currIdxChanged = nextState.currIdx != this.state.currIdx
+        const prevIdxChanged = nextState.prevIdx != this.state.prevIdx
         const residencePenthouseChanged = nextProps.residencePenthouse != this.props.residencePenthouse
-        return imageExpandedChanged || currIdxChanged || residencePenthouseChanged
+        return imageExpandedChanged || currIdxChanged || residencePenthouseChanged || prevIdxChanged
     }
     handleWheelEvent = e => {
         const wheelAmt = e.deltaY
@@ -1364,8 +1366,21 @@ class SlideResidencePenthouseDetail extends Component {
         })
     }
     activateImage(idx){
+        const isSameIdx = this.state.currIdx === idx
+        const prevIdxNotYetDeactivated = this.state.prevIdx !== null
+        console.log(prevIdxNotYetDeactivated, this.state.prevIdx)
+        if(this.state.isTransitioning || isSameIdx || prevIdxNotYetDeactivated) return false
+        const prevIdx = this.state.currIdx
         this.setState({
-            currIdx: idx
+            currIdx: idx,
+            prevIdx: prevIdx,
+            isTransitioning: true
+        })
+    }
+    handleImageTransitionEnd(idx){
+        this.setState({
+            prevIdx: null,
+            isTransitioning: false
         })
     }
     render(){
@@ -1387,14 +1402,13 @@ class SlideResidencePenthouseDetail extends Component {
             'Optional smart home technology',
             ] : 
             [
-                'Residence Ipsum Lorem Ipsum',
-                'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum',
-                'Lorem Ipsum Lorem Ipsum',
-                'Lorem Ipsum Lorem Ipsum Lorem',
-                'Lorem Ipsum',
-                'Lorem Ipsum Lorem Ipsum Lorem Ipsum',
-                'Lorem Ipsum Lorem',
-                'Lorem Ipsum Lorem Ipsum',
+                'Panoramic views of the New York City skyline ',
+                'Spacious open plan living ',
+                '4 Bedrooms, 4.5 Bathrooms ',
+                'High-end appliances ',
+                'Two-car garage with private elevator ',
+                'Expansive glass-enclosed terrace ',
+                'Optional smart home technology',
             ]
         let imageContainerClasses = 'residencePenthouseDetail__image_container '
         imageContainerClasses += this.props.configuration.imageContainerAdditionalClasses ? this.props.configuration.imageContainerAdditionalClasses : ''
@@ -1432,7 +1446,12 @@ class SlideResidencePenthouseDetail extends Component {
                             }
                         </div>
                         <div className="fullscreenImageWrapper">
-                            <img src={require('./'+images[this.state.currIdx]).default} alt=""/>
+                            {images.map((image, i) => {
+                                let imgClasses = 'fullscreenImage'
+                                imgClasses += i === this.state.currIdx ? ' active' : ''
+                                imgClasses += i === this.state.prevIdx ? ' deactivating' : ''
+                                return (<img onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={require('./'+image).default} alt="Residence Penthouse Image"/>)
+                            })}
                         </div>
                     </div>
                     <div className="residencePenthouseDetail__dots">
