@@ -620,7 +620,7 @@ body {
                             @extend .hideScrollbars;
                             overflow: scroll;
                             background-color: #000000;
-                            padding: calc_vw(104.4) calc_vw(82) calc_vw(88.81);
+                            padding: calc_vh(100) calc_vw(82) calc_vh(88.81);
                             color: #ffffff;
                             display: flex;
                             justify-content: flex-start;
