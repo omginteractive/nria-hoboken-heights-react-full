@@ -1,9 +1,16 @@
 const flypilotFetchWPRestAPI = async () => {
-    const residencePenthouseDetailImages = [
-        "images/view/01.jpg",
-        "images/view/02.jpg",
-        "images/view/03.jpg",
-        "images/view/04.jpg"
+    const penthouseDetailImages = [
+        'images/penthouse/penthouse.jpg',
+        'images/residence/residence.png',
+        'images/penthouse/penthouse.jpg',
+        'images/penthouse/penthousebed.png',
+        
+    ]
+    const residenceDetailImages = [
+        'images/residence/residence.png',
+        'images/penthouse/penthousebed.png',
+        'images/residence/residence.png',
+        'images/penthouse/penthouse.jpg',
     ]
     const SLIDES = [{
         slideTemplate: 'home',
@@ -244,7 +251,8 @@ const flypilotFetchWPRestAPI = async () => {
         enableScrolling: true,
         enableScrollingQuerySelector: '.residencePenthouseDetail__details',
         imageContainerAdditionalClasses: 'not-mobile',
-        images: residencePenthouseDetailImages
+        penthouseDetailImages: penthouseDetailImages,
+        residenceDetailImages: residenceDetailImages,
     }
     ,{
         slideTemplate: 'residencePenthouseDetail',
@@ -259,7 +267,8 @@ const flypilotFetchWPRestAPI = async () => {
         mobileHorizontalVideoSlideEnabled: true,
         videoMobileStartPosition: 'center',
         mobileHasDifferentContent: true,
-        images: residencePenthouseDetailImages
+        penthouseDetailImages: penthouseDetailImages,
+        residenceDetailImages: residenceDetailImages,
     }
     ,{
         slideTemplate: 'developmentTeam',

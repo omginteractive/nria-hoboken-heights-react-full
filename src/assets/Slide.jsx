@@ -1296,7 +1296,8 @@ class SlideResidencePenthouseFullscreen extends Component {
         this.residenceImage = 'images/residence/residence.png'
     }
     shouldComponentUpdate(nextProps, nextState){
-        return false
+        const residencePenthouseChanged = nextProps.residencePenthouse != this.props.residencePenthouse
+        return residencePenthouseChanged
     }
     componentDidMount(){
         //preload images
@@ -1337,7 +1338,8 @@ class SlideResidencePenthouseDetail extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            imageExpanded: false
+            imageExpanded: false,
+            currIdx: 0
         }
         this.toggleExpansionMinus = 'images/toggleExpansion-.svg'
         this.toggleExpansionPlus = 'images/toggleExpansion+.svg'
@@ -1345,7 +1347,9 @@ class SlideResidencePenthouseDetail extends Component {
     
     shouldComponentUpdate(nextProps, nextState){
         const imageExpandedChanged = this.state.imageExpanded !== nextState.imageExpanded
-        return imageExpandedChanged
+        const currIdxChanged = nextState.currIdx != this.state.currIdx
+        const residencePenthouseChanged = nextProps.residencePenthouse != this.props.residencePenthouse
+        return imageExpandedChanged || currIdxChanged || residencePenthouseChanged
     }
     handleWheelEvent = e => {
         const wheelAmt = e.deltaY
@@ -1359,8 +1363,10 @@ class SlideResidencePenthouseDetail extends Component {
             imageExpanded: newImageState
         })
     }
-    activateImage(){
-        
+    activateImage(idx){
+        this.setState({
+            currIdx: idx
+        })
     }
     render(){
         const imageIsExpanded = this.state.imageExpanded
@@ -1368,7 +1374,7 @@ class SlideResidencePenthouseDetail extends Component {
         details_classes += imageIsExpanded ? ' expandImage' : ''
         const isPenthouse = this.props.residencePenthouse === 'penthouse'
         
-        const image = isPenthouse ? 'images/penthouse/penthouse.jpg' : 'images/residence/residence.png'
+        const images = isPenthouse ? this.props.configuration.penthouseDetailImages : this.props.configuration.residenceDetailImages
         const page_title = isPenthouse ? 'Exclusive Luxury Penthouses' : 'Our Residences'
         const page_description = isPenthouse ? 'The Penthouse condominium units at Hoboken Heights offer the most spectacular panoramic views of the Hudson River and New York City skyline. Whether you’re cooking in the kitchen with chef’s grade appliances, eating in the open dining area, or relaxing in the living room, that panoramic view will be all around you. Top-of-the-line finishes in our bedrooms and bathrooms will ensure your total comfort and ease. You’ll have plenty of options to design your living space to be perfect for you.' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
         const featuresArray = isPenthouse ? [
@@ -1426,11 +1432,11 @@ class SlideResidencePenthouseDetail extends Component {
                             }
                         </div>
                         <div className="fullscreenImageWrapper">
-                            <img src={require('./'+image).default} alt=""/>
+                            <img src={require('./'+images[this.state.currIdx]).default} alt=""/>
                         </div>
                     </div>
                     <div className="residencePenthouseDetail__dots">
-                        {this.props.configuration.images.map((image, i) => {
+                        {images.map((image, i) => {
                             let dotClasses = 'dot'
                             dotClasses += i === this.state.currIdx ? ' active' : ''
                             return (<div key={i} onClick={() => this.activateImage(i)} className={dotClasses} />)
