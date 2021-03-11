@@ -35,7 +35,6 @@ class Header extends Component {
     }
 
     render(){
-        console.log('head')
         const defaultTheme = 'dark'
         const theme = this.props.theme ? this.props.theme : defaultTheme
         const themeMobile = this.props.themeMobile ? this.props.themeMobile : ''
