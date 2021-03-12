@@ -757,11 +757,12 @@ body {
                             font-family: "Gotham-Light", sans-serif;
                             z-index: 1;//to be above description
                             position: absolute;
-                            bottom: calc(#{$dots-bottom} + #{$name-bottom});
-                            transition: bottom 1s;
+                            transform: translateY(calc(-#{$dots-bottom} - #{$name-bottom}));
+                            bottom: 0;
+                            transition: transform 1s;
                             &.riseForDescription {
-                                bottom: calc(#{$dots-bottom} + #{$name-rise-distance} + #{$name-bottom});
-                                transition: bottom 0.5s;
+                                transform: translateY(calc(-#{$dots-bottom} - #{$name-rise-distance} - #{$name-bottom}));
+                                transition: transform 0.5s;
                             }
                             &.runFadeOutAnimation {
                                 @include amenityDetailNameHide();

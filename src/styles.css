@@ -815,12 +815,13 @@ body {
   font-family: "Gotham-Light", sans-serif;
   z-index: 1;
   position: absolute;
-  bottom: calc(8.2vh + 20px);
-  transition: bottom 1s;
+  transform: translateY(calc(-8.2vh - 20px));
+  bottom: 0;
+  transition: transform 1s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.riseForDescription {
-  bottom: calc(8.2vh + 140px + 20px);
-  transition: bottom 0.5s;
+  transform: translateY(calc(-8.2vh - 140px - 20px));
+  transition: transform 0.5s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeOutAnimation > h3 > span,
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeOutAnimation > h3 > span + img {
