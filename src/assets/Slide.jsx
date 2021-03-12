@@ -15,9 +15,8 @@ class Slide extends Component {
         }
     }
     shouldComponentUpdate(nextProps, nextState){
-        return true
-        const isCurrent = this.props.isCurrent;
-        return isCurrent
+        const isBeingToggled = this.props.isCurrent != nextProps.isCurrent
+        return isBeingToggled
     }
     handleTheScroll = e => {
         let element = e.target
