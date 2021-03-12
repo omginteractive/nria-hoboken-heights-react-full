@@ -1,8 +1,3 @@
-@keyframes lineAppear {
-	0%   {height: 0;}
-	100% {height: $separator-line-height;}
-}
-
 @keyframes soundOptionsSlideOutRight {
 	0%   {transform: translateX(-$soundOptionsButtonWidth);}
 	100% {transform: translateX(0);}
@@ -18,33 +13,20 @@
 	100% {transform: translateX($cornerLogoAnimateDistance);}
 }
 
-
 @keyframes fadeInDriftUp {
-	0%   {top: 15px;opacity: 0;}
-	100% {top: 0;opacity: 1;}
+	0%   {
+        transform: translateY(15px);
+        opacity: 0;
+    }
+	100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
 }
-
 
 @keyframes fadeInDriftUpFounderSlide {
-	0%   {top: 50px;opacity: 0;}
-	100% {top: 0;opacity: 1;}
-}
-
-// @keyframes fadeOutInDriftUp {
-//     0%   {opacity: 1;}
-//     50% {opacity: 0;}
-//     51% {top: 15px; opacity: 0;}
-
-// 	100% {top: 0;opacity: 1;}
-// }
-//Used for animating amenity detail toggle button
-@keyframes fadeInDriftUpTop2 {
-	0%   {top: 15px;opacity: 0;}
-	100% {top: 2;opacity: 1;}
-}
-@keyframes fadeInDriftDown {
-	0%   {bottom: 50px;opacity: 0;}
-	100% {bottom: 0;opacity: 1;}
+	0%   {transform: translateY(50px);opacity: 0;}
+	100% {transform: translateY(0px);opacity: 1;}
 }
 
 @keyframes fadeOut {

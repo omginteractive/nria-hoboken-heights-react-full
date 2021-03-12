@@ -13,7 +13,7 @@
                     animation-delay: $animation_incremental_delay*$i + $additional_delay;
                     + img {
                         animation-fill-mode: forwards;
-                        animation-name: fadeInDriftUpTop2;
+                        animation-name: fadeInDriftUp;
                         animation-duration: $animation_element_duration;
                         animation-delay: $animation_incremental_delay*($i+1) + $additional_delay;
                         opacity: 0;
@@ -771,7 +771,7 @@ body {
                                     transition: opacity 0.6s;
                                 }
                                 > span:last-of-type {
-                                    display: inline;
+                                    display: inline-block;//make toggle icon inline with last span
                                 }
                             }
                         }
