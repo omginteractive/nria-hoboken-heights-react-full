@@ -11,12 +11,17 @@ class Slide extends Component {
         super(props);
         this.state = {
 			styles: this.props.obj.styles,
-            // type: this.props.obj.slideTemplate,
+            obj: this.props.obj
         }
     }
     shouldComponentUpdate(nextProps, nextState){
-        const isBeingToggled = this.props.isCurrent != nextProps.isCurrent
-        return isBeingToggled
+        // return true
+        const isBeingToggled = this.props.isCurrent !== nextProps.isCurrent
+        const videoMobileStartPositionToggled = this.props.isCurrent && this.state.previousVideoMobileStartPosition !== this.props.obj.videoMobileStartPosition
+        if(videoMobileStartPositionToggled){
+            this.setState({previousVideoMobileStartPosition: this.props.obj.videoMobileStartPosition});
+        }
+        return isBeingToggled || videoMobileStartPositionToggled
     }
     handleTheScroll = e => {
         let element = e.target
