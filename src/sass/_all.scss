@@ -678,13 +678,21 @@ body {
                             top: 50%;
                             cursor: pointer;
                             z-index: 3;//above dark cloud
+                            animation-duration: 0.5s;
+                            animation-timing-function: linear;
                             &--right {
                                 transform: translateY(-50%);
-                                transition: right 0.2s;
+                                right: 40px;
+                                &.active {
+                                    animation-name: animateAmenityRightArrowClick;
+                                }
                             }
                             &--left {
                                 transform: rotate(180deg) translateY(50%);
-                                transition: left 0.2s;
+                                left: 40px;
+                                &.active {
+                                    animation-name: animateAmenityLeftArrowClick;
+                                }
                             }
                         }
                         &__image {

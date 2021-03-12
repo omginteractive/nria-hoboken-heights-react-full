@@ -941,16 +941,11 @@ class SlideAmenitiesDetail extends Component {
             descriptionVisible: false,
             image: null,
             image1IsNew: false,
-            title_line1: ' '//animation doesnt work without this
+            title_line1: ' ',//animation doesnt work without this
+            rightArrowActive: false,
+            leftArrowActive: false
         }
-        this.defaultArrowDistanceFromEdge = "40px"
-        this.clickedArrowDistanceFromEdge = "25px"
-        this.state.rightArrowStyles= {
-            right: this.defaultArrowDistanceFromEdge
-        }
-        this.state.leftArrowStyles= {
-            left: this.defaultArrowDistanceFromEdge
-        }
+        
     }
     shouldComponentUpdate(nextProps, nextState){
         const amenityNameVisibilityChanged = this.state.amenityNameVisibility !== nextState.amenityNameVisibility
@@ -1064,32 +1059,24 @@ class SlideAmenitiesDetail extends Component {
     }
     animateRightArrowAndChangeAmenity(){
         this.setState({
-            rightArrowStyles: {
-                right: this.clickedArrowDistanceFromEdge
-            }
+            rightArrowActive: true
         })
         this.changeAmenity(1)
     }
     resetRightArrow(){
         this.setState({
-            rightArrowStyles: {
-                right: this.defaultArrowDistanceFromEdge
-            }
+            rightArrowActive: false
         })
     }
     animateLeftArrowAndChangeAmenity(){
         this.setState({
-            leftArrowStyles: {
-                left: this.clickedArrowDistanceFromEdge
-            }
+            leftArrowActive: true
         })
         this.changeAmenity(-1)
     }
     resetLeftArrow(){
         this.setState({
-            leftArrowStyles: {
-                left: this.defaultArrowDistanceFromEdge
-            }
+            leftArrowActive: false
         })
     }
     activateAmenity(dotIdx){
@@ -1112,11 +1099,17 @@ class SlideAmenitiesDetail extends Component {
         amenities_detail_name_classes += !this.state.amenityNameVisibility ? ' runFadeOutAnimation' : ' runFadeInAnimation'
         amenities_detail_name_classes += this.state.descriptionVisible ? ' riseForDescription' : ''
         let amenities_detail__more_info_classes = 'amenities_detail__more_info'
+
+        let rightArrowClasses = "amenities_detail__arrow amenities_detail__arrow--right"
+        rightArrowClasses += this.state.rightArrowActive ? ' active' : ''
+        
+        let leftArrowClasses = "amenities_detail__arrow amenities_detail__arrow--left"
+        leftArrowClasses += this.state.leftArrowActive ? ' active' : ''
         return (
             <>
                 <section className="amenities_detail">
-                    <img onTransitionEnd={this.resetRightArrow.bind(this)} alt="Right Arrow" onClick={this.animateRightArrowAndChangeAmenity.bind(this)} style={this.state.rightArrowStyles} className="amenities_detail__arrow amenities_detail__arrow--right" src={require('./images/amenities/rightArrow.svg').default} />
-                    <img onTransitionEnd={this.resetLeftArrow.bind(this)} alt="Left Arrow" onClick={this.animateLeftArrowAndChangeAmenity.bind(this)} style={this.state.leftArrowStyles} className="amenities_detail__arrow amenities_detail__arrow--left" src={require('./images/amenities/rightArrow.svg').default} />
+                    <img onAnimationEnd={this.resetRightArrow.bind(this)} alt="Right Arrow" onClick={this.animateRightArrowAndChangeAmenity.bind(this)} className={rightArrowClasses} src={require('./images/amenities/rightArrow.svg').default} />
+                    <img onAnimationEnd={this.resetLeftArrow.bind(this)} alt="Left Arrow" onClick={this.animateLeftArrowAndChangeAmenity.bind(this)} className={leftArrowClasses} src={require('./images/amenities/rightArrow.svg').default} />
                     <img alt="" src={this.state.image1 && require('./'+this.state.image1).default} className={image1_classes}  />
                     <img alt="" src={this.state.image2 && require('./' + this.state.image2).default} className={image2_classes}  />
                     <div className={amenities_detail__more_info_classes}>

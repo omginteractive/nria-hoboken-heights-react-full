@@ -54,3 +54,17 @@
     0% {transform: scale(1.15);}
     100% {transform: scale(1);}
 }
+
+
+@keyframes animateAmenityRightArrowClick {
+    0% {transform: translateY(-50%) translateX(0%);}
+    50% {transform: translateY(-50%) translateX(50%);}
+    100% {transform: translateY(-50%) translateX(0%);}
+}
+
+@keyframes animateAmenityLeftArrowClick {
+    0% {transform: rotate(180deg) translateY(50%) translateX(0%);}
+    50% {transform: rotate(180deg) translateY(50%) translateX(50%);}
+    100% {transform: rotate(180deg) translateY(50%) translateX(0%);}
+}
+
