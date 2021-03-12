@@ -1046,13 +1046,19 @@ body {
             &.backgroundFrame {
                 background-size: cover;
             }
+            .left_arrow_bouncing,
+            .right_arrow_bouncing {
+                transition: opacity 0.5s;
+            }
             &.mobile-video-position- {
                 &left {
                     .videoContainer,
                     .fullscreenImageWrapper {
                         transform: translateX(33%);
                     }
-                    
+                    .left_arrow_bouncing {
+                        opacity: 0;
+                    }
                 }
                 &center {
                     .videoContainer,
@@ -1064,6 +1070,9 @@ body {
                     .videoContainer,
                     .fullscreenImageWrapper {
                         transform: translateX(-33%);
+                    }
+                    .right_arrow_bouncing {
+                        opacity: 0;
                     }
                 }
             }

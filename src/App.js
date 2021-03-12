@@ -428,6 +428,7 @@ class App extends React.Component {
             const scrollBottom = document.querySelector(querySelector).scrollHeight - document.querySelector(querySelector).offsetHeight - document.querySelector(querySelector).scrollTop;
             if(scrollBottom > 1) {//scrollBottom can be negative. It also sometimes needs to scroll because 1 is the lowest value as in .amenities__details
                 // document.querySelector(querySelector).scrollTop = document.querySelector(querySelector).scrollTop + 200
+                console.log(scrollBottom, querySelector)
                 return 'needScroll'
 			}
 		}
