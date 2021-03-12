@@ -670,9 +670,9 @@ body {
                             display: none;
                         }
                         &__name {
-                            bottom: calc(#{$dots-bottom} + #{$name-bottom});
+                            transform: translateY(calc(-#{$dots-bottom} - #{$name-bottom}));
                             &.riseForDescription {
-                                bottom: calc(#{$dots-bottom} + #{$name-rise-distance} + #{$name-bottom});
+                                transform: translateY(calc(-#{$dots-bottom} - #{$name-rise-distance} - #{$name-bottom}));
                             }
                             > h3 {
                                 font-size: 24px;
@@ -683,13 +683,13 @@ body {
                             height: 24px;
                             top: 4px;
                         }
-                        &__description {
-                            .text {
-                                padding: 10px 10vw calc(#{$dots-bottom} + 32px);
-                                > p {
-                                font-size: 12px;
-                                line-height: 1.4em;
-                                }
+                        &__description_gradient {
+                        }
+                        &__description_text {
+                            padding: 10px 10vw calc(#{$dots-bottom} + 32px);
+                            > p {
+                            font-size: 12px;
+                            line-height: 1.4em;
                             }
                         }
                         &__more_info {

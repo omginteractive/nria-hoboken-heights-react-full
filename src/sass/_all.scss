@@ -791,32 +791,37 @@ body {
                             top: 2px;
                             cursor: pointer;
                         }
-                        &__description {
+                        &__description_gradient {
                             line-height: 1.4em;
                             // background: rgb(0,0,0);
                             // background: linear-gradient(0deg, rgba(0, 0, 0, 0.923714986) 0%, rgba(0, 0, 0, 0.4908018207) 69%, rgba(0, 0, 0, 0.2908018207) 89%, rgba(0, 0, 0, 0) 100%);
                             background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.69) 28%, rgba(255,255,255,0) 100%);
                             width: 100vw;
                             background-repeat: no-repeat;
-                            height: 0;
-                            transition: height 0.8s;
+                            // height: 0;
+                            transform: scaleY(0);
+                            transition: transform 0.8s;
+                            transform-origin: bottom;
                             // margin-top: 2em;
                             // opacity: 0;
+                            height: calc(#{$dots-bottom} + #{$name-bottom} + #{$name-rise-distance} + 100px);
                             &.visible {
-                                height: calc(#{$dots-bottom} + #{$name-bottom} + #{$name-rise-distance} + 100px);
+                                transform: scaleY(1);
                                 opacity: 1;
                                 // transition: height 0.8s, opacity 0.5s ease 0.5s;
-                                .text {
-                                    opacity: 1;
-                                    transition: opacity 0.5s ease 0.5s;
-                                }
+                                
                             }
-                            .text {
-                                opacity: 0;
-                                transition: opacity 0.5s;
-                                position: absolute;
-                                bottom: 0;
-                                padding: 30px 20vw calc(#{$dots-bottom} + 32px);
+                            
+                        }
+                        &__description_text {
+                            opacity: 0;
+                            transition: opacity 0.5s;
+                            position: absolute;
+                            bottom: 0;
+                            padding: 30px 20vw calc(#{$dots-bottom} + 32px);
+                            &.visible {
+                                opacity: 1;
+                                transition: opacity 0.5s ease 0.5s;
                             }
                         }
                         &__more_info_btn {

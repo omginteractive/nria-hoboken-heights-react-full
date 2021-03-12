@@ -884,28 +884,30 @@ body {
   top: 2px;
   cursor: pointer;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_gradient {
   line-height: 1.4em;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.69) 28%, rgba(255, 255, 255, 0) 100%);
   width: 100vw;
   background-repeat: no-repeat;
-  height: 0;
-  transition: height 0.8s;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description.visible {
+  transform: scaleY(0);
+  transition: transform 0.8s;
+  transform-origin: bottom;
   height: calc(8.2vh + 20px + 140px + 100px);
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_gradient.visible {
+  transform: scaleY(1);
   opacity: 1;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description.visible .text {
-  opacity: 1;
-  transition: opacity 0.5s ease 0.5s;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description .text {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_text {
   opacity: 0;
   transition: opacity 0.5s;
   position: absolute;
   bottom: 0;
   padding: 30px 20vw calc(8.2vh + 32px);
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_text.visible {
+  opacity: 1;
+  transition: opacity 0.5s ease 0.5s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info_btn {
   position: absolute;
@@ -2809,10 +2811,10 @@ body {
     display: none;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name {
-    bottom: calc(8.2vh + 20px);
+    transform: translateY(calc(-8.2vh - 20px));
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.riseForDescription {
-    bottom: calc(8.2vh + 180px + 20px);
+    transform: translateY(calc(-8.2vh - 180px - 20px));
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name > h3 {
     font-size: 24px;
@@ -2822,10 +2824,10 @@ body {
     height: 24px;
     top: 4px;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description .text {
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_text {
     padding: 10px 10vw calc(8.2vh + 32px);
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description .text > p {
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_text > p {
     font-size: 12px;
     line-height: 1.4em;
   }

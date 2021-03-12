@@ -1085,8 +1085,13 @@ class SlideAmenitiesDetail extends Component {
     render(){
         const toggleButtonSrc = this.state.descriptionVisible ? 'images/amenities/Button-.svg' : 'images/amenities/Button+.svg'
         const hasMoreInfoBtn = this.props.configuration.amenities[this.state.currIdx] && this.props.configuration.amenities[this.state.currIdx].moreInfoBtn
-        let descriptionClasses = 'amenities_detail__description'
-        descriptionClasses += this.state.descriptionVisible ? ' visible' : ''
+        
+        let descriptionGradientClasses = 'amenities_detail__description_gradient'
+        descriptionGradientClasses += this.state.descriptionVisible ? ' visible' : ''
+        
+        let descriptionTextClasses = 'amenities_detail__description_text'
+        descriptionTextClasses += this.state.descriptionVisible ? ' visible' : ''
+        
         const descriptionStyles = {
             // backgroundImage: 'url('+require('./images/amenities/blackgradient.png').default+')',
         }
@@ -1128,10 +1133,10 @@ class SlideAmenitiesDetail extends Component {
                                 return (<div key={i} onClick={() => this.activateAmenity(i)} className={dotClasses} />)
                             })}
                         </div>
-                        <div className={descriptionClasses} style={descriptionStyles}>
-                            <div className="text">
-                                <p>{this.state.description}</p>
-                            </div>
+                        <div className={descriptionGradientClasses} style={descriptionStyles}>
+                        </div>
+                        <div className={descriptionTextClasses}>
+                            <p>{this.state.description}</p>
                         </div>
                     </div>
                     {hasMoreInfoBtn && 
