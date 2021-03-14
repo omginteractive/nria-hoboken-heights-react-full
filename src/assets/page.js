@@ -256,13 +256,11 @@ const flypilotFetchWPRestAPI = async () => {
         residenceDetailImages: residenceDetailImages,
     }
     ,{
-        slideTemplate: 'residencePenthouseDetail',
+        slideTemplate: 'residencePenthouseDetail',//this is for mobile only because the original desktop slide with text and images needed separation
         styles: {
             background: "#fff",
         },
         headerTheme: 'light',
-        // enableScrolling: true,
-        // enableScrollingQuerySelector: '.residencePenthouseDetail__details',
         imageDetailsAdditionalClasses: 'not-mobile',
         mobileOnly: true,
         mobileHorizontalVideoSlideEnabled: true,

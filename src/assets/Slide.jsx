@@ -287,7 +287,7 @@ class SlideMap extends Component {
                             const locationListingClasses =  isActive ? 'locationListing active' : 'locationListing'
                             const toggleSymbol = isActive ? '-' : '+'
                             return (
-                            <div key={idx} onClick={() => this.toggleListing(idx)}  className={locationListingClasses}>
+                            <div key={idx+'mapSectionLocationListing'} onClick={() => this.toggleListing(idx)}  className={locationListingClasses}>
                                 <div className="titleDistanceWrapper">
                                     <div className="locationTitle">Lorem Ipsum</div>
                                     <div className="locationDistance">(10 mins)</div>
@@ -676,7 +676,7 @@ class SlideExteriorLightToggle extends Component {
                 <div onClick={this.toggleLights.bind(this)} className="toggleLights btn">{lightButtonText}</div>
                 {
                     <div className={lightsMaskContainerClasses}>
-                        <img class='lightsMask startZoomedIn videoZoomEffectRepeat' alt="" src={require('./images/NIRMA_1_Exterior_High_Cinemagraphic.png').default} />
+                        <img className='lightsMask startZoomedIn videoZoomEffectRepeat' alt="" src={require('./images/NIRMA_1_Exterior_High_Cinemagraphic.png').default} />
                     </div>
                 }
                 {/* {false && 
@@ -1141,7 +1141,7 @@ class SlideAmenitiesDetail extends Component {
                             {this.props.configuration.amenities.map((amenity, i) => {
                                 let dotClasses = 'dot'
                                 dotClasses += i === this.state.currIdx ? ' active' : ''
-                                return (<div key={i} onClick={() => this.activateAmenity(i)} className={dotClasses} />)
+                                return (<div key={i+'SlideAmenitiesDetailDot'} onClick={() => this.activateAmenity(i)} className={dotClasses} />)
                             })}
                         </div>
                         <div className={descriptionGradientClasses} style={descriptionStyles}>
@@ -1262,7 +1262,7 @@ class SlideViews extends Component {
                                     let imageClasses = mapped_images_classes
                                     if(isActiveImage) imageClasses = mapped_images_classes + ' active'
                                     else if(isPreviouslyActiveImage) imageClasses = mapped_images_classes + ' previouslyActive'
-                                    return (<img key={view.image} alt={view.displayTime} src={require('./' + view.image).default} className={imageClasses} onTransitionEnd={this.handleTransitionEnd.bind(this)} />)
+                                    return (<img key={i+'viewsSectionTimeSliderImage'} alt={view.displayTime} src={require('./' + view.image).default} className={imageClasses} onTransitionEnd={this.handleTransitionEnd.bind(this)} />)
                                 })}       
                             </>
                         }
@@ -1271,7 +1271,7 @@ class SlideViews extends Component {
                             <ul className="views_section__timeList">
                                 {this.props.configuration.views.map((view, i) => {
                                     const listClasses = i === this.state.activeView ? 'active' : ''
-                                    return (<li className={listClasses} key={i}>{view.displayTime} <span className='ampm'>{view.ampm}</span></li>)
+                                    return (<li className={listClasses} key={i+'viewsSectionTimeSliderTime'}>{view.displayTime} <span className='ampm'>{view.ampm}</span></li>)
                                 })}
                             </ul>
                             <div className="visibleSliderLine"></div>
@@ -1396,6 +1396,7 @@ class SlideResidencePenthouseDetail extends Component {
         })
     }
     render(){
+        const headerTheme = this.props.configuration.headerTheme//this is used to create unique keys between the two different components
         const imageIsExpanded = this.state.imageExpanded
         let details_classes = 'residencePenthouseDetail'
         details_classes += imageIsExpanded ? ' expandImage' : ''
@@ -1414,7 +1415,7 @@ class SlideResidencePenthouseDetail extends Component {
             'Optional smart home technology',
             ] : 
             [
-                'Panoramic views of the New York City skyline ',
+                'Residence Panoramic views of the New York City skyline ',
                 'Spacious open plan living ',
                 '4 Bedrooms, 4.5 Bathrooms ',
                 'High-end appliances ',
@@ -1439,7 +1440,7 @@ class SlideResidencePenthouseDetail extends Component {
                             <div className="heading">Features:</div>
                             <ul>
                                 {featuresArray.map((feature, i) => {
-                                    return (<li key={i+feature}>{feature}</li>)
+                                    return (<li key={i+'residencePenthouseDetailFeature' + headerTheme}>{feature}</li>)
                                 })}
                             </ul>
                         </div>
@@ -1464,11 +1465,9 @@ class SlideResidencePenthouseDetail extends Component {
                                 let imgClasses = 'fullscreenImage'
                                 imgClasses += i === this.state.currIdx ? ' active' : ''
                                 imgClasses += i === this.state.prevIdx ? ' deactivating' : ''
-                                const phantomImageClasses = 'phantomFullscreenImage'
-                                return (<>
-                                    <img key={i+'fullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={require('./'+image).default} alt="Residence Penthouse"/>
-                                    {/* <img key={i+'fullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={phantomImageClasses} src={require('./'+image).default} alt="Residence Penthouse"/> */}
-                                </>)
+                                return (
+                                    <img key={i+'residencePenthouseDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={require('./'+image).default} alt="Residence Penthouse"/>
+                                )
                             })}
                         </div>
                     </div>
@@ -1476,7 +1475,7 @@ class SlideResidencePenthouseDetail extends Component {
                         {images.map((image, i) => {
                             let dotClasses = 'dot'
                             dotClasses += i === this.state.currIdx ? ' active' : ''
-                            return (<div key={i} onClick={() => this.activateImage(i)} className={dotClasses} />)
+                            return (<div key={i+'residencePenthouseDetailDot' + headerTheme} onClick={() => this.activateImage(i)} className={dotClasses} />)
                         })}
                     </div>
                 </section>
@@ -1558,7 +1557,7 @@ class SlideFounders extends Component {
                         <div className="founderBenefits">
                             {Object.entries(founderBenefits).map(([key, value]) => {
                                 return(
-                                <div key={key} className="benefitPair">
+                                <div key={key+'founderBenefit'} className="benefitPair">
                                     <div className="count">{parseInt(key)+1}</div>
                                     <div className="benefit">{value}</div>
                                 </div>

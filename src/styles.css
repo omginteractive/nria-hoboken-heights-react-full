@@ -3020,8 +3020,8 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__dots .dot {
     background-color: rgba(255, 255, 255, 0.5);
-    margin-left: 2.4074074074vw;
-    margin-right: 2.4074074074vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
     width: 2.8703703704vw;
     height: 2.8703703704vw;
   }
@@ -3029,6 +3029,8 @@ body {
     width: 4.3518518519vw;
     height: 4.3518518519vw;
     background-color: #fff;
+    margin-left: 4.2592592593vw;
+    margin-right: 4.2592592593vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__arrow_button_container .leftArrowContainer {
     display: none;
