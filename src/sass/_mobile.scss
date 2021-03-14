@@ -848,8 +848,23 @@ body {
                         &__dots {
                             right: auto;
                             top: auto;
-                            bottom: 10vw;
+                            bottom: calc_vw(75);
                             flex-direction: row;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            align-items: center;
+                            .dot {
+                                background-color: rgba(255,255,255,0.5);
+                                margin-left: calc_vw(26);
+                                margin-right: calc_vw(26);
+                                width: calc_vw(31);
+                                height: calc_vw(31);
+                                &.active {
+                                    width: calc_vw(47);
+                                    height: calc_vw(47);
+                                    background-color: #fff;
+                                }
+                            }
                         }
                         &__arrow_button_container {
                             .leftArrowContainer {
