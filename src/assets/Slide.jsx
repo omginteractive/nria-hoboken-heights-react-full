@@ -653,7 +653,7 @@ class SlideExteriorLightToggle extends Component {
     render(){
         let videoContainerClasses = 'videoContainer'
         videoContainerClasses += ' compact'
-        const videoContainerClassesLightsOn = videoContainerClasses + ' lightsOn'
+        // const videoContainerClassesLightsOn = videoContainerClasses + ' lightsOn'
         const videoContainerClassesLightsOff = videoContainerClasses + ' lightsOff'
         let videoClasses = 'background-video'
         let lightButtonText = this.state.lightsOn ? 'Turn Off' : 'Turn On'
@@ -683,7 +683,7 @@ class SlideExteriorLightToggle extends Component {
 							//Hide landingpage video on FFMobile because it will not autoplay
 							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
 						<div
-						className={videoContainerClassesLightsOn}
+						// className={videoContainerClassesLightsOn}
 						dangerouslySetInnerHTML={{
 							__html: `
 							<video
@@ -1208,6 +1208,7 @@ class SlideViews extends Component {
         return n % 1 === 0;
     }
     setNewTime(key){
+        console.log(key)
         this.setState({
             timeSliderValue: key,
         })
@@ -1267,7 +1268,7 @@ class SlideViews extends Component {
                             </>
                         }
                         <div className="views_section__timeSlider">
-                            <input onMouseUp={this.handleMouseUp.bind(this)} onTouchEnd={this.handleMouseUp.bind(this)} onChange={this.handleTimeChange.bind(this)} type="range" min="0" max={this.props.configuration.views.length - 1} step="0.005" value={this.state.timeSliderValue}/>
+                            <input onMouseUp={this.handleMouseUp.bind(this)} onTouchEnd={this.handleMouseUp.bind(this)} onChange={this.handleTimeChange.bind(this)} type="range" min="0" max={this.props.configuration.views.length - 1} step="0.005" value={this.state.timeSliderValue} orient="vertical"/>
                             <ul className="views_section__timeList">
                                 {this.props.configuration.views.map((view, i) => {
                                     const listClasses = i === this.state.activeView ? 'active' : ''

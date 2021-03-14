@@ -2914,9 +2914,9 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input {
     writing-mode: bt-lr;
-    /* IE */
+    /* Vertical orientation IE */
     -webkit-appearance: slider-vertical;
-    /* WebKit */
+    /* Vertical orientation  WebKit */
     height: calc(40vh + 20px);
     width: 20px;
     transform: rotate(180deg);
