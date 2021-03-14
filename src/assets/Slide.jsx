@@ -177,7 +177,7 @@ class Slide extends Component {
                     <SlideAmenitiesDetail setAmenityOnDetailsSlide={this.setAmenityOnDetailsSlide.bind(this)} isCurrent={isCurrent} idx={this.props.amenityDetailsSlideIdx} configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'views' &&
-                    <SlideViews configuration={slideObj} />
+                    <SlideViews configuration={slideObj} isMobileDevice={this.props.isMobileDevice} />
                 }
                 {slideObj.slideTemplate === 'residencePenthouse' &&
                     <SlideResidencePenthouse setResidencePenthousePath={this.setResidencePenthousePath.bind(this)} methods={slideMethods}  />
@@ -1173,8 +1173,9 @@ class SlideViews extends Component {
         const viewChanged = this.state.activeView !== nextState.activeView
         const sliderChanged = this.state.timeSliderValue !== nextState.timeSliderValue
         const isTransitioningChanged = this.state.isTransitioning !== nextState.isTransitioning
+        const isMobileDeviceChanged = this.props.isMobileDevice !== nextProps.isMobileDevice
 
-        return viewChanged || sliderChanged || isTransitioningChanged
+        return viewChanged || sliderChanged || isTransitioningChanged || isMobileDeviceChanged
     }
     componentDidMount(){
         // this.props.configuration.views.forEach((view) => {
@@ -1247,6 +1248,7 @@ class SlideViews extends Component {
         const activeImageKey = this.state.activeView
         const isTransitioning = this.state.isTransitioning
         const views_section__bottom_classes = isTransitioning ? 'views_section__bottom isTransitioning' : 'views_section__bottom'
+        const firefoxOrient = this.props.isMobileDevice ? 'vertical' : 'horizontal'
         return(
             <>
                 <section className="views_section">
@@ -1268,7 +1270,7 @@ class SlideViews extends Component {
                             </>
                         }
                         <div className="views_section__timeSlider">
-                            <input onMouseUp={this.handleMouseUp.bind(this)} onTouchEnd={this.handleMouseUp.bind(this)} onChange={this.handleTimeChange.bind(this)} type="range" min="0" max={this.props.configuration.views.length - 1} step="0.005" value={this.state.timeSliderValue} orient="vertical"/>
+                            <input onMouseUp={this.handleMouseUp.bind(this)} onTouchEnd={this.handleMouseUp.bind(this)} onChange={this.handleTimeChange.bind(this)} type="range" min="0" max={this.props.configuration.views.length - 1} step="0.005" value={this.state.timeSliderValue} orient={firefoxOrient}/>
                             <ul className="views_section__timeList">
                                 {this.props.configuration.views.map((view, i) => {
                                     const listClasses = i === this.state.activeView ? 'active' : ''

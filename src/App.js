@@ -761,6 +761,7 @@ class App extends React.Component {
                 key={idx}
                 // slideCount={idx}
                 obj={slide}
+                isMobileDevice={this.state.isMobileDevice}
                 isCurrent={idx === deviceSlideIdx}
                 setAmenityDetailsSlideIdx={this.setAmenityOnDetailsSlide.bind(this)}
                 setResidencePenthousePath={this.setResidencePenthouse.bind(this)}
