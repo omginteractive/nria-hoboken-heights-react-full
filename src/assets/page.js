@@ -251,6 +251,7 @@ const flypilotFetchWPRestAPI = async () => {
         enableScrolling: true,
         enableScrollingQuerySelector: '.residencePenthouseDetail__details',
         imageContainerAdditionalClasses: 'not-mobile',
+        imageDotsAdditionalClasses: 'not-mobile',
         penthouseDetailImages: penthouseDetailImages,
         residenceDetailImages: residenceDetailImages,
     }

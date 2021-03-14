@@ -821,11 +821,35 @@ body {
                             overflow: visible;
                             position: static;
                             .fullscreenImageWrapper {
-                                > img {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                .fullscreenImage {
+                                    position: relative;
                                     width: auto;
+                                    @for $i from 1 through 4 {
+                                        &:nth-of-type(#{$i}){
+                                            bottom: ($i - 1) * 100vh;
+                                        }
+                                    }
+                                    // position: static;
+                                    &.active {
+                                        // transform: translateY(0%) translateX(33%);
+                                    }
+                                    
+                                }
+                                .phantomFullscreenImage {
+                                    display: block;
+                                    opacity: 0;
                                     position: static;
                                 }
                             }
+                        }
+                        &__dots {
+                            right: auto;
+                            top: auto;
+                            bottom: 10vw;
+                            flex-direction: row;
                         }
                         &__arrow_button_container {
                             .leftArrowContainer {

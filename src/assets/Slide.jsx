@@ -1420,6 +1420,8 @@ class SlideResidencePenthouseDetail extends Component {
         imageContainerClasses += this.props.configuration.imageContainerAdditionalClasses ? this.props.configuration.imageContainerAdditionalClasses : ''
         let residencePenthouseDetailsClasses = 'residencePenthouseDetail__details '
         residencePenthouseDetailsClasses += this.props.configuration.imageDetailsAdditionalClasses ? this.props.configuration.imageDetailsAdditionalClasses : ''
+        let residencePenthouseDotsClasses = 'residencePenthouseDetail__dots '
+        residencePenthouseDotsClasses += this.props.configuration.imageDotsAdditionalClasses ? this.props.configuration.imageDotsAdditionalClasses : ''
 
         return(
             <>
@@ -1456,11 +1458,15 @@ class SlideResidencePenthouseDetail extends Component {
                                 let imgClasses = 'fullscreenImage'
                                 imgClasses += i === this.state.currIdx ? ' active' : ''
                                 imgClasses += i === this.state.prevIdx ? ' deactivating' : ''
-                                return (<img key={i+'fullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={require('./'+image).default} alt="Residence Penthouse"/>)
+                                const phantomImageClasses = 'phantomFullscreenImage'
+                                return (<>
+                                    <img key={i+'fullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={require('./'+image).default} alt="Residence Penthouse"/>
+                                    {/* <img key={i+'fullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={phantomImageClasses} src={require('./'+image).default} alt="Residence Penthouse"/> */}
+                                </>)
                             })}
                         </div>
                     </div>
-                    <div className="residencePenthouseDetail__dots">
+                    <div className={residencePenthouseDotsClasses}>
                         {images.map((image, i) => {
                             let dotClasses = 'dot'
                             dotClasses += i === this.state.currIdx ? ' active' : ''

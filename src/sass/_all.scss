@@ -1163,6 +1163,9 @@ body {
                                         transition: transform $image_animation_duration, opacity $image_animation_duration;
                                     }
                                 }
+                                .phantomFullscreenImage {
+                                    display: none;
+                                }
                             }
                         }
                         &__expand_toggler {
