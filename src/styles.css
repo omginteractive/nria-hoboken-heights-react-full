@@ -2991,6 +2991,7 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container .fullscreenImageWrapper .fullscreenImage {
     position: relative;
     width: auto;
+    height: 100vh;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container .fullscreenImageWrapper .fullscreenImage:nth-of-type(1) {
     bottom: 0vh;
@@ -3003,11 +3004,6 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container .fullscreenImageWrapper .fullscreenImage:nth-of-type(4) {
     bottom: 300vh;
-  }
-  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container .fullscreenImageWrapper .phantomFullscreenImage {
-    display: block;
-    opacity: 0;
-    position: static;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__dots {
     right: auto;
