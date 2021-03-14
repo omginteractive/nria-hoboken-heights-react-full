@@ -18,6 +18,7 @@ $header-height: 50px;
 $header-padding: calc_vw(53.96);
 $content-padding: calc_vw(106);
 $header-space-for-content: calc_vw(210);
+$horizontalSlideTransitionDuration: 0.8s;
 .noSelect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -355,6 +356,7 @@ body {
     animation-name: none;//prevents desktop animation from running (which doesnt require .animate parent)
 }
 .slide .centerBottom {
+    z-index: 3;
     bottom: 17vh;
     > h1 {
         // opacity: 0;
@@ -561,12 +563,26 @@ body {
                     .toggleLights {
                         display: none;
                     }
-                    
+                    .lightsMaskContainer {
+                        left: auto;
+                        width: auto;
+                        height: 100vh;
+                        justify-content: center;
+                        transition: transform $horizontalSlideTransitionDuration;
+                        &.off {
+                            display: flex;
+                        }
+                        .lightsMask {
+                            // transform: translateX(-33%);
+                            width: auto;
+                            height: 100vh;
+                        }
+                    }
                     .videoContainer {
                         width: auto;
                         height: 100vh;
                         &.lightsOff {
-                            display: none;
+                            // display: none;
                         }
                     }
                     .centerBottom {
@@ -1098,10 +1114,16 @@ body {
                     .left_arrow_bouncing {
                         opacity: 0;
                     }
+                    .lightsMaskContainer {
+                        transform: translateX(33%);
+                    }
                 }
                 &center {
                     .videoContainer,
                     .fullscreenImageWrapper {
+                        transform: translateX(0%);
+                    }
+                    .lightsMaskContainer {
                         transform: translateX(0%);
                     }
                 }
@@ -1112,6 +1134,9 @@ body {
                     }
                     .right_arrow_bouncing {
                         opacity: 0;
+                    }
+                    .lightsMaskContainer {
+                        transform: translateX(-33%);
                     }
                 }
             }
@@ -1128,7 +1153,7 @@ body {
                 transition: transform 0.8s;
             }
             .videoContainer {
-                transition: transform 0.8s;
+                transition: transform $horizontalSlideTransitionDuration;
                 width: auto;
                 .background-video {
                     object-position: center;

@@ -658,7 +658,8 @@ class SlideExteriorLightToggle extends Component {
         let videoClasses = 'background-video'
         let lightButtonText = this.state.lightsOn ? 'Turn Off' : 'Turn On'
         if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffectRepeat startZoomedIn'
-
+        
+        let lightsMaskContainerClasses = this.state.lightsOn ? 'lightsMaskContainer on' : 'lightsMaskContainer off'
         return(
             <>
                 <header className='fixed-header'>
@@ -674,6 +675,11 @@ class SlideExteriorLightToggle extends Component {
                 </header>
                 <div onClick={this.toggleLights.bind(this)} className="toggleLights btn">{lightButtonText}</div>
                 {
+                    <div className={lightsMaskContainerClasses}>
+                        <img class='lightsMask startZoomedIn videoZoomEffectRepeat' alt="" src={require('./images/NIRMA_1_Exterior_High_Cinemagraphic.png').default} />
+                    </div>
+                }
+                {/* {false && 
 							//Hide landingpage video on FFMobile because it will not autoplay
 							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
 						<div
@@ -692,8 +698,8 @@ class SlideExteriorLightToggle extends Component {
 							</video>`
 						}}
 					/>
-				}
-                {!this.state.lightsOn &&
+				} */}
+                {
 							//Hide landingpage video on FFMobile because it will not autoplay
 							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
 						<div
