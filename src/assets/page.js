@@ -293,12 +293,14 @@ const flypilotFetchWPRestAPI = async () => {
     ,{
         slideTemplate: 'founders',
         styles: {
-            background: "rgb(21, 22, 23)",
+            background: "#141517",
+            background: "linear-gradient(90deg, #141517 0%, #141517 95%, #181919 100%)",
         },
+
         enableScrolling: true,
         enableScrollingQuerySelector: '.slideTemplate-founders .founderSlideWrapper',
         headerTheme: 'light',
-        founderImage: 'images/foundersClub.png',
+        founderImage: 'images/FOUNDERS-CLUB.png',
         founderHeadline: 'Gold Founding Members',
         founderTagline: '1st 10 Contracts',
         founderBenefits: [

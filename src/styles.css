@@ -1326,6 +1326,7 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer .founderHeadline {
   margin-bottom: 20px;
   width: 1px;
+  line-height: 59px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer .founderTagline {
   color: #a6682f;
@@ -1341,7 +1342,7 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer .founderBenefits .benefitPair {
   display: flex;
   align-items: center;
-  margin-top: 1.4vh;
+  margin-top: 2.5925925926vh;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer .founderBenefits .benefitPair .count {
   color: #151617;
@@ -1372,14 +1373,12 @@ body {
   transform: scale(1.5);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper {
-  display: flex;
   flex-direction: column;
   justify-content: center;
   position: absolute;
   left: 46%;
   overflow: scroll;
-  top: 12.8vh;
-  height: calc(100vh - 12.8vh);
+  top: calc(12.8vh + 4.2536458333vw);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderHeadline,
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderTagline,
