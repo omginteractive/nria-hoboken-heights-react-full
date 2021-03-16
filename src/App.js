@@ -538,13 +538,16 @@ class App extends React.Component {
 	}
 	handleTouchMove(evt){
 		if(this.state.touchState !== 1) return;
+        const touchDragThreshold = 20 //smaller values will allow smaller touchdrag events to trigger a slide event. 8 seems to be close to the lowest end and 60 seems to be too large
 		const coordinateX = evt.touches[0].clientX;
 		const coordinateY = evt.touches[0].clientY;
 		const horizontalDirection = this.state.touchStartCoordinate.x > coordinateX ? 'right' : 'left';
 		const verticalDirection = this.state.touchStartCoordinate.y > coordinateY ? 'down' : 'up';
 		const horizontalDifference = Math.abs(this.state.touchStartCoordinate.x - coordinateX);
 		const verticalDifference = Math.abs(this.state.touchStartCoordinate.y - coordinateY);
-		
+        const largestDifference = Math.max(horizontalDifference, verticalDifference)
+        console.log(largestDifference)
+        if(largestDifference < touchDragThreshold) return
 		let mainTouchDirection;
 		if(verticalDifference > horizontalDifference) {
 			mainTouchDirection = verticalDirection
