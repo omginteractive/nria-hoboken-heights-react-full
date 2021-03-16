@@ -1298,6 +1298,7 @@ class SlideResidencePenthouseFullscreen extends Component {
     constructor(props) {
         super(props)
         this.penthouseImage = 'images/penthouse/penthousebed.png'
+        this.residenceImage = 'images/residence/residence.png'
     }
     shouldComponentUpdate(nextProps, nextState){
         const residencePenthouseChanged = nextProps.residencePenthouse !== this.props.residencePenthouse
@@ -1306,13 +1307,14 @@ class SlideResidencePenthouseFullscreen extends Component {
     componentDidMount(){
         //preload images
         new Image().src = require('./'+this.penthouseImage).default
+        new Image().src = require('./'+this.residenceImage).default
         
     }
     nextSlide(noRequireScroll = false){
         this.props.methods.scrollToNextSlide(noRequireScroll)
     }
     render(){
-        const fullscreenImage = this.penthouseImage
+        const fullscreenImage = this.props.residencePenthouse === 'penthouse' ? this.penthouseImage : this.residenceImage
         return(
             <>
                 {
