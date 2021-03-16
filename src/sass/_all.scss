@@ -797,7 +797,7 @@ body {
                         }
                         &__description_gradient {
                             line-height: 1.4em;
-                            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.69) 28%, rgba(255,255,255,0) 100%);
+                            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.69) 28%, rgba(0,0,0,0) 100%);
                             width: 100vw;
                             background-repeat: no-repeat;
                             transform: translateY(100%);
