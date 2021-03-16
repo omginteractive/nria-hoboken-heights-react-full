@@ -169,7 +169,8 @@ class App extends React.Component {
         const desktopKeysNotLoaded = this.state.desktopKeys.length === 0
         const mobileKeysNotLoaded = this.state.mobileKeys.length === 0
         const currIdxChanged = this.state.currIdx !== nextState.currIdx
-        const needsToRender = slidesNotLoaded || desktopKeysNotLoaded || mobileKeysNotLoaded || currIdxChanged
+        const mobileMenuToggled = this.state.mobileMenuOpen !== nextState.mobileMenuOpen
+        const needsToRender = slidesNotLoaded || desktopKeysNotLoaded || mobileKeysNotLoaded || currIdxChanged || mobileMenuToggled
         return needsToRender
     }
     handleResize(){
