@@ -816,16 +816,61 @@ body {
   z-index: 1;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info__dots .dot {
-  height: 10px;
-  width: 10px;
+  height: 11px;
+  width: 11px;
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 50%;
   display: inline-block;
-  margin: 0 4px;
+  margin: 0 8px;
   cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info__dots .dot.active {
   background-color: white;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_toggler {
+  height: 30px;
+  margin-left: 10px;
+  position: relative;
+  top: 2px;
+  cursor: pointer;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_gradient {
+  line-height: 1.4em;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.69) 28%, rgba(255, 255, 255, 0) 100%);
+  width: 100vw;
+  background-repeat: no-repeat;
+  transform: translateY(100%);
+  transition: transform 0.8s;
+  height: calc(8.2vh + 20px + 140px + 100px);
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_gradient.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container {
+  position: absolute;
+  bottom: 0;
+  padding: 20px 20vw calc(8.2vh + 32px);
+  display: flex;
+  justify-content: center;
+  transition: transform 0.5s;
+  left: 0;
+  transform: translateY(calc(100% - 8.2vh - 32px - 32px));
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container.visible {
+  transform: translateY(0);
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container.visible .descriptionTextElement {
+  opacity: 1;
+  transition: opacity 0.5s ease 0.5s;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container .amenities_detail__amenity_name_and_description_wrapper {
+  display: flex;
+  justify-content: center;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container .descriptionTextElement {
+  transition: opacity 0.5s;
+  opacity: 0;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name {
   text-transform: uppercase;
@@ -834,12 +879,12 @@ body {
   font-family: "Gotham-Light", sans-serif;
   z-index: 1;
   position: absolute;
-  transform: translateY(calc(-8.2vh - 20px));
-  bottom: 0;
+  top: 0;
+  transform: translateY(calc(-100% + 32px));
   transition: transform 1s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.riseForDescription {
-  transform: translateY(calc(-8.2vh - 140px - 20px));
+  transform: translateY(-100%);
   transition: transform 0.5s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeOutAnimation > h3 > span,
@@ -895,37 +940,6 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name > h3 > span:last-of-type {
   display: inline-block;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_toggler {
-  height: 30px;
-  margin-left: 10px;
-  position: relative;
-  top: 2px;
-  cursor: pointer;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_gradient {
-  line-height: 1.4em;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.69) 28%, rgba(255, 255, 255, 0) 100%);
-  width: 100vw;
-  background-repeat: no-repeat;
-  transform: translateY(100%);
-  transition: transform 0.8s;
-  height: calc(8.2vh + 20px + 140px + 100px);
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_gradient.visible {
-  transform: translateY(0);
-  opacity: 1;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_text {
-  opacity: 0;
-  transition: opacity 0.5s;
-  position: absolute;
-  bottom: 0;
-  padding: 30px 20vw calc(8.2vh + 32px);
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_text.visible {
-  opacity: 1;
-  transition: opacity 0.5s ease 0.5s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info_btn {
   position: absolute;
@@ -2863,10 +2877,10 @@ body {
     height: 24px;
     top: 4px;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_text {
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container {
     padding: 10px 10vw calc(8.2vh + 32px);
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_text > p {
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container .descriptionTextElement {
     font-size: 12px;
     line-height: 1.4em;
   }

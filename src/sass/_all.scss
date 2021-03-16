@@ -705,6 +705,9 @@ body {
                     $amenitiesTransitionDuration: 1.3s;
                     .amenities_detail {
                         $dots-bottom: 8.2vh;
+                        $dots-bottom-space-occupied: 32px;
+                        $space-between-dots-and-text: 32px;
+                        $space-between-title-and-description: 20px;
                         $name-bottom: 20px;
                         $name-rise-distance: 140px;
                         &__arrow {
@@ -771,17 +774,63 @@ body {
                                 bottom: $dots-bottom;
                                 z-index: 1;//to be on top of description
                                 .dot {
-                                    height: 10px;
-                                    width: 10px;
+                                    height: 11px;
+                                    width: 11px;
                                     background-color: rgba(255,255,255,0.6);
                                     border-radius: 50%;
                                     display: inline-block;
-                                    margin: 0 4px;
+                                    margin: 0 8px;
                                     cursor: pointer;
                                     &.active {
                                         background-color: rgba(255,255,255,1);
                                     }
                                 }
+                            }
+                        }
+                        
+                        &__description_toggler {
+                            height: 30px;
+                            margin-left: 10px;
+                            position: relative;
+                            top: 2px;
+                            cursor: pointer;
+                        }
+                        &__description_gradient {
+                            line-height: 1.4em;
+                            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.69) 28%, rgba(255,255,255,0) 100%);
+                            width: 100vw;
+                            background-repeat: no-repeat;
+                            transform: translateY(100%);
+                            transition: transform 0.8s;
+                            height: calc(#{$dots-bottom} + #{$name-bottom} + #{$name-rise-distance} + 100px);
+                            &.visible {
+                                transform: translateY(0);
+                                opacity: 1;
+                            }
+                        }
+                        &__amenity_name_and_description_container {
+                            position: absolute;
+                            bottom: 0;
+                            padding: $space-between-title-and-description 20vw calc(#{$dots-bottom} + #{$dots-bottom-space-occupied});
+                            display: flex;
+                            justify-content: center;
+                            transition: transform 0.5s;
+                            left: 0;
+                            transform: translateY(calc(100% -  #{$dots-bottom} - #{$dots-bottom-space-occupied} - #{$space-between-dots-and-text}));
+                            &.visible {
+                                transform: translateY(0);
+                                .descriptionTextElement {
+                                    opacity: 1;
+                                    transition: opacity 0.5s ease 0.5s;
+                                }
+                            }
+                            .amenities_detail__amenity_name_and_description_wrapper {
+                                display: flex;
+                                justify-content: center;
+                            }
+                            .descriptionTextElement {
+                                transition: opacity 0.5s;
+                                opacity: 0;
                             }
                         }
                         &__name {
@@ -791,11 +840,11 @@ body {
                             font-family: "Gotham-Light", sans-serif;
                             z-index: 1;//to be above description
                             position: absolute;
-                            transform: translateY(calc(-#{$dots-bottom} - #{$name-bottom}));
-                            bottom: 0;
+                            top: 0;
+                            transform: translateY(calc(-100% + #{$dots-bottom-space-occupied}));
                             transition: transform 1s;
                             &.riseForDescription {
-                                transform: translateY(calc(-#{$dots-bottom} - #{$name-rise-distance} - #{$name-bottom}));
+                                transform: translateY(-100%);
                                 transition: transform 0.5s;
                             }
                             &.runFadeOutAnimation {
@@ -818,40 +867,7 @@ body {
                                 }
                             }
                         }
-                        &__description_toggler {
-                            height: 30px;
-                            margin-left: 10px;
-                            position: relative;
-                            top: 2px;
-                            cursor: pointer;
-                        }
-                        &__description_gradient {
-                            line-height: 1.4em;
-                            // background: rgb(0,0,0);
-                            // background: linear-gradient(0deg, rgba(0, 0, 0, 0.923714986) 0%, rgba(0, 0, 0, 0.4908018207) 69%, rgba(0, 0, 0, 0.2908018207) 89%, rgba(0, 0, 0, 0) 100%);
-                            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.69) 28%, rgba(255,255,255,0) 100%);
-                            width: 100vw;
-                            background-repeat: no-repeat;
-                            transform: translateY(100%);
-                            transition: transform 0.8s;
-                            height: calc(#{$dots-bottom} + #{$name-bottom} + #{$name-rise-distance} + 100px);
-                            &.visible {
-                                transform: translateY(0);
-                                opacity: 1;
-                            }
-                            
-                        }
-                        &__description_text {
-                            opacity: 0;
-                            transition: opacity 0.5s;
-                            position: absolute;
-                            bottom: 0;
-                            padding: 30px 20vw calc(#{$dots-bottom} + 32px);
-                            &.visible {
-                                opacity: 1;
-                                transition: opacity 0.5s ease 0.5s;
-                            }
-                        }
+                        
                         &__more_info_btn {
                             position: absolute;
                             bottom: 30px;
@@ -1461,7 +1477,6 @@ body {
                             .mapMotionLogo {
                                 left: 25vw;
                                 top: 24vw;
-                                
                             }
                         }
                         &__locationList {

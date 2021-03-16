@@ -1102,8 +1102,8 @@ class SlideAmenitiesDetail extends Component {
         let descriptionGradientClasses = 'amenities_detail__description_gradient'
         descriptionGradientClasses += this.state.descriptionVisible ? ' visible' : ''
         
-        let descriptionTextClasses = 'amenities_detail__description_text'
-        descriptionTextClasses += this.state.descriptionVisible ? ' visible' : ''
+        let amenityNameAndDescriptionContainer = 'amenities_detail__amenity_name_and_description_container'
+        amenityNameAndDescriptionContainer += this.state.descriptionVisible ? ' visible' : ''
         
         const descriptionStyles = {
             // backgroundImage: 'url('+require('./images/amenities/blackgradient.png').default+')',
@@ -1131,14 +1131,7 @@ class SlideAmenitiesDetail extends Component {
                     <img alt="" src={this.state.image1 && require('./'+this.state.image1).default} className={image1_classes}  />
                     <img alt="" src={this.state.image2 && require('./' + this.state.image2).default} className={image2_classes}  />
                     <div className={amenities_detail__more_info_classes}>
-                        <div className={amenities_detail_name_classes}>
-                            <h3>
-                                {this.state.title_line1 && <span onAnimationEnd={this.transitioningAmenityComplete.bind(this)} >{this.state.title_line1}</span>}
-                                {this.state.title_line2 && <span>{this.state.title_line2}</span>}
-                                {this.state.title_line3 && <span>{this.state.title_line3}</span>}
-                                <img alt="" onClick={this.toggleDetailDescription.bind(this)} className="amenities_detail__description_toggler" src={require('./'+toggleButtonSrc).default} />
-                            </h3>
-                        </div>
+                        
                         <div className="amenities_detail__more_info__dots">
                             {this.props.configuration.amenities.map((amenity, i) => {
                                 let dotClasses = 'dot'
@@ -1148,8 +1141,18 @@ class SlideAmenitiesDetail extends Component {
                         </div>
                         <div className={descriptionGradientClasses} style={descriptionStyles}>
                         </div>
-                        <div className={descriptionTextClasses}>
-                            <p>{this.state.description}</p>
+                        <div className={amenityNameAndDescriptionContainer}>
+                            <div className="amenities_detail__amenity_name_and_description_wrapper">
+                                <div className={amenities_detail_name_classes}>
+                                    <h3>
+                                        {this.state.title_line1 && <span onAnimationEnd={this.transitioningAmenityComplete.bind(this)} >{this.state.title_line1}</span>}
+                                        {this.state.title_line2 && <span>{this.state.title_line2}</span>}
+                                        {this.state.title_line3 && <span>{this.state.title_line3}</span>}
+                                        <img alt="" onClick={this.toggleDetailDescription.bind(this)} className="amenities_detail__description_toggler" src={require('./'+toggleButtonSrc).default} />
+                                    </h3>
+                                </div>
+                                <p className='descriptionTextElement'>{this.state.description}</p>
+                            </div>
                         </div>
                     </div>
                     {hasMoreInfoBtn && 

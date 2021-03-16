@@ -699,9 +699,9 @@ body {
                             height: 24px;
                             top: 4px;
                         }
-                        &__description_text {
+                        &__amenity_name_and_description_container {
                             padding: 10px 10vw calc(#{$dots-bottom} + 32px);
-                            > p {
+                            .descriptionTextElement {
                             font-size: 12px;
                             line-height: 1.4em;
                             }
