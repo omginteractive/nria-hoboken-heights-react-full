@@ -1209,7 +1209,6 @@ class SlideViews extends Component {
         return n % 1 === 0;
     }
     setNewTime(key){
-        console.log(key)
         this.setState({
             timeSliderValue: key,
         })

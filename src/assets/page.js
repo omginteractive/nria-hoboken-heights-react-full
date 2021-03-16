@@ -293,7 +293,7 @@ const flypilotFetchWPRestAPI = async () => {
     ,{
         slideTemplate: 'founders',
         styles: {
-            background: "#141517",
+            // background: "#141517",
             background: "linear-gradient(90deg, #141517 0%, #141517 95%, #181919 100%)",
         },
 

@@ -114,7 +114,6 @@ class App extends React.Component {
 
 		this.state.isiPhone = navigator.platform === "iPhone"
     }
-
     componentDidMount() {
         flypilotFetchWPRestAPI().then((result)=> {
             this.setState({
@@ -165,6 +164,14 @@ class App extends React.Component {
         window.addEventListener('resize', () => this.handleResize())
         this.handleResize()
 	}
+    shouldComponentUpdate(nextProps, nextState){
+        const slidesNotLoaded = this.state.slides === null
+        const desktopKeysNotLoaded = this.state.desktopKeys.length === 0
+        const mobileKeysNotLoaded = this.state.mobileKeys.length === 0
+        const currIdxChanged = this.state.currIdx !== nextState.currIdx
+        const needsToRender = slidesNotLoaded || desktopKeysNotLoaded || mobileKeysNotLoaded || currIdxChanged
+        return needsToRender
+    }
     handleResize(){
         this.calculateMapAspectLockRatio()
         const isMobile = window.innerWidth < 769
@@ -207,16 +214,16 @@ class App extends React.Component {
 			}, resizeTime);
 		}
 	}
-	componentDidUpdate() {
-		// const that = this;
-		return;
-		// this.refs.inner.addEventListener('transitionend', (evt) => {
-		// 	that.setState({
-		// 		transitiongState: 0,
-		// 		currIdx: (this.state.currIdx + delta)
-		// 	});
-		// }, false);
-	}
+	// componentDidUpdate() {
+	// 	// const that = this;
+	// 	return;
+	// 	// this.refs.inner.addEventListener('transitionend', (evt) => {
+	// 	// 	that.setState({
+	// 	// 		transitiongState: 0,
+	// 	// 		currIdx: (this.state.currIdx + delta)
+	// 	// 	});
+	// 	// }, false);
+	// }
 	// debounceOnScroll() {
 	// 	//very long scrolls last 3.5 seconds, should be safe to zero out the scroll at that point
 	// 	//this would create a more responsive experience since a deltaY of 1 would then trigger a slide
@@ -428,7 +435,7 @@ class App extends React.Component {
             const scrollBottom = document.querySelector(querySelector).scrollHeight - document.querySelector(querySelector).offsetHeight - document.querySelector(querySelector).scrollTop;
             if(scrollBottom > 1) {//scrollBottom can be negative. It also sometimes needs to scroll because 1 is the lowest value as in .amenities__details
                 // document.querySelector(querySelector).scrollTop = document.querySelector(querySelector).scrollTop + 200
-                console.log(scrollBottom, querySelector)
+                // console.log(scrollBottom, querySelector)
                 return 'needScroll'
 			}
 		}
@@ -738,6 +745,7 @@ class App extends React.Component {
         return finalIdxOfDevice
     }
     render() {
+        console.log('renderingapp')
         const deviceSlideIdx = this.findDeviceSlideIdx(this.state.currIdx)
         const hasHeaderTheme = this.state.slides && this.state.slides[deviceSlideIdx] && this.state.slides[deviceSlideIdx].headerTheme
         const hasHeaderThemeMobile = this.state.slides && this.state.slides[deviceSlideIdx] && this.state.slides[deviceSlideIdx].headerThemeMobile
