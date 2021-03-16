@@ -1044,7 +1044,6 @@ body {
                             }
                         }
                         &__timeList {
-                            
                             display: flex;
                             justify-content: space-between;
                             width: calc(#{$sliderTargetWidth} + #{$timeWordWidth});
@@ -1059,6 +1058,7 @@ body {
                                 font-size: 10px;
                             }
                             > li {
+                                cursor: pointer;
                                 width: $timeWordWidth;
                                 text-align: center;
                                 position: relative;
