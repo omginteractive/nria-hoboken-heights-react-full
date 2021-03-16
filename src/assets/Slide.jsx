@@ -1274,7 +1274,7 @@ class SlideViews extends Component {
                             <ul className="views_section__timeList">
                                 {this.props.configuration.views.map((view, i) => {
                                     const listClasses = i === this.state.activeView ? 'active' : ''
-                                    return (<li className={listClasses} key={i+'viewsSectionTimeSliderTime'}>{view.displayTime} <span className='ampm'>{view.ampm}</span></li>)
+                                    return (<li onClick={() => this.setNewTime(i)} className={listClasses} key={i+'viewsSectionTimeSliderTime'}>{view.displayTime} <span className='ampm'>{view.ampm}</span></li>)
                                 })}
                             </ul>
                             <div className="visibleSliderLine"></div>
