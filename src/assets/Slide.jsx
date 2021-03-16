@@ -15,7 +15,6 @@ class Slide extends Component {
         }
     }
     shouldComponentUpdate(nextProps, nextState){
-        // return true
         const mapHeightLockedPropsChanged = this.props.mapHeightLocked !== nextProps.mapHeightLocked
         const isBeingToggled = this.props.isCurrent !== nextProps.isCurrent
         const videoMobileStartPositionToggled = this.props.isCurrent && this.state.previousVideoMobileStartPosition !== this.props.obj.videoMobileStartPosition
@@ -1222,24 +1221,11 @@ class SlideViews extends Component {
             console.log('same as previous')
             return
         }
-        // const image1IsNew = !this.state.image1IsNew
         this.setState({
             activeView: key,
-            // image1IsNew: image1IsNew,
             previousActiveKey: previousKey,
             isTransitioning: true
         })
-        // const image = this.props.configuration.views[key].image
-        // if(image1IsNew){
-        //     this.setState({
-        //         image1: image,
-        //     })
-        // }
-        // else {
-        //     this.setState({
-        //         image2: image,
-        //     })
-        // }
     }
     handleTransitionEnd  = e => {
         this.setState({
