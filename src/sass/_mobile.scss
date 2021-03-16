@@ -1041,8 +1041,16 @@ body {
                         height: 100vh;
                         &.heightLocked {
                             .mapMotionLogo {
-                                top: 459px;
-                                left: calc(50vw + 40px);//position of dot
+                                top: 341px;
+                                left: calc(50vw - 100px);//position of dot
+                            }
+                        }
+                        .mapMotionLogo {
+                            top: 350px;
+                            left: 209px;
+                            > img {
+                                height: 100px;
+                                transform: translate(-26px, -51px);//offset logo to move map marker onto dot of mapMotionLogo
                             }
                         }
                         .satelliteToggle {
@@ -1076,14 +1084,6 @@ body {
                                     // position: relative;
                                     transform: translate(0px, 100vh);
                                 }
-                            }
-                        }
-                        .mapMotionLogo {
-                            top: 350px;
-                            left: 209px;
-                            > img {
-                                height: 100px;
-                                transform: translate(-26px, -51px);//offset logo to move map marker onto dot of mapMotionLogo
                             }
                         }
                     }

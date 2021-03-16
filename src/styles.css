@@ -3165,8 +3165,16 @@ body {
     height: 100vh;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection.heightLocked .mapMotionLogo {
-    top: 459px;
-    left: calc(50vw + 40px);
+    top: 341px;
+    left: calc(50vw - 100px);
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo {
+    top: 350px;
+    left: 209px;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo > img {
+    height: 100px;
+    transform: translate(-26px, -51px);
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle {
     bottom: 0;
@@ -3193,14 +3201,6 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer > img {
     transform: translate(0px, 100vh);
-  }
-  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo {
-    top: 350px;
-    left: 209px;
-  }
-  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo > img {
-    height: 100px;
-    transform: translate(-26px, -51px);
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field + .hs-form-field .input, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field + .hs-form-field .input {
     margin-left: 0;

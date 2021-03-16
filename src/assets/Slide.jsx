@@ -16,12 +16,13 @@ class Slide extends Component {
     }
     shouldComponentUpdate(nextProps, nextState){
         // return true
+        const mapHeightLockedPropsChanged = this.props.mapHeightLocked !== nextProps.mapHeightLocked
         const isBeingToggled = this.props.isCurrent !== nextProps.isCurrent
         const videoMobileStartPositionToggled = this.props.isCurrent && this.state.previousVideoMobileStartPosition !== this.props.obj.videoMobileStartPosition
         if(videoMobileStartPositionToggled){
             this.setState({previousVideoMobileStartPosition: this.props.obj.videoMobileStartPosition});
         }
-        return isBeingToggled || videoMobileStartPositionToggled
+        return isBeingToggled || videoMobileStartPositionToggled || mapHeightLockedPropsChanged
     }
     handleTheScroll = e => {
         let element = e.target
@@ -226,7 +227,8 @@ class SlideMap extends Component {
     shouldComponentUpdate(nextProps, nextState){
         const mapChanged = this.state.satelliteMapEnabled !== nextState.satelliteMapEnabled
         const enabledListingChanged = this.state.enabledListing !== nextState.enabledListing
-        return mapChanged || enabledListingChanged
+        const mapHeightLockedPropsChanged = this.props.mapHeightLocked !== nextProps.mapHeightLocked
+        return mapChanged || enabledListingChanged || mapHeightLockedPropsChanged
     }
     toggleMap(){
         const newState = !this.state.satelliteMapEnabled

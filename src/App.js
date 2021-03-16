@@ -42,7 +42,8 @@ class App extends React.Component {
         residencePenthouse: 'penthouse',//default option
         isMobileDevice: null,
         desktopKeys: [],
-        mobileKeys: []
+        mobileKeys: [],
+        mapHeightLocked: null
     }
 
         this.watchForEventEnd = this.watchForEventEnd.bind(this);
@@ -170,7 +171,8 @@ class App extends React.Component {
         const mobileKeysNotLoaded = this.state.mobileKeys.length === 0
         const currIdxChanged = this.state.currIdx !== nextState.currIdx
         const mobileMenuToggled = this.state.mobileMenuOpen !== nextState.mobileMenuOpen
-        const needsToRender = slidesNotLoaded || desktopKeysNotLoaded || mobileKeysNotLoaded || currIdxChanged || mobileMenuToggled
+        const mapHeightLockedSettingChanged = this.state.mapHeightLocked !== nextState.mapHeightLocked
+        const needsToRender = slidesNotLoaded || desktopKeysNotLoaded || mobileKeysNotLoaded || currIdxChanged || mobileMenuToggled || mapHeightLockedSettingChanged
         return needsToRender
     }
     handleResize(){
@@ -184,6 +186,7 @@ class App extends React.Component {
         const headerVHPercent = 0.128
         const mapWidth = document.documentElement.clientWidth - document.documentElement.clientWidth*sideMarginsVWPercent*2
         const mapHeight = document.documentElement.clientHeight - document.documentElement.clientHeight*headerVHPercent
+        console.log(mapWidth/mapHeight)
         const mapHeightLocked = mapWidth/mapHeight < maximumLockRatio || this.state.isMobileDevice
         
         this.setState({ mapHeightLocked: mapHeightLocked });
@@ -746,7 +749,6 @@ class App extends React.Component {
         return finalIdxOfDevice
     }
     render() {
-        console.log('renderingapp')
         const deviceSlideIdx = this.findDeviceSlideIdx(this.state.currIdx)
         const hasHeaderTheme = this.state.slides && this.state.slides[deviceSlideIdx] && this.state.slides[deviceSlideIdx].headerTheme
         const hasHeaderThemeMobile = this.state.slides && this.state.slides[deviceSlideIdx] && this.state.slides[deviceSlideIdx].headerThemeMobile
