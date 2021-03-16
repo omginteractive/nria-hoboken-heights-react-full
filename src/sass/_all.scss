@@ -809,9 +809,10 @@ body {
                             }
                         }
                         &__amenity_name_and_description_container {
+                            $amenity_name_and_description_container_side_padding: calc((100vw - 825px) / 2) ;
                             position: absolute;
                             bottom: 0;
-                            padding: $space-between-title-and-description 20vw calc(#{$dots-bottom} + #{$dots-bottom-space-occupied});
+                            padding: $space-between-title-and-description $amenity_name_and_description_container_side_padding calc(#{$dots-bottom} + #{$dots-bottom-space-occupied});
                             display: flex;
                             justify-content: center;
                             transition: transform 0.5s;
@@ -822,6 +823,7 @@ body {
                                 .descriptionTextElement {
                                     opacity: 1;
                                     transition: opacity 0.5s ease 0.5s;
+                                    line-height: 25px;
                                 }
                             }
                             .amenities_detail__amenity_name_and_description_wrapper {

@@ -850,7 +850,7 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container {
   position: absolute;
   bottom: 0;
-  padding: 20px 20vw calc(8.2vh + 32px);
+  padding: 20px calc((100vw - 825px) / 2) calc(8.2vh + 32px);
   display: flex;
   justify-content: center;
   transition: transform 0.5s;
@@ -863,6 +863,7 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container.visible .descriptionTextElement {
   opacity: 1;
   transition: opacity 0.5s ease 0.5s;
+  line-height: 25px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container .amenities_detail__amenity_name_and_description_wrapper {
   display: flex;
