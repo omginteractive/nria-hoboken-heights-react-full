@@ -283,7 +283,7 @@ class SlideMap extends Component {
                     <div onClick={this.toggleMap.bind(this)} className="satelliteToggle vertical_toggle_column noSelect">
                         <div className="rotatedText noSelect">{toggleBarText}</div>
                     </div>
-                    <div className="mapSection__locationList">
+                    {/* <div className="mapSection__locationList">
                         {locationListings.map((amenity, idx) => {
                             const isActive = this.state.enabledListing === idx
                             const locationListingClasses =  isActive ? 'locationListing active' : 'locationListing'
@@ -299,7 +299,7 @@ class SlideMap extends Component {
                             </div>
                             )
                         })}
-                    </div>
+                    </div> */}
                 </section>
             </>
         )
