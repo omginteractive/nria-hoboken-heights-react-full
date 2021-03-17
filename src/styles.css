@@ -2573,7 +2573,7 @@ body {
     position: fixed;
   }
   #page.android.chrome .downArrowContainer, #page.iPhone .downArrowContainer, #page.firefoxAndroid .downArrowContainer {
-    bottom: 180px;
+    bottom: 130px;
   }
   #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities .amenities__list > ul, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities .amenities__list > ul, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities .amenities__list > ul {
     padding-bottom: 140px;
