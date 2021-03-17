@@ -2592,6 +2592,9 @@ body {
     height: 160px;
     align-items: flex-start;
   }
+  #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderImage, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderImage {
+    bottom: 35px;
+  }
   #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactPageWrapper .mobilePrivacyPolicy, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactPageWrapper .mobilePrivacyPolicy {
     padding-bottom: 140px;
   }
