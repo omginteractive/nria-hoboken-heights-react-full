@@ -2636,7 +2636,7 @@ body {
 
   .slide .centerBottom {
     z-index: 3;
-    bottom: 17vh;
+    bottom: 7.2222222222vw;
   }
   .slide .centerBottom > h1 {
     top: 0;

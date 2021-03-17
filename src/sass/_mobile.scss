@@ -417,7 +417,7 @@ body {
 }
 .slide .centerBottom {
     z-index: 3;
-    bottom: 17vh;
+    bottom: calc_vw(78);
     > h1 {
         // opacity: 0;
         top: 0;
