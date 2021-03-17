@@ -294,6 +294,15 @@ body {
         }
         .slides_wrapper .slides_inner .slide {
             &.slideTemplate- {
+                &amenities {
+                    .amenities {
+                        .amenities__list {
+                            > ul {
+                                padding-bottom: 140px;
+                            }
+                        }
+                    }
+                }
                 &amenitiesDetail {
                     .amenities_detail__amenity_name_and_description_container,
                     .amenities_detail__more_info {
@@ -689,6 +698,7 @@ body {
                         flex-direction: column;
                         .amenities__details_wrapper {
                             padding-left: 0;
+                            padding-bottom: 0;
                             .amenities__details {
                                 height: auto;
                                 width: 100vw;
@@ -724,11 +734,14 @@ body {
                     }
                 }
                 &amenitiesDetail {
-                    $dots-bottom: 8.2vh;
+                    $dots-bottom: calc_vw(83);
+                    $dots-bottom-space-occupied: 32px;
+                    $space-between-dots-and-text: 32px;
                     $name-bottom: 20px;
                     $name-rise-distance: 180px;
                     .amenities_detail {
                         &__amenity_name_and_description_container {
+                            transform: translateY(calc(100% -  #{$dots-bottom} - #{$dots-bottom-space-occupied} - #{$space-between-dots-and-text}));
                             .descriptionTextElement {
                                 // line-height: calc_vw(31.58);
                             }
@@ -759,7 +772,18 @@ body {
                         }
                         &__more_info {
                             &__dots {
+                                display: flex;
+                                align-items: center;
                                 bottom: $dots-bottom;
+                                .dot {
+                                    height: calc_vw(31);
+                                    width: calc_vw(31);
+                                    margin: 0 calc_vw(27);
+                                    &.active {
+                                        height: calc_vw(47);
+                                        width: calc_vw(47);
+                                    }
+                                }
                             }
                         }
                     }
