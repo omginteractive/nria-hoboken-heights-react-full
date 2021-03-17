@@ -33,9 +33,7 @@ class App extends React.Component {
             y: null
         },
         slideHasScrolled: null,
-			
 
-			
         slides: null,
         mobileMenuOpen: false,
         amenityDetailsSlideIdx: 0, //default to first amenity for details page
@@ -166,13 +164,17 @@ class App extends React.Component {
         this.handleResize()
 	}
     shouldComponentUpdate(nextProps, nextState){
+        const curridx = this.state.currIdx
+        
         const slidesNotLoaded = this.state.slides === null
+        const videoMobileStartPositionChanged = !slidesNotLoaded && this.state.slides[curridx].videoMobileStartPosition !== nextState.slides[curridx].videoMobileStartPosition
+        
         const desktopKeysNotLoaded = this.state.desktopKeys.length === 0
         const mobileKeysNotLoaded = this.state.mobileKeys.length === 0
         const currIdxChanged = this.state.currIdx !== nextState.currIdx
         const mobileMenuToggled = this.state.mobileMenuOpen !== nextState.mobileMenuOpen
         const mapHeightLockedSettingChanged = this.state.mapHeightLocked !== nextState.mapHeightLocked
-        const needsToRender = slidesNotLoaded || desktopKeysNotLoaded || mobileKeysNotLoaded || currIdxChanged || mobileMenuToggled || mapHeightLockedSettingChanged
+        const needsToRender = slidesNotLoaded || desktopKeysNotLoaded || mobileKeysNotLoaded || currIdxChanged || mobileMenuToggled || mapHeightLockedSettingChanged || videoMobileStartPositionChanged
         return needsToRender
     }
     handleResize(){
@@ -613,9 +615,10 @@ class App extends React.Component {
                 else return
             }
     
-            const slidesStateCopy = this.state.slides
-            slidesStateCopy[key].videoMobileStartPosition = newVideoMobileStartPosition
-            this.setState({ slides: slidesStateCopy })
+            let slides = [ ...this.state.slides ];
+            slides[key] = {...slides[key], videoMobileStartPosition: newVideoMobileStartPosition};
+            this.setState({ slides });
+
         }
         else if(isAmenitiesDetailSlide){
             const currAmenitiesDetailIdx = this.state.amenityDetailsSlideIdx

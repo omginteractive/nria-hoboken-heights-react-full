@@ -16,12 +16,10 @@ class Slide extends Component {
     }
     shouldComponentUpdate(nextProps, nextState){
         const mapHeightLockedPropsChanged = this.props.mapHeightLocked !== nextProps.mapHeightLocked
-        const isBeingToggled = this.props.isCurrent !== nextProps.isCurrent
-        const videoMobileStartPositionToggled = this.props.isCurrent && this.state.previousVideoMobileStartPosition !== this.props.obj.videoMobileStartPosition
-        if(videoMobileStartPositionToggled){
-            this.setState({previousVideoMobileStartPosition: this.props.obj.videoMobileStartPosition});
-        }
-        return isBeingToggled || videoMobileStartPositionToggled || mapHeightLockedPropsChanged
+        const slideChanged = this.props.isCurrent !== nextProps.isCurrent
+        const videoMobileStartPositionToggled = this.props.isCurrent && nextProps.obj.videoMobileStartPosition !== this.props.obj.videoMobileStartPosition
+        
+        return slideChanged || videoMobileStartPositionToggled || mapHeightLockedPropsChanged
     }
     handleTheScroll = e => {
         let element = e.target
