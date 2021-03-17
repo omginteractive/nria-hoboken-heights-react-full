@@ -290,7 +290,7 @@ body {
     &.iPhone,
     &.firefoxAndroid {
         .downArrowContainer {
-            bottom: 70px;
+            bottom: 180px;
         }
         .slides_wrapper .slides_inner .slide {
             &.slideTemplate- {
@@ -306,6 +306,33 @@ body {
                     }
                     .views_section__timeSlider > input {
                             height: calc(35vh + 20px);
+                    }
+                }
+                &residencePenthouseDetail {
+                    .residencePenthouseDetail__dots {
+                        bottom: 140px;
+                    }
+                }
+                &neighborhoodCommunity {
+                    .neighborhoodCommunity {
+                        .left {
+                            padding-bottom: 100px;
+                        }
+                    }
+                }
+                &map {
+                    .mapSection {
+                        .satelliteToggle {
+                            height: 160px;
+                            align-items: flex-start;
+                        }
+                    }
+                }
+                &contact {
+                    .contactPageWrapper {
+                        .mobilePrivacyPolicy {
+                            padding-bottom: 140px;
+                        }
                     }
                 }
             }

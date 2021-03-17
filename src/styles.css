@@ -2563,7 +2563,7 @@ body {
     position: fixed;
   }
   #page.iPhone .downArrowContainer, #page.firefoxAndroid .downArrowContainer {
-    bottom: 70px;
+    bottom: 180px;
   }
   #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container,
 #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container,
@@ -2575,6 +2575,19 @@ body {
   }
   #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input {
     height: calc(35vh + 20px);
+  }
+  #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__dots, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__dots {
+    bottom: 140px;
+  }
+  #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity .left, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity .left {
+    padding-bottom: 100px;
+  }
+  #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle {
+    height: 160px;
+    align-items: flex-start;
+  }
+  #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactPageWrapper .mobilePrivacyPolicy, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactPageWrapper .mobilePrivacyPolicy {
+    padding-bottom: 140px;
   }
   #page.iPhone .slides_wrapper .slides_inner .slide .centerBottom, #page.firefoxAndroid .slides_wrapper .slides_inner .slide .centerBottom {
     bottom: 20vh;
