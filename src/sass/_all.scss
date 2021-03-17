@@ -823,7 +823,6 @@ body {
                                 .descriptionTextElement {
                                     opacity: 1;
                                     transition: opacity 0.5s ease 0.5s;
-                                    line-height: 25px;
                                 }
                             }
                             .amenities_detail__amenity_name_and_description_wrapper {
@@ -831,8 +830,9 @@ body {
                                 justify-content: center;
                             }
                             .descriptionTextElement {
-                                transition: opacity 0.5s;
                                 opacity: 0;
+                                line-height: 25px;
+                                transition: opacity 0.5s;
                             }
                         }
                         &__name {

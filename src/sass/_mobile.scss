@@ -289,9 +289,28 @@ body {
     }
     &.iPhone,
     &.firefoxAndroid {
+        .downArrowContainer {
+            bottom: 70px;
+        }
         .slides_wrapper .slides_inner .slide {
+            &.slideTemplate- {
+                &amenitiesDetail {
+                    .amenities_detail__amenity_name_and_description_container,
+                    .amenities_detail__more_info {
+                        bottom: 70px;
+                    }
+                }
+                &views {
+                    .views_section__timeList {
+                        height: 36vh;
+                    }
+                    .views_section__timeSlider > input {
+                            height: calc(35vh + 20px);
+                    }
+                }
+            }
             .centerBottom {
-                // bottom: 17vh;
+                bottom: 20vh;
             }
             .center .contactButton {
                 // margin-bottom: 80px;
@@ -682,17 +701,22 @@ body {
                     $name-bottom: 20px;
                     $name-rise-distance: 180px;
                     .amenities_detail {
+                        &__amenity_name_and_description_container {
+                            .descriptionTextElement {
+                                // line-height: calc_vw(31.58);
+                            }
+                        }
                         &__more_info_btn {
                             display: none;
                         }
                         &__name {
                             transform: translateY(calc(-#{$dots-bottom} - #{$name-bottom}));
-                            &.riseForDescription {
-                                transform: translateY(calc(-#{$dots-bottom} - #{$name-rise-distance} - #{$name-bottom}));
-                            }
+                            // &.riseForDescription {
+                            //     transform: translateY(calc(-#{$dots-bottom} - #{$name-rise-distance} - #{$name-bottom}));
+                            // }
                             > h3 {
-                                font-size: 24px;
-                                line-height: 1.4em;
+                                font-size: calc_vw(50);
+                                line-height: calc_vw(63.16);
                             }
                         }
                         &__description_toggler {
@@ -702,8 +726,8 @@ body {
                         &__amenity_name_and_description_container {
                             padding: 10px 10vw calc(#{$dots-bottom} + 32px);
                             .descriptionTextElement {
-                            font-size: 12px;
-                            line-height: 1.4em;
+                                font-size: 12px;
+                                line-height: calc_vw(31.58);
                             }
                         }
                         &__more_info {
@@ -719,9 +743,9 @@ body {
                     .views_section {
                         $sliderThumbWidth: 20px;
                         $visibleSliderWidth: 1px;
-                        $sliderWidth: 20px;
-                        $sliderTargetHeight: 40vh;
-                        $sliderActualHeight: calc(#{$sliderTargetHeight} + #{$sliderThumbWidth});
+                        $viewsSectionRangeInputWidth: 20px;
+                        $viewsSectionRangeInputTargetHeight: 40vh;
+                        $sliderActualHeight: calc(#{$viewsSectionRangeInputTargetHeight} + #{$sliderThumbWidth});
                         $imageHeight: 50vh;
                         display: block;
                         top: $header-space-for-content;
@@ -753,7 +777,7 @@ body {
                         }
                         .visibleSliderLine {
                             width: $visibleSliderWidth;
-                            height: calc(#{$sliderTargetHeight} + #{$sliderThumbWidth} / 2);
+                            height: calc(#{$viewsSectionRangeInputTargetHeight} + #{$sliderThumbWidth} / 2);
                             bottom: auto;
                             top: calc(5vh - #{$sliderThumbWidth} / 2);
                             position: absolute;
@@ -767,14 +791,14 @@ body {
                                 writing-mode: bt-lr; /* Vertical orientation IE */
                                 -webkit-appearance: slider-vertical; /* Vertical orientation  WebKit */
                                 height: $sliderActualHeight;
-                                width: $sliderWidth;
+                                width: $viewsSectionRangeInputWidth;
                                 transform: rotate(180deg);
                                 position: absolute;
                                 left: -8px;
                                 top: calc(5vh - #{$sliderThumbWidth}/2);
                                 &::-webkit-slider-runnable-track {
                                     height: $sliderActualHeight;
-                                    width: $sliderWidth;
+                                    width: $viewsSectionRangeInputWidth;
                                 }
                             }
                         }

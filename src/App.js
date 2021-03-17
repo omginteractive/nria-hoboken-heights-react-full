@@ -546,7 +546,6 @@ class App extends React.Component {
 		const horizontalDifference = Math.abs(this.state.touchStartCoordinate.x - coordinateX);
 		const verticalDifference = Math.abs(this.state.touchStartCoordinate.y - coordinateY);
         const largestDifference = Math.max(horizontalDifference, verticalDifference)
-        console.log(largestDifference)
         if(largestDifference < touchDragThreshold) return
 		let mainTouchDirection;
 		if(verticalDifference > horizontalDifference) {
