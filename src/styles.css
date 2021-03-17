@@ -3116,11 +3116,11 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam__copyright_logo_container .nriaLogo > img {
     width: 14.325vw;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .textGroup {
+  .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .left .textGroup {
     padding-right: 9.8148148148vw;
     padding-left: 9.8148148148vw;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .textGroup .developmentTeam__page_title {
+  .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .left .textGroup .developmentTeam__page_title {
     line-height: 6.7592592593vw;
     width: auto;
     margin-bottom: 6.1018518519vw;
