@@ -798,6 +798,8 @@ class App extends React.Component {
         let pageClasses = this.state.formSubmitted ? 'formSubmitted' : '';
         pageClasses += this.state.isiPhone ? ' iPhone' : '';
         pageClasses +=  isFirefoxAndroid ? ' firefoxAndroid' : '';
+        pageClasses +=  ' ' + this.state.operating_sys;
+        pageClasses +=  ' ' + this.state.browser;
         let slidesWrapperClasses = "slides_wrapper";
         if(this.state.slideHasScrolled) slidesWrapperClasses += ' scrolled'
 
