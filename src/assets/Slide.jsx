@@ -157,7 +157,7 @@ class Slide extends Component {
 		return(
             <div className={slideClasses} style={slideStyles} onScroll={this.handleTheScroll}>
                 {slideObj.slideTemplate === 'home' && 
-                    <SlideHome methods={slideMethods} />
+                    <SlideHome methods={slideMethods} configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'exteriorLightToggle' && 
                     <SlideExteriorLightToggle mobileArrows={mobileArrows} methods={slideMethods}  configuration={slideObj} />
@@ -618,11 +618,12 @@ class SlideHome extends Component {
         this.props.methods.scrollToNextSlide(noRequireScroll)
     }
     render(){
+        console.log(this.props.configuration)
         return(
             <>
-                <img className="animatedLogo" src={animatedLogo} alt="" onClick={this.nextSlide.bind(this)} />
+                <img className="animatedLogo" src={this.props.configuration.landing_center_logo.url} alt="" onClick={this.nextSlide.bind(this)} />
                 <div className="downArrowContainer">
-                    <img alt='Down Arrow' onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
+                    <img alt='Down Arrow' onClick={this.nextSlide.bind(this)} className="downArrow" src={this.props.configuration.homeDownArrow.url}></img>
                 </div>
             </>
         )
@@ -655,7 +656,7 @@ class SlideExteriorLightToggle extends Component {
         // const videoContainerClassesLightsOn = videoContainerClasses + ' lightsOn'
         const videoContainerClassesLightsOff = videoContainerClasses + ' lightsOff'
         let videoClasses = 'background-video'
-        let lightButtonText = this.state.lightsOn ? 'Turn Off' : 'Turn On'
+        let lightButtonText = this.state.lightsOn ? this.props.configuration.exteriorTurnOffText : this.props.configuration.exteriorTurnOnText
         if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffectRepeat startZoomedIn'
         
         let lightsMaskContainerClasses = this.state.lightsOn ? 'lightsMaskContainer on' : 'lightsMaskContainer off'

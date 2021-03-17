@@ -1,3 +1,5 @@
+// import flypilotFetchWPRestAPI from './flypilotFetchWPRestAPI.js';
+
 const flypilotFetchWPRestAPI = async () => {
     const penthouseDetailImages = [
         'images/penthouse/penthouse.jpg',
@@ -40,7 +42,9 @@ const flypilotFetchWPRestAPI = async () => {
                 },
             }
 		},
-        headerThemeMobile: 'lightMobile'
+        headerThemeMobile: 'lightMobile',
+        exteriorTurnOnText: 'Turn On',
+        exteriorTurnOffText: 'Turn Off'
     }, {
         slideTemplate: 'fountainPen',
         styles: {

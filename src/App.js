@@ -1,7 +1,7 @@
 import React from 'react';
-// import flypilotFetchWPRestAPI from './flypilotFetchWPRestAPI.js';
+import flypilotFetchWPRestAPI from './flypilotFetchWPRestAPI.js';
 // import modules from './assets/modules';
-import flypilotFetchWPRestAPI from './assets/page.js';
+// import flypilotFetchWPRestAPI from './assets/page.js';
 import Slide from './assets/Slide';
 import MobileMenu from './assets/MobileMenu';
 import Header from './assets/Header';
@@ -114,7 +114,8 @@ class App extends React.Component {
 		this.state.isiPhone = navigator.platform === "iPhone"
     }
     componentDidMount() {
-        flypilotFetchWPRestAPI().then((result)=> {
+        const endpoint = 'https://nriahh.wpengine.com/wp-json/acf/v3/pages/275'
+        flypilotFetchWPRestAPI(endpoint).then((result)=> {
             this.setState({
               slides: result
             }, ()=> this.createResponsiveIndices());
