@@ -618,7 +618,6 @@ class SlideHome extends Component {
         this.props.methods.scrollToNextSlide(noRequireScroll)
     }
     render(){
-        console.log(this.props.configuration)
         return(
             <>
                 <img className="animatedLogo" src={this.props.configuration.landing_center_logo.url} alt="" onClick={this.nextSlide.bind(this)} />
@@ -782,6 +781,8 @@ class SlideFountainPen extends Component {
         // let videoContainerClassesDesktop = videoContainerClasses + ' not-mobile'
         let videoContainerClassesDesktop = videoContainerClasses
         // if(this.props.isCurrent) this.replayVideo()
+        console.log(this.props.configuration)
+        const videoSrc = this.props.configuration.background_video_property.url
         return(
             <> 
                 {
@@ -789,11 +790,11 @@ class SlideFountainPen extends Component {
                         <div className="motionSignature mobile-only">
                             <img src={require('./images/Motion_signature_animateonce.gif').default} alt="" />
                         </div>
-                        <h2>4 State-of-the-art Buildings<br />55 Residences | 9 Penthouses</h2>
-                        <p>You won’t find any housing in Union City with more living space and more luxury amenities than the new condominiums of Hoboken Heights. These new state-of-the-art buildings are being constructed on top of one of the last remaining development sites on the Palisade cliffs overlooking Hoboken with sweeping views of the Hudson River and Manhattan skyline.</p>
-                        <p>“Hoboken Heights will be the Crown Jewel of the area with four towers and panoramic views of New York City and the Hudson River,” says Richard Stabile, SVP of NJ Development for NRIA. “This private, gated-enclave, just minutes away from the Lincoln Tunnel and PATH, will be like nothing the market has seen.” </p>
-                        <p>Residents will love the view, take comfort in their spacious homes and enjoy amenities like an indoor pool with walk-out sundeck, grills, a private gym, golf simulation area, a children’s playroom, and a lounge with a movie screening room and bar.</p>
-                        <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn dark">Inquire now</div>
+                        <h2 dangerouslySetInnerHTML={{__html: this.props.configuration.heading_property}} />
+                        <p dangerouslySetInnerHTML={{__html: this.props.configuration.content_property_1}} />
+                        <p dangerouslySetInnerHTML={{__html: this.props.configuration.content_property_2}} />
+                        <p dangerouslySetInnerHTML={{__html: this.props.configuration.content_property_3}} />
+                        <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn dark">{this.props.configuration.button_text_1}</div>
                     </div>
                 }
                 
@@ -813,7 +814,7 @@ class SlideFountainPen extends Component {
 							playsinline='playsinline'
 							preload="metadata"
 							>
-							<source src='/videos/Motion_signature.mp4' type="video/mp4" />
+							<source src='${videoSrc}' type="video/mp4" />
 							</video>`
 						}}
 					/>

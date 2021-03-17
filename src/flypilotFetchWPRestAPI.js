@@ -65,7 +65,14 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         headerTheme: 'light-inquiry',
         enableScrolling: true,
         enableScrollingQuerySelector: '.slideTemplate-fountainPen .textSection',
-        headerThemeMobile: 'darkMobile'
+        headerThemeMobile: 'darkMobile',
+        heading_property: result.heading_property,
+        content_property_1: result.content_property_1,
+        content_property_2: result.content_property_2,
+        content_property_3: result.content_property_3,
+        button_text_1: result.button_text_1,
+        button_link_1: result.button_link_1,
+        background_video_property: result.background_video_property,
     }, {
         slideTemplate: 'patio',
         slideClasses: "fullWidthVideo",
