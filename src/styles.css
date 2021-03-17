@@ -3015,6 +3015,7 @@ body {
     width: calc(100vw - 9.8148148148vw*2);
     height: calc(100vh - 50px);
     margin-top: 19.4444444444vw;
+    padding-right: 0;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__details > h2 {
     width: 52.5vw;
