@@ -21,7 +21,7 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         styles: {
             background: "#000",
         },
-        homeDownArrow: result.down_arrow_1,
+        landingDownArrow: result.down_arrow_1,
         landing_center_logo: result.landing_center_logo,
         
     },
@@ -36,7 +36,7 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         mobileHasDifferentContent: true,
 		mobileContent: {
 			centerBottom: {
-                line1: "SWIPE ",
+                line1: result.swipe_text_mobile_1,
                 line1RightArrowBouncing: true,
                 line1LeftArrowBouncing: true,
                 lineStyles: {
@@ -49,6 +49,11 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         headerThemeMobile: 'lightMobile',
         exteriorTurnOnText: result.turn_on_text,
         exteriorTurnOffText: result.turn_off_text,
+        background_video_no_light: result.background_video_no_light,
+        background_image_light: result.background_image_light.url,
+        background_image_light: result.background_image_light.url,
+        swipe_arrow_left_1: result.swipe_arrow_left_1.url,
+        swipe_arrow_right_1: result.swipe_arrow_right_1.url,
     }, {
         slideTemplate: 'fountainPen',
         styles: {

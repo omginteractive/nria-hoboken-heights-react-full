@@ -160,7 +160,7 @@ class Slide extends Component {
                     <SlideHome methods={slideMethods} configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'exteriorLightToggle' && 
-                    <SlideExteriorLightToggle mobileArrows={mobileArrows} methods={slideMethods}  configuration={slideObj} />
+                    <SlideExteriorLightToggle slideHorizontal={this.slideHorizontal.bind(this)} mobileArrows={mobileArrows} methods={slideMethods}  configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'fountainPen' &&
                     <SlideFountainPen isCurrent={isCurrent} methods={slideMethods} configuration={slideObj} curridx={this.props.currIdx} />
@@ -623,7 +623,7 @@ class SlideHome extends Component {
             <>
                 <img className="animatedLogo" src={this.props.configuration.landing_center_logo.url} alt="" onClick={this.nextSlide.bind(this)} />
                 <div className="downArrowContainer">
-                    <img alt='Down Arrow' onClick={this.nextSlide.bind(this)} className="downArrow" src={this.props.configuration.homeDownArrow.url}></img>
+                    <img alt='Down Arrow' onClick={this.nextSlide.bind(this)} className="downArrow" src={this.props.configuration.landingDownArrow.url}></img>
                 </div>
             </>
         )
@@ -637,8 +637,7 @@ class SlideExteriorLightToggle extends Component {
             lightsOn: false,
             video: null
         }
-        this.lightsOffVideo= '/videos/NIRMA_1_Exterior_High_OFF_Cinemagraphic.mp4'
-        this.lightsOnVideo= '/videos/NIRMA_1_Exterior_High_Cinemagraphic.mp4'
+        this.lightsOffVideo= this.props.configuration.background_video_no_light
     }
     shouldComponentUpdate(nextProps, nextState){
         const lightStateChanged = this.state.lightsOn !== nextState.lightsOn
@@ -660,6 +659,14 @@ class SlideExteriorLightToggle extends Component {
         if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffectRepeat startZoomedIn'
         
         let lightsMaskContainerClasses = this.state.lightsOn ? 'lightsMaskContainer on' : 'lightsMaskContainer off'
+
+        const right_arrow_styles = {
+            backgroundImage: 'url('+this.props.configuration.swipe_arrow_right_1+')'
+        }
+        const left_arrow_styles = {
+            backgroundImage: 'url('+this.props.configuration.swipe_arrow_left_1+')',
+            backgroundPosition: 'right'
+        }
         return(
             <>
                 <header className='fixed-header'>
@@ -676,32 +683,12 @@ class SlideExteriorLightToggle extends Component {
                 <div onClick={this.toggleLights.bind(this)} className="toggleLights btn">{lightButtonText}</div>
                 {
                     <div className={lightsMaskContainerClasses}>
-                        <img className='lightsMask startZoomedIn videoZoomEffectRepeat' alt="" src={require('./images/NIRMA_1_Exterior_High_Cinemagraphic.png').default} />
+                        <img className='lightsMask startZoomedIn videoZoomEffectRepeat' alt="" src={this.props.configuration.background_image_light} />
                     </div>
                 }
-                {/* {false && 
-							//Hide landingpage video on FFMobile because it will not autoplay
-							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
-						<div
-						// className={videoContainerClassesLightsOn}
-						dangerouslySetInnerHTML={{
-							__html: `
-							<video
-							class="${videoClasses}"
-							${this.props.configuration.videoLoop ? 'loop="true"' : ''}
-							muted='muted'
-							autoplay='true'
-							playsinline='playsinline'
-							preload="metadata"
-							>
-							<source src="${this.lightsOnVideo}" type="video/mp4" />
-							</video>`
-						}}
-					/>
-				} */}
                 {
-							//Hide landingpage video on FFMobile because it will not autoplay
-							//Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
+                        //Hide landingpage video on FFMobile because it will not autoplay
+                        //Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
 						<div
 						className={videoContainerClassesLightsOff}
 						dangerouslySetInnerHTML={{
@@ -722,9 +709,9 @@ class SlideExteriorLightToggle extends Component {
                 {this.props.configuration.mobileHasDifferentContent &&
 					<div className={"centerBottom mobile-only"}>
 						<h1 style={this.props.configuration.mobileContent.centerBottom.lineStyles} className="line" >
-							{this.props.configuration.mobileContent.centerBottom.line1LeftArrowBouncing && this.props.mobileArrows.left_arrow_bouncing}
-							<div dangerouslySetInnerHTML={{ __html: this.props.configuration.mobileContent.centerBottom.line1}} />
-							{this.props.configuration.mobileContent.centerBottom.line1RightArrowBouncing && this.props.mobileArrows.right_arrow_bouncing}
+                            <div className='left_arrow_bouncing' style={left_arrow_styles} onClick={() => this.props.slideHorizontal('left')}/>
+							<div className='uppercase' dangerouslySetInnerHTML={{ __html: this.props.configuration.mobileContent.centerBottom.line1}} />
+                            <div className='right_arrow_bouncing' style={right_arrow_styles} onClick={() => this.props.slideHorizontal('right')}/>
 						</h1>
 					</div>
 				}

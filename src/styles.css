@@ -208,6 +208,10 @@ p + p {
   margin-top: 32px;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 * {
   box-sizing: border-box;
 }
