@@ -622,7 +622,7 @@ class SlideHome extends Component {
             <>
                 <img className="animatedLogo" src={this.props.configuration.landing_center_logo.url} alt="" onClick={this.nextSlide.bind(this)} />
                 <div className="downArrowContainer">
-                    <img alt='Down Arrow' onClick={this.nextSlide.bind(this)} className="downArrow" src={this.props.configuration.landingDownArrow.url}></img>
+                    <img alt='Down Arrow' onClick={this.nextSlide.bind(this)} className="downArrow" src={this.props.configuration.down_arrow_1}></img>
                 </div>
             </>
         )
@@ -781,7 +781,6 @@ class SlideFountainPen extends Component {
         // let videoContainerClassesDesktop = videoContainerClasses + ' not-mobile'
         let videoContainerClassesDesktop = videoContainerClasses
         // if(this.props.isCurrent) this.replayVideo()
-        console.log(this.props.configuration)
         const videoSrc = this.props.configuration.background_video_property.url
         return(
             <> 
@@ -834,6 +833,14 @@ class SlidePatio extends Component {
         this.props.methods.scrollToNextSlide(noRequireScroll)
     }
     render(){
+        const right_arrow_styles = {
+            backgroundImage: 'url('+this.props.configuration.swipe_arrow_right_2+')'
+        }
+        const left_arrow_styles = {
+            backgroundImage: 'url('+this.props.configuration.swipe_arrow_left_2+')',
+            backgroundPosition: 'right'
+        }
+        
         let videoContainerClasses = 'videoContainer'
         let videoClasses = 'background-video'
         if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffectRepeat startZoomedIn'
@@ -841,7 +848,7 @@ class SlidePatio extends Component {
             <>
                 {
                     <div className="downArrowContainer">
-                        <img alt="Down Arrow" onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
+                        <img alt="Down Arrow" onClick={this.nextSlide.bind(this)} className="downArrow" src={this.props.configuration.down_arrow_2}></img>
                     </div>
                 }
                 {
@@ -868,9 +875,9 @@ class SlidePatio extends Component {
                 {this.props.configuration.mobileHasDifferentContent &&
 					<div className={"centerBottom mobile-only"}>
 						<h1 style={this.props.configuration.mobileContent.centerBottom.lineStyles} className="line" >
-							{this.props.configuration.mobileContent.centerBottom.line1LeftArrowBouncing && this.props.mobileArrows.left_arrow_bouncing}
-							<div dangerouslySetInnerHTML={{ __html: this.props.configuration.mobileContent.centerBottom.line1}} />
-							{this.props.configuration.mobileContent.centerBottom.line1RightArrowBouncing && this.props.mobileArrows.right_arrow_bouncing}
+                            <div className='left_arrow_bouncing' style={left_arrow_styles} onClick={() => this.props.slideHorizontal('left')}/>
+							<div className='uppercase' dangerouslySetInnerHTML={{ __html: this.props.configuration.mobileContent.centerBottom.line1}} />
+                            <div className='right_arrow_bouncing' style={right_arrow_styles} onClick={() => this.props.slideHorizontal('right')}/>
 						</h1>
 					</div>
 				}
