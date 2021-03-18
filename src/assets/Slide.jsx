@@ -35,9 +35,9 @@ class Slide extends Component {
         const {goToContactSlide} = this.props;
         goToContactSlide();
     }
-    setAmenityOnDetailsSlide(idx, nextSlide = true){
-        const {setAmenityDetailsSlideIdx} = this.props;
-        setAmenityDetailsSlideIdx(idx)
+    setAmenityOnGallerySlide(idx, nextSlide = true){
+        const {setamenityGallerySlideIdx} = this.props;
+        setamenityGallerySlideIdx(idx)
 
         if(nextSlide) this.scrollToNextSlide(true)
         
@@ -169,10 +169,10 @@ class Slide extends Component {
                     <SlidePatio mobileArrows={mobileArrows} methods={slideMethods} configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'amenities' &&
-                    <SlideAmenities methods={slideMethods} setAmenityOnDetailsSlide={this.setAmenityOnDetailsSlide.bind(this)} configuration={slideObj} />
+                    <SlideAmenities methods={slideMethods} setAmenityOnGallerySlide={this.setAmenityOnGallerySlide.bind(this)} configuration={slideObj} />
                 }
-                {slideObj.slideTemplate === 'amenitiesDetail' &&
-                    <SlideAmenitiesDetail setAmenityOnDetailsSlide={this.setAmenityOnDetailsSlide.bind(this)} isCurrent={isCurrent} idx={this.props.amenityDetailsSlideIdx} configuration={slideObj} />
+                {slideObj.slideTemplate === 'amenitiesGallery' &&
+                    <SlideAmenitiesGallery setAmenityOnGallerySlide={this.setAmenityOnGallerySlide.bind(this)} isCurrent={isCurrent} idx={this.props.amenityGallerySlideIdx} configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'views' &&
                     <SlideViews configuration={slideObj} isMobileDevice={this.props.isMobileDevice} />
@@ -892,8 +892,8 @@ class SlideAmenities extends Component {
         return false
     }
     setAmenityDetail(idx){
-        const {setAmenityOnDetailsSlide} = this.props;
-        setAmenityOnDetailsSlide(idx);
+        const {setAmenityOnGallerySlide} = this.props;
+        setAmenityOnGallerySlide(idx);
     }
     handleWheelEvent = e => {
         const wheelAmt = e.deltaY
@@ -939,7 +939,7 @@ class SlideAmenities extends Component {
 }
 
 
-class SlideAmenitiesDetail extends Component {
+class SlideAmenitiesGallery extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -1016,8 +1016,8 @@ class SlideAmenitiesDetail extends Component {
         }
 
         //Set newIdx on App component state
-        const {setAmenityOnDetailsSlide} = this.props;
-        setAmenityOnDetailsSlide(newIdx, false);
+        const {setAmenityOnGallerySlide} = this.props;
+        setAmenityOnGallerySlide(newIdx, false);
     }
     transitioningAmenityComplete = e => {
         if(e.animationName === 'fadeOut'){
@@ -1088,59 +1088,60 @@ class SlideAmenitiesDetail extends Component {
         this.setAmenityData(dotIdx)
     }
     render(){
-        const toggleButtonSrc = this.state.descriptionVisible ? 'images/amenities/Button-.svg' : 'images/amenities/Button+.svg'
+        const toggleButtonSrc = this.state.descriptionVisible ? this.props.configuration.accordion_close_button : this.props.configuration.accordion_open_button
+        
         const hasMoreInfoBtn = this.props.configuration.amenities[this.state.currIdx] && this.props.configuration.amenities[this.state.currIdx].moreInfoBtn
         
-        let descriptionGradientClasses = 'amenities_detail__description_gradient'
+        let descriptionGradientClasses = 'amenities_gallery__description_gradient'
         descriptionGradientClasses += this.state.descriptionVisible ? ' visible' : ''
         
-        let amenityNameAndDescriptionContainer = 'amenities_detail__amenity_name_and_description_container'
+        let amenityNameAndDescriptionContainer = 'amenities_gallery__amenity_name_and_description_container'
         amenityNameAndDescriptionContainer += this.state.descriptionVisible ? ' visible' : ''
         
         const descriptionStyles = {
             // backgroundImage: 'url('+require('./images/amenities/blackgradient.png').default+')',
         }
 
-        let image1_classes = 'amenities_detail__image '
+        let image1_classes = 'amenities_gallery__image '
         image1_classes += this.state.image1IsNew ? 'new' : 'old'
-        let image2_classes = 'amenities_detail__image '
+        let image2_classes = 'amenities_gallery__image '
         image2_classes += !this.state.image1IsNew ? 'new' : 'old'
-        let amenities_detail_name_classes = 'amenities_detail__name'
-        amenities_detail_name_classes += !this.state.amenityNameVisibility ? ' runFadeOutAnimation' : ' runFadeInAnimation'
-        amenities_detail_name_classes += this.state.descriptionVisible ? ' riseForDescription' : ''
-        let amenities_detail__more_info_classes = 'amenities_detail__more_info'
+        let amenities_gallery_name_classes = 'amenities_gallery__name'
+        amenities_gallery_name_classes += !this.state.amenityNameVisibility ? ' runFadeOutAnimation' : ' runFadeInAnimation'
+        amenities_gallery_name_classes += this.state.descriptionVisible ? ' riseForDescription' : ''
+        let amenities_gallery__more_info_classes = 'amenities_gallery__more_info'
 
-        let rightArrowClasses = "amenities_detail__arrow amenities_detail__arrow--right"
+        let rightArrowClasses = "amenities_gallery__arrow amenities_gallery__arrow--right"
         rightArrowClasses += this.state.rightArrowActive ? ' active' : ''
         
-        let leftArrowClasses = "amenities_detail__arrow amenities_detail__arrow--left"
+        let leftArrowClasses = "amenities_gallery__arrow amenities_gallery__arrow--left"
         leftArrowClasses += this.state.leftArrowActive ? ' active' : ''
         return (
             <>
-                <section className="amenities_detail">
+                <section className="amenities_gallery">
                     <img onAnimationEnd={this.resetRightArrow.bind(this)} alt="Right Arrow" onClick={this.animateRightArrowAndChangeAmenity.bind(this)} className={rightArrowClasses} src={require('./images/amenities/rightArrow.svg').default} />
                     <img onAnimationEnd={this.resetLeftArrow.bind(this)} alt="Left Arrow" onClick={this.animateLeftArrowAndChangeAmenity.bind(this)} className={leftArrowClasses} src={require('./images/amenities/rightArrow.svg').default} />
                     <img alt="" src={this.state.image1 && require('./'+this.state.image1).default} className={image1_classes}  />
                     <img alt="" src={this.state.image2 && require('./' + this.state.image2).default} className={image2_classes}  />
-                    <div className={amenities_detail__more_info_classes}>
+                    <div className={amenities_gallery__more_info_classes}>
                         
-                        <div className="amenities_detail__more_info__dots">
+                        <div className="amenities_gallery__more_info__dots">
                             {this.props.configuration.amenities.map((amenity, i) => {
                                 let dotClasses = 'dot'
                                 dotClasses += i === this.state.currIdx ? ' active' : ''
-                                return (<div key={i+'SlideAmenitiesDetailDot'} onClick={() => this.activateAmenity(i)} className={dotClasses} />)
+                                return (<div key={i+'SlideAmenitiesGalleryDot'} onClick={() => this.activateAmenity(i)} className={dotClasses} />)
                             })}
                         </div>
                         <div className={descriptionGradientClasses} style={descriptionStyles}>
                         </div>
                         <div className={amenityNameAndDescriptionContainer}>
-                            <div className="amenities_detail__amenity_name_and_description_wrapper">
-                                <div className={amenities_detail_name_classes}>
+                            <div className="amenities_gallery__amenity_name_and_description_wrapper">
+                                <div className={amenities_gallery_name_classes}>
                                     <h3>
                                         {this.state.title_line1 && <span onAnimationEnd={this.transitioningAmenityComplete.bind(this)} >{this.state.title_line1}</span>}
                                         {this.state.title_line2 && <span>{this.state.title_line2}</span>}
                                         {this.state.title_line3 && <span>{this.state.title_line3}</span>}
-                                        <img alt="" onClick={this.toggleDetailDescription.bind(this)} className="amenities_detail__description_toggler" src={require('./'+toggleButtonSrc).default} />
+                                        <img alt="" onClick={this.toggleDetailDescription.bind(this)} className="amenities_gallery__description_toggler" src={toggleButtonSrc} />
                                     </h3>
                                 </div>
                                 <p className='descriptionTextElement'>{this.state.description}</p>
@@ -1148,7 +1149,7 @@ class SlideAmenitiesDetail extends Component {
                         </div>
                     </div>
                     {hasMoreInfoBtn && 
-                        <div className="amenities_detail__more_info_btn btn">More Info</div>
+                        <div className="amenities_gallery__more_info_btn btn">More Info</div>
                     }
                 </section>
             </>

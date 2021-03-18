@@ -131,11 +131,13 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         desktopOnly: true,
         amenitiesResults
     }, {
-        slideTemplate: 'amenitiesDetail',
+        slideTemplate: 'amenitiesGallery',
         styles: {
             background: "#000",
         },
         headerTheme: 'light',
+        accordion_open_button: result.accordion_open_button.url,
+        accordion_close_button: result.accordion_close_button.url,
         amenities: [
             {
                 title_line1: "GO OUT FOR DRINKS WITH ",

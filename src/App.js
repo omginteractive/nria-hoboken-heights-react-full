@@ -36,7 +36,7 @@ class App extends React.Component {
 
         slides: null,
         mobileMenuOpen: false,
-        amenityDetailsSlideIdx: 0, //default to first amenity for details page
+        amenityGallerySlideIdx: 0, //default to first amenity for details page
         residencePenthouse: 'penthouse',//default option
         isMobileDevice: null,
         desktopKeys: [],
@@ -623,12 +623,12 @@ class App extends React.Component {
             this.setState({ slides });
         }
         else if(isAmenitiesDetailSlide){
-            const currAmenitiesDetailIdx = this.state.amenityDetailsSlideIdx
+            const currAmenitiesDetailIdx = this.state.amenityGallerySlideIdx
             if(direction === 'right') {
-                this.setAmenityOnDetailsSlide(currAmenitiesDetailIdx + 1)
+                this.setAmenityOnGallerySlide(currAmenitiesDetailIdx + 1)
             }
             else {
-                this.setAmenityOnDetailsSlide(currAmenitiesDetailIdx - 1)
+                this.setAmenityOnGallerySlide(currAmenitiesDetailIdx - 1)
             }
         }
 	}
@@ -735,9 +735,9 @@ class App extends React.Component {
 			this.privacyPolicyModalRemove();
 		}
     }
-    setAmenityOnDetailsSlide(idx){
+    setAmenityOnGallerySlide(idx){
         this.setState({
-			amenityDetailsSlideIdx: idx
+			amenityGallerySlideIdx: idx
 		 });
     }
     setResidencePenthouse(option){
@@ -781,10 +781,10 @@ class App extends React.Component {
                 obj={slide}
                 isMobileDevice={this.state.isMobileDevice}
                 isCurrent={idx === deviceSlideIdx}
-                setAmenityDetailsSlideIdx={this.setAmenityOnDetailsSlide.bind(this)}
+                setamenityGallerySlideIdx={this.setAmenityOnGallerySlide.bind(this)}
                 setResidencePenthousePath={this.setResidencePenthouse.bind(this)}
                 residencePenthousePath={this.state.residencePenthouse}
-                amenityDetailsSlideIdx={this.state.amenityDetailsSlideIdx}
+                amenityGallerySlideIdx={this.state.amenityGallerySlideIdx}
                 mapHeightLocked={this.state.mapHeightLocked}
                 createHubspotContactForm={this.createHubspotForm.bind(this)}
                 formSubmitted={this.contactFormSubmitted.bind(this)}

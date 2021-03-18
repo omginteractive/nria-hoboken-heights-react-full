@@ -705,9 +705,9 @@ body {
                         }
                     }
                 }
-                &amenitiesDetail {
+                &amenitiesGallery {
                     $amenitiesTransitionDuration: 1.3s;
-                    .amenities_detail {
+                    .amenities_gallery {
                         $dots-bottom: 8.2vh;
                         $dots-bottom-space-occupied: 32px;
                         $space-between-dots-and-text: 32px;
@@ -769,7 +769,7 @@ body {
                             flex-direction: column;
                             // &.transitioning {
                             //     color: #000000;
-                            //     .amenities_detail__name > h3 > span {
+                            //     .amenities_gallery__name > h3 > span {
                             //         // opacity: 0;
                             //     }
                             // }
@@ -829,7 +829,7 @@ body {
                                     transition: opacity 0.5s ease 0.5s;
                                 }
                             }
-                            .amenities_detail__amenity_name_and_description_wrapper {
+                            .amenities_gallery__amenity_name_and_description_wrapper {
                                 display: flex;
                                 justify-content: center;
                             }
@@ -2077,7 +2077,7 @@ body {
                         }
                     }
                 }
-                .amenities_detail__image.new {
+                .amenities_gallery__image.new {
                     @include fullScreenImageScaleDownOnArrival();
                 }
                 .amenities__list > ul > li{

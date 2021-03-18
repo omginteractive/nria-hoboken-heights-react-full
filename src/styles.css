@@ -765,7 +765,7 @@ body {
   font-family: "Gotham-Medium";
   font-size: 18px;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__arrow {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__arrow {
   position: absolute;
   top: 50%;
   cursor: pointer;
@@ -773,21 +773,21 @@ body {
   animation-duration: 0.5s;
   animation-timing-function: linear;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__arrow--right {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__arrow--right {
   transform: translateY(-50%);
   right: 40px;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__arrow--right.active {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__arrow--right.active {
   animation-name: animateAmenityRightArrowClick;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__arrow--left {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__arrow--left {
   transform: rotate(180deg) translateY(50%);
   left: 40px;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__arrow--left.active {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__arrow--left.active {
   animation-name: animateAmenityLeftArrowClick;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__image {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__image {
   position: absolute;
   top: 0;
   left: 0;
@@ -797,12 +797,12 @@ body {
   opacity: 0;
   object-fit: cover;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__image.new {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__image.new {
   z-index: 1;
   opacity: 1;
   transition: opacity 1.3s, transform 0s;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info {
   z-index: 2;
   color: #ffffff;
   position: absolute;
@@ -814,12 +814,12 @@ body {
   align-items: center;
   flex-direction: column;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info__dots {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots {
   position: absolute;
   bottom: 8.2vh;
   z-index: 1;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info__dots .dot {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots .dot {
   height: 11px;
   width: 11px;
   background-color: rgba(255, 255, 255, 0.6);
@@ -828,17 +828,17 @@ body {
   margin: 0 8px;
   cursor: pointer;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info__dots .dot.active {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots .dot.active {
   background-color: white;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_toggler {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__description_toggler {
   height: 30px;
   margin-left: 10px;
   position: relative;
   top: 2px;
   cursor: pointer;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_gradient {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__description_gradient {
   line-height: 1.4em;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.69) 28%, rgba(0, 0, 0, 0) 100%);
   width: 100vw;
@@ -847,11 +847,11 @@ body {
   transition: transform 0.8s;
   height: calc(8.2vh + 20px + 140px + 100px);
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_gradient.visible {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__description_gradient.visible {
   transform: translateY(0);
   opacity: 1;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container {
   position: absolute;
   bottom: 0;
   padding: 20px calc((100vw - 825px) / 2) calc(8.2vh + 32px);
@@ -861,23 +861,23 @@ body {
   left: 0;
   transform: translateY(calc(100% - 8.2vh - 32px - 32px));
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container.visible {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container.visible {
   transform: translateY(0);
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container.visible .descriptionTextElement {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container.visible .descriptionTextElement {
   opacity: 1;
   transition: opacity 0.5s ease 0.5s;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container .amenities_detail__amenity_name_and_description_wrapper {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container .amenities_gallery__amenity_name_and_description_wrapper {
   display: flex;
   justify-content: center;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container .descriptionTextElement {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container .descriptionTextElement {
   opacity: 0;
   line-height: 25px;
   transition: opacity 0.5s;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__name {
   text-transform: uppercase;
   font-size: 40px;
   line-height: 48px;
@@ -888,65 +888,65 @@ body {
   transform: translateY(calc(-100% + 32px));
   transition: transform 1s;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.riseForDescription {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__name.riseForDescription {
   transform: translateY(-100%);
   transition: transform 0.5s;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeOutAnimation > h3 > span,
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeOutAnimation > h3 > span + img {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__name.runFadeOutAnimation > h3 > span,
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__name.runFadeOutAnimation > h3 > span + img {
   animation-fill-mode: forwards;
   animation-name: fadeOut;
   animation-duration: 0.8s;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeInAnimation > h3 > span {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__name.runFadeInAnimation > h3 > span {
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUp;
   animation-duration: 0.6s;
   opacity: 0;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeInAnimation > h3 > span:nth-of-type(1) {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__name.runFadeInAnimation > h3 > span:nth-of-type(1) {
   animation-delay: 0.2s;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeInAnimation > h3 > span:nth-of-type(1) + img {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__name.runFadeInAnimation > h3 > span:nth-of-type(1) + img {
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUp;
   animation-duration: 0.6s;
   animation-delay: 0.3s;
   opacity: 0;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeInAnimation > h3 > span:nth-of-type(2) {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__name.runFadeInAnimation > h3 > span:nth-of-type(2) {
   animation-delay: 0.3s;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeInAnimation > h3 > span:nth-of-type(2) + img {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__name.runFadeInAnimation > h3 > span:nth-of-type(2) + img {
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUp;
   animation-duration: 0.6s;
   animation-delay: 0.4s;
   opacity: 0;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeInAnimation > h3 > span:nth-of-type(3) {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__name.runFadeInAnimation > h3 > span:nth-of-type(3) {
   animation-delay: 0.4s;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name.runFadeInAnimation > h3 > span:nth-of-type(3) + img {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__name.runFadeInAnimation > h3 > span:nth-of-type(3) + img {
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUp;
   animation-duration: 0.6s;
   animation-delay: 0.5s;
   opacity: 0;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name > h3 {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__name > h3 {
   position: relative;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name > h3 > span {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__name > h3 > span {
   opacity: 1;
   display: block;
   position: relative;
   transition: opacity 0.6s;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name > h3 > span:last-of-type {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__name > h3 > span:last-of-type {
   display: inline-block;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info_btn {
+.slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info_btn {
   position: absolute;
   bottom: 30px;
   right: 30px;
@@ -2019,7 +2019,7 @@ body {
   transform: scale(1);
   transition: object-position 1400ms linear 0s, transform 1400ms ease-out 0.6s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .amenities_detail__image.new {
+.slides_wrapper .slides_inner .slide.runAnimations .amenities_gallery__image.new {
   transform: scale(1.15);
   animation-fill-mode: forwards;
   animation-name: zoomOut;
@@ -2326,8 +2326,8 @@ body {
   .noSelect, .mobileMenuLinks .linksWrapper .link,
 .closeBtn,
 .hamburger,
-.amenities_detail__arrow,
-.amenities_detail__description_toggler,
+.amenities_gallery__arrow,
+.amenities_gallery__description_toggler,
 .downArrowContainer .downArrow {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -2582,13 +2582,13 @@ body {
   #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities .amenities__list > ul, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities .amenities__list > ul, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities .amenities__list > ul {
     padding-bottom: 140px;
   }
-  #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container,
-#page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container,
-#page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container,
-#page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info {
+  #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container,
+#page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container,
+#page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container,
+#page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info {
     bottom: 70px;
   }
-  #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info__dots, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info__dots, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info__dots {
+  #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots {
     bottom: calc(7.6851851852vw + 70px);
   }
   #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList {
@@ -2913,42 +2913,42 @@ body {
     line-height: 3.7037037037vw;
     padding: 5.0462962963vw 0;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__arrow--right, .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__arrow--left {
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__arrow--right, .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__arrow--left {
     display: none;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container {
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container {
     transform: translateY(calc(100% - 7.6851851852vw - 2.8703703704vw - 10.5555555556vw));
     padding: 10px calc((100vw - 87.2222222222vw) / 2) calc(7.6851851852vw + 32px);
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__amenity_name_and_description_container .descriptionTextElement {
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container .descriptionTextElement {
     font-size: 12px;
     line-height: 2.9240740741vw;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info_btn {
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info_btn {
     display: none;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name {
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__name {
     transform: translateY(calc(-7.6851851852vw - 20px));
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__name > h3 {
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__name > h3 {
     font-size: 4.6296296296vw;
     line-height: 5.8481481481vw;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__description_toggler {
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__description_toggler {
     height: 24px;
     top: 4px;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info__dots {
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots {
     display: flex;
     align-items: center;
     bottom: 7.6851851852vw;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info__dots .dot {
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots .dot {
     height: 2.8703703704vw;
     width: 2.8703703704vw;
     margin: 0 2.5vw;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesDetail .amenities_detail__more_info__dots .dot.active {
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots .dot.active {
     height: 4.3518518519vw;
     width: 4.3518518519vw;
   }

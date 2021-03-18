@@ -31,8 +31,8 @@ $horizontalSlideTransitionDuration: 0.8s;
 .mobileMenuLinks .linksWrapper .link,
 .closeBtn,
 .hamburger,
-.amenities_detail__arrow,
-.amenities_detail__description_toggler,
+.amenities_gallery__arrow,
+.amenities_gallery__description_toggler,
 .downArrowContainer .downArrow {
     @extend .noSelect;
 }
@@ -315,13 +315,13 @@ body {
                         }
                     }
                 }
-                &amenitiesDetail {
+                &amenitiesGallery {
                     $dots-bottom: calc(#{calc_vw(83)} + 70px);//originally calc_vw(83)
-                    .amenities_detail__amenity_name_and_description_container,
-                    .amenities_detail__more_info {
+                    .amenities_gallery__amenity_name_and_description_container,
+                    .amenities_gallery__more_info {
                         bottom: 70px;
                     }
-                    .amenities_detail__more_info__dots {
+                    .amenities_gallery__more_info__dots {
                         bottom: $dots-bottom;
                     }
                 }
@@ -755,7 +755,7 @@ body {
                         }
                     }
                 }
-                &amenitiesDetail {
+                &amenitiesGallery {
                     $dots-bottom: calc_vw(83);
                     $dots-bottom-space-occupied: calc_vw(31);
                     $space-between-dots-and-text: calc_vw(114);
@@ -763,7 +763,7 @@ body {
                     $name-rise-distance: 180px;
                     $description-margin: calc((100vw - #{calc_vw(942)}) / 2);
                     
-                    .amenities_detail {
+                    .amenities_gallery {
                         &__arrow--right,
                         &__arrow--left {
                             display: none;
