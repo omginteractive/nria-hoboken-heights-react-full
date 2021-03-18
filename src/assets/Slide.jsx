@@ -323,7 +323,7 @@ class SlideVideoDiscover extends Component {
             <>
                 {
                     <div className="downArrowContainer">
-                        <img alt="Down Arrow" onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
+                        <img alt="Down Arrow" onClick={this.nextSlide.bind(this)} className="downArrow" src={this.props.configuration.down_arrow_5}></img>
                     </div>
                 }
                 {
@@ -342,7 +342,7 @@ class SlideVideoDiscover extends Component {
                             preload="metadata"
                             loop="true"
 							>
-							<source src='/videos/NRIMA_SITE_VIDEO DISCOVER.mp4' type="video/mp4" />
+							<source src='${this.props.configuration.background_video_discover}' type="video/mp4" />
 							</video>`
 						}}
                         />
@@ -363,7 +363,7 @@ class SlideVideoDiscover extends Component {
                             preload="metadata"
                             loop="true"
 							>
-							<source src='/videos/NRIMA_SITE_VIDEO DISCOVER Mobile.mp4' type="video/mp4" />
+							<source src='${this.props.configuration.background_video_discover_mobile}' type="video/mp4" />
 							</video>`
 						}}
 					/>
