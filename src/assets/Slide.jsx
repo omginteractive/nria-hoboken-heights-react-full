@@ -1563,7 +1563,7 @@ class SlideFounders extends Component {
         return(
             <>
                 <div className="founderSlideContainer">
-                    <img className="founderImage" src={require('./'+founderImage).default} alt=""/>
+                    <img className="founderImage" src={founderImage} alt=""/>
                     <div className="founderSlideWrapper">
                     {founderHeadline &&
                         <h2 className="founderHeadline">{founderHeadline}</h2>
@@ -1577,7 +1577,7 @@ class SlideFounders extends Component {
                                 return(
                                 <div key={key+'founderBenefit'} className="benefitPair">
                                     <div className="count">{parseInt(key)+1}</div>
-                                    <div className="benefit">{value}</div>
+                                    <div className="benefit">{value.items}</div>
                                 </div>
                                 )
                             })}

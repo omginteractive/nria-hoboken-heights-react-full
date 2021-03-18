@@ -367,19 +367,10 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         enableScrolling: true,
         enableScrollingQuerySelector: '.slideTemplate-founders .founderSlideWrapper',
         headerTheme: 'light',
-        founderImage: 'images/FOUNDERS-CLUB.png',
-        founderHeadline: 'Gold Founding Members',
-        founderTagline: '1st 10 Contracts',
-        founderBenefits: [
-            "$300,000 Seller's Concession (Penthouses)",
-            "$150,000 Seller's Concession (Standard Units)",
-            "Seller Contribution - 6 Months of HOA Fees",
-            "Preselection Of Interior Designs",
-            "Bronze Plaque Noting Gold Founder On The Building",
-            "Selection Of Premium Parking Spaces - 3 Spots Penthouse / 2 Spots Standard",
-            "Complimentary Pool Badges/Key Fob - Duration Of Ownership/Transferable with Unit",
-            "Complimentary Golf Club Access - Duration Of Ownership/Transferable with Unit"
-        ],
+        founderImage: result.background_image_founders.url,
+        founderHeadline: result.heading_founders,
+        founderTagline: result.sub_text,
+        founderBenefits: result.founding_privleges,
     },{
         slideTemplate: 'videoDiscover',
         styles: {
