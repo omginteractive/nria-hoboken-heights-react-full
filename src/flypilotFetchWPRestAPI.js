@@ -207,7 +207,6 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         headerTheme: 'dark',
         heading_the_view: result.heading_the_view,
         content_the_view: result.content_the_view,
-        timeline_gallery: result.timeline_gallery,
         views: [
             {
                 displayTime: '6:00',
@@ -245,7 +244,9 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         styles: {
             background: "#000",
         },
-        headerTheme: 'light'
+        headerTheme: 'light',
+        residences_button_text: result.residences_button_text,
+        penthouse_button_text: result.penthouse_button_text,
     },{
         slideTemplate: 'residencePenthouseFullscreen',
         styles: {

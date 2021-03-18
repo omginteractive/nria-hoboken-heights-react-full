@@ -178,7 +178,7 @@ class Slide extends Component {
                     <SlideViews configuration={slideObj} isMobileDevice={this.props.isMobileDevice} />
                 }
                 {slideObj.slideTemplate === 'residencePenthouse' &&
-                    <SlideResidencePenthouse setResidencePenthousePath={this.setResidencePenthousePath.bind(this)} methods={slideMethods}  />
+                    <SlideResidencePenthouse configuration={slideObj} setResidencePenthousePath={this.setResidencePenthousePath.bind(this)} methods={slideMethods}  />
                 }
                 {slideObj.slideTemplate === 'residencePenthouseFullscreen' &&
                     <SlideResidencePenthouseFullscreen mobileArrows={mobileArrows} residencePenthouse={this.props.residencePenthousePath}  methods={slideMethods} configuration={slideObj}  />
@@ -1281,8 +1281,8 @@ class SlideResidencePenthouse extends Component {
     render(){
         return(
             <>
-                <div onClick={() => this.setResidencePenthousePath('residence')} className="btn">Residences</div>
-                <div onClick={() => this.setResidencePenthousePath('penthouse')} className="btn">Penthouses</div>
+                <div onClick={() => this.setResidencePenthousePath('residence')} className="btn">{this.props.configuration.residences_button_text}</div>
+                <div onClick={() => this.setResidencePenthousePath('penthouse')} className="btn">{this.props.configuration.penthouse_button_text}</div>
             </>
         )
     }
