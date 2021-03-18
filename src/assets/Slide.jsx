@@ -1353,8 +1353,6 @@ class SlideResidencePenthouseDetail extends Component {
             prevIdx: null,
             isTransitioning: null,
         }
-        this.toggleExpansionMinus = 'images/toggleExpansion-.svg'
-        this.toggleExpansionPlus = 'images/toggleExpansion+.svg'
     }
     
     shouldComponentUpdate(nextProps, nextState){
@@ -1394,58 +1392,23 @@ class SlideResidencePenthouseDetail extends Component {
         })
     }
     render(){
-        // this.props.configuration.
-        // 
-        // this.props.configuration.
-        // this.props.configuration.button_text_4
-        // this.props.configuration.button_link_4
-        // this.props.configuration.left_arrow_2
-        // this.props.configuration.penthouse_gallery
-        // this.props.configuration.penthouse_gallery_expand
-        // this.props.configuration.penthouse_gallery_contract
-
-        // this.props.configuration.
-        // 
-        // this.props.configuration.
-        // this.props.configuration.button_text_3
-        // this.props.configuration.button_link_3
-        // this.props.configuration.left_arrow_1
-        // this.props.configuration.residences_gallery
-        // this.props.configuration.residences_gallery_expand
-        // this.props.configuration.residences_gallery_contract
-
-        
-
         const headerTheme = this.props.configuration.headerTheme//this is used to create unique keys between the two different components
         const imageIsExpanded = this.state.imageExpanded
         let details_classes = 'residencePenthouseDetail'
         details_classes += imageIsExpanded ? ' expandImage' : ''
         const isPenthouse = this.props.residencePenthouse === 'penthouse'
         
-        const penthouseDetailImages = this.props.configuration.penthouseDetailImages
-        const residenceDetailImages = this.props.configuration.residenceDetailImages
+        const penthouse_gallery = this.props.configuration.penthouse_gallery
+        const residences_gallery = this.props.configuration.residences_gallery
         const page_title = isPenthouse ? this.props.configuration.heading_penthouse : this.props.configuration.heading_residences
         const page_description = isPenthouse ? this.props.configuration.content_1_penthouse : this.props.configuration.content_1_residences
         const features_heading = isPenthouse ? this.props.configuration.features_heading_penthouse : this.props.configuration.features_heading_residences
         const features_list = isPenthouse ? this.props.configuration.penthouse_features : this.props.configuration.residences_features
-        const featuresArray = isPenthouse ? [
-            'Panoramic views of the New York City skyline ',
-            'Spacious open plan living ',
-            '4 Bedrooms, 4.5 Bathrooms ',
-            'High-end appliances ',
-            'Two-car garage with private elevator ',
-            'Expansive glass-enclosed terrace ',
-            'Optional smart home technology',
-            ] : 
-            [
-                'Residence Panoramic views of the New York City skyline ',
-                'Spacious open plan living ',
-                '4 Bedrooms, 4.5 Bathrooms ',
-                'High-end appliances ',
-                'Two-car garage with private elevator ',
-                'Expansive glass-enclosed terrace ',
-                'Optional smart home technology',
-            ]
+        const button_text = isPenthouse ? this.props.configuration.button_text_4 : this.props.configuration.button_text_3
+        const left_arrow = isPenthouse ? this.props.configuration.left_arrow_2 : this.props.configuration.left_arrow_1
+        const toggleExpansionMinus = isPenthouse ? this.props.configuration.penthouse_gallery_contract : this.props.configuration.residences_gallery_contract
+        const toggleExpansionPlus = isPenthouse ? this.props.configuration.penthouse_gallery_expand : this.props.configuration.residences_gallery_expand
+
         let imageContainerClasses = 'residencePenthouseDetail__image_container '
         imageContainerClasses += this.props.configuration.imageContainerAdditionalClasses ? this.props.configuration.imageContainerAdditionalClasses : ''
         let residencePenthouseDetailsClasses = 'residencePenthouseDetail__details '
@@ -1463,56 +1426,57 @@ class SlideResidencePenthouseDetail extends Component {
                 <section className={details_classes}>
                     <div className={residencePenthouseDetailsClasses}>
                         <h2>{page_title}</h2>
+                        <p dangerouslySetInnerHTML={{__html: page_description}} />
                         <div className="residencePenthouseDetail__features_list_heading_wrapper">
                             <div className="heading">{features_heading}</div>
                             <div className="residencePenthouseDetail__features_list_wrapper" dangerouslySetInnerHTML={{__html: features_list}} />
                         </div>
                         <div className="residencePenthouseDetail__arrow_button_container">
                             <div className="leftArrowContainer">
-                                <img alt='Left Arrow' className="leftArrow" src={leftArrowBlack}></img>
+                                <img alt='Left Arrow' className="leftArrow" src={left_arrow}></img>
                             </div>
-                            <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn light">Floor Plans</div>
+                            <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn light">{button_text}</div>
                         </div>
                     </div>
                     <div onWheel={this.handleWheelEvent.bind(this)} className={imageContainerClasses}>
                         <div onClick={this.toggleImageExpansion.bind(this)} className="residencePenthouseDetail__expand_toggler vertical_toggle_column">
                             {imageIsExpanded && 
-                                <div><img src={require('./'+this.toggleExpansionMinus).default} alt="minus"/></div>
+                                <div><img src={toggleExpansionMinus} alt="minus"/></div>
                             }
                             {!imageIsExpanded && 
-                                <div><img src={require('./'+this.toggleExpansionPlus).default} alt="plus"/></div>
+                                <div><img src={toggleExpansionPlus} alt="plus"/></div>
                             }
                         </div>
                         <div className={penthouseFullscreenImageWrapperClasses}>
-                            {penthouseDetailImages.map((image, i) => {
+                            {penthouse_gallery.map((image, i) => {
                                 let imgClasses = 'fullscreenImage'
                                 imgClasses += i === this.state.currIdx ? ' active' : ''
                                 imgClasses += i === this.state.prevIdx ? ' deactivating' : ''
                                 return (
-                                    <img key={i+'penthouseDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={require('./'+image).default} alt="Residence Penthouse"/>
+                                    <img key={i+'penthouseDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={image.url} alt="Residence Penthouse"/>
                                 )
                             })}
                         </div>
                         <div className={residenceFullscreenImageWrapperClasses}>
-                            {residenceDetailImages.map((image, i) => {
+                            {residences_gallery.map((image, i) => {
                                 let imgClasses = 'fullscreenImage'
                                 imgClasses += i === this.state.currIdx ? ' active' : ''
                                 imgClasses += i === this.state.prevIdx ? ' deactivating' : ''
                                 return (
-                                    <img key={i+'residenceDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={require('./'+image).default} alt="Residence Penthouse"/>
+                                    <img key={i+'residenceDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={image.url} alt="Residence Penthouse"/>
                                 )
                             })}
                         </div>
                     </div>
                     <div className={penthouseDotsClasses}>
-                        {penthouseDetailImages.map((image, i) => {
+                        {penthouse_gallery.map((image, i) => {
                             let dotClasses = 'dot'
                             dotClasses += i === this.state.currIdx ? ' active' : ''
                             return (<div key={i+'penthouseDetailDot' + headerTheme} onClick={() => this.activateImage(i)} className={dotClasses} />)
                         })}
                     </div>
                     <div className={residenceDotsClasses}>
-                        {residenceDetailImages.map((image, i) => {
+                        {residences_gallery.map((image, i) => {
                             let dotClasses = 'dot'
                             dotClasses += i === this.state.currIdx ? ' active' : ''
                             return (<div key={i+'renthouseDetailDot' + headerTheme} onClick={() => this.activateImage(i)} className={dotClasses} />)

@@ -1,31 +1,24 @@
-const flypilotFetchWPRestAPI = async (endpoint) => {
-    const rest_response = await fetch(endpoint);
-	const rest_data = await rest_response.json();
-    console.log(rest_data)
-    const result = rest_data.acf
-    const penthouse_gallery = result.penthouse_gallery
-    const residences_gallery = result.residences_gallery
-    const amenitiesResults = {
-        heading_amenities: result.heading_amenities,
-        content_amenity_1: result.content_amenity_1,
-        content_amenity_2: result.content_amenity_2,
-        button_text_2: result.button_text_2,
-        amenity_heading_1: result.amenity_heading_1,
-        amenity_heading_2: result.amenity_heading_2,
-        amenity_heading_3: result.amenity_heading_3,
-        amenity_heading_4: result.amenity_heading_4,
-        amenity_heading_5: result.amenity_heading_5,
-        amenity_heading_6: result.amenity_heading_6,
-        amenity_heading_7: result.amenity_heading_7,
-        amenity_heading_8: result.amenity_heading_8,
-    }
+// import flypilotFetchWPRestAPI from './flypilotFetchWPRestAPI.js';
+
+const flypilotFetchWPRestAPI = async () => {
+    const penthouseDetailImages = [
+        'images/penthouse/penthouse.jpg',
+        'images/residence/residence.png',
+        'images/penthouse/penthouse.jpg',
+        'images/penthouse/penthousebed.png',
+        
+    ]
+    const residenceDetailImages = [
+        'images/residence/residence.png',
+        'images/penthouse/penthousebed.png',
+        'images/residence/residence.png',
+        'images/penthouse/penthouse.jpg',
+    ]
     const SLIDES = [{
         slideTemplate: 'home',
         styles: {
             background: "#000",
         },
-        down_arrow_1: result.down_arrow_1.url,
-        landing_center_logo: result.landing_center_logo,
         
     },
     {
@@ -39,7 +32,7 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         mobileHasDifferentContent: true,
 		mobileContent: {
 			centerBottom: {
-                line1: result.swipe_text_mobile_1,
+                line1: "SWIPE ",
                 line1RightArrowBouncing: true,
                 line1LeftArrowBouncing: true,
                 lineStyles: {
@@ -50,13 +43,8 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
             }
 		},
         headerThemeMobile: 'lightMobile',
-        exteriorTurnOnText: result.turn_on_text,
-        exteriorTurnOffText: result.turn_off_text,
-        background_video_no_light: result.background_video_no_light,
-        background_image_light: result.background_image_light.url,
-        background_image_light: result.background_image_light.url,
-        swipe_arrow_left_1: result.swipe_arrow_left_1.url,
-        swipe_arrow_right_1: result.swipe_arrow_right_1.url,
+        exteriorTurnOnText: 'Turn On',
+        exteriorTurnOffText: 'Turn Off'
     }, {
         slideTemplate: 'fountainPen',
         styles: {
@@ -68,14 +56,7 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         headerTheme: 'light-inquiry',
         enableScrolling: true,
         enableScrollingQuerySelector: '.slideTemplate-fountainPen .textSection',
-        headerThemeMobile: 'darkMobile',
-        heading_property: result.heading_property,
-        content_property_1: result.content_property_1,
-        content_property_2: result.content_property_2,
-        content_property_3: result.content_property_3,
-        button_text_1: result.button_text_1,
-        button_link_1: result.button_link_1,
-        background_video_property: result.background_video_property,
+        headerThemeMobile: 'darkMobile'
     }, {
         slideTemplate: 'patio',
         slideClasses: "fullWidthVideo",
@@ -87,7 +68,7 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         mobileHasDifferentContent: true,
 		mobileContent: {
 			centerBottom: {
-                line1: result.swipe_text_mobile_2,
+                line1: "SWIPE ",
                 line1RightArrowBouncing: true,
                 line1LeftArrowBouncing: true,
                 lineStyles: {
@@ -96,10 +77,7 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
                     color: '#fff'
                 },
             }
-		},
-        down_arrow_2: result.down_arrow_2.url,
-        swipe_arrow_left_2: result.swipe_arrow_left_2.url,
-        swipe_arrow_right_2: result.swipe_arrow_right_2.url,
+		}
     }, {
         slideTemplate: 'amenities',
         styles: {
@@ -107,26 +85,41 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         },
         headerTheme: 'light',
         enableScrolling: true,
+        // enableScrollingQuerySelector: '.amenities__details',
         mobileOnly: true,
-        amenitiesResults
-        
+        // amenitiesListAdditionalClasses: 'not-mobile',
     }, {
+    //     slideTemplate: 'amenities',
+    //     styles: {
+    //         background: "#fff",
+    //     },
+    //     enableScrolling: true,
+    //     enableScrollingQuerySelector: '.amenities__list',
+    //     mobileOnly: true,
+    //     headerTheme: 'dark',
+    //     amenitiesDetailAdditionalClasses: 'not-mobile',
+    // }, {
         slideTemplate: 'amenities',
         styles: {
             background: "#fff",
         },
+        // slideClasses: "fullWidthVideo",
+        // videoLoop: true,
+        // videoZoomEffect: true,
         headerTheme: 'dark',
         enableScrolling: true,
+        // enableScrollingQuerySelector: '.slideTemplate-amenities.desktop-only .amenities__details',
         desktopOnly: true,
-        amenitiesResults
+        
     }, {
-        slideTemplate: 'amenitiesGallery',
+        slideTemplate: 'amenitiesDetail',
         styles: {
             background: "#000",
         },
+        // slideClasses: "fullWidthVideo",
+        // videoLoop: true,
+        // videoZoomEffect: true,
         headerTheme: 'light',
-        accordion_open_button: result.accordion_open_button.url,
-        accordion_close_button: result.accordion_close_button.url,
         amenities: [
             {
                 title_line1: "GO OUT FOR DRINKS WITH ",
@@ -194,38 +187,36 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         // videoLoop: true,
         // videoZoomEffect: true,
         headerTheme: 'dark',
-        heading_the_view: result.heading_the_view,
-        content_the_view: result.content_the_view,
         views: [
             {
                 displayTime: '6:00',
                 ampm: 'AM',
-                image: result.timeline_gallery[0].url
+                image: "images/view/01.jpg"
             },
             {
                 displayTime: '8:00',
                 ampm: 'AM',
-                image: result.timeline_gallery[1].url
+                image: "images/view/02.jpg"
             },
             {
                 displayTime: '11:00',
                 ampm: 'AM',
-                image: result.timeline_gallery[2].url
+                image: "images/view/03.jpg"
             },
             {
                 displayTime: '6:00',
                 ampm: 'PM',
-                image: result.timeline_gallery[3].url
+                image: "images/view/04.jpg"
             },
             {
                 displayTime: '8:00',
                 ampm: 'PM',
-                image: result.timeline_gallery[4].url
+                image: "images/view/05.jpg"
             },
             {
                 displayTime: '11:00',
                 ampm: 'PM',
-                image: result.timeline_gallery[5].url
+                image: "images/view/06.jpg"
             },
         ]
     },{
@@ -233,9 +224,7 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         styles: {
             background: "#000",
         },
-        headerTheme: 'light',
-        residences_button_text: result.residences_button_text,
-        penthouse_button_text: result.penthouse_button_text,
+        headerTheme: 'light'
     },{
         slideTemplate: 'residencePenthouseFullscreen',
         styles: {
@@ -256,19 +245,7 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
                     color: '#fff'
                 },
             }
-		},
-        //Residence Fields
-        background_image_residences: result.background_image_residences.url,
-        down_arrow_3: result.down_arrow_3,
-        swipe_text_mobile_3: result.swipe_text_mobile_3,
-        swipe_arrow_left_3: result.swipe_arrow_left_3,
-        swipe_arrow_right_3: result.swipe_arrow_right_3,
-        //Penthouse fields
-        background_image_penthouse: result.background_image_penthouse.url,
-        down_arrow_4: result.down_arrow_4,
-        swipe_text_mobile_4: result.swipe_text_mobile_4,
-        swipe_arrow_left_4: result.swipe_arrow_left_4,
-        swipe_arrow_right_4: result.swipe_arrow_right_4,
+		}
     },{
         slideTemplate: 'residencePenthouseDetail',
         styles: {
@@ -279,30 +256,8 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         enableScrollingQuerySelector: '.residencePenthouseDetail__details',
         imageContainerAdditionalClasses: 'not-mobile',
         imageDotsAdditionalClasses: 'not-mobile',
-        penthouse_gallery: penthouse_gallery,
-        residences_gallery: residences_gallery,
-
-        //Residence
-        heading_residences: result.heading_residences,
-        features_heading_residences: result.features_heading_residences,
-        content_1_residences: result.content_1_residences,
-        residences_features: result.residences_features,
-        button_text_3: result.button_text_3,
-        button_link_3: result.button_link_3,
-        left_arrow_1: result.left_arrow_1.url,
-        residences_gallery_expand: result.residences_gallery_expand.url,
-        residences_gallery_contract: result.residences_gallery_contract.url,
-
-        //Penthouse
-        heading_penthouse: result.heading_penthouse,
-        features_heading_penthouse: result.features_heading_penthouse,
-        content_1_penthouse: result.content_1_penthouse,
-        penthouse_features: result.penthouse_features,
-        button_text_4: result.button_text_4,
-        button_link_4: result.button_link_4,
-        left_arrow_2: result.left_arrow_2.url,
-        penthouse_gallery_expand: result.penthouse_gallery_expand.url,
-        penthouse_gallery_contract: result.penthouse_gallery_contract.url,
+        penthouseDetailImages: penthouseDetailImages,
+        residenceDetailImages: residenceDetailImages,
     }
     ,{
         slideTemplate: 'residencePenthouseDetail',//this is for mobile only because the original desktop slide with text and images needed separation
@@ -315,8 +270,8 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         mobileHorizontalVideoSlideEnabled: true,
         videoMobileStartPosition: 'center',
         mobileHasDifferentContent: true,
-        penthouse_gallery: penthouse_gallery,
-        residences_gallery: residences_gallery,
+        penthouseDetailImages: penthouseDetailImages,
+        residenceDetailImages: residenceDetailImages,
     }
     ,{
         slideTemplate: 'developmentTeam',
@@ -443,8 +398,7 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         enableScrolling: true,
         // mobileOnly: true,
     }]
-    return SLIDES;
-  return rest_data
-}
+    return SLIDES
+  }
 
 export default flypilotFetchWPRestAPI;
