@@ -16,6 +16,20 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         'images/residence/residence.png',
         'images/penthouse/penthouse.jpg',
     ]
+    const amenitiesResults = {
+        heading_amenities: result.heading_amenities,
+        content_amenity_1: result.content_amenity_1,
+        content_amenity_2: result.content_amenity_2,
+        button_text_2: result.button_text_2,
+        amenity_heading_1: result.amenity_heading_1,
+        amenity_heading_2: result.amenity_heading_2,
+        amenity_heading_3: result.amenity_heading_3,
+        amenity_heading_4: result.amenity_heading_4,
+        amenity_heading_5: result.amenity_heading_5,
+        amenity_heading_6: result.amenity_heading_6,
+        amenity_heading_7: result.amenity_heading_7,
+        amenity_heading_8: result.amenity_heading_8,
+    }
     const SLIDES = [{
         slideTemplate: 'home',
         styles: {
@@ -105,50 +119,22 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         headerTheme: 'light',
         enableScrolling: true,
         mobileOnly: true,
-        heading_amenities: result.heading_amenities,
-        content_amenity_1: result.content_amenity_1,
-        content_amenity_2: result.content_amenity_2,
-        button_text_2: result.button_text_2,
-        amenity_heading_1: result.amenity_heading_1,
-        amenity_heading_2: result.amenity_heading_2,
-        amenity_heading_3: result.amenity_heading_3,
-        amenity_heading_4: result.amenity_heading_4,
-        amenity_heading_5: result.amenity_heading_5,
-        amenity_heading_6: result.amenity_heading_6,
-        amenity_heading_7: result.amenity_heading_7,
-        amenity_heading_8: result.amenity_heading_8,
+        amenitiesResults
         
     }, {
-    //     slideTemplate: 'amenities',
-    //     styles: {
-    //         background: "#fff",
-    //     },
-    //     enableScrolling: true,
-    //     enableScrollingQuerySelector: '.amenities__list',
-    //     mobileOnly: true,
-    //     headerTheme: 'dark',
-    //     amenitiesDetailAdditionalClasses: 'not-mobile',
-    // }, {
         slideTemplate: 'amenities',
         styles: {
             background: "#fff",
         },
-        // slideClasses: "fullWidthVideo",
-        // videoLoop: true,
-        // videoZoomEffect: true,
         headerTheme: 'dark',
         enableScrolling: true,
-        // enableScrollingQuerySelector: '.slideTemplate-amenities.desktop-only .amenities__details',
         desktopOnly: true,
-        
+        amenitiesResults
     }, {
         slideTemplate: 'amenitiesDetail',
         styles: {
             background: "#000",
         },
-        // slideClasses: "fullWidthVideo",
-        // videoLoop: true,
-        // videoZoomEffect: true,
         headerTheme: 'light',
         amenities: [
             {

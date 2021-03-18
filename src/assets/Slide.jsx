@@ -914,22 +914,22 @@ class SlideAmenities extends Component {
                 <section className="amenities">
                     <div className="amenities__details_wrapper">
                         <div className={amenitiesDetailsClasses}>
-                            <h2>{this.props.configuration.heading_amenities}</h2>
-                            <p dangerouslySetInnerHTML={{ __html: this.props.configuration.content_amenity_1}} />
-                            <p dangerouslySetInnerHTML={{ __html: this.props.configuration.content_amenity_2}} />
-                            <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn dark">{this.props.configuration.button_text_2}</div>
+                            <h2>{this.props.configuration.amenitiesResults.heading_amenities}</h2>
+                            <p dangerouslySetInnerHTML={{ __html: this.props.configuration.amenitiesResults.content_amenity_1}} />
+                            <p dangerouslySetInnerHTML={{ __html: this.props.configuration.amenitiesResults.content_amenity_2}} />
+                            <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn dark">{this.props.configuration.amenitiesResults.button_text_2}</div>
                         </div>
                     </div>
                     <div onWheel={this.handleWheelEvent.bind(this)}  className={amenitiesListClasses}>
                         <ul>
-                            <li onClick={() => this.setAmenityDetail(0)}>{this.props.configuration.amenity_heading_1}</li>
-                            <li onClick={() => this.setAmenityDetail(1)}>{this.props.configuration.amenity_heading_2}</li>
-                            <li onClick={() => this.setAmenityDetail(2)}>{this.props.configuration.amenity_heading_3}</li>
-                            <li onClick={() => this.setAmenityDetail(3)}>{this.props.configuration.amenity_heading_4}</li>
-                            <li onClick={() => this.setAmenityDetail(4)}>{this.props.configuration.amenity_heading_5}</li>
-                            <li onClick={() => this.setAmenityDetail(5)}>{this.props.configuration.amenity_heading_6}</li>
-                            <li onClick={() => this.setAmenityDetail(6)}>{this.props.configuration.amenity_heading_7}</li>
-                            <li onClick={() => this.setAmenityDetail(7)}>{this.props.configuration.amenity_heading_8}</li>
+                            <li onClick={() => this.setAmenityDetail(0)}>{this.props.configuration.amenitiesResults.amenity_heading_1}</li>
+                            <li onClick={() => this.setAmenityDetail(1)}>{this.props.configuration.amenitiesResults.amenity_heading_2}</li>
+                            <li onClick={() => this.setAmenityDetail(2)}>{this.props.configuration.amenitiesResults.amenity_heading_3}</li>
+                            <li onClick={() => this.setAmenityDetail(3)}>{this.props.configuration.amenitiesResults.amenity_heading_4}</li>
+                            <li onClick={() => this.setAmenityDetail(4)}>{this.props.configuration.amenitiesResults.amenity_heading_5}</li>
+                            <li onClick={() => this.setAmenityDetail(5)}>{this.props.configuration.amenitiesResults.amenity_heading_6}</li>
+                            <li onClick={() => this.setAmenityDetail(6)}>{this.props.configuration.amenitiesResults.amenity_heading_7}</li>
+                            <li onClick={() => this.setAmenityDetail(7)}>{this.props.configuration.amenitiesResults.amenity_heading_8}</li>
                         </ul>
                     </div>
                 </section>
