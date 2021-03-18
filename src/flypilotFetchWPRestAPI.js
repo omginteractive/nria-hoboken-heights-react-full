@@ -104,9 +104,20 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         },
         headerTheme: 'light',
         enableScrolling: true,
-        // enableScrollingQuerySelector: '.amenities__details',
         mobileOnly: true,
-        // amenitiesListAdditionalClasses: 'not-mobile',
+        heading_amenities: result.heading_amenities,
+        content_amenity_1: result.content_amenity_1,
+        content_amenity_2: result.content_amenity_2,
+        button_text_2: result.button_text_2,
+        amenity_heading_1: result.amenity_heading_1,
+        amenity_heading_2: result.amenity_heading_2,
+        amenity_heading_3: result.amenity_heading_3,
+        amenity_heading_4: result.amenity_heading_4,
+        amenity_heading_5: result.amenity_heading_5,
+        amenity_heading_6: result.amenity_heading_6,
+        amenity_heading_7: result.amenity_heading_7,
+        amenity_heading_8: result.amenity_heading_8,
+        
     }, {
     //     slideTemplate: 'amenities',
     //     styles: {

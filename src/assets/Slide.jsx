@@ -909,28 +909,27 @@ class SlideAmenities extends Component {
         amenitiesListClasses += amenitiesListAdditionalClasses ? amenitiesListAdditionalClasses : ''
         let amenitiesDetailsClasses = 'amenities__details ' 
         amenitiesDetailsClasses += amenitiesDetailAdditionalClasses ? amenitiesDetailAdditionalClasses : ''
-
         return(
             <>
                 <section className="amenities">
                     <div className="amenities__details_wrapper">
                         <div className={amenitiesDetailsClasses}>
-                            <h2>Luxury Skyline Front Amenities & Services</h2>
-                            <p>Residents of Hoboken Heights will have a more spectacular view of the Hudson River and New York City skyline than those in Manhattan. This new, safe, private, gated enclave is being built high atop a Palisade cliff in Union City. It’s just minutes away from the Lincoln Tunnel and PATH, giving you easy access to New York City and the surrounding suburbs in New Jersey.</p>
-                            <p>Residents can exercise, de-stress and relax in the indoor swimming pool and walk-out sundeck, private gym with weight room, and the Peloton and yoga studios. There’s no backyard to mow, but there are grills and patios for enjoying dinner overlooking the Manhattan skyline. Condo residents will love the large lounge area with a full bar and plenty of comfy space for hanging out with friends. Children will have fun in the playroom. Families and friends will enjoy watching movies in the screening room.</p>
-                            <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn dark">Inquire now</div>
+                            <h2>{this.props.configuration.heading_amenities}</h2>
+                            <p dangerouslySetInnerHTML={{ __html: this.props.configuration.content_amenity_1}} />
+                            <p dangerouslySetInnerHTML={{ __html: this.props.configuration.content_amenity_2}} />
+                            <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn dark">{this.props.configuration.button_text_2}</div>
                         </div>
                     </div>
                     <div onWheel={this.handleWheelEvent.bind(this)}  className={amenitiesListClasses}>
                         <ul>
-                            <li onClick={() => this.setAmenityDetail(0)}>Bar</li>
-                            <li onClick={() => this.setAmenityDetail(1)}>Children</li>
-                            <li onClick={() => this.setAmenityDetail(2)}>Corridor</li>
-                            <li onClick={() => this.setAmenityDetail(3)}>Gym</li>
-                            <li onClick={() => this.setAmenityDetail(4)}>Grills</li>
-                            <li onClick={() => this.setAmenityDetail(5)}>Movie</li>
-                            <li onClick={() => this.setAmenityDetail(6)}>Patio</li>
-                            <li onClick={() => this.setAmenityDetail(7)}>Pool</li>
+                            <li onClick={() => this.setAmenityDetail(0)}>{this.props.configuration.amenity_heading_1}</li>
+                            <li onClick={() => this.setAmenityDetail(1)}>{this.props.configuration.amenity_heading_2}</li>
+                            <li onClick={() => this.setAmenityDetail(2)}>{this.props.configuration.amenity_heading_3}</li>
+                            <li onClick={() => this.setAmenityDetail(3)}>{this.props.configuration.amenity_heading_4}</li>
+                            <li onClick={() => this.setAmenityDetail(4)}>{this.props.configuration.amenity_heading_5}</li>
+                            <li onClick={() => this.setAmenityDetail(5)}>{this.props.configuration.amenity_heading_6}</li>
+                            <li onClick={() => this.setAmenityDetail(6)}>{this.props.configuration.amenity_heading_7}</li>
+                            <li onClick={() => this.setAmenityDetail(7)}>{this.props.configuration.amenity_heading_8}</li>
                         </ul>
                     </div>
                 </section>
