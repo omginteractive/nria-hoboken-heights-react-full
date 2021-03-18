@@ -259,9 +259,8 @@ class SlideMap extends Component {
         let satelliteImageContainerClasses = 'satelliteImageContainer'
         satelliteImageContainerClasses += this.state.satelliteMapEnabled ? ' visible' : ''
 
-        const locationListings = this.props.configuration.locationListings
-
-        const toggleBarText = this.state.satelliteMapEnabled ? 'Location View' : 'Satellite View'
+        // const locationListings = this.props.configuration.locationListings
+        const toggleBarText = this.state.satelliteMapEnabled ? this.props.configuration.map_location_view_text : this.props.configuration.map_satellite_view_text
         return(
             <>
                 <section className={mapSectionClasses}>

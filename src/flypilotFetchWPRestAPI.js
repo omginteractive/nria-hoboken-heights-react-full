@@ -398,38 +398,40 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         },
         headerTheme: 'dark',
         desktopOnly: true,
-        locationListings: [
-            {
-                title: 'Lorem Ipsum',
-                distance: '10 mins',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-            },
-            {
-                title: 'Lorem Ipsum 2',
-                distance: '12 mins',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-            },
-            {
-                title: 'Lorem Ipsum',
-                distance: '10 mins',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-            },
-            {
-                title: 'Lorem Ipsum 2',
-                distance: '12 mins',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-            },
-            {
-                title: 'Lorem Ipsum',
-                distance: '10 mins',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-            },
-            {
-                title: 'Lorem Ipsum 2',
-                distance: '12 mins',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-            }
-    ]
+        map_satellite_view_text: result.map_satellite_view_text,
+        map_location_view_text: result.map_location_view_text,
+    //     locationListings: [
+    //         {
+    //             title: 'Lorem Ipsum',
+    //             distance: '10 mins',
+    //             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    //         },
+    //         {
+    //             title: 'Lorem Ipsum 2',
+    //             distance: '12 mins',
+    //             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    //         },
+    //         {
+    //             title: 'Lorem Ipsum',
+    //             distance: '10 mins',
+    //             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    //         },
+    //         {
+    //             title: 'Lorem Ipsum 2',
+    //             distance: '12 mins',
+    //             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    //         },
+    //         {
+    //             title: 'Lorem Ipsum',
+    //             distance: '10 mins',
+    //             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    //         },
+    //         {
+    //             title: 'Lorem Ipsum 2',
+    //             distance: '12 mins',
+    //             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    //         }
+    // ]
     },
     {
         slideTemplate: 'map',
