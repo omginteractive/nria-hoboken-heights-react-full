@@ -1503,32 +1503,46 @@ class SlideDevelopmentTeam extends Component {
         let buttonGroupClasses = 'developmentTeam__button_group '
         buttonGroupClasses += this.props.configuration.buttonGroupAdditionalClasses ? this.props.configuration.buttonGroupAdditionalClasses : ''
         
+        const heading_team_story = this.props.configuration.heading_team_story
+        const content_1_team_story = this.props.configuration.content_1_team_story
+        const secondary_heading_team_story = this.props.configuration.secondary_heading_team_story
+        const content_2_team_story = this.props.configuration.content_2_team_story
+        const content_3_team_story = this.props.configuration.content_3_team_story
+        const button_text_5 = this.props.configuration.button_text_5
+        const button_link_5 = this.props.configuration.button_link_5
+        const button_text_6 = this.props.configuration.button_text_6
+        const button_link_6 = this.props.configuration.button_link_6
+        const button_text_7 = this.props.configuration.button_text_7
+        const button_link_7 = this.props.configuration.button_link_7
+        const team_story_video = this.props.configuration.team_story_video
+        const nria_logo = this.props.configuration.nria_logo
+        const copyright_text = this.props.configuration.copyright_text
         return(
             <section className='developmentTeam'>
-                <div className='left '>
+                <div className='left'>
                     <div className={textGroupClasses}>
-                        <h2 className='developmentTeam__page_title'>Development Team Story</h2>
-                        <p className='developmentTeam__paragraph'>For more than a decade, National Realty Investment Advisors - NRIA has delivered and continues to build upon a history of exceptional performance as a vertically-integrated real estate investment, management and development firm. We have extensive experience with full-service construction and complete renovation of planned unit townhomes, single-family luxury residences, condominiums, multifamily, and mixed-use rental developments strategically located in many of the most dynamic urban markets across the East Coast. Our team’s collective depth of knowledge within these specific markets continues to yield compelling opportunities across the real estate investment risk spectrum.</p>
-                        <div className="developmentTeam__headline">REAL ESTATE INVESTMENT COMPANY OVERVIEW</div>
-                        <p className='developmentTeam__paragraph'>Founded in 2006, NRIA has grown to be one of the nation’s leading specialists in institutional-caliber private real estate investment management with over $1.25B AUM, focusing on luxury townhome, condominium and multifamily acquisition and development in many supply constrained, high barrier-to-entry markets along the east coast.</p>
-                        <p className='developmentTeam__paragraph'>An evolving through-cycle management commitment to long-term growth through active market, property/project-type, and sector selection allows our diversified investment strategy to continually deliver high, low-volatile returns. As a result, not only has our liquidity profile as a real estate investment & development firm incrementally improved, it has laid a solid foundation for significant future growth.</p>
+                        <h2 className='developmentTeam__page_title'>{heading_team_story}</h2>
+                        <p className='developmentTeam__paragraph' dangerouslySetInnerHTML={{ __html: content_1_team_story}} />
+                        <div className="developmentTeam__headline">{secondary_heading_team_story}</div>
+                        <p className='developmentTeam__paragraph' dangerouslySetInnerHTML={{ __html: content_2_team_story}} />
+                        <p className='developmentTeam__paragraph' dangerouslySetInnerHTML={{ __html: content_3_team_story}} />
                     </div>
                     <div className={buttonGroupClasses}>
-                        <div className="btn light">NRIA</div>
-                        <div className="btn light">NR Living</div>
-                        <div className="btn light">NRIA EB-5</div>
+                        <div className="btn light">{button_text_5}</div>
+                        <div className="btn light">{button_text_6}</div>
+                        <div className="btn light">{button_text_7}</div>
                     </div>
                 </div>
                 <div className={rightSideClasses}>
-                    <h2 className='developmentTeam__page_title invisible'>Development Team Story</h2>
-                    <div className="video">
+                    <h2 className='developmentTeam__page_title invisible'>{heading_team_story}</h2>
+                    <div className="video" style={{padding:'56.25% 0 0 0',position:'relative'}} dangerouslySetInnerHTML={{ __html: team_story_video}} />
+                    {/* <div className="video" >
                         <div style={{padding:'56.25% 0 0 0',position:'relative'}}><iframe title='Development Video' src="https://player.vimeo.com/video/459377741?color=ffffff&title=0&byline=0&portrait=0" style={{position:'absolute',top:'0',left:'0',width:'100%',height:'100%'}} frameBorder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-                        {/* <img alt="video" src={require('./images/video_placeholder.png').default} /> */}
-                    </div>
+                    </div> */}
                     <div className="developmentTeam__copyright_logo_container">
-                        <div className="copyright">&copy; National Realty Investment Advisors, LLC. All rights reserved</div>
+                        <div className="copyright">{copyright_text}</div>
                         <div className="nriaLogo">
-                            <img alt="NRIA Logo" src={require('./images/logos/logo_NRIA.png').default} />
+                            <img alt="NRIA Logo" src={nria_logo} />
                         </div>
                     </div>
                 </div>

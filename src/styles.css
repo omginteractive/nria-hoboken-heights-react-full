@@ -1327,8 +1327,12 @@ body {
   opacity: 0;
   animation: none;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .video > img {
+.slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .video > iframe {
+  position: absolute;
+  top: 0px;
+  left: 0px;
   width: 100%;
+  height: 100%;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam .left {
   width: 46.1979166667vw;

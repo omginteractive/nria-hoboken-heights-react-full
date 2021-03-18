@@ -328,6 +328,20 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         rightSideAdditionalClasses: 'not-mobile',
         buttonGroupAdditionalClasses: 'not-mobile',
 
+        heading_team_story: result.heading_team_story,
+        content_1_team_story: result.content_1_team_story,
+        secondary_heading_team_story: result.secondary_heading_team_story,
+        content_2_team_story: result.content_2_team_story,
+        content_3_team_story: result.content_3_team_story,
+        button_text_5: result.button_text_5,
+        button_link_5: result.button_link_5,
+        button_text_6: result.button_text_6,
+        button_link_6: result.button_link_6,
+        button_text_7: result.button_text_7,
+        button_link_7: result.button_link_7,
+        team_story_video: result.team_story_video,
+        nria_logo: result.nria_logo.url,
+        copyright_text: result.copyright_text,
     }
     ,{
         slideTemplate: 'developmentTeam',
