@@ -1163,6 +1163,9 @@ body {
   height: 100vh;
   object-fit: cover;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseFullscreen .residencePenthouseFullscreenImage.hidden {
+  display: none;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail {
   margin-top: 12.8vh;
   height: calc(100vh - 12.8vh);

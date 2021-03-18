@@ -267,7 +267,19 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
                     color: '#fff'
                 },
             }
-		}
+		},
+        //Residence Fields
+        background_image_residences: result.background_image_residences.url,
+        down_arrow_3: result.down_arrow_3,
+        swipe_text_mobile_3: result.swipe_text_mobile_3,
+        swipe_arrow_left_3: result.swipe_arrow_left_3,
+        swipe_arrow_right_3: result.swipe_arrow_right_3,
+        //Penthouse fields
+        background_image_penthouse: result.background_image_penthouse.url,
+        down_arrow_4: result.down_arrow_4,
+        swipe_text_mobile_4: result.swipe_text_mobile_4,
+        swipe_arrow_left_4: result.swipe_arrow_left_4,
+        swipe_arrow_right_4: result.swipe_arrow_right_4,
     },{
         slideTemplate: 'residencePenthouseDetail',
         styles: {

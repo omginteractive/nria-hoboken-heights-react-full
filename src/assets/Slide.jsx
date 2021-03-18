@@ -1291,24 +1291,29 @@ class SlideResidencePenthouse extends Component {
 class SlideResidencePenthouseFullscreen extends Component {
     constructor(props) {
         super(props)
-        this.penthouseImage = 'images/penthouse/penthousebed.png'
-        this.residenceImage = 'images/residence/residence.png'
+        
+        // down_arrow_3
+        // swipe_text_mobile_3
+        // swipe_arrow_left_3
+        // swipe_arrow_right_3
+        
+        // down_arrow_4
+        // swipe_text_mobile_4
+        // swipe_arrow_left_4
+        // swipe_arrow_right_4
     }
     shouldComponentUpdate(nextProps, nextState){
         const residencePenthouseChanged = nextProps.residencePenthouse !== this.props.residencePenthouse
         return residencePenthouseChanged
     }
-    componentDidMount(){
-        //preload images
-        new Image().src = require('./'+this.penthouseImage).default
-        new Image().src = require('./'+this.residenceImage).default
-        
-    }
     nextSlide(noRequireScroll = false){
         this.props.methods.scrollToNextSlide(noRequireScroll)
     }
     render(){
-        const fullscreenImage = this.props.residencePenthouse === 'penthouse' ? this.penthouseImage : this.residenceImage
+        let penthouseImageClasses = 'residencePenthouseFullscreenImage penthouse'
+        let residenceImageClasses = 'residencePenthouseFullscreenImage residence'
+        penthouseImageClasses += this.props.residencePenthouse === 'residence' ? ' hidden' : ''
+        residenceImageClasses += this.props.residencePenthouse === 'penthouse' ? ' hidden' : ''
         return(
             <>
                 {
@@ -1317,7 +1322,8 @@ class SlideResidencePenthouseFullscreen extends Component {
                     </div>
                 }
                 <div className="fullscreenImageWrapper">
-                    <img className='residencePenthouseFullscreenImage' alt="" src={require('./'+fullscreenImage).default} />
+                    <img className={penthouseImageClasses} alt="" src={this.props.configuration.background_image_penthouse} />
+                    <img className={residenceImageClasses} alt="" src={this.props.configuration.background_image_residences} />
                 </div>
                 {this.props.configuration.mobileHasDifferentContent &&
 					<div className={"centerBottom mobile-only"}>
