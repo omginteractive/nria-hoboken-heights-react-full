@@ -1237,8 +1237,8 @@ class SlideViews extends Component {
             <>
                 <section className="views_section">
                     <div className="views_section__top">
-                        <h2>Signature Views 24/7</h2>
-                        <p>Hoboken Heights is being built on one of the last remaining development sites on the Palisade cliffs overlooking Hoboken with sweeping panoramic views of the Hudson River and the New York City skyline. As breathtaking as the view is in the daylight, it’s quite spectacular to see the city lit up at night. You’ll be amazed at the beauty of sunrise as it slowly lights up the dark metropolis and brings the Hudson River Valley back to life for another day. Residents will enjoy this stunning view from every room in their condo because of the staggered wall design.</p>
+                        <h2>{this.props.configuration.heading_the_view}</h2>
+                        <p dangerouslySetInnerHTML={{ __html: this.props.configuration.content_the_view}}></p>
                     </div>
                     <div className={views_section__bottom_classes}>
                         {this.props.configuration.views &&
@@ -1249,7 +1249,7 @@ class SlideViews extends Component {
                                     let imageClasses = mapped_images_classes
                                     if(isActiveImage) imageClasses = mapped_images_classes + ' active'
                                     else if(isPreviouslyActiveImage) imageClasses = mapped_images_classes + ' previouslyActive'
-                                    return (<img key={i+'viewsSectionTimeSliderImage'} alt={view.displayTime} src={require('./' + view.image).default} className={imageClasses} onTransitionEnd={this.handleTransitionEnd.bind(this)} />)
+                                    return (<img key={i+'viewsSectionTimeSliderImage'} alt={view.displayTime} src={view.image} className={imageClasses} onTransitionEnd={this.handleTransitionEnd.bind(this)} />)
                                 })}       
                             </>
                         }

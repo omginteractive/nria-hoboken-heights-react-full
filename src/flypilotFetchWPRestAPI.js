@@ -205,36 +205,39 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         // videoLoop: true,
         // videoZoomEffect: true,
         headerTheme: 'dark',
+        heading_the_view: result.heading_the_view,
+        content_the_view: result.content_the_view,
+        timeline_gallery: result.timeline_gallery,
         views: [
             {
                 displayTime: '6:00',
                 ampm: 'AM',
-                image: "images/view/01.jpg"
+                image: result.timeline_gallery[0].url
             },
             {
                 displayTime: '8:00',
                 ampm: 'AM',
-                image: "images/view/02.jpg"
+                image: result.timeline_gallery[1].url
             },
             {
                 displayTime: '11:00',
                 ampm: 'AM',
-                image: "images/view/03.jpg"
+                image: result.timeline_gallery[2].url
             },
             {
                 displayTime: '6:00',
                 ampm: 'PM',
-                image: "images/view/04.jpg"
+                image: result.timeline_gallery[3].url
             },
             {
                 displayTime: '8:00',
                 ampm: 'PM',
-                image: "images/view/05.jpg"
+                image: result.timeline_gallery[4].url
             },
             {
                 displayTime: '11:00',
                 ampm: 'PM',
-                image: "images/view/06.jpg"
+                image: result.timeline_gallery[5].url
             },
         ]
     },{
