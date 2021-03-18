@@ -408,25 +408,26 @@ class SlideContactForm extends Component {
 		showPrivacyPolicy()
 	}
     render(){
-        const contactLogo = 'images/logos/NRLiving.png'
-        const companyAddress = '1300 Manhattan Avenue Union City, NJ 07087'
-        const companyName = 'Manhattan Avenue Capital 1300, LLC'
-        const agentName = 'Richard Stabile'
+        const contactLogo = this.props.configuration.contact_logo
+        const companyAddress = this.props.configuration.contact_address
+        const companyName = this.props.configuration.company
+        const agentName = this.props.configuration.agent_name
         const agentCompany = ''
-        const agentPhoneNumber = '201-400-7487'
-        const rightsReserved = '© 2020 Hoboken Heights. All rights reserved.'
-        const buttonText = 'Privacy Policy'
+        const agentPhoneNumber = this.props.configuration.phone_number
+        const rightsReserved = this.props.configuration.copyright_disclaimer
+        const buttonText = this.props.configuration.button_text_8
+        const buttonLink = this.props.configuration.button_link_8
         return(
             <>
                 <div className="contactPageWrapper">
                     {/* mobileVersion={this.props.mobileVersion} */}
-                    <ContactForm activateSelect2State={this.activateSelect2State.bind(this)} select2Activated={this.state.select2Activated} createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)} />
+                    <ContactForm formHeading={this.props.configuration.form_heading} activateSelect2State={this.activateSelect2State.bind(this)} select2Activated={this.state.select2Activated} createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)} />
                     <div className="privacyPolicy not-mobile">
                         <div className="verticalLineContainer">
                             <div className="verticalLine" />
                         </div>
                         
-                        <img className='logo' alt='logo' src={require('./'+contactLogo).default}  />
+                        <img className='logo' alt='logo' src={contactLogo}  />
                         <div className="contactInfo">
                             <div className="address">{companyAddress}</div>
                             <div className="address">{companyName}</div>
@@ -439,13 +440,13 @@ class SlideContactForm extends Component {
                     </div>
                     <div className="mobilePrivacyPolicy mobile-only">
                         <div className="contactInfo">
-                            <div className="address">1300 Manhattan Avenue Union City, NJ 07087</div>
-                            <div className="address">Manhattan Avenue Capital 1300, LLC</div><br />
-                            <div className="address">Richard Stabile</div>
-                            <div className="address">RE/MAX Real Estate Limited</div>
-                            <a href='tel:2014007487'><div className="phone">201-400-7487</div></a><br />
-                            <div className="copyright">© 2020 Hoboken Heights. All rights reserved.</div>
-                            <a target="_blank" onClick={this.openPrivacyPolicyModal.bind(this)}>Privacy Policy</a>
+                            <div className="address">{companyAddress}</div>
+                            <div className="address">{companyName}</div><br />
+                            <div className="address">{agentName}</div>
+                            <div className="address">{agentCompany}</div>
+                            <a href='tel:2014007487'><div className="phone">{agentPhoneNumber}</div></a><br />
+                            <div className="copyright">{rightsReserved}</div>
+                            <a href='' target="_blank" onClick={this.openPrivacyPolicyModal.bind(this)}>{buttonText}</a>
                         </div>
                     </div>
                 </div>
@@ -570,7 +571,7 @@ class ContactForm extends Component {
 						<img src={require('./images/form_close_btn.svg').default} />
 					</div>
 				</div>
-				<div className='headline'>FOR INFORMATION PLEASE FILL THE FORM BELOW</div>
+				<div className='headline'>{this.props.formHeading}</div>
 				<div className="hubspotFormWrapper" id='hubspotFormWrapper'>
 				</div>
                 <img className='mobile-only nriaLogo' src={require('./images/logos/NRLiving--White.png').default} />

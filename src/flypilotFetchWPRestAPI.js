@@ -450,6 +450,15 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         headerThemeMobile: 'lightMobile',
         enableScrolling: true,
         // mobileOnly: true,
+        form_heading: result.form_heading,
+        contact_logo: result.contact_logo.url,
+        contact_address: result.contact_address,
+        company: result.company,
+        agent_name: result.agent_name,
+        phone_number: result.phone_number,
+        copyright_disclaimer: result.copyright_disclaimer,
+        button_text_8: result.button_text_8,
+        button_link_8: result.button_link_8,
     }]
     return SLIDES;
   return rest_data
