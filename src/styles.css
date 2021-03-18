@@ -2175,7 +2175,7 @@ body {
   transform: scale(1);
 }
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .textGroup > h2,
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .textGroup > p,
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .textGroup .content_discover,
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .btn {
   position: relative;
   animation-fill-mode: forwards;
@@ -2186,7 +2186,7 @@ body {
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .textGroup > h2 {
   animation-delay: 0.8s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .textGroup > p {
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .textGroup .content_discover {
   animation-delay: 1s;
 }
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .button_container > .btn:nth-of-type(1) {

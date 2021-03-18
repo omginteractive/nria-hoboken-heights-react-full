@@ -596,7 +596,7 @@ class SlideNeighborhoodCommunity extends Component {
                     <div className="right">
                         <div className="textGroup">
                             <h2>{heading_discover}</h2>
-                            <div dangerouslySetInnerHTML={{ __html: content_discover}} />
+                            <div className="content_discover" dangerouslySetInnerHTML={{ __html: content_discover}} />
                         </div>
                         {/* <div className="button_container">
                             <div className="btn light">Lorem ipsum</div>

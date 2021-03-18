@@ -397,7 +397,7 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
             background: "#fff",
         },
         headerTheme: 'dark',
-        desktopOnly: true,
+        headerThemeMobile: 'lightMobile',
         map_satellite_view_text: result.map_satellite_view_text,
         map_location_view_text: result.map_location_view_text,
     //     locationListings: [
@@ -432,15 +432,6 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
     //             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     //         }
     // ]
-    },
-    {
-        slideTemplate: 'map',
-        styles: {
-            background: "#fff",
-        },
-        headerTheme: 'light',
-        locationListings: [],
-        mobileOnly: true,
     },{
     //     slideTemplate: 'contact',
     //     styles: {

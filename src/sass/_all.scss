@@ -2235,7 +2235,7 @@ body {
                     }
                     .right {
                         .textGroup > h2,
-                        .textGroup > p,
+                        .textGroup .content_discover,
                         .btn {
                             position: relative;
                             animation-fill-mode: forwards;
@@ -2247,7 +2247,7 @@ body {
                             > h2 {
                                 animation-delay: $animation_base_delay + $animation_incremental_delay*1;
                             }
-                            > p {
+                            .content_discover {
                                 animation-delay: $animation_base_delay + $animation_incremental_delay*2;
                             }
                         }
