@@ -1394,6 +1394,28 @@ class SlideResidencePenthouseDetail extends Component {
         })
     }
     render(){
+        // this.props.configuration.
+        // 
+        // this.props.configuration.
+        // this.props.configuration.button_text_4
+        // this.props.configuration.button_link_4
+        // this.props.configuration.left_arrow_2
+        // this.props.configuration.penthouse_gallery
+        // this.props.configuration.penthouse_gallery_expand
+        // this.props.configuration.penthouse_gallery_contract
+
+        // this.props.configuration.
+        // 
+        // this.props.configuration.
+        // this.props.configuration.button_text_3
+        // this.props.configuration.button_link_3
+        // this.props.configuration.left_arrow_1
+        // this.props.configuration.residences_gallery
+        // this.props.configuration.residences_gallery_expand
+        // this.props.configuration.residences_gallery_contract
+
+        
+
         const headerTheme = this.props.configuration.headerTheme//this is used to create unique keys between the two different components
         const imageIsExpanded = this.state.imageExpanded
         let details_classes = 'residencePenthouseDetail'
@@ -1402,8 +1424,10 @@ class SlideResidencePenthouseDetail extends Component {
         
         const penthouseDetailImages = this.props.configuration.penthouseDetailImages
         const residenceDetailImages = this.props.configuration.residenceDetailImages
-        const page_title = isPenthouse ? 'Exclusive Luxury Penthouses' : 'Our Residences'
-        const page_description = isPenthouse ? 'The Penthouse condominium units at Hoboken Heights offer the most spectacular panoramic views of the Hudson River and New York City skyline. Whether you’re cooking in the kitchen with chef’s grade appliances, eating in the open dining area, or relaxing in the living room, that panoramic view will be all around you. Top-of-the-line finishes in our bedrooms and bathrooms will ensure your total comfort and ease. You’ll have plenty of options to design your living space to be perfect for you.' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+        const page_title = isPenthouse ? this.props.configuration.heading_penthouse : this.props.configuration.heading_residences
+        const page_description = isPenthouse ? this.props.configuration.content_1_penthouse : this.props.configuration.content_1_residences
+        const features_heading = isPenthouse ? this.props.configuration.features_heading_penthouse : this.props.configuration.features_heading_residences
+        const features_list = isPenthouse ? this.props.configuration.penthouse_features : this.props.configuration.residences_features
         const featuresArray = isPenthouse ? [
             'Panoramic views of the New York City skyline ',
             'Spacious open plan living ',
@@ -1439,14 +1463,9 @@ class SlideResidencePenthouseDetail extends Component {
                 <section className={details_classes}>
                     <div className={residencePenthouseDetailsClasses}>
                         <h2>{page_title}</h2>
-                        <p>{page_description}</p>
-                        <div className="residencePenthouseDetail__features_list">
-                            <div className="heading">Features:</div>
-                            <ul>
-                                {featuresArray.map((feature, i) => {
-                                    return (<li key={i+'residencePenthouseDetailFeature' + headerTheme}>{feature}</li>)
-                                })}
-                            </ul>
+                        <div className="residencePenthouseDetail__features_list_heading_wrapper">
+                            <div className="heading">{features_heading}</div>
+                            <div className="residencePenthouseDetail__features_list_wrapper" dangerouslySetInnerHTML={{__html: features_list}} />
                         </div>
                         <div className="residencePenthouseDetail__arrow_button_container">
                             <div className="leftArrowContainer">

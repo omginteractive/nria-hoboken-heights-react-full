@@ -1250,26 +1250,26 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__expand_toggler {
   z-index: 4;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list {
+.slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list_heading_wrapper {
   margin-bottom: 62px;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list > ul {
-  margin-left: 32px;
-  font-family: "Gotham-Light", sans-serif;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list > ul > li {
-  font-size: 18px;
-  line-height: 39px;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list > ul > li:before {
-  content: "- ";
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list .heading {
+.slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list_heading_wrapper .heading {
   font-size: 18px;
   text-transform: uppercase;
   margin-top: 55px;
   margin-bottom: 27.5px;
   font-family: "Gotham-Medium";
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list_wrapper > ul {
+  margin-left: 32px;
+  font-family: "Gotham-Light", sans-serif;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list_wrapper > ul > li {
+  font-size: 18px;
+  line-height: 39px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list_wrapper > ul > li:before {
+  content: "- ";
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__arrow_button_container {
   display: flex;
@@ -2084,7 +2084,7 @@ body {
   animation-delay: 0.5s;
   animation-timing-function: ease-out;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__details > h2, .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__details > p, .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__features_list .heading, .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__features_list > ul, .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__arrow_button_container {
+.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__details > h2, .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__details > p, .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__features_list_heading_wrapper .heading, .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__features_list_heading_wrapper .residencePenthouseDetail__features_list_wrapper, .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__arrow_button_container {
   position: relative;
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUp;
@@ -2097,10 +2097,10 @@ body {
 .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__details > p {
   animation-delay: 0.8s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__features_list .heading {
+.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__features_list_heading_wrapper .heading {
   animation-delay: 1s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__features_list > ul {
+.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__features_list_heading_wrapper .residencePenthouseDetail__features_list_wrapper {
   animation-delay: 1.2s;
 }
 .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__arrow_button_container {
@@ -3049,17 +3049,17 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__details > p {
     line-height: 3.7037037037vw;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list {
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list_heading_wrapper {
     margin-bottom: 8.8888888889vw;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list .heading {
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list_heading_wrapper .heading {
     margin: 5.5555555556vw 0;
     font-size: 2.7777777778vw;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list > ul {
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list_heading_wrapper > ul {
     margin-left: 0;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list > ul > li {
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list_heading_wrapper > ul > li {
     font-size: 2.7777777778vw;
     line-height: 5.8333333333vw;
   }

@@ -1148,6 +1148,11 @@ body {
                         $paragraph_font_size: 18px;
                         $paragraph_line_height: 25px;
                         $space_below_paragraph: ($paragraph_line_height - $paragraph_font_size)/2;
+
+                        $feature_font_size: 18px;
+                        $feature_line_height: 39px;
+                        $space_above_feature: ($feature_line_height - $feature_font_size)/2;
+
                         height: calc(100vh - #{$header-height});
                         width: calc(#{$content_width});
                         &__details {
@@ -1243,11 +1248,17 @@ body {
                             // position: absolute;
                             // z-index: 1;
                         }
-                        &__features_list {
+                        &__features_list_heading_wrapper {
                             margin-bottom: 62px;
-                            $feature_font_size: 18px;
-                            $feature_line_height: 39px;
-                            $space_above_feature: ($feature_line_height - $feature_font_size)/2;
+                            .heading {
+                                font-size: 18px;
+                                text-transform: uppercase;
+                                margin-top: 55px;
+                                margin-bottom: $content-padding - $space_above_feature;
+                                font-family: 'Gotham-Medium';
+                            }
+                        }
+                        &__features_list_wrapper {
                             > ul {
                                 margin-left: 32px;
                                 font-family: "Gotham-Light", sans-serif;
@@ -1258,13 +1269,6 @@ body {
                                         content: '- '
                                     }
                                 }
-                            }
-                            .heading {
-                                font-size: 18px;
-                                text-transform: uppercase;
-                                margin-top: 55px;
-                                margin-bottom: $content-padding - $space_above_feature;
-                                font-family: 'Gotham-Medium';
                             }
                         }
                         &__arrow_button_container {
@@ -2109,8 +2113,8 @@ body {
                     $animation_incremental_delay: 0.2s;
                     &__details > h2,
                     &__details > p,
-                    &__features_list .heading,
-                    &__features_list > ul,
+                    &__features_list_heading_wrapper .heading,
+                    &__features_list_heading_wrapper .residencePenthouseDetail__features_list_wrapper,
                     &__arrow_button_container {
                         position: relative;
                         animation-fill-mode: forwards;
@@ -2126,11 +2130,11 @@ body {
                             animation-delay: $animation_base_delay + $animation_incremental_delay;
                         }
                     }
-                    &__features_list {
+                    &__features_list_heading_wrapper {
                         .heading {
                             animation-delay: $animation_base_delay + $animation_incremental_delay*2;
                         }
-                        > ul {
+                        .residencePenthouseDetail__features_list_wrapper {
                             animation-delay: $animation_base_delay + $animation_incremental_delay*3;
                         }
                     }

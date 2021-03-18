@@ -292,6 +292,30 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         imageDotsAdditionalClasses: 'not-mobile',
         penthouseDetailImages: penthouseDetailImages,
         residenceDetailImages: residenceDetailImages,
+
+        //Residence
+        heading_residences: result.heading_residences,
+        features_heading_residences: result.features_heading_residences,
+        content_1_residences: result.content_1_residences,
+        residences_features: result.residences_features,
+        button_text_3: result.button_text_3,
+        button_link_3: result.button_link_3,
+        left_arrow_1: result.left_arrow_1,
+        residences_gallery: result.residences_gallery,
+        residences_gallery_expand: result.residences_gallery_expand,
+        residences_gallery_contract: result.residences_gallery_contract,
+
+        //Penthouse
+        heading_penthouse: result.heading_penthouse,
+        features_heading_penthouse: result.features_heading_penthouse,
+        content_1_penthouse: result.content_1_penthouse,
+        penthouse_features: result.penthouse_features,
+        button_text_4: result.button_text_4,
+        button_link_4: result.button_link_4,
+        left_arrow_2: result.left_arrow_2,
+        penthouse_gallery: result.penthouse_gallery,
+        penthouse_gallery_expand: result.penthouse_gallery_expand,
+        penthouse_gallery_contract: result.penthouse_gallery_contract,
     }
     ,{
         slideTemplate: 'residencePenthouseDetail',//this is for mobile only because the original desktop slide with text and images needed separation
