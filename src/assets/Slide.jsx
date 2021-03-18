@@ -1395,7 +1395,8 @@ class SlideResidencePenthouseDetail extends Component {
         details_classes += imageIsExpanded ? ' expandImage' : ''
         const isPenthouse = this.props.residencePenthouse === 'penthouse'
         
-        const images = isPenthouse ? this.props.configuration.penthouseDetailImages : this.props.configuration.residenceDetailImages
+        const penthouseDetailImages = this.props.configuration.penthouseDetailImages
+        const residenceDetailImages = this.props.configuration.residenceDetailImages
         const page_title = isPenthouse ? 'Exclusive Luxury Penthouses' : 'Our Residences'
         const page_description = isPenthouse ? 'The Penthouse condominium units at Hoboken Heights offer the most spectacular panoramic views of the Hudson River and New York City skyline. Whether you’re cooking in the kitchen with chef’s grade appliances, eating in the open dining area, or relaxing in the living room, that panoramic view will be all around you. Top-of-the-line finishes in our bedrooms and bathrooms will ensure your total comfort and ease. You’ll have plenty of options to design your living space to be perfect for you.' : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
         const featuresArray = isPenthouse ? [
@@ -1422,7 +1423,12 @@ class SlideResidencePenthouseDetail extends Component {
         residencePenthouseDetailsClasses += this.props.configuration.imageDetailsAdditionalClasses ? this.props.configuration.imageDetailsAdditionalClasses : ''
         let residencePenthouseDotsClasses = 'residencePenthouseDetail__dots '
         residencePenthouseDotsClasses += this.props.configuration.imageDotsAdditionalClasses ? this.props.configuration.imageDotsAdditionalClasses : ''
-
+        const penthouseDotsClasses = !isPenthouse ? residencePenthouseDotsClasses + ' hidden' : residencePenthouseDotsClasses
+        const residenceDotsClasses = isPenthouse ? residencePenthouseDotsClasses + ' hidden' : residencePenthouseDotsClasses
+        let penthouseFullscreenImageWrapperClasses = "fullscreenImageWrapper"
+        let residenceFullscreenImageWrapperClasses = "fullscreenImageWrapper"
+        penthouseFullscreenImageWrapperClasses += !isPenthouse ? ' hidden' : ''
+        residenceFullscreenImageWrapperClasses += isPenthouse ? ' hidden' : ''
         return(
             <>
                 <section className={details_classes}>
@@ -1453,22 +1459,39 @@ class SlideResidencePenthouseDetail extends Component {
                                 <div><img src={require('./'+this.toggleExpansionPlus).default} alt="plus"/></div>
                             }
                         </div>
-                        <div className="fullscreenImageWrapper">
-                            {images.map((image, i) => {
+                        <div className={penthouseFullscreenImageWrapperClasses}>
+                            {penthouseDetailImages.map((image, i) => {
                                 let imgClasses = 'fullscreenImage'
                                 imgClasses += i === this.state.currIdx ? ' active' : ''
                                 imgClasses += i === this.state.prevIdx ? ' deactivating' : ''
                                 return (
-                                    <img key={i+'residencePenthouseDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={require('./'+image).default} alt="Residence Penthouse"/>
+                                    <img key={i+'penthouseDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={require('./'+image).default} alt="Residence Penthouse"/>
+                                )
+                            })}
+                        </div>
+                        <div className={residenceFullscreenImageWrapperClasses}>
+                            {residenceDetailImages.map((image, i) => {
+                                let imgClasses = 'fullscreenImage'
+                                imgClasses += i === this.state.currIdx ? ' active' : ''
+                                imgClasses += i === this.state.prevIdx ? ' deactivating' : ''
+                                return (
+                                    <img key={i+'residenceDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={require('./'+image).default} alt="Residence Penthouse"/>
                                 )
                             })}
                         </div>
                     </div>
-                    <div className={residencePenthouseDotsClasses}>
-                        {images.map((image, i) => {
+                    <div className={penthouseDotsClasses}>
+                        {penthouseDetailImages.map((image, i) => {
                             let dotClasses = 'dot'
                             dotClasses += i === this.state.currIdx ? ' active' : ''
-                            return (<div key={i+'residencePenthouseDetailDot' + headerTheme} onClick={() => this.activateImage(i)} className={dotClasses} />)
+                            return (<div key={i+'penthouseDetailDot' + headerTheme} onClick={() => this.activateImage(i)} className={dotClasses} />)
+                        })}
+                    </div>
+                    <div className={residenceDotsClasses}>
+                        {residenceDetailImages.map((image, i) => {
+                            let dotClasses = 'dot'
+                            dotClasses += i === this.state.currIdx ? ' active' : ''
+                            return (<div key={i+'renthouseDetailDot' + headerTheme} onClick={() => this.activateImage(i)} className={dotClasses} />)
                         })}
                     </div>
                 </section>

@@ -1218,6 +1218,9 @@ body {
   height: 100%;
   background-color: #fff;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container .fullscreenImageWrapper.hidden {
+  display: none;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container .fullscreenImageWrapper .fullscreenImage {
   width: calc(calc(100vw - 6.3vw*2));
   height: 100%;

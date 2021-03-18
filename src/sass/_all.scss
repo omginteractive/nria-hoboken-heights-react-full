@@ -1197,6 +1197,9 @@ body {
                             .fullscreenImageWrapper {
                                 height: 100%;
                                 background-color: #fff;
+                                &.hidden {
+                                    display: none;
+                                }
                                 .fullscreenImage {
                                     $image_animation_duration: 1.2s;
                                     width: calc(#{$content_width});
