@@ -1291,16 +1291,6 @@ class SlideResidencePenthouse extends Component {
 class SlideResidencePenthouseFullscreen extends Component {
     constructor(props) {
         super(props)
-        
-        // down_arrow_3
-        // swipe_text_mobile_3
-        // swipe_arrow_left_3
-        // swipe_arrow_right_3
-        
-        // down_arrow_4
-        // swipe_text_mobile_4
-        // swipe_arrow_left_4
-        // swipe_arrow_right_4
     }
     shouldComponentUpdate(nextProps, nextState){
         const residencePenthouseChanged = nextProps.residencePenthouse !== this.props.residencePenthouse
@@ -1310,15 +1300,30 @@ class SlideResidencePenthouseFullscreen extends Component {
         this.props.methods.scrollToNextSlide(noRequireScroll)
     }
     render(){
+        const penthouseChosen = this.props.residencePenthouse === 'penthouse'
         let penthouseImageClasses = 'residencePenthouseFullscreenImage penthouse'
         let residenceImageClasses = 'residencePenthouseFullscreenImage residence'
-        penthouseImageClasses += this.props.residencePenthouse === 'residence' ? ' hidden' : ''
-        residenceImageClasses += this.props.residencePenthouse === 'penthouse' ? ' hidden' : ''
+        penthouseImageClasses += !penthouseChosen ? ' hidden' : ''
+        residenceImageClasses += penthouseChosen ? ' hidden' : ''
+
+        
+        const residencePenthouseDownArrow = penthouseChosen ? this.props.configuration.down_arrow_3.url : this.props.configuration.down_arrow_4.url
+        const residencePenthouseSwipeText = penthouseChosen ? this.props.configuration.swipe_text_mobile_3 : this.props.configuration.swipe_text_mobile_4
+        const residencePenthouseSwipeArrowLeft = penthouseChosen ? this.props.configuration.swipe_arrow_left_3.url : this.props.configuration.swipe_arrow_left_4.url
+        const residencePenthouseSwipeArrowRight = penthouseChosen ? this.props.configuration.swipe_arrow_right_3.url : this.props.configuration.swipe_arrow_right_4.url
+
+        const right_arrow_styles = {
+            backgroundImage: 'url('+residencePenthouseSwipeArrowRight+')'
+        }
+        const left_arrow_styles = {
+            backgroundImage: 'url('+residencePenthouseSwipeArrowLeft+')',
+            backgroundPosition: 'right'
+        }
         return(
             <>
                 {
                     <div className="downArrowContainer">
-                        <img alt="Down Arrow" onClick={this.nextSlide.bind(this)} className="downArrow" src={downArrow}></img>
+                        <img alt="Down Arrow" onClick={this.nextSlide.bind(this)} className="downArrow" src={residencePenthouseDownArrow}></img>
                     </div>
                 }
                 <div className="fullscreenImageWrapper">
@@ -1328,9 +1333,9 @@ class SlideResidencePenthouseFullscreen extends Component {
                 {this.props.configuration.mobileHasDifferentContent &&
 					<div className={"centerBottom mobile-only"}>
 						<h1 style={this.props.configuration.mobileContent.centerBottom.lineStyles} className="line" >
-							{this.props.configuration.mobileContent.centerBottom.line1LeftArrowBouncing && this.props.mobileArrows.left_arrow_bouncing}
-							<div dangerouslySetInnerHTML={{ __html: this.props.configuration.mobileContent.centerBottom.line1}} />
-							{this.props.configuration.mobileContent.centerBottom.line1RightArrowBouncing && this.props.mobileArrows.right_arrow_bouncing}
+                            <div className='left_arrow_bouncing' style={left_arrow_styles} onClick={() => this.props.slideHorizontal('left')}/>
+							<div className='uppercase' dangerouslySetInnerHTML={{ __html: residencePenthouseSwipeText}} />
+                            <div className='right_arrow_bouncing' style={right_arrow_styles} onClick={() => this.props.slideHorizontal('right')}/>
 						</h1>
 					</div>
 				}
