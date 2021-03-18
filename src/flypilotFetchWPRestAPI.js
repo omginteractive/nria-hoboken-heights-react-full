@@ -92,7 +92,8 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         content_property_3: result.content_property_3,
         button_text_1: result.button_text_1,
         button_link_1: result.button_link_1,
-        background_video_property: result.background_video_property,
+        background_video_property: result.background_video_property.url,
+        background_animated_property_image_mobile: result.background_animated_property_image_mobile.url,
     }, {
         slideTemplate: 'patio',
         slideClasses: "fullWidthVideo",

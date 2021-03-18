@@ -780,13 +780,14 @@ class SlideFountainPen extends Component {
         // let videoContainerClassesDesktop = videoContainerClasses + ' not-mobile'
         let videoContainerClassesDesktop = videoContainerClasses
         // if(this.props.isCurrent) this.replayVideo()
-        const videoSrc = this.props.configuration.background_video_property.url
+        const videoSrc = this.props.configuration.background_video_property
+        const mobileImgSrc = this.props.configuration.background_animated_property_image_mobile
         return(
             <> 
                 {
                     <div onWheel={() =>this.handleWheel()}     className="textSection">
                         <div className="motionSignature mobile-only">
-                            <img src={require('./images/Motion_signature_animateonce.gif').default} alt="" />
+                            <img src={mobileImgSrc} alt="" />
                         </div>
                         <h2 dangerouslySetInnerHTML={{__html: this.props.configuration.heading_property}} />
                         <p dangerouslySetInnerHTML={{__html: this.props.configuration.content_property_1}} />
