@@ -1503,20 +1503,20 @@ class SlideDevelopmentTeam extends Component {
         let buttonGroupClasses = 'developmentTeam__button_group '
         buttonGroupClasses += this.props.configuration.buttonGroupAdditionalClasses ? this.props.configuration.buttonGroupAdditionalClasses : ''
         
-        const heading_team_story = this.props.configuration.heading_team_story
-        const content_1_team_story = this.props.configuration.content_1_team_story
-        const secondary_heading_team_story = this.props.configuration.secondary_heading_team_story
-        const content_2_team_story = this.props.configuration.content_2_team_story
-        const content_3_team_story = this.props.configuration.content_3_team_story
-        const button_text_5 = this.props.configuration.button_text_5
-        const button_link_5 = this.props.configuration.button_link_5
-        const button_text_6 = this.props.configuration.button_text_6
-        const button_link_6 = this.props.configuration.button_link_6
-        const button_text_7 = this.props.configuration.button_text_7
-        const button_link_7 = this.props.configuration.button_link_7
-        const team_story_video = this.props.configuration.team_story_video
-        const nria_logo = this.props.configuration.nria_logo
-        const copyright_text = this.props.configuration.copyright_text
+        const heading_team_story = this.props.configuration.developmentTeamFields.heading_team_story
+        const content_1_team_story = this.props.configuration.developmentTeamFields.content_1_team_story
+        const secondary_heading_team_story = this.props.configuration.developmentTeamFields.secondary_heading_team_story
+        const content_2_team_story = this.props.configuration.developmentTeamFields.content_2_team_story
+        const content_3_team_story = this.props.configuration.developmentTeamFields.content_3_team_story
+        const button_text_5 = this.props.configuration.developmentTeamFields.button_text_5
+        const button_link_5 = this.props.configuration.developmentTeamFields.button_link_5
+        const button_text_6 = this.props.configuration.developmentTeamFields.button_text_6
+        const button_link_6 = this.props.configuration.developmentTeamFields.button_link_6
+        const button_text_7 = this.props.configuration.developmentTeamFields.button_text_7
+        const button_link_7 = this.props.configuration.developmentTeamFields.button_link_7
+        const team_story_video = this.props.configuration.developmentTeamFields.team_story_video
+        const nria_logo = this.props.configuration.developmentTeamFields.nria_logo
+        const copyright_text = this.props.configuration.developmentTeamFields.copyright_text
         return(
             <section className='developmentTeam'>
                 <div className='left'>
