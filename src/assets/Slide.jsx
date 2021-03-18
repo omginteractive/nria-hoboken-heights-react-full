@@ -585,20 +585,19 @@ class SlideNeighborhoodCommunity extends Component {
         return false
     }
     render(){
+        const heading_discover =  this.props.configuration.heading_discover
+        const content_discover =  this.props.configuration.content_discover
+        const left_image =  this.props.configuration.left_image
         return(
             <>
                 <section className="neighborhoodCommunity">
                     <div className="left">
-                        <img className='startZoomedIn' alt="neighborhood" src={require('./images/neighborhood.png').default} />
+                        <img className='startZoomedIn' alt="neighborhood" src={left_image} />
                     </div>
                     <div className="right">
                         <div className="textGroup">
-                            <h2>Hoboken Heights Neighborhood and Community</h2>
-                            <p>People looking to buy homes in Hoboken or Jersey City often look up the hill and ask, “What’s up there?” </p>
-                            <p>Union City is situated on top of the ridge of the lower Hudson Palisades, a line of steep cliffs along the west side of the lower Hudson River in Northeastern New Jersey. Hoboken Heights is a new gated community being built on a Palisade cliff, perfect for people looking for high quality housing while staying closely connected to Manhattan. </p>
-                            <p>Every luxury condominium in Hoboken Heights will offer expansive views of the New York skyline and Hudson River. Breathtaking views! You’ll be close to Manhattan but with a view of the New York skyline that you can’t get in Manhattan. </p>
-                            <p>Hoboken Heights is a short distance away from the western mouth of the Lincoln Tunnel, putting you closer to Times Square than anywhere you could live in Brooklyn. </p>
-                            <p>Union City is compact in size, just 1.29 square miles, and has a population around 68,000, but features a good number of parks, including Firefighter’s Memorial Park on Palisade Avenue. It has a Walk Score of 96 and Transit Score of 80, making it easy to get around locally in addition to quick access to Manhattan.</p>
+                            <h2>{heading_discover}</h2>
+                            <div dangerouslySetInnerHTML={{ __html: content_discover}} />
                         </div>
                         {/* <div className="button_container">
                             <div className="btn light">Lorem ipsum</div>

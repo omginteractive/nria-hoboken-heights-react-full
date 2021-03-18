@@ -388,6 +388,9 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         },
         headerTheme: 'dark',
         enableScrolling: true,
+        heading_discover: result.heading_discover,
+        content_discover: result.content_discover,
+        left_image: result.left_image.url,
     },{
         slideTemplate: 'map',
         styles: {
