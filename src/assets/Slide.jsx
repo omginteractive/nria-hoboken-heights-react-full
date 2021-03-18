@@ -1528,9 +1528,9 @@ class SlideDevelopmentTeam extends Component {
                         <p className='developmentTeam__paragraph' dangerouslySetInnerHTML={{ __html: content_3_team_story}} />
                     </div>
                     <div className={buttonGroupClasses}>
-                        <div className="btn light">{button_text_5}</div>
-                        <div className="btn light">{button_text_6}</div>
-                        <div className="btn light">{button_text_7}</div>
+                        <a href={button_link_5} target="_blank" className="btn light">{button_text_5}</a>
+                        <a href={button_link_6} target="_blank" className="btn light">{button_text_6}</a>
+                        <a href={button_link_7} target="_blank" className="btn light">{button_text_7}</a>
                     </div>
                 </div>
                 <div className={rightSideClasses}>
