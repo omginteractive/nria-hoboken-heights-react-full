@@ -216,33 +216,33 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         content_the_view: result.content_the_view,
         views: [
             {
-                displayTime: '6:00',
-                ampm: 'AM',
+                displayTime: result.time_1,
+                ampm: result.time_1_ampm,
                 image: result.timeline_gallery[0].url
             },
             {
-                displayTime: '8:00',
-                ampm: 'AM',
+                displayTime: result.time_2,
+                ampm: result.time_2_ampm,
                 image: result.timeline_gallery[1].url
             },
             {
-                displayTime: '11:00',
-                ampm: 'AM',
+                displayTime: result.time_3,
+                ampm: result.time_3_ampm,
                 image: result.timeline_gallery[2].url
             },
             {
-                displayTime: '6:00',
-                ampm: 'PM',
+                displayTime: result.time_4,
+                ampm: result.time_4_ampm,
                 image: result.timeline_gallery[3].url
             },
             {
-                displayTime: '8:00',
-                ampm: 'PM',
+                displayTime: result.time_5,
+                ampm: result.time_5_ampm,
                 image: result.timeline_gallery[4].url
             },
             {
-                displayTime: '11:00',
-                ampm: 'PM',
+                displayTime: result.time_6,
+                ampm: result.time_6_ampm,
                 image: result.timeline_gallery[5].url
             },
         ]
