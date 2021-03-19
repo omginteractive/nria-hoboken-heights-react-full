@@ -1121,8 +1121,14 @@ class SlideAmenitiesGallery extends Component {
                 <section className="amenities_gallery">
                     <img onAnimationEnd={this.resetRightArrow.bind(this)} alt="Right Arrow" onClick={this.animateRightArrowAndChangeAmenity.bind(this)} className={rightArrowClasses} src={require('./images/amenities/rightArrow.svg').default} />
                     <img onAnimationEnd={this.resetLeftArrow.bind(this)} alt="Left Arrow" onClick={this.animateLeftArrowAndChangeAmenity.bind(this)} className={leftArrowClasses} src={require('./images/amenities/rightArrow.svg').default} />
-                    <img alt="" src={this.state.image1 && this.state.image1} className={image1_classes}  />
-                    <img alt="" src={this.state.image2 && this.state.image2} className={image2_classes}  />
+                    {/* <img alt="" src={this.state.image1 && this.state.image1} className={image1_classes}  />
+                    <img alt="" src={this.state.image2 && this.state.image2} className={image2_classes}  /> */}
+                    {this.props.configuration.amenities.map((amenity, i) => {
+                        let imageClasses = 'amenities_gallery__image'
+                        imageClasses += i === this.state.currIdx ? ' active' : ''
+                        return (<img key={i+'SlideAmenitiesGalleryImage'} alt="" src={amenity.image} className={imageClasses}  />)
+                    })}
+                        
                     <div className={amenities_gallery__more_info_classes}>
                         
                         <div className="amenities_gallery__more_info__dots">

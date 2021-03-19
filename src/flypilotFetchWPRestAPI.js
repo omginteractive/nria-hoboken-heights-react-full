@@ -155,8 +155,8 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
             },
             {
                 title_line1: result.detail_heading_2_line_1,
-                title_line2: result.detail_heading_2_line_1,
-                title_line3: result.detail_heading_2_line_1,
+                title_line2: result.detail_heading_2_line_2,
+                title_line3: result.detail_heading_2_line_3,
                 image: result.detail_background_2.url,
                 description: result.detail_content_2
             },
@@ -208,6 +208,7 @@ const flypilotFetchWPRestAPI = async (endpoint) => {
         styles: {
             background: "#fff",
         },
+        enableScrolling: true,
         // slideClasses: "fullWidthVideo",
         // videoLoop: true,
         // videoZoomEffect: true,

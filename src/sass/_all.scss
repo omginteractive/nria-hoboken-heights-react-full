@@ -743,17 +743,13 @@ body {
                             left: 0;
                             width: 100vw;
                             height: 100vh;
-                            transition: opacity 0s linear $amenitiesTransitionDuration, transform 0s linear $amenitiesTransitionDuration;
+                            // transition: opacity 0s linear $amenitiesTransitionDuration, transform 0s linear $amenitiesTransitionDuration;
+                            transition: opacity $amenitiesTransitionDuration linear;
                             opacity: 0;
-                            // transform: scale(1.07);
                             object-fit: cover;
-                            &.old {
-                            }
-                            &.new {
-                                z-index: 1;
+                            &.active {
+                                @include fullScreenImageScaleDownOnArrival();//transform animation is being done here
                                 opacity: 1;
-                                // transform: scale(1.4);
-                                transition: opacity $amenitiesTransitionDuration, transform 0s;
                             }
                         }
                         &__more_info {
@@ -2093,8 +2089,10 @@ body {
                         }
                     }
                 }
-                .amenities_gallery__image.new {
-                    @include fullScreenImageScaleDownOnArrival();
+                .amenities_gallery__image {
+                    &.active {
+                        @include fullScreenImageScaleDownOnArrival();
+                    }
                 }
                 .amenities__list > ul > li{
                     $animation_incremental_delay: 0.2s;
