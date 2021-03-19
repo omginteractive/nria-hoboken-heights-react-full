@@ -1,7 +1,6 @@
 import React from 'react';
 import flypilotFetchWPRestAPI from './flypilotFetchWPRestAPI.js';
 // import modules from './assets/modules';
-// import flypilotFetchWPRestAPI from './assets/page.js';
 import Slide from './assets/Slide';
 import MobileMenu from './assets/MobileMenu';
 import Header from './assets/Header';

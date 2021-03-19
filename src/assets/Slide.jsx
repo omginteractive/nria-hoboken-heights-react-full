@@ -969,7 +969,7 @@ class SlideAmenitiesGallery extends Component {
     }
     componentDidMount(){
         this.props.configuration.amenities.forEach((amenity) => {
-            const img = new Image().src = require('./'+amenity.image).default
+            const img = new Image().src = amenity.image
         })
         this.setAmenityData(this.state.currIdx)
         this.setAmenityTitle()
@@ -1121,8 +1121,8 @@ class SlideAmenitiesGallery extends Component {
                 <section className="amenities_gallery">
                     <img onAnimationEnd={this.resetRightArrow.bind(this)} alt="Right Arrow" onClick={this.animateRightArrowAndChangeAmenity.bind(this)} className={rightArrowClasses} src={require('./images/amenities/rightArrow.svg').default} />
                     <img onAnimationEnd={this.resetLeftArrow.bind(this)} alt="Left Arrow" onClick={this.animateLeftArrowAndChangeAmenity.bind(this)} className={leftArrowClasses} src={require('./images/amenities/rightArrow.svg').default} />
-                    <img alt="" src={this.state.image1 && require('./'+this.state.image1).default} className={image1_classes}  />
-                    <img alt="" src={this.state.image2 && require('./' + this.state.image2).default} className={image2_classes}  />
+                    <img alt="" src={this.state.image1 && this.state.image1} className={image1_classes}  />
+                    <img alt="" src={this.state.image2 && this.state.image2} className={image2_classes}  />
                     <div className={amenities_gallery__more_info_classes}>
                         
                         <div className="amenities_gallery__more_info__dots">
@@ -1144,7 +1144,7 @@ class SlideAmenitiesGallery extends Component {
                                         <img alt="" onClick={this.toggleDetailDescription.bind(this)} className="amenities_gallery__description_toggler" src={toggleButtonSrc} />
                                     </h3>
                                 </div>
-                                <p className='descriptionTextElement'>{this.state.description}</p>
+                                <p className='descriptionTextElement' dangerouslySetInnerHTML={{ __html: this.state.description}}></p>
                             </div>
                         </div>
                     </div>
