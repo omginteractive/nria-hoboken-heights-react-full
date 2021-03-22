@@ -968,7 +968,6 @@ body {
   height: calc(100vh - 12.8vh);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__top {
-  position: absolute;
   top: 12.8vh;
   width: 100vw;
   padding-left: 6.3vw;
@@ -980,10 +979,7 @@ body {
   position: static;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__bottom {
-  position: absolute;
-  top: 30.8vh;
   width: 100vw;
-  height: 69.2vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1042,7 +1038,10 @@ body {
   /* for ie */
   position: relative;
   top: 10px;
-  width: calc(40.1078125vw + 20px);
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border: none;
   height: 5px;
   /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
   background: transparent;
@@ -1058,12 +1057,12 @@ body {
   background: transparent;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-webkit-slider-thumb {
-  -webkit-appearance: none;
   border: solid 1px #fff;
   height: 20px;
   width: 20px;
   border-radius: 50%;
   background: #000;
+  -webkit-appearance: none;
   position: relative;
   z-index: 3;
   cursor: pointer;
@@ -1074,6 +1073,7 @@ body {
   width: 20px;
   border-radius: 50%;
   background: #000;
+  background: #000;
   cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-ms-thumb {
@@ -1081,6 +1081,7 @@ body {
   height: 20px;
   width: 20px;
   border-radius: 50%;
+  background: #000;
   background: #000;
   cursor: pointer;
 }
@@ -2606,12 +2607,6 @@ body {
   #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots {
     bottom: calc(7.6851851852vw + 70px);
   }
-  #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList {
-    height: 36vh;
-  }
-  #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input {
-    height: calc(35vh + 20px);
-  }
   #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__dots, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__dots, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__dots {
     bottom: 140px;
   }
@@ -2970,6 +2965,7 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section {
     display: block;
     top: 19.4444444444vw;
+    height: calc(100vh - 19.4444444444vw);
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__top {
     height: auto;
@@ -2982,48 +2978,68 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList {
     flex-direction: column;
-    height: calc(50vh - 6vh);
-    width: 2em;
+    height: 40vh;
+    width: 10.6481481481vw;
     left: auto;
-    right: 100px;
+    right: 60px;
+    top: 11.6666666667vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li {
-    width: 82px;
+    width: 10.6481481481vw;
+    font-size: 2.7777777778vw;
+    font-family: "Gotham-Book";
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li:before {
     top: calc(0.5em - 1px);
-    left: 93px;
-    width: 20px;
+    left: 54px;
+    width: 0.9259259259vw;
     height: 1px;
+    background: #fff;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li .ampm {
+    font-size: 1.8518518519vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section .visibleSliderLine {
     width: 1px;
-    height: calc(40vh + 20px / 2);
+    height: calc(40vh - 2.7777777778vw);
     bottom: auto;
-    top: calc(5vh - 20px / 2);
+    top: calc(11.6666666667vw + 2.7777777778vw / 2);
     position: absolute;
+    background: #fff;
+    left: -1.3888888889vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider {
     top: 0;
     bottom: auto;
-    right: 6vw;
+    right: 6.5740740741vw;
     height: 50vh;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input {
+    /* Unable to use -webkit-appearance: slider-vertical; because it needs to be none to allow custom styling*/
     writing-mode: bt-lr;
     /* Vertical orientation IE */
-    -webkit-appearance: slider-vertical;
-    /* Vertical orientation  WebKit */
-    height: calc(40vh + 20px);
-    width: 20px;
-    transform: rotate(180deg);
+    width: calc(40vh );
+    height: 20px;
+    transform: rotate(90deg);
+    transform-origin: left;
     position: absolute;
-    left: -8px;
-    top: calc(5vh - 20px/2);
+    left: -4px;
+    top: calc(11.6666666667vw - 2.7777777778vw);
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-webkit-slider-runnable-track {
-    height: calc(40vh + 20px);
-    width: 20px;
+    height: 2.7777777778vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-webkit-slider-thumb {
+    width: 2.7777777778vw;
+    height: 2.7777777778vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-moz-range-thumb {
+    width: 2.7777777778vw;
+    height: 2.7777777778vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-ms-thumb {
+    width: 2.7777777778vw;
+    height: 2.7777777778vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouse {
     flex-direction: column;

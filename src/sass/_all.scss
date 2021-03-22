@@ -896,7 +896,7 @@ body {
                         top: $header-height;
                         height: calc(100vh - #{$header-height});
                         &__top {
-                            position: absolute;
+                            // position: absolute;
                             top: $header-height;
                             width: 100vw;
                             // height: $top_section_height;
@@ -912,10 +912,10 @@ body {
                             position: static;
                         }
                         &__bottom {
-                            position: absolute;
-                            top: $top_section_height + $header-height;
+                            // position: absolute;
+                            // top: $top_section_height + $header-height;
                             width: 100vw;
-                            height: 100vh - $top_section_height - $header-height;
+                            // height: 100vh - $top_section_height - $header-height;
                             display: flex;
                             align-items: center;
                             justify-content: center;
@@ -937,9 +937,23 @@ body {
                             $thumbColor: #000;
                             $thumbBorderRadius: 50%;
                             $thumbBorder: solid 1px #fff;
-                            
                             position: absolute;
                             bottom: calc_vw(58);
+                            @mixin thumb {
+                                border: $thumbBorder;
+                                height: $sliderThumbWidth;
+                                width: $sliderThumbWidth;
+                                border-radius: $thumbBorderRadius;
+                                background: $thumbColor;
+                            }
+                            @mixin rangeTrack {
+                                position: relative;
+                                top: $sliderHeight/2;
+                                width: $sliderThumbWidth;
+                                height: $sliderHeight;
+                                background: $hideSliderColor;
+                                border: none;
+                            }
                             .visibleSliderLine {
                                 left: $timeWordWidth/2;
                                 background: $sliderLineColor;
@@ -954,7 +968,6 @@ body {
                                 margin: 0;
                                 -webkit-appearance: none;
                                 position: relative;
-                                // left: -$sliderThumbWidth/2;
                                 left: calc(#{$timeWordWidth}/2 - #{$sliderThumbWidth}/2);
                                 z-index: 4;
                                 /* fix for FF unable to apply focus style bug  */
@@ -976,18 +989,11 @@ body {
                                     
                                 }
                                 &::-moz-range-track {
-                                    position: relative;
-                                    top: $sliderHeight/2;
-                                    width: $sliderThumbWidth;
-                                    height: $sliderHeight;
-                                    background: $hideSliderColor;
-                                    border: none;
+                                    @include rangeTrack;
                                 }
                                 
                                 &::-ms-track {/* for ie */
-                                    position: relative;
-                                    top: $sliderHeight/2;
-                                    width: $sliderActualWidth;
+                                    @include rangeTrack;
                                     height: 5px;
                                     /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
                                     background: transparent;
@@ -1006,39 +1012,26 @@ body {
                                     background: $hideSliderColor;
                                 }
                                 &::-webkit-slider-thumb {
+                                    @include thumb;
                                     -webkit-appearance: none;
-                                    border: $thumbBorder;
-                                    height: $sliderThumbWidth;
-                                    width: $sliderThumbWidth;
-                                    border-radius: $thumbBorderRadius;
-                                    background: $thumbColor;
                                     // margin-top: $sliderHeight - $sliderThumbWidth/2;
                                     position: relative;
                                     z-index: 3;//to appear above tick lines
                                     cursor: pointer;
                                 }
                                 &::-moz-range-thumb {
-                                    border: $thumbBorder;
-                                    height: $sliderThumbWidth;
-                                    width: $sliderThumbWidth;
-                                    border-radius: $thumbBorderRadius;
+                                    @include thumb;
                                     background: $thumbColor;
                                     cursor: pointer;
                                 }
                                 &::-ms-thumb {
-                                    border: $thumbBorder;
-                                    height: $sliderThumbWidth;
-                                    width: $sliderThumbWidth;
-                                    border-radius: $thumbBorderRadius;
+                                    @include thumb;
                                     background: $thumbColor;
                                     cursor: pointer;
                                 }
                                 &:focus {
                                     outline: none;
                                 }
-                                
-                                
-                                
                                 
                                 /*hide the outline behind the border*/
                                 &:-moz-focusring {

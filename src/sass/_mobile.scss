@@ -327,12 +327,12 @@ body {
                 }
                 
                 &views {
-                    .views_section__timeList {
-                        height: 36vh;
-                    }
-                    .views_section__timeSlider > input {
-                            height: calc(35vh + 20px);
-                    }
+                    // .views_section__timeList {
+                    //     height: 36vh;
+                    // }
+                    // .views_section__timeSlider > input {
+                    //         height: calc(35vh + 20px);
+                    // }
                 }
                 &residencePenthouseDetail {
                     .residencePenthouseDetail__dots {
@@ -815,14 +815,16 @@ body {
                 }
                 &views {
                     .views_section {
-                        $sliderThumbWidth: 20px;
+                        $sliderThumbWidth: calc_vw(30);
                         $visibleSliderWidth: 1px;
                         $viewsSectionRangeInputWidth: 20px;
                         $viewsSectionRangeInputTargetHeight: 40vh;
-                        $sliderActualHeight: calc(#{$viewsSectionRangeInputTargetHeight} + #{$sliderThumbWidth});
+                        $sliderActualHeight: calc(#{$viewsSectionRangeInputTargetHeight} );
                         $imageHeight: 50vh;
+                        $verticalMarginForSlider: calc_vw(126);
                         display: block;
                         top: $header-space-for-content;
+                        height: calc(100vh - #{$header-space-for-content});
                         &__top {
                             height: auto;
                             padding-left: $content-padding;
@@ -836,45 +838,78 @@ body {
                         }
                         &__timeList {
                             flex-direction: column;
-                            height: calc(50vh - 6vh);
-                            width: 2em;
+                            height: $viewsSectionRangeInputTargetHeight;
+                            width: calc_vw(115);
                             left: auto;
-                            right: 100px;
+                            right: 60px;
+                            top: $verticalMarginForSlider;
                             > li {
-                                width: 82px;
+                                width: calc_vw(115);
+                                font-size: calc_vw(30);
+                                font-family: 'Gotham-Book';
                                 &:before {
                                     top: calc(0.5em - 1px);
-                                    left: 93px;
-                                    width: 20px;
+                                    left: 54px;
+                                    width: calc_vw(10);
                                     height: 1px;
+                                    background: #fff;
+                                }
+                                .ampm {
+                                    font-size: calc_vw(20);
                                 }
                             }
                         }
                         .visibleSliderLine {
                             width: $visibleSliderWidth;
-                            height: calc(#{$viewsSectionRangeInputTargetHeight} + #{$sliderThumbWidth} / 2);
+                            // height: $viewsSectionRangeInputTargetHeight;
+                            height: calc(#{$viewsSectionRangeInputTargetHeight} - #{$sliderThumbWidth});
                             bottom: auto;
-                            top: calc(5vh - #{$sliderThumbWidth} / 2);
+                            top: calc(#{$verticalMarginForSlider} + #{$sliderThumbWidth} / 2);
                             position: absolute;
+                            background: #fff;
+                            left: -$sliderThumbWidth/2;
                         }
                         &__timeSlider {
                             top: 0;
                             bottom: auto;
-                            right: 6vw;
+                            right: calc_vw(71);
                             height: 50vh;
+                            @mixin thumb {
+                                width: $sliderThumbWidth;
+                                height: $sliderThumbWidth;
+                            }
+                            @mixin rangeTrack {
+                                height: $sliderThumbWidth;
+                            }
                             > input {
+                                /* Unable to use -webkit-appearance: slider-vertical; because it needs to be none to allow custom styling*/
+                                // -webkit-appearance: slider-vertical; /* Vertical orientation  WebKit */
                                 writing-mode: bt-lr; /* Vertical orientation IE */
-                                -webkit-appearance: slider-vertical; /* Vertical orientation  WebKit */
-                                height: $sliderActualHeight;
-                                width: $viewsSectionRangeInputWidth;
-                                transform: rotate(180deg);
+                                width: $sliderActualHeight;//width is height because we have rotated slider 90 degrees
+                                height: $viewsSectionRangeInputWidth;
+                                transform: rotate(90deg);
+                                transform-origin: left;
                                 position: absolute;
-                                left: -8px;
-                                top: calc(5vh - #{$sliderThumbWidth}/2);
+                                left: -4px;
+                                top: calc(#{$verticalMarginForSlider} - #{$sliderThumbWidth});
                                 &::-webkit-slider-runnable-track {
-                                    height: $sliderActualHeight;
-                                    width: $viewsSectionRangeInputWidth;
+                                    @include rangeTrack;
+                                    // height: $sliderActualHeight;
+                                    // width: $viewsSectionRangeInputWidth;
                                 }
+                                &::-webkit-slider-thumb {
+                                    @include thumb;
+                                    
+                                }
+                                &::-moz-range-thumb {
+                                    @include thumb;
+                                    
+                                }
+                                &::-ms-thumb {
+                                    @include thumb;
+                                }
+
+
                             }
                         }
                     }
