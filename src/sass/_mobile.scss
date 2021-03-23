@@ -816,12 +816,18 @@ body {
                 &views {
                     .views_section {
                         $sliderThumbWidth: calc_vw(30);
-                        $visibleSliderWidth: 1px;
+                        $visibleSliderWidth: calc_vw(2);
                         $viewsSectionRangeInputWidth: 20px;
                         $viewsSectionRangeInputTargetHeight: 40vh;
                         $sliderActualHeight: calc(#{$viewsSectionRangeInputTargetHeight} );
                         $imageHeight: 50vh;
                         $verticalMarginForSlider: calc_vw(126);
+                        $timeListWidth: calc_vw(115);
+                        $rightMarginFromEdge: calc_vw(71);
+                        $timeSliderRightMarginFromEdge: calc(#{$rightMarginFromEdge} - #{$timeListWidth});
+                        $spaceBetweenTimeAndVisibleLine: calc_vw(31);
+                        $spaceBetweenTimeAndTick: calc_vw(25);
+                        // $timeListWidth
                         display: block;
                         top: $header-space-for-content;
                         height: calc(100vh - #{$header-space-for-content});
@@ -835,24 +841,35 @@ body {
                             }
                         }
                         &__bottom {
+                            overflow: hidden;//necessary due to timeSlider positioning
+                            height: calc_vw(955);
                         }
                         &__timeList {
                             flex-direction: column;
                             height: $viewsSectionRangeInputTargetHeight;
-                            width: calc_vw(115);
-                            left: auto;
-                            right: 60px;
+                            width: $timeListWidth;
+                            // left: calc(-100% - #{calc_vw(30)});
+                            left: -100%;
+                            // right: $rightMarginFromEdge;
+                            right: auto;
+                            // right: calc(#{calc_vw(102)} + #{$sliderThumbWidth} / 2 + #{$sliderThumbWidth} / 2);
                             top: $verticalMarginForSlider;
                             > li {
-                                width: calc_vw(115);
+                                width: calc(#{calc_vw(115)} + #{$spaceBetweenTimeAndTick});
                                 font-size: calc_vw(30);
                                 font-family: 'Gotham-Book';
+                                opacity: 1;
+                                padding-right: $spaceBetweenTimeAndTick;
+                                right: $spaceBetweenTimeAndTick;
                                 &:before {
+                                    $tickWidth: calc_vw(10);
                                     top: calc(0.5em - 1px);
-                                    left: 54px;
-                                    width: calc_vw(10);
+                                    // right: - calc_vw(36);
+                                    right: calc(-#{$visibleSliderWidth} / 2  - #{$tickWidth} / 2);
+                                    width: $tickWidth;
                                     height: 1px;
                                     background: #fff;
+                                    left: auto;
                                 }
                                 .ampm {
                                     font-size: calc_vw(20);
@@ -867,12 +884,12 @@ body {
                             top: calc(#{$verticalMarginForSlider} + #{$sliderThumbWidth} / 2);
                             position: absolute;
                             background: #fff;
-                            left: -$sliderThumbWidth/2;
+                            left: 0;
                         }
                         &__timeSlider {
                             top: 0;
                             bottom: auto;
-                            right: calc_vw(71);
+                            right: $timeSliderRightMarginFromEdge;
                             height: 50vh;
                             @mixin thumb {
                                 width: $sliderThumbWidth;
@@ -887,11 +904,11 @@ body {
                                 writing-mode: bt-lr; /* Vertical orientation IE */
                                 width: $sliderActualHeight;//width is height because we have rotated slider 90 degrees
                                 height: $viewsSectionRangeInputWidth;
-                                transform: rotate(90deg);
-                                transform-origin: left;
+                                transform: rotate(90deg) translateY(-50%);
+                                transform-origin: top left;
                                 position: absolute;
-                                left: -4px;
-                                top: calc(#{$verticalMarginForSlider} - #{$sliderThumbWidth});
+                                left: auto;
+                                top: calc(#{$verticalMarginForSlider});
                                 &::-webkit-slider-runnable-track {
                                     @include rangeTrack;
                                     // height: $sliderActualHeight;

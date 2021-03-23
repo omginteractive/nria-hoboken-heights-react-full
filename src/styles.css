@@ -1140,7 +1140,6 @@ body {
   width: 1px;
   height: 20px;
   background: #b2b2b2;
-  border-radius: 50%;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__image {
   position: absolute;
@@ -2976,42 +2975,50 @@ body {
     font-size: 12px;
     line-height: 1.2em;
   }
+  .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__bottom {
+    overflow: hidden;
+    height: 88.4259259259vw;
+  }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList {
     flex-direction: column;
     height: 40vh;
     width: 10.6481481481vw;
-    left: auto;
-    right: 60px;
+    left: -100%;
+    right: auto;
     top: 11.6666666667vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li {
-    width: 10.6481481481vw;
+    width: calc(10.6481481481vw + 2.3148148148vw);
     font-size: 2.7777777778vw;
     font-family: "Gotham-Book";
+    opacity: 1;
+    padding-right: 2.3148148148vw;
+    right: 2.3148148148vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li:before {
     top: calc(0.5em - 1px);
-    left: 54px;
+    right: calc(-0.1851851852vw / 2 - 0.9259259259vw / 2);
     width: 0.9259259259vw;
     height: 1px;
     background: #fff;
+    left: auto;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList > li .ampm {
     font-size: 1.8518518519vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section .visibleSliderLine {
-    width: 1px;
+    width: 0.1851851852vw;
     height: calc(40vh - 2.7777777778vw);
     bottom: auto;
     top: calc(11.6666666667vw + 2.7777777778vw / 2);
     position: absolute;
     background: #fff;
-    left: -1.3888888889vw;
+    left: 0;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider {
     top: 0;
     bottom: auto;
-    right: 6.5740740741vw;
+    right: calc(6.5740740741vw - 10.6481481481vw);
     height: 50vh;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input {
@@ -3020,11 +3027,11 @@ body {
     /* Vertical orientation IE */
     width: calc(40vh );
     height: 20px;
-    transform: rotate(90deg);
-    transform-origin: left;
+    transform: rotate(90deg) translateY(-50%);
+    transform-origin: top left;
     position: absolute;
-    left: -4px;
-    top: calc(11.6666666667vw - 2.7777777778vw);
+    left: auto;
+    top: calc(11.6666666667vw);
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-webkit-slider-runnable-track {
     height: 2.7777777778vw;
