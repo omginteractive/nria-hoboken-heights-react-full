@@ -27,20 +27,23 @@ class MobileMenu extends Component {
         mobileMenuClasses += this.props.open ? ' open' : ''
 
         const contactFormSlideIdx = this.props.contactFormSlideIdx
+        const propertyLink = isMobile ? 2 : 2
+        const amenitiesLink = isMobile ? 4 : 4
         const viewLink = isMobile ? 6 : 6
         const residencePenthouseLink = isMobile ? 7 : 7
-        const developmentTeamLink = isMobile ? 11 : 10
-        const discoverLink = isMobile ? 15 : 13
+        const availabilityLink = isMobile ? 11 : 10
+        const developmentTeamLink = isMobile ? 12 : 11
+        const discoverLink = isMobile ? 16 : 14
 		return(
             <div className={mobileMenuClasses}>
                 <Header goToContactSlide={this.goToContactSlide.bind(this)}  theme='light' open={true} toggleMobileMenu={this.toggleMobileMenu.bind(this)} />
                 <div className="mobileMenuLinks">
                     <div className="linksWrapper">
-                        <div className='link' onClick={() => this.goToSlide(2)}><h2>Property</h2></div>
-                        <div className='link' onClick={() => this.goToSlide(4)}><h2>Amenities</h2></div>
+                        <div className='link' onClick={() => this.goToSlide(propertyLink)}><h2>Property</h2></div>
+                        <div className='link' onClick={() => this.goToSlide(amenitiesLink)}><h2>Amenities</h2></div>
                         <div className='link' onClick={() => this.goToSlide(viewLink)}><h2>The View</h2></div>
                         <div className='link' onClick={() => this.goToSlide(residencePenthouseLink)}><h2>Residences & Penthouses</h2></div>
-                        <div className='link' onClick={() => this.goToSlide(contactFormSlideIdx)}><h2>Availability</h2></div>
+                        <div className='link' onClick={() => this.goToSlide(availabilityLink)}><h2>Availability</h2></div>
                         <div className='link' onClick={() => this.goToSlide(developmentTeamLink)}><h2>Development Team Story</h2></div>
                         <div className='link' onClick={() => this.goToSlide(discoverLink)}><h2>Discover</h2></div>
                         <div className='link' onClick={() => this.goToSlide(contactFormSlideIdx)}><h2>Contact</h2></div>

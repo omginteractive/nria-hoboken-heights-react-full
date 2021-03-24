@@ -1287,6 +1287,14 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail.expandImage .residencePenthouseDetail__image_container {
   width: calc(100vw - 6.3vw*2);
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability {
+  display: flex;
+  flex-direction: column;
+  left: 6.3vw;
+  width: calc(100vw - 6.3vw*2);
+  position: absolute;
+  top: 12.8vh;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam {
   display: flex;
   left: 6.3vw;

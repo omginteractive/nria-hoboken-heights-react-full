@@ -186,6 +186,9 @@ class Slide extends Component {
                 {slideObj.slideTemplate === 'residencePenthouseDetail' &&
                     <SlideResidencePenthouseDetail mobileArrows={mobileArrows} methods={slideMethods} residencePenthouse={this.props.residencePenthousePath} configuration={slideObj}  />
                 }
+                {slideObj.slideTemplate === 'availability' &&
+                    <SlideAvailability  configuration={slideObj}  />
+                }
                 {slideObj.slideTemplate === 'developmentTeam' &&
                     <SlideDevelopmentTeam  configuration={slideObj}  />
                 }
@@ -1501,6 +1504,21 @@ class SlideResidencePenthouseDetail extends Component {
 
 
 
+
+class SlideAvailability extends Component {
+    shouldComponentUpdate(nextProps, nextState){
+        return false
+    }
+    render(){
+        
+        return(
+            <section className='availability'>
+                <h2>{this.props.configuration.availabilityHeadline}</h2>
+                <p>{this.props.configuration.availabilityText}</p>
+            </section>
+        )
+    }
+}
 
 class SlideDevelopmentTeam extends Component {
     shouldComponentUpdate(nextProps, nextState){

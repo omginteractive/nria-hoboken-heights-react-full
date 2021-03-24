@@ -1282,6 +1282,16 @@ body {
                         }
                     }
                 }
+                &availability {
+                    .availability {
+                        display: flex;
+                        flex-direction: column;
+                        left: $side-margin;
+                        width: calc(100vw - #{$side-margin}*2);
+                        position: absolute;
+                        top: $header-height;
+                    }
+                }
                 &developmentTeam {
                     .developmentTeam {
                         display: flex;
