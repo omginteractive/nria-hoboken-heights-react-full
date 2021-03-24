@@ -1295,6 +1295,82 @@ body {
   position: absolute;
   top: 12.8vh;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityDescription {
+  line-height: 25px;
+  margin-bottom: 51px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityDropdownWrapper {
+  display: flex;
+  margin-bottom: 4.7682291667vw;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityDropdownWrapper .availabilityDropdownElement {
+  width: 312px;
+  border-bottom: 1px solid #000;
+  margin-right: 46px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityDropdownWrapper .availabilityDropdownElement .availabilityDropdownLabel {
+  font-size: 11px;
+  font-family: "Gotham-Bold";
+  line-height: 13.2px;
+  text-transform: uppercase;
+  margin-bottom: 17px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityDropdownWrapper .availabilityDropdownElement .availabilityDropdown {
+  width: 100%;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityDropdownWrapper .availabilityDropdownElement .select2-container--default .select2-selection--single {
+  border: none;
+  border-radius: 0;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityDropdownWrapper .availabilityDropdownElement .select2-container--default .select2-selection--single .select2-selection__rendered {
+  padding-left: 0;
+  font-size: 14px;
+  line-height: 25px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityDropdownWrapper .availabilityDropdownElement .select2-container--default .select2-selection--single .select2-selection__arrow > b {
+  border-color: #000 transparent transparent transparent;
+  border-width: 13px 7px 0 7px;
+  top: 33%;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  margin-bottom: 4.53125vw;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__title {
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: 2.25px;
+  background-color: #E5E5E5;
+  height: 4.21875vw;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #000;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__floorPlan {
+  padding: 1.3541666667vw;
+  position: relative;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__floorPlanImage {
+  width: 22.03125vw;
+  height: 17.7604166667vw;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__floorPlan .magnifyingGlass {
+  width: 2.1354166667vw;
+  height: 2.1354166667vw;
+  position: absolute;
+  left: 1.3541666667vw;
+  bottom: 1.3541666667vw;
+  cursor: pointer;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam {
   display: flex;
   left: 6.3vw;

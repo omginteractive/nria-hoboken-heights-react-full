@@ -1506,15 +1506,139 @@ class SlideResidencePenthouseDetail extends Component {
 
 
 class SlideAvailability extends Component {
+    constructor(props) {
+		super(props);
+		this.state = {
+			select2Activated: false,
+		}
+	}
     shouldComponentUpdate(nextProps, nextState){
-        return false
+        // const select2ActivatedChanged = this.state.select2Activated != nextState.select2Activated
+        const select2Exists = $.fn.select2
+        const select2Activated = this.state.select2Activated
+        
+        return select2Exists && !select2Activated
+    }
+    componentDidUpdate(){
+        if(!this.state.select2Activated) {
+
+            const select2Exists = $.fn.select2
+            const select2Initialized = $('#availabilityFloorPlansDropdown').hasClass("select2-hidden-accessible")
+            // const hubspotFormExists = $('#availabilityFloorPlansDropdown').length
+            if(!select2Initialized && select2Exists) {
+                // $('#availabilityFloorPlansDropdown').select2({
+                    // placeholder: "How did you hear of us?*",
+                    // width: 'resolve',
+                    // minimumResultsForSearch: -1
+                    $('#availabilityFloorPlansDropdown').select2({
+                        minimumResultsForSearch: -1
+                    });
+                    $('#availabilityCollectionDropdown').select2({
+                        minimumResultsForSearch: -1
+                    });
+                // const disabledOptionText = $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217 option:disabled')[0].innerHTML
+                // $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').select2({
+                //     placeholder: disabledOptionText,
+                //     width: 'resolve',
+                //     minimumResultsForSearch: -1
+                // });
+                this.setState({
+                    select2Activated: true
+                });
+                // this.handleSelect2Activation()
+            }
+        }
+        
     }
     render(){
         
         return(
             <section className='availability'>
                 <h2>{this.props.configuration.availabilityHeadline}</h2>
-                <p>{this.props.configuration.availabilityText}</p>
+                <p className="availabilityDescription">{this.props.configuration.availabilityText}</p>
+                <div className="availabilityDropdownWrapper">
+                    <div className="availabilityDropdownElement">
+                        <div className="availabilityDropdownLabel">{this.props.configuration.availabilityFloorplansLabel}</div>
+                        <select className="availabilityDropdown" id="availabilityFloorPlansDropdown">
+                            <option value="2bdr">2 Bedroom</option>
+                            <option value="2bdrDen">2 Bedroom + DEN</option>
+                        </select>
+                    </div>
+                    <div className="availabilityDropdownElement">
+                        <div className="availabilityDropdownLabel">{this.props.configuration.availabilityCollectionLabel}</div>
+                        <div className="availabilityDropdown">
+                            <select className="availabilityDropdown" id="availabilityCollectionDropdown">
+                                <option value="residences">Residences</option>
+                                <option value="penthouses">Penthouses</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div className="availabilityApartmentContainer">
+                    <div className="apartment">
+                        <div className="apartment__title">Apartment A101</div>
+                        <div className="apartment__floorPlan">
+                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
+                            <img src={leftArrowBlack} className="magnifyingGlass" />
+                        </div>
+                    </div>
+                    <div className="apartment">
+                        <div className="apartment__title">Apartment A101</div>
+                        <div className="apartment__floorPlan">
+                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
+                            <img src={leftArrowBlack} className="magnifyingGlass" />
+                        </div>
+                    </div>
+                    <div className="apartment">
+                        <div className="apartment__title">Apartment A101</div>
+                        <div className="apartment__floorPlan">
+                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
+                            <img src={leftArrowBlack} className="magnifyingGlass" />
+                        </div>
+                    </div>
+                    <div className="apartment">
+                        <div className="apartment__title">Apartment A101</div>
+                        <div className="apartment__floorPlan">
+                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
+                            <img src={leftArrowBlack} className="magnifyingGlass" />
+                        </div>
+                    </div>
+                    <div className="apartment">
+                        <div className="apartment__title">Apartment A101</div>
+                        <div className="apartment__floorPlan">
+                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
+                            <img src={leftArrowBlack} className="magnifyingGlass" />
+                        </div>
+                    </div>
+                    <div className="apartment">
+                        <div className="apartment__title">Apartment A101</div>
+                        <div className="apartment__floorPlan">
+                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
+                            <img src={leftArrowBlack} className="magnifyingGlass" />
+                        </div>
+                    </div>
+                    <div className="apartment">
+                        <div className="apartment__title">Apartment A101</div>
+                        <div className="apartment__floorPlan">
+                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
+                            <img src={leftArrowBlack} className="magnifyingGlass" />
+                        </div>
+                    </div>
+                    <div className="apartment">
+                        <div className="apartment__title">Apartment A101</div>
+                        <div className="apartment__floorPlan">
+                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
+                            <img src={leftArrowBlack} className="magnifyingGlass" />
+                        </div>
+                    </div>
+                    <div className="apartment">
+                        <div className="apartment__title">Apartment A101</div>
+                        <div className="apartment__floorPlan">
+                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
+                            <img src={leftArrowBlack} className="magnifyingGlass" />
+                        </div>
+                    </div>
+                </div>
             </section>
         )
     }

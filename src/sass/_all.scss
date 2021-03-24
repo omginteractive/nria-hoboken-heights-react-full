@@ -59,6 +59,10 @@
     animation-timing-function: ease-out;
 }
 
+@mixin select2Arrow {
+    border-color: #000 transparent transparent transparent;
+    border-width: 13px 7px 0 7px;
+}
 @font-face {
 	src: url("assets/fonts/Gotham-Thin.otf");
 	font-family: "Gotham-Thin";
@@ -1290,6 +1294,87 @@ body {
                         width: calc(100vw - #{$side-margin}*2);
                         position: absolute;
                         top: $header-height;
+                        .availabilityDescription {
+                            line-height: 25px;
+                            margin-bottom: 51px;
+                        }
+                        .availabilityDropdownWrapper {
+                            display: flex;
+                            margin-bottom: calc_vw(91.55);
+                            .availabilityDropdownElement {
+                                width: 312px;
+                                border-bottom: 1px solid #000;
+                                margin-right: 46px;
+                                .availabilityDropdownLabel {
+                                    font-size: 11px;
+                                    font-family: "Gotham-Bold";
+                                    line-height: 13.2px;
+                                    text-transform: uppercase;
+                                    margin-bottom: 17px;
+                                }
+                                .availabilityDropdown {
+                                    width: 100%;
+                                }
+                                .select2-container--default {
+                                    .select2-selection--single {
+                                        border: none;
+                                        border-radius: 0;
+                                        // outline: none;
+                                        .select2-selection__rendered {
+                                            padding-left: 0;
+                                            font-size: 14px;
+                                            line-height: 25px;
+                                        }
+                                        .select2-selection__arrow {
+                                            > b {
+                                                @include select2Arrow;
+                                                top: 33%;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .availabilityApartmentContainer {
+                            display: flex;
+                            justify-content: space-between;
+                            flex-wrap: wrap;
+                            .apartment {
+                                display: flex;
+                                flex-direction: column;
+                                border: 1px solid #000;
+                                margin-bottom: calc_vw(87);
+                                &__title {
+                                    font-size: 15px;
+                                    line-height: 18px;
+                                    letter-spacing: 2.25px;
+                                    background-color: #E5E5E5;
+                                    height: calc_vw(81);
+                                    width: 100%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    border-bottom: 1px solid #000;
+                                }
+                                &__floorPlan {
+                                    $floorPlanPadding: calc_vw(26);
+                                    padding: $floorPlanPadding;
+                                    position: relative;
+                                    &Image {
+                                        width: calc_vw(423);
+                                        height: calc_vw(341);
+                                    }
+                                    .magnifyingGlass {
+                                        width: calc_vw(41);
+                                        height: calc_vw(41);
+                                        position: absolute;
+                                        left: $floorPlanPadding;
+                                        bottom: $floorPlanPadding;
+                                        cursor: pointer;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 &developmentTeam {
@@ -1793,9 +1878,9 @@ body {
                                                 line-height: 1.4em;//these help fix the issue causing long placeholders to stretch select2 field
                                             }
                                             .select2-selection__arrow {
+                                                
                                                 b {
-                                                    border-color: #000 transparent transparent transparent;
-                                                    border-width: 13px 7px 0 7px;
+                                                    @include select2Arrow;
                                                 }
                                             }
                                         }
