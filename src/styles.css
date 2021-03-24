@@ -1344,9 +1344,9 @@ body {
   margin-bottom: 4.53125vw;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__title {
-  font-size: 15px;
-  line-height: 18px;
-  letter-spacing: 2.25px;
+  font-size: 0.78125vw;
+  line-height: 0.9375vw;
+  letter-spacing: 0.1171875vw;
   background-color: #E5E5E5;
   height: 4.21875vw;
   width: 100%;
@@ -1354,6 +1354,8 @@ body {
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid #000;
+  text-transform: uppercase;
+  font-family: "Gotham-Bold";
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__floorPlan {
   padding: 1.3541666667vw;

@@ -1345,9 +1345,9 @@ body {
                                 border: 1px solid #000;
                                 margin-bottom: calc_vw(87);
                                 &__title {
-                                    font-size: 15px;
-                                    line-height: 18px;
-                                    letter-spacing: 2.25px;
+                                    font-size: calc_vw(15);
+                                    line-height: calc_vw(18);
+                                    letter-spacing: calc_vw(2.25);
                                     background-color: #E5E5E5;
                                     height: calc_vw(81);
                                     width: 100%;
@@ -1355,6 +1355,8 @@ body {
                                     align-items: center;
                                     justify-content: center;
                                     border-bottom: 1px solid #000;
+                                    text-transform: uppercase;
+                                    font-family: "Gotham-Bold";
                                 }
                                 &__floorPlan {
                                     $floorPlanPadding: calc_vw(26);
