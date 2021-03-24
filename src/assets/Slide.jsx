@@ -1255,7 +1255,12 @@ class SlideViews extends Component {
                                     let imageClasses = mapped_images_classes
                                     if(isActiveImage) imageClasses = mapped_images_classes + ' active'
                                     else if(isPreviouslyActiveImage) imageClasses = mapped_images_classes + ' previouslyActive'
-                                    return (<img key={i+'viewsSectionTimeSliderImage'} alt={view.displayTime} src={view.image} className={imageClasses} onTransitionEnd={this.handleTransitionEnd.bind(this)} />)
+                                    const imageClassesDesktop = imageClasses + ' not-mobile'
+                                    const imageClassesMobile = imageClasses + ' mobile-only'
+                                    return (<>
+                                        <img key={i+'viewsSectionTimeSliderImage'} alt={view.displayTime} src={view.image} className={imageClassesDesktop} onTransitionEnd={this.handleTransitionEnd.bind(this)} />
+                                        <img key={i+'viewsSectionTimeSliderImageMobile'} alt={view.displayTime} src={view.imageMobile} className={imageClassesMobile} onTransitionEnd={this.handleTransitionEnd.bind(this)} />
+                                    </>)
                                 })}       
                             </>
                         }
