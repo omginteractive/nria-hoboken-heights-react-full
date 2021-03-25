@@ -352,6 +352,11 @@ body {
     position: absolute;
     z-index: 100000;
     transition: width $menu_animation_duration;
+    &.closing {
+        + .slides_wrapper .slides_inner {
+            transition-duration: 0.01s;
+        }
+    }
     &.open {
         width: 100vw;
         .mobileMenuLinks {

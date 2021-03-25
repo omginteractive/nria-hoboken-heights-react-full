@@ -426,6 +426,9 @@ body {
   z-index: 100000;
   transition: width 1s;
 }
+.mobile-menu.closing + .slides_wrapper .slides_inner {
+  transition-duration: 0.01s;
+}
 .mobile-menu.open {
   width: 100vw;
 }

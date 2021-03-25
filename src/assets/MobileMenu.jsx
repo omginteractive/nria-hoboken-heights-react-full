@@ -2,18 +2,35 @@ import { Component } from 'react';
 import Header from './Header';
 
 class MobileMenu extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+			isTransitioning: false
+        }
+    }
     shouldComponentUpdate(nextProps, nextState){
         const menuStatusChanged = nextProps.open !== this.props.open
-        return menuStatusChanged
+        const transitioningStatusChanged = nextState.isTransitioning !== this.state.isTransitioning
+        return menuStatusChanged || transitioningStatusChanged
     }
     goToSlide(idx){
+        this.setState({
+            isTransitioning: true,
+        })
         const {goToSlideIdx} = this.props;
         goToSlideIdx(idx)
         this.toggleMobileMenu()
     }
     toggleMobileMenu(){
         const {toggleMobileMenu} = this.props;
-        toggleMobileMenu();
+        const menuIsClosing = toggleMobileMenu()
+        if(!menuIsClosing) {
+            setTimeout(() => {
+                this.setState({
+                    isTransitioning: false,
+                })
+            })
+        }
     }
     goToContactSlide(){
         const {goToContactSlide} = this.props;
@@ -24,7 +41,8 @@ class MobileMenu extends Component {
         // const isOpen = this.props.open
         const isMobile = this.props.isMobileDevice
         let mobileMenuClasses = 'mobile-menu'
-        mobileMenuClasses += this.props.open ? ' open' : ''
+        mobileMenuClasses += this.props.open ? ' open' : ' closed'
+        mobileMenuClasses += this.state.isTransitioning ? ' closing' : ''
 
         const propertyLink = isMobile ? 2 : 2
         const amenitiesLink = isMobile ? 4 : 4

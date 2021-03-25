@@ -244,7 +244,7 @@ class App extends React.Component {
         this.setState({
             mobileMenuOpen: !mobileMenuOpen
         });
-        
+        return !mobileMenuOpen
 	}
 	scrollSlide(deltaY){
         const isScrollingDown = deltaY > 0;
