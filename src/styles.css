@@ -2264,6 +2264,52 @@ body {
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-residencePenthouse .btn:nth-of-type(2) {
   animation-delay: 0.8s;
 }
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability > h2,
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityDescription,
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityDropdownWrapper,
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment {
+  position: relative;
+  animation-fill-mode: forwards;
+  animation-name: fadeInDriftUp;
+  animation-duration: 0.6s;
+  opacity: 0;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability > h2 {
+  animation-delay: 0.6s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityDescription {
+  animation-delay: 0.8s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityDropdownWrapper {
+  animation-delay: 1s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(1) {
+  animation-delay: 1.2s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(2) {
+  animation-delay: 1.3s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(3) {
+  animation-delay: 1.4s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(4) {
+  animation-delay: 1.5s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(5) {
+  animation-delay: 1.6s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(6) {
+  animation-delay: 1.7s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(7) {
+  animation-delay: 1.8s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(8) {
+  animation-delay: 1.9s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(9) {
+  animation-delay: 2s;
+}
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .left > img {
   transform: scale(1);
 }

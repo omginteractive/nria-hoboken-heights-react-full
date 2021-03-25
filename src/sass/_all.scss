@@ -2316,6 +2316,42 @@ body {
                         }
                     }
                 }
+                &.slideTemplate-availability {
+                    $animation_duration: 0.6s;
+                    $animation_base_delay: 0.6s;
+                    $animation_incremental_delay: 0.2s;
+                    $apartment_incremental_delay: 0.1s;
+                    .availability {
+
+                        > h2,
+                        .availabilityDescription,
+                        .availabilityDropdownWrapper,
+                        .availabilityApartmentContainer .apartment {
+                            position: relative;
+                            animation-fill-mode: forwards;
+                            animation-name: fadeInDriftUp;
+                            animation-duration: $animation_duration;
+                            opacity: 0;
+                        }
+                        > h2 {
+                            animation-delay: $animation_base_delay;
+                        }
+                        .availabilityDescription {
+                            animation-delay: $animation_base_delay + $animation_incremental_delay * 1;
+                        }
+                        .availabilityDropdownWrapper {
+                            animation-delay: $animation_base_delay + $animation_incremental_delay * 2;
+                        }
+
+                        .availabilityApartmentContainer .apartment {
+                            @for $i from 1 through 9 {
+                                &:nth-of-type(#{$i}){
+                                    animation-delay: $animation_base_delay + $animation_incremental_delay*3 + $apartment_incremental_delay*($i - 1);
+                                }
+                            }
+                        }
+                    }
+                }
                 &.slideTemplate-neighborhoodCommunity {
                     $animation_duration: 0.6s;
                     $animation_base_delay: 0.6s;
