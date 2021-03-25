@@ -993,6 +993,9 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__bottom.isTransitioning .views_section__timeSlider {
   pointer-events: none;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider_image_wrapper {
+  width: 100%;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider {
   position: absolute;
   bottom: 3.0208333333vw;
@@ -2318,6 +2321,13 @@ body {
 }
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(12) {
   animation-delay: 2.3s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availabilityModalPopup {
+  display: none;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availabilityModalPopup .fixed-header {
+  display: flex;
+  position: absolute;
 }
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .left > img {
   transform: scale(1);

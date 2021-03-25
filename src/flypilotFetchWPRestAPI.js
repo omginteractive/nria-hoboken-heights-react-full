@@ -74,7 +74,6 @@ console.log(apartment_result)
         exteriorTurnOffText: acf_result.turn_off_text,
         background_video_no_light: acf_result.background_video_no_light,
         background_image_light: acf_result.background_image_light.url,
-        background_image_light: acf_result.background_image_light.url,
         swipe_arrow_left_1: acf_result.swipe_arrow_left_1.url,
         swipe_arrow_right_1: acf_result.swipe_arrow_right_1.url,
     }, {

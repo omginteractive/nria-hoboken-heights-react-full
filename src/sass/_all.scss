@@ -938,6 +938,9 @@ body {
                                 }
                             }
                         }
+                        &__timeSlider_image_wrapper {
+                            width: 100%;
+                        }
                         &__timeSlider {
                             $sliderThumbWidth: 20px;
                             $visibleSliderHeight: 1px;
@@ -2349,6 +2352,13 @@ body {
                                     animation-delay: $animation_base_delay + $animation_incremental_delay*3 + $apartment_incremental_delay*($i - 1);
                                 }
                             }
+                        }
+                    }
+                    .availabilityModalPopup {
+                        display: none;
+                        .fixed-header {
+                            display: flex;
+                            position: absolute;
                         }
                     }
                 }

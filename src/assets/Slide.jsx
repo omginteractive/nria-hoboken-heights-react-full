@@ -1,7 +1,5 @@
 import {Component} from 'react';
 import React from 'react';
-import animatedLogo from '../assets/images/Motion_logo.gif';
-import downArrow from '../assets/images/downarrow.svg';
 import leftArrowBlack from '../assets/images/leftArrowBlack.svg';
 import $ from 'jquery'
 // import _ from "lodash";
@@ -577,7 +575,7 @@ class ContactForm extends Component {
 				<div className='headline'>{this.props.formHeading}</div>
 				<div className="hubspotFormWrapper" id='hubspotFormWrapper'>
 				</div>
-                <img className='mobile-only nriaLogo' src={require('./images/logos/NRLiving--White.png').default} />
+                <img className='mobile-only nriaLogo' src={require('./images/logos/NRLiving--White.png').default} alt="NRIA Logo" />
 			</form>
 		);
 	}
@@ -1101,14 +1099,7 @@ class SlideAmenitiesGallery extends Component {
         let amenityNameAndDescriptionContainer = 'amenities_gallery__amenity_name_and_description_container'
         amenityNameAndDescriptionContainer += this.state.descriptionVisible ? ' visible' : ''
         
-        const descriptionStyles = {
-            // backgroundImage: 'url('+require('./images/amenities/blackgradient.png').default+')',
-        }
-
-        let image1_classes = 'amenities_gallery__image '
-        image1_classes += this.state.image1IsNew ? 'new' : 'old'
-        let image2_classes = 'amenities_gallery__image '
-        image2_classes += !this.state.image1IsNew ? 'new' : 'old'
+        
         let amenities_gallery_name_classes = 'amenities_gallery__name'
         amenities_gallery_name_classes += !this.state.amenityNameVisibility ? ' runFadeOutAnimation' : ' runFadeInAnimation'
         amenities_gallery_name_classes += this.state.descriptionVisible ? ' riseForDescription' : ''
@@ -1124,8 +1115,6 @@ class SlideAmenitiesGallery extends Component {
                 <section className="amenities_gallery">
                     <img onAnimationEnd={this.resetRightArrow.bind(this)} alt="Right Arrow" onClick={this.animateRightArrowAndChangeAmenity.bind(this)} className={rightArrowClasses} src={require('./images/amenities/rightArrow.svg').default} />
                     <img onAnimationEnd={this.resetLeftArrow.bind(this)} alt="Left Arrow" onClick={this.animateLeftArrowAndChangeAmenity.bind(this)} className={leftArrowClasses} src={require('./images/amenities/rightArrow.svg').default} />
-                    {/* <img alt="" src={this.state.image1 && this.state.image1} className={image1_classes}  />
-                    <img alt="" src={this.state.image2 && this.state.image2} className={image2_classes}  /> */}
                     {this.props.configuration.amenities.map((amenity, i) => {
                         let imageClasses = 'amenities_gallery__image'
                         imageClasses += i === this.state.currIdx ? ' active' : ''
@@ -1141,7 +1130,7 @@ class SlideAmenitiesGallery extends Component {
                                 return (<div key={i+'SlideAmenitiesGalleryDot'} onClick={() => this.activateAmenity(i)} className={dotClasses} />)
                             })}
                         </div>
-                        <div className={descriptionGradientClasses} style={descriptionStyles}>
+                        <div className={descriptionGradientClasses}>
                         </div>
                         <div className={amenityNameAndDescriptionContainer}>
                             <div className="amenities_gallery__amenity_name_and_description_wrapper">
@@ -1260,10 +1249,10 @@ class SlideViews extends Component {
                                     else if(isPreviouslyActiveImage) imageClasses = mapped_images_classes + ' previouslyActive'
                                     const imageClassesDesktop = imageClasses + ' not-mobile'
                                     const imageClassesMobile = imageClasses + ' mobile-only'
-                                    return (<>
+                                    return (<div key={i + 'viewsSectionTimeSliderImageWrapper'} className="views_section__timeSlider_image_wrapper">
                                         <img key={i+'viewsSectionTimeSliderImage'} alt={view.displayTime} src={view.image} className={imageClassesDesktop} onTransitionEnd={this.handleTransitionEnd.bind(this)} />
                                         <img key={i+'viewsSectionTimeSliderImageMobile'} alt={view.displayTime} src={view.imageMobile} className={imageClassesMobile} onTransitionEnd={this.handleTransitionEnd.bind(this)} />
-                                    </>)
+                                    </div>)
                                 })}       
                             </>
                         }
@@ -1303,9 +1292,6 @@ class SlideResidencePenthouse extends Component {
 }
 
 class SlideResidencePenthouseFullscreen extends Component {
-    constructor(props) {
-        super(props)
-    }
     shouldComponentUpdate(nextProps, nextState){
         const residencePenthouseChanged = nextProps.residencePenthouse !== this.props.residencePenthouse
         return residencePenthouseChanged
@@ -1553,44 +1539,60 @@ class SlideAvailability extends Component {
     render(){
         
         return(
-            <section className='availability'>
-                <h2>{this.props.configuration.availabilityHeadline}</h2>
-                <p className="availabilityDescription" dangerouslySetInnerHTML={{ __html: this.props.configuration.availabilityText}} />
-                <div className="availabilityDropdownWrapper">
-                    <div className="availabilityDropdownElement">
-                        <div className="availabilityDropdownLabel">{this.props.configuration.availabilityFloorplansLabel}</div>
-                        <select className="availabilityDropdown" id="availabilityFloorPlansDropdown">
-                            {this.props.configuration.availabilityFloorplansOptions.map((option, i) => {
-                                return (<option key={i+'floorPlanOption'} value={option.choice}>{option.choice}</option>)
-                            })}
-                        </select>
-                    </div>
-                    <div className="availabilityDropdownElement">
-                        <div className="availabilityDropdownLabel">{this.props.configuration.availabilityCollectionLabel}</div>
-                        <div className="availabilityDropdown">
-                            <select className="availabilityDropdown" id="availabilityCollectionDropdown">
-                                {this.props.configuration.availabilityCollectionOptions.map((option, i) => {
-                                    return (<option key={i+'collectionOption'} value={option.choice}>{option.choice}</option>)
+            <>
+                <section className='availability'>
+                    <h2>{this.props.configuration.availabilityHeadline}</h2>
+                    <p className="availabilityDescription" dangerouslySetInnerHTML={{ __html: this.props.configuration.availabilityText}} />
+                    <div className="availabilityDropdownWrapper">
+                        <div className="availabilityDropdownElement">
+                            <div className="availabilityDropdownLabel">{this.props.configuration.availabilityFloorplansLabel}</div>
+                            <select className="availabilityDropdown" id="availabilityFloorPlansDropdown">
+                                {this.props.configuration.availabilityFloorplansOptions.map((option, i) => {
+                                    return (<option key={i+'floorPlanOption'} value={option.choice}>{option.choice}</option>)
                                 })}
                             </select>
                         </div>
-                    </div>
-                </div>
-                <div className="availabilityApartmentContainer">
-                    {this.props.configuration.apartment_result.map((apartment, i) => {
-                        
-                        return (
-                            <div className="apartment">
-                                <div className="apartment__title">{apartment.title.rendered}</div>
-                                <div className="apartment__floorPlan">
-                                    <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
-                                    <img src={leftArrowBlack} className="magnifyingGlass" />
-                                </div>
+                        <div className="availabilityDropdownElement">
+                            <div className="availabilityDropdownLabel">{this.props.configuration.availabilityCollectionLabel}</div>
+                            <div className="availabilityDropdown">
+                                <select className="availabilityDropdown" id="availabilityCollectionDropdown">
+                                    {this.props.configuration.availabilityCollectionOptions.map((option, i) => {
+                                        return (<option key={i+'collectionOption'} value={option.choice}>{option.choice}</option>)
+                                    })}
+                                </select>
                             </div>
-                        )
-                    })}
+                        </div>
+                    </div>
+                    <div className="availabilityApartmentContainer">
+                        {this.props.configuration.apartment_result.map((apartment, i) => {
+                            
+                            return (
+                                <div className="apartment" key={i + 'apartment'}>
+                                    <div className="apartment__title">{apartment.title.rendered}</div>
+                                    <div className="apartment__floorPlan">
+                                        <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" alt="" />
+                                        <img src={leftArrowBlack} className="magnifyingGlass" alt="Magnifying Glass" />
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </section>
+                <div className="availabilityModalPopup">
+                    <header className='fixed-header'>
+                        <div className="hamburger">
+                            <div className="line"></div>
+                            <div className="line"></div>
+                        </div>
+                        <div className="corner-logo-wrapper">
+                            <div className="text">HOBOKEN HEIGHTS<div className="separator"></div></div>
+                            <img alt="Hoboken Heights Logo" className="corner-logo" src={require('./images/logos/NIRMA_Logo_Symbol_Black.png').default} />
+                        </div>
+                        <div className="inquiry-link">X</div>
+                    </header>
+                    <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" alt="" />
                 </div>
-            </section>
+            </>
         )
     }
 }
@@ -1632,9 +1634,9 @@ class SlideDevelopmentTeam extends Component {
                         <p className='developmentTeam__paragraph' dangerouslySetInnerHTML={{ __html: content_3_team_story}} />
                     </div>
                     <div className={buttonGroupClasses}>
-                        <a href={button_link_5} target="_blank" className="btn light">{button_text_5}</a>
-                        <a href={button_link_6} target="_blank" className="btn light">{button_text_6}</a>
-                        <a href={button_link_7} target="_blank" className="btn light">{button_text_7}</a>
+                        <a href={button_link_5} target="_blank" className="btn light" rel="noreferrer">{button_text_5}</a>
+                        <a href={button_link_6} target="_blank" className="btn light" rel="noreferrer">{button_text_6}</a>
+                        <a href={button_link_7} target="_blank" className="btn light" rel="noreferrer">{button_text_7}</a>
                     </div>
                 </div>
                 <div className={rightSideClasses}>

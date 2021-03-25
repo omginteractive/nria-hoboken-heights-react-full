@@ -124,13 +124,13 @@ class App extends React.Component {
         const hubspotscript = document.createElement("script");
         hubspotscript.src = "https://js.hsforms.net/forms/v2.js";
         hubspotscript.async = true;
-        hubspotscript.onload = () => console.log('loaded');
+        hubspotscript.onload = () => console.log('onload hubspot');
         document.body.appendChild(hubspotscript);
         
         const select2script = document.createElement("script");
         select2script.src = "https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js";
         select2script.async = true;
-        select2script.onload = () => console.log('loaded');
+        select2script.onload = () => console.log('onload select2');
         document.body.appendChild(select2script);
         
     	window.addEventListener('keydown', (event) => {
