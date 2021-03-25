@@ -2344,7 +2344,7 @@ body {
                         }
 
                         .availabilityApartmentContainer .apartment {
-                            @for $i from 1 through 9 {
+                            @for $i from 1 through 12 {
                                 &:nth-of-type(#{$i}){
                                     animation-delay: $animation_base_delay + $animation_incremental_delay*3 + $apartment_incremental_delay*($i - 1);
                                 }

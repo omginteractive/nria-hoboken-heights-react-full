@@ -1577,69 +1577,18 @@ class SlideAvailability extends Component {
                     </div>
                 </div>
                 <div className="availabilityApartmentContainer">
-                    <div className="apartment">
-                        <div className="apartment__title">Apartment A101</div>
-                        <div className="apartment__floorPlan">
-                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
-                            <img src={leftArrowBlack} className="magnifyingGlass" />
-                        </div>
-                    </div>
-                    <div className="apartment">
-                        <div className="apartment__title">Apartment A101</div>
-                        <div className="apartment__floorPlan">
-                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
-                            <img src={leftArrowBlack} className="magnifyingGlass" />
-                        </div>
-                    </div>
-                    <div className="apartment">
-                        <div className="apartment__title">Apartment A101</div>
-                        <div className="apartment__floorPlan">
-                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
-                            <img src={leftArrowBlack} className="magnifyingGlass" />
-                        </div>
-                    </div>
-                    <div className="apartment">
-                        <div className="apartment__title">Apartment A101</div>
-                        <div className="apartment__floorPlan">
-                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
-                            <img src={leftArrowBlack} className="magnifyingGlass" />
-                        </div>
-                    </div>
-                    <div className="apartment">
-                        <div className="apartment__title">Apartment A101</div>
-                        <div className="apartment__floorPlan">
-                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
-                            <img src={leftArrowBlack} className="magnifyingGlass" />
-                        </div>
-                    </div>
-                    <div className="apartment">
-                        <div className="apartment__title">Apartment A101</div>
-                        <div className="apartment__floorPlan">
-                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
-                            <img src={leftArrowBlack} className="magnifyingGlass" />
-                        </div>
-                    </div>
-                    <div className="apartment">
-                        <div className="apartment__title">Apartment A101</div>
-                        <div className="apartment__floorPlan">
-                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
-                            <img src={leftArrowBlack} className="magnifyingGlass" />
-                        </div>
-                    </div>
-                    <div className="apartment">
-                        <div className="apartment__title">Apartment A101</div>
-                        <div className="apartment__floorPlan">
-                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
-                            <img src={leftArrowBlack} className="magnifyingGlass" />
-                        </div>
-                    </div>
-                    <div className="apartment">
-                        <div className="apartment__title">Apartment A101</div>
-                        <div className="apartment__floorPlan">
-                            <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
-                            <img src={leftArrowBlack} className="magnifyingGlass" />
-                        </div>
-                    </div>
+                    {this.props.configuration.apartment_result.map((apartment, i) => {
+                        
+                        return (
+                            <div className="apartment">
+                                <div className="apartment__title">{apartment.title.rendered}</div>
+                                <div className="apartment__floorPlan">
+                                    <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" />
+                                    <img src={leftArrowBlack} className="magnifyingGlass" />
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
             </section>
         )

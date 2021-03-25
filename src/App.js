@@ -114,7 +114,9 @@ class App extends React.Component {
     }
     componentDidMount() {
         const endpoint = 'https://nriahh.wpengine.com/wp-json/acf/v3/pages/275'
-        flypilotFetchWPRestAPI(endpoint).then((result)=> {
+        const apartmentsEndpoint = 'https://nriahh.wpengine.com/wp-json/wp/v2/apartments'
+
+        flypilotFetchWPRestAPI(endpoint, apartmentsEndpoint).then((result)=> {
             this.setState({
               slides: result
             }, ()=> this.createResponsiveIndices());

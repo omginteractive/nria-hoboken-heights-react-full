@@ -2310,6 +2310,15 @@ body {
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(9) {
   animation-delay: 2s;
 }
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(10) {
+  animation-delay: 2.1s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(11) {
+  animation-delay: 2.2s;
+}
+.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(12) {
+  animation-delay: 2.3s;
+}
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .left > img {
   transform: scale(1);
 }
