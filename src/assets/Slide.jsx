@@ -1555,21 +1555,23 @@ class SlideAvailability extends Component {
         return(
             <section className='availability'>
                 <h2>{this.props.configuration.availabilityHeadline}</h2>
-                <p className="availabilityDescription">{this.props.configuration.availabilityText}</p>
+                <p className="availabilityDescription" dangerouslySetInnerHTML={{ __html: this.props.configuration.availabilityText}} />
                 <div className="availabilityDropdownWrapper">
                     <div className="availabilityDropdownElement">
                         <div className="availabilityDropdownLabel">{this.props.configuration.availabilityFloorplansLabel}</div>
                         <select className="availabilityDropdown" id="availabilityFloorPlansDropdown">
-                            <option value="2bdr">2 Bedroom</option>
-                            <option value="2bdrDen">2 Bedroom + DEN</option>
+                            {this.props.configuration.availabilityFloorplansOptions.map((option, i) => {
+                                return (<option key={i+'floorPlanOption'} value={option.choice}>{option.choice}</option>)
+                            })}
                         </select>
                     </div>
                     <div className="availabilityDropdownElement">
                         <div className="availabilityDropdownLabel">{this.props.configuration.availabilityCollectionLabel}</div>
                         <div className="availabilityDropdown">
                             <select className="availabilityDropdown" id="availabilityCollectionDropdown">
-                                <option value="residences">Residences</option>
-                                <option value="penthouses">Penthouses</option>
+                                {this.props.configuration.availabilityCollectionOptions.map((option, i) => {
+                                    return (<option key={i+'collectionOption'} value={option.choice}>{option.choice}</option>)
+                                })}
                             </select>
                         </div>
                     </div>
