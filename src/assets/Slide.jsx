@@ -161,7 +161,7 @@ class Slide extends Component {
                     <SlideExteriorLightToggle slideHorizontal={this.slideHorizontal.bind(this)} mobileArrows={mobileArrows} methods={slideMethods}  configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'fountainPen' &&
-                    <SlideFountainPen isCurrent={isCurrent} methods={slideMethods} configuration={slideObj} curridx={this.props.currIdx} />
+                    <SlideFountainPen isCurrent={isCurrent} methods={slideMethods} configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'patio' &&
                     <SlidePatio mobileArrows={mobileArrows} methods={slideMethods} configuration={slideObj} />
@@ -955,7 +955,7 @@ class SlideAmenitiesGallery extends Component {
     }
     shouldComponentUpdate(nextProps, nextState){
         const amenityNameVisibilityChanged = this.state.amenityNameVisibility !== nextState.amenityNameVisibility
-        const currIdxChanged = this.state.currIdx !== nextState.currIdx
+        const currAmenitiesIdxChanged = this.state.currAmenityIdx !== nextState.currAmenityIdx
         const descriptionChanged = this.state.description !== nextState.description
         const descriptionVisibleChanged = this.state.descriptionVisible !== nextState.descriptionVisible
         const image1Changed = this.state.image1 !== nextState.image1
@@ -965,14 +965,14 @@ class SlideAmenitiesGallery extends Component {
         const title_line2Changed = this.state.title_line2 !== nextState.title_line2
         const title_line3Changed = this.state.title_line3 !== nextState.title_line3
         const slidePresenceChanged = this.props.isCurrent !== nextProps.isCurrent
-        const amenityChanged = amenityNameVisibilityChanged || currIdxChanged || descriptionChanged || descriptionVisibleChanged || image1Changed || image1IsNewChanged || image2Changed || title_line1Changed || title_line2Changed || title_line3Changed || slidePresenceChanged
+        const amenityChanged = amenityNameVisibilityChanged || currAmenitiesIdxChanged || descriptionChanged || descriptionVisibleChanged || image1Changed || image1IsNewChanged || image2Changed || title_line1Changed || title_line2Changed || title_line3Changed || slidePresenceChanged
         return amenityChanged
     }
     componentDidMount(){
         this.props.configuration.amenities.forEach((amenity) => {
             const img = new Image().src = amenity.image
         })
-        this.setAmenityData(this.state.currIdx)
+        this.setAmenityData(this.state.currAmenityIdx)
         this.setAmenityTitle()
     }
     componentDidUpdate(){
@@ -986,7 +986,7 @@ class SlideAmenitiesGallery extends Component {
         }
     }
     setAmenityData(newIdx){
-        if(newIdx === this.state.currIdx) return
+        if(newIdx === this.state.currAmenityIdx) return
 
         //This is to fix horizontal touch event slides
         if(newIdx === -1) newIdx = this.props.configuration.amenities.length - 1
@@ -1000,7 +1000,7 @@ class SlideAmenitiesGallery extends Component {
         const image1IsNew = !this.state.image1IsNew
         this.setState({
             // description: description,
-            currIdx: newIdx,
+            currAmenityIdx: newIdx,
             image1IsNew: image1IsNew,
             amenityNameVisibility: false,
             descriptionVisible: false
@@ -1033,7 +1033,7 @@ class SlideAmenitiesGallery extends Component {
         }
     }
     setAmenityTitle(){
-        const newIdx = this.state.currIdx
+        const newIdx = this.state.currAmenityIdx
         if(typeof this.props.configuration.amenities[newIdx] == 'undefined') return
         const title_line1 = this.props.configuration.amenities[newIdx].title_line1
         const title_line2 = this.props.configuration.amenities[newIdx].title_line2
@@ -1056,10 +1056,10 @@ class SlideAmenitiesGallery extends Component {
         const prevSlide = delta < 0
         let nextAmenity
         if(prevSlide){
-            nextAmenity = this.state.currIdx === 0 ? this.props.configuration.amenities.length - 1 : this.state.currIdx - 1
+            nextAmenity = this.state.currAmenityIdx === 0 ? this.props.configuration.amenities.length - 1 : this.state.currAmenityIdx - 1
         }
         else {
-            nextAmenity = this.state.currIdx === this.props.configuration.amenities.length - 1 ? 0  : this.state.currIdx + 1
+            nextAmenity = this.state.currAmenityIdx === this.props.configuration.amenities.length - 1 ? 0  : this.state.currAmenityIdx + 1
         }
         this.setAmenityData(nextAmenity)
     }
@@ -1091,7 +1091,7 @@ class SlideAmenitiesGallery extends Component {
     render(){
         const toggleButtonSrc = this.state.descriptionVisible ? this.props.configuration.accordion_close_button : this.props.configuration.accordion_open_button
         
-        const hasMoreInfoBtn = this.props.configuration.amenities[this.state.currIdx] && this.props.configuration.amenities[this.state.currIdx].moreInfoBtn
+        const hasMoreInfoBtn = this.props.configuration.amenities[this.state.currAmenityIdx] && this.props.configuration.amenities[this.state.currAmenityIdx].moreInfoBtn
         
         let descriptionGradientClasses = 'amenities_gallery__description_gradient'
         descriptionGradientClasses += this.state.descriptionVisible ? ' visible' : ''
@@ -1117,7 +1117,7 @@ class SlideAmenitiesGallery extends Component {
                     <img onAnimationEnd={this.resetLeftArrow.bind(this)} alt="Left Arrow" onClick={this.animateLeftArrowAndChangeAmenity.bind(this)} className={leftArrowClasses} src={require('./images/amenities/rightArrow.svg').default} />
                     {this.props.configuration.amenities.map((amenity, i) => {
                         let imageClasses = 'amenities_gallery__image'
-                        imageClasses += i === this.state.currIdx ? ' active' : ''
+                        imageClasses += i === this.state.currAmenityIdx ? ' active' : ''
                         return (<img key={i+'SlideAmenitiesGalleryImage'} alt="" src={amenity.image} className={imageClasses}  />)
                     })}
                         
@@ -1126,7 +1126,7 @@ class SlideAmenitiesGallery extends Component {
                         <div className="amenities_gallery__more_info__dots">
                             {this.props.configuration.amenities.map((amenity, i) => {
                                 let dotClasses = 'dot'
-                                dotClasses += i === this.state.currIdx ? ' active' : ''
+                                dotClasses += i === this.state.currAmenityIdx ? ' active' : ''
                                 return (<div key={i+'SlideAmenitiesGalleryDot'} onClick={() => this.activateAmenity(i)} className={dotClasses} />)
                             })}
                         </div>
@@ -1349,7 +1349,7 @@ class SlideResidencePenthouseDetail extends Component {
         super(props)
         this.state = {
             imageExpanded: false,
-            currIdx: 0,
+            currImageIdx: 0,
             prevIdx: null,
             isTransitioning: null,
         }
@@ -1357,10 +1357,10 @@ class SlideResidencePenthouseDetail extends Component {
     
     shouldComponentUpdate(nextProps, nextState){
         const imageExpandedChanged = this.state.imageExpanded !== nextState.imageExpanded
-        const currIdxChanged = nextState.currIdx !== this.state.currIdx
+        const currImageIdxChanged = nextState.currImageIdx !== this.state.currImageIdx
         const prevIdxChanged = nextState.prevIdx !== this.state.prevIdx
         const residencePenthouseChanged = nextProps.residencePenthouse !== this.props.residencePenthouse
-        return imageExpandedChanged || currIdxChanged || residencePenthouseChanged || prevIdxChanged
+        return imageExpandedChanged || currImageIdxChanged || residencePenthouseChanged || prevIdxChanged
     }
     handleWheelEvent = e => {
         const wheelAmt = e.deltaY
@@ -1375,12 +1375,12 @@ class SlideResidencePenthouseDetail extends Component {
         })
     }
     activateImage(idx){
-        const isSameIdx = this.state.currIdx === idx
+        const isSameIdx = this.state.currImageIdx === idx
         const prevIdxNotYetDeactivated = this.state.prevIdx !== null
         if(this.state.isTransitioning || isSameIdx || prevIdxNotYetDeactivated) return false
-        const prevIdx = this.state.currIdx
+        const prevIdx = this.state.currImageIdx
         this.setState({
-            currIdx: idx,
+            currImageIdx: idx,
             prevIdx: prevIdx,
             isTransitioning: true
         })
@@ -1450,7 +1450,7 @@ class SlideResidencePenthouseDetail extends Component {
                         <div className={penthouseFullscreenImageWrapperClasses}>
                             {penthouse_gallery.map((image, i) => {
                                 let imgClasses = 'fullscreenImage'
-                                imgClasses += i === this.state.currIdx ? ' active' : ''
+                                imgClasses += i === this.state.currImageIdx ? ' active' : ''
                                 imgClasses += i === this.state.prevIdx ? ' deactivating' : ''
                                 return (
                                     <img key={i+'penthouseDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={image.url} alt="Residence Penthouse"/>
@@ -1460,7 +1460,7 @@ class SlideResidencePenthouseDetail extends Component {
                         <div className={residenceFullscreenImageWrapperClasses}>
                             {residences_gallery.map((image, i) => {
                                 let imgClasses = 'fullscreenImage'
-                                imgClasses += i === this.state.currIdx ? ' active' : ''
+                                imgClasses += i === this.state.currImageIdx ? ' active' : ''
                                 imgClasses += i === this.state.prevIdx ? ' deactivating' : ''
                                 return (
                                     <img key={i+'residenceDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={image.url} alt="Residence Penthouse"/>
@@ -1471,14 +1471,14 @@ class SlideResidencePenthouseDetail extends Component {
                     <div className={penthouseDotsClasses}>
                         {penthouse_gallery.map((image, i) => {
                             let dotClasses = 'dot'
-                            dotClasses += i === this.state.currIdx ? ' active' : ''
+                            dotClasses += i === this.state.currImageIdx ? ' active' : ''
                             return (<div key={i+'penthouseDetailDot' + headerTheme} onClick={() => this.activateImage(i)} className={dotClasses} />)
                         })}
                     </div>
                     <div className={residenceDotsClasses}>
                         {residences_gallery.map((image, i) => {
                             let dotClasses = 'dot'
-                            dotClasses += i === this.state.currIdx ? ' active' : ''
+                            dotClasses += i === this.state.currImageIdx ? ' active' : ''
                             return (<div key={i+'renthouseDetailDot' + headerTheme} onClick={() => this.activateImage(i)} className={dotClasses} />)
                         })}
                     </div>

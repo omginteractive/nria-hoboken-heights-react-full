@@ -146,7 +146,7 @@ class App extends React.Component {
 
                 if(needScroll === 'needScroll') {
                     const scrollDistance = 20
-                    const deviceSlideIdx = this.findDeviceSlideIdx(this.state.currIdx)
+                    const deviceSlideIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
                     const elementToScroll = this.state.slides[deviceSlideIdx].enableScrollingQuerySelector ? this.state.slides[deviceSlideIdx].enableScrollingQuerySelector : '.slide.activeSlide'
                     if(keyboardCommand === "ArrowDown" || keyboardCommand === "ArrowRight") {
                         const originalScroll = document.querySelectorAll(elementToScroll)[0].scrollTop
@@ -168,7 +168,7 @@ class App extends React.Component {
         this.handleResize()
 	}
     shouldComponentUpdate(nextProps, nextState){
-        const curridx = this.findDeviceSlideIdx(this.state.currIdx)
+        const curridx = this.findDeviceSlideIdx(this.props.currSlideIdx)
         const slidesNotLoaded = this.state.slides === null
         let videoMobileStartPositionChanged = false
         if(typeof(curridx) !== 'undefined'){
@@ -177,7 +177,7 @@ class App extends React.Component {
         }
         const desktopKeysNotLoaded = this.state.desktopKeys.length === 0
         const mobileKeysNotLoaded = this.state.mobileKeys.length === 0
-        const currIdxChanged = this.state.currIdx !== nextState.currIdx
+        const currIdxChanged = this.props.currSlideIdx !== nextState.currIdx
         const mobileMenuToggled = this.state.mobileMenuOpen !== nextState.mobileMenuOpen
         const mapHeightLockedSettingChanged = this.state.mapHeightLocked !== nextState.mapHeightLocked
         const needsToRender = slidesNotLoaded || desktopKeysNotLoaded || mobileKeysNotLoaded || currIdxChanged || mobileMenuToggled || mapHeightLockedSettingChanged || videoMobileStartPositionChanged
@@ -232,7 +232,7 @@ class App extends React.Component {
 	// 	// this.refs.inner.addEventListener('transitionend', (evt) => {
 	// 	// 	that.setState({
 	// 	// 		transitiongState: 0,
-	// 	// 		currIdx: (this.state.currIdx + delta)
+	// 	// 		currIdx: (this.props.currSlideIdx + delta)
 	// 	// 	});
 	// 	// }, false);
 	// }
@@ -386,7 +386,7 @@ class App extends React.Component {
     }
     goToContactSlide(){
         const contactIdx = this.getFinalIdxOfDevice()
-        if(this.state.currIdx === contactIdx) return
+        if(this.props.currSlideIdx === contactIdx) return
         this.setState({
 			transitiongState: 1,
 			currIdx: contactIdx
@@ -394,7 +394,7 @@ class App extends React.Component {
         this.handleSlideChange(contactIdx)
     }
     goToSlide(idx){
-        if(this.state.currIdx === idx) return
+        if(this.props.currSlideIdx === idx) return
         this.setState({
 			transitiongState: 1,
 			currIdx: idx
@@ -436,7 +436,7 @@ class App extends React.Component {
         return this.state.desktopKeys[idx]
     }	
     nextSlide(noRequireScroll = false) {
-        const deviceSlideIdx = this.findDeviceSlideIdx(this.state.currIdx)
+        const deviceSlideIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
         const querySelector = typeof this.state.slides[deviceSlideIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.state.slides[deviceSlideIdx].enableScrollingQuerySelector
         const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
 		const videosPlayed = this.state.videosPlayed
@@ -453,8 +453,8 @@ class App extends React.Component {
 		}
         //All of the above is used to prevent a slide change if necessary
 
-		const newIdx = this.state.currIdx + 1;
-        const thisSlideDeviceIdx = this.findDeviceSlideIdx(this.state.currIdx)
+		const newIdx = this.props.currSlideIdx + 1;
+        const thisSlideDeviceIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
         let finalIdxOfDevice
         if(this.state.isMobileDevice){
             finalIdxOfDevice = this.state.mobileKeys[this.state.mobileKeys.length - 1]
@@ -477,13 +477,13 @@ class App extends React.Component {
 		if (this.isTransitioning() || this.animationsStopped()) {
 			return
         }
-        const deviceSlideIdx = this.findDeviceSlideIdx(this.state.currIdx)
+        const deviceSlideIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
         const querySelector = typeof this.state.slides[deviceSlideIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.state.slides[deviceSlideIdx].enableScrollingQuerySelector
 		const positionIsNotAtTopOfSlide = document.querySelector(querySelector).scrollTop !== 0;
 		if(positionIsNotAtTopOfSlide) {
 			return 'needScroll'
 		}
-		const newIdx = this.state.currIdx - 1;
+		const newIdx = this.props.currSlideIdx - 1;
 		if (newIdx < 0) {
 			return
 		}
@@ -495,7 +495,7 @@ class App extends React.Component {
 	}
 	firstSlide() {
 		const newIdx = 0;
-		const alreadyOnFirstSlide = this.state.currIdx === newIdx;
+		const alreadyOnFirstSlide = this.props.currSlideIdx === newIdx;
 
 		if (this.isTransitioning() || alreadyOnFirstSlide) {
 			return;
@@ -508,7 +508,7 @@ class App extends React.Component {
 	}
 	lastSlide() {
 		const newIdx = this.state.slides.length - 1;
-		const alreadyOnLastSlide = this.state.currIdx === newIdx;
+		const alreadyOnLastSlide = this.props.currSlideIdx === newIdx;
 
 		if (this.isTransitioning() || alreadyOnLastSlide) {
 			return;
@@ -528,7 +528,7 @@ class App extends React.Component {
 		this.addIdxToViewedSlides(newIdx);
 		// const isLastSlide = newIdx === this.state.slides.length -1
 		// this.mobileMenuElement.current.closeMobileMenu()
-		// const notOnLastSlide = this.state.currIdx != this.state.slides.length - 1
+		// const notOnLastSlide = this.props.currSlideIdx != this.state.slides.length - 1
 		// if(isLastSlide) this.headerElement.current.activatePhantomLogo()
 		// else this.headerElement.current.deactivatePhantomLogo()
 	}
@@ -601,7 +601,7 @@ class App extends React.Component {
 		$("html, body").animate({ scrollTop: 0 })//possible fix to hide address bar on iPhone when body is > 100vh
 	}
 	slideHorizontal(direction){
-        const key = this.findDeviceSlideIdx(this.state.currIdx)
+        const key = this.findDeviceSlideIdx(this.props.currSlideIdx)
         const mobileHorizontalVideoSlideEnabled = this.state.slides[key].mobileHorizontalVideoSlideEnabled
 
         const isAmenitiesDetailSlide = this.state.slides[key].slideTemplate === 'amenitiesDetail'
@@ -760,7 +760,7 @@ class App extends React.Component {
         return finalIdxOfDevice
     }
     render() {
-        const deviceSlideIdx = this.findDeviceSlideIdx(this.state.currIdx)
+        const deviceSlideIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
         const hasHeaderTheme = this.state.slides && this.state.slides[deviceSlideIdx] && this.state.slides[deviceSlideIdx].headerTheme
         const hasHeaderThemeMobile = this.state.slides && this.state.slides[deviceSlideIdx] && this.state.slides[deviceSlideIdx].headerThemeMobile
 
@@ -769,14 +769,14 @@ class App extends React.Component {
         
         const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
         const $slides = this.state.slides == null ? null : this.state.slides.map((slide, idx) =>
-            <Slide 
+            <Slide
                 // isFirefoxAndroid={isFirefoxAndroid}
                 showPrivacyPolicy={this.privacyPolicyModalOpen.bind(this)}
                 horizontalSlide={this.slideHorizontal.bind(this)}
                 onSlideScroll={this.handleSlideScroll}
                 scrollToFirstSlide={this.firstSlide}
                 formCleared={this.contactFormCleared.bind(this)}
-                currIdx={this.state.currIdx}
+                // currIdx={this.props.currSlideIdx}
                 slideViewed={this.state.slidesViewed.includes(idx)}
                 goToNextSlide={this.nextSlide}
                 // scrollToLastSlide={this.lastSlide}
@@ -797,10 +797,10 @@ class App extends React.Component {
                 ></Slide>
         )
 
-        const isFirstOrSecondSlide = this.state.currIdx === 0 || this.state.currIdx === 1
-        const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + ((this.state.currIdx-1) * 100) + 'vh)'}
+        const isFirstOrSecondSlide = this.props.currSlideIdx === 0 || this.props.currSlideIdx === 1
+        const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + ((this.props.currSlideIdx-1) * 100) + 'vh)'}
             
-        let slides_inner_classes = "slides_inner slide_idx_"+this.state.currIdx;
+        let slides_inner_classes = "slides_inner slide_idx_"+this.props.currSlideIdx;
         let pageClasses = this.state.formSubmitted ? 'formSubmitted' : '';
         pageClasses += this.state.isiPhone ? ' iPhone' : '';
         pageClasses +=  isFirefoxAndroid ? ' firefoxAndroid' : '';
@@ -809,7 +809,7 @@ class App extends React.Component {
         let slidesWrapperClasses = "slides_wrapper";
         if(this.state.slideHasScrolled) slidesWrapperClasses += ' scrolled'
 
-        // const thisSlideDeviceIdx = this.findDeviceSlideIdx(this.state.currIdx)
+        // const thisSlideDeviceIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
         const finalIdxOfDevice = this.getFinalIdxOfDevice()
         return (
             <div id="page" className={pageClasses}>
