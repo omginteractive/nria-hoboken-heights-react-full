@@ -6,7 +6,9 @@ import MobileMenu from './assets/MobileMenu';
 import Header from './assets/Header';
 import $ from 'jquery'
 import _ from "lodash";
-window.jQuery = $;
+import {connect} from 'react-redux'
+import { changeSlideIdx } from "./redux/actions/slideIdxActions";
+window.jQuery = $
 
 
 class App extends React.Component {
@@ -522,6 +524,7 @@ class App extends React.Component {
 	}
 
 	handleSlideChange(newIdx){
+        this.props.changeSlideIdx(newIdx)
 		this.addIdxToViewedSlides(newIdx);
 		// const isLastSlide = newIdx === this.state.slides.length -1
 		// this.mobileMenuElement.current.closeMobileMenu()
@@ -808,7 +811,6 @@ class App extends React.Component {
 
         // const thisSlideDeviceIdx = this.findDeviceSlideIdx(this.state.currIdx)
         const finalIdxOfDevice = this.getFinalIdxOfDevice()
-
         return (
             <div id="page" className={pageClasses}>
                 <MobileMenu
@@ -857,4 +859,13 @@ class App extends React.Component {
     }
 }
 
-export default App;
+const mapStateToProps = state => {
+    const currSlideIdx = state.slideData.currSlideIdx
+    return { currSlideIdx }
+  }
+
+  export default connect(
+    mapStateToProps,
+    { changeSlideIdx }
+  )(App);
+//   export default App;
