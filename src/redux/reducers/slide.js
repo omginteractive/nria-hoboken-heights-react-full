@@ -1,19 +1,20 @@
-import { CHANGE_SLIDE_IDX } from "../actions/types"
-
+import { CHANGE_SLIDE_IDX, UPDATE_SLIDES } from "../actions/types"
 
 const initialState = {
-    currSlideIdx: 0
-  }
+    currSlideIdx: 0,
+    slides: null
+}
   
-  export default function(state = initialState, action) {
+export default function(state = initialState, action) {
     switch (action.type) {
         case CHANGE_SLIDE_IDX:
             return {...state, currSlideIdx: action.payload}
+        case UPDATE_SLIDES:
+            return {...state, slides: action.payload}
         default:
-            console.log(action)
             return state
     }
-  }
+}
 
 
 //   switch (action.type) {

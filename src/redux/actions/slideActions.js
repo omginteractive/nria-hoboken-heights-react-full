@@ -1,4 +1,4 @@
-import { CHANGE_SLIDE_IDX } from "./types";
+import { CHANGE_SLIDE_IDX, UPDATE_SLIDES } from "./types";
 
 export const changeSlideIdx = idx => {
     return {
@@ -6,6 +6,15 @@ export const changeSlideIdx = idx => {
         payload: idx
     }
 }
+
+export const updateSlideData = (slideObj) => {
+    return {
+        type: UPDATE_SLIDES,
+        payload: slideObj
+    }
+}
+
+
 
 // export const toggleTodo = id => ({
 //   type: TOGGLE_TODO,

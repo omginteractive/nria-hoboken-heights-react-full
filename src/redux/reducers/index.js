@@ -1,8 +1,10 @@
-import slideData from './slideIdx'
+import slideData from './slide'
+import appData from './app'
 import {combineReducers} from 'redux'
 
 const allReducers = combineReducers({
-    slideData
+    slideData,
+    appData
 })
 
 export default allReducers

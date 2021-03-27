@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import Header from './Header';
+import {connect} from 'react-redux'
 
 class MobileMenu extends Component {
     constructor(props) {
@@ -85,4 +86,13 @@ class MobileMenu extends Component {
     }
 }
 
-export default MobileMenu;
+// export default MobileMenu;
+
+
+const mapStateToProps = state => {
+    const isMobileDevice = state.appData.isMobileDevice
+    return { isMobileDevice }
+  }
+  export default connect(
+    mapStateToProps
+  )(MobileMenu);
