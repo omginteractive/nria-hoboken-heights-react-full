@@ -1726,6 +1726,10 @@ body {
   margin-top: 7px;
   font-size: 0.8em;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-contact .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-error-msgs a, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-error-msgs a {
+  color: #fff;
+  line-height: 1.4em;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field > label,
 .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field .input,
 .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field .hs-error-msgs, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field > label,

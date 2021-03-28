@@ -53,15 +53,7 @@ class Slide extends Component {
         })
         
     }
-    contactFormSubmitted(){
-		const {formSubmitted} = this.props;
-		formSubmitted();
-	}
-
-	contactFormCleared(){
-		const {formCleared} = this.props;
-		formCleared();
-    }
+    
     
     // openPrivacyPolicyModal(){
 	// 	const {showPrivacyPolicy} = this.props
@@ -208,8 +200,6 @@ class Slide extends Component {
                 }
                 {slideObj.slideTemplate === 'contact' &&
                     <SlideContactForm
-                        formCleared={this.contactFormCleared.bind(this)}
-                        formSubmitted={this.contactFormSubmitted.bind(this)} 
                         // showPrivacyPolicy={this.openPrivacyPolicyModal.bind(this)}
                         configuration={slideObj}
                         />
@@ -390,14 +380,6 @@ class SlideContactForm extends Component {
         }
         return false
     }
-    contactFormCleared(){
-		const {formCleared} = this.props;
-		formCleared();
-    }
-    contactFormSubmitted(){
-		const {formSubmitted} = this.props;
-		formSubmitted();
-    }
     openPrivacyPolicyModal(){
 		const {showPrivacyPolicy} = this.props
 		showPrivacyPolicy()
@@ -417,8 +399,6 @@ class SlideContactForm extends Component {
                 <div className="contactPageWrapper">
                     <ContactForm
                         formHeading={this.props.configuration.form_heading}
-                        formCleared={this.contactFormCleared.bind(this)}
-                        formSubmitted={this.contactFormSubmitted.bind(this)}
                         />
                     <div className="privacyPolicy not-mobile">
                         <div className="verticalLineContainer">

@@ -183,7 +183,8 @@ class App extends React.Component {
         const currIdxChanged = this.props.currSlideIdx !== nextState.currIdx
         const menuToggled = this.props.menuOpen !== nextProps.menuOpen
         const mapHeightLockedSettingChanged = this.state.mapHeightLocked !== nextState.mapHeightLocked
-        const needsToRender = slidesNotLoaded || desktopKeysNotLoaded || mobileKeysNotLoaded || currIdxChanged || menuToggled || mapHeightLockedSettingChanged || videoMobileStartPositionChanged
+        const formSubmittedChanged = this.props.formSubmitted !== nextProps.formSubmitted
+        const needsToRender = slidesNotLoaded || desktopKeysNotLoaded || mobileKeysNotLoaded || currIdxChanged || menuToggled || mapHeightLockedSettingChanged || videoMobileStartPositionChanged || formSubmittedChanged
         return needsToRender
     }
     handleResize(){
@@ -645,83 +646,6 @@ class App extends React.Component {
             }
         }
 	}
-	contactFormSubmitted(){
-		this.setState({ formSubmitted: true })
-	}
-	contactFormCleared(){
-		this.setState({ formSubmitted: null })
-		$('#page').removeClass('formSubmitted')
-		$('.contactPageWrapper .contactForm').outerHeight('auto')
-		
-	}
-
-	createHubspotForm(){
-        // let self = this
-        // let jQuery = $
-        // const recaptcha_branding = `<div class='recaptcha_branding'>This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</div>`;
-        // if(window.hbspt) {
-
-        //     /*
-        //      * The mobile and desktop contact forms are on different slides. This is because the header theme of the
-        //      * mobile contact form is light while the desktop is black. Because there are 2 contact slides we need
-        //      * multiple contact forms and both forms need to be initialized.
-        //      * The following create() functions will initialize both forms
-        //      * 
-        //      * For desktop using #hubspotFormWrapper and for mobile using #hubspotFormWrapperMobile
-        //      * 
-        //      * Any changes to create() may need to be done for both create() functions
-        //      *
-        //      */
-        //     window.hbspt.forms.create({
-        //         portalId: "5163160",
-        //         formId: "4c41114a-2807-4884-b5e9-d6b49d56d217",
-        //         target: '#hubspotFormWrapper',
-        //         onFormSubmit: function($form) {
-        //             jQuery('#page').addClass('formSubmitted')
-        //             const formHeight = jQuery('.contactPageWrapper .contactForm').outerHeight()
-        //             jQuery('.contactPageWrapper .contactForm').outerHeight(formHeight)
-        //         },
-        //         onFormReady: function(){
-        //             jQuery("#hubspotFormWrapper .form-columns-0").append(recaptcha_branding);
-    
-        //             jQuery( ".hs-input" ).on('focusout', function() {
-        //                 self.setState({ inputFocusOutEvent: true });
-        //             })
-        //         },
-        //         onFormSubmitted: function() {
-        //             self.createHubspotForm()
-        //         }
-        //     })
-
-        //     // window.hbspt.forms.create({
-        //     //     portalId: "5163160",
-        //     //     formId: "4c41114a-2807-4884-b5e9-d6b49d56d217",
-        //     //     target: '#hubspotFormWrapperMobile',
-        //     //     onFormSubmit: function($form) {
-        //     //         jQuery('#page').addClass('formSubmitted')
-        //     //         const formHeight = jQuery('.contactPageWrapper .contactForm').outerHeight()
-        //     //         jQuery('.contactPageWrapper .contactForm').outerHeight(formHeight)
-        //     //     },
-        //     //     onFormReady: function(){
-        //     //         jQuery("#hubspotFormWrapperMobile .form-columns-0").append(recaptcha_branding);
-    
-        //     //         jQuery( ".hs-input" ).on('focusout', function() {
-        //     //             self.setState({ inputFocusOutEvent: true });
-        //     //         })
-        //     //     },
-        //     //     onFormSubmitted: function() {
-        //     //         self.createHubspotForm()
-        //     //     }
-        //     // })
-        // }
-        // else {
-        //     setTimeout(function(){
-        //         self.createHubspotForm()
-        //     }, 5000)
-            
-        // }
-		
-	}
 
 	handleSlideScroll = (hasScrolled) => {
         this.setState({slideHasScrolled: hasScrolled});
@@ -770,11 +694,11 @@ class App extends React.Component {
     }
     render() {
         const deviceSlideIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
-        const hasHeaderTheme = this.props.slideData && this.props.slideData[deviceSlideIdx] && this.props.slideData[deviceSlideIdx].headerTheme
-        const hasHeaderThemeMobile = this.props.slideData && this.props.slideData[deviceSlideIdx] && this.props.slideData[deviceSlideIdx].headerThemeMobile
+        // const hasHeaderTheme = this.props.slideData && this.props.slideData[deviceSlideIdx] && this.props.slideData[deviceSlideIdx].headerTheme
+        // const hasHeaderThemeMobile = this.props.slideData && this.props.slideData[deviceSlideIdx] && this.props.slideData[deviceSlideIdx].headerThemeMobile
 
-        const headerTheme = hasHeaderTheme ? this.props.slideData[deviceSlideIdx].headerTheme : 'dark'
-        const headerThemeMobile = hasHeaderThemeMobile ? this.props.slideData[deviceSlideIdx].headerThemeMobile : ''
+        // const headerTheme = hasHeaderTheme ? this.props.slideData[deviceSlideIdx].headerTheme : 'dark'
+        // const headerThemeMobile = hasHeaderThemeMobile ? this.props.slideData[deviceSlideIdx].headerThemeMobile : ''
         
         const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
         const $slides = this.props.slideData == null ? null : this.props.slideData.map((slide, idx) =>
@@ -784,7 +708,6 @@ class App extends React.Component {
                 horizontalSlide={this.slideHorizontal.bind(this)}
                 onSlideScroll={this.handleSlideScroll}
                 scrollToFirstSlide={this.firstSlide}
-                formCleared={this.contactFormCleared.bind(this)}
                 // currIdx={this.props.currSlideIdx}
                 slideViewed={this.state.slidesViewed.includes(idx)}
                 goToNextSlide={this.nextSlide}
@@ -800,8 +723,6 @@ class App extends React.Component {
                 residencePenthousePath={this.state.residencePenthouse}
                 amenityGallerySlideIdx={this.state.amenityGallerySlideIdx}
                 mapHeightLocked={this.state.mapHeightLocked}
-                createHubspotContactForm={this.createHubspotForm.bind(this)}
-                formSubmitted={this.contactFormSubmitted.bind(this)}
                 goToContactSlide={this.goToContactSlide.bind(this)}
                 // isTransitioning={this.isTransitioning()}
                 ></Slide>
@@ -811,7 +732,7 @@ class App extends React.Component {
         const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + ((this.props.currSlideIdx-1) * 100) + 'vh)'}
             
         let slides_inner_classes = "slides_inner slide_idx_"+this.props.currSlideIdx;
-        let pageClasses = this.state.formSubmitted ? 'formSubmitted' : '';
+        let pageClasses = this.props.formSubmitted ? 'formSubmitted' : '';
         pageClasses += this.state.isiPhone ? ' iPhone' : '';
         pageClasses +=  isFirefoxAndroid ? ' firefoxAndroid' : '';
         pageClasses +=  ' ' + this.state.operating_sys;
@@ -882,8 +803,9 @@ const mapStateToProps = state => {
     const desktopKeys = state.slideData.desktopKeys
     const mobileKeys = state.slideData.mobileKeys
     const isMobileDevice = state.appData.isMobileDevice
+    const formSubmitted = state.appData.formSubmitted
     const menuOpen = state.menuData.menuOpen
-    return { currSlideIdx, slideData, desktopKeys, mobileKeys, isMobileDevice, menuOpen }
+    return { currSlideIdx, slideData, desktopKeys, mobileKeys, isMobileDevice, menuOpen, formSubmitted }
   }
 
   export default connect(

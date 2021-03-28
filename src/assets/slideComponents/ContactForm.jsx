@@ -4,7 +4,7 @@ import React from 'react';
 import $ from 'jquery'
 import {connect} from 'react-redux'
 // import _ from "lodash";
-import { select2Enable, select2Disable } from "../.././redux/actions/appActions";
+import { select2Enable, select2Disable, contactFormSubmitted, contactFormReset } from "../.././redux/actions/appActions";
 
 
 
@@ -18,7 +18,6 @@ class ContactForm extends Component {
 			mobilephone: '',
 			how_you_heard: '',
 			how_can_we_help: '',
-			// formSubmitted: '',
 		}
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -61,24 +60,11 @@ class ContactForm extends Component {
         let jQuery = $
         const recaptcha_branding = `<div class='recaptcha_branding'>This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</div>`;
         if(window.hbspt) {
-
-            /*
-             * The mobile and desktop contact forms are on different slides. This is because the header theme of the
-             * mobile contact form is light while the desktop is black. Because there are 2 contact slides we need
-             * multiple contact forms and both forms need to be initialized.
-             * The following create() functions will initialize both forms
-             * 
-             * For desktop using #hubspotFormWrapper and for mobile using #hubspotFormWrapperMobile
-             * 
-             * Any changes to create() may need to be done for both create() functions
-             *
-             */
             window.hbspt.forms.create({
                 portalId: "5163160",
                 formId: "4c41114a-2807-4884-b5e9-d6b49d56d217",
                 target: '#hubspotFormWrapper',
                 onFormSubmit: function($form) {
-                    jQuery('#page').addClass('formSubmitted')
                     const formHeight = jQuery('.contactPageWrapper .contactForm').outerHeight()
                     jQuery('.contactPageWrapper .contactForm').outerHeight(formHeight)
                 },
@@ -91,8 +77,7 @@ class ContactForm extends Component {
                     self.activateSelect2FormElement()
                 },
                 onFormSubmitted: function() {
-                    self.createHubspotForm()
-                    self.activateSelect2FormElement()
+                    self.handleFormSubmission()
                 }
             })
         }
@@ -103,7 +88,11 @@ class ContactForm extends Component {
             
         }
 	}
-
+    handleFormSubmission(){
+        this.createHubspotForm()
+        this.activateSelect2FormElement()
+        this.props.contactFormSubmitted()
+    }
 	handleInputChange(event) {
 		const target = event.target;
 		const value = target.value;
@@ -118,7 +107,6 @@ class ContactForm extends Component {
 
 	handleSubmit() {
 		this.setState ({
-			// formSubmitted: true,
 			first_name: '',
 			last_name: '',
 			email: '',
@@ -130,11 +118,8 @@ class ContactForm extends Component {
 		formSubmitted();
 	}
 	resetForm(){
-		// this.setState ({
-		// 	formSubmitted: null
-		// })
-		const {formCleared} = this.props;
-		formCleared();
+        $('.contactPageWrapper .contactForm').outerHeight('auto')
+        this.props.contactFormReset()
 	}
 
 	scrollToTop(){
@@ -148,7 +133,10 @@ class ContactForm extends Component {
 			<form className={contactFormClasses}>
 				<div className="submittedFormOverlay">
 					<div className="text">THANK YOU!</div>
-					<div className="closeBtn" onClick={this.resetForm}>
+					<div 
+                        className="closeBtn" 
+                        onClick={this.resetForm}
+                        >
 						<img src={require('.././images/form_close_btn.svg').default} />
 					</div>
 				</div>
@@ -169,5 +157,5 @@ const mapStateToProps = state => {
 
   export default connect(
     mapStateToProps,
-    { select2Enable, select2Disable }
+    { select2Enable, select2Disable, contactFormSubmitted, contactFormReset }
   )(ContactForm);
