@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 // import _ from "lodash";
 
 import SlideViews from './slideComponents/SlideViews';
+import ContactForm from './slideComponents/ContactForm';
 
 class Slide extends Component {
     constructor(props) {
@@ -52,10 +53,6 @@ class Slide extends Component {
         })
         
     }
-    createHubspotForm(){
-		const {createHubspotContactForm} = this.props;
-		createHubspotContactForm();
-    }
     contactFormSubmitted(){
 		const {formSubmitted} = this.props;
 		formSubmitted();
@@ -66,10 +63,10 @@ class Slide extends Component {
 		formCleared();
     }
     
-    openPrivacyPolicyModal(){
-		const {showPrivacyPolicy} = this.props
-		showPrivacyPolicy()
-    }
+    // openPrivacyPolicyModal(){
+	// 	const {showPrivacyPolicy} = this.props
+	// 	showPrivacyPolicy()
+    // }
     
     delegateScroll(wheelAmt, elementToDelegateScroll, defaultScroll = false){
         const currentDetailsScrollDistance = elementToDelegateScroll.scrollTop
@@ -210,11 +207,13 @@ class Slide extends Component {
                     <SlideMap mapHeightLocked={this.props.mapHeightLocked} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'contact' &&
-                    <SlideContactForm createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)} showPrivacyPolicy={this.openPrivacyPolicyModal.bind(this)}  configuration={slideObj}  />
+                    <SlideContactForm
+                        formCleared={this.contactFormCleared.bind(this)}
+                        formSubmitted={this.contactFormSubmitted.bind(this)} 
+                        // showPrivacyPolicy={this.openPrivacyPolicyModal.bind(this)}
+                        configuration={slideObj}
+                        />
                 }
-                {/* {slideObj.slideTemplate === 'contactMobile' &&
-                    <SlideContactForm mobileVersion={true} createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)} showPrivacyPolicy={this.openPrivacyPolicyModal.bind(this)}  configuration={slideObj}  />
-                } */}
             </div>
         )
     }
@@ -384,25 +383,21 @@ class SlideVideoDiscover extends Component {
 class SlideContactForm extends Component {
     constructor(props) {
 		super(props);
-		this.state = {
-			select2Activated: false,
-		}
+		// this.state = {
+		// 	select2Activated: false,
+		// }
 	}
     shouldComponentUpdate(nextProps, nextState){
-        if(!this.state.select2Activated){
+        if(!this.props.select2Activated){
             return true //this will make sure we render the child component ContactForm to add select2
         }
         return false
     }
-    activateSelect2State(){
-        this.setState({
-			select2Activated: true
-		});
-    }
-    createHubspotForm(){
-		const {createHubspotContactForm} = this.props;
-		createHubspotContactForm();
-    }
+    // activateSelect2State(){
+    //     // this.setState({
+	// 	// 	select2Activated: true
+	// 	// });
+    // }
     contactFormCleared(){
 		const {formCleared} = this.props;
 		formCleared();
@@ -429,7 +424,13 @@ class SlideContactForm extends Component {
             <>
                 <div className="contactPageWrapper">
                     {/* mobileVersion={this.props.mobileVersion} */}
-                    <ContactForm formHeading={this.props.configuration.form_heading} activateSelect2State={this.activateSelect2State.bind(this)} select2Activated={this.state.select2Activated} createHubspotContactForm={this.createHubspotForm.bind(this)} formCleared={this.contactFormCleared.bind(this)} formSubmitted={this.contactFormSubmitted.bind(this)} />
+                    <ContactForm
+                        formHeading={this.props.configuration.form_heading}
+                        // activateSelect2State={this.activateSelect2State.bind(this)}
+                        // select2Activated={this.state.select2Activated}
+                        formCleared={this.contactFormCleared.bind(this)}
+                        formSubmitted={this.contactFormSubmitted.bind(this)}
+                        />
                     <div className="privacyPolicy not-mobile">
                         <div className="verticalLineContainer">
                             <div className="verticalLine" />
@@ -463,130 +464,194 @@ class SlideContactForm extends Component {
     }
 }
 
-class ContactForm extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			first_name: '',
-			last_name: '',
-			email: '',
-			mobilephone: '',
-			how_you_heard: '',
-			how_can_we_help: '',
-			// formSubmitted: '',
-            select2Activated: false,
-		}
-		this.handleInputChange = this.handleInputChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.resetForm = this.resetForm.bind(this);
-	}
+// class ContactForm extends Component {
+// 	constructor(props) {
+// 		super(props);
+// 		this.state = {
+// 			first_name: '',
+// 			last_name: '',
+// 			email: '',
+// 			mobilephone: '',
+// 			how_you_heard: '',
+// 			how_can_we_help: '',
+// 			// formSubmitted: '',
+//             // select2Activated: false,
+// 		}
+// 		this.handleInputChange = this.handleInputChange.bind(this);
+// 		this.handleSubmit = this.handleSubmit.bind(this);
+// 		this.resetForm = this.resetForm.bind(this);
+// 	}
 
-	componentDidMount() {
-		//This is a fix to detect changes on the select2
-		$(this.refs.how_you_heard).on("change",  (e)=> {
-			this.handleInputChange(e)
-        })
-        this.createHubspotForm()//this is used to create the form on load
-	}
-    componentDidUpdate(){
-        if(!this.state.select2Activated) {
+// 	componentDidMount() {
+// 		//This is a fix to detect changes on the select2
+// 		$(this.refs.how_you_heard).on("change",  (e)=> {
+// 			this.handleInputChange(e)
+//         })
+//         this.createHubspotForm()//this is used to create the form on load
+// 	}
+//     componentDidUpdate(){
+//         if(!this.props.select2Activated) {
 
-            const select2Exists = $.fn.select2
-            const select2Initialized = $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').hasClass("select2-hidden-accessible")
-            const hubspotFormExists = $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').length
-            if(!select2Initialized && select2Exists && hubspotFormExists) {
-                $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').select2({
-                    placeholder: "How did you hear of us?*",
-                    width: 'resolve',
-                    minimumResultsForSearch: -1
-                });
-                const disabledOptionText = $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217 option:disabled')[0].innerHTML
-                $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').select2({
-                    placeholder: disabledOptionText,
-                    width: 'resolve',
-                    minimumResultsForSearch: -1
-                });
-                this.setState({
-                    select2Activated: true
-                });
-                this.handleSelect2Activation()
-            }
-        }
+//             const select2Exists = $.fn.select2
+//             const select2Initialized = $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').hasClass("select2-hidden-accessible")
+//             const hubspotFormExists = $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').length
+//             if(!select2Initialized && select2Exists && hubspotFormExists) {
+//                 $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').select2({
+//                     placeholder: "How did you hear of us?*",
+//                     width: 'resolve',
+//                     minimumResultsForSearch: -1
+//                 });
+//                 const disabledOptionText = $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217 option:disabled')[0].innerHTML
+//                 $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').select2({
+//                     placeholder: disabledOptionText,
+//                     width: 'resolve',
+//                     minimumResultsForSearch: -1
+//                 });
+//                 // this.setState({
+//                 //     select2Activated: true
+//                 // });
+//                 // this.handleSelect2Activation()
+//                 this.props.select2Enable()
+//             }
+//         }
+//     }
+//     // handleSelect2Activation(){
+// 	// 	// const {activateSelect2State} = this.props;
+// 	// 	// activateSelect2State();
+//     //     // this.props.select2Enable()
+//     // }
+// 	createHubspotForm(){
+// 		let self = this
+//         let jQuery = $
+//         const recaptcha_branding = `<div class='recaptcha_branding'>This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</div>`;
+//         if(window.hbspt) {
+
+//             /*
+//              * The mobile and desktop contact forms are on different slides. This is because the header theme of the
+//              * mobile contact form is light while the desktop is black. Because there are 2 contact slides we need
+//              * multiple contact forms and both forms need to be initialized.
+//              * The following create() functions will initialize both forms
+//              * 
+//              * For desktop using #hubspotFormWrapper and for mobile using #hubspotFormWrapperMobile
+//              * 
+//              * Any changes to create() may need to be done for both create() functions
+//              *
+//              */
+//             window.hbspt.forms.create({
+//                 portalId: "5163160",
+//                 formId: "4c41114a-2807-4884-b5e9-d6b49d56d217",
+//                 target: '#hubspotFormWrapper',
+//                 onFormSubmit: function($form) {
+//                     jQuery('#page').addClass('formSubmitted')
+//                     const formHeight = jQuery('.contactPageWrapper .contactForm').outerHeight()
+//                     jQuery('.contactPageWrapper .contactForm').outerHeight(formHeight)
+//                 },
+//                 onFormReady: function(){
+//                     jQuery("#hubspotFormWrapper .form-columns-0").append(recaptcha_branding);
+    
+//                     jQuery( ".hs-input" ).on('focusout', function() {
+//                         self.setState({ inputFocusOutEvent: true });
+//                     })
+//                 },
+//                 onFormSubmitted: function() {
+//                     self.createHubspotForm()
+//                     this.props.select2Disable()
+//                 }
+//             })
+
+//             // window.hbspt.forms.create({
+//             //     portalId: "5163160",
+//             //     formId: "4c41114a-2807-4884-b5e9-d6b49d56d217",
+//             //     target: '#hubspotFormWrapperMobile',
+//             //     onFormSubmit: function($form) {
+//             //         jQuery('#page').addClass('formSubmitted')
+//             //         const formHeight = jQuery('.contactPageWrapper .contactForm').outerHeight()
+//             //         jQuery('.contactPageWrapper .contactForm').outerHeight(formHeight)
+//             //     },
+//             //     onFormReady: function(){
+//             //         jQuery("#hubspotFormWrapperMobile .form-columns-0").append(recaptcha_branding);
+    
+//             //         jQuery( ".hs-input" ).on('focusout', function() {
+//             //             self.setState({ inputFocusOutEvent: true });
+//             //         })
+//             //     },
+//             //     onFormSubmitted: function() {
+//             //         self.createHubspotForm()
+//             //     }
+//             // })
+//         }
+//         else {
+//             setTimeout(function(){
+//                 self.createHubspotForm()
+//             }, 5000)
+            
+//         }
+// 	}
+
+// 	handleInputChange(event) {
+// 		const target = event.target;
+// 		const value = target.value;
+// 		const name = target.name;
+
+// 		this.setState({
+// 			[name]: value
+// 		});
+
+// 		console.log('changed')
+// 	}
+
+// 	handleSubmit() {
+// 		this.setState ({
+// 			// formSubmitted: true,
+// 			first_name: '',
+// 			last_name: '',
+// 			email: '',
+// 			mobilephone: '',
+// 			how_you_heard: '',
+// 			how_can_we_help: '',
+// 		});
+// 		const {formSubmitted} = this.props;
+// 		formSubmitted();
+// 	}
+// 	resetForm(){
+// 		// this.setState ({
+// 		// 	formSubmitted: null
+// 		// })
+// 		const {formCleared} = this.props;
+// 		formCleared();
+// 	}
+
+// 	scrollToTop(){
+// 		const {scrollToFirstSlide} = this.props
+// 		scrollToFirstSlide()
+// 	}
+
+//     render(){
+// 		// let jQuery = $
+// 		let contactFormClasses = 'contactForm';
+// 		// if(this.state.formSubmitted){
+// 		// 	contactFormClasses += ' submitted'
+// 		// }
+// 		// const select2Styles = {
+// 		// 	width:"100%"
+// 		// }
         
-    }
-    handleSelect2Activation(){
-		const {activateSelect2State} = this.props;
-		activateSelect2State();
-    }
-	createHubspotForm(){
-		const {createHubspotContactForm} = this.props;
-		createHubspotContactForm();
-	}
-
-	handleInputChange(event) {
-		const target = event.target;
-		const value = target.value;
-		const name = target.name;
-
-		this.setState({
-			[name]: value
-		});
-
-		console.log('changed')
-	}
-
-	handleSubmit() {
-		this.setState ({
-			// formSubmitted: true,
-			first_name: '',
-			last_name: '',
-			email: '',
-			mobilephone: '',
-			how_you_heard: '',
-			how_can_we_help: '',
-		});
-		const {formSubmitted} = this.props;
-		formSubmitted();
-	}
-	resetForm(){
-		// this.setState ({
-		// 	formSubmitted: null
-		// })
-		const {formCleared} = this.props;
-		formCleared();
-	}
-
-	scrollToTop(){
-		const {scrollToFirstSlide} = this.props
-		scrollToFirstSlide()
-	}
-
-    render(){
-		// let jQuery = $
-		let contactFormClasses = 'contactForm';
-		// if(this.state.formSubmitted){
-		// 	contactFormClasses += ' submitted'
-		// }
-		// const select2Styles = {
-		// 	width:"100%"
-		// }
-        
-        return (
-			<form className={contactFormClasses}>
-				<div className="submittedFormOverlay">
-					<div className="text">THANK YOU!</div>
-					<div className="closeBtn" onClick={this.resetForm}>
-						<img src={require('./images/form_close_btn.svg').default} />
-					</div>
-				</div>
-				<div className='headline'>{this.props.formHeading}</div>
-				<div className="hubspotFormWrapper" id='hubspotFormWrapper'>
-				</div>
-                <img className='mobile-only nriaLogo' src={require('./images/logos/NRLiving--White.png').default} alt="NRIA Logo" />
-			</form>
-		);
-	}
-}
+//         return (
+// 			<form className={contactFormClasses}>
+// 				<div className="submittedFormOverlay">
+// 					<div className="text">THANK YOU!</div>
+// 					<div className="closeBtn" onClick={this.resetForm}>
+// 						<img src={require('./images/form_close_btn.svg').default} />
+// 					</div>
+// 				</div>
+// 				<div className='headline'>{this.props.formHeading}</div>
+// 				<div className="hubspotFormWrapper" id='hubspotFormWrapper'>
+// 				</div>
+//                 <img className='mobile-only nriaLogo' src={require('./images/logos/NRLiving--White.png').default} alt="NRIA Logo" />
+// 			</form>
+// 		);
+// 	}
+// }
 
 class SlideNeighborhoodCommunity extends Component {
     shouldComponentUpdate(nextProps, nextState){
@@ -1384,18 +1449,18 @@ class SlideAvailability extends Component {
     constructor(props) {
 		super(props);
 		this.state = {
-			select2Activated: false,
+			availabilitySelect2Activated: false,
 		}
 	}
     shouldComponentUpdate(nextProps, nextState){
         // const select2ActivatedChanged = this.state.select2Activated != nextState.select2Activated
         const select2Exists = $.fn.select2
-        const select2Activated = this.state.select2Activated
+        const availabilitySelect2Activated = this.state.availabilitySelect2Activated
         
-        return select2Exists && !select2Activated
+        return select2Exists && !availabilitySelect2Activated
     }
     componentDidUpdate(){
-        if(!this.state.select2Activated) {
+        if(!this.state.availabilitySelect2Activated) {
 
             const select2Exists = $.fn.select2
             const select2Initialized = $('#availabilityFloorPlansDropdown').hasClass("select2-hidden-accessible")
@@ -1418,15 +1483,13 @@ class SlideAvailability extends Component {
                 //     minimumResultsForSearch: -1
                 // });
                 this.setState({
-                    select2Activated: true
+                    availabilitySelect2Activated: true
                 });
                 // this.handleSelect2Activation()
             }
         }
-        
     }
     render(){
-        
         return(
             <>
                 <section className='availability'>
@@ -1588,9 +1651,10 @@ class SlideFounders extends Component {
 const mapStateToProps = state => {
     const currSlideIdx = state.slideData.currSlideIdx
     const isMobileDevice = state.appData.isMobileDevice
+    const select2Activated = state.appData.select2Activated
     const slideData = state.slideData.slides
-    return { currSlideIdx, slideData, isMobileDevice }
+    return { currSlideIdx, slideData, isMobileDevice, select2Activated }
   }
   export default connect(
-    mapStateToProps
+    mapStateToProps,
   )(Slide);

@@ -1,9 +1,19 @@
-import { CHANGE_IS_MOBILE_DEVICE } from "./types";
+import { CHANGE_IS_MOBILE_DEVICE, SELECT2_ENABLE, SELECT2_DISABLE } from "./types";
 
 export const changeIsMobileDevice = isMobileDevice => {
     return {
         type: CHANGE_IS_MOBILE_DEVICE,
         payload: isMobileDevice
+    }
+}
+export const select2Enable = () => {
+    return {
+        type: SELECT2_ENABLE,
+    }
+}
+export const select2Disable = () => {
+    return {
+        type: SELECT2_DISABLE,
     }
 }
 

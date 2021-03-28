@@ -1801,6 +1801,13 @@ body {
                                     }
                 
                                     .form-columns-1 {
+                                        .input > select {
+                                            //this was necessary because choosing a select2 option caused the original select to appear
+                                            opacity: 0;
+                                            width: 0;
+                                            height: 0;
+                                            position: absolute;
+                                        }
                                         .hs-input {
                                             width: 100%;
                                         }

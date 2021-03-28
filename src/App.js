@@ -656,70 +656,70 @@ class App extends React.Component {
 	}
 
 	createHubspotForm(){
-        let self = this
-        let jQuery = $
-        const recaptcha_branding = `<div class='recaptcha_branding'>This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</div>`;
-        if(window.hbspt) {
+        // let self = this
+        // let jQuery = $
+        // const recaptcha_branding = `<div class='recaptcha_branding'>This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</div>`;
+        // if(window.hbspt) {
 
-            /*
-             * The mobile and desktop contact forms are on different slides. This is because the header theme of the
-             * mobile contact form is light while the desktop is black. Because there are 2 contact slides we need
-             * multiple contact forms and both forms need to be initialized.
-             * The following create() functions will initialize both forms
-             * 
-             * For desktop using #hubspotFormWrapper and for mobile using #hubspotFormWrapperMobile
-             * 
-             * Any changes to create() may need to be done for both create() functions
-             *
-             */
-            window.hbspt.forms.create({
-                portalId: "5163160",
-                formId: "4c41114a-2807-4884-b5e9-d6b49d56d217",
-                target: '#hubspotFormWrapper',
-                onFormSubmit: function($form) {
-                    jQuery('#page').addClass('formSubmitted')
-                    const formHeight = jQuery('.contactPageWrapper .contactForm').outerHeight()
-                    jQuery('.contactPageWrapper .contactForm').outerHeight(formHeight)
-                },
-                onFormReady: function(){
-                    jQuery("#hubspotFormWrapper .form-columns-0").append(recaptcha_branding);
+        //     /*
+        //      * The mobile and desktop contact forms are on different slides. This is because the header theme of the
+        //      * mobile contact form is light while the desktop is black. Because there are 2 contact slides we need
+        //      * multiple contact forms and both forms need to be initialized.
+        //      * The following create() functions will initialize both forms
+        //      * 
+        //      * For desktop using #hubspotFormWrapper and for mobile using #hubspotFormWrapperMobile
+        //      * 
+        //      * Any changes to create() may need to be done for both create() functions
+        //      *
+        //      */
+        //     window.hbspt.forms.create({
+        //         portalId: "5163160",
+        //         formId: "4c41114a-2807-4884-b5e9-d6b49d56d217",
+        //         target: '#hubspotFormWrapper',
+        //         onFormSubmit: function($form) {
+        //             jQuery('#page').addClass('formSubmitted')
+        //             const formHeight = jQuery('.contactPageWrapper .contactForm').outerHeight()
+        //             jQuery('.contactPageWrapper .contactForm').outerHeight(formHeight)
+        //         },
+        //         onFormReady: function(){
+        //             jQuery("#hubspotFormWrapper .form-columns-0").append(recaptcha_branding);
     
-                    jQuery( ".hs-input" ).on('focusout', function() {
-                        self.setState({ inputFocusOutEvent: true });
-                    })
-                },
-                onFormSubmitted: function() {
-                    self.createHubspotForm()
-                }
-            })
+        //             jQuery( ".hs-input" ).on('focusout', function() {
+        //                 self.setState({ inputFocusOutEvent: true });
+        //             })
+        //         },
+        //         onFormSubmitted: function() {
+        //             self.createHubspotForm()
+        //         }
+        //     })
 
-            // window.hbspt.forms.create({
-            //     portalId: "5163160",
-            //     formId: "4c41114a-2807-4884-b5e9-d6b49d56d217",
-            //     target: '#hubspotFormWrapperMobile',
-            //     onFormSubmit: function($form) {
-            //         jQuery('#page').addClass('formSubmitted')
-            //         const formHeight = jQuery('.contactPageWrapper .contactForm').outerHeight()
-            //         jQuery('.contactPageWrapper .contactForm').outerHeight(formHeight)
-            //     },
-            //     onFormReady: function(){
-            //         jQuery("#hubspotFormWrapperMobile .form-columns-0").append(recaptcha_branding);
+        //     // window.hbspt.forms.create({
+        //     //     portalId: "5163160",
+        //     //     formId: "4c41114a-2807-4884-b5e9-d6b49d56d217",
+        //     //     target: '#hubspotFormWrapperMobile',
+        //     //     onFormSubmit: function($form) {
+        //     //         jQuery('#page').addClass('formSubmitted')
+        //     //         const formHeight = jQuery('.contactPageWrapper .contactForm').outerHeight()
+        //     //         jQuery('.contactPageWrapper .contactForm').outerHeight(formHeight)
+        //     //     },
+        //     //     onFormReady: function(){
+        //     //         jQuery("#hubspotFormWrapperMobile .form-columns-0").append(recaptcha_branding);
     
-            //         jQuery( ".hs-input" ).on('focusout', function() {
-            //             self.setState({ inputFocusOutEvent: true });
-            //         })
-            //     },
-            //     onFormSubmitted: function() {
-            //         self.createHubspotForm()
-            //     }
-            // })
-        }
-        else {
-            setTimeout(function(){
-                self.createHubspotForm()
-            }, 5000)
+        //     //         jQuery( ".hs-input" ).on('focusout', function() {
+        //     //             self.setState({ inputFocusOutEvent: true });
+        //     //         })
+        //     //     },
+        //     //     onFormSubmitted: function() {
+        //     //         self.createHubspotForm()
+        //     //     }
+        //     // })
+        // }
+        // else {
+        //     setTimeout(function(){
+        //         self.createHubspotForm()
+        //     }, 5000)
             
-        }
+        // }
 		
 	}
 
@@ -727,27 +727,27 @@ class App extends React.Component {
         this.setState({slideHasScrolled: hasScrolled});
 	}
 	
-	privacyPolicyModalOpen(){
-		this.setState({ privacyPolicyEnabled: true });
-		setTimeout(() => this.setState({ privacyPolicyFadeType: "in" }), 0);
+	// privacyPolicyModalOpen(){
+	// 	this.setState({ privacyPolicyEnabled: true });
+	// 	setTimeout(() => this.setState({ privacyPolicyFadeType: "in" }), 0);
 
-	}
-	privacyPolicyModalRemove(){
-		this.setState({ 
-			privacyPolicyEnabled: false,
-			privacyPolicyFadeType: null
-		 });
-	}
-	privacyPolicyModalFadeOut(){
-		this.setState({ privacyPolicyFadeType: 'out' });
-	}
-	privacyPolicyModalTransitionEnd = e => {
-		if (e.propertyName !== "opacity" || this.state.privacyPolicyFadeType === "in") return;
+	// }
+	// privacyPolicyModalRemove(){
+	// 	this.setState({ 
+	// 		privacyPolicyEnabled: false,
+	// 		privacyPolicyFadeType: null
+	// 	 });
+	// }
+	// privacyPolicyModalFadeOut(){
+	// 	this.setState({ privacyPolicyFadeType: 'out' });
+	// }
+	// privacyPolicyModalTransitionEnd = e => {
+	// 	if (e.propertyName !== "opacity" || this.state.privacyPolicyFadeType === "in") return;
 	
-		if (this.state.privacyPolicyFadeType === "out") {
-			this.privacyPolicyModalRemove();
-		}
-    }
+	// 	if (this.state.privacyPolicyFadeType === "out") {
+	// 		this.privacyPolicyModalRemove();
+	// 	}
+    // }
     setAmenityOnGallerySlide(idx){
         this.setState({
 			amenityGallerySlideIdx: idx
@@ -780,7 +780,7 @@ class App extends React.Component {
         const $slides = this.props.slideData == null ? null : this.props.slideData.map((slide, idx) =>
             <Slide
                 // isFirefoxAndroid={isFirefoxAndroid}
-                showPrivacyPolicy={this.privacyPolicyModalOpen.bind(this)}
+                // showPrivacyPolicy={this.privacyPolicyModalOpen.bind(this)}
                 horizontalSlide={this.slideHorizontal.bind(this)}
                 onSlideScroll={this.handleSlideScroll}
                 scrollToFirstSlide={this.firstSlide}
