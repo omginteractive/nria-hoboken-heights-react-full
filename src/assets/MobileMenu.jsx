@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import Header from './Header';
 import {connect} from 'react-redux'
-
+import { toggleMenuState, toggleMenuAndTransition, endMenuTransition } from "./../redux/actions/menuActions";
 class MobileMenu extends Component {
     constructor(props) {
         super(props);
@@ -10,8 +10,8 @@ class MobileMenu extends Component {
         }
     }
     shouldComponentUpdate(nextProps, nextState){
-        const menuStatusChanged = nextProps.open !== this.props.open
-        const transitioningStatusChanged = nextState.isTransitioning !== this.state.isTransitioning
+        const menuStatusChanged = nextProps.menuOpen !== this.props.menuOpen
+        const transitioningStatusChanged = nextProps.menuIsTransitioning !== this.props.menuIsTransitioning
         return menuStatusChanged || transitioningStatusChanged
     }
     goToSlide(idx){
@@ -20,31 +20,26 @@ class MobileMenu extends Component {
         })
         const {goToSlideIdx} = this.props;
         goToSlideIdx(idx)
-        this.toggleMobileMenu()
+        this.props.toggleMenuAndTransition()
     }
-    toggleMobileMenu(){
-        const {toggleMobileMenu} = this.props;
-        const menuIsClosing = toggleMobileMenu()
-        if(!menuIsClosing) {
-            setTimeout(() => {
-                this.setState({
-                    isTransitioning: false,
-                })
-            })
-        }
-    }
+    
     goToContactSlide(){
         const {goToContactSlide} = this.props;
         goToContactSlide();
-        this.toggleMobileMenu();
+        this.props.toggleMenuAndTransition()
+    }
+    handleMenuTransitionEnd(e){
+        const isMenuElement = e.target.classList.contains('mobile-menu')
+        if(isMenuElement) {
+            this.props.endMenuTransition()
+        }
     }
     render(){
-        // const isOpen = this.props.open
         const isMobile = this.props.isMobileDevice
         let mobileMenuClasses = 'mobile-menu'
-        mobileMenuClasses += this.props.open ? ' open' : ' closed'
-        mobileMenuClasses += this.state.isTransitioning ? ' closing' : ''
-
+        mobileMenuClasses += this.props.menuOpen ? ' open' : ' closed'
+        mobileMenuClasses += this.props.menuIsTransitioning ? ' closing' : ''
+        
         const propertyLink = isMobile ? 2 : 2
         const amenitiesLink = isMobile ? 4 : 4
         const viewLink = isMobile ? 6 : 6
@@ -54,8 +49,13 @@ class MobileMenu extends Component {
         const discoverLink = isMobile ? 16 : 14
         const contactFormSlideIdx = this.props.contactFormSlideIdx
 		return(
-            <div className={mobileMenuClasses}>
-                <Header goToContactSlide={this.goToContactSlide.bind(this)}  theme='light' open={true} toggleMobileMenu={this.toggleMobileMenu.bind(this)} />
+            <div className={mobileMenuClasses} onTransitionEnd={this.handleMenuTransitionEnd.bind(this)}>
+                <Header
+                goToContactSlide={this.goToContactSlide.bind(this)}
+                mobileMenuHeader={true}
+                // open={true} 
+                // toggleMobileMenu={this.toggleMobileMenu.bind(this)} 
+                />
                 <div className="mobileMenuLinks">
                     <div className="linksWrapper">
                         <div className='link' onClick={() => this.goToSlide(propertyLink)}><h2>Property</h2></div>
@@ -86,13 +86,13 @@ class MobileMenu extends Component {
     }
 }
 
-// export default MobileMenu;
-
-
 const mapStateToProps = state => {
     const isMobileDevice = state.appData.isMobileDevice
-    return { isMobileDevice }
+    const menuOpen = state.menuData.menuOpen
+    const menuIsTransitioning = state.menuData.menuIsTransitioning
+    return { isMobileDevice, menuOpen, menuIsTransitioning}
   }
   export default connect(
-    mapStateToProps
+    mapStateToProps,
+    {toggleMenuState, toggleMenuAndTransition, endMenuTransition}
   )(MobileMenu);

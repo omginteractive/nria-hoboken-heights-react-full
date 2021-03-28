@@ -1,16 +1,23 @@
-import { CHANGE_SLIDE_IDX, UPDATE_SLIDES } from "../actions/types"
+import { CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS } from "../actions/types"
 
 const initialState = {
     currSlideIdx: 0,
-    slides: null
+    slides: null,
+    desktopKeys: [],
+    mobileKeys: [],
+
 }
   
-export default function(state = initialState, action) {
+export default function slideReducer(state = initialState, action) {
     switch (action.type) {
         case CHANGE_SLIDE_IDX:
             return {...state, currSlideIdx: action.payload}
         case UPDATE_SLIDES:
             return {...state, slides: action.payload}
+        case UPDATE_DESKTOP_KEYS:
+            return {...state, desktopKeys: action.payload}
+        case UPDATE_MOBILE_KEYS:
+            return {...state, mobileKeys: action.payload}
         default:
             return state
     }

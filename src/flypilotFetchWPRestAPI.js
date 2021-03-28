@@ -126,6 +126,7 @@ console.log(apartment_result)
             background: "#fff",
         },
         headerTheme: 'light',
+        headerThemeMobile: 'lightMobile',
         enableScrolling: true,
         mobileOnly: true,
         amenitiesResults

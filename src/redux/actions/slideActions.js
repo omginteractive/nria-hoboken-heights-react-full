@@ -1,4 +1,4 @@
-import { CHANGE_SLIDE_IDX, UPDATE_SLIDES } from "./types";
+import { CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS } from "./types";
 
 export const changeSlideIdx = idx => {
     return {
@@ -14,7 +14,18 @@ export const updateSlideData = (slideObj) => {
     }
 }
 
-
+export const updateDesktopKeys = (keysArray) => {
+    return {
+        type: UPDATE_DESKTOP_KEYS,
+        payload: keysArray
+    }
+}
+export const updateMobileKeys = (keysArray) => {
+    return {
+        type: UPDATE_MOBILE_KEYS,
+        payload: keysArray
+    }
+}
 
 // export const toggleTodo = id => ({
 //   type: TOGGLE_TODO,

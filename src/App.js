@@ -7,8 +7,9 @@ import Header from './assets/Header';
 import $ from 'jquery'
 import _ from "lodash";
 import {connect} from 'react-redux'
-import { changeSlideIdx, updateSlideData } from "./redux/actions/slideActions";
+import { changeSlideIdx, updateSlideData, updateDesktopKeys, updateMobileKeys } from "./redux/actions/slideActions";
 import { changeIsMobileDevice } from "./redux/actions/appActions";
+
 window.jQuery = $
 
 
@@ -37,12 +38,12 @@ class App extends React.Component {
         slideHasScrolled: null,
 
         slides: null,
-        mobileMenuOpen: false,
+        // mobileMenuOpen: false,
         amenityGallerySlideIdx: 0, //default to first amenity for details page
         residencePenthouse: 'penthouse',//default option
         // isMobileDevice: null,
-        desktopKeys: [],
-        mobileKeys: [],
+        // desktopKeys: [],
+        // mobileKeys: [],
         mapHeightLocked: null
     }
 
@@ -177,19 +178,20 @@ class App extends React.Component {
             const currentSlide = !slidesNotLoaded ? this.props.slideData : false
             videoMobileStartPositionChanged = !slidesNotLoaded && currentSlide && currentSlide[curridx].videoMobileStartPosition !== nextProps.slideData[curridx].videoMobileStartPosition
         }
-        const desktopKeysNotLoaded = this.state.desktopKeys.length === 0
-        const mobileKeysNotLoaded = this.state.mobileKeys.length === 0
+        const desktopKeysNotLoaded = this.props.desktopKeys.length === 0
+        const mobileKeysNotLoaded = this.props.mobileKeys.length === 0
         const currIdxChanged = this.props.currSlideIdx !== nextState.currIdx
-        const mobileMenuToggled = this.state.mobileMenuOpen !== nextState.mobileMenuOpen
+        const menuToggled = this.props.menuOpen !== nextProps.menuOpen
         const mapHeightLockedSettingChanged = this.state.mapHeightLocked !== nextState.mapHeightLocked
-        const needsToRender = slidesNotLoaded || desktopKeysNotLoaded || mobileKeysNotLoaded || currIdxChanged || mobileMenuToggled || mapHeightLockedSettingChanged || videoMobileStartPositionChanged
+        const needsToRender = slidesNotLoaded || desktopKeysNotLoaded || mobileKeysNotLoaded || currIdxChanged || menuToggled || mapHeightLockedSettingChanged || videoMobileStartPositionChanged
         return needsToRender
     }
     handleResize(){
         this.calculateMapAspectLockRatio()
-        const isMobile = window.innerWidth < 769
-        // this.setState({ isMobileDevice: isMobile });
-        this.props.changeIsMobileDevice(isMobile)
+        const isMobileState = window.innerWidth < 769
+        // this.setState({ isMobileDeviceState: isMobile });
+        const previousState = this.props.isMobileDevice
+        if(previousState !== isMobileState) this.props.changeIsMobileDevice(isMobileState)
     }
     calculateMapAspectLockRatio(){
         const maximumLockRatio = 2
@@ -251,13 +253,9 @@ class App extends React.Component {
 	// 	this.setState({previousScrollVal: 0});
 	}
 
-    toggleMobileMenu(){
-        const mobileMenuOpen = this.state.mobileMenuOpen
-        this.setState({
-            mobileMenuOpen: !mobileMenuOpen
-        });
-        return !mobileMenuOpen
-	}
+    // toggleMobileMenu(){
+    //     this.props.toggleMenuState()
+	// }
 	scrollSlide(deltaY){
         const isScrollingDown = deltaY > 0;
 		if (isScrollingDown) {
@@ -420,7 +418,8 @@ class App extends React.Component {
             if(Number.isInteger(key)) return true
             return false
         })
-
+        this.props.updateDesktopKeys(desktopKeys)
+        
         const mobileKeys = slides.map((slide, i) => {
             if(!slide.desktopOnly) return i
             return null
@@ -428,10 +427,11 @@ class App extends React.Component {
             if(Number.isInteger(key)) return true
             return false
         })
-        this.setState({ 
-            desktopKeys,
-            mobileKeys
-         });
+        this.props.updateMobileKeys(mobileKeys)
+        // this.setState({ 
+        //     desktopKeys,
+        //     mobileKeys
+        //  });
         
     }
     findDeviceSlideIdx(idx){
@@ -440,8 +440,8 @@ class App extends React.Component {
          * We need a way to find the index of the environment which we are on
          */
         const isMobile = this.props.isMobileDevice
-        if(isMobile) return this.state.mobileKeys[idx]
-        return this.state.desktopKeys[idx]
+        if(isMobile) return this.props.mobileKeys[idx]
+        return this.props.desktopKeys[idx]
     }	
     nextSlide(noRequireScroll = false) {
         const deviceSlideIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
@@ -465,10 +465,10 @@ class App extends React.Component {
         const thisSlideDeviceIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
         let finalIdxOfDevice
         if(this.props.isMobileDevice){
-            finalIdxOfDevice = this.state.mobileKeys[this.state.mobileKeys.length - 1]
+            finalIdxOfDevice = this.props.mobileKeys[this.props.mobileKeys.length - 1]
         }
         else {
-            finalIdxOfDevice = this.state.desktopKeys[this.state.desktopKeys.length - 1]
+            finalIdxOfDevice = this.props.desktopKeys[this.props.desktopKeys.length - 1]
         }
         
         const thisSlideIsFinalSlide = thisSlideDeviceIdx === finalIdxOfDevice
@@ -533,7 +533,7 @@ class App extends React.Component {
 
 	handleSlideChange(newIdx){
         this.props.changeSlideIdx(newIdx)
-		this.addIdxToViewedSlides(newIdx);
+        this.addIdxToViewedSlides(newIdx);
 		// const isLastSlide = newIdx === this.props.slideData.length -1
 		// this.mobileMenuElement.current.closeMobileMenu()
 		// const notOnLastSlide = this.props.currSlideIdx != this.props.slideData.length - 1
@@ -761,10 +761,10 @@ class App extends React.Component {
     getFinalIdxOfDevice(){
         let finalIdxOfDevice
         if(this.props.isMobileDevice){
-            finalIdxOfDevice = this.state.mobileKeys.length -1
+            finalIdxOfDevice = this.props.mobileKeys.length -1
         }
         else {
-            finalIdxOfDevice = this.state.desktopKeys.length -1
+            finalIdxOfDevice = this.props.desktopKeys.length -1
         }
         return finalIdxOfDevice
     }
@@ -826,10 +826,11 @@ class App extends React.Component {
                 <MobileMenu
                     contactFormSlideIdx={finalIdxOfDevice}
                     goToContactSlide={this.goToContactSlide.bind(this)}
-                    open={this.state.mobileMenuOpen}
-                    toggleMobileMenu={this.toggleMobileMenu.bind(this)}
+                    // open={this.props.menuOpen}
+                    // toggleMobileMenu={this.toggleMobileMenu.bind(this)}
                     goToSlideIdx={this.goToSlide.bind(this)}
-                    isMobileDevice={this.props.isMobileDevice} />
+                    // isMobileDevice={this.props.isMobileDevice} 
+                    />
                 <div className={slidesWrapperClasses}
                     onTouchStart={this.handleTouchStart.bind(this)}
                     onTouchMove={this.handleTouchMove.bind(this)}
@@ -839,7 +840,13 @@ class App extends React.Component {
                     <div className="fixed-headers">
                         <div className='fixed-header-inner'>
                             <div className='fixed-header-wrapper'>
-                                <Header goToSlide={this.goToSlide.bind(this)} goToContactSlide={this.goToContactSlide.bind(this)} toggleMobileMenu={this.toggleMobileMenu.bind(this)} theme={headerTheme} themeMobile={headerThemeMobile} />
+                                <Header
+                                    goToSlide={this.goToSlide.bind(this)}
+                                    goToContactSlide={this.goToContactSlide.bind(this)}
+                                    // toggleMobileMenu={this.toggleMobileMenu.bind(this)}
+                                    // theme={headerTheme}
+                                    // themeMobile={headerThemeMobile}
+                                    />
                             </div>
                             {/* <div className='fixed-header-wrapper'>
                                 <header className='fixed-header'>
@@ -872,12 +879,14 @@ class App extends React.Component {
 const mapStateToProps = state => {
     const currSlideIdx = state.slideData.currSlideIdx
     const slideData = state.slideData.slides
+    const desktopKeys = state.slideData.desktopKeys
+    const mobileKeys = state.slideData.mobileKeys
     const isMobileDevice = state.appData.isMobileDevice
-    return { currSlideIdx, slideData, isMobileDevice }
+    const menuOpen = state.menuData.menuOpen
+    return { currSlideIdx, slideData, desktopKeys, mobileKeys, isMobileDevice, menuOpen }
   }
 
   export default connect(
     mapStateToProps,
-    { changeSlideIdx, updateSlideData, changeIsMobileDevice }
+    { changeSlideIdx, updateSlideData, updateDesktopKeys, updateMobileKeys, changeIsMobileDevice }
   )(App);
-//   export default App;

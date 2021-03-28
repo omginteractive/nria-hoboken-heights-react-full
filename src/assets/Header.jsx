@@ -1,24 +1,21 @@
 import { Component } from 'react';
+import {connect} from 'react-redux'
+import { toggleMenuState } from "./../redux/actions/menuActions";
 class Header extends Component {
     constructor(props) {
         super(props);
     
-        this.state = {
-          
-        }
         this.darkLogo = 'images/logos/Logo-small-black.svg'
         this.lightLogo = 'images/logos/Logo-small-white.svg'
         this.lightCloseBtn = 'images/mobile_menu_x.svg'
         
     }
     shouldComponentUpdate(nextProps, nextState){
-        const themeChanged = nextProps.theme !== this.props.theme
-        const mobileThemeChanged = nextProps.themeMobile !== this.props.themeMobile
-        return themeChanged || mobileThemeChanged
-    }
-    toggleMobileMenu(){
-        const {toggleMobileMenu} = this.props;
-		toggleMobileMenu();
+        const slideChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
+        // const themeChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
+        // const mobileThemeChanged = nextProps.themeMobile !== this.props.themeMobile
+        //fixme - can change this to be more specific to test if theme has changed on desktop or mobile
+        return slideChanged
     }
 
     slideToContact(){
@@ -36,17 +33,22 @@ class Header extends Component {
 
     render(){
         const defaultTheme = 'dark'
-        const theme = this.props.theme ? this.props.theme : defaultTheme
-        const themeMobile = this.props.themeMobile ? this.props.themeMobile : ''
+        const deviceSlideIdx = this.props.isMobileDevice ? this.props.mobileKeys[this.props.currSlideIdx] : this.props.desktopKeys[this.props.currSlideIdx]
+        const desktopThemeIsSet = this.props.slideData && this.props.slideData[deviceSlideIdx].headerTheme
+        const desktopTheme = desktopThemeIsSet ? desktopThemeIsSet : defaultTheme
+        const mobileThemeIsSet = this.props.slideData && this.props.slideData[deviceSlideIdx].headerThemeMobile
+        const themeMobile = mobileThemeIsSet ? mobileThemeIsSet : ''
 
-        let fixedHeaderClasses = 'fixed-header ' + theme + ' ' + themeMobile
+        let fixedHeaderClasses = 'fixed-header '
+        fixedHeaderClasses += this.props.mobileMenuHeader ? 'light' : desktopTheme + ' ' + themeMobile
+        // let fixedHeaderClasses = 'fixed-header ' + desktopTheme + ' ' + themeMobile
         return (
             <header className={fixedHeaderClasses}>
-                {this.props.open && 
-                    <img alt='Close Button' className="closeBtn" onClick={this.toggleMobileMenu.bind(this)} src={require('./' + this.lightCloseBtn).default} />
+                {this.props.menuOpen && 
+                    <img alt='Close Button' className="closeBtn" onClick={this.props.toggleMenuState.bind(this)} src={require('./' + this.lightCloseBtn).default} />
                 }
-                {!this.props.open && 
-                    <div className="hamburger" onClick={this.toggleMobileMenu.bind(this)}>
+                {!this.props.menuOpen && 
+                    <div className="hamburger" onClick={this.props.toggleMenuState.bind(this)}>
                         <div className="line"></div>
                         <div className="line"></div>
                     </div>
@@ -68,4 +70,16 @@ class Header extends Component {
     }
 }
 
-export default Header;
+const mapStateToProps = state => {
+    const isMobileDevice = state.appData.isMobileDevice
+    const menuOpen = state.menuData.menuOpen
+    const currSlideIdx = state.slideData.currSlideIdx
+    const slideData = state.slideData.slides
+    const desktopKeys = state.slideData.desktopKeys
+    const mobileKeys = state.slideData.mobileKeys
+    return { isMobileDevice, menuOpen, currSlideIdx, slideData, mobileKeys, desktopKeys}
+  }
+  export default connect(
+    mapStateToProps,
+    { toggleMenuState }
+  )(Header)
