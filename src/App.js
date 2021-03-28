@@ -7,7 +7,7 @@ import Header from './assets/Header';
 import $ from 'jquery'
 import _ from "lodash";
 import {connect} from 'react-redux'
-import { changeSlideIdx, updateSlideData, updateDesktopKeys, updateMobileKeys } from "./redux/actions/slideActions";
+import { changeSlideIdx, updateSlideData, updateDesktopKeys, updateMobileKeys, updateSlideTransitioningState, updateSlideTouchState } from "./redux/actions/slideActions";
 import { changeIsMobileDevice } from "./redux/actions/appActions";
 
 window.jQuery = $
@@ -20,7 +20,7 @@ class App extends React.Component {
     this.state = {
         slidesViewed: [0],
         scrollDebouncer: null,
-        transitiongState: 0, // 0 for false -1 for up 1 for down
+        // transitiongState: 0, // 0 for false -1 for up 1 for down
         currIdx: 0,
         currIdxMobile: 0,
         previousScrollVal: 0,
@@ -29,7 +29,7 @@ class App extends React.Component {
         browser: '',
         operating_sys: '',
         isiPhone: '',
-        touchState: 0,//0 for end, 1 for start, 2 for move
+        // touchState: 0,//0 for end, 1 for start, 2 for move
         touchDirection: null,
         touchStartCoordinate: {
             x: null,
@@ -373,10 +373,12 @@ class App extends React.Component {
 
 		// const transitionProperty = e.propertyName
 		// if(transitionProperty != 'transform') return;
-		this.setState({transitiongState: 0});
+		// this.setState({transitiongState: 0});
+        
+        this.props.updateSlideTransitioningState(0)
 	}
 	isTransitioning() {
-		return this.state.transitiongState !== 0 || this.state.touchState === 2;
+		return this.props.slideTransitioningState !== 0 || this.props.slideTouchState === 2;
 	}
 	addIdxToViewedSlides(idx) {
         const realSlideIdx = this.findDeviceSlideIdx(idx)
@@ -395,17 +397,19 @@ class App extends React.Component {
         const contactIdx = this.getFinalIdxOfDevice()
         if(this.props.currSlideIdx === contactIdx) return
         this.setState({
-			transitiongState: 1,
+			// transitiongState: 1,
 			currIdx: contactIdx
         });
+        this.props.updateSlideTransitioningState(1)
         this.handleSlideChange(contactIdx)
     }
     goToSlide(idx){
         if(this.props.currSlideIdx === idx) return
         this.setState({
-			transitiongState: 1,
+			// transitiongState: 1,
 			currIdx: idx
         });
+        this.props.updateSlideTransitioningState(1)
         this.handleSlideChange(idx)
     }
     createResponsiveIndices(slides){
@@ -477,9 +481,10 @@ class App extends React.Component {
 			return
 		}
 		this.setState({
-			transitiongState: 1,
+			// transitiongState: 1,
 			currIdx: newIdx
 		});
+        this.props.updateSlideTransitioningState(1)
 		this.handleSlideChange(newIdx)
 	}
 	prevSlide() {
@@ -497,9 +502,10 @@ class App extends React.Component {
 			return
 		}
 		this.setState({
-			transitiongState: -1,
+			// transitiongState: -1,
 			currIdx: newIdx
 		});
+        this.props.updateSlideTransitioningState(-1)
 		this.handleSlideChange(newIdx)
 	}
 	firstSlide() {
@@ -510,9 +516,10 @@ class App extends React.Component {
 			return;
 		}
 		this.setState({
-			transitiongState: 1,
+			// transitiongState: 1,
 			currIdx: newIdx
 		});
+        this.props.updateSlideTransitioningState(1)
 		this.handleSlideChange(newIdx)
 	}
 	lastSlide() {
@@ -526,9 +533,10 @@ class App extends React.Component {
 			return;
 		}
 		this.setState({
-			transitiongState: 1,
+			// transitiongState: 1,
 			currIdx: newIdx
 		});
+        this.props.updateSlideTransitioningState(1)
 		this.handleSlideChange(newIdx)
 	}
 
@@ -549,13 +557,14 @@ class App extends React.Component {
 			y: coordinateY
 		}
 		this.setState({
-			touchState: 1,
+			// touchState: 1,
 			touchStartCoordinate: coordinateObj
 		});
+        this.props.updateSlideTouchState(1)
 		
 	}
 	handleTouchMove(evt){
-		if(this.state.touchState !== 1) return;
+		if(this.props.slideTouchState !== 1) return;
         const touchDragThreshold = 20 //smaller values will allow smaller touchdrag events to trigger a slide event. 8 seems to be close to the lowest end and 60 seems to be too large
 		const coordinateX = evt.touches[0].clientX;
 		const coordinateY = evt.touches[0].clientY;
@@ -574,9 +583,10 @@ class App extends React.Component {
 		}
 		
 		this.setState({
-			touchState: 2,
+			// touchState: 2,
 			touchDirection: mainTouchDirection
-		});
+		})
+        this.props.updateSlideTouchState(2)
 		// if(mainTouchDirection === 'up') {
 			
 		// }
@@ -603,10 +613,10 @@ class App extends React.Component {
 	}
 	handleTouchEnd(){
 		this.playVideos()
-		this.setState({
-			touchState: 0
-		});
-
+		// this.setState({
+		// 	touchState: 0
+		// });
+        this.props.updateSlideTouchState(0)
 		$("html, body").animate({ scrollTop: 0 })//possible fix to hide address bar on iPhone when body is > 100vh
 	}
 	slideHorizontal(direction){
@@ -703,7 +713,6 @@ class App extends React.Component {
         const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
         const $slides = this.props.slideData == null ? null : this.props.slideData.map((slide, idx) =>
             <Slide
-                // isFirefoxAndroid={isFirefoxAndroid}
                 // showPrivacyPolicy={this.privacyPolicyModalOpen.bind(this)}
                 horizontalSlide={this.slideHorizontal.bind(this)}
                 onSlideScroll={this.handleSlideScroll}
@@ -716,7 +725,6 @@ class App extends React.Component {
                 idx={idx}
                 // slideCount={idx}
                 // obj={slide}
-                // isMobileDevice={this.props.isMobileDevice}
                 isCurrent={idx === deviceSlideIdx}
                 setamenityGallerySlideIdx={this.setAmenityOnGallerySlide.bind(this)}
                 setResidencePenthousePath={this.setResidencePenthouse.bind(this)}
@@ -802,13 +810,15 @@ const mapStateToProps = state => {
     const slideData = state.slideData.slides
     const desktopKeys = state.slideData.desktopKeys
     const mobileKeys = state.slideData.mobileKeys
+    const slideTransitioningState = state.slideData.slideTransitioningState
+    const slideTouchState = state.slideData.slideTouchState
     const isMobileDevice = state.appData.isMobileDevice
     const formSubmitted = state.appData.formSubmitted
     const menuOpen = state.menuData.menuOpen
-    return { currSlideIdx, slideData, desktopKeys, mobileKeys, isMobileDevice, menuOpen, formSubmitted }
+    return { currSlideIdx, slideData, slideTransitioningState, slideTouchState, desktopKeys, mobileKeys, isMobileDevice, menuOpen, formSubmitted }
   }
 
   export default connect(
     mapStateToProps,
-    { changeSlideIdx, updateSlideData, updateDesktopKeys, updateMobileKeys, changeIsMobileDevice }
+    { changeSlideIdx, updateSlideData, updateSlideTransitioningState, updateSlideTouchState, updateDesktopKeys, updateMobileKeys, changeIsMobileDevice }
   )(App);

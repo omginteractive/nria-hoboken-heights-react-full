@@ -1,4 +1,4 @@
-import { CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS } from "./types";
+import { CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS, UPDATE_TRANSITIONING_STATE, UPDATE_TOUCH_STATE } from "./types";
 
 export const changeSlideIdx = idx => {
     return {
@@ -24,6 +24,20 @@ export const updateMobileKeys = (keysArray) => {
     return {
         type: UPDATE_MOBILE_KEYS,
         payload: keysArray
+    }
+}
+
+export const updateSlideTransitioningState = (state) => {
+    return {
+        type: UPDATE_TRANSITIONING_STATE,
+        payload: state
+    }
+}
+
+export const updateSlideTouchState = (state) => {
+    return {
+        type: UPDATE_TOUCH_STATE,
+        payload: state
     }
 }
 
