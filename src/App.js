@@ -20,7 +20,6 @@ class App extends React.Component {
     this.state = {
         slidesViewed: [0],
         scrollDebouncer: null,
-        // transitiongState: 0, // 0 for false -1 for up 1 for down
         currIdx: 0,
         currIdxMobile: 0,
         previousScrollVal: 0,
@@ -29,7 +28,6 @@ class App extends React.Component {
         browser: '',
         operating_sys: '',
         isiPhone: '',
-        // touchState: 0,//0 for end, 1 for start, 2 for move
         touchDirection: null,
         touchStartCoordinate: {
             x: null,
@@ -373,8 +371,7 @@ class App extends React.Component {
 
 		// const transitionProperty = e.propertyName
 		// if(transitionProperty != 'transform') return;
-		// this.setState({transitiongState: 0});
-        
+		
         this.props.updateSlideTransitioningState(0)
 	}
 	isTransitioning() {
@@ -397,7 +394,6 @@ class App extends React.Component {
         const contactIdx = this.getFinalIdxOfDevice()
         if(this.props.currSlideIdx === contactIdx) return
         this.setState({
-			// transitiongState: 1,
 			currIdx: contactIdx
         });
         this.props.updateSlideTransitioningState(1)
@@ -406,7 +402,6 @@ class App extends React.Component {
     goToSlide(idx){
         if(this.props.currSlideIdx === idx) return
         this.setState({
-			// transitiongState: 1,
 			currIdx: idx
         });
         this.props.updateSlideTransitioningState(1)
@@ -481,7 +476,6 @@ class App extends React.Component {
 			return
 		}
 		this.setState({
-			// transitiongState: 1,
 			currIdx: newIdx
 		});
         this.props.updateSlideTransitioningState(1)
@@ -502,7 +496,6 @@ class App extends React.Component {
 			return
 		}
 		this.setState({
-			// transitiongState: -1,
 			currIdx: newIdx
 		});
         this.props.updateSlideTransitioningState(-1)
@@ -516,7 +509,6 @@ class App extends React.Component {
 			return;
 		}
 		this.setState({
-			// transitiongState: 1,
 			currIdx: newIdx
 		});
         this.props.updateSlideTransitioningState(1)
@@ -533,7 +525,6 @@ class App extends React.Component {
 			return;
 		}
 		this.setState({
-			// transitiongState: 1,
 			currIdx: newIdx
 		});
         this.props.updateSlideTransitioningState(1)
@@ -557,7 +548,6 @@ class App extends React.Component {
 			y: coordinateY
 		}
 		this.setState({
-			// touchState: 1,
 			touchStartCoordinate: coordinateObj
 		});
         this.props.updateSlideTouchState(1)
@@ -583,7 +573,6 @@ class App extends React.Component {
 		}
 		
 		this.setState({
-			// touchState: 2,
 			touchDirection: mainTouchDirection
 		})
         this.props.updateSlideTouchState(2)
@@ -613,9 +602,6 @@ class App extends React.Component {
 	}
 	handleTouchEnd(){
 		this.playVideos()
-		// this.setState({
-		// 	touchState: 0
-		// });
         this.props.updateSlideTouchState(0)
 		$("html, body").animate({ scrollTop: 0 })//possible fix to hide address bar on iPhone when body is > 100vh
 	}
