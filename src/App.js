@@ -20,7 +20,6 @@ class App extends React.Component {
     this.state = {
         slidesViewed: [0],
         scrollDebouncer: null,
-        currIdx: 0,
         currIdxMobile: 0,
         previousScrollVal: 0,
         peakScrollVal: 0,
@@ -178,7 +177,7 @@ class App extends React.Component {
         }
         const desktopKeysNotLoaded = this.props.desktopKeys.length === 0
         const mobileKeysNotLoaded = this.props.mobileKeys.length === 0
-        const currIdxChanged = this.props.currSlideIdx !== nextState.currIdx
+        const currIdxChanged = this.props.currSlideIdx !== nextState.currSlideIdx
         const menuToggled = this.props.menuOpen !== nextProps.menuOpen
         const mapHeightLockedSettingChanged = this.state.mapHeightLocked !== nextState.mapHeightLocked
         const formSubmittedChanged = this.props.formSubmitted !== nextProps.formSubmitted
@@ -393,17 +392,11 @@ class App extends React.Component {
     goToContactSlide(){
         const contactIdx = this.getFinalIdxOfDevice()
         if(this.props.currSlideIdx === contactIdx) return
-        this.setState({
-			currIdx: contactIdx
-        });
         this.props.updateSlideTransitioningState(1)
         this.handleSlideChange(contactIdx)
     }
     goToSlide(idx){
         if(this.props.currSlideIdx === idx) return
-        this.setState({
-			currIdx: idx
-        });
         this.props.updateSlideTransitioningState(1)
         this.handleSlideChange(idx)
     }
@@ -475,10 +468,7 @@ class App extends React.Component {
 		if (thisSlideIsFinalSlide) {
 			return
 		}
-		this.setState({
-			currIdx: newIdx
-		});
-        this.props.updateSlideTransitioningState(1)
+		this.props.updateSlideTransitioningState(1)
 		this.handleSlideChange(newIdx)
 	}
 	prevSlide() {
@@ -495,10 +485,7 @@ class App extends React.Component {
 		if (newIdx < 0) {
 			return
 		}
-		this.setState({
-			currIdx: newIdx
-		});
-        this.props.updateSlideTransitioningState(-1)
+		this.props.updateSlideTransitioningState(-1)
 		this.handleSlideChange(newIdx)
 	}
 	firstSlide() {
@@ -508,10 +495,7 @@ class App extends React.Component {
 		if (this.isTransitioning() || alreadyOnFirstSlide) {
 			return;
 		}
-		this.setState({
-			currIdx: newIdx
-		});
-        this.props.updateSlideTransitioningState(1)
+		this.props.updateSlideTransitioningState(1)
 		this.handleSlideChange(newIdx)
 	}
 	lastSlide() {
@@ -524,10 +508,7 @@ class App extends React.Component {
 		if (newIdx < 0) {
 			return;
 		}
-		this.setState({
-			currIdx: newIdx
-		});
-        this.props.updateSlideTransitioningState(1)
+		this.props.updateSlideTransitioningState(1)
 		this.handleSlideChange(newIdx)
 	}
 
@@ -703,7 +684,6 @@ class App extends React.Component {
                 horizontalSlide={this.slideHorizontal.bind(this)}
                 onSlideScroll={this.handleSlideScroll}
                 scrollToFirstSlide={this.firstSlide}
-                // currIdx={this.props.currSlideIdx}
                 slideViewed={this.state.slidesViewed.includes(idx)}
                 goToNextSlide={this.nextSlide}
                 // scrollToLastSlide={this.lastSlide}
@@ -718,7 +698,6 @@ class App extends React.Component {
                 amenityGallerySlideIdx={this.state.amenityGallerySlideIdx}
                 mapHeightLocked={this.state.mapHeightLocked}
                 goToContactSlide={this.goToContactSlide.bind(this)}
-                // isTransitioning={this.isTransitioning()}
                 ></Slide>
         )
 
