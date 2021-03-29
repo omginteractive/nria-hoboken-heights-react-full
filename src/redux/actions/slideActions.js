@@ -46,38 +46,23 @@ export const updateSlidesViewed = (state) => {
         payload: state
     }
 }
-
-// export function findDeviceSlideIdx() {
+// export const isCurrent = (idx) => {
+//     const deviceIdx = findDeviceSlideIdx(idx)
+//     // console.log(deviceIdx)
 //     return (dispatch, getState) => {
-//       const {items} = getState();
-//         console.log(items)
-//     //   dispatch(anotherAction(items));
+//         const currSlideIdx = getState().slideData.currSlideIdx
+//         return deviceIdx === currSlideIdx
 //     }
-//   }
-
-  export const findDeviceSlideIdx = (idx) => {
+// }
+export const findDeviceSlideIdx = (idx) => {
+    
+    /* 
+     * Because the mobile and desktop version have some slides that are unique to each environment,
+     * We need a way to find the index of the environment which we are on
+     */
     return (dispatch, getState) => {
-        console.log(getState())
-        console.log(getState().slideData.desktopKeys)
         const isMobile = getState().appData.isMobileDevice
-        console.log(getState().slideData.desktopKeys[idx])
         if(isMobile) return getState().slideData.mobileKeys[idx]
         return getState().slideData.desktopKeys[idx]
-        // if (isValid) {
-        //     return fetch() //... dispatch on success or failure
-        // }
-    };
+    }
 }
-
-// export const findDeviceSlideIdx = (idx) => {
-//     /* 
-//      * Because the mobile and desktop version have some slides that are unique to each environment,
-//      * We need a way to find the index of the environment which we are on
-//      */
-//     // alert(state.isMobileDevice)
-//     console.log(getState())
-//     const isMobile = this.props.isMobileDevice
-//     if(isMobile) return this.props.mobileKeys[idx]
-//     return this.props.desktopKeys[idx]
-// }
-

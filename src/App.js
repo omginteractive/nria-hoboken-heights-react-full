@@ -144,7 +144,7 @@ class App extends React.Component {
 
                 if(needScroll === 'needScroll') {
                     const scrollDistance = 20
-                    const deviceSlideIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
+                    const deviceSlideIdx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
                     const elementToScroll = this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector ? this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector : '.slide.activeSlide'
                     if(keyboardCommand === "ArrowDown" || keyboardCommand === "ArrowRight") {
                         const originalScroll = document.querySelectorAll(elementToScroll)[0].scrollTop
@@ -166,7 +166,7 @@ class App extends React.Component {
         this.handleResize()
 	}
     shouldComponentUpdate(nextProps, nextState){
-        const curridx = this.findDeviceSlideIdx(this.props.currSlideIdx)
+        const curridx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
         const slidesNotLoaded = this.props.slideData === null
         let videoMobileStartPositionChanged = false
         if(typeof(curridx) !== 'undefined'){
@@ -378,7 +378,7 @@ class App extends React.Component {
 		return this.props.slideTransitioningState !== 0 || this.props.slideTouchState === 2;
 	}
 	addIdxToViewedSlides(idx) {
-        const realSlideIdx = this.findDeviceSlideIdx(idx)
+        const realSlideIdx = this.props.findDeviceSlideIdx(idx)
 		if(this.props.slidesViewed.includes(realSlideIdx)) return;
 		this.props.updateSlidesViewed(realSlideIdx)
 	}
@@ -420,17 +420,17 @@ class App extends React.Component {
         })
         this.props.updateMobileKeys(mobileKeys)
     }
-    findDeviceSlideIdx(idx){
-        /* 
-         * Because the mobile and desktop version have some slides that are unique to each environment,
-         * We need a way to find the index of the environment which we are on
-         */
-        const isMobile = this.props.isMobileDevice
-        if(isMobile) return this.props.mobileKeys[idx]
-        return this.props.desktopKeys[idx]
-    }
+    // findDeviceSlideIdx(idx){
+    //     /* 
+    //      * Because the mobile and desktop version have some slides that are unique to each environment,
+    //      * We need a way to find the index of the environment which we are on
+    //      */
+    //     const isMobile = this.props.isMobileDevice
+    //     if(isMobile) return this.props.mobileKeys[idx]
+    //     return this.props.desktopKeys[idx]
+    // }
     nextSlide(noRequireScroll = false) {
-        const deviceSlideIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
+        const deviceSlideIdx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
         const querySelector = typeof this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector
         const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
 		const videosPlayed = this.state.videosPlayed
@@ -448,7 +448,7 @@ class App extends React.Component {
         //All of the above is used to prevent a slide change if necessary
 
 		const newIdx = this.props.currSlideIdx + 1;
-        const thisSlideDeviceIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
+        const thisSlideDeviceIdx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
         let finalIdxOfDevice
         if(this.props.isMobileDevice){
             finalIdxOfDevice = this.props.mobileKeys[this.props.mobileKeys.length - 1]
@@ -468,7 +468,7 @@ class App extends React.Component {
 		if (this.isTransitioning() || this.animationsStopped()) {
 			return
         }
-        const deviceSlideIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
+        const deviceSlideIdx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
         const querySelector = typeof this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector
 		const positionIsNotAtTopOfSlide = document.querySelector(querySelector).scrollTop !== 0;
 		if(positionIsNotAtTopOfSlide) {
@@ -580,7 +580,7 @@ class App extends React.Component {
 		$("html, body").animate({ scrollTop: 0 })//possible fix to hide address bar on iPhone when body is > 100vh
 	}
 	slideHorizontal(direction){
-        const key = this.findDeviceSlideIdx(this.props.currSlideIdx)
+        const key = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
         const mobileHorizontalVideoSlideEnabled = this.props.slideData[key].mobileHorizontalVideoSlideEnabled
 
         const isAmenitiesDetailSlide = this.props.slideData[key].slideTemplate === 'amenitiesDetail'
@@ -665,9 +665,9 @@ class App extends React.Component {
     render() {
         // if(this.props.desktopKeys.length !== 0) {
 
-        //     console.log(this.props.currSlideIdx, this.props.findDeviceSlideIdx(this.props.currSlideIdx))
+            // console.log(this.props.currSlideIdx, this.props.findDeviceSlideIdx(this.props.currSlideIdx))
         // }
-        const deviceSlideIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
+        const deviceSlideIdx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
         // const hasHeaderTheme = this.props.slideData && this.props.slideData[deviceSlideIdx] && this.props.slideData[deviceSlideIdx].headerTheme
         // const hasHeaderThemeMobile = this.props.slideData && this.props.slideData[deviceSlideIdx] && this.props.slideData[deviceSlideIdx].headerThemeMobile
 
@@ -709,7 +709,7 @@ class App extends React.Component {
         let slidesWrapperClasses = "slides_wrapper";
         if(this.state.slideHasScrolled) slidesWrapperClasses += ' scrolled'
 
-        // const thisSlideDeviceIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
+        // const thisSlideDeviceIdx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
         const finalIdxOfDevice = this.getFinalIdxOfDevice()
         return (
             <div id="page" className={pageClasses}>

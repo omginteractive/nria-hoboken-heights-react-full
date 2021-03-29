@@ -20,12 +20,9 @@ class Slide extends Component {
     }
     
     shouldComponentUpdate(nextProps, nextState){
-        //this.props.findDeviceSlideIdx(this.props.currSlideIdx) == this.props.idx;
-        // console.log(this.props.currSlideIdx)
         const mapHeightLockedPropsChanged = this.props.mapHeightLocked !== nextProps.mapHeightLocked
         const slideChanged = this.props.isCurrent !== nextProps.isCurrent
         const videoMobileStartPositionToggled = this.props.isCurrent && nextProps.slideData[this.props.idx].videoMobileStartPosition !== this.props.slideData[this.props.idx].videoMobileStartPosition
-        
         return slideChanged || videoMobileStartPositionToggled || mapHeightLockedPropsChanged
     }
     handleTheScroll = e => {
@@ -82,6 +79,7 @@ class Slide extends Component {
 		this.props.horizontalSlide(direction);
 	}
     render(){
+        // console.log(this.props.isCurrent(this.props.idx), this.props.idx, this.props.currSlideIdx)
         // const slideObj = this.props.obj;
         const slideObj = this.props.slideData[this.props.idx]
         // console.log(this.props.idx)
@@ -110,6 +108,12 @@ class Slide extends Component {
             left_arrow_bouncing
         }
 		const isCurrent = this.props.isCurrent
+        // console.log(isCurrent, this.props.idx)
+        // const isMobile = this.props.isMobileDevice
+        // let deviceKey
+        // if(isMobile) deviceKey = this.props.mobileKeys[this.props.currSlideIdx]
+        // deviceKey =this.props.desktopKeys[this.props.currSlideIdx]
+        // console.log(isCurrent, this.props.currSlideIdx == this.props.idx, this.props.currSlideIdx,deviceKey, this.props.idx)
         slideClasses += slideObj.slideClasses !== undefined ? " " + slideObj.slideClasses : '';
 		if(isCurrent) slideClasses += " runAnimations activeSlide";
 		if(this.props.slidesViewed.includes(this.props.idx)) slideClasses += " runAnimationOnce";
