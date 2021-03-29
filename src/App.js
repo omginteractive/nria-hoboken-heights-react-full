@@ -7,7 +7,7 @@ import Header from './assets/Header';
 import $ from 'jquery'
 import _ from "lodash";
 import {connect} from 'react-redux'
-import { changeSlideIdx, updateSlideData, updateDesktopKeys, updateMobileKeys, updateSlideTransitioningState, updateSlideTouchState } from "./redux/actions/slideActions";
+import { findDeviceSlideIdx, changeSlideIdx, updateSlideData, updateDesktopKeys, updateMobileKeys, updateSlideTransitioningState, updateSlideTouchState, updateSlidesViewed } from "./redux/actions/slideActions";
 import { changeIsMobileDevice } from "./redux/actions/appActions";
 
 window.jQuery = $
@@ -18,9 +18,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-        slidesViewed: [0],
         scrollDebouncer: null,
-        currIdxMobile: 0,
         previousScrollVal: 0,
         peakScrollVal: 0,
         readyForScroll: 1,
@@ -304,12 +302,15 @@ class App extends React.Component {
 		this.scrollDebouncer = null
 	}
 	throttleOnScroll(deltaY) {
-        if(this.scrollDebouncer !== null) {
+        const scrollDebouncerExists = this.scrollDebouncer !== null
+        if(scrollDebouncerExists) {
 			clearTimeout(this.scrollDebouncer)
 		}
-		this.scrollDebouncer=setTimeout(this.enableScroll.bind(this),500);
-		if (Math.abs(deltaY) >= 1 && this.state.readyForScroll) {
-			if (Math.abs(deltaY) > Math.abs(this.state.previousScrollVal)) {
+		this.scrollDebouncer = setTimeout(this.enableScroll.bind(this),500)
+        const scrollDistanceIsPastThreshold = Math.abs(deltaY) >= 1
+		if (scrollDistanceIsPastThreshold && this.state.readyForScroll) {
+            const scrollDistanceIsLargerThanPrevious = Math.abs(deltaY) > Math.abs(this.state.previousScrollVal)
+			if (scrollDistanceIsLargerThanPrevious) {
 				this.scrollSlide(deltaY)
 				this.setState({peakScrollVal: deltaY});
 				this.setState({readyForScroll: null});
@@ -378,10 +379,8 @@ class App extends React.Component {
 	}
 	addIdxToViewedSlides(idx) {
         const realSlideIdx = this.findDeviceSlideIdx(idx)
-		if(this.state.slidesViewed.includes(realSlideIdx)) return;
-
-		let slidesViewedArray = this.state.slidesViewed.concat(realSlideIdx);
-		this.setState({ slidesViewed: slidesViewedArray })
+		if(this.props.slidesViewed.includes(realSlideIdx)) return;
+		this.props.updateSlidesViewed(realSlideIdx)
 	}
 
 	//animationsStopped is used to prevent animation issues with the android keyboard appearing when dealing with form inputs
@@ -402,8 +401,7 @@ class App extends React.Component {
     }
     createResponsiveIndices(slides){
         //This is run immediately the slides state is set
-        //Works in tandem with findDeviceSlideIdx()
-        // const slides = this.props.slideData
+        //The state it creates is used by findDeviceSlideIdx()
         const desktopKeys = slides.map((slide, i) => {
             if(!slide.mobileOnly) return i
             return null
@@ -421,21 +419,16 @@ class App extends React.Component {
             return false
         })
         this.props.updateMobileKeys(mobileKeys)
-        // this.setState({ 
-        //     desktopKeys,
-        //     mobileKeys
-        //  });
-        
     }
     findDeviceSlideIdx(idx){
         /* 
-         * Because the mobile and desktop version have some slides that are unique to each environment
+         * Because the mobile and desktop version have some slides that are unique to each environment,
          * We need a way to find the index of the environment which we are on
          */
         const isMobile = this.props.isMobileDevice
         if(isMobile) return this.props.mobileKeys[idx]
         return this.props.desktopKeys[idx]
-    }	
+    }
     nextSlide(noRequireScroll = false) {
         const deviceSlideIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
         const querySelector = typeof this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector
@@ -670,6 +663,10 @@ class App extends React.Component {
         return finalIdxOfDevice
     }
     render() {
+        // if(this.props.desktopKeys.length !== 0) {
+
+        //     console.log(this.props.currSlideIdx, this.props.findDeviceSlideIdx(this.props.currSlideIdx))
+        // }
         const deviceSlideIdx = this.findDeviceSlideIdx(this.props.currSlideIdx)
         // const hasHeaderTheme = this.props.slideData && this.props.slideData[deviceSlideIdx] && this.props.slideData[deviceSlideIdx].headerTheme
         // const hasHeaderThemeMobile = this.props.slideData && this.props.slideData[deviceSlideIdx] && this.props.slideData[deviceSlideIdx].headerThemeMobile
@@ -684,7 +681,6 @@ class App extends React.Component {
                 horizontalSlide={this.slideHorizontal.bind(this)}
                 onSlideScroll={this.handleSlideScroll}
                 scrollToFirstSlide={this.firstSlide}
-                slideViewed={this.state.slidesViewed.includes(idx)}
                 goToNextSlide={this.nextSlide}
                 // scrollToLastSlide={this.lastSlide}
                 key={idx}
@@ -777,13 +773,14 @@ const mapStateToProps = state => {
     const mobileKeys = state.slideData.mobileKeys
     const slideTransitioningState = state.slideData.slideTransitioningState
     const slideTouchState = state.slideData.slideTouchState
+    const slidesViewed = state.slideData.slidesViewed
     const isMobileDevice = state.appData.isMobileDevice
     const formSubmitted = state.appData.formSubmitted
     const menuOpen = state.menuData.menuOpen
-    return { currSlideIdx, slideData, slideTransitioningState, slideTouchState, desktopKeys, mobileKeys, isMobileDevice, menuOpen, formSubmitted }
+    return { currSlideIdx, slideData, slideTransitioningState, slideTouchState, slidesViewed, desktopKeys, mobileKeys, isMobileDevice, menuOpen, formSubmitted }
   }
 
   export default connect(
     mapStateToProps,
-    { changeSlideIdx, updateSlideData, updateSlideTransitioningState, updateSlideTouchState, updateDesktopKeys, updateMobileKeys, changeIsMobileDevice }
+    { findDeviceSlideIdx, changeSlideIdx, updateSlideData, updateSlideTransitioningState, updateSlideTouchState, updateDesktopKeys, updateMobileKeys, changeIsMobileDevice, updateSlidesViewed }
   )(App);

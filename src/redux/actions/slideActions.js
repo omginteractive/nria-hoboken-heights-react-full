@@ -1,4 +1,4 @@
-import { CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS, UPDATE_TRANSITIONING_STATE, UPDATE_TOUCH_STATE } from "./types";
+import { CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_SLIDES_VIEWED, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS, UPDATE_TRANSITIONING_STATE, UPDATE_TOUCH_STATE } from "./types";
 
 export const changeSlideIdx = idx => {
     return {
@@ -40,34 +40,44 @@ export const updateSlideTouchState = (state) => {
         payload: state
     }
 }
+export const updateSlidesViewed = (state) => {
+    return {
+        type: UPDATE_SLIDES_VIEWED,
+        payload: state
+    }
+}
 
-// export const toggleTodo = id => ({
-//   type: TOGGLE_TODO,
-//   payload: { id }
-// });
-
-// export const setFilter = filter => ({ type: SET_FILTER, payload: { filter } });
-
-
-// import { CHANGE_SLIDE_IDX } from "./types"
-
-
-// // const initialState = {
-// //     currIdx: 0
-// //   }
-  
-// //   export default function(state = initialState, action) {
-// //     switch (action.type) {
-// //       default:
-// //         return state
-// //     }
-// //   }
-
-
-
-// export const addSong = song => {
-//   return {
-//     type: ADD_SONG,
-//     payload: song,
+// export function findDeviceSlideIdx() {
+//     return (dispatch, getState) => {
+//       const {items} = getState();
+//         console.log(items)
+//     //   dispatch(anotherAction(items));
+//     }
 //   }
+
+  export const findDeviceSlideIdx = (idx) => {
+    return (dispatch, getState) => {
+        console.log(getState())
+        console.log(getState().slideData.desktopKeys)
+        const isMobile = getState().appData.isMobileDevice
+        console.log(getState().slideData.desktopKeys[idx])
+        if(isMobile) return getState().slideData.mobileKeys[idx]
+        return getState().slideData.desktopKeys[idx]
+        // if (isValid) {
+        //     return fetch() //... dispatch on success or failure
+        // }
+    };
+}
+
+// export const findDeviceSlideIdx = (idx) => {
+//     /* 
+//      * Because the mobile and desktop version have some slides that are unique to each environment,
+//      * We need a way to find the index of the environment which we are on
+//      */
+//     // alert(state.isMobileDevice)
+//     console.log(getState())
+//     const isMobile = this.props.isMobileDevice
+//     if(isMobile) return this.props.mobileKeys[idx]
+//     return this.props.desktopKeys[idx]
 // }
+

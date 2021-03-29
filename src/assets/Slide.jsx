@@ -8,6 +8,8 @@ import {connect} from 'react-redux'
 import SlideViews from './slideComponents/SlideViews';
 import ContactForm from './slideComponents/ContactForm';
 
+import { findDeviceSlideIdx} from ".././redux/actions/slideActions";
+
 class Slide extends Component {
     constructor(props) {
         super(props);
@@ -18,6 +20,8 @@ class Slide extends Component {
     }
     
     shouldComponentUpdate(nextProps, nextState){
+        //this.props.findDeviceSlideIdx(this.props.currSlideIdx) == this.props.idx;
+        // console.log(this.props.currSlideIdx)
         const mapHeightLockedPropsChanged = this.props.mapHeightLocked !== nextProps.mapHeightLocked
         const slideChanged = this.props.isCurrent !== nextProps.isCurrent
         const videoMobileStartPositionToggled = this.props.isCurrent && nextProps.slideData[this.props.idx].videoMobileStartPosition !== this.props.slideData[this.props.idx].videoMobileStartPosition
@@ -105,11 +109,10 @@ class Slide extends Component {
             right_arrow_bouncing,
             left_arrow_bouncing
         }
-		const isCurrent = this.props.isCurrent;
-
+		const isCurrent = this.props.isCurrent
         slideClasses += slideObj.slideClasses !== undefined ? " " + slideObj.slideClasses : '';
 		if(isCurrent) slideClasses += " runAnimations activeSlide";
-		if(this.props.slideViewed) slideClasses += " runAnimationOnce";
+		if(this.props.slidesViewed.includes(this.props.idx)) slideClasses += " runAnimationOnce";
 		// if(slideObj.videoZoomEffect) videoClasses += ' videoZoomEffect'
 		slideClasses += slideObj.videoMobileStartPosition ? ' mobile-video-position-' + slideObj.videoMobileStartPosition : ' mobile-video-position-center'
 		slideClasses += slideObj.contactFormSlide ? ' contactFormSlide' : '';
@@ -160,7 +163,7 @@ class Slide extends Component {
                     <SlideFountainPen isCurrent={isCurrent} methods={slideMethods} configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'patio' &&
-                    <SlidePatio mobileArrows={mobileArrows} methods={slideMethods} configuration={slideObj} />
+                    <SlidePatio mobileArrows={mobileArrows} methods={slideMethods} configuration={slideObj} slideHorizontal={this.slideHorizontal.bind(this)} />
                 }
                 {slideObj.slideTemplate === 'amenities' &&
                     <SlideAmenities methods={slideMethods} setAmenityOnGallerySlide={this.setAmenityOnGallerySlide.bind(this)} configuration={slideObj} />
@@ -1417,11 +1420,13 @@ class SlideFounders extends Component {
 
 const mapStateToProps = state => {
     const currSlideIdx = state.slideData.currSlideIdx
+    const slidesViewed = state.slideData.slidesViewed
     const isMobileDevice = state.appData.isMobileDevice
     const select2Activated = state.appData.select2Activated
     const slideData = state.slideData.slides
-    return { currSlideIdx, slideData, isMobileDevice, select2Activated }
+    return { currSlideIdx, slideData, isMobileDevice, select2Activated, slidesViewed }
   }
   export default connect(
     mapStateToProps,
+    {findDeviceSlideIdx}
   )(Slide);
