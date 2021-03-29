@@ -1,6 +1,6 @@
 import {Component} from 'react';
 import React from 'react';
-import leftArrowBlack from '../images/leftArrowBlack.svg';
+import magnifyingGlass from '../images/magnifyingGlass.svg';
 import $ from 'jquery'
 import {connect} from 'react-redux'
 // import _ from "lodash";
@@ -84,7 +84,9 @@ class SlideAvailability extends Component {
                                     <div className="apartment__title">{apartment.title.rendered}</div>
                                     <div className="apartment__floorPlan">
                                         <img src={require('../images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" alt="" />
-                                        <img src={leftArrowBlack} className="magnifyingGlass" alt="Magnifying Glass" onClick={() => this.activateAvailabilityPlan(i)} />
+                                        <div className="magnifyingGlassWrapper" onClick={() => this.activateAvailabilityPlan(i)}>
+                                            <img src={magnifyingGlass} className="magnifyingGlass" alt="Magnifying Glass" />
+                                        </div>
                                     </div>
                                 </div>
                             )

@@ -1395,13 +1395,29 @@ body {
                                         width: calc_vw(423);
                                         height: calc_vw(341);
                                     }
-                                    .magnifyingGlass {
-                                        width: calc_vw(41);
-                                        height: calc_vw(41);
+                                    .magnifyingGlassWrapper {
+                                        background: #000;
+                                        border-radius: 50%;
+                                        // padding: 11px;
+                                        width: calc_vw(41.5);
+                                        height: calc_vw(41.5);
                                         position: absolute;
-                                        left: $floorPlanPadding;
                                         bottom: $floorPlanPadding;
+                                        // bottom: 26px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
                                         cursor: pointer;
+                                        transition: transform 0.2s linear;
+                                        transform-origin: center;
+                                        transform: scale(1.00001);//without this, the image and wrapper were slightly skewed
+                                        &:hover {
+                                            transform: scale(1.1);
+                                        }
+                                        .magnifyingGlass {
+                                            height: calc_vw(18);
+                                        }
+                                        
                                     }
                                 }
                             }

@@ -1391,13 +1391,26 @@ body {
   width: 22.03125vw;
   height: 17.7604166667vw;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__floorPlan .magnifyingGlass {
-  width: 2.1354166667vw;
-  height: 2.1354166667vw;
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__floorPlan .magnifyingGlassWrapper {
+  background: #000;
+  border-radius: 50%;
+  width: 2.1614583333vw;
+  height: 2.1614583333vw;
   position: absolute;
-  left: 1.3541666667vw;
   bottom: 1.3541666667vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  transition: transform 0.2s linear;
+  transform-origin: center;
+  transform: scale(1.00001);
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__floorPlan .magnifyingGlassWrapper:hover {
+  transform: scale(1.1);
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__floorPlan .magnifyingGlassWrapper .magnifyingGlass {
+  height: 0.9375vw;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam {
   display: flex;
