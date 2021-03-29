@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import {connect} from 'react-redux'
 import { toggleMenuState } from "./../redux/actions/menuActions";
+import { disableAvailabilityPlan } from "./../redux/actions/appActions";
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -12,10 +13,11 @@ class Header extends Component {
     }
     shouldComponentUpdate(nextProps, nextState){
         const slideChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
+        const activeAvailabilityPlanChanged = this.props.activeAvailabilityPlan !== nextProps.activeAvailabilityPlan
         // const themeChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
         // const mobileThemeChanged = nextProps.themeMobile !== this.props.themeMobile
         //fixme - can change this to be more specific to test if theme has changed on desktop or mobile
-        return slideChanged
+        return slideChanged || activeAvailabilityPlanChanged
     }
 
     slideToContact(){
@@ -30,7 +32,9 @@ class Header extends Component {
             goToSlide(1)
         }
     }
-
+    disableAvailabilityPlan(){
+        this.props.disableAvailabilityPlan()
+    }
     render(){
         const defaultTheme = 'dark'
         const deviceSlideIdx = this.props.isMobileDevice ? this.props.mobileKeys[this.props.currSlideIdx] : this.props.desktopKeys[this.props.currSlideIdx]
@@ -38,7 +42,7 @@ class Header extends Component {
         const desktopTheme = desktopThemeIsSet ? desktopThemeIsSet : defaultTheme
         const mobileThemeIsSet = this.props.slideData && this.props.slideData[deviceSlideIdx].headerThemeMobile
         const themeMobile = mobileThemeIsSet ? mobileThemeIsSet : ''
-
+        const availabilityPlanEnabled = this.props.activeAvailabilityPlan !== null
         let fixedHeaderClasses = 'fixed-header '
         fixedHeaderClasses += this.props.mobileMenuHeader ? 'light' : desktopTheme + ' ' + themeMobile
         // let fixedHeaderClasses = 'fixed-header ' + desktopTheme + ' ' + themeMobile
@@ -64,22 +68,28 @@ class Header extends Component {
                 </div>
                 <div onClick={this.slideToContact.bind(this)} className="mobile-only contact light"><img src={require('./images/mobile_mail.svg').default} alt="" /></div>
                 <div onClick={this.slideToContact.bind(this)} className="mobile-only contact dark"><img src={require('./images/mobile_mail_black.svg').default} alt="" /></div>
-                <div onClick={this.slideToContact.bind(this)} className="inquiry-link">INQUIRE NOW</div>
+                {availabilityPlanEnabled && !this.props.mobileMenuHeader &&
+                    <div onClick={this.slideToContact.bind(this)} className="inquiry-link" onClick={this.disableAvailabilityPlan.bind(this)}>X</div>
+                }
+                {(!availabilityPlanEnabled || this.props.mobileMenuHeader) &&
+                    <div onClick={this.slideToContact.bind(this)} className="inquiry-link">INQUIRE NOW</div>
+                }
             </header>
         )
     }
 }
 
 const mapStateToProps = state => {
+    const activeAvailabilityPlan = state.appData.activeAvailabilityPlan
     const isMobileDevice = state.appData.isMobileDevice
     const menuOpen = state.menuData.menuOpen
     const currSlideIdx = state.slideData.currSlideIdx
     const slideData = state.slideData.slides
     const desktopKeys = state.slideData.desktopKeys
     const mobileKeys = state.slideData.mobileKeys
-    return { isMobileDevice, menuOpen, currSlideIdx, slideData, mobileKeys, desktopKeys}
+    return { activeAvailabilityPlan, isMobileDevice, menuOpen, currSlideIdx, slideData, mobileKeys, desktopKeys}
   }
   export default connect(
     mapStateToProps,
-    { toggleMenuState }
+    { toggleMenuState, disableAvailabilityPlan }
   )(Header)

@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 // import _ from "lodash";
 
 import SlideViews from './slideComponents/SlideViews';
+import SlideAvailability from './slideComponents/SlideAvailability';
 import ContactForm from './slideComponents/ContactForm';
 
 import { findDeviceSlideIdx} from ".././redux/actions/slideActions";
@@ -1232,96 +1233,7 @@ class SlideResidencePenthouseDetail extends Component {
 
 
 
-class SlideAvailability extends Component {
-    constructor(props) {
-		super(props);
-		this.state = {
-			availabilitySelect2Activated: false,
-		}
-	}
-    shouldComponentUpdate(nextProps, nextState){
-        const select2Exists = $.fn.select2
-        const availabilitySelect2Activated = this.state.availabilitySelect2Activated
-        
-        return select2Exists && !availabilitySelect2Activated
-    }
-    componentDidUpdate(){
-        if(!this.state.availabilitySelect2Activated) {
-            const select2Exists = $.fn.select2
-            const select2Initialized = $('#availabilityFloorPlansDropdown').hasClass("select2-hidden-accessible")
-            if(!select2Initialized && select2Exists) {
-                $('#availabilityFloorPlansDropdown').select2({
-                    minimumResultsForSearch: -1
-                });
-                $('#availabilityCollectionDropdown').select2({
-                    minimumResultsForSearch: -1
-                });
-                
-                this.setState({
-                    availabilitySelect2Activated: true
-                });
-            }
-        }
-    }
-    render(){
-        return(
-            <>
-                <section className='availability'>
-                    <h2>{this.props.configuration.availabilityHeadline}</h2>
-                    <p className="availabilityDescription" dangerouslySetInnerHTML={{ __html: this.props.configuration.availabilityText}} />
-                    <div className="availabilityDropdownWrapper">
-                        <div className="availabilityDropdownElement">
-                            <div className="availabilityDropdownLabel">{this.props.configuration.availabilityFloorplansLabel}</div>
-                            <select className="availabilityDropdown" id="availabilityFloorPlansDropdown">
-                                {this.props.configuration.availabilityFloorplansOptions.map((option, i) => {
-                                    return (<option key={i+'floorPlanOption'} value={option.choice}>{option.choice}</option>)
-                                })}
-                            </select>
-                        </div>
-                        <div className="availabilityDropdownElement">
-                            <div className="availabilityDropdownLabel">{this.props.configuration.availabilityCollectionLabel}</div>
-                            <div className="availabilityDropdown">
-                                <select className="availabilityDropdown" id="availabilityCollectionDropdown">
-                                    {this.props.configuration.availabilityCollectionOptions.map((option, i) => {
-                                        return (<option key={i+'collectionOption'} value={option.choice}>{option.choice}</option>)
-                                    })}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="availabilityApartmentContainer">
-                        {this.props.configuration.apartment_result.map((apartment, i) => {
-                            
-                            return (
-                                <div className="apartment" key={i + 'apartment'}>
-                                    <div className="apartment__title">{apartment.title.rendered}</div>
-                                    <div className="apartment__floorPlan">
-                                        <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" alt="" />
-                                        <img src={leftArrowBlack} className="magnifyingGlass" alt="Magnifying Glass" />
-                                    </div>
-                                </div>
-                            )
-                        })}
-                    </div>
-                </section>
-                <div className="availabilityModalPopup">
-                    <header className='fixed-header'>
-                        <div className="hamburger">
-                            <div className="line"></div>
-                            <div className="line"></div>
-                        </div>
-                        <div className="corner-logo-wrapper">
-                            <div className="text">HOBOKEN HEIGHTS<div className="separator"></div></div>
-                            <img alt="Hoboken Heights Logo" className="corner-logo" src={require('./images/logos/NIRMA_Logo_Symbol_Black.png').default} />
-                        </div>
-                        <div className="inquiry-link">X</div>
-                    </header>
-                    <img src={require('../assets/images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" alt="" />
-                </div>
-            </>
-        )
-    }
-}
+
 
 class SlideDevelopmentTeam extends Component {
     shouldComponentUpdate(nextProps, nextState){

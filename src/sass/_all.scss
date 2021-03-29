@@ -1297,6 +1297,20 @@ body {
                     }
                 }
                 &availability {
+                    $availabilityPopupTransitionDuration: 0.9s;
+                    .availabilityModalPopup {
+                        position: absolute;
+                        top: $header-height;
+                        transition: opacity $availabilityPopupTransitionDuration;
+                        &.hidden {
+                            opacity: 0;
+                            z-index: -1;
+                        }
+                        .fixed-header {
+                            display: flex;
+                            position: absolute;
+                        }
+                    }
                     .availability {
                         display: flex;
                         flex-direction: column;
@@ -1304,6 +1318,11 @@ body {
                         width: calc(100vw - #{$side-margin}*2);
                         position: absolute;
                         top: $header-height;
+                        transition: opacity $availabilityPopupTransitionDuration;
+                        &.hidden {
+                            z-index: -1;
+                            opacity: 0;
+                        }
                         .availabilityDescription {
                             line-height: 25px;
                             margin-bottom: 51px;
@@ -2365,13 +2384,6 @@ body {
                                     animation-delay: $animation_base_delay + $animation_incremental_delay*3 + $apartment_incremental_delay*($i - 1);
                                 }
                             }
-                        }
-                    }
-                    .availabilityModalPopup {
-                        display: none;
-                        .fixed-header {
-                            display: flex;
-                            position: absolute;
                         }
                     }
                 }

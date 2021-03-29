@@ -1295,6 +1295,19 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail.expandImage .residencePenthouseDetail__image_container {
   width: calc(100vw - 6.3vw*2);
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup {
+  position: absolute;
+  top: 12.8vh;
+  transition: opacity 0.9s;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup.hidden {
+  opacity: 0;
+  z-index: -1;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .fixed-header {
+  display: flex;
+  position: absolute;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability {
   display: flex;
   flex-direction: column;
@@ -1302,6 +1315,11 @@ body {
   width: calc(100vw - 6.3vw*2);
   position: absolute;
   top: 12.8vh;
+  transition: opacity 0.9s;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability.hidden {
+  z-index: -1;
+  opacity: 0;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityDescription {
   line-height: 25px;
@@ -2333,13 +2351,6 @@ body {
 }
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(12) {
   animation-delay: 2.3s;
-}
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availabilityModalPopup {
-  display: none;
-}
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availabilityModalPopup .fixed-header {
-  display: flex;
-  position: absolute;
 }
 .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .left > img {
   transform: scale(1);
