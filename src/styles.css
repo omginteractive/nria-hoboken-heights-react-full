@@ -3230,8 +3230,9 @@ body {
     line-height: 5.8481481481vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__description_toggler {
-    height: 24px;
-    top: 4px;
+    height: 4.6296296296vw;
+    top: 0.9259259259vw;
+    margin-left: 2.5vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots {
     display: flex;

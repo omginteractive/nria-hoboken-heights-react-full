@@ -791,8 +791,9 @@ body {
                             }
                         }
                         &__description_toggler {
-                            height: 24px;
-                            top: 4px;
+                            height: calc_vw(50);
+                            top: calc_vw(10);
+                            margin-left: calc_vw(27);
                         }
                         &__more_info {
                             &__dots {
