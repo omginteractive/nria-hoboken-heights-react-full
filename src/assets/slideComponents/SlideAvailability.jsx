@@ -15,6 +15,11 @@ class SlideAvailability extends Component {
 			availabilitySelect2Activated: false,
 		}
 	}
+    componentDidMount(){
+        if(!this.state.availabilitySelect2Activated) {
+            this.activateSelect2()
+        }
+    }
     shouldComponentUpdate(nextProps, nextState){
         const select2Exists = $.fn.select2
         const availabilitySelect2Activated = this.state.availabilitySelect2Activated
@@ -22,22 +27,23 @@ class SlideAvailability extends Component {
         const activeAvailabilityPlanChanged = this.props.activeAvailabilityPlan !== nextProps.activeAvailabilityPlan
         return availabilitySelect2NeedsActivation || activeAvailabilityPlanChanged
     }
-    componentDidUpdate(){
-        if(!this.state.availabilitySelect2Activated) {
-            const select2Exists = $.fn.select2
-            const select2Initialized = $('#availabilityFloorPlansDropdown').hasClass("select2-hidden-accessible")
-            if(!select2Initialized && select2Exists) {
-                $('#availabilityFloorPlansDropdown').select2({
-                    minimumResultsForSearch: -1
-                });
-                $('#availabilityCollectionDropdown').select2({
-                    minimumResultsForSearch: -1
-                });
-                
-                this.setState({
-                    availabilitySelect2Activated: true
-                });
-            }
+    activateSelect2(){
+        const select2Exists = $.fn.select2
+        const select2Initialized = $('#availabilityFloorPlansDropdown').hasClass("select2-hidden-accessible")
+        if(!select2Initialized && select2Exists) {
+            $('#availabilityFloorPlansDropdown').select2({
+                minimumResultsForSearch: -1
+            })
+            $('#availabilityCollectionDropdown').select2({
+                minimumResultsForSearch: -1
+            })
+            
+            this.setState({
+                availabilitySelect2Activated: true
+            })
+        }
+        else if(!select2Exists) {
+            setTimeout(()=>this.activateSelect2(), 5000)//wait and retry if select2 not loaded yet
         }
     }
     activateAvailabilityPlan(i){
@@ -94,6 +100,9 @@ class SlideAvailability extends Component {
                     </div>
                 </section>
                 <div className={availabilityModalClasses}>
+                    <div className="availability_detail_apartment_name">{this.props.configuration.availability_detail_apartment_name}</div>
+                    <div className="availability_detail_apartment_address_line_1"></div>
+                    <div className="availability_detail_apartment_address_line_2"></div>
                     <img src={require('../images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" alt="" />
                 </div>
             </>
@@ -101,13 +110,12 @@ class SlideAvailability extends Component {
     }
 }
 
-
 const mapStateToProps = state => {
     const activeAvailabilityPlan = state.appData.activeAvailabilityPlan
     return { activeAvailabilityPlan }
-  }
+}
 
-  export default connect(
+export default connect(
     mapStateToProps,
     { activateAvailabilityPlan }
-  )(SlideAvailability);
+)(SlideAvailability)

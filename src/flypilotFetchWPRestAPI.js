@@ -359,6 +359,9 @@ console.log(apartment_result)
         availabilityFloorplansOptions: acf_result.drop_down_1,
         availabilityCollectionLabel: acf_result.drop_down_2_label,
         availabilityCollectionOptions: acf_result.drop_down_2,
+        availability_detail_apartment_name: acf_result.availability_detail_apartment_name,
+        availability_detail_apartment_address_line_1: acf_result.availability_detail_apartment_address_line_1,
+        availability_detail_apartment_address_line_2: acf_result.availability_detail_apartment_address_line_2,
         apartment_result
     }
     ,{
