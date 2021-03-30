@@ -1299,14 +1299,95 @@ body {
   position: absolute;
   top: 12.8vh;
   transition: opacity 0.9s;
+  width: 67.4479166667vw;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup.hidden {
   opacity: 0;
   z-index: -1;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .fixed-header {
-  display: flex;
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .apartment__floorPlanImage {
+  width: 52.0833333333vw;
   position: absolute;
+  right: 0;
+  top: 0;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .availability_detail_apartment_name,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .availability_detail_apartment_address {
+  font-family: "Gotham-Bold";
+  color: #5d5d5d;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .availability_detail_apartment_name,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .availability_detail_apartment_address,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .title,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .apartment_type,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .bedrooms,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .bathrooms,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .extras,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .interior_sf,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .terrace_sf,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .total_sf,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .percentage_ownership,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .level,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .building {
+  text-transform: uppercase;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .apartment_type,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .bedrooms,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .bathrooms,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .extras,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .interior_sf,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .terrace_sf,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .total_sf,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .percentage_ownership {
+  font-size: 18px;
+  line-height: 1.2em;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .level,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .building {
+  font-size: 22px;
+  font-family: "Gotham-Bold";
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .level {
+  margin-top: 5em;
+  margin-bottom: 1em;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .availability_detail_apartment_name {
+  font-size: 24px;
+  width: 250px;
+  line-height: 1.4em;
+  margin-bottom: 30px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .availability_detail_apartment_address {
+  font-size: 20px;
+  line-height: 1.4em;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .title {
+  font-size: 32px;
+  font-family: "Gotham-Bold";
+  text-decoration: underline;
+  margin-top: 200px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .apartment_type {
+  font-family: "Gotham-Bold";
+  text-decoration: underline;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .interior_sf,
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .percentage_ownership {
+  margin-top: 3em;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .total_sf {
+  font-family: "Gotham-Bold";
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .extras {
+  margin-top: 1em;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .extras > p {
+  font-family: "Gotham-Book";
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .apartment__buildingImage {
+  width: 350px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability {
   display: flex;

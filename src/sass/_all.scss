@@ -1299,16 +1299,99 @@ body {
                 &availability {
                     $availabilityPopupTransitionDuration: 0.9s;
                     .availabilityModalPopup {
+                        $smallTextFontSize: 18px;
+                        $mediumTextFontSize: 22px;
                         position: absolute;
                         top: $header-height;
                         transition: opacity $availabilityPopupTransitionDuration;
+                        width: calc_vw(1295);
                         &.hidden {
                             opacity: 0;
                             z-index: -1;
                         }
-                        .fixed-header {
-                            display: flex;
+                        .apartment__floorPlanImage {
+                            width: calc_vw(1000);
                             position: absolute;
+                            right: 0;
+                            top: 0;
+                        }
+                        .availability_detail_apartment_name,
+                        .availability_detail_apartment_address {
+                            font-family: "Gotham-Bold";
+                            color: $color-grey;
+                        }
+                        .availability_detail_apartment_name,
+                        .availability_detail_apartment_address,
+                        .title,
+                        .apartment_type,
+                        .bedrooms,
+                        .bathrooms,
+                        .extras,
+                        .interior_sf,
+                        .terrace_sf,
+                        .total_sf,
+                        .percentage_ownership,
+                        .level,
+                        .building {
+                            text-transform: uppercase;
+                        }
+                        .apartment_type,
+                        .bedrooms,
+                        .bathrooms,
+                        .extras,
+                        .interior_sf,
+                        .terrace_sf,
+                        .total_sf,
+                        .percentage_ownership {
+                            font-size: $smallTextFontSize;
+                            line-height: 1.2em;
+                        }
+                        .level,
+                        .building {
+                            font-size: $mediumTextFontSize;
+                            font-family: "Gotham-Bold";
+                        }
+                        .level {
+                            margin-top: 5em;
+                            margin-bottom: 1em;
+                        }
+                        .availability_detail_apartment_name {
+                            font-size: 24px;
+                            width: 250px;
+                            line-height: 1.4em;
+                            margin-bottom: 30px;
+                        }
+                        .availability_detail_apartment_address {
+                            font-size: 20px;
+                            line-height: 1.4em;
+                        }
+                        .title {
+                            font-size: 32px;
+                            font-family: "Gotham-Bold";
+                            text-decoration: underline;
+                            margin-top: 200px;
+                        }
+                        .apartment_type {
+                            font-family: "Gotham-Bold";
+                            text-decoration: underline;
+                            margin-top: 50px;
+                            margin-bottom: 20px;
+                        }
+                        .interior_sf,
+                        .percentage_ownership {
+                            margin-top: 3em;
+                        }
+                        .total_sf {
+                            font-family: "Gotham-Bold";
+                        }
+                        .extras {
+                            margin-top: 1em;
+                            > p {
+                                font-family: 'Gotham-Book';//override <p> tag
+                            }
+                        }
+                        .apartment__buildingImage {
+                            width: 350px;
                         }
                     }
                     .availability {
