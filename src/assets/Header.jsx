@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import {connect} from 'react-redux'
 import { toggleMenuState } from "./../redux/actions/menuActions";
-import { disableAvailabilityPlan } from "./../redux/actions/appActions";
+import { disableAvailabilityPlan } from "./../redux/actions/slideActions";
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -80,7 +80,7 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => {
-    const activeAvailabilityPlan = state.appData.activeAvailabilityPlan
+    const activeAvailabilityPlan = state.slideData.activeAvailabilityPlan
     const isMobileDevice = state.appData.isMobileDevice
     const menuOpen = state.menuData.menuOpen
     const currSlideIdx = state.slideData.currSlideIdx

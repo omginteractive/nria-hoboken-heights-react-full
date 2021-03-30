@@ -1,6 +1,12 @@
-import { CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_SLIDES_VIEWED, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS, UPDATE_TRANSITIONING_STATE, UPDATE_TOUCH_STATE } from "./types";
+import { DISABLE_AVAILABILITY_PLAN, ACTIVATE_AVAILABILITY_PLAN, CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_SLIDES_VIEWED, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS, UPDATE_TRANSITIONING_STATE, UPDATE_TOUCH_STATE } from "./types";
 
-export const changeSlideIdx = idx => {
+export function changeSlideIdx(idx) {
+    return (dispatch) => {
+        dispatch( changeSlideIdxState(idx))
+        dispatch( disableAvailabilityPlan())
+    }
+}
+export const changeSlideIdxState = idx => {
     return {
         type: CHANGE_SLIDE_IDX,
         payload: idx
@@ -46,6 +52,20 @@ export const updateSlidesViewed = (state) => {
         payload: state
     }
 }
+
+export const activateAvailabilityPlan = idx => {
+    return {
+        type: ACTIVATE_AVAILABILITY_PLAN,
+        payload: idx
+    }
+}
+
+export const disableAvailabilityPlan = () => {
+    return {
+        type: DISABLE_AVAILABILITY_PLAN,
+    }
+}
+
 // export const isCurrent = (idx) => {
 //     const deviceIdx = findDeviceSlideIdx(idx)
 //     // console.log(deviceIdx)

@@ -1,4 +1,4 @@
-import { CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS, UPDATE_TRANSITIONING_STATE, UPDATE_TOUCH_STATE, UPDATE_SLIDES_VIEWED } from "../actions/types"
+import { DISABLE_AVAILABILITY_PLAN, ACTIVATE_AVAILABILITY_PLAN, CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS, UPDATE_TRANSITIONING_STATE, UPDATE_TOUCH_STATE, UPDATE_SLIDES_VIEWED } from "../actions/types"
 
 const initialState = {
     currSlideIdx: 0,
@@ -8,7 +8,7 @@ const initialState = {
     slideTransitioningState: 0, // 0 for false -1 for up 1 for down
     slideTouchState: 0,//0 for end, 1 for start, 2 for move
     slidesViewed: [0],
-
+    activeAvailabilityPlan: null
 }
   
 export default function slideReducer(state = initialState, action) {
@@ -27,6 +27,10 @@ export default function slideReducer(state = initialState, action) {
             return {...state, slideTouchState: action.payload}
         case UPDATE_SLIDES_VIEWED:
             return {...state, slidesViewed: [...state.slidesViewed, action.payload]}
+        case ACTIVATE_AVAILABILITY_PLAN:
+            return {...state, activeAvailabilityPlan: action.payload}
+        case DISABLE_AVAILABILITY_PLAN:
+            return {...state, activeAvailabilityPlan: null}
         default:
             return state
     }

@@ -4,7 +4,7 @@ import magnifyingGlass from '../images/magnifyingGlass.svg';
 import $ from 'jquery'
 import {connect} from 'react-redux'
 // import _ from "lodash";
-import { activateAvailabilityPlan } from "../../redux/actions/appActions";
+import { activateAvailabilityPlan } from "../../redux/actions/slideActions";
 
 
 
@@ -127,7 +127,7 @@ class SlideAvailability extends Component {
 }
 
 const mapStateToProps = state => {
-    const activeAvailabilityPlan = state.appData.activeAvailabilityPlan
+    const activeAvailabilityPlan = state.slideData.activeAvailabilityPlan
     return { activeAvailabilityPlan }
 }
 

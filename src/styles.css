@@ -1298,7 +1298,7 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup {
   position: absolute;
   top: 12.8vh;
-  transition: opacity 0.9s;
+  transition: opacity 1.4s;
   width: 67.4479166667vw;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup.hidden {
@@ -1396,7 +1396,7 @@ body {
   width: calc(100vw - 6.3vw*2);
   position: absolute;
   top: 12.8vh;
-  transition: opacity 0.9s;
+  transition: opacity 1.4s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability.hidden {
   z-index: -1;
