@@ -2886,10 +2886,7 @@ body {
   #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities .amenities__list > ul, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities .amenities__list > ul, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities .amenities__list > ul {
     padding-bottom: 140px;
   }
-  #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container,
-#page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container,
-#page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container,
-#page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info {
+  #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container {
     bottom: 70px;
   }
   #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots {

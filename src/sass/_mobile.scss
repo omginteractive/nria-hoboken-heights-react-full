@@ -318,8 +318,8 @@ body {
                 }
                 &amenitiesGallery {
                     $dots-bottom: calc(#{calc_vw(83)} + 70px);//originally calc_vw(83)
-                    .amenities_gallery__amenity_name_and_description_container,
-                    .amenities_gallery__more_info {
+                    // .amenities_gallery__more_info,
+                    .amenities_gallery__amenity_name_and_description_container {
                         bottom: 70px;
                     }
                     .amenities_gallery__more_info__dots {
