@@ -1210,7 +1210,7 @@ body {
                         .satelliteToggle {
                             bottom: 0;
                             right: auto;
-                            height: 44px;
+                            height: calc_vw(134);
                             z-index: 2;
                             width: 100vw;
                             .rotatedText {

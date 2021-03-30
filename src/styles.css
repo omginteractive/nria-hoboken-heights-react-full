@@ -3585,7 +3585,7 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle {
     bottom: 0;
     right: auto;
-    height: 44px;
+    height: 12.4074074074vw;
     z-index: 2;
     width: 100vw;
   }
