@@ -1312,12 +1312,14 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup {
   position: absolute;
   top: 12.8vh;
-  transition: opacity 0.9s;
+  transition: opacity 0.9s, height 0s linear 0.9s;
+  overflow: hidden;
   width: 67.4479166667vw;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup.hidden {
   opacity: 0;
   pointer-events: none;
+  height: 0;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .apartment__floorPlanImage {
   width: 52.0833333333vw;

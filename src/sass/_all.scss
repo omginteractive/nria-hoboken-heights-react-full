@@ -1321,11 +1321,13 @@ body {
                         $mediumTextFontSize: 22px;
                         position: absolute;
                         top: $header-height;
-                        transition: opacity $availabilityPopupTransitionDuration;
+                        transition: opacity $availabilityPopupTransitionDuration, height 0s linear $availabilityPopupTransitionDuration;
+                        overflow: hidden;//prevents modal from taking up space when .hidden
                         width: calc_vw(1295);
                         &.hidden {
                             opacity: 0;
                             pointer-events: none;
+                            height: 0;
                             // z-index: -1;
                         }
                         .apartment__floorPlanImage {

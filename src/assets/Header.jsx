@@ -10,14 +10,13 @@ class Header extends Component {
         this.darkLogo = 'images/logos/Logo-small-black.svg'
         this.lightLogo = 'images/logos/Logo-small-white.svg'
         this.lightCloseBtn = 'images/mobile_menu_x.svg'
-        
     }
     shouldComponentUpdate(nextProps, nextState){
         const slideChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
         const availabilityModalToggled = this.props.availabilityPlanModalEnabled !== nextProps.availabilityPlanModalEnabled
 
         const availabilityModalEnabled = this.props.availabilityPlanModalEnabled
-        if(availabilityModalEnabled && slideChanged) this.hideAvailabilityPlanModal()//closes availabilityModal on slidechange
+        if(availabilityModalEnabled && slideChanged) this.hideAvailabilityPlanModal(false)//closes availabilityModal on slidechange
         // const themeChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
         // const mobileThemeChanged = nextProps.themeMobile !== this.props.themeMobile
         //fixme - can change this to be more specific to test if theme has changed on desktop or mobile
@@ -36,9 +35,13 @@ class Header extends Component {
             goToSlide(1)
         }
     }
-    hideAvailabilityPlanModal(){
+    hideAvailabilityPlanModal(animateScroll = true){
         this.props.hideAvailabilityPlanModal()
-        $(".slideTemplate-availability").animate({ scrollTop: 0 }, "fast")//scroll up to top in case user scrolled down
+        if(animateScroll){
+            //don't animate the scroll when switching slides.
+            //Otherwise moving to the next slide causes a scroll of availability slide when moving to nextSlide
+            $(".slideTemplate-availability").animate({ scrollTop: 0 }, "fast")//scroll up to top in case user scrolled down
+        }
     }
     render(){
         const defaultTheme = 'dark'
