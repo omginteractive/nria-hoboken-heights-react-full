@@ -69,7 +69,7 @@ class Header extends Component {
                 <div onClick={this.slideToContact.bind(this)} className="mobile-only contact light"><img src={require('./images/mobile_mail.svg').default} alt="" /></div>
                 <div onClick={this.slideToContact.bind(this)} className="mobile-only contact dark"><img src={require('./images/mobile_mail_black.svg').default} alt="" /></div>
                 {availabilityPlanEnabled && !this.props.mobileMenuHeader &&
-                    <div onClick={this.slideToContact.bind(this)} className="inquiry-link" onClick={this.disableAvailabilityPlan.bind(this)}>X</div>
+                    <img className='closeBtn' onClick={this.disableAvailabilityPlan.bind(this)} src={require('./images/availability_menu_x.svg').default} alt="" />
                 }
                 {(!availabilityPlanEnabled || this.props.mobileMenuHeader) &&
                     <div onClick={this.slideToContact.bind(this)} className="inquiry-link">INQUIRE NOW</div>

@@ -100,22 +100,26 @@ class SlideAvailability extends Component {
                     </div>
                 </section>
                 <div className={availabilityModalClasses}>
-                    <div className="availability_detail_apartment_name">{this.props.configuration.availability_detail_apartment_name}</div>
-                    <div className="availability_detail_apartment_address availability_detail_apartment_address_line_1">{this.props.configuration.availability_detail_apartment_address_line_1}</div>
-                    <div className="availability_detail_apartment_address availability_detail_apartment_address_line_2">{this.props.configuration.availability_detail_apartment_address_line_2}</div>
-                    <div className="title">{this.props.configuration.apartment_result[0].title.rendered}</div>
-                    <div className="apartment_type">{this.props.configuration.apartment_result[0].acf.apartment_type}</div>
-                    <div className="bedrooms">{this.props.configuration.apartment_result[0].acf.bedrooms}</div>
-                    <div className="bathrooms">{this.props.configuration.apartment_result[0].acf.bathrooms}</div>
-                    <div className="extras" dangerouslySetInnerHTML={{ __html: this.props.configuration.apartment_result[0].acf.extras}} />
-                    <div className="interior_sf">INTERIOR: {this.props.configuration.apartment_result[0].acf.interior_sf}</div>
-                    <div className="terrace_sf">TERRACE: {this.props.configuration.apartment_result[0].acf.terrace_sf}</div>
-                    <div className="total_sf">TOTAL: {this.props.configuration.apartment_result[0].acf.total_sf}</div>
-                    <div className="percentage_ownership">PERCENTAGE OWNERSHIP: {this.props.configuration.apartment_result[0].acf.percentage_ownership}</div>
-                    <div className="level">{this.props.configuration.apartment_result[0].acf.level}</div>
-                    <img src={require('../images/availabilityBuildingExample.png').default} className="apartment__buildingImage" alt="" />
-                    <div className="building">{this.props.configuration.apartment_result[0].acf.building}</div>
-                    <img src={require('../images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" alt="" />
+                    {this.props.activeAvailabilityPlan !== null &&
+                    <>
+                        <div className="availability_detail_apartment_name">{this.props.configuration.availability_detail_apartment_name}</div>
+                        <div className="availability_detail_apartment_address availability_detail_apartment_address_line_1">{this.props.configuration.availability_detail_apartment_address_line_1}</div>
+                        <div className="availability_detail_apartment_address availability_detail_apartment_address_line_2">{this.props.configuration.availability_detail_apartment_address_line_2}</div>
+                        <div className="title">{this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].title.rendered}</div>
+                        <div className="apartment_type">{this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.apartment_type}</div>
+                        <div className="bedrooms">{this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.bedrooms}</div>
+                        <div className="bathrooms">{this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.bathrooms}</div>
+                        <div className="extras" dangerouslySetInnerHTML={{ __html: this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.extras}} />
+                        <div className="interior_sf">INTERIOR: {this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.interior_sf}</div>
+                        <div className="terrace_sf">TERRACE: {this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.terrace_sf}</div>
+                        <div className="total_sf">TOTAL: {this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.total_sf}</div>
+                        <div className="percentage_ownership">PERCENTAGE OWNERSHIP: {this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.percentage_ownership}</div>
+                        <div className="level">{this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.level}</div>
+                        <img src={require('../images/availabilityBuildingExample.png').default} className="apartment__buildingImage" alt="" />
+                        <div className="building">{this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.building}</div>
+                        <img src={require('../images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" alt="" />
+                    </>
+                    }
                 </div>
             </>
         )
