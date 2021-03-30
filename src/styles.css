@@ -364,9 +364,14 @@ body {
 }
 .fixed-header .inquiry-link {
   cursor: pointer;
+  transition: color 1400ms, opacity 0.9s;
+  font-size: 15px;
 }
-.fixed-header .corner-logo-wrapper .text,
-.fixed-header .inquiry-link {
+.fixed-header .inquiry-link.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.fixed-header .corner-logo-wrapper .text {
   transition: color 1400ms;
   font-size: 15px;
 }
@@ -386,6 +391,15 @@ body {
   height: 18px;
   margin-right: 7px;
   width: 18px;
+}
+.fixed-header .closeBtn.availabilityCloseBtn {
+  position: absolute;
+  right: 0;
+  transition: opacity 0.9s;
+}
+.fixed-header .closeBtn.availabilityCloseBtn.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 .fixed-header .hamburger {
   cursor: pointer;
@@ -1298,7 +1312,7 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup {
   position: absolute;
   top: 12.8vh;
-  transition: opacity 1.4s;
+  transition: opacity 0.9s;
   width: 67.4479166667vw;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup.hidden {
@@ -1396,7 +1410,7 @@ body {
   width: calc(100vw - 6.3vw*2);
   position: absolute;
   top: 12.8vh;
-  transition: opacity 1.4s;
+  transition: opacity 0.9s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability.hidden {
   z-index: -1;

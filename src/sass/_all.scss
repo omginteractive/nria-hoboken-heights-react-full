@@ -278,9 +278,17 @@ body {
     }
     .inquiry-link {
         cursor: pointer;
+        transition: color $slideAnimationDuration, opacity $availabilityPopupTransitionDuration;
+        font-size: 15px;
+        &.hidden {
+            opacity: 0;
+            pointer-events: none;//to give priority to availabilityCloseBtn
+        }
+        // &.enabled {
+        //     pointer-events: none;//to give priority to availabilityCloseBtn
+        // }
     }
-    .corner-logo-wrapper .text,
-    .inquiry-link {
+    .corner-logo-wrapper .text {
         transition: color $slideAnimationDuration;
         font-size: 15px;
     }
@@ -307,6 +315,17 @@ body {
         // width: calc(#{$menuBtnHorizontalPadding}*2 + #{$menuBtnWidth});
         width: 18px;
         // padding: 0 $menuBtnHorizontalPadding;
+        &.availabilityCloseBtn {
+            position: absolute;
+            right: 0;
+            transition: opacity $availabilityPopupTransitionDuration;
+            &.hidden {
+                opacity: 0;
+                pointer-events: none;//to give priority to inquiry link
+            }
+            // &.enabled {
+            // }
+        }
     }
     .hamburger {
         cursor: pointer;
@@ -1297,7 +1316,6 @@ body {
                     }
                 }
                 &availability {
-                    $availabilityPopupTransitionDuration: 1.4s;
                     .availabilityModalPopup {
                         $smallTextFontSize: 18px;
                         $mediumTextFontSize: 22px;

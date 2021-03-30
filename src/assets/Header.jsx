@@ -14,6 +14,9 @@ class Header extends Component {
     shouldComponentUpdate(nextProps, nextState){
         const slideChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
         const activeAvailabilityPlanChanged = this.props.activeAvailabilityPlan !== nextProps.activeAvailabilityPlan
+
+        const activeAvailabilityPlanSet = this.props.activeAvailabilityPlan !== null
+        if(activeAvailabilityPlanSet && slideChanged) this.disableAvailabilityPlan()
         // const themeChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
         // const mobileThemeChanged = nextProps.themeMobile !== this.props.themeMobile
         //fixme - can change this to be more specific to test if theme has changed on desktop or mobile
@@ -46,6 +49,10 @@ class Header extends Component {
         let fixedHeaderClasses = 'fixed-header '
         fixedHeaderClasses += this.props.mobileMenuHeader ? 'light' : desktopTheme + ' ' + themeMobile
         // let fixedHeaderClasses = 'fixed-header ' + desktopTheme + ' ' + themeMobile
+        let inquiryLinkClasses = 'inquiry-link'
+        inquiryLinkClasses += !availabilityPlanEnabled || this.props.mobileMenuHeader ? ' enabled' : ' hidden'
+        let availabilityCloseButtonClasses = 'closeBtn availabilityCloseBtn'
+        availabilityCloseButtonClasses += availabilityPlanEnabled && !this.props.mobileMenuHeader ? ' enabled' : ' hidden'
         return (
             <header className={fixedHeaderClasses}>
                 {this.props.menuOpen && 
@@ -68,12 +75,8 @@ class Header extends Component {
                 </div>
                 <div onClick={this.slideToContact.bind(this)} className="mobile-only contact light"><img src={require('./images/mobile_mail.svg').default} alt="" /></div>
                 <div onClick={this.slideToContact.bind(this)} className="mobile-only contact dark"><img src={require('./images/mobile_mail_black.svg').default} alt="" /></div>
-                {availabilityPlanEnabled && !this.props.mobileMenuHeader &&
-                    <img className='closeBtn' onClick={this.disableAvailabilityPlan.bind(this)} src={require('./images/availability_menu_x.svg').default} alt="" />
-                }
-                {(!availabilityPlanEnabled || this.props.mobileMenuHeader) &&
-                    <div onClick={this.slideToContact.bind(this)} className="inquiry-link">INQUIRE NOW</div>
-                }
+                <img className={availabilityCloseButtonClasses} onClick={this.disableAvailabilityPlan.bind(this)} src={require('./images/availability_menu_x.svg').default} alt="" />
+                <div onClick={this.slideToContact.bind(this)} className={inquiryLinkClasses}>INQUIRE NOW</div>
             </header>
         )
     }

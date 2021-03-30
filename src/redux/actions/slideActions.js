@@ -1,12 +1,12 @@
 import { DISABLE_AVAILABILITY_PLAN, ACTIVATE_AVAILABILITY_PLAN, CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_SLIDES_VIEWED, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS, UPDATE_TRANSITIONING_STATE, UPDATE_TOUCH_STATE } from "./types";
 
-export function changeSlideIdx(idx) {
-    return (dispatch) => {
-        dispatch( changeSlideIdxState(idx))
-        dispatch( disableAvailabilityPlan())
-    }
-}
-export const changeSlideIdxState = idx => {
+// export function changeSlideIdx(idx) {
+//     return (dispatch) => {
+//         dispatch( changeSlideIdxState(idx))
+//         dispatch( disableAvailabilityPlan())
+//     }
+// }
+export const changeSlideIdx = idx => {
     return {
         type: CHANGE_SLIDE_IDX,
         payload: idx
