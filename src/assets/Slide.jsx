@@ -183,7 +183,7 @@ class Slide extends Component {
                     <SlideResidencePenthouse configuration={slideObj} setResidencePenthousePath={this.setResidencePenthousePath.bind(this)} methods={slideMethods}  />
                 }
                 {slideObj.slideTemplate === 'residencePenthouseFullscreen' &&
-                    <SlideResidencePenthouseFullscreen mobileArrows={mobileArrows} residencePenthouse={this.props.residencePenthousePath}  methods={slideMethods} configuration={slideObj}  />
+                    <SlideResidencePenthouseFullscreen slideHorizontal={this.slideHorizontal.bind(this)} mobileArrows={mobileArrows} residencePenthouse={this.props.residencePenthousePath}  methods={slideMethods} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'residencePenthouseDetail' &&
                     <SlideResidencePenthouseDetail mobileArrows={mobileArrows} methods={slideMethods} residencePenthouse={this.props.residencePenthousePath} configuration={slideObj}  />

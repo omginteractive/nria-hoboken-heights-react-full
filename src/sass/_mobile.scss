@@ -1278,10 +1278,12 @@ body {
                 transition: opacity 0.5s;
             }
             &.mobile-video-position- {
+                $transformTranslateXDistanceToLeftEdge: calc((100% - 100vw) / 2);
+                $transformTranslateXDistanceToRightEdge: calc((-100% + 100vw) / 2);
                 &left {
-                    .videoContainer,
-                    .fullscreenImageWrapper {
-                        transform: translateX(33%);
+                    .fullscreenImageWrapper,
+                    .videoContainer {
+                        transform: translateX($transformTranslateXDistanceToLeftEdge);
                     }
                     .left_arrow_bouncing {
                         opacity: 0;
@@ -1300,9 +1302,10 @@ body {
                     }
                 }
                 &right {
-                    .videoContainer,
-                    .fullscreenImageWrapper {
+                    .fullscreenImageWrapper,
+                    .videoContainer {
                         transform: translateX(-33%);
+                        transform: translateX($transformTranslateXDistanceToRightEdge);
                     }
                     .right_arrow_bouncing {
                         opacity: 0;
