@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import {connect} from 'react-redux'
 import { toggleMenuState } from "./../redux/actions/menuActions";
-import { disableAvailabilityPlan } from "./../redux/actions/slideActions";
+import { hideAvailabilityPlanModal } from "./../redux/actions/slideActions";
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -13,14 +13,14 @@ class Header extends Component {
     }
     shouldComponentUpdate(nextProps, nextState){
         const slideChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
-        const activeAvailabilityPlanChanged = this.props.activeAvailabilityPlan !== nextProps.activeAvailabilityPlan
+        const availabilityModalToggled = this.props.availabilityPlanModalEnabled !== nextProps.availabilityPlanModalEnabled
 
-        const activeAvailabilityPlanSet = this.props.activeAvailabilityPlan !== null
-        if(activeAvailabilityPlanSet && slideChanged) this.disableAvailabilityPlan()
+        const availabilityModalEnabled = this.props.availabilityPlanModalEnabled
+        if(availabilityModalEnabled && slideChanged) this.hideAvailabilityPlanModal()//closes availabilityModal on slidechange
         // const themeChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
         // const mobileThemeChanged = nextProps.themeMobile !== this.props.themeMobile
         //fixme - can change this to be more specific to test if theme has changed on desktop or mobile
-        return slideChanged || activeAvailabilityPlanChanged
+        return slideChanged || availabilityModalToggled
     }
 
     slideToContact(){
@@ -35,8 +35,8 @@ class Header extends Component {
             goToSlide(1)
         }
     }
-    disableAvailabilityPlan(){
-        this.props.disableAvailabilityPlan()
+    hideAvailabilityPlanModal(){
+        this.props.hideAvailabilityPlanModal()
     }
     render(){
         const defaultTheme = 'dark'
@@ -45,14 +45,14 @@ class Header extends Component {
         const desktopTheme = desktopThemeIsSet ? desktopThemeIsSet : defaultTheme
         const mobileThemeIsSet = this.props.slideData && this.props.slideData[deviceSlideIdx].headerThemeMobile
         const themeMobile = mobileThemeIsSet ? mobileThemeIsSet : ''
-        const availabilityPlanEnabled = this.props.activeAvailabilityPlan !== null
+        const availabilityModalEnabled = this.props.availabilityPlanModalEnabled
         let fixedHeaderClasses = 'fixed-header '
         fixedHeaderClasses += this.props.mobileMenuHeader ? 'light' : desktopTheme + ' ' + themeMobile
         // let fixedHeaderClasses = 'fixed-header ' + desktopTheme + ' ' + themeMobile
         let inquiryLinkClasses = 'inquiry-link'
-        inquiryLinkClasses += !availabilityPlanEnabled || this.props.mobileMenuHeader ? ' enabled' : ' hidden'
+        inquiryLinkClasses += !availabilityModalEnabled || this.props.mobileMenuHeader ? ' enabled' : ' hidden'
         let availabilityCloseButtonClasses = 'closeBtn availabilityCloseBtn'
-        availabilityCloseButtonClasses += availabilityPlanEnabled && !this.props.mobileMenuHeader ? ' enabled' : ' hidden'
+        availabilityCloseButtonClasses += availabilityModalEnabled && !this.props.mobileMenuHeader ? ' enabled' : ' hidden'
         return (
             <header className={fixedHeaderClasses}>
                 {this.props.menuOpen && 
@@ -75,7 +75,7 @@ class Header extends Component {
                 </div>
                 <div onClick={this.slideToContact.bind(this)} className="mobile-only contact light"><img src={require('./images/mobile_mail.svg').default} alt="" /></div>
                 <div onClick={this.slideToContact.bind(this)} className="mobile-only contact dark"><img src={require('./images/mobile_mail_black.svg').default} alt="" /></div>
-                <img className={availabilityCloseButtonClasses} onClick={this.disableAvailabilityPlan.bind(this)} src={require('./images/availability_menu_x.svg').default} alt="" />
+                <img className={availabilityCloseButtonClasses} onClick={this.hideAvailabilityPlanModal.bind(this)} src={require('./images/availability_menu_x.svg').default} alt="" />
                 <div onClick={this.slideToContact.bind(this)} className={inquiryLinkClasses}>INQUIRE NOW</div>
             </header>
         )
@@ -83,16 +83,16 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => {
-    const activeAvailabilityPlan = state.slideData.activeAvailabilityPlan
+    const availabilityPlanModalEnabled = state.slideData.availabilityPlanModalEnabled
     const isMobileDevice = state.appData.isMobileDevice
     const menuOpen = state.menuData.menuOpen
     const currSlideIdx = state.slideData.currSlideIdx
     const slideData = state.slideData.slides
     const desktopKeys = state.slideData.desktopKeys
     const mobileKeys = state.slideData.mobileKeys
-    return { activeAvailabilityPlan, isMobileDevice, menuOpen, currSlideIdx, slideData, mobileKeys, desktopKeys}
+    return { availabilityPlanModalEnabled, isMobileDevice, menuOpen, currSlideIdx, slideData, mobileKeys, desktopKeys}
   }
   export default connect(
     mapStateToProps,
-    { toggleMenuState, disableAvailabilityPlan }
+    { toggleMenuState, hideAvailabilityPlanModal }
   )(Header)

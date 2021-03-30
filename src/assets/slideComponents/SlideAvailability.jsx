@@ -4,7 +4,7 @@ import magnifyingGlass from '../images/magnifyingGlass.svg';
 import $ from 'jquery'
 import {connect} from 'react-redux'
 // import _ from "lodash";
-import { activateAvailabilityPlan } from "../../redux/actions/slideActions";
+import { setActiveAvailabilityPlan, displayAvailabilityPlanModal } from "../../redux/actions/slideActions";
 
 
 
@@ -24,8 +24,8 @@ class SlideAvailability extends Component {
         const select2Exists = $.fn.select2
         const availabilitySelect2Activated = this.state.availabilitySelect2Activated
         const availabilitySelect2NeedsActivation = select2Exists && !availabilitySelect2Activated
-        const activeAvailabilityPlanChanged = this.props.activeAvailabilityPlan !== nextProps.activeAvailabilityPlan
-        return availabilitySelect2NeedsActivation || activeAvailabilityPlanChanged
+        const availabilityModalToggled = this.props.availabilityPlanModalEnabled !== nextProps.availabilityPlanModalEnabled
+        return availabilitySelect2NeedsActivation || availabilityModalToggled
     }
     activateSelect2(){
         const select2Exists = $.fn.select2
@@ -46,20 +46,20 @@ class SlideAvailability extends Component {
             setTimeout(()=>this.activateSelect2(), 5000)//wait and retry if select2 not loaded yet
         }
     }
-    activateAvailabilityPlan(i){
-        this.props.activateAvailabilityPlan(i)
+    setActiveAvailabilityPlan(i){
+        this.props.setActiveAvailabilityPlan(i)
+        this.props.displayAvailabilityPlanModal()
     }
     render(){
-        const activeAvailabilityPlan = this.props.activeAvailabilityPlan
-        const hasActiveFloorPlan = activeAvailabilityPlan !== null
+        const availabilityPlanModalEnabled = this.props.availabilityPlanModalEnabled
         
         let availabilityClasses = 'availability'
-        availabilityClasses += hasActiveFloorPlan ? ' hidden' : ''
+        availabilityClasses += availabilityPlanModalEnabled ? ' hidden' : ''
         let availabilityModalClasses = 'availabilityModalPopup'
-        availabilityModalClasses += hasActiveFloorPlan ? '' : ' hidden'
+        availabilityModalClasses += availabilityPlanModalEnabled ? '' : ' hidden'
         return(
             <>
-                <section className={availabilityClasses}>
+                <section className={availabilityClasses}>{this.props.availabilityPlanModalEnabled}
                     <h2>{this.props.configuration.availabilityHeadline}</h2>
                     <p className="availabilityDescription" dangerouslySetInnerHTML={{ __html: this.props.configuration.availabilityText}} />
                     <div className="availabilityDropdownWrapper">
@@ -84,13 +84,12 @@ class SlideAvailability extends Component {
                     </div>
                     <div className="availabilityApartmentContainer">
                         {this.props.configuration.apartment_result.map((apartment, i) => {
-                            
                             return (
                                 <div className="apartment" key={i + 'apartment'}>
                                     <div className="apartment__title">{apartment.title.rendered}</div>
                                     <div className="apartment__floorPlan">
-                                        <img src={require('../images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" alt="" />
-                                        <div className="magnifyingGlassWrapper" onClick={() => this.activateAvailabilityPlan(i)}>
+                                        <img src={this.props.configuration.apartment_result[i].acf.floorplan.url} className="apartment__floorPlanImage" alt="" />
+                                        <div className="magnifyingGlassWrapper" onClick={() => this.setActiveAvailabilityPlan(i)}>
                                             <img src={magnifyingGlass} className="magnifyingGlass" alt="Magnifying Glass" />
                                         </div>
                                     </div>
@@ -100,7 +99,6 @@ class SlideAvailability extends Component {
                     </div>
                 </section>
                 <div className={availabilityModalClasses}>
-                    {this.props.activeAvailabilityPlan !== null &&
                     <>
                         <div className="availability_detail_apartment_name">{this.props.configuration.availability_detail_apartment_name}</div>
                         <div className="availability_detail_apartment_address availability_detail_apartment_address_line_1">{this.props.configuration.availability_detail_apartment_address_line_1}</div>
@@ -115,11 +113,10 @@ class SlideAvailability extends Component {
                         <div className="total_sf">TOTAL: {this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.total_sf}</div>
                         <div className="percentage_ownership">PERCENTAGE OWNERSHIP: {this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.percentage_ownership}</div>
                         <div className="level">{this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.level}</div>
-                        <img src={require('../images/availabilityBuildingExample.png').default} className="apartment__buildingImage" alt="" />
+                        <img src={this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.building_image.url} className="apartment__buildingImage" alt="" />
                         <div className="building">{this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.building}</div>
-                        <img src={require('../images/availabilityFloorPlanExample.png').default} className="apartment__floorPlanImage" alt="" />
+                        <img src={this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.floorplan.url} className="apartment__floorPlanImage" alt="" />
                     </>
-                    }
                 </div>
             </>
         )
@@ -128,10 +125,11 @@ class SlideAvailability extends Component {
 
 const mapStateToProps = state => {
     const activeAvailabilityPlan = state.slideData.activeAvailabilityPlan
-    return { activeAvailabilityPlan }
+    const availabilityPlanModalEnabled = state.slideData.availabilityPlanModalEnabled
+    return { activeAvailabilityPlan, availabilityPlanModalEnabled }
 }
 
 export default connect(
     mapStateToProps,
-    { activateAvailabilityPlan }
+    { setActiveAvailabilityPlan, displayAvailabilityPlanModal }
 )(SlideAvailability)

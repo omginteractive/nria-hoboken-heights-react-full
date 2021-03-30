@@ -1,9 +1,9 @@
-import { DISABLE_AVAILABILITY_PLAN, ACTIVATE_AVAILABILITY_PLAN, CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_SLIDES_VIEWED, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS, UPDATE_TRANSITIONING_STATE, UPDATE_TOUCH_STATE } from "./types";
+import { DISPLAY_AVAILABILITY_PLAN_MODAL, HIDE_AVAILABILITY_PLAN_MODAL, SET_ACTIVE_AVAILABILITY_PLAN, CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_SLIDES_VIEWED, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS, UPDATE_TRANSITIONING_STATE, UPDATE_TOUCH_STATE } from "./types";
 
 // export function changeSlideIdx(idx) {
 //     return (dispatch) => {
 //         dispatch( changeSlideIdxState(idx))
-//         dispatch( disableAvailabilityPlan())
+//         dispatch( hideAvailabilityPlanModal())
 //     }
 // }
 export const changeSlideIdx = idx => {
@@ -53,16 +53,22 @@ export const updateSlidesViewed = (state) => {
     }
 }
 
-export const activateAvailabilityPlan = idx => {
+export const setActiveAvailabilityPlan = idx => {
     return {
-        type: ACTIVATE_AVAILABILITY_PLAN,
+        type: SET_ACTIVE_AVAILABILITY_PLAN,
         payload: idx
     }
 }
 
-export const disableAvailabilityPlan = () => {
+export const displayAvailabilityPlanModal = () => {
     return {
-        type: DISABLE_AVAILABILITY_PLAN,
+        type: DISPLAY_AVAILABILITY_PLAN_MODAL,
+    }
+}
+
+export const hideAvailabilityPlanModal = () => {
+    return {
+        type: HIDE_AVAILABILITY_PLAN_MODAL,
     }
 }
 

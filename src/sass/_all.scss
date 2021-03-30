@@ -1325,7 +1325,8 @@ body {
                         width: calc_vw(1295);
                         &.hidden {
                             opacity: 0;
-                            z-index: -1;
+                            pointer-events: none;
+                            // z-index: -1;
                         }
                         .apartment__floorPlanImage {
                             width: calc_vw(1000);
@@ -1421,7 +1422,7 @@ body {
                         top: $header-height;
                         transition: opacity $availabilityPopupTransitionDuration;
                         &.hidden {
-                            z-index: -1;
+                            // z-index: -1;
                             opacity: 0;
                         }
                         .availabilityDescription {

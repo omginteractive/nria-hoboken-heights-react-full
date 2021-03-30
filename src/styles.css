@@ -1317,7 +1317,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup.hidden {
   opacity: 0;
-  z-index: -1;
+  pointer-events: none;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .apartment__floorPlanImage {
   width: 52.0833333333vw;
@@ -1413,7 +1413,6 @@ body {
   transition: opacity 0.9s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability.hidden {
-  z-index: -1;
   opacity: 0;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityDescription {
