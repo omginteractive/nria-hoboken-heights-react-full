@@ -49,6 +49,7 @@ class SlideAvailability extends Component {
     setActiveAvailabilityPlan(i){
         this.props.setActiveAvailabilityPlan(i)
         this.props.displayAvailabilityPlanModal()
+        $(".slideTemplate-availability").animate({ scrollTop: 0 }, "fast")//scroll up to top in case user scrolled down
     }
     render(){
         const availabilityPlanModalEnabled = this.props.availabilityPlanModalEnabled

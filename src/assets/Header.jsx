@@ -2,6 +2,7 @@ import { Component } from 'react';
 import {connect} from 'react-redux'
 import { toggleMenuState } from "./../redux/actions/menuActions";
 import { hideAvailabilityPlanModal } from "./../redux/actions/slideActions";
+import $ from 'jquery'
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -37,6 +38,7 @@ class Header extends Component {
     }
     hideAvailabilityPlanModal(){
         this.props.hideAvailabilityPlanModal()
+        $(".slideTemplate-availability").animate({ scrollTop: 0 }, "fast")//scroll up to top in case user scrolled down
     }
     render(){
         const defaultTheme = 'dark'
