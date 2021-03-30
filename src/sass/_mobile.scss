@@ -1248,6 +1248,27 @@ body {
                         margin-left: 0;
                     }
                 }
+                &availability {
+                    .availability {
+                        .availabilityApartmentContainer {
+                            .apartment__floorPlanImage {
+                                width: 100%;
+                                height: auto;
+                            }
+                        }
+                        .availabilityDropdownWrapper {
+                            display: flex;
+                            justify-content: space-between;
+                            .availabilityDropdownElement {
+                                width: 48%;
+                                margin-right: 0;
+                                .availabilityDropdown {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
             }
             &.backgroundFrame {
                 background-size: cover;
