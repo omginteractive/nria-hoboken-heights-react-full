@@ -3615,6 +3615,17 @@ body {
     width: 100%;
     height: auto;
   }
+  .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__title {
+    font-size: 2.5925925926vw;
+    height: 6.4814814815vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__floorPlan .magnifyingGlassWrapper {
+    width: 6.4814814815vw;
+    height: 6.4814814815vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__floorPlan .magnifyingGlassWrapper .magnifyingGlass {
+    height: 2.7777777778vw;
+  }
   .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityDropdownWrapper {
     display: flex;
     justify-content: space-between;

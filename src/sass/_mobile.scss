@@ -1256,6 +1256,20 @@ body {
                                 width: 100%;
                                 height: auto;
                             }
+                            .apartment__title {
+                                font-size: calc_vw(28);
+                                height: calc_vw(70);
+                            }
+                            .apartment__floorPlan {
+                                .magnifyingGlassWrapper {
+                                    width: calc_vw(70);
+                                    height: calc_vw(70);
+                                    .magnifyingGlass {
+                                        height: calc_vw(30);
+
+                                    }
+                                }
+                            }
                         }
                         .availabilityDropdownWrapper {
                             display: flex;
