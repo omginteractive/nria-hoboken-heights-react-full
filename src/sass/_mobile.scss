@@ -81,7 +81,7 @@ p {
 //All these elements need 100vh, but when there is a bottom browser bar, this height may be miscalculated causing
 //some elements to appear behind the browser bar. innerHeightVh calculates the vh based on window.innerHeight
 //which should make it possible to take into consideration the browser bar because 100vh does not compensate for that
-.slides_wrapper .slides_inner .slide,
+// .slides_wrapper .slides_inner .slide,
 .mobile-menu {
     height: innerHeightVh(100);
 }

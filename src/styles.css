@@ -2690,8 +2690,7 @@ body {
     margin-top: 5.5555555556vw;
   }
 
-  .slides_wrapper .slides_inner .slide,
-.mobile-menu {
+  .mobile-menu {
     height: calc(var(--vh, 1vh) * 100);
   }
 
