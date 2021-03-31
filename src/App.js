@@ -698,7 +698,7 @@ class App extends React.Component {
         )
 
         const isFirstOrSecondSlide = this.props.currSlideIdx === 0 || this.props.currSlideIdx === 1
-        const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + ((this.props.currSlideIdx-1) * this.state.visibleSlideHeight) + ')'}
+        const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + ((this.props.currSlideIdx-1) * this.state.visibleSlideHeight) + 'vh)'}
             
         let slides_inner_classes = "slides_inner slide_idx_"+this.props.currSlideIdx;
         let pageClasses = this.props.formSubmitted ? 'formSubmitted' : '';
