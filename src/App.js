@@ -182,15 +182,19 @@ class App extends React.Component {
     handleResize(){
         this.calculateMapAspectLockRatio()
         const isMobileState = window.innerWidth < 769
-        // this.setState({ isMobileDeviceState: isMobile });
         const previousState = this.props.isMobileDevice
         if(previousState !== isMobileState) this.props.changeIsMobileDevice(isMobileState)
 
-        const innerHeight = window.innerHeight
+        const innerHeight = window.innerHeight//if there are issues with this, may need to use document.documentElement.clientHeight || 0, window.innerHeight || 0)
         const outerHeight = window.outerHeight
         document.documentElement.style.setProperty('--vh', `${innerHeight/100}px`)
-        const visibleSlideHeight = isMobileState ? (document.documentElement.clientHeight || window.innerHeight) + 'px' : '100vh'//default to 100 if not mobile
+        const homeSlide = document.querySelector('.slideTemplate-home')
+        const homeSlideExists = homeSlide !== null
+        const hundredVhInPx = homeSlideExists ? homeSlide.clientHeight : window.innerHeight
+        const mobileVhCalculation = innerHeight/hundredVhInPx * 100
+        const visibleSlideHeight = isMobileState ? mobileVhCalculation : '100'//default to 100vh if not mobile
         this.setState({ visibleSlideHeight: visibleSlideHeight });
+        
     }
     calculateMapAspectLockRatio(){
         const maximumLockRatio = 2
@@ -694,7 +698,7 @@ class App extends React.Component {
         )
 
         const isFirstOrSecondSlide = this.props.currSlideIdx === 0 || this.props.currSlideIdx === 1
-        const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + ((this.props.currSlideIdx-1) * 100) + 'vh)'}
+        const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + ((this.props.currSlideIdx-1) * this.state.visibleSlideHeight) + ')'}
             
         let slides_inner_classes = "slides_inner slide_idx_"+this.props.currSlideIdx;
         let pageClasses = this.props.formSubmitted ? 'formSubmitted' : '';
