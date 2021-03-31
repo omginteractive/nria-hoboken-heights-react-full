@@ -193,7 +193,7 @@ class App extends React.Component {
         const hundredVhInPx = homeSlideExists ? homeSlide.clientHeight : window.innerHeight
         const mobileVhCalculation = innerHeight/hundredVhInPx * 100
         const visibleSlideHeight = isMobileState ? mobileVhCalculation : '100'//default to 100vh if not mobile
-        console.log(visibleSlideHeight)
+        console.log(mobileVhCalculation, visibleSlideHeight,innerHeight, hundredVhInPx, homeSlideExists, homeSlide.clientHeight, window.innerHeight)
         this.setState({ visibleSlideHeight: visibleSlideHeight });
         
     }
