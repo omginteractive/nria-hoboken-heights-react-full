@@ -2888,34 +2888,6 @@ body {
   #page.iPhone {
     position: fixed;
   }
-  #page.android.chrome .downArrowContainer, #page.iPhone .downArrowContainer, #page.firefoxAndroid .downArrowContainer {
-    bottom: 130px;
-  }
-  #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities .amenities__list > ul, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities .amenities__list > ul, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities .amenities__list > ul {
-    padding-bottom: 140px;
-  }
-  #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container {
-    bottom: 70px;
-  }
-  #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__more_info__dots {
-    bottom: calc(7.6851851852vw + 70px);
-  }
-  #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__dots, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__dots, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__dots {
-    bottom: 140px;
-  }
-  #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity .left, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity .left, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity .left {
-    padding-bottom: 100px;
-  }
-  #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle {
-    height: 160px;
-    align-items: flex-start;
-  }
-  #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactPageWrapper .mobilePrivacyPolicy, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactPageWrapper .mobilePrivacyPolicy, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactPageWrapper .mobilePrivacyPolicy {
-    padding-bottom: 140px;
-  }
-  #page.android.chrome .slides_wrapper .slides_inner .slide .centerBottom, #page.iPhone .slides_wrapper .slides_inner .slide .centerBottom, #page.firefoxAndroid .slides_wrapper .slides_inner .slide .centerBottom {
-    bottom: 20vh;
-  }
   .formSubmitted .submittedFormOverlay.mobile-only {
     position: fixed;
   }
