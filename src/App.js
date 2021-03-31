@@ -36,7 +36,7 @@ class App extends React.Component {
         // mobileMenuOpen: false,
         amenityGallerySlideIdx: 0, //default to first amenity for details page
         mapHeightLocked: null,
-        innerOuterHeightPercent: 100,//used for calculating percent difference between innerHeight and outerHeight on mobile browsers with bottom browser bars
+        visibleSlideHeight: '100vh',//used for calculating percent difference between innerHeight and outerHeight on mobile browsers with bottom browser bars
     }
 
         this.watchForEventEnd = this.watchForEventEnd.bind(this);
@@ -189,8 +189,8 @@ class App extends React.Component {
         const innerHeight = window.innerHeight
         const outerHeight = window.outerHeight
         document.documentElement.style.setProperty('--vh', `${innerHeight/100}px`)
-        const innerOuterHeightPercent = isMobileState ? innerHeight/outerHeight * 100 : 100//default to 100 if not mobile
-        this.setState({ innerOuterHeightPercent: innerOuterHeightPercent });
+        const visibleSlideHeight = isMobileState ? (document.documentElement.clientHeight || window.innerHeight) + 'px' : '100vh'//default to 100 if not mobile
+        this.setState({ visibleSlideHeight: visibleSlideHeight });
     }
     calculateMapAspectLockRatio(){
         const maximumLockRatio = 2
@@ -694,7 +694,7 @@ class App extends React.Component {
         )
 
         const isFirstOrSecondSlide = this.props.currSlideIdx === 0 || this.props.currSlideIdx === 1
-        const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + ((this.props.currSlideIdx-1) * this.state.innerOuterHeightPercent) + 'vh)'}
+        const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + ((this.props.currSlideIdx-1) * this.state.visibleSlideHeight) + ')'}
             
         let slides_inner_classes = "slides_inner slide_idx_"+this.props.currSlideIdx;
         let pageClasses = this.props.formSubmitted ? 'formSubmitted' : '';
