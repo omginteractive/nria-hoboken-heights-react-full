@@ -2930,6 +2930,7 @@ body {
     bottom: 7.2222222222vw;
   }
   .slide .centerBottom > h1 {
+    font-size: 3.2407407407vw;
     top: 0;
   }
 
@@ -3111,7 +3112,6 @@ body {
     opacity: 0;
     top: 15px;
     transition: opacity 0.5s, top 0s linear 1400ms;
-    font-size: 3.2407407407vw;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .videoContainer {
     display: none;

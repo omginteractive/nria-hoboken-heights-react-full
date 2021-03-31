@@ -452,6 +452,7 @@ body {
     z-index: 3;
     bottom: calc_vw(78);
     > h1 {
+        font-size: calc_vw(35);
         // opacity: 0;
         top: 0;
         // transition: opacity 0.5s;
@@ -683,7 +684,6 @@ body {
                             opacity: 0;
                             top: 15px;
                             transition: opacity 0.5s, top 0s linear $slideAnimationDuration;
-                            font-size: calc_vw(35);
                         }
                     }
                 }
