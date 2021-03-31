@@ -2690,7 +2690,8 @@ body {
     margin-top: 5.5555555556vw;
   }
 
-  .mobile-menu {
+  .slides_wrapper .slides_inner .slide,
+.mobile-menu {
     height: calc(var(--vh, 1vh) * 100);
   }
 
@@ -2908,9 +2909,6 @@ body {
   #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle {
     height: 160px;
     align-items: flex-start;
-  }
-  #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderImage, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderImage, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderImage {
-    bottom: 100px;
   }
   #page.android.chrome .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactPageWrapper .mobilePrivacyPolicy, #page.iPhone .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactPageWrapper .mobilePrivacyPolicy, #page.firefoxAndroid .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactPageWrapper .mobilePrivacyPolicy {
     padding-bottom: 140px;
