@@ -58,6 +58,10 @@ class Header extends Component {
         inquiryLinkClasses += !availabilityModalEnabled || this.props.mobileMenuHeader ? ' enabled' : ' hidden'
         let availabilityCloseButtonClasses = 'closeBtn availabilityCloseBtn'
         availabilityCloseButtonClasses += availabilityModalEnabled && !this.props.mobileMenuHeader ? ' enabled' : ' hidden'
+        let mobileContactButtonClasses = 'mobile-only contact'
+        mobileContactButtonClasses += !availabilityModalEnabled && !this.props.mobileMenuHeader ? ' enabled' : ' hidden'
+        const mobileContactButtonClassesLight = mobileContactButtonClasses + ' light'
+        const mobileContactButtonClassesDark = mobileContactButtonClasses + ' dark'
         return (
             <header className={fixedHeaderClasses}>
                 {this.props.menuOpen && 
@@ -78,8 +82,8 @@ class Header extends Component {
                     </div>
 
                 </div>
-                <div onClick={this.slideToContact.bind(this)} className="mobile-only contact light"><img src={require('./images/mobile_mail.svg').default} alt="" /></div>
-                <div onClick={this.slideToContact.bind(this)} className="mobile-only contact dark"><img src={require('./images/mobile_mail_black.svg').default} alt="" /></div>
+                <div onClick={this.slideToContact.bind(this)} className={mobileContactButtonClassesLight}><img src={require('./images/mobile_mail.svg').default} alt="" /></div>
+                <div onClick={this.slideToContact.bind(this)} className={mobileContactButtonClassesDark}><img src={require('./images/mobile_mail_black.svg').default} alt="" /></div>
                 <img className={availabilityCloseButtonClasses} onClick={this.hideAvailabilityPlanModal.bind(this)} src={require('./images/availability_menu_x.svg').default} alt="" />
                 <div onClick={this.slideToContact.bind(this)} className={inquiryLinkClasses}>INQUIRE NOW</div>
             </header>

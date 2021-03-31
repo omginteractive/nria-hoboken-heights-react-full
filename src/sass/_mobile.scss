@@ -223,6 +223,10 @@ p {
     .closeBtn {
         left: 0;
         position: absolute;
+        &.availabilityCloseBtn {
+            left: auto;
+            margin-right: 0;
+        }
     }
     .inquiry-link {
         display: none;
@@ -260,6 +264,9 @@ p {
         right: 0;
         transition: opacity $slideAnimationDuration;
         opacity: 1;
+        &.hidden {
+            opacity: 0;
+        }
         > img {
             width: calc_vw(50);
         }

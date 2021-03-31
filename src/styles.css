@@ -2815,6 +2815,10 @@ body {
     left: 0;
     position: absolute;
   }
+  .fixed-header .closeBtn.availabilityCloseBtn {
+    left: auto;
+    margin-right: 0;
+  }
   .fixed-header .inquiry-link {
     display: none;
   }
@@ -2845,6 +2849,9 @@ body {
     right: 0;
     transition: opacity 1400ms;
     opacity: 1;
+  }
+  .fixed-header .contact.hidden {
+    opacity: 0;
   }
   .fixed-header .contact > img {
     width: 4.6296296296vw;
