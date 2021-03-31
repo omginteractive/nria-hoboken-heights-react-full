@@ -2690,7 +2690,8 @@ body {
     margin-top: 5.5555555556vw;
   }
 
-  .slides_wrapper .slides_inner .slide,
+  .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities .amenities__list,
+.slides_wrapper .slides_inner .slide,
 .mobile-menu {
     height: calc(var(--vh, 1vh) * 100);
   }
@@ -3176,7 +3177,6 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities .amenities__list {
     padding: 13.7037037037vw;
-    height: 100vh;
     width: 100vw;
     flex-basis: 100%;
     font-size: 3.4722222222vw;
@@ -3228,7 +3228,7 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section {
     display: block;
     top: 19.4444444444vw;
-    height: calc(100vh - 19.4444444444vw);
+    height: calc(calc(var(--vh, 1vh) * 100) - 19.4444444444vw);
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__top {
     height: auto;
@@ -3352,10 +3352,10 @@ body {
     margin: 5.5555555556vw 0;
     font-size: 2.7777777778vw;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list_heading_wrapper > ul {
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list_wrapper > ul {
     margin-left: 0;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list_heading_wrapper > ul > li {
+  .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__features_list_wrapper > ul > li {
     font-size: 2.7777777778vw;
     line-height: 5.8333333333vw;
   }

@@ -81,7 +81,8 @@ p {
 //All these elements need 100vh, but when there is a bottom browser bar, this height may be miscalculated causing
 //some elements to appear behind the browser bar. innerHeightVh calculates the vh based on window.innerHeight
 //which should make it possible to take into consideration the browser bar because 100vh does not compensate for that
-// .slides_wrapper .slides_inner .slide.slideTemplate-home,
+// .slides_wrapper .slides_inner .slide.slideTemplate-home,//we are leaving home for now since it is being used within handleResize to calculate the 100vh size
+.slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities .amenities__list,
 .slides_wrapper .slides_inner .slide,
 .mobile-menu {
     height: innerHeightVh(100);
@@ -759,7 +760,7 @@ body {
                         }
                         .amenities__list  {
                             padding: calc_vw(148);
-                            height: 100vh;
+                            // height: 100vh;
                             width: 100vw;
                             flex-basis: 100%;
                             font-size: calc_vw(37.5);
@@ -846,7 +847,7 @@ body {
                         // $timeListWidth
                         display: block;
                         top: $header-space-for-content;
-                        height: calc(100vh - #{$header-space-for-content});
+                        height: calc(#{innerHeightVh(100)} - #{$header-space-for-content});
                         &__top {
                             height: auto;
                             padding-left: $content-padding;
@@ -988,6 +989,8 @@ body {
                                 margin: calc_vw(60) 0;
                                 font-size: calc_vw(30);
                             }
+                        }
+                        &__features_list_wrapper {
                             > ul {
                                 margin-left: 0;
                                 > li {
