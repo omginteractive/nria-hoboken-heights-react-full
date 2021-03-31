@@ -184,6 +184,7 @@ class App extends React.Component {
         // this.setState({ isMobileDeviceState: isMobile });
         const previousState = this.props.isMobileDevice
         if(previousState !== isMobileState) this.props.changeIsMobileDevice(isMobileState)
+        document.documentElement.style.setProperty('--vh', `${window.innerHeight/100}px`);
     }
     calculateMapAspectLockRatio(){
         const maximumLockRatio = 2

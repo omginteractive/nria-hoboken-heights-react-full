@@ -1,3 +1,9 @@
+/*
+innerHeightVh
+*/
+@function innerHeightVh($quantity) {
+    @return calc(var(--vh, 1vh) * #{$quantity});
+}
 
 @function calc_vh($px) {
     $base_height: 1920;
@@ -72,6 +78,12 @@ p {
     }
 }
 
+//All these elements need 100vh, but when there is a bottom browser bar, this height may be miscalculated causing
+//some elements to appear behind the browser bar. innerHeightVh calculates the vh based on window.innerHeight
+//which should make it possible to take into consideration the browser bar because 100vh does not compensate for that
+.mobile-menu {
+    height: innerHeightVh(100);
+}
 .downArrowContainer {
     bottom: 100px;
 }

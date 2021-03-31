@@ -2626,6 +2626,9 @@ body {
   }
 }
 @media screen and (max-width: 768px), screen and (max-height: 415px) and (orientation: landscape) {
+  /*
+  innerHeightVh
+  */
   .noSelect, .mobileMenuLinks .linksWrapper .link,
 .closeBtn,
 .hamburger,
@@ -2685,6 +2688,10 @@ body {
   }
   p + p {
     margin-top: 5.5555555556vw;
+  }
+
+  .mobile-menu {
+    height: calc(var(--vh, 1vh) * 100);
   }
 
   .downArrowContainer {
