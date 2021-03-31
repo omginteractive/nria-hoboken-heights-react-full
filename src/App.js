@@ -117,6 +117,7 @@ class App extends React.Component {
             //   slides: result
             // }, ()=> this.createResponsiveIndices());
             this.props.updateSlideData(result, this.createResponsiveIndices(result))
+            this.handleResize()
         })
         const hubspotscript = document.createElement("script");
         hubspotscript.src = "https://js.hsforms.net/forms/v2.js";
@@ -160,7 +161,6 @@ class App extends React.Component {
 			window.addEventListener('resize', () => this.handleResizeOnAndroid())
         }
         window.addEventListener('resize', () => this.handleResize())
-        this.handleResize()
 	}
     shouldComponentUpdate(nextProps, nextState){
         const curridx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
@@ -189,11 +189,10 @@ class App extends React.Component {
         const outerHeight = window.outerHeight
         document.documentElement.style.setProperty('--vh', `${innerHeight/100}px`)
         const homeSlide = document.querySelector('.slideTemplate-home')
-        const homeSlideExists = homeSlide !== null
-        const hundredVhInPx = homeSlideExists ? homeSlide.clientHeight : window.innerHeight
+        const hundredVhInPx = homeSlide.clientHeight
         const mobileVhCalculation = innerHeight/hundredVhInPx * 100
         const visibleSlideHeight = isMobileState ? mobileVhCalculation : '100'//default to 100vh if not mobile
-        console.log(mobileVhCalculation, visibleSlideHeight,innerHeight, hundredVhInPx, homeSlideExists, homeSlide.clientHeight, window.innerHeight)
+        console.log(mobileVhCalculation, visibleSlideHeight,innerHeight, hundredVhInPx, homeSlide.clientHeight, window.innerHeight)
         this.setState({ visibleSlideHeight: visibleSlideHeight });
         
     }
