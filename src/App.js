@@ -35,7 +35,8 @@ class App extends React.Component {
         slides: null,
         // mobileMenuOpen: false,
         amenityGallerySlideIdx: 0, //default to first amenity for details page
-        mapHeightLocked: null
+        mapHeightLocked: null,
+        innerOuterHeightPercent: 100,//used for calculating percent difference between innerHeight and outerHeight on mobile browsers with bottom browser bars
     }
 
         this.watchForEventEnd = this.watchForEventEnd.bind(this);
@@ -184,7 +185,12 @@ class App extends React.Component {
         // this.setState({ isMobileDeviceState: isMobile });
         const previousState = this.props.isMobileDevice
         if(previousState !== isMobileState) this.props.changeIsMobileDevice(isMobileState)
-        document.documentElement.style.setProperty('--vh', `${window.innerHeight/100}px`);
+
+        const innerHeight = window.innerHeight
+        const outerHeight = window.outerHeight
+        document.documentElement.style.setProperty('--vh', `${innerHeight/100}px`)
+        const innerOuterHeightPercent = isMobileState ? innerHeight/outerHeight * 100 : 100//default to 100 if not mobile
+        this.setState({ innerOuterHeightPercent: innerOuterHeightPercent });
     }
     calculateMapAspectLockRatio(){
         const maximumLockRatio = 2
@@ -195,7 +201,7 @@ class App extends React.Component {
         // console.log(mapWidth/mapHeight)
         const mapHeightLocked = mapWidth/mapHeight < maximumLockRatio || this.props.isMobileDevice
         
-        this.setState({ mapHeightLocked: mapHeightLocked });
+        this.setState({ mapHeightLocked: mapHeightLocked })
     }
 	/*
 	 * handleResizeOnAndroid() is used due to android soft keyboards changing the 
@@ -688,7 +694,7 @@ class App extends React.Component {
         )
 
         const isFirstOrSecondSlide = this.props.currSlideIdx === 0 || this.props.currSlideIdx === 1
-        const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + ((this.props.currSlideIdx-1) * 100) + 'vh)'}
+        const innerStyle = isFirstOrSecondSlide ? {transform: 'translateY(0vh)'} : {transform: 'translateY(-' + ((this.props.currSlideIdx-1) * this.state.innerOuterHeightPercent) + 'vh)'}
             
         let slides_inner_classes = "slides_inner slide_idx_"+this.props.currSlideIdx;
         let pageClasses = this.props.formSubmitted ? 'formSubmitted' : '';
