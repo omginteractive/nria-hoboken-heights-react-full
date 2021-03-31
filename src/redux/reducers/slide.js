@@ -1,4 +1,4 @@
-import { DISPLAY_AVAILABILITY_PLAN_MODAL, HIDE_AVAILABILITY_PLAN_MODAL, SET_ACTIVE_AVAILABILITY_PLAN, CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS, UPDATE_TRANSITIONING_STATE, UPDATE_TOUCH_STATE, UPDATE_SLIDES_VIEWED } from "../actions/types"
+import { SET_RESIDENCE_PENTHOUSE_PATH, DISPLAY_AVAILABILITY_PLAN_MODAL, HIDE_AVAILABILITY_PLAN_MODAL, SET_ACTIVE_AVAILABILITY_PLAN, CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS, UPDATE_TRANSITIONING_STATE, UPDATE_TOUCH_STATE, UPDATE_SLIDES_VIEWED } from "../actions/types"
 
 const initialState = {
     currSlideIdx: 0,
@@ -9,7 +9,8 @@ const initialState = {
     slideTouchState: 0,//0 for end, 1 for start, 2 for move
     slidesViewed: [0],
     activeAvailabilityPlan: 0,
-    availabilityPlanModalEnabled: false
+    availabilityPlanModalEnabled: false,
+    residencePenthousePath: 'penthouse'//Setting this will determine if the residencePenthouse slides are showing residence or penthouse data
 }
   
 export default function slideReducer(state = initialState, action) {
@@ -34,6 +35,8 @@ export default function slideReducer(state = initialState, action) {
             return {...state, availabilityPlanModalEnabled: true}
         case HIDE_AVAILABILITY_PLAN_MODAL:
             return {...state, availabilityPlanModalEnabled: false}
+        case SET_RESIDENCE_PENTHOUSE_PATH:
+            return {...state, residencePenthousePath: action.payload}
         default:
             return state
     }

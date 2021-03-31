@@ -35,10 +35,6 @@ class App extends React.Component {
         slides: null,
         // mobileMenuOpen: false,
         amenityGallerySlideIdx: 0, //default to first amenity for details page
-        residencePenthouse: 'penthouse',//default option
-        // isMobileDevice: null,
-        // desktopKeys: [],
-        // mobileKeys: [],
         mapHeightLocked: null
     }
 
@@ -647,11 +643,6 @@ class App extends React.Component {
 			amenityGallerySlideIdx: idx
 		 });
     }
-    setResidencePenthouse(option){
-        this.setState({
-            residencePenthouse: option
-        })
-    }
     getFinalIdxOfDevice(){
         let finalIdxOfDevice
         if(this.props.isMobileDevice){
@@ -689,8 +680,6 @@ class App extends React.Component {
                 // obj={slide}
                 isCurrent={idx === deviceSlideIdx}
                 setamenityGallerySlideIdx={this.setAmenityOnGallerySlide.bind(this)}
-                setResidencePenthousePath={this.setResidencePenthouse.bind(this)}
-                residencePenthousePath={this.state.residencePenthouse}
                 amenityGallerySlideIdx={this.state.amenityGallerySlideIdx}
                 mapHeightLocked={this.state.mapHeightLocked}
                 goToContactSlide={this.goToContactSlide.bind(this)}
