@@ -1222,7 +1222,7 @@ body {
                         width: 100vw;
                         top: 0;
                         left: 0;
-                        height: 100vh;
+                        height: innerHeightVh(100);
                         &.heightLocked {
                             .mapMotionLogo {
                                 top: 341px;
