@@ -98,8 +98,8 @@ console.log(apartment_result)
             }
         },
         headerThemeMobile: 'lightMobile',
-        exteriorTurnOnText: "SOUND ON",
-        exteriorTurnOffText: "SOUND OFF",
+        filmSoundTurnOnText: "SOUND ON",
+        filmSoundTurnOffText: "SOUND OFF",
         background_video_film: acf_result.background_video_film,
         swipe_arrow_left_1: acf_result.swipe_arrow_left_1.url,
         swipe_arrow_right_1: acf_result.swipe_arrow_right_1.url,

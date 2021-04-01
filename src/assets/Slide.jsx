@@ -624,9 +624,8 @@ class SlideFilm extends Component {
         videoContainerClasses += ' compact'
         const videoContainerClassesSoundOff = this.state.soundOn ? videoContainerClasses + ' soundOn' : videoContainerClasses + ' soundOff'
         let videoClasses = 'background-video'
-        let soundButtonText = this.state.soundOn ? this.props.configuration.exteriorTurnOffText : this.props.configuration.exteriorTurnOnText
+        let soundButtonText = this.state.soundOn ? this.props.configuration.filmSoundTurnOffText : this.props.configuration.filmSoundTurnOnText
         if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffectRepeat startZoomedIn'
-
         const right_arrow_styles = {
             backgroundImage: 'url('+this.props.configuration.swipe_arrow_right_1+')'
         }
@@ -663,7 +662,7 @@ class SlideFilm extends Component {
 							playsinline='playsinline'
 							preload="metadata"
 							>
-							<source src='/videos/NRIMA_Film.mp4' type="video/mp4" />
+							<source src="${this.props.configuration.background_video_film}" type="video/mp4" />
 							</video>`
 						}}
 					/>
