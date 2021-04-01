@@ -53,6 +53,8 @@ class Header extends Component {
         const availabilityModalEnabled = this.props.availabilityPlanModalEnabled
         let fixedHeaderClasses = 'fixed-header '
         fixedHeaderClasses += this.props.mobileMenuHeader ? 'light' : desktopTheme + ' ' + themeMobile
+        fixedHeaderClasses += this.props.formSubmitted ? ' hiddenMobile' : ''
+
         // let fixedHeaderClasses = 'fixed-header ' + desktopTheme + ' ' + themeMobile
         let inquiryLinkClasses = 'inquiry-link'
         inquiryLinkClasses += !availabilityModalEnabled || this.props.mobileMenuHeader ? ' enabled' : ' hidden'
@@ -94,12 +96,13 @@ class Header extends Component {
 const mapStateToProps = state => {
     const availabilityPlanModalEnabled = state.slideData.availabilityPlanModalEnabled
     const isMobileDevice = state.appData.isMobileDevice
+    const formSubmitted = state.appData.formSubmitted
     const menuOpen = state.menuData.menuOpen
     const currSlideIdx = state.slideData.currSlideIdx
     const slideData = state.slideData.slides
     const desktopKeys = state.slideData.desktopKeys
     const mobileKeys = state.slideData.mobileKeys
-    return { availabilityPlanModalEnabled, isMobileDevice, menuOpen, currSlideIdx, slideData, mobileKeys, desktopKeys}
+    return { formSubmitted, availabilityPlanModalEnabled, isMobileDevice, menuOpen, currSlideIdx, slideData, mobileKeys, desktopKeys}
   }
   export default connect(
     mapStateToProps,

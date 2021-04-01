@@ -157,7 +157,10 @@ p {
     left: $header-padding;
     width: calc(100vw - #{$header-padding}*2);
     justify-content: center;
-
+    &.hiddenMobile {
+        opacity: 0;
+        pointer-events: none;
+    }
     &.dark,
     &.light-inquiry {
         .contact.light {
@@ -406,6 +409,9 @@ body {
 .formSubmitted {
     .submittedFormOverlay.mobile-only {
         position: fixed;
+    }
+    .fixed-headers .fixed-header-inner .fixed-header-wrapper {
+        display: none;
     }
 }
 .slide_idx_0 {

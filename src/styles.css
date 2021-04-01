@@ -2763,6 +2763,10 @@ body {
     width: calc(100vw - 4.9962962963vw*2);
     justify-content: center;
   }
+  .fixed-header.hiddenMobile {
+    opacity: 0;
+    pointer-events: none;
+  }
   .fixed-header.dark .contact.light, .fixed-header.light-inquiry .contact.light {
     opacity: 0;
   }
@@ -2898,6 +2902,9 @@ body {
   }
   .formSubmitted .submittedFormOverlay.mobile-only {
     position: fixed;
+  }
+  .formSubmitted .fixed-headers .fixed-header-inner .fixed-header-wrapper {
+    display: none;
   }
 
   .slide_idx_0 + .musicplayer_container + .mobileMenu .hamburger {
