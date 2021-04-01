@@ -1,6 +1,5 @@
 import {Component} from 'react';
 import React from 'react';
-import leftArrowBlack from '../assets/images/leftArrowBlack.svg';
 import $ from 'jquery'
 import {connect} from 'react-redux'
 // import _ from "lodash";
@@ -620,8 +619,9 @@ class SlideFilm extends Component {
         })
     }
     render(){
-        let videoContainerClasses = 'videoContainer'
-        videoContainerClasses += ' compact'
+        let videoContainerClasses = 'videoContainer compactFullWidth'
+        videoContainerClasses += this.state.soundOn ? ' expanded' : ''
+
         const videoContainerClassesSoundOff = this.state.soundOn ? videoContainerClasses + ' soundOn' : videoContainerClasses + ' soundOff'
         let videoClasses = 'background-video'
         let soundButtonText = this.state.soundOn ? this.props.configuration.filmSoundTurnOffText : this.props.configuration.filmSoundTurnOnText
