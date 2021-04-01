@@ -663,7 +663,7 @@ class SlideFilm extends Component {
 							playsinline='playsinline'
 							preload="metadata"
 							>
-							<source src="${this.props.configuration.background_video_film}" type="video/mp4" />
+							<source src='/videos/NRIMA_Film.mp4' type="video/mp4" />
 							</video>`
 						}}
 					/>
