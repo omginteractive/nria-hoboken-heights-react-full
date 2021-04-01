@@ -161,11 +161,14 @@ class Slide extends Component {
 
 		return(
             <div className={slideClasses} style={slideStyles} onScroll={this.handleTheScroll}>
-                {slideObj.slideTemplate === 'home' && 
+                {slideObj.slideTemplate === 'home' &&
                     <SlideHome methods={slideMethods} configuration={slideObj} />
                 }
-                {slideObj.slideTemplate === 'exteriorLightToggle' && 
+                {slideObj.slideTemplate === 'exteriorLightToggle' &&
                     <SlideExteriorLightToggle slideHorizontal={this.slideHorizontal.bind(this)} mobileArrows={mobileArrows} methods={slideMethods}  configuration={slideObj} />
+                }
+                {slideObj.slideTemplate === 'film' &&
+                    <SlideFilm slideHorizontal={this.slideHorizontal.bind(this)} mobileArrows={mobileArrows} methods={slideMethods}  configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'fountainPen' &&
                     <SlideFountainPen isCurrent={isCurrent} methods={slideMethods} configuration={slideObj} />
@@ -573,6 +576,94 @@ class SlideExteriorLightToggle extends Component {
 							preload="metadata"
 							>
 							<source src="${this.lightsOffVideo}" type="video/mp4" />
+							</video>`
+						}}
+					/>
+				}
+                {this.props.configuration.mobileHasDifferentContent &&
+					<div className={"centerBottom mobile-only"}>
+						<h1 style={this.props.configuration.mobileContent.centerBottom.lineStyles} className="line" >
+                            <div className='left_arrow_bouncing' style={left_arrow_styles} onClick={() => this.props.slideHorizontal('left')}/>
+							<div className='uppercase' dangerouslySetInnerHTML={{ __html: this.props.configuration.mobileContent.centerBottom.line1}} />
+                            <div className='right_arrow_bouncing' style={right_arrow_styles} onClick={() => this.props.slideHorizontal('right')}/>
+						</h1>
+					</div>
+				}
+            </>
+        )
+    }
+}
+class SlideFilm extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            soundOn: false,
+            video: null
+        }
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        const soundStateChanged = this.state.soundOn !== nextState.soundOn
+        return soundStateChanged
+    }
+    toggleSound(){
+        const currentSoundState = this.state.soundOn
+        const newSoundState = !this.state.soundOn
+
+        if(currentSoundState){
+            $(".slideTemplate-film .background-video").prop('muted', true)
+        }
+        else {
+            $(".slideTemplate-film .background-video").prop('muted', false)
+        }
+        this.setState({
+            soundOn: newSoundState
+        })
+    }
+    render(){
+        let videoContainerClasses = 'videoContainer'
+        videoContainerClasses += ' compact'
+        const videoContainerClassesSoundOff = this.state.soundOn ? videoContainerClasses + ' soundOn' : videoContainerClasses + ' soundOff'
+        let videoClasses = 'background-video'
+        let soundButtonText = this.state.soundOn ? this.props.configuration.exteriorTurnOffText : this.props.configuration.exteriorTurnOnText
+        if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffectRepeat startZoomedIn'
+
+        const right_arrow_styles = {
+            backgroundImage: 'url('+this.props.configuration.swipe_arrow_right_1+')'
+        }
+        const left_arrow_styles = {
+            backgroundImage: 'url('+this.props.configuration.swipe_arrow_left_1+')',
+            backgroundPosition: 'right'
+        }
+        return(
+            <>
+                <header className='fixed-header'>
+                    <div className="hamburger">
+                        <div className="line"></div>
+                        <div className="line"></div>
+                    </div>
+                    <div className="corner-logo-wrapper">
+                        <div className="text">HOBOKEN HEIGHTS<div className="separator"></div></div>
+                        <img alt="Hoboken Heights Logo" className="corner-logo" src={require('./images/logos/NIRMA_Logo_Symbol_Black.png').default} />
+                    </div>
+                    <div onClick={this.props.methods.goToContactSlide.bind(this)} className="inquiry-link">INQUIRE NOW</div>
+                </header>
+                <div onClick={this.toggleSound.bind(this)} className="toggleSound btn">{soundButtonText}</div>
+                {
+                        //Hide landingpage video on FFMobile because it will not autoplay
+                        //Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
+						<div
+						className={videoContainerClassesSoundOff}
+						dangerouslySetInnerHTML={{
+							__html: `
+							<video
+							class="${videoClasses}"
+							${this.props.configuration.videoLoop ? 'loop="true"' : ''}
+                            muted="muted"
+							autoplay='true'
+							playsinline='playsinline'
+							preload="metadata"
+							>
+							<source src='/videos/NRIMA_Film.mp4' type="video/mp4" />
 							</video>`
 						}}
 					/>

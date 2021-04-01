@@ -643,21 +643,28 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-home .downArrowContainer .downArrow {
   animation-delay: 2s, 3s;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle {
+.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle, .slides_wrapper .slides_inner .slide.slideTemplate-film {
   background: #fff;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights {
+.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights,
+.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleSound, .slides_wrapper .slides_inner .slide.slideTemplate-film .toggleLights,
+.slides_wrapper .slides_inner .slide.slideTemplate-film .toggleSound {
   position: absolute;
   top: calc(12.8vh + 80px);
   right: calc(6.3vw + 75px);
   z-index: 3;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights:hover,
-.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights .on {
+.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights .on,
+.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleSound:hover,
+.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleSound .on, .slides_wrapper .slides_inner .slide.slideTemplate-film .toggleLights:hover,
+.slides_wrapper .slides_inner .slide.slideTemplate-film .toggleLights .on,
+.slides_wrapper .slides_inner .slide.slideTemplate-film .toggleSound:hover,
+.slides_wrapper .slides_inner .slide.slideTemplate-film .toggleSound .on {
   background-color: #fff;
   color: #000;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .lightsMaskContainer {
+.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .lightsMaskContainer, .slides_wrapper .slides_inner .slide.slideTemplate-film .lightsMaskContainer {
   overflow: hidden;
   position: absolute;
   left: 6.3vw;
@@ -668,10 +675,10 @@ body {
   display: flex;
   align-items: center;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .lightsMaskContainer.off {
+.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .lightsMaskContainer.off, .slides_wrapper .slides_inner .slide.slideTemplate-film .lightsMaskContainer.off {
   opacity: 0;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .lightsMaskContainer .lightsMask {
+.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .lightsMaskContainer .lightsMask, .slides_wrapper .slides_inner .slide.slideTemplate-film .lightsMaskContainer .lightsMask {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -3078,7 +3085,7 @@ body {
     display: none;
     top: 1700vh;
   }
-  .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-exteriorLightToggle .centerBottom > h1 {
+  .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-film .centerBottom > h1, .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-exteriorLightToggle .centerBottom > h1 {
     opacity: 1;
     transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
     top: 0;
@@ -3098,31 +3105,33 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-home .animatedLogo {
     width: 47.037037037vw;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle {
+  .slides_wrapper .slides_inner .slide.slideTemplate-film, .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle {
     background-color: #000;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights {
+  .slides_wrapper .slides_inner .slide.slideTemplate-film .toggleLights,
+.slides_wrapper .slides_inner .slide.slideTemplate-film .toggleSound, .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights,
+.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleSound {
     display: none;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .lightsMaskContainer {
+  .slides_wrapper .slides_inner .slide.slideTemplate-film .lightsMaskContainer, .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .lightsMaskContainer {
     left: auto;
     width: auto;
     height: 100vh;
     justify-content: center;
     transition: transform 0.8s;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .lightsMaskContainer.off {
+  .slides_wrapper .slides_inner .slide.slideTemplate-film .lightsMaskContainer.off, .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .lightsMaskContainer.off {
     display: flex;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .lightsMaskContainer .lightsMask {
+  .slides_wrapper .slides_inner .slide.slideTemplate-film .lightsMaskContainer .lightsMask, .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .lightsMaskContainer .lightsMask {
     width: auto;
     height: 100vh;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .videoContainer {
+  .slides_wrapper .slides_inner .slide.slideTemplate-film .videoContainer, .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .videoContainer {
     width: auto;
     height: 100vh;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .centerBottom > h1 {
+  .slides_wrapper .slides_inner .slide.slideTemplate-film .centerBottom > h1, .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .centerBottom > h1 {
     opacity: 0;
     top: 15px;
     transition: opacity 0.5s, top 0s linear 1400ms;

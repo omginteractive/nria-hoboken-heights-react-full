@@ -77,6 +77,34 @@ console.log(apartment_result)
         swipe_arrow_left_1: acf_result.swipe_arrow_left_1.url,
         swipe_arrow_right_1: acf_result.swipe_arrow_right_1.url,
     }, {
+        slideTemplate: 'film',
+        slideClasses: "fullWidthVideo",
+        // video: './NIRMA_1_Exterior_High_Cinemagraphic.mp4',
+        videoLoop: true,
+        videoZoomEffect: true,
+        videoMobileStartPosition: 'center',
+        mobileHorizontalVideoSlideEnabled: true,
+        mobileHasDifferentContent: true,
+        mobileContent: {
+            centerBottom: {
+                line1: acf_result.swipe_text_mobile_1,
+                line1RightArrowBouncing: true,
+                line1LeftArrowBouncing: true,
+                lineStyles: {
+                    display: 'flex',
+                    alignItems: 'center',
+                    color: '#fff'
+                },
+            }
+        },
+        headerThemeMobile: 'lightMobile',
+        exteriorTurnOnText: "SOUND ON",
+        exteriorTurnOffText: "SOUND OFF",
+        background_video_no_light: acf_result.background_video_no_light,
+        background_image_light: acf_result.background_image_light.url,
+        swipe_arrow_left_1: acf_result.swipe_arrow_left_1.url,
+        swipe_arrow_right_1: acf_result.swipe_arrow_right_1.url,
+    },{
         slideTemplate: 'fountainPen',
         styles: {
             background: "#fff",

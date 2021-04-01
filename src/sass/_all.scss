@@ -569,9 +569,11 @@ body {
                         animation-delay: 2s, 3s;
                     }
                 }
-                &exteriorLightToggle {
+                &exteriorLightToggle,
+                &film {
                     background: #fff;
-                    .toggleLights {
+                    .toggleLights,
+                    .toggleSound {
                         position: absolute;
                         top: calc(#{$header-height} + 80px);
                         right: calc(#{$side-margin} + 75px);

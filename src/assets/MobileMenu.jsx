@@ -40,13 +40,13 @@ class MobileMenu extends Component {
         mobileMenuClasses += this.props.menuOpen ? ' open' : ' closed'
         mobileMenuClasses += this.props.menuIsTransitioning ? ' closing' : ''
         
-        const propertyLink = isMobile ? 2 : 2
-        const amenitiesLink = isMobile ? 4 : 4
-        const viewLink = isMobile ? 6 : 6
-        const residencePenthouseLink = isMobile ? 7 : 7
-        const availabilityLink = isMobile ? 11 : 10
-        const developmentTeamLink = isMobile ? 12 : 11
-        const discoverLink = isMobile ? 16 : 14
+        const propertyLink = isMobile ? 3 : 3
+        const amenitiesLink = isMobile ? 5 : 5
+        const viewLink = isMobile ? 7 : 7
+        const residencePenthouseLink = isMobile ? 8 : 8
+        const availabilityLink = isMobile ? 12 : 11
+        const developmentTeamLink = isMobile ? 13 : 12
+        const discoverLink = isMobile ? 17 : 15
         const contactFormSlideIdx = this.props.contactFormSlideIdx
 		return(
             <div className={mobileMenuClasses} onTransitionEnd={this.handleMenuTransitionEnd.bind(this)}>

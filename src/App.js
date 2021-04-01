@@ -192,9 +192,7 @@ class App extends React.Component {
         const hundredVhInPx = homeSlide.clientHeight
         const mobileVhCalculation = innerHeight/hundredVhInPx * 100
         const visibleSlideHeight = isMobileState ? mobileVhCalculation : '100'//default to 100vh if not mobile
-        console.log(mobileVhCalculation, visibleSlideHeight,innerHeight, hundredVhInPx, homeSlide.clientHeight, window.innerHeight)
         this.setState({ visibleSlideHeight: visibleSlideHeight });
-        
     }
     calculateMapAspectLockRatio(){
         const maximumLockRatio = 2

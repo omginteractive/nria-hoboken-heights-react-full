@@ -626,6 +626,7 @@ body {
         .slide {
             &.runAnimations {
                 &.slideTemplate-{
+                    &film,
                     &exteriorLightToggle {
                         .centerBottom {
                             > h1 {
@@ -665,9 +666,11 @@ body {
                     //     display: none;
                     // }
                 }
+                &film,
                 &exteriorLightToggle {
                     background-color: #000;
-                    .toggleLights {
+                    .toggleLights,
+                    .toggleSound {
                         display: none;
                     }
                     .lightsMaskContainer {
