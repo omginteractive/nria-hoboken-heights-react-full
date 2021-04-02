@@ -101,7 +101,8 @@ class SlideAvailability extends Component {
                 </section>
                 <div className={availabilityModalClasses}>
                     <>
-                        <div className="availability_detail_apartment_name">{this.props.configuration.availability_detail_apartment_name}</div>
+                        <img src={require('../images/availabilityFLOOR PLAN PLACEHOLDER.jpg').default} alt="" className="floorPlanPlaceholder"/>
+                        {/* <div className="availability_detail_apartment_name">{this.props.configuration.availability_detail_apartment_name}</div>
                         <div className="availability_detail_apartment_address availability_detail_apartment_address_line_1">{this.props.configuration.availability_detail_apartment_address_line_1}</div>
                         <div className="availability_detail_apartment_address availability_detail_apartment_address_line_2">{this.props.configuration.availability_detail_apartment_address_line_2}</div>
                         <div className="title">{this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].title.rendered}</div>
@@ -116,7 +117,7 @@ class SlideAvailability extends Component {
                         <div className="level">{this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.level}</div>
                         <img src={this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.building_image.url} className="apartment__buildingImage" alt="" />
                         <div className="building">{this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.building}</div>
-                        <img src={this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.floorplan.url} className="apartment__floorPlanImage" alt="" />
+                        <img src={this.props.configuration.apartment_result[this.props.activeAvailabilityPlan].acf.floorplan.url} className="apartment__floorPlanImage" alt="" /> */}
                     </>
                 </div>
             </>

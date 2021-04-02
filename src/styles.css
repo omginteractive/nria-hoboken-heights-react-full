@@ -1330,6 +1330,9 @@ body {
   max-height: 0;
   transition: opacity 0.9s, max-height 0s linear 0.9s;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .floorPlanPlaceholder {
+  width: 100%;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup .apartment__floorPlanImage {
   width: 52.0833333333vw;
   position: absolute;

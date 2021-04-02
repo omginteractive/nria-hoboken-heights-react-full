@@ -1333,6 +1333,9 @@ body {
                             transition: opacity $availabilityPopupTransitionDuration, max-height 0s linear $availabilityPopupTransitionDuration;
                             // z-index: -1;
                         }
+                        .floorPlanPlaceholder {
+                            width: 100%;
+                        }
                         .apartment__floorPlanImage {
                             width: calc_vw(1000);
                             position: absolute;
@@ -2562,7 +2565,6 @@ body {
 
                 }
                 &.compactFullWidth {
-                    // width: calc(100vw - #{$side-margin}*2);
                     height: calc(100vh - #{$header-height});
                     bottom: 0;
                     position: absolute;
