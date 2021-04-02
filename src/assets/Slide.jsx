@@ -167,7 +167,7 @@ class Slide extends Component {
                     <SlideExteriorLightToggle slideHorizontal={this.slideHorizontal.bind(this)} mobileArrows={mobileArrows} methods={slideMethods}  configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'film' &&
-                    <SlideFilm slideHorizontal={this.slideHorizontal.bind(this)} mobileArrows={mobileArrows} methods={slideMethods}  configuration={slideObj} />
+                    <SlideFilm isCurrent={isCurrent} slideHorizontal={this.slideHorizontal.bind(this)} mobileArrows={mobileArrows} methods={slideMethods}  configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'fountainPen' &&
                     <SlideFountainPen isCurrent={isCurrent} methods={slideMethods} configuration={slideObj} />
@@ -599,10 +599,21 @@ class SlideFilm extends Component {
             soundOn: false,
             video: null
         }
+        this.videoContainerRef = React.createRef()
+    }
+    componentDidUpdate(){
+        const slideIsActive = this.props.isCurrent
+        if(slideIsActive){
+            this.videoContainerRef.current.children[0].play()
+        }
+        else {
+            this.videoContainerRef.current.children[0].pause()
+        }
     }
     shouldComponentUpdate(nextProps, nextState){
         const soundStateChanged = this.state.soundOn !== nextState.soundOn
-        return soundStateChanged
+        const arrivedAtOrLeftSlide = this.props.isCurrent !== nextProps.isCurrent
+        return soundStateChanged || arrivedAtOrLeftSlide
     }
     toggleSound(){
         const currentSoundState = this.state.soundOn
@@ -651,6 +662,7 @@ class SlideFilm extends Component {
                         //Hide landingpage video on FFMobile because it will not autoplay
                         //Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
 						<div
+                        ref={this.videoContainerRef}
 						className={videoContainerClassesSoundOff}
 						dangerouslySetInnerHTML={{
 							__html: `

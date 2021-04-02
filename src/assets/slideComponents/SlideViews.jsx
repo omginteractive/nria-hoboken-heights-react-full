@@ -1,7 +1,5 @@
 import {Component} from 'react';
 import React from 'react';
-// import leftArrowBlack from '../assets/images/leftArrowBlack.svg';
-import $ from 'jquery'
 import {connect} from 'react-redux'
 // import _ from "lodash";
 

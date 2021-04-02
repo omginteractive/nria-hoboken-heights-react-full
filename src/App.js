@@ -283,7 +283,7 @@ class App extends React.Component {
 				playPromise.then(function() {
 					self.setState({ videosPlayed: true })
 				}).catch(function(error) {
-				  console.log('play failed', error)
+				    console.log('play failed', error)
 				});
 			}
 		})
