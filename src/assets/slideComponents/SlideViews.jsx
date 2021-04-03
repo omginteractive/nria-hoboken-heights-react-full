@@ -45,7 +45,7 @@ class SlideViews extends Component {
         this.setState({
             viewsSlideshowIsActive: true
         })
-        this.slideshow = setInterval(() => this.changeToNextView(), 5000)
+        this.slideshow = setInterval(() => this.changeToNextView(), 4000)
     }
     stopViewsSlideshow(){
         clearInterval(this.slideshow)
