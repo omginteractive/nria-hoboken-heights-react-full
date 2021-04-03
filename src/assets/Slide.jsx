@@ -182,7 +182,7 @@ class Slide extends Component {
                     <SlideAmenitiesGallery setAmenityOnGallerySlide={this.setAmenityOnGallerySlide.bind(this)} isCurrent={isCurrent} idx={this.props.amenityGallerySlideIdx} configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'views' &&
-                    <SlideViews configuration={slideObj} />
+                    <SlideViews isCurrent={isCurrent} configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'residencePenthouse' &&
                     <SlideResidencePenthouse

@@ -12,22 +12,53 @@ class SlideViews extends Component {
             timeSliderValue: 0,
             activeView: null,
             image: null,
-            previousActiveKey: null
+            previousActiveKey: null,
+            viewsSlideshowIsActive: false,
+            viewsSlideshowPaused: false
         }
+    }
+    componentDidMount(){
+        this.setNewTime(0)
     }
     shouldComponentUpdate(nextProps, nextState){
         const viewChanged = this.state.activeView !== nextState.activeView
         const sliderChanged = this.state.timeSliderValue !== nextState.timeSliderValue
         const isTransitioningChanged = this.state.isTransitioning !== nextState.isTransitioning
         const isMobileDeviceChanged = this.props.isMobileDevice !== nextProps.isMobileDevice
-
-        return viewChanged || sliderChanged || isTransitioningChanged || isMobileDeviceChanged
+        const arrivedAtOrExitedSlide = this.props.isCurrent !== nextProps.isCurrent
+        return viewChanged || sliderChanged || isTransitioningChanged || isMobileDeviceChanged || arrivedAtOrExitedSlide
     }
-    componentDidMount(){
-        // this.props.configuration.views.forEach((view) => {
-        //     const img = new Image().src = require('./'+view.image).default
-        // })
-        this.setNewTime(0)
+    componentDidUpdate(){
+        const slideIsActive = this.props.isCurrent
+        if(slideIsActive){
+            const viewsSlideshowIsNotActive = !this.state.viewsSlideshowIsActive
+            const viewsSlideshowNotPaused = !this.state.viewsSlideshowPaused
+            if(viewsSlideshowIsNotActive && viewsSlideshowNotPaused) {
+                this.startViewsSlideshow()
+            }
+        }
+        else if(!slideIsActive) {
+            this.stopViewsSlideshow()
+        }
+    }
+    startViewsSlideshow(){
+        this.setState({
+            viewsSlideshowIsActive: true
+        })
+        this.slideshow = setInterval(() => this.changeToNextView(), 5000)
+    }
+    stopViewsSlideshow(){
+        clearInterval(this.slideshow)
+        this.setState({
+            viewsSlideshowIsActive: false,
+            viewsSlideshowPaused: false
+        })
+    }
+    changeToNextView(){
+        const slideValueIncremented = this.state.timeSliderValue + 1
+        const needToRestartSlideshow = slideValueIncremented == this.props.configuration.views.length
+        const nextSlideValue = needToRestartSlideshow ? 0 : slideValueIncremented
+        this.setNewTime(nextSlideValue)
     }
     handleTimeChange(event){
         const rangeValue = event.target.value
@@ -42,7 +73,7 @@ class SlideViews extends Component {
             })
         }
     }
-    handleMouseUp(event){
+    handleClickEventOnRange(event){
         const rangeValue = event.target.value
         let newTime
         if(!this.isInt(rangeValue)){
@@ -50,9 +81,18 @@ class SlideViews extends Component {
         }
         else newTime = parseInt(rangeValue)
         this.setNewTime(newTime)
+        this.setState({
+            viewsSlideshowPaused: true
+        }, this.stopViewsSlideshow())
     }
     isInt(n) {
         return n % 1 === 0;
+    }
+    handleTimeClick(key){
+        this.setState({
+            viewsSlideshowPaused: true
+        }, this.stopViewsSlideshow())
+        this.setNewTime(key)
     }
     setNewTime(key){
         this.setState({
@@ -69,7 +109,7 @@ class SlideViews extends Component {
             isTransitioning: true
         })
     }
-    handleTransitionEnd  = e => {
+    handleSlideChangeTransitionEnd  = e => {
         this.setState({
             isTransitioning: false,
             previousActiveKey: null
@@ -100,18 +140,18 @@ class SlideViews extends Component {
                                     const imageClassesDesktop = imageClasses + ' not-mobile'
                                     const imageClassesMobile = imageClasses + ' mobile-only'
                                     return (<div key={i + 'viewsSectionTimeSliderImageWrapper'} className="views_section__timeSlider_image_wrapper">
-                                        <img key={i+'viewsSectionTimeSliderImage'} alt={view.displayTime} src={view.image} className={imageClassesDesktop} onTransitionEnd={this.handleTransitionEnd.bind(this)} />
-                                        <img key={i+'viewsSectionTimeSliderImageMobile'} alt={view.displayTime} src={view.imageMobile} className={imageClassesMobile} onTransitionEnd={this.handleTransitionEnd.bind(this)} />
+                                        <img key={i+'viewsSectionTimeSliderImage'} alt={view.displayTime} src={view.image} className={imageClassesDesktop} onTransitionEnd={this.handleSlideChangeTransitionEnd.bind(this)} />
+                                        <img key={i+'viewsSectionTimeSliderImageMobile'} alt={view.displayTime} src={view.imageMobile} className={imageClassesMobile} onTransitionEnd={this.handleSlideChangeTransitionEnd.bind(this)} />
                                     </div>)
                                 })}       
                             </>
                         }
                         <div className="views_section__timeSlider">
-                            <input onMouseUp={this.handleMouseUp.bind(this)} onTouchEnd={this.handleMouseUp.bind(this)} onChange={this.handleTimeChange.bind(this)} type="range" min="0" max={this.props.configuration.views.length - 1} step="0.005" value={this.state.timeSliderValue} orient={firefoxOrient}/>
+                            <input onMouseUp={this.handleClickEventOnRange.bind(this)} onTouchEnd={this.handleClickEventOnRange.bind(this)} onChange={this.handleTimeChange.bind(this)} type="range" min="0" max={this.props.configuration.views.length - 1} step="0.005" value={this.state.timeSliderValue} orient={firefoxOrient}/>
                             <ul className="views_section__timeList">
                                 {this.props.configuration.views.map((view, i) => {
                                     const listClasses = i === this.state.activeView ? 'active' : ''
-                                    return (<li onClick={() => this.setNewTime(i)} className={listClasses} key={i+'viewsSectionTimeSliderTime'}>{view.displayTime} <span className='ampm'>{view.ampm}</span></li>)
+                                    return (<li onClick={() => this.handleTimeClick(i)} className={listClasses} key={i+'viewsSectionTimeSliderTime'}>{view.displayTime} <span className='ampm'>{view.ampm}</span></li>)
                                 })}
                             </ul>
                             <div className="visibleSliderLine"></div>
