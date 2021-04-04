@@ -274,8 +274,8 @@ class App extends React.Component {
 	 * Firefox will not allow the video to play until a tap event occurs - not a touchdrag.
 	 */
 	playVideos(){
-		let self = this
 		if(this.state.videosPlayed) return
+		let self = this
 		const allVideos = document.querySelectorAll('.background-video')
 		allVideos.forEach(function(video){
 			const playPromise = video.play()
@@ -287,8 +287,6 @@ class App extends React.Component {
 				});
 			}
 		})
-		
-		  
 	}
 
 	/*
@@ -437,9 +435,9 @@ class App extends React.Component {
     nextSlide(noRequireScroll = false) {
         const deviceSlideIdx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
         const querySelector = typeof this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector
-        const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
-		const videosPlayed = this.state.videosPlayed
-        if (this.isTransitioning() || this.animationsStopped() || (isFirefoxAndroid && !videosPlayed)) {
+        // const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
+		// const videosPlayed = this.state.videosPlayed//prevent Firefox on Android from moving to next slide because videos don't autoplay without any user interaction
+        if (this.isTransitioning() || this.animationsStopped()) { //|| (isFirefoxAndroid && !videosPlayed)
 			return
 		}
         if(this.props.slideData[deviceSlideIdx].enableScrolling && !noRequireScroll) {
