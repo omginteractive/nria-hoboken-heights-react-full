@@ -206,7 +206,7 @@ class Slide extends Component {
                     <SlideAvailability  configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'developmentTeam' &&
-                    <SlideDevelopmentTeam  configuration={slideObj}  />
+                    <SlideDevelopmentTeam isCurrent={isCurrent} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'founders' &&
                     <SlideFounders  configuration={slideObj}  />
@@ -1131,8 +1131,20 @@ class SlideAmenitiesGallery extends Component {
 
 
 class SlideDevelopmentTeam extends Component {
+    
     shouldComponentUpdate(nextProps, nextState){
         return false
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        const arrivedAtOrExitedSlide = this.props.isCurrent !== nextProps.isCurrent
+        return arrivedAtOrExitedSlide
+    }
+    componentDidUpdate(prevProps){
+        const slideIsActive = this.props.isCurrent
+        const slideJustChanged = this.props.isCurrent !== prevProps.isCurrent
+        if(slideIsActive && slideJustChanged){
+            $(".slideTemplate-developmentTeam").animate({ scrollTop: 0 }, "fast")//scroll up to top in case user scrolled down
+        }
     }
     render(){
         let textGroupClasses = 'textGroup '
