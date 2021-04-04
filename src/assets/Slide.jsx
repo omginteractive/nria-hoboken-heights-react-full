@@ -163,11 +163,11 @@ class Slide extends Component {
                 {slideObj.slideTemplate === 'home' &&
                     <SlideHome methods={slideMethods} configuration={slideObj} />
                 }
-                {slideObj.slideTemplate === 'exteriorLightToggle' &&
-                    <SlideExteriorLightToggle slideHorizontal={this.slideHorizontal.bind(this)} mobileArrows={mobileArrows} methods={slideMethods}  configuration={slideObj} />
-                }
                 {slideObj.slideTemplate === 'film' &&
                     <SlideFilm isCurrent={isCurrent} slideHorizontal={this.slideHorizontal.bind(this)} mobileArrows={mobileArrows} methods={slideMethods}  configuration={slideObj} />
+                }
+                {slideObj.slideTemplate === 'exteriorLightToggle' &&
+                    <SlideExteriorLightToggle slideHorizontal={this.slideHorizontal.bind(this)} mobileArrows={mobileArrows} methods={slideMethods}  configuration={slideObj} />
                 }
                 {slideObj.slideTemplate === 'fountainPen' &&
                     <SlideFountainPen isCurrent={isCurrent} methods={slideMethods} configuration={slideObj} />

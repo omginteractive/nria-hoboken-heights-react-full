@@ -2520,7 +2520,7 @@ body {
   bottom: 0;
   position: absolute;
   overflow: hidden;
-  transition: height 0.7s;
+  transition: height 0.7s, transform 1400ms;
 }
 .slides_wrapper .slides_inner .slide .videoContainer.compactFullWidth.expanded {
   height: 100vh;
