@@ -848,13 +848,14 @@ body {
                 }
                 &views {
                     .views_section {
+                        //Mobile image dimensions: 1080x995 - changes to the mobile images need to be recalculated for $mobileImageHeightPercentOfViewportWidth
+                        $mobileImageHeightPercentOfViewportWidth: 995/1080;
                         $sliderThumbWidth: calc_vw(30);
                         $visibleSliderWidth: calc_vw(2);
                         $viewsSectionRangeInputWidth: 20px;
-                        $viewsSectionRangeInputTargetHeight: 40vh;
-                        $sliderActualHeight: calc(#{$viewsSectionRangeInputTargetHeight} );
                         $imageHeight: 50vh;
                         $verticalMarginForSlider: calc_vw(126);
+                        $viewsSectionRangeInputTargetHeight: calc(100vw * #{$mobileImageHeightPercentOfViewportWidth} - #{$verticalMarginForSlider}*2);
                         $timeListWidth: calc_vw(115);
                         $rightMarginFromEdge: calc_vw(71);
                         $timeSliderRightMarginFromEdge: calc(#{$rightMarginFromEdge} - #{$timeListWidth});
@@ -923,7 +924,7 @@ body {
                             top: 0;
                             bottom: auto;
                             right: $timeSliderRightMarginFromEdge;
-                            height: 50vh;
+                            // height: 50vh;
                             @mixin thumb {
                                 width: $sliderThumbWidth;
                                 height: $sliderThumbWidth;
@@ -935,7 +936,7 @@ body {
                                 /* Unable to use -webkit-appearance: slider-vertical; because it needs to be none to allow custom styling*/
                                 // -webkit-appearance: slider-vertical; /* Vertical orientation  WebKit */
                                 writing-mode: bt-lr; /* Vertical orientation IE */
-                                width: $sliderActualHeight;//width is height because we have rotated slider 90 degrees
+                                width: $viewsSectionRangeInputTargetHeight;//width is height because we have rotated slider 90 degrees
                                 height: $viewsSectionRangeInputWidth;
                                 transform: rotate(90deg) translateY(-50%);
                                 transform-origin: top left;
@@ -944,7 +945,7 @@ body {
                                 top: calc(#{$verticalMarginForSlider});
                                 &::-webkit-slider-runnable-track {
                                     @include rangeTrack;
-                                    // height: $sliderActualHeight;
+                                    // height: $viewsSectionRangeInputTargetHeight;
                                     // width: $viewsSectionRangeInputWidth;
                                 }
                                 &::-webkit-slider-thumb {

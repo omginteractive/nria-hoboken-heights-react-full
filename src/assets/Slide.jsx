@@ -578,7 +578,6 @@ class SlideExteriorLightToggle extends Component {
 							class="${videoClasses}"
 							${this.props.configuration.videoLoop ? 'loop="true"' : ''}
 							muted='muted'
-							muted
 							autoplay='true'
 							playsinline='playsinline'
 							preload="metadata"

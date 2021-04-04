@@ -3281,7 +3281,7 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeList {
     flex-direction: column;
-    height: 40vh;
+    height: calc(100vw * 0.9212962963 - 11.6666666667vw*2);
     width: 10.6481481481vw;
     left: -100%;
     right: auto;
@@ -3308,7 +3308,7 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section .visibleSliderLine {
     width: 0.1851851852vw;
-    height: calc(40vh - 2.7777777778vw);
+    height: calc(calc(100vw * 0.9212962963 - 11.6666666667vw*2) - 2.7777777778vw);
     bottom: auto;
     top: calc(11.6666666667vw + 2.7777777778vw / 2);
     position: absolute;
@@ -3319,13 +3319,12 @@ body {
     top: 0;
     bottom: auto;
     right: calc(6.5740740741vw - 10.6481481481vw);
-    height: 50vh;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input {
     /* Unable to use -webkit-appearance: slider-vertical; because it needs to be none to allow custom styling*/
     writing-mode: bt-lr;
     /* Vertical orientation IE */
-    width: calc(40vh );
+    width: calc(100vw * 0.9212962963 - 11.6666666667vw*2);
     height: 20px;
     transform: rotate(90deg) translateY(-50%);
     transform-origin: top left;
