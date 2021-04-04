@@ -215,7 +215,7 @@ class Slide extends Component {
                     <SlideVideoDiscover  methods={slideMethods} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'neighborhoodCommunity' &&
-                    <SlideNeighborhoodCommunity  configuration={slideObj}  />
+                    <SlideNeighborhoodCommunity isCurrent={isCurrent} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'map' &&
                     <SlideMap mapHeightLocked={this.props.mapHeightLocked} configuration={slideObj}  />
@@ -457,7 +457,15 @@ class SlideContactForm extends Component {
 
 class SlideNeighborhoodCommunity extends Component {
     shouldComponentUpdate(nextProps, nextState){
-        return false
+        const arrivedAtOrExitedSlide = this.props.isCurrent !== nextProps.isCurrent
+        return arrivedAtOrExitedSlide
+    }
+    componentDidUpdate(prevProps){
+        const slideIsActive = this.props.isCurrent
+        const slideJustChanged = this.props.isCurrent !== prevProps.isCurrent
+        if(slideIsActive && slideJustChanged){
+            $(".slideTemplate-neighborhoodCommunity").animate({ scrollTop: 0 }, "fast")//scroll up to top in case user scrolled down
+        }
     }
     render(){
         const heading_discover =  this.props.configuration.heading_discover
@@ -1132,9 +1140,6 @@ class SlideAmenitiesGallery extends Component {
 
 class SlideDevelopmentTeam extends Component {
     
-    shouldComponentUpdate(nextProps, nextState){
-        return false
-    }
     shouldComponentUpdate(nextProps, nextState){
         const arrivedAtOrExitedSlide = this.props.isCurrent !== nextProps.isCurrent
         return arrivedAtOrExitedSlide

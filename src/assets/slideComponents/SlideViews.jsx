@@ -56,7 +56,7 @@ class SlideViews extends Component {
     }
     changeToNextView(){
         const slideValueIncremented = this.state.timeSliderValue + 1
-        const needToRestartSlideshow = slideValueIncremented == this.props.configuration.views.length
+        const needToRestartSlideshow = slideValueIncremented === this.props.configuration.views.length
         const nextSlideValue = needToRestartSlideshow ? 0 : slideValueIncremented
         this.setNewTime(nextSlideValue)
     }
