@@ -1222,6 +1222,7 @@ body {
                 }
                 &map {
                     // $mapOffset: 200px;
+                    $satelliteToggleButtonHeight: calc_vw(134);
                     .mapSection {
                         width: 100vw;
                         top: 0;
@@ -1244,7 +1245,7 @@ body {
                         .satelliteToggle {
                             bottom: 0;
                             right: auto;
-                            height: calc_vw(134);
+                            height: $satelliteToggleButtonHeight;
                             z-index: 2;
                             width: 100vw;
                             .rotatedText {
@@ -1257,8 +1258,8 @@ body {
                             // transform: translateX($mapOffset);
                             .map {
                                 object-position: center top;
-                                width: 864px;
-                                height: auto;
+                                width: auto;
+                                height: calc(#{innerHeightVh(100)} - #{$satelliteToggleButtonHeight});
                             }
                             .satelliteImageContainer {
                                 // left: -$mapOffset;

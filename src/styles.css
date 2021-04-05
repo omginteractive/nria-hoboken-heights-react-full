@@ -3610,8 +3610,8 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .map {
     object-position: center top;
-    width: 864px;
-    height: auto;
+    width: auto;
+    height: calc(calc(var(--vh, 1vh) * 100) - 12.4074074074vw);
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer {
     display: flex;
