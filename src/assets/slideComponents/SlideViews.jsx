@@ -120,7 +120,6 @@ class SlideViews extends Component {
         const activeImageKey = this.state.activeView
         const isTransitioning = this.state.isTransitioning
         const views_section__bottom_classes = isTransitioning ? 'views_section__bottom isTransitioning' : 'views_section__bottom'
-        const firefoxOrient = this.props.isMobileDevice ? 'vertical' : 'horizontal'
         return(
             <>
                 <section className="views_section">
@@ -147,7 +146,7 @@ class SlideViews extends Component {
                             </>
                         }
                         <div className="views_section__timeSlider">
-                            <input onMouseUp={this.handleClickEventOnRange.bind(this)} onTouchEnd={this.handleClickEventOnRange.bind(this)} onChange={this.handleTimeChange.bind(this)} type="range" min="0" max={this.props.configuration.views.length - 1} step="0.005" value={this.state.timeSliderValue} orient={firefoxOrient}/>
+                            <input onMouseUp={this.handleClickEventOnRange.bind(this)} onTouchEnd={this.handleClickEventOnRange.bind(this)} onChange={this.handleTimeChange.bind(this)} type="range" min="0" max={this.props.configuration.views.length - 1} step="0.005" value={this.state.timeSliderValue}/>
                             <ul className="views_section__timeList">
                                 {this.props.configuration.views.map((view, i) => {
                                     const listClasses = i === this.state.activeView ? 'active' : ''
