@@ -30,4 +30,8 @@ $contactFormDistanceFromTop: 1400vh; //This is the distance until the contact fo
 
 $availabilityPopupTransitionDuration: 0.9s;
 
-$mapLogoDesktopTransformOriginX: 405px;//$mapLogoDesktopTransformOriginX is the X axis pixel distance to the point in the image where it is in the center of the logo
+
+$mapLogoDesktopTransformOriginX: 405px;//$mapLogoDesktopTransformOriginX is the X axis pixel distance to the point in the image where it is in the center of the logo. Used for transform-origin of scale
+$mapLogoDesktopTransformOriginXPercent: 72.4%;//$mapLogoDesktopTransformOriginXPercent value in percent of total image width
+$mapLogoMobileTransformOriginX: 366px;//$mapLogoMobileTransformOriginX is the X axis pixel distance to the point in the image where it is in the center of the logo. Used for transform-origin of scale
+$mapLogoobileTransformOriginXPercent: 50%;//$mapLogoobileTransformOriginXPercent value in percent of total image width

@@ -83,7 +83,7 @@
     .mapLogo {
         position: absolute;
         left: 50%;
-        transform: translate(-75%, -50%) scale(var(--mapScale));
+        transform: translate(-$mapLogoDesktopTransformOriginXPercent, -50%) scale(var(--mapScale));
         top: 50%;
         z-index: 2;
         transform-origin: $mapLogoDesktopTransformOriginX center;

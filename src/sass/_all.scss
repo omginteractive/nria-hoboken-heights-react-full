@@ -1730,18 +1730,21 @@ body {
                         top: calc(#{$header-height});
                         position: absolute;
                         left: $side-margin;
-                        &.heightLocked {
-                            .mapMotionLogo {
-                                top: 49vh;
-                                left: 50vh;
-                            }
+                        .mapMotionLogo {
+                            display: none;
                         }
-                        &.heightNotLocked {
-                            .mapMotionLogo {
-                                left: 25vw;
-                                top: 24vw;
-                            }
-                        }
+                        // &.heightLocked {
+                        //     .mapMotionLogo {
+                        //         top: 49vh;
+                        //         left: 50vh;
+                        //     }
+                        // }
+                        // &.heightNotLocked {
+                        //     .mapMotionLogo {
+                        //         left: 25vw;
+                        //         top: 24vw;
+                        //     }
+                        // }
                         &__locationList {
                             position: absolute;
                             color: #fff;

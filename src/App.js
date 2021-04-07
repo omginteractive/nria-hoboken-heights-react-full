@@ -109,12 +109,20 @@ class App extends React.Component {
 		this.state.isiPhone = navigator.platform === "iPhone"
 
         /* The following are set to be used by handleResize to make sure the map marker appears at the correct scale */
-        this.mapImageWidthPx = 1635//represents the actual dimension of the large map images used for desktop
-        this.mapImageHeightPx = 935//represents the actual dimension of the large map images used for desktop
-        this.animatedLogoMarkerToTransformOriginCenter = 370//On animated logo image, this is the distance from the map marker to the center of where the transform-origin occurs. We are using  transform-origin: center 75%; so the center of where the transform: scale is occuring is a position 75% from the left side of the logo image
-        this.originalMapImageCenterToMarkerDistance = 342//On original map image, this is the px distance from the location marker to the center of the entire image
+        this.mapImageWidthPx = 1635//represents the actual pixel width of the large map images used for desktop
+        this.mapImageHeightPx = 935//represents the actual pixel height of the large map images used for desktop
+        this.originalMapImageCenterToMarkerDistance = 350//On original map image, this is the px distance from the location marker to the center of the entire image
         this.originalMapImageCenterToMarkerRatio = this.originalMapImageCenterToMarkerDistance/this.mapImageWidthPx//This is needed to find out the center to marker distance on the map image when the image is scaled up
+        this.animatedLogoMarkerToTransformOriginCenter = 370//On animated logo image, this is the distance from the map marker to the center of where the transform-origin occurs. We are using  transform-origin: center $mapLogoDesktopTransformOriginX; so the center of where the transform: scale is occuring is a position $mapLogoDesktopTransformOriginX from the left side of the logo image
         this.mapImageSizeRatio = this.mapImageWidthPx/this.mapImageHeightPx
+
+        //same vars but mobile
+        this.mapMobileImageWidthPx = 864//represents the actual pixel width of the large map images used for mobile
+        this.mapMobileImageHeightPx = 935//represents the actual pixel height of the large map images used for mobile
+        this.mapMobileOriginalMapImageCenterToMarkerDistance = 350//On original map image, this is the px distance from the location marker to the center of the entire image
+        this.mapMobileOriginalMapImageCenterToMarkerRatio = this.mapMobileOriginalMapImageCenterToMarkerDistance/this.mapMobileImageWidthPx//This is needed to find out the center to marker distance on the map image when the image is scaled up
+        this.mapMobileanimatedLogoMarkerToTransformOriginCenter = 370//On animated logo image, this is the distance from the map marker to the center of where the transform-origin occurs. We are using  transform-origin: center $mapLogoDesktopTransformOriginX; so the center of where the transform: scale is occuring is a position $mapLogoDesktopTransformOriginX from the left side of the logo image
+        this.mapMobileImageSizeRatio = this.mapMobileImageWidthPx/this.mapMobileImageHeightPx
     }
     componentDidMount() {
         const endpoint = 'https://nriahh.wpengine.com/wp-json/acf/v3/pages/275'

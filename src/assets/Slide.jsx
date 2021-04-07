@@ -284,16 +284,16 @@ class SlideMap extends Component {
             <>
                 <section className={mapSectionClasses}>
                     <div className="mapBackground">
-                        <img src={require('./images/map/map01.jpg').default} alt="" className='not-mobile map'/>
-                        <img src={require('./images/map/map01_mobile.jpg').default} alt="" className='mobile-only map'/>
+                        <img src={require('./images/map/map01.jpg').default} alt="" className=' map'/>
+                        {/* <img src={require('./images/map/map01_mobile.jpg').default} alt="" className='mobile-only map'/> */}
                         <div className={satelliteImageContainerClasses}>
-                            <img src={require('./images/map/map02.jpg').default} alt="" className='not-mobile map'/>
-                            <img src={require('./images/map/map02_mobile.jpg').default} alt="" className='mobile-only map'/>
+                            <img src={require('./images/map/map02.jpg').default} alt="" className=' map'/>
+                            {/* <img src={require('./images/map/map02_mobile.jpg').default} alt="" className='mobile-only map'/> */}
                         </div>
                     </div>
                     <img src={require('./images/map/Motion_logo.gif').default} alt="" className="mapLogo not-mobile"/>
+                    <img src={require('./images/map/Motion_logo_mobile_animateonce.gif').default} alt="" className="mapLogo mobile-only"/>
                     <div className="mapMotionLogo">
-                        <img src={require('./images/map/Motion_logo_mobile_animateonce.gif').default} alt="" className="map mobile-only"/>
                     </div>
                     <div onClick={this.toggleMap.bind(this)} className="satelliteToggle vertical_toggle_column noSelect">
                         <div className="rotatedText noSelect">{toggleBarText}</div>

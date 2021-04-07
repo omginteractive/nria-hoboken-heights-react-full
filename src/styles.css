@@ -1689,13 +1689,8 @@ body {
   position: absolute;
   left: 6.3vw;
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection.heightLocked .mapMotionLogo {
-  top: 49vh;
-  left: 50vh;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection.heightNotLocked .mapMotionLogo {
-  left: 25vw;
-  top: 24vw;
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo {
+  display: none;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection__locationList {
   position: absolute;
@@ -2610,7 +2605,7 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapLogo {
     position: absolute;
     left: 50%;
-    transform: translate(-75%, -50%) scale(var(--mapScale));
+    transform: translate(-72.4%, -50%) scale(var(--mapScale));
     top: 50%;
     z-index: 2;
     transform-origin: 405px center;
@@ -3586,17 +3581,14 @@ body {
     left: 0;
     height: calc(var(--vh, 1vh) * 100);
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection.heightLocked .mapMotionLogo {
-    top: 341px;
-    left: calc(50vw - 100px);
-  }
-  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo {
-    top: 350px;
-    left: 209px;
-  }
-  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo > img {
-    height: 289px;
-    transform: translate(-26px, -51px);
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapLogo {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(var(--mapScale));
+    top: 50%;
+    z-index: 2;
+    transform-origin: 366px center;
+    transition: transform 0.5s;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle {
     bottom: 0;
@@ -3613,8 +3605,6 @@ body {
     justify-content: center;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .map {
-    object-position: center top;
-    width: auto;
     height: calc(calc(var(--vh, 1vh) * 100) - 12.4074074074vw);
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer {
