@@ -291,8 +291,8 @@ class SlideMap extends Component {
                             <img src={require('./images/map/map02_mobile.jpg').default} alt="" className='mobile-only map'/>
                         </div>
                     </div>
+                    <img src={require('./images/map/Motion_logo.gif').default} alt="" className="mapLogo not-mobile"/>
                     <div className="mapMotionLogo">
-                        <img src={require('./images/map/Motion_logo.gif').default} alt="" className="map not-mobile"/>
                         <img src={require('./images/map/Motion_logo_mobile_animateonce.gif').default} alt="" className="map mobile-only"/>
                     </div>
                     <div onClick={this.toggleMap.bind(this)} className="satelliteToggle vertical_toggle_column noSelect">

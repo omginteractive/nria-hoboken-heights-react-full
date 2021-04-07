@@ -107,6 +107,14 @@ class App extends React.Component {
 		this.headerElement = React.createRef()
 
 		this.state.isiPhone = navigator.platform === "iPhone"
+
+        /* The following are set to be used by handleResize to make sure the map marker appears at the correct scale */
+        this.mapImageWidthPx = 1635//represents the actual dimension of the large map images used for desktop
+        this.mapImageHeightPx = 935//represents the actual dimension of the large map images used for desktop
+        this.animatedLogoMarkerToTransformOriginCenter = 370//On animated logo image, this is the distance from the map marker to the center of where the transform-origin occurs. We are using  transform-origin: center 75%; so the center of where the transform: scale is occuring is a position 75% from the left side of the logo image
+        this.originalMapImageCenterToMarkerDistance = 342//On original map image, this is the px distance from the location marker to the center of the entire image
+        this.originalMapImageCenterToMarkerRatio = this.originalMapImageCenterToMarkerDistance/this.mapImageWidthPx//This is needed to find out the center to marker distance on the map image when the image is scaled up
+        this.mapImageSizeRatio = this.mapImageWidthPx/this.mapImageHeightPx
     }
     componentDidMount() {
         const endpoint = 'https://nriahh.wpengine.com/wp-json/acf/v3/pages/275'
@@ -186,13 +194,34 @@ class App extends React.Component {
         if(previousState !== isMobileState) this.props.changeIsMobileDevice(isMobileState)
 
         const innerHeight = window.innerHeight//if there are issues with this, may need to use document.documentElement.clientHeight || 0, window.innerHeight || 0)
-        const outerHeight = window.outerHeight
+
         document.documentElement.style.setProperty('--vh', `${innerHeight/100}px`)
+        document.documentElement.style.setProperty('--mapScale', `${this.calculateMapImageMarkerScale()}`)
         const homeSlide = document.querySelector('.slideTemplate-home')
         const hundredVhInPx = homeSlide.clientHeight
         const mobileVhCalculation = innerHeight/hundredVhInPx * 100
         const visibleSlideHeight = isMobileState ? mobileVhCalculation : '100'//default to 100vh if not mobile
         this.setState({ visibleSlideHeight: visibleSlideHeight });
+    }
+    calculateMapImageMarkerScale(){
+        const mapElementWidth = document.querySelector('.mapBackground').clientWidth
+        const mapElementHeight = document.querySelector('.mapBackground').clientHeight
+        const mapElementSizeRatio = mapElementWidth/mapElementHeight
+
+        let satelliteLogoScale
+        if(mapElementSizeRatio < this.mapImageSizeRatio){
+            const imageWidthToScale = mapElementHeight * this.mapImageSizeRatio //If the map image height occupies the full height of the element, this will check to see what the full width of the map image would be if it were not constrained
+            const distanceFromCenterToMarkerToScale = imageWidthToScale * this.originalMapImageCenterToMarkerRatio//This calculates the distance from the center to the marker on the map image taking into consideration the scaled up version of the map
+            const scaleMultiplierOfOriginalToNewCenterToMarkerDistances = distanceFromCenterToMarkerToScale/this.animatedLogoMarkerToTransformOriginCenter
+            satelliteLogoScale = scaleMultiplierOfOriginalToNewCenterToMarkerDistances
+        }
+        else {
+            //mapElementWidth will not need to be modified since the width of the image is completely visible and the height is only partially showing
+            const distanceFromCenterToMarkerToScale = mapElementWidth * this.originalMapImageCenterToMarkerRatio//This calculates the distance from the center to the marker on the map image taking into consideration the scaled up version of the map
+            const scaleMultiplierOfOriginalToNewCenterToMarkerDistances = distanceFromCenterToMarkerToScale/this.animatedLogoMarkerToTransformOriginCenter
+            satelliteLogoScale = scaleMultiplierOfOriginalToNewCenterToMarkerDistances
+        }
+        return satelliteLogoScale
     }
     calculateMapAspectLockRatio(){
         const maximumLockRatio = 2

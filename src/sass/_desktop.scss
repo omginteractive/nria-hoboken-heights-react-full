@@ -1,3 +1,5 @@
+
+
 .mobile-only {
     display: none !important;
 }
@@ -77,6 +79,18 @@
     }
 }
 
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection {
+    .mapLogo {
+        position: absolute;
+        left: 50%;
+        transform: translate(-75%, -50%) scale(var(--mapScale));
+        top: 50%;
+        z-index: 2;
+        transform-origin: $mapLogoDesktopTransformOriginX center;
+        transition: transform 0.5s;
+    }
+}
+
 @media screen and (min-width: 769px) and (max-width: 950px) {
 	.mobile-menu .mobileMenuContact .address {
         .line-break {
@@ -88,9 +102,9 @@
     }
 }
 
-@media screen and (min-width: 769px) and (max-width: 1030px) {//To make sure map image isnt too large on small screens
-	.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo > img {
-        height: 87px;
-        transform: translate(-25px,-37px);
-    }
-}
+// @media screen and (min-width: 769px) and (max-width: 1030px) {//To make sure map image isnt too large on small screens
+// 	.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo > img {
+//         height: 87px;
+//         transform: translate(-25px,-37px);
+//     }
+// }

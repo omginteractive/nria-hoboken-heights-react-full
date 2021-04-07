@@ -1762,7 +1762,7 @@ body {
   width: 100%;
   height: calc(100vh - 12.8vh);
   object-fit: cover;
-  object-position: top left;
+  object-position: center;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer {
   position: absolute;
@@ -2606,6 +2606,16 @@ body {
   .contactPageWrapper .contactForm .select2-selection__placeholder {
     color: transparent;
   }
+
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapLogo {
+    position: absolute;
+    left: 50%;
+    transform: translate(-75%, -50%) scale(var(--mapScale));
+    top: 50%;
+    z-index: 2;
+    transform-origin: 405px center;
+    transition: transform 0.5s;
+  }
 }
 @media screen and (min-width: 769px) and (min-width: 769px) and (max-width: 950px) {
   .mobile-menu .mobileMenuContact .address .line-break {
@@ -2613,12 +2623,6 @@ body {
   }
   .mobile-menu .mobileMenuContact .address .separator {
     display: none;
-  }
-}
-@media screen and (min-width: 769px) and (min-width: 769px) and (max-width: 1030px) {
-  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo > img {
-    height: 87px;
-    transform: translate(-25px, -37px);
   }
 }
 @media screen and (min-width: 769px) and (max-height: 700px) {
@@ -3591,7 +3595,7 @@ body {
     left: 209px;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapMotionLogo > img {
-    height: 100px;
+    height: 289px;
     transform: translate(-26px, -51px);
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .satelliteToggle {

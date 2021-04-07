@@ -553,7 +553,7 @@ body {
                     top: 0;
                     left: 0;
                     width: 100vw;
-                    height: 100vh;
+                    height: 100vh;//be aware that handleResize() is using this slide as a reference to convert 100vh to px. Any changes to this should be reflected there and will need another 100vh element to reference
                     z-index: 10;
                     transition: transform 1s;
                     display: flex;
@@ -1811,7 +1811,7 @@ body {
                                 width: 100%;
                                 height: calc(100vh - #{$header-height});
                                 object-fit: cover;
-                                object-position: top left;
+                                object-position: center;
                             }
                             .satelliteImageContainer {
                                 position: absolute;

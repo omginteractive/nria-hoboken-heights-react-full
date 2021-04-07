@@ -109,7 +109,7 @@ class SlideResidencePenthouseDetail extends Component {
                                 imgClasses += i === this.state.currImageIdx ? ' active' : ''
                                 imgClasses += i === this.state.prevIdx ? ' deactivating' : ''
                                 return (
-                                    <img key={i+'penthouseDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={image.url} alt="Residence Penthouse"/>
+                                    <img key={i+'penthouseDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={image.url} alt="Penthouse Image"/>
                                 )
                             })}
                         </div>
@@ -119,7 +119,7 @@ class SlideResidencePenthouseDetail extends Component {
                                 imgClasses += i === this.state.currImageIdx ? ' active' : ''
                                 imgClasses += i === this.state.prevIdx ? ' deactivating' : ''
                                 return (
-                                    <img key={i+'residenceDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={image.url} alt="Residence Penthouse"/>
+                                    <img key={i+'residenceDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={image.url} alt="Residence Image"/>
                                 )
                             })}
                         </div>
