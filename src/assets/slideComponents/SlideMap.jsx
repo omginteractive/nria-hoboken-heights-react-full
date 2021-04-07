@@ -78,6 +78,7 @@ class SlideMap extends Component {
                             <div className="companyName">Hoboken Heights</div>
                             <div className="companyAddress">Manhattan Avenue, 1300</div>
                         </div>
+                        <div className="mapMarker"></div>
                     </div>
                     <div className="mapMotionLogo">
                     </div>
