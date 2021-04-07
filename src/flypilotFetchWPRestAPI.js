@@ -393,28 +393,28 @@ console.log(apartment_result)
         availability_detail_apartment_address_line_2: acf_result.availability_detail_apartment_address_line_2,
         apartment_result
     }
-    ,{
-        slideTemplate: 'developmentTeam',
-        styles: {
-            background: "#fff",
-        },
-        headerTheme: 'dark',
-        enableScrolling: true,
-        rightSideAdditionalClasses: 'not-mobile',
-        buttonGroupAdditionalClasses: 'not-mobile',
-        developmentTeamFields
-    }
-    ,{
-        slideTemplate: 'developmentTeam',
-        styles: {
-            background: "#fff",
-        },
-        headerTheme: 'dark',
-        enableScrolling: true,
-        textGroupAdditionalClasses: 'not-mobile',
-        mobileOnly: true,
-        developmentTeamFields
-    }
+    // ,{
+    //     slideTemplate: 'developmentTeam',
+    //     styles: {
+    //         background: "#fff",
+    //     },
+    //     headerTheme: 'dark',
+    //     enableScrolling: true,
+    //     rightSideAdditionalClasses: 'not-mobile',
+    //     buttonGroupAdditionalClasses: 'not-mobile',
+    //     developmentTeamFields
+    // }
+    // ,{
+    //     slideTemplate: 'developmentTeam',
+    //     styles: {
+    //         background: "#fff",
+    //     },
+    //     headerTheme: 'dark',
+    //     enableScrolling: true,
+    //     textGroupAdditionalClasses: 'not-mobile',
+    //     mobileOnly: true,
+    //     developmentTeamFields
+    // }
     ,{
         slideTemplate: 'founders',
         styles: {

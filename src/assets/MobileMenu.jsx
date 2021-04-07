@@ -45,8 +45,8 @@ class MobileMenu extends Component {
         const viewLink = isMobile ? 7 : 7
         const residencePenthouseLink = isMobile ? 8 : 8
         const availabilityLink = isMobile ? 12 : 11
-        const developmentTeamLink = isMobile ? 13 : 12
-        const discoverLink = isMobile ? 17 : 15
+        // const developmentTeamLink = isMobile ? 13 : 12
+        const discoverLink = isMobile ? 15 : 14
         const contactFormSlideIdx = this.props.contactFormSlideIdx
 		return(
             <div className={mobileMenuClasses} onTransitionEnd={this.handleMenuTransitionEnd.bind(this)}>
@@ -63,7 +63,7 @@ class MobileMenu extends Component {
                         <div className='link' onClick={() => this.goToSlide(viewLink)}><h2>The View</h2></div>
                         <div className='link' onClick={() => this.goToSlide(residencePenthouseLink)}><h2>Residences & Penthouses</h2></div>
                         <div className='link' onClick={() => this.goToSlide(availabilityLink)}><h2>Availability</h2></div>
-                        <div className='link' onClick={() => this.goToSlide(developmentTeamLink)}><h2>Development Team Story</h2></div>
+                        {/* <div className='link' onClick={() => this.goToSlide(developmentTeamLink)}><h2>Development Team Story</h2></div> */}
                         <div className='link' onClick={() => this.goToSlide(discoverLink)}><h2>Discover</h2></div>
                         <div className='link' onClick={() => this.goToSlide(contactFormSlideIdx)}><h2>Contact</h2></div>
                     </div>
