@@ -2625,9 +2625,6 @@ body {
     transform-origin: 405px center;
     transition: transform 0.5s;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderBenefits {
-    padding-bottom: 50px;
-  }
 }
 @media screen and (min-width: 769px) and (min-width: 769px) and (max-width: 950px) {
   .mobile-menu .mobileMenuContact .address .line-break {

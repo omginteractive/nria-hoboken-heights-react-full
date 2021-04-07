@@ -212,6 +212,13 @@ class App extends React.Component {
         this.setState({ visibleSlideHeight: visibleSlideHeight });
     }
     calculateMapImageMarkerScale(isMobileState){
+        if(!document.querySelector('.mapBackground')) {
+            setTimeout(function(){
+                this.calculateMapImageMarkerScale(isMobileState)
+            }, 1000)
+            console.log('.mapBackground not found, retrying...')
+            return
+        }
         const mapElementWidth = document.querySelector('.mapBackground').clientWidth
         const mapElementHeight = document.querySelector('.mapBackground').clientHeight
         const mapElementSizeRatio = mapElementWidth/mapElementHeight
