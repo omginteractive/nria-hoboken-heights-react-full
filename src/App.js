@@ -117,11 +117,11 @@ class App extends React.Component {
         this.mapImageSizeRatio = this.mapImageWidthPx/this.mapImageHeightPx
 
         //same vars but mobile
-        this.mapMobileImageWidthPx = 864//represents the actual pixel width of the large map images used for mobile
+        this.mapMobileImageWidthPx = 1635//represents the actual pixel width of the large map images used for mobile
         this.mapMobileImageHeightPx = 935//represents the actual pixel height of the large map images used for mobile
         this.mapMobileOriginalMapImageCenterToMarkerDistance = 350//On original map image, this is the px distance from the location marker to the center of the entire image
         this.mapMobileOriginalMapImageCenterToMarkerRatio = this.mapMobileOriginalMapImageCenterToMarkerDistance/this.mapMobileImageWidthPx//This is needed to find out the center to marker distance on the map image when the image is scaled up
-        this.mapMobileanimatedLogoMarkerToTransformOriginCenter = 370//On animated logo image, this is the distance from the map marker to the center of where the transform-origin occurs. We are using  transform-origin: center $mapLogoDesktopTransformOriginX; so the center of where the transform: scale is occuring is a position $mapLogoDesktopTransformOriginX from the left side of the logo image
+        this.mapMobileanimatedLogoMarkerToTransformOriginCenter = 231//On animated logo image, this is the distance from the map marker to the center of where the transform-origin occurs. We are using  transform-origin: center $mapLogoDesktopTransformOriginX; so the center of where the transform: scale is occuring is a position $mapLogoDesktopTransformOriginX from the left side of the logo image
         this.mapMobileImageSizeRatio = this.mapMobileImageWidthPx/this.mapMobileImageHeightPx
     }
     componentDidMount() {
@@ -204,30 +204,47 @@ class App extends React.Component {
         const innerHeight = window.innerHeight//if there are issues with this, may need to use document.documentElement.clientHeight || 0, window.innerHeight || 0)
 
         document.documentElement.style.setProperty('--vh', `${innerHeight/100}px`)
-        document.documentElement.style.setProperty('--mapScale', `${this.calculateMapImageMarkerScale()}`)
+        document.documentElement.style.setProperty('--mapScale', `${this.calculateMapImageMarkerScale(isMobileState)}`)
         const homeSlide = document.querySelector('.slideTemplate-home')
         const hundredVhInPx = homeSlide.clientHeight
         const mobileVhCalculation = innerHeight/hundredVhInPx * 100
         const visibleSlideHeight = isMobileState ? mobileVhCalculation : '100'//default to 100vh if not mobile
         this.setState({ visibleSlideHeight: visibleSlideHeight });
     }
-    calculateMapImageMarkerScale(){
+    calculateMapImageMarkerScale(isMobileState){
         const mapElementWidth = document.querySelector('.mapBackground').clientWidth
         const mapElementHeight = document.querySelector('.mapBackground').clientHeight
         const mapElementSizeRatio = mapElementWidth/mapElementHeight
 
         let satelliteLogoScale
-        if(mapElementSizeRatio < this.mapImageSizeRatio){
-            const imageWidthToScale = mapElementHeight * this.mapImageSizeRatio //If the map image height occupies the full height of the element, this will check to see what the full width of the map image would be if it were not constrained
-            const distanceFromCenterToMarkerToScale = imageWidthToScale * this.originalMapImageCenterToMarkerRatio//This calculates the distance from the center to the marker on the map image taking into consideration the scaled up version of the map
-            const scaleMultiplierOfOriginalToNewCenterToMarkerDistances = distanceFromCenterToMarkerToScale/this.animatedLogoMarkerToTransformOriginCenter
-            satelliteLogoScale = scaleMultiplierOfOriginalToNewCenterToMarkerDistances
+        if(isMobileState){
+            if(mapElementSizeRatio < this.mapMobileImageSizeRatio){
+                const imageWidthToScale = mapElementHeight * this.mapMobileImageSizeRatio //If the map image height occupies the full height of the element, this will check to see what the full width of the map image would be if it were not constrained
+                const distanceFromCenterToMarkerToScale = imageWidthToScale * this.mapMobileOriginalMapImageCenterToMarkerRatio//This calculates the distance from the center to the marker on the map image taking into consideration the scaled up version of the map
+                const scaleMultiplierOfOriginalToNewCenterToMarkerDistances = distanceFromCenterToMarkerToScale/this.mapMobileanimatedLogoMarkerToTransformOriginCenter
+                satelliteLogoScale = scaleMultiplierOfOriginalToNewCenterToMarkerDistances
+            }
+            else {
+                //mapElementWidth will not need to be modified since the width of the image is completely visible and the height is only partially showing
+                const distanceFromCenterToMarkerToScale = mapElementWidth * this.originalMapImageCenterToMarkerRatio//This calculates the distance from the center to the marker on the map image taking into consideration the scaled up version of the map
+                const scaleMultiplierOfOriginalToNewCenterToMarkerDistances = distanceFromCenterToMarkerToScale/this.animatedLogoMarkerToTransformOriginCenter
+                satelliteLogoScale = scaleMultiplierOfOriginalToNewCenterToMarkerDistances
+            }
+            satelliteLogoScale = satelliteLogoScale*0.5
         }
         else {
-            //mapElementWidth will not need to be modified since the width of the image is completely visible and the height is only partially showing
-            const distanceFromCenterToMarkerToScale = mapElementWidth * this.originalMapImageCenterToMarkerRatio//This calculates the distance from the center to the marker on the map image taking into consideration the scaled up version of the map
-            const scaleMultiplierOfOriginalToNewCenterToMarkerDistances = distanceFromCenterToMarkerToScale/this.animatedLogoMarkerToTransformOriginCenter
-            satelliteLogoScale = scaleMultiplierOfOriginalToNewCenterToMarkerDistances
+            if(mapElementSizeRatio < this.mapImageSizeRatio){
+                const imageWidthToScale = mapElementHeight * this.mapImageSizeRatio //If the map image height occupies the full height of the element, this will check to see what the full width of the map image would be if it were not constrained
+                const distanceFromCenterToMarkerToScale = imageWidthToScale * this.originalMapImageCenterToMarkerRatio//This calculates the distance from the center to the marker on the map image taking into consideration the scaled up version of the map
+                const scaleMultiplierOfOriginalToNewCenterToMarkerDistances = distanceFromCenterToMarkerToScale/this.animatedLogoMarkerToTransformOriginCenter
+                satelliteLogoScale = scaleMultiplierOfOriginalToNewCenterToMarkerDistances
+            }
+            else {
+                //mapElementWidth will not need to be modified since the width of the image is completely visible and the height is only partially showing
+                const distanceFromCenterToMarkerToScale = mapElementWidth * this.originalMapImageCenterToMarkerRatio//This calculates the distance from the center to the marker on the map image taking into consideration the scaled up version of the map
+                const scaleMultiplierOfOriginalToNewCenterToMarkerDistances = distanceFromCenterToMarkerToScale/this.animatedLogoMarkerToTransformOriginCenter
+                satelliteLogoScale = scaleMultiplierOfOriginalToNewCenterToMarkerDistances
+            }
         }
         return satelliteLogoScale
     }

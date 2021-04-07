@@ -1242,10 +1242,42 @@ body {
                         //         transform: translate(-26px, -51px);//offset logo to move map marker onto dot of mapMotionLogo
                         //     }
                         // }
+                        .mapLogoContainer {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, calc(-50% - #{$satelliteToggleButtonHeight}/2));
+                            .logoWrapper {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                width: 300px;
+                                .logoImage {
+                                    width: 52px;
+                                    height: auto;
+                                    margin-bottom: calc_vw(25);
+                                }
+                                .companyName,
+                                .companyAddress {
+                                    font-size: 11px;
+                                    text-transform: uppercase;
+                                    text-align: center;
+                                    line-height: 1.7em;
+                                    letter-spacing: 1px;
+                                }
+                                .companyName {
+                                    color: #fff;
+                                    font-family: "Gotham-Bold";
+                                }
+                                .companyAddress {
+                                    color: #bbb;
+                                }
+                            }
+                        }
                         .mapLogo {
                             position: absolute;
                             left: 50%;
-                            transform: translate(-$mapLogoobileTransformOriginXPercent, -50%) scale(var(--mapScale));
+                            transform: translate(-$mapLogoobileTransformOriginXPercent, $mapLogoobileTranslateYPercent) scale(var(--mapScale));
                             top: 50%;
                             z-index: 2;
                             transform-origin: $mapLogoMobileTransformOriginX center;
@@ -1280,7 +1312,7 @@ body {
                                 > img {
                                     // right: 200px;
                                     // position: relative;
-                                    transform: translate(0px, 100vh);
+                                    transform: translate(0px, calc(100vh - #{$satelliteToggleButtonHeight}));
                                 }
                             }
                         }

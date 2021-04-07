@@ -3581,10 +3581,42 @@ body {
     left: 0;
     height: calc(var(--vh, 1vh) * 100);
   }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapLogoContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc(-50% - 12.4074074074vw/2));
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapLogoContainer .logoWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapLogoContainer .logoWrapper .logoImage {
+    width: 52px;
+    height: auto;
+    margin-bottom: 2.3148148148vw;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapLogoContainer .logoWrapper .companyName,
+.slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapLogoContainer .logoWrapper .companyAddress {
+    font-size: 11px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.7em;
+    letter-spacing: 1px;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapLogoContainer .logoWrapper .companyName {
+    color: #fff;
+    font-family: "Gotham-Bold";
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapLogoContainer .logoWrapper .companyAddress {
+    color: #bbb;
+  }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapLogo {
     position: absolute;
     left: 50%;
-    transform: translate(-50%, -50%) scale(var(--mapScale));
+    transform: translate(-50%, -56%) scale(var(--mapScale));
     top: 50%;
     z-index: 2;
     transform-origin: 366px center;
@@ -3612,7 +3644,7 @@ body {
     justify-content: center;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer > img {
-    transform: translate(0px, 100vh);
+    transform: translate(0px, calc(100vh - 12.4074074074vw));
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field + .hs-form-field .input, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field + .hs-form-field .input {
     margin-left: 0;

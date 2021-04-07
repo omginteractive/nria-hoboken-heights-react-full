@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import {connect} from 'react-redux'
-import { toggleMenuState } from "./../redux/actions/menuActions";
-import { hideAvailabilityPlanModal } from "./../redux/actions/slideActions";
+import { toggleMenuState } from "../redux/actions/menuActions";
+import { hideAvailabilityPlanModal } from "../redux/actions/slideActions";
 import $ from 'jquery'
 class Header extends Component {
     constructor(props) {
