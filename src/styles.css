@@ -1603,6 +1603,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer {
   position: absolute;
+  overflow: hidden;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideContainer .founderHeadline {
   margin-bottom: 20px;
@@ -1654,12 +1655,15 @@ body {
   transform: scale(1.5);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper {
+  height: 100vh;
   flex-direction: column;
   justify-content: center;
   position: absolute;
   left: 46%;
   overflow: scroll;
-  top: calc(12.8vh + 4.2536458333vw);
+  top: 0;
+  padding-top: calc(12.8vh + 4.2536458333vw);
+  padding-bottom: 30px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderHeadline,
 .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderTagline,
@@ -2143,14 +2147,14 @@ body {
   height: auto;
   transform: scale(1);
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderHeadline {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderHeadline {
   animation-delay: 1.4s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderTagline {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderTagline {
   animation-delay: 1.5s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderHeadline,
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderTagline {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderHeadline,
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderTagline {
   position: relative;
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUpFounderSlide;
@@ -2158,55 +2162,55 @@ body {
   opacity: 0;
   animation-timing-function: ease-in-out;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(1) {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits :nth-child(1) {
   animation-delay: 1.68s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(2) {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits :nth-child(2) {
   animation-delay: 1.76s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(3) {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits :nth-child(3) {
   animation-delay: 1.84s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(4) {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits :nth-child(4) {
   animation-delay: 1.92s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(5) {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits :nth-child(5) {
   animation-delay: 2s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(6) {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits :nth-child(6) {
   animation-delay: 2.08s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(7) {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits :nth-child(7) {
   animation-delay: 2.16s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(8) {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits :nth-child(8) {
   animation-delay: 2.24s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(9) {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits :nth-child(9) {
   animation-delay: 2.32s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(10) {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits :nth-child(10) {
   animation-delay: 2.4s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(11) {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits :nth-child(11) {
   animation-delay: 2.48s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(12) {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits :nth-child(12) {
   animation-delay: 2.56s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(13) {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits :nth-child(13) {
   animation-delay: 2.64s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(14) {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits :nth-child(14) {
   animation-delay: 2.72s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(15) {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits :nth-child(15) {
   animation-delay: 2.8s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits :nth-child(16) {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits :nth-child(16) {
   animation-delay: 2.88s;
 }
-.slides_wrapper .slides_inner .slide.runAnimationOnce .founderSlideWrapper .founderBenefits .benefitPair {
+.slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-founders .founderSlideWrapper .founderBenefits .benefitPair {
   position: relative;
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUpFounderSlide;
@@ -2254,38 +2258,38 @@ body {
   color: #ffffff;
   background-color: #000;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection > h2,
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection > p,
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection .btn {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-fountainPen .textSection > h2,
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-fountainPen .textSection > p,
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-fountainPen .textSection .btn {
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUp;
   animation-duration: 0.5s;
   opacity: 0;
   position: relative;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection :nth-child(1) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-fountainPen .textSection :nth-child(1) {
   animation-delay: 0.6s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection :nth-child(2) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-fountainPen .textSection :nth-child(2) {
   animation-delay: 0.8s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection :nth-child(3) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-fountainPen .textSection :nth-child(3) {
   animation-delay: 1s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection :nth-child(4) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-fountainPen .textSection :nth-child(4) {
   animation-delay: 1.2s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-fountainPen .textSection :nth-child(5) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-fountainPen .textSection :nth-child(5) {
   animation-delay: 1.4s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .videoContainer .background-video.videoZoomEffectRepeat,
-.slides_wrapper .slides_inner .slide.runAnimations .videoContainer .lightsMask.videoZoomEffectRepeat,
-.slides_wrapper .slides_inner .slide.runAnimations .lightsMaskContainer .background-video.videoZoomEffectRepeat,
-.slides_wrapper .slides_inner .slide.runAnimations .lightsMaskContainer .lightsMask.videoZoomEffectRepeat {
+.slides_wrapper .slides_inner .slide.activeSlide .videoContainer .background-video.videoZoomEffectRepeat,
+.slides_wrapper .slides_inner .slide.activeSlide .videoContainer .lightsMask.videoZoomEffectRepeat,
+.slides_wrapper .slides_inner .slide.activeSlide .lightsMaskContainer .background-video.videoZoomEffectRepeat,
+.slides_wrapper .slides_inner .slide.activeSlide .lightsMaskContainer .lightsMask.videoZoomEffectRepeat {
   transform: scale(1);
   transition: object-position 1400ms linear 0s, transform 1400ms ease-out 0.6s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .amenities_gallery__image.active {
+.slides_wrapper .slides_inner .slide.activeSlide .amenities_gallery__image.active {
   transform: scale(1.15);
   animation-fill-mode: forwards;
   animation-name: zoomOut;
@@ -2293,50 +2297,50 @@ body {
   animation-delay: 0.5s;
   animation-timing-function: ease-out;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li {
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li {
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUp;
   animation-duration: 0.5s;
   opacity: 0;
   position: relative;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(1) {
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(1) {
   animation-delay: 0.2s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(2) {
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(2) {
   animation-delay: 0.4s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(3) {
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(3) {
   animation-delay: 0.6s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(4) {
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(4) {
   animation-delay: 0.8s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(5) {
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(5) {
   animation-delay: 1s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(6) {
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(6) {
   animation-delay: 1.2s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(7) {
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(7) {
   animation-delay: 1.4s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(8) {
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(8) {
   animation-delay: 1.6s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(9) {
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(9) {
   animation-delay: 1.8s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(10) {
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(10) {
   animation-delay: 2s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(11) {
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(11) {
   animation-delay: 2.2s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .amenities__list > ul > li:nth-of-type(12) {
+.slides_wrapper .slides_inner .slide.activeSlide .amenities__list > ul > li:nth-of-type(12) {
   animation-delay: 2.4s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseFullscreenImage {
+.slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseFullscreenImage {
   transform: scale(1.15);
   animation-fill-mode: forwards;
   animation-name: zoomOut;
@@ -2344,30 +2348,30 @@ body {
   animation-delay: 0.5s;
   animation-timing-function: ease-out;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__details > h2, .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__details > p, .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__features_list_heading_wrapper .heading, .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__features_list_heading_wrapper .residencePenthouseDetail__features_list_wrapper, .slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__arrow_button_container {
+.slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__details > h2, .slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__details > p, .slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__features_list_heading_wrapper .heading, .slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__features_list_heading_wrapper .residencePenthouseDetail__features_list_wrapper, .slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__arrow_button_container {
   position: relative;
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUp;
   animation-duration: 0.6s;
   opacity: 0;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__details > h2 {
+.slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__details > h2 {
   animation-delay: 0.6s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__details > p {
+.slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__details > p {
   animation-delay: 0.8s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__features_list_heading_wrapper .heading {
+.slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__features_list_heading_wrapper .heading {
   animation-delay: 1s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__features_list_heading_wrapper .residencePenthouseDetail__features_list_wrapper {
+.slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__features_list_heading_wrapper .residencePenthouseDetail__features_list_wrapper {
   animation-delay: 1.2s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .residencePenthouseDetail__arrow_button_container {
+.slides_wrapper .slides_inner .slide.activeSlide .residencePenthouseDetail__arrow_button_container {
   animation-delay: 1.4s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam__page_title, .slides_wrapper .slides_inner .slide.runAnimations .developmentTeam__headline, .slides_wrapper .slides_inner .slide.runAnimations .developmentTeam__paragraph,
-.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group .btn {
+.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam__page_title, .slides_wrapper .slides_inner .slide.activeSlide .developmentTeam__headline, .slides_wrapper .slides_inner .slide.activeSlide .developmentTeam__paragraph,
+.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .developmentTeam__button_group .btn {
   position: relative;
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUp;
@@ -2375,141 +2379,141 @@ body {
   opacity: 0;
   text-decoration: none;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup .developmentTeam__page_title {
+.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .textGroup .developmentTeam__page_title {
   animation-delay: 0.8s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup .developmentTeam__paragraph,
-.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .textGroup .developmentTeam__headline {
+.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .textGroup .developmentTeam__paragraph,
+.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .textGroup .developmentTeam__headline {
   animation-delay: 1s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(0) {
+.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(0) {
   animation-delay: 1s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(1) {
+.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(1) {
   animation-delay: 1.2s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(2) {
+.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(2) {
   animation-delay: 1.4s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(3) {
+.slides_wrapper .slides_inner .slide.activeSlide .developmentTeam .developmentTeam__button_group > .btn:nth-of-type(3) {
   animation-delay: 1.6s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-views .views_section__top > h2,
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-views .views_section__top > p {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-views .views_section__top > h2,
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-views .views_section__top > p {
   position: relative;
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUp;
   animation-duration: 0.6s;
   opacity: 0;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-views .views_section__top :nth-child(1) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-views .views_section__top :nth-child(1) {
   animation-delay: 0.4s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-views .views_section__top :nth-child(2) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-views .views_section__top :nth-child(2) {
   animation-delay: 0.6s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-views .views_section__top :nth-child(3) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-views .views_section__top :nth-child(3) {
   animation-delay: 0.8s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-views .views_section__image {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-views .views_section__image {
   transform: scale(1);
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-residencePenthouse .btn {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-residencePenthouse .btn {
   position: relative;
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUp;
   animation-duration: 0.6s;
   opacity: 0;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-residencePenthouse .btn:nth-of-type(1) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-residencePenthouse .btn:nth-of-type(1) {
   animation-delay: 0.6s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-residencePenthouse .btn:nth-of-type(2) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-residencePenthouse .btn:nth-of-type(2) {
   animation-delay: 0.8s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability > h2,
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityDescription,
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityDropdownWrapper,
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability > h2,
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityDescription,
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityDropdownWrapper,
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment {
   position: relative;
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUp;
   animation-duration: 0.6s;
   opacity: 0;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability > h2 {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability > h2 {
   animation-delay: 0.6s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityDescription {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityDescription {
   animation-delay: 0.8s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityDropdownWrapper {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityDropdownWrapper {
   animation-delay: 1s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(1) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(1) {
   animation-delay: 1.2s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(2) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(2) {
   animation-delay: 1.3s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(3) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(3) {
   animation-delay: 1.4s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(4) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(4) {
   animation-delay: 1.5s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(5) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(5) {
   animation-delay: 1.6s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(6) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(6) {
   animation-delay: 1.7s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(7) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(7) {
   animation-delay: 1.8s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(8) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(8) {
   animation-delay: 1.9s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(9) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(9) {
   animation-delay: 2s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(10) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(10) {
   animation-delay: 2.1s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(11) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(11) {
   animation-delay: 2.2s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(12) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment:nth-of-type(12) {
   animation-delay: 2.3s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .left > img {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-neighborhoodCommunity .left > img {
   transform: scale(1);
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .textGroup > h2,
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .textGroup .content_discover,
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .btn {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-neighborhoodCommunity .right .textGroup > h2,
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-neighborhoodCommunity .right .textGroup .content_discover,
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-neighborhoodCommunity .right .btn {
   position: relative;
   animation-fill-mode: forwards;
   animation-name: fadeInDriftUp;
   animation-duration: 0.6s;
   opacity: 0;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .textGroup > h2 {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-neighborhoodCommunity .right .textGroup > h2 {
   animation-delay: 0.8s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .textGroup .content_discover {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-neighborhoodCommunity .right .textGroup .content_discover {
   animation-delay: 1s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .button_container > .btn:nth-of-type(1) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-neighborhoodCommunity .right .button_container > .btn:nth-of-type(1) {
   animation-delay: 1.2s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .button_container > .btn:nth-of-type(2) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-neighborhoodCommunity .right .button_container > .btn:nth-of-type(2) {
   animation-delay: 1.4s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .button_container > .btn:nth-of-type(3) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-neighborhoodCommunity .right .button_container > .btn:nth-of-type(3) {
   animation-delay: 1.6s;
 }
-.slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-neighborhoodCommunity .right .button_container > .btn:nth-of-type(4) {
+.slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-neighborhoodCommunity .right .button_container > .btn:nth-of-type(4) {
   animation-delay: 1.8s;
 }
 .slides_wrapper .slides_inner .slide .videoContainer {
@@ -2635,10 +2639,6 @@ body {
   }
 }
 @media screen and (min-width: 769px) and (max-height: 700px) {
-  .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper {
-    justify-content: flex-start;
-    top: 12.8vh;
-  }
   .slides_wrapper .slides_inner .slide.slideTemplate-founders .founderSlideWrapper .founderHeadline {
     width: 400px;
     margin-bottom: 10px;
@@ -2967,7 +2967,7 @@ body {
     animation-name: fadeOut;
   }
 
-  .slide.runAnimations .centerBottom > h1 {
+  .slide.activeSlide .centerBottom > h1 {
     opacity: 1;
     animation-name: none;
   }
@@ -3000,7 +3000,7 @@ body {
     transition: top 0s linear 1.2s, opacity 1s;
   }
 
-  .runAnimations .centerBottom .line {
+  .activeSlide .centerBottom .line {
     top: 0;
     transition: top 0.5s linear 0.8s;
   }
@@ -3111,28 +3111,28 @@ body {
     display: none;
     top: 1700vh;
   }
-  .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-film .centerBottom > h1, .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-exteriorLightToggle .centerBottom > h1 {
+  .slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-film .centerBottom > h1, .slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-exteriorLightToggle .centerBottom > h1 {
     opacity: 1;
     transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
     top: 0;
   }
-  .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-developmentTeam .developmentTeam__button_group > .btn:nth-of-type(1) {
+  .slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-developmentTeam .developmentTeam__button_group > .btn:nth-of-type(1) {
     animation-delay: 0.8s;
   }
-  .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-developmentTeam .developmentTeam__button_group > .btn:nth-of-type(2) {
+  .slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-developmentTeam .developmentTeam__button_group > .btn:nth-of-type(2) {
     animation-delay: 1s;
   }
-  .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-developmentTeam .developmentTeam__button_group > .btn:nth-of-type(3) {
+  .slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-developmentTeam .developmentTeam__button_group > .btn:nth-of-type(3) {
     animation-delay: 1.2s;
   }
-  .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-developmentTeam .developmentTeam__button_group > .btn:nth-of-type(4) {
+  .slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-developmentTeam .developmentTeam__button_group > .btn:nth-of-type(4) {
     animation-delay: 1.4s;
   }
-  .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-map .mapSection .mapLogoContainer .logoWrapper {
+  .slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-map .mapSection .mapLogoContainer .logoWrapper {
     transform: translateY(-10px);
     opacity: 1;
   }
-  .slides_wrapper .slides_inner .slide.runAnimations.slideTemplate-map .mapSection .mapLogoContainer .mapMarker {
+  .slides_wrapper .slides_inner .slide.activeSlide.slideTemplate-map .mapSection .mapLogoContainer .mapMarker {
     animation-fill-mode: forwards;
     animation-name: mapMarkerExpand;
     animation-duration: 0.7s;

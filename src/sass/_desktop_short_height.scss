@@ -2,8 +2,8 @@
     &.slideTemplate- {
         &founders  {
             .founderSlideWrapper {//Slide has a vertical list. Too tall on smaller-height desktops
-                justify-content: flex-start;
-                top: $header-height;
+                // justify-content: flex-start;
+                // top: $header-height;
                 .founderHeadline {
                     width: 400px;//Allows one line break
                     margin-bottom: 10px;

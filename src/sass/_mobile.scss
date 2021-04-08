@@ -454,10 +454,8 @@ body {
         }
     }
 }
-
-
  
-.slide.runAnimations .centerBottom > h1 {
+.slide.activeSlide .centerBottom > h1 {
     opacity: 1;
     animation-name: none;//prevents desktop animation from running (which doesnt require .animate parent)
 }
@@ -498,7 +496,7 @@ body {
     }
 }
 
-.runAnimations {
+.activeSlide {
     .centerBottom {
         .line {
             top: 0;
@@ -624,7 +622,7 @@ body {
             top: 1700vh;
         }
         .slide {
-            &.runAnimations {
+            &.activeSlide {
                 &.slideTemplate-{
                     &film,
                     &exteriorLightToggle {

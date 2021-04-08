@@ -65,10 +65,19 @@ class Slide extends Component {
 	// 	showPrivacyPolicy()
     // }
     
-    delegateScroll(wheelAmt, elementToDelegateScroll, defaultScroll = false){
+    /*
+     * delegateScroll is used to take a wheel event that occurs on one an element and
+     * cause a scroll event on a different element.
+     * 
+     * forceSlideChange will simply cause the scrollTop value to either be the minimum or 
+     * maximum which will cause the slide to change since there will be no place left to scroll.
+     * This is used when a slide may not need to use the scroll feature depending on the state.
+     *
+     */
+    delegateScroll(wheelAmt, elementToDelegateScroll, forceSlideChange = false){
         const currentDetailsScrollDistance = elementToDelegateScroll.scrollTop
         elementToDelegateScroll.scrollTop = currentDetailsScrollDistance + wheelAmt
-        if(defaultScroll){
+        if(forceSlideChange){
             if(wheelAmt < 0) {
                 elementToDelegateScroll.scrollTop = 0//scroll to top of slide to trigger prevSlide as scroll motion continues
             }
@@ -119,7 +128,7 @@ class Slide extends Component {
         // deviceKey =this.props.desktopKeys[this.props.currSlideIdx]
         // console.log(isCurrent, this.props.currSlideIdx == this.props.idx, this.props.currSlideIdx,deviceKey, this.props.idx)
         slideClasses += slideObj.slideClasses !== undefined ? " " + slideObj.slideClasses : '';
-		if(isCurrent) slideClasses += " runAnimations activeSlide";
+		if(isCurrent) slideClasses += " activeSlide";
 		if(this.props.slidesViewed.includes(this.props.idx)) slideClasses += " runAnimationOnce";
 		// if(slideObj.videoZoomEffect) videoClasses += ' videoZoomEffect'
 		slideClasses += slideObj.videoMobileStartPosition ? ' mobile-video-position-' + slideObj.videoMobileStartPosition : ' mobile-video-position-center'
@@ -210,7 +219,7 @@ class Slide extends Component {
                     <SlideDevelopmentTeam isCurrent={isCurrent} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'founders' &&
-                    <SlideFounders  configuration={slideObj}  />
+                    <SlideFounders methods={slideMethods} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'videoDiscover' &&
                     <SlideVideoDiscover  methods={slideMethods} configuration={slideObj}  />
@@ -1124,6 +1133,12 @@ class SlideFounders extends Component {
     shouldComponentUpdate(nextProps, nextState){
         return false
     }
+    handleWheelEvent = e => {
+        const wheelAmt = e.deltaY
+        const querySelector = '.founderSlideWrapper'
+        const elementToDelegateScroll = document.querySelectorAll(querySelector)[0]
+        this.props.methods.delegateScroll(wheelAmt, elementToDelegateScroll)
+    }
     render(){
         const founderImage = this.props.configuration.founderImage
         const founderHeadline = this.props.configuration.founderHeadline
@@ -1131,27 +1146,27 @@ class SlideFounders extends Component {
         const founderBenefits = this.props.configuration.founderBenefits
         return(
             <>
-                <div className="founderSlideContainer">
+                <div className="founderSlideContainer" onWheel={this.handleWheelEvent.bind(this)}>
                     <img className="founderImage" src={founderImage} alt=""/>
                     <div className="founderSlideWrapper">
-                    {founderHeadline &&
-                        <h2 className="founderHeadline">{founderHeadline}</h2>
-                    }
-                    {founderTagline &&
-                        <p className="founderTagline">{founderTagline}</p>
-                    }
-                    {founderBenefits &&
-                        <div className="founderBenefits">
-                            {Object.entries(founderBenefits).map(([key, value]) => {
-                                return(
-                                <div key={key+'founderBenefit'} className="benefitPair">
-                                    <div className="count">{parseInt(key)+1}</div>
-                                    <div className="benefit">{value.items}</div>
-                                </div>
-                                )
-                            })}
-                        </div>
-                    }
+                        {founderHeadline &&
+                            <h2 className="founderHeadline">{founderHeadline}</h2>
+                        }
+                        {founderTagline &&
+                            <p className="founderTagline">{founderTagline}</p>
+                        }
+                        {founderBenefits &&
+                            <div className="founderBenefits">
+                                {Object.entries(founderBenefits).map(([key, value]) => {
+                                    return(
+                                    <div key={key+'founderBenefit'} className="benefitPair">
+                                        <div className="count">{parseInt(key)+1}</div>
+                                        <div className="benefit">{value.items}</div>
+                                    </div>
+                                    )
+                                })}
+                            </div>
+                        }
                     </div>
                 </div>
             </>

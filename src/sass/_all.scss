@@ -1618,6 +1618,7 @@ body {
                         position: absolute;
                         // width: 60%;
                         // left: 40%;
+                        overflow: hidden;//makes it so medallion stays in bottom left during scroll events
                         .founderHeadline {
                             margin-bottom: 20px;
                             width: 1px;//This forces line breaks between words
@@ -1671,15 +1672,15 @@ body {
                         transform: scale(1.5);
                     }
                     .founderSlideWrapper {
-                        // height: 100%;
-                        // display: flex;
+                        height: 100vh;
                         flex-direction: column;
                         justify-content: center;
                         position: absolute;
                         left: 46%;
                         overflow: scroll;
-                        top: calc(#{$header-height} + #{calc_vw(81.67)});
-                        // height: calc(100vh - #{$header-height});
+                        top: 0;
+                        padding-top: calc(#{$header-height} + #{calc_vw(81.67)});
+                        padding-bottom: 30px;
                         @extend .hideScrollbars;
                     }
                     .founderHeadline,
@@ -2234,35 +2235,18 @@ body {
                         height: auto;
                         transform: scale(1);
                     }
-                }
-                .founderSlideWrapper {
-                    $founderAnimationDuration: 0.75s;
-                    $timeBetweenAnimations: 0.1s;
-                    $firstAnimationDelay: 1.4s;
-                    .founderHeadline {
-                        animation-delay: $firstAnimationDelay;
-                    }
-                    .founderTagline {
-                        animation-delay: $firstAnimationDelay + $timeBetweenAnimations;
-                    }
-                    .founderHeadline,
-                    .founderTagline {
-                        position: relative;
-                        animation-fill-mode: forwards;
-                        animation-name: fadeInDriftUpFounderSlide;
-                        animation-duration: $founderAnimationDuration;
-                        opacity: 0;
-                        animation-timing-function: ease-in-out;
-                    }
-                    .founderBenefits {
-                        $incrementalBenefitPairAnimationDelay: $timeBetweenAnimations*0.8;
-                        @for $i from 1 through 16 {//letters in string plus following line
-                            :nth-child(#{$i}) {
-                                //each letter should have a longer delay than the previous, but should start after slide animation finishes
-                                animation-delay: $firstAnimationDelay + $timeBetweenAnimations*2 + $i * ($incrementalBenefitPairAnimationDelay);
-                            }
+                    .founderSlideWrapper {
+                        $founderAnimationDuration: 0.75s;
+                        $timeBetweenAnimations: 0.1s;
+                        $firstAnimationDelay: 1.4s;
+                        .founderHeadline {
+                            animation-delay: $firstAnimationDelay;
                         }
-                        .benefitPair {
+                        .founderTagline {
+                            animation-delay: $firstAnimationDelay + $timeBetweenAnimations;
+                        }
+                        .founderHeadline,
+                        .founderTagline {
                             position: relative;
                             animation-fill-mode: forwards;
                             animation-name: fadeInDriftUpFounderSlide;
@@ -2270,11 +2254,25 @@ body {
                             opacity: 0;
                             animation-timing-function: ease-in-out;
                         }
+                        .founderBenefits {
+                            $incrementalBenefitPairAnimationDelay: $timeBetweenAnimations*0.8;
+                            @for $i from 1 through 16 {//letters in string plus following line
+                                :nth-child(#{$i}) {
+                                    //each letter should have a longer delay than the previous, but should start after slide animation finishes
+                                    animation-delay: $firstAnimationDelay + $timeBetweenAnimations*2 + $i * ($incrementalBenefitPairAnimationDelay);
+                                }
+                            }
+                            .benefitPair {
+                                position: relative;
+                                animation-fill-mode: forwards;
+                                animation-name: fadeInDriftUpFounderSlide;
+                                animation-duration: $founderAnimationDuration;
+                                opacity: 0;
+                                animation-timing-function: ease-in-out;
+                            }
+                        }
                     }
                 }
-            }
-            &.activeSlide {
-                
             }
             .centerBottom {
                 position: absolute;
@@ -2316,7 +2314,7 @@ body {
                     }
                 }
             }
-            &.runAnimations {
+            &.activeSlide {
                 &.slideTemplate-fountainPen {
                     $animation_incremental_delay: 0.2s;
                     $animation_base_delay: 0.4s;
