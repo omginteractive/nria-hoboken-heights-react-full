@@ -149,24 +149,21 @@ class App extends React.Component {
         
     	window.addEventListener('keydown', (event) => {
 			if (!event.target.classList.contains('input')) {
-                let needScroll = false
+                let result
                 const keyboardCommand = event.code
-				if (keyboardCommand === "ArrowUp") needScroll = this.prevSlide()
-				else if (keyboardCommand === "ArrowDown") needScroll = this.nextSlide()
-				else if (keyboardCommand === "ArrowLeft") needScroll = this.prevSlide()
-				else if (keyboardCommand === "ArrowRight") needScroll = this.nextSlide()
+				if (keyboardCommand === "ArrowUp") result = this.prevSlide()
+				else if (keyboardCommand === "ArrowDown") result = this.nextSlide()
+				else if (keyboardCommand === "ArrowLeft") result = this.prevSlide()
+				else if (keyboardCommand === "ArrowRight") result = this.nextSlide()
 
-                if(needScroll === 'needScroll') {
-                    const scrollDistance = 20
+                if(result === 'needScroll') {
                     const deviceSlideIdx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
                     const elementToScroll = this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector ? this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector : '.slide.activeSlide'
                     if(keyboardCommand === "ArrowDown" || keyboardCommand === "ArrowRight") {
-                        const originalScroll = document.querySelectorAll(elementToScroll)[0].scrollTop
-                        document.querySelectorAll(elementToScroll)[0].scrollTop = originalScroll + scrollDistance
+                        this.triggerScrollDownElement(elementToScroll)
                     }
                     else if(keyboardCommand === "ArrowUp" || keyboardCommand === "ArrowLeft"){
-                        const originalScroll = document.querySelectorAll(elementToScroll)[0].scrollTop
-                        document.querySelectorAll(elementToScroll)[0].scrollTop = originalScroll - scrollDistance
+                        this.triggerScrollUpElement(elementToScroll)
                     }
                 }
 			}
@@ -178,6 +175,16 @@ class App extends React.Component {
         }
         window.addEventListener('resize', () => this.handleResize())
 	}
+    triggerScrollUpElement(elementToScroll){
+        const scrollDistance = 20
+        const originalScroll = document.querySelectorAll(elementToScroll)[0].scrollTop
+        document.querySelectorAll(elementToScroll)[0].scrollTop = originalScroll - scrollDistance
+    }
+    triggerScrollDownElement(elementToScroll){
+        const scrollDistance = 20
+        const originalScroll = document.querySelectorAll(elementToScroll)[0].scrollTop
+        document.querySelectorAll(elementToScroll)[0].scrollTop = originalScroll + scrollDistance
+    }
     shouldComponentUpdate(nextProps, nextState){
         const curridx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
         const slidesNotLoaded = this.props.slideData === null
@@ -601,7 +608,10 @@ class App extends React.Component {
 		const horizontalDifference = Math.abs(this.state.touchStartCoordinate.x - coordinateX);
 		const verticalDifference = Math.abs(this.state.touchStartCoordinate.y - coordinateY);
         const largestDifference = Math.max(horizontalDifference, verticalDifference)
-        if(largestDifference < touchDragThreshold) return
+        console.log(largestDifference)
+
+        const differenceTooSmallToTriggerEvent = largestDifference < touchDragThreshold
+        if(differenceTooSmallToTriggerEvent) return
 		let mainTouchDirection;
 		if(verticalDifference > horizontalDifference) {
 			mainTouchDirection = verticalDirection
@@ -625,7 +635,13 @@ class App extends React.Component {
 				this.prevSlide();
 				break;
 			case 'down':
-				this.nextSlide();
+				const result = this.nextSlide()
+                if(result == 'needScroll'){
+                    const deviceSlideIdx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
+                    const elementToScroll = this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector ? this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector : '.slide.activeSlide'
+                    this.triggerScrollDownElement(elementToScroll)
+                }
+                
 				break;
 			case 'left':
 				this.slideHorizontal('left');
