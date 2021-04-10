@@ -2565,15 +2565,13 @@ body {
                     overflow: hidden;
 
                 }
-                &.compactFullWidth {
-                    height: calc(100vh - #{$header-height});
+                &.fullWidthHeightVideo {
+                    // height: calc(100vh - #{$header-height});
+                    height: 100vh;
                     bottom: 0;
                     position: absolute;
                     overflow: hidden;
                     transition: height 0.7s, transform $slideAnimationDuration;
-                    &.expanded {
-                        height: 100vh;
-                    }
                 }
                 .background-video {
                     width: 100%;

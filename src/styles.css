@@ -2528,15 +2528,12 @@ body {
   position: absolute;
   overflow: hidden;
 }
-.slides_wrapper .slides_inner .slide .videoContainer.compactFullWidth {
-  height: calc(100vh - 12.8vh);
+.slides_wrapper .slides_inner .slide .videoContainer.fullWidthHeightVideo {
+  height: 100vh;
   bottom: 0;
   position: absolute;
   overflow: hidden;
   transition: height 0.7s, transform 1400ms;
-}
-.slides_wrapper .slides_inner .slide .videoContainer.compactFullWidth.expanded {
-  height: 100vh;
 }
 .slides_wrapper .slides_inner .slide .videoContainer .background-video {
   width: 100%;

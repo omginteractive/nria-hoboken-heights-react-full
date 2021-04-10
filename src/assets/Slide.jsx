@@ -560,12 +560,11 @@ class SlideFilm extends Component {
         })
     }
     render(){
-        let videoContainerClasses = 'videoContainer compactFullWidth'
-        videoContainerClasses += this.state.soundOn ? ' expanded' : ''
+        let videoContainerClasses = 'videoContainer fullWidthHeightVideo'
+        // videoContainerClasses += this.state.soundOn ? ' expanded' : ''
 
-        const videoContainerClassesSoundOff = this.state.soundOn ? videoContainerClasses + ' soundOn' : videoContainerClasses + ' soundOff'
         let videoClasses = 'background-video'
-        let soundButtonText = this.state.soundOn ? this.props.configuration.filmSoundTurnOffText : this.props.configuration.filmSoundTurnOnText
+        // let soundButtonText = this.state.soundOn ? this.props.configuration.filmSoundTurnOffText : this.props.configuration.filmSoundTurnOnText
         if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffectRepeat startZoomedIn'
         const right_arrow_styles = {
             backgroundImage: 'url('+this.props.configuration.swipe_arrow_right_1+')'
@@ -587,13 +586,13 @@ class SlideFilm extends Component {
                     </div>
                     <div onClick={this.props.methods.goToContactSlide.bind(this)} className="inquiry-link">INQUIRE NOW</div>
                 </header>
-                <div onClick={this.toggleSound.bind(this)} className="toggleSound btn">{soundButtonText}</div>
+                {/* <div onClick={this.toggleSound.bind(this)} className="toggleSound btn">{soundButtonText}</div> */}
                 {
                         //Hide landingpage video on FFMobile because it will not autoplay
                         //Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
 						<div
                         ref={this.videoContainerRef}
-						className={videoContainerClassesSoundOff}
+						className={videoContainerClasses}
 						dangerouslySetInnerHTML={{
 							__html: `
 							<video
