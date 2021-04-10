@@ -3,6 +3,7 @@ import React from 'react';
 import $ from 'jquery'
 import {connect} from 'react-redux'
 // import _ from "lodash";
+import ReactPlayer from 'react-player'
 
 import SlideMap from './slideComponents/SlideMap';
 import SlideViews from './slideComponents/SlideViews';
@@ -529,16 +530,16 @@ class SlideFilm extends Component {
             soundOn: false,
             video: null
         }
-        this.videoContainerRef = React.createRef()
+        // this.videoContainerRef = React.createRef()
     }
     componentDidUpdate(){
-        const slideIsActive = this.props.isCurrent
-        if(slideIsActive){
-            this.videoContainerRef.current.children[0].play()
-        }
-        else {
-            this.videoContainerRef.current.children[0].pause()
-        }
+        // const slideIsActive = this.props.isCurrent
+        // if(slideIsActive){
+        //     this.videoContainerRef.current.children[0].play()
+        // }
+        // else {
+        //     this.videoContainerRef.current.children[0].pause()
+        // }
     }
     shouldComponentUpdate(nextProps, nextState){
         const soundStateChanged = this.state.soundOn !== nextState.soundOn
@@ -590,24 +591,35 @@ class SlideFilm extends Component {
                 {
                         //Hide landingpage video on FFMobile because it will not autoplay
                         //Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
-						<div
-                        ref={this.videoContainerRef}
-						className={videoContainerClasses}
-						dangerouslySetInnerHTML={{
-							__html: `
-							<video
-							class="${videoClasses}"
-							${this.props.configuration.videoLoop ? 'loop="true"' : ''}
-                            muted="muted"
-							autoplay='true'
-							playsinline='playsinline'
-							preload="metadata"
-							>
-							<source src="${this.props.configuration.background_video_film}" type="video/mp4" />
-							</video>`
-						}}
-					/>
+					// 	<div
+                    //     ref={this.videoContainerRef}
+					// 	className={videoContainerClasses}
+					// 	dangerouslySetInnerHTML={{
+					// 		__html: `
+					// 		<video
+					// 		class="${videoClasses}"
+					// 		${this.props.configuration.videoLoop ? 'loop="true"' : ''}
+                    //         muted="muted"
+					// 		autoplay='true'
+					// 		playsinline='playsinline'
+					// 		preload="metadata"
+					// 		>
+					// 		<source src="${this.props.configuration.background_video_film}" type="video/mp4" />
+					// 		</video>`
+					// 	}}
+					// />
 				}
+                
+                <ReactPlayer
+                    playing={true}
+                    muted={true}
+                    controls={true}
+                    className='reactPlayer'
+                    url={this.props.configuration.background_video_film} 
+                    width='100%'
+                    height='100%'/>
+
+                
                 {this.props.configuration.mobileHasDifferentContent &&
 					<div className={"centerBottom mobile-only"}>
 						<h1 style={this.props.configuration.mobileContent.centerBottom.lineStyles} className="line" >

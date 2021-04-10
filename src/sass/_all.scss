@@ -569,6 +569,16 @@ body {
                         animation-delay: 2s, 3s;
                     }
                 }
+                &film {
+                    .reactPlayer {
+                        // height: 100vh;
+                        > video {
+                            height: 100%;
+                            width: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
                 &exteriorLightToggle,
                 &film {
                     background: #fff;
