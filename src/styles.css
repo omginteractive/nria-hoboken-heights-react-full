@@ -657,10 +657,45 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-home .downArrowContainer .downArrow {
   animation-delay: 2s, 3s;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-film .filmSlideContent {
+  display: flex;
+  justify-content: center;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-film .reactPlayer > video {
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-film .custom-seekbar {
+  cursor: pointer;
+  height: 0.8333333333vw;
+  width: 80%;
+  background-color: #b4b4b1;
+  position: absolute;
+  bottom: 5.2083333333vw;
+  transition: opacity 0.6s;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-film .custom-seekbar.hidden {
+  opacity: 0;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-film .custom-seekbar .progress {
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-film .custom-seekbar .progress::after {
+  content: "";
+  background-color: #000;
+  border: solid #fff 2px;
+  border-radius: 50%;
+  height: 1.5625vw;
+  width: 1.5625vw;
+  position: absolute;
+  right: 0;
+  transform: translate(25%, -25%);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle, .slides_wrapper .slides_inner .slide.slideTemplate-film {
   background: #fff;

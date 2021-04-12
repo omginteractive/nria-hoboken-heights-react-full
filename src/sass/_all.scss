@@ -570,12 +570,47 @@ body {
                     }
                 }
                 &film {
+                    .filmSlideContent {
+                        display: flex;
+                        justify-content: center;
+                    }
                     .reactPlayer {
                         // height: 100vh;
                         > video {
                             height: 100%;
                             width: 100%;
                             object-fit: cover;
+                        }
+                    }
+                    .custom-seekbar {  
+                        cursor: pointer;
+                        height: calc_vw(16);
+                        width: 80%;
+                        background-color: #b4b4b1;
+                        position: absolute;
+                        bottom: calc_vw(100);
+                        transition: opacity 0.6s;
+                        &.hidden {
+                            opacity: 0;
+                        }
+                        .progress {
+                            background-color: #FFFFFF;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            height: 100%;
+                            width: 0;
+                            &::after {
+                                content: '';
+                                background-color: #000;
+                                border: solid #fff 2px;
+                                border-radius: 50%;
+                                height: calc_vw(30);
+                                width: calc_vw(30);
+                                position: absolute;
+                                right: 0;
+                                transform: translate(25%, -25%);
+                            }
                         }
                     }
                 }

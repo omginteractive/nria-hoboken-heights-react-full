@@ -2,8 +2,8 @@ import {Component} from 'react';
 import React from 'react';
 import $ from 'jquery'
 import {connect} from 'react-redux'
-// import _ from "lodash";
-import ReactPlayer from 'react-player'
+import _ from "lodash";
+import ReactPlayer from 'react-player/file'
 
 import SlideMap from './slideComponents/SlideMap';
 import SlideViews from './slideComponents/SlideViews';
@@ -530,7 +530,28 @@ class SlideFilm extends Component {
             soundOn: false,
             video: null
         }
-        // this.videoContainerRef = React.createRef()
+        this.videoContainerRef = React.createRef()
+        this.reactVideoPlayer = <ReactPlayer
+            ref={this.videoContainerRef}
+            playing={true}
+            muted={true}
+            className='reactPlayer'
+            url={this.props.configuration.background_video_film} 
+            width='100%'
+            height='100%'
+            loop={true}
+            progressInterval={500}
+            onProgress={(progress)=> this.updateSeekBar(progress)}
+            />
+        this.throttleMouseMove = _.throttle(this.handleMouseMove, 350);
+        this.mouseMovementTimeout = null
+    }
+    handleSeekBarClick(e){
+            const offset = $(".custom-seekbar").offset();
+            const left = (e.pageX - offset.left);
+            const totalWidth = $(".custom-seekbar").width();
+            const percentage = ( left / totalWidth );
+            this.reactVideoPlayer.ref.current.seekTo(percentage)
     }
     componentDidUpdate(){
         // const slideIsActive = this.props.isCurrent
@@ -543,8 +564,9 @@ class SlideFilm extends Component {
     }
     shouldComponentUpdate(nextProps, nextState){
         const soundStateChanged = this.state.soundOn !== nextState.soundOn
+        const mouseMovementDetected = this.state.mouseMovementDetected !== nextState.mouseMovementDetected
         const arrivedAtOrLeftSlide = this.props.isCurrent !== nextProps.isCurrent
-        return soundStateChanged || arrivedAtOrLeftSlide
+        return soundStateChanged || arrivedAtOrLeftSlide || mouseMovementDetected
     }
     toggleSound(){
         const currentSoundState = this.state.soundOn
@@ -560,6 +582,21 @@ class SlideFilm extends Component {
             soundOn: newSoundState
         })
     }
+    updateSeekBar(progress){
+        const percentage = progress.played * 100;
+        $(".custom-seekbar .progress").css("width", percentage+"%");
+    }
+    handleMouseMove(){
+        this.setState({
+            mouseMovementDetected: true,
+        })
+        clearTimeout(this.mouseMovementTimeout)
+        this.mouseMovementTimeout = setTimeout(() => {
+            this.setState({
+                mouseMovementDetected: false,
+            })
+            }, 2000)
+    }
     render(){
         let videoContainerClasses = 'videoContainer fullWidthHeightVideo'
         // videoContainerClasses += this.state.soundOn ? ' expanded' : ''
@@ -574,8 +611,10 @@ class SlideFilm extends Component {
             backgroundImage: 'url('+this.props.configuration.swipe_arrow_left_1+')',
             backgroundPosition: 'right'
         }
+        let seekbarClasses = 'custom-seekbar '
+        seekbarClasses += this.state.mouseMovementDetected ? 'visible' : 'hidden'
         return(
-            <>
+            <div className='filmSlideContent' onMouseMove={() => this.throttleMouseMove()}>
                 <header className='fixed-header'>
                     <div className="hamburger">
                         <div className="line"></div>
@@ -610,15 +649,10 @@ class SlideFilm extends Component {
 					// />
 				}
                 
-                <ReactPlayer
-                    playing={true}
-                    muted={true}
-                    controls={true}
-                    className='reactPlayer'
-                    url={this.props.configuration.background_video_film} 
-                    width='100%'
-                    height='100%'/>
-
+                    {this.reactVideoPlayer}
+                    <div className={seekbarClasses} onClick={(e) => this.handleSeekBarClick(e)}>
+                        <span className='progress'></span>
+                    </div>
                 
                 {this.props.configuration.mobileHasDifferentContent &&
 					<div className={"centerBottom mobile-only"}>
@@ -629,7 +663,7 @@ class SlideFilm extends Component {
 						</h1>
 					</div>
 				}
-            </>
+            </div>
         )
     }
 }
