@@ -671,8 +671,8 @@ class SlideFilm extends Component {
                     muted={!this.state.soundOn}
                     className='reactPlayer'
                     url={this.props.configuration.background_video_film} 
-                    width='100%'
-                    height='100%'
+                    width='100vw'
+                    height='100vh'
                     loop={true}
                     progressInterval={500}
                     onProgress={(progress)=> this.updateSeekBar(progress)}
