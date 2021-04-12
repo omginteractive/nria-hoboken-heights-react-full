@@ -4,7 +4,10 @@ import $ from 'jquery'
 import {connect} from 'react-redux'
 import _ from "lodash";
 import ReactPlayer from 'react-player/file'
-
+import playButton from './images/videoIcons/PLAY.svg';
+import pauseButton from './images/videoIcons/PAUSE.svg';
+import soundOnButton from './images/videoIcons/SOUND-ON.svg';
+import soundOffButton from './images/videoIcons/SOUND-OFF.svg';
 import SlideMap from './slideComponents/SlideMap';
 import SlideViews from './slideComponents/SlideViews';
 import SlideAvailability from './slideComponents/SlideAvailability';
@@ -528,21 +531,23 @@ class SlideFilm extends Component {
         super(props)
         this.state = {
             soundOn: false,
-            video: null
+            video: null,
+            isPlaying: true
         }
         this.videoContainerRef = React.createRef()
-        this.reactVideoPlayer = <ReactPlayer
-            ref={this.videoContainerRef}
-            playing={true}
-            muted={true}
-            className='reactPlayer'
-            url={this.props.configuration.background_video_film} 
-            width='100%'
-            height='100%'
-            loop={true}
-            progressInterval={500}
-            onProgress={(progress)=> this.updateSeekBar(progress)}
-            />
+        // this.reactVideoPlayer = <ReactPlayer
+        //     ref={this.videoContainerRef}
+        //     playing={true}
+        //     volume={1}
+        //     muted={true}
+        //     className='reactPlayer'
+        //     url={this.props.configuration.background_video_film} 
+        //     width='100%'
+        //     height='100%'
+        //     loop={true}
+        //     progressInterval={500}
+        //     onProgress={(progress)=> this.updateSeekBar(progress)}
+        //     />
         this.throttleMouseMove = _.throttle(this.handleMouseMove, 350);
         this.mouseMovementTimeout = null
     }
@@ -551,7 +556,8 @@ class SlideFilm extends Component {
             const left = (e.pageX - offset.left);
             const totalWidth = $(".custom-seekbar").width();
             const percentage = ( left / totalWidth );
-            this.reactVideoPlayer.ref.current.seekTo(percentage)
+            // this.reactVideoPlayer.ref.current.seekTo(percentage)
+            this.videoContainerRef.current.seekTo(percentage)
     }
     componentDidUpdate(){
         // const slideIsActive = this.props.isCurrent
@@ -564,19 +570,26 @@ class SlideFilm extends Component {
     }
     shouldComponentUpdate(nextProps, nextState){
         const soundStateChanged = this.state.soundOn !== nextState.soundOn
+        const isPlayingStateChanged = this.state.isPlaying !== nextState.isPlaying
         const mouseMovementDetected = this.state.mouseMovementDetected !== nextState.mouseMovementDetected
         const arrivedAtOrLeftSlide = this.props.isCurrent !== nextProps.isCurrent
-        return soundStateChanged || arrivedAtOrLeftSlide || mouseMovementDetected
+        return soundStateChanged || arrivedAtOrLeftSlide || mouseMovementDetected || isPlayingStateChanged
+    }
+    toggleVideoPlay(){
+        const newIsPlayingState = !this.state.isPlaying
+        this.setState({
+            isPlaying: newIsPlayingState
+        })
     }
     toggleSound(){
         const currentSoundState = this.state.soundOn
         const newSoundState = !this.state.soundOn
 
         if(currentSoundState){
-            $(".slideTemplate-film .background-video").prop('muted', true)
+            this.videoContainerRef.current.muted = true
         }
         else {
-            $(".slideTemplate-film .background-video").prop('muted', false)
+            this.videoContainerRef.current.muted = false
         }
         this.setState({
             soundOn: newSoundState
@@ -613,6 +626,8 @@ class SlideFilm extends Component {
         }
         let seekbarClasses = 'custom-seekbar '
         seekbarClasses += this.state.mouseMovementDetected ? 'visible' : 'hidden'
+        const playPauseIcon = this.state.isPlaying ?  pauseButton : playButton
+        const soundIcon = this.state.soundOn ? soundOffButton : soundOnButton
         return(
             <div className='filmSlideContent' onMouseMove={() => this.throttleMouseMove()}>
                 <header className='fixed-header'>
@@ -649,10 +664,27 @@ class SlideFilm extends Component {
 					// />
 				}
                 
-                    {this.reactVideoPlayer}
-                    <div className={seekbarClasses} onClick={(e) => this.handleSeekBarClick(e)}>
-                        <span className='progress'></span>
-                    </div>
+                {/* {this.reactVideoPlayer} */}
+                <ReactPlayer
+                    ref={this.videoContainerRef}
+                    playing={this.state.isPlaying}
+                    volume={1}
+                    muted={!this.state.soundOn}
+                    className='reactPlayer'
+                    url={this.props.configuration.background_video_film} 
+                    width='100%'
+                    height='100%'
+                    loop={true}
+                    progressInterval={500}
+                    onProgress={(progress)=> this.updateSeekBar(progress)}
+                    />
+                <div className="videoIcons">
+                    <img className='icon' alt="Video Icon" onClick={()=>this.toggleVideoPlay()} src={playPauseIcon} />
+                    <img className='icon' alt="Video Icon" onClick={()=>this.toggleSound()} src={soundIcon} />
+                </div>
+                <div className={seekbarClasses} onClick={(e) => this.handleSeekBarClick(e)}>
+                    <span className='progress'></span>
+                </div>
                 
                 {this.props.configuration.mobileHasDifferentContent &&
 					<div className={"centerBottom mobile-only"}>

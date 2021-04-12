@@ -661,6 +661,19 @@ body {
   display: flex;
   justify-content: center;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-film .filmSlideContent .videoIcons {
+  position: absolute;
+  bottom: 3.6458333333vw;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-film .filmSlideContent .videoIcons .icon {
+  width: 2.0833333333vw;
+  height: 2.0833333333vw;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-film .reactPlayer > video {
   height: 100%;
   width: 100%;
@@ -668,11 +681,11 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-film .custom-seekbar {
   cursor: pointer;
-  height: 0.8333333333vw;
+  height: 0.4166666667vw;
   width: 80%;
   background-color: #b4b4b1;
   position: absolute;
-  bottom: 5.2083333333vw;
+  bottom: 7.8125vw;
   transition: opacity 0.6s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-film .custom-seekbar.hidden {
@@ -691,11 +704,12 @@ body {
   background-color: #000;
   border: solid #fff 2px;
   border-radius: 50%;
-  height: 1.5625vw;
-  width: 1.5625vw;
+  height: 1.0416666667vw;
+  width: 1.0416666667vw;
   position: absolute;
   right: 0;
-  transform: translate(25%, -25%);
+  top: 50%;
+  transform: translate(50%, -50%);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle, .slides_wrapper .slides_inner .slide.slideTemplate-film {
   background: #fff;

@@ -573,6 +573,19 @@ body {
                     .filmSlideContent {
                         display: flex;
                         justify-content: center;
+                        .videoIcons {
+                            position: absolute;
+                            bottom: calc_vw(70);
+                            left: 50%;
+                            transform: translateX(-50%);
+                            .icon {
+                                width: calc_vw(40);
+                                height: calc_vw(40);
+                                margin-left: 10px;
+                                margin-right: 10px;
+                                cursor: pointer;
+                            }
+                        }
                     }
                     .reactPlayer {
                         // height: 100vh;
@@ -584,15 +597,16 @@ body {
                     }
                     .custom-seekbar {  
                         cursor: pointer;
-                        height: calc_vw(16);
+                        height: calc_vw(8);
                         width: 80%;
                         background-color: #b4b4b1;
                         position: absolute;
-                        bottom: calc_vw(100);
+                        bottom: calc_vw(150);
                         transition: opacity 0.6s;
                         &.hidden {
                             opacity: 0;
                         }
+                        
                         .progress {
                             background-color: #FFFFFF;
                             position: absolute;
@@ -605,11 +619,12 @@ body {
                                 background-color: #000;
                                 border: solid #fff 2px;
                                 border-radius: 50%;
-                                height: calc_vw(30);
-                                width: calc_vw(30);
+                                height: calc_vw(20);
+                                width: calc_vw(20);
                                 position: absolute;
                                 right: 0;
-                                transform: translate(25%, -25%);
+                                top: 50%;
+                                transform: translate(50%, -50%);
                             }
                         }
                     }
