@@ -625,6 +625,8 @@ class SlideFilm extends Component {
         seekbarClasses += this.state.mouseMovementDetected ? 'visible' : 'hidden'
         const playPauseIcon = this.state.isPlaying ?  pauseButton : playButton
         const soundIcon = this.state.soundOn ? soundOffButton : soundOnButton
+        const slideIsActive = this.props.isCurrent
+        const videoIsPlaying = slideIsActive && this.state.isPlaying
         return(
             <div className='filmSlideContent' onMouseMove={() => this.throttleMouseMove()}>
                 <header className='fixed-header'>
@@ -664,7 +666,7 @@ class SlideFilm extends Component {
                 {/* {this.reactVideoPlayer} */}
                 <ReactPlayer
                     ref={this.videoContainerRef}
-                    playing={this.state.isPlaying}
+                    playing={videoIsPlaying}
                     volume={1}
                     muted={!this.state.soundOn}
                     className='reactPlayer'
