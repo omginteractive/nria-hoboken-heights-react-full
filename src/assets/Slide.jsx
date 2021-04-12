@@ -559,14 +559,14 @@ class SlideFilm extends Component {
             // this.reactVideoPlayer.ref.current.seekTo(percentage)
             this.videoContainerRef.current.seekTo(percentage)
     }
-    componentDidUpdate(){
-        // const slideIsActive = this.props.isCurrent
-        // if(slideIsActive){
-        //     this.videoContainerRef.current.children[0].play()
-        // }
-        // else {
-        //     this.videoContainerRef.current.children[0].pause()
-        // }
+    componentDidUpdate(prevProps){
+        const slideIsActive = this.props.isCurrent
+        const slideJustChanged = this.props.isCurrent !== prevProps.isCurrent
+        if(slideIsActive && slideJustChanged){
+            setTimeout(() => {
+                this.handleMouseMove()
+                }, 2000)
+        }
     }
     shouldComponentUpdate(nextProps, nextState){
         const soundStateChanged = this.state.soundOn !== nextState.soundOn
@@ -611,9 +611,6 @@ class SlideFilm extends Component {
             }, 2000)
     }
     render(){
-        let videoContainerClasses = 'videoContainer fullWidthHeightVideo'
-        // videoContainerClasses += this.state.soundOn ? ' expanded' : ''
-
         let videoClasses = 'background-video'
         // let soundButtonText = this.state.soundOn ? this.props.configuration.filmSoundTurnOffText : this.props.configuration.filmSoundTurnOnText
         if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffectRepeat startZoomedIn'

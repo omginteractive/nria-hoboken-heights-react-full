@@ -23,22 +23,22 @@ console.log(apartment_result)
         amenity_heading_8: acf_result.amenity_heading_8,
     }
 
-    const developmentTeamFields = {
-        heading_team_story: acf_result.heading_team_story,
-        content_1_team_story: acf_result.content_1_team_story,
-        secondary_heading_team_story: acf_result.secondary_heading_team_story,
-        content_2_team_story: acf_result.content_2_team_story,
-        content_3_team_story: acf_result.content_3_team_story,
-        button_text_5: acf_result.button_text_5,
-        button_link_5: acf_result.button_link_5.url,
-        button_text_6: acf_result.button_text_6,
-        button_link_6: acf_result.button_link_6.url,
-        button_text_7: acf_result.button_text_7,
-        button_link_7: acf_result.button_link_7.url,
-        team_story_video: acf_result.team_story_video,
-        nria_logo: acf_result.nria_logo.url,
-        copyright_text: acf_result.copyright_text,
-    }
+    // const developmentTeamFields = {
+    //     heading_team_story: acf_result.heading_team_story,
+    //     content_1_team_story: acf_result.content_1_team_story,
+    //     secondary_heading_team_story: acf_result.secondary_heading_team_story,
+    //     content_2_team_story: acf_result.content_2_team_story,
+    //     content_3_team_story: acf_result.content_3_team_story,
+    //     button_text_5: acf_result.button_text_5,
+    //     button_link_5: acf_result.button_link_5.url,
+    //     button_text_6: acf_result.button_text_6,
+    //     button_link_6: acf_result.button_link_6.url,
+    //     button_text_7: acf_result.button_text_7,
+    //     button_link_7: acf_result.button_link_7.url,
+    //     team_story_video: acf_result.team_story_video,
+    //     nria_logo: acf_result.nria_logo.url,
+    //     copyright_text: acf_result.copyright_text,
+    // }
     const SLIDES = [{
         slideTemplate: 'home',
         styles: {
