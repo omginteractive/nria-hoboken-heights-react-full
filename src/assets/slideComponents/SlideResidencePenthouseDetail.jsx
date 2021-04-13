@@ -1,7 +1,7 @@
 import {Component} from 'react';
 import React from 'react';
 import {connect} from 'react-redux'
-import { findAvailabilitySlideIdx } from "../../redux/actions/slideActions";
+import { changeSlideIdx, findAvailabilitySlideIdx } from "../../redux/actions/slideActions";
 class SlideResidencePenthouseDetail extends Component {
     constructor(props) {
         super(props)
@@ -92,7 +92,7 @@ class SlideResidencePenthouseDetail extends Component {
                             <div className="leftArrowContainer">
                                 <img alt='Left Arrow' className="leftArrow" src={left_arrow}></img>
                             </div>
-                            <div onClick={() => console.log(this.props.findAvailabilitySlideIdx())} className="btn light">{button_text}</div>
+                            <div onClick={() => this.props.changeSlideIdx(this.props.findAvailabilitySlideIdx())} className="btn light">{button_text}</div>
                         </div>
                     </div>
                     <div onWheel={this.handleWheelEvent.bind(this)} className={imageContainerClasses}>
@@ -152,5 +152,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { findAvailabilitySlideIdx }
+    { findAvailabilitySlideIdx, changeSlideIdx }
 )(SlideResidencePenthouseDetail)
