@@ -2608,6 +2608,13 @@ body {
     display: none !important;
   }
 
+  .fixed-header {
+    transition: opacity 0.6s;
+  }
+  .fixed-header.hiddenDesktop {
+    opacity: 0;
+  }
+
   .contactPageWrapper .contactForm .headline {
     font-size: 13.89px;
     letter-spacing: 4.17px;

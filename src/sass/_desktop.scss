@@ -4,7 +4,12 @@
     display: none !important;
 }
 
-
+.fixed-header {
+    transition: opacity $videoItemTransitionDuration;
+    &.hiddenDesktop {
+        opacity: 0;
+    }
+}
 .contactPageWrapper {
     .contactForm {
         .headline {

@@ -4,7 +4,7 @@ import magnifyingGlass from '../images/magnifyingGlass.svg';
 import $ from 'jquery'
 import {connect} from 'react-redux'
 // import _ from "lodash";
-import { setActiveAvailabilityPlan, displayAvailabilityPlanModal } from "../../redux/actions/slideActions";
+import { updateFilmSlideMouseMovement, setActiveAvailabilityPlan, displayAvailabilityPlanModal } from "../../redux/actions/slideActions";
 
 
 

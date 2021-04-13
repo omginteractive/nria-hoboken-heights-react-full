@@ -1,4 +1,4 @@
-import { SET_RESIDENCE_PENTHOUSE_PATH, DISPLAY_AVAILABILITY_PLAN_MODAL, HIDE_AVAILABILITY_PLAN_MODAL, SET_ACTIVE_AVAILABILITY_PLAN, CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_SLIDES_VIEWED, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS, UPDATE_TRANSITIONING_STATE, UPDATE_TOUCH_STATE } from "./types";
+import { UPDATE_FILM_SLIDE_MOUSE_MOVEMENT, SET_RESIDENCE_PENTHOUSE_PATH, DISPLAY_AVAILABILITY_PLAN_MODAL, HIDE_AVAILABILITY_PLAN_MODAL, SET_ACTIVE_AVAILABILITY_PLAN, CHANGE_SLIDE_IDX, UPDATE_SLIDES, UPDATE_SLIDES_VIEWED, UPDATE_DESKTOP_KEYS, UPDATE_MOBILE_KEYS, UPDATE_TRANSITIONING_STATE, UPDATE_TOUCH_STATE } from "./types";
 
 // export function changeSlideIdx(idx) {
 //     return (dispatch) => {
@@ -97,5 +97,12 @@ export const findDeviceSlideIdx = (idx) => {
         const isMobile = getState().appData.isMobileDevice
         if(isMobile) return getState().slideData.mobileKeys[idx]
         return getState().slideData.desktopKeys[idx]
+    }
+}
+
+export const updateFilmSlideMouseMovement = (state) => {
+    return {
+        type: UPDATE_FILM_SLIDE_MOUSE_MOVEMENT,
+        payload: state
     }
 }

@@ -12,6 +12,7 @@ class Header extends Component {
         this.lightCloseBtn = 'images/mobile_menu_x.svg'
     }
     shouldComponentUpdate(nextProps, nextState){
+        const filmSlideMouseMovementDetectedChanged = this.props.filmSlideMouseMovementDetected !== nextProps.filmSlideMouseMovementDetected
         const slideChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
         const availabilityModalToggled = this.props.availabilityPlanModalEnabled !== nextProps.availabilityPlanModalEnabled
 
@@ -20,7 +21,7 @@ class Header extends Component {
         // const themeChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
         // const mobileThemeChanged = nextProps.themeMobile !== this.props.themeMobile
         //fixme - can change this to be more specific to test if theme has changed on desktop or mobile
-        return slideChanged || availabilityModalToggled
+        return slideChanged || availabilityModalToggled || filmSlideMouseMovementDetectedChanged
     }
 
     slideToContact(){
@@ -51,9 +52,11 @@ class Header extends Component {
         const mobileThemeIsSet = this.props.slideData && this.props.slideData[deviceSlideIdx].headerThemeMobile
         const themeMobile = mobileThemeIsSet ? mobileThemeIsSet : ''
         const availabilityModalEnabled = this.props.availabilityPlanModalEnabled
+        const isFilmSlideAndNoMouseMovement = this.props.currSlideIdx == 1 && !this.props.filmSlideMouseMovementDetected
         let fixedHeaderClasses = 'fixed-header '
         fixedHeaderClasses += this.props.mobileMenuHeader ? 'light' : desktopTheme + ' ' + themeMobile
         fixedHeaderClasses += this.props.formSubmitted ? ' hiddenMobile' : ''
+        fixedHeaderClasses += isFilmSlideAndNoMouseMovement ? ' hiddenDesktop' : ''
 
         // let fixedHeaderClasses = 'fixed-header ' + desktopTheme + ' ' + themeMobile
         let inquiryLinkClasses = 'inquiry-link'
@@ -102,7 +105,8 @@ const mapStateToProps = state => {
     const slideData = state.slideData.slides
     const desktopKeys = state.slideData.desktopKeys
     const mobileKeys = state.slideData.mobileKeys
-    return { formSubmitted, availabilityPlanModalEnabled, isMobileDevice, menuOpen, currSlideIdx, slideData, mobileKeys, desktopKeys}
+    const filmSlideMouseMovementDetected = state.slideData.filmSlideMouseMovementDetected
+    return { formSubmitted, availabilityPlanModalEnabled, isMobileDevice, menuOpen, currSlideIdx, slideData, mobileKeys, desktopKeys, filmSlideMouseMovementDetected}
   }
   export default connect(
     mapStateToProps,
