@@ -110,8 +110,7 @@ export const updateFilmSlideMouseMovement = (state) => {
 export const findAvailabilitySlideIdx = () => {
     return (dispatch, getState) => {
         const isMobile = getState().appData.isMobileDevice
-        console.log(isMobile, getState)
-        if(isMobile) return 12
-        return 11
+        if(isMobile) return getState().slideData.availabilitySlideIndices.mobile
+        return getState().slideData.availabilitySlideIndices.desktop
     }
 }

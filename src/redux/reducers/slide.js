@@ -11,6 +11,14 @@ const initialState = {
     activeAvailabilityPlan: 0,
     availabilityPlanModalEnabled: false,
     filmSlideMouseMovementDetected: false,
+    availabilitySlideIndices: {
+        desktop: 11,
+        mobile: 12
+    },
+    discoverSlideIndices: {
+        desktop: 14,
+        mobile: 15
+    },
     residencePenthousePath: 'penthouse'//Setting this will determine if the residencePenthouse slides are showing residence or penthouse data
 }
   

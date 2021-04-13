@@ -44,9 +44,9 @@ class MobileMenu extends Component {
         const amenitiesLink = isMobile ? 5 : 5
         const viewLink = isMobile ? 7 : 7
         const residencePenthouseLink = isMobile ? 8 : 8
-        const availabilityLink = isMobile ? 12 : 11
+        const availabilityLink = isMobile ? this.props.availabilitySlideIndices.mobile : this.props.availabilitySlideIndices.desktop
         // const developmentTeamLink = isMobile ? 13 : 12
-        const discoverLink = isMobile ? 15 : 14
+        const discoverLink = isMobile ? this.props.discoverSlideIndices.mobile : this.props.discoverSlideIndices.desktop
         const contactFormSlideIdx = this.props.contactFormSlideIdx
 		return(
             <div className={mobileMenuClasses} onTransitionEnd={this.handleMenuTransitionEnd.bind(this)}>
@@ -90,7 +90,9 @@ const mapStateToProps = state => {
     const isMobileDevice = state.appData.isMobileDevice
     const menuOpen = state.menuData.menuOpen
     const menuIsTransitioning = state.menuData.menuIsTransitioning
-    return { isMobileDevice, menuOpen, menuIsTransitioning}
+    const availabilitySlideIndices = state.slideData.availabilitySlideIndices
+    const discoverSlideIndices = state.slideData.discoverSlideIndices
+    return { isMobileDevice, menuOpen, menuIsTransitioning, availabilitySlideIndices, discoverSlideIndices}
   }
   export default connect(
     mapStateToProps,
