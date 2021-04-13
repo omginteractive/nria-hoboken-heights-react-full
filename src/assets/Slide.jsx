@@ -627,6 +627,8 @@ class SlideFilm extends Component {
         const soundIcon = this.state.soundOn ? soundOffButton : soundOnButton
         const slideIsActive = this.props.isCurrent
         const videoIsPlaying = slideIsActive && this.state.isPlaying
+        let videoIconsClasses = 'videoIcons '
+        videoIconsClasses += this.state.mouseMovementDetected ? 'visible' : 'hidden'
         return(
             <div className='filmSlideContent' onMouseMove={() => this.throttleMouseMove()}>
                 <header className='fixed-header'>
@@ -677,7 +679,7 @@ class SlideFilm extends Component {
                     progressInterval={500}
                     onProgress={(progress)=> this.updateSeekBar(progress)}
                     />
-                <div className="videoIcons">
+                <div className={videoIconsClasses}>
                     <img className='icon' alt="Video Icon" onClick={()=>this.toggleVideoPlay()} src={playPauseIcon} />
                     <img className='icon' alt="Video Icon" onClick={()=>this.toggleSound()} src={soundIcon} />
                 </div>
