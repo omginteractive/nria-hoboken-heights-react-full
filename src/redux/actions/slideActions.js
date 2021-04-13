@@ -106,3 +106,12 @@ export const updateFilmSlideMouseMovement = (state) => {
         payload: state
     }
 }
+
+export const findAvailabilitySlideIdx = () => {
+    return (dispatch, getState) => {
+        const isMobile = getState().appData.isMobileDevice
+        console.log(isMobile, getState)
+        if(isMobile) return 12
+        return 11
+    }
+}

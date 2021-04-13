@@ -50,15 +50,6 @@ class Slide extends Component {
         if(nextSlide) this.scrollToNextSlide(true)
         
     }
-    // setResidencePenthousePath(option){
-    //     const {setResidencePenthousePath} = this.props;
-    //     setResidencePenthousePath(option)
-    //     setTimeout(() => {
-    //         this.scrollToNextSlide(true)
-    //     })
-        
-    // }
-    
     
     // openPrivacyPolicyModal(){
 	// 	const {showPrivacyPolicy} = this.props
@@ -92,21 +83,14 @@ class Slide extends Component {
 		this.props.horizontalSlide(direction);
 	}
     render(){
-        // console.log(this.props.isCurrent(this.props.idx), this.props.idx, this.props.currSlideIdx)
-        // const slideObj = this.props.obj;
         const slideObj = this.props.slideData[this.props.idx]
-        // console.log(this.props.idx)
-        // console.log(this.props.slideData)
         const slideMethods = {
             scrollToNextSlide: this.scrollToNextSlide.bind(this),
             goToContactSlide: this.goToContactSlide.bind(this),
             delegateScroll: this.delegateScroll.bind(this),
         }
 		let slideClasses = "slide "
-		// let videoClasses = 'background-video'
-		// let centerTextClasses = 'center';
-		// let centerBottomClasses = "centerBottom";
-
+		
         const right_arrow_styles = {
             backgroundImage: 'url('+require('./images/right-arrow-bouncing.svg').default+')'
         }
@@ -121,16 +105,9 @@ class Slide extends Component {
             left_arrow_bouncing
         }
 		const isCurrent = this.props.isCurrent
-        // console.log(isCurrent, this.props.idx)
-        // const isMobile = this.props.isMobileDevice
-        // let deviceKey
-        // if(isMobile) deviceKey = this.props.mobileKeys[this.props.currSlideIdx]
-        // deviceKey =this.props.desktopKeys[this.props.currSlideIdx]
-        // console.log(isCurrent, this.props.currSlideIdx == this.props.idx, this.props.currSlideIdx,deviceKey, this.props.idx)
         slideClasses += slideObj.slideClasses !== undefined ? " " + slideObj.slideClasses : '';
 		if(isCurrent) slideClasses += " activeSlide";
 		if(this.props.slidesViewed.includes(this.props.idx)) slideClasses += " runAnimationOnce";
-		// if(slideObj.videoZoomEffect) videoClasses += ' videoZoomEffect'
 		slideClasses += slideObj.videoMobileStartPosition ? ' mobile-video-position-' + slideObj.videoMobileStartPosition : ' mobile-video-position-center'
 		slideClasses += slideObj.contactFormSlide ? ' contactFormSlide' : '';
 		slideClasses += slideObj.enableScrolling ? ' enableScrolling' : '';
@@ -138,35 +115,13 @@ class Slide extends Component {
         slideClasses += slideObj.mobileOnly === true ? ' mobile-only' : ''
         slideClasses += slideObj.desktopOnly === true ? ' desktop-only' : ''
 
-        // if(slideObj.centerTextClasses) {
-		// 	centerTextClasses += ' ' + slideObj.centerTextClasses;
-		// }
-
-		if(slideObj.mobileHasDifferentContent) {
-			// centerTextClasses += ' not-mobile';
-			// centerBottomClasses += ' not-mobile';
-		}
-		
-		// let centerTextStyles;
-		let slideStyles;
-		if(window.innerWidth > 768){
-			// centerTextStyles = slideObj.centerTextStyles
-			slideStyles = this.state.styles
+        let slideStyles;
+		if(this.props.isMobileDevice){
+            slideStyles = {...this.state.styles, ...slideObj.stylesMobile}
 		}
 		else {
-			// centerTextStyles = slideObj.centerTextStylesMobile
-			slideStyles = {...this.state.styles, ...slideObj.stylesMobile}
+            slideStyles = this.state.styles
 		}
-
-        
-
-		// let centerImageStyles;
-		// if(window.innerWidth > 768){
-		// 	centerImageStyles = slideObj.centerImageStyles
-		// }
-		// else {
-		// 	centerImageStyles = slideObj.centerImageStylesMobile
-		// }
 
 		return(
             <div className={slideClasses} style={slideStyles} onScroll={this.handleTheScroll}>
@@ -315,9 +270,6 @@ class SlideVideoDiscover extends Component {
 
 
 class SlideContactForm extends Component {
-    constructor(props) {
-		super(props);
-	}
     shouldComponentUpdate(nextProps, nextState){
         if(!this.props.select2Activated){
             return true //this will make sure we render the child component ContactForm to add select2

@@ -1,7 +1,7 @@
 import {Component} from 'react';
 import React from 'react';
 import {connect} from 'react-redux'
-
+import { findAvailabilitySlideIdx } from "../../redux/actions/slideActions";
 class SlideResidencePenthouseDetail extends Component {
     constructor(props) {
         super(props)
@@ -77,6 +77,7 @@ class SlideResidencePenthouseDetail extends Component {
         penthouseFullscreenImageWrapperClasses += !isPenthouse ? ' hidden' : ''
         let residenceFullscreenImageWrapperClasses = "fullscreenImageWrapper"
         residenceFullscreenImageWrapperClasses += isPenthouse ? ' hidden' : ''
+        
         return(
             <>
                 <section className={details_classes}>
@@ -91,7 +92,7 @@ class SlideResidencePenthouseDetail extends Component {
                             <div className="leftArrowContainer">
                                 <img alt='Left Arrow' className="leftArrow" src={left_arrow}></img>
                             </div>
-                            <div onClick={this.props.methods.goToContactSlide.bind(this)} className="btn light">{button_text}</div>
+                            <div onClick={() => console.log(this.props.findAvailabilitySlideIdx())} className="btn light">{button_text}</div>
                         </div>
                     </div>
                     <div onWheel={this.handleWheelEvent.bind(this)} className={imageContainerClasses}>
@@ -109,7 +110,7 @@ class SlideResidencePenthouseDetail extends Component {
                                 imgClasses += i === this.state.currImageIdx ? ' active' : ''
                                 imgClasses += i === this.state.prevIdx ? ' deactivating' : ''
                                 return (
-                                    <img key={i+'penthouseDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={image.url} alt="Penthouse Image"/>
+                                    <img key={i+'penthouseDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={image.url} alt="Penthouse"/>
                                 )
                             })}
                         </div>
@@ -119,7 +120,7 @@ class SlideResidencePenthouseDetail extends Component {
                                 imgClasses += i === this.state.currImageIdx ? ' active' : ''
                                 imgClasses += i === this.state.prevIdx ? ' deactivating' : ''
                                 return (
-                                    <img key={i+'residenceDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={image.url} alt="Residence Image"/>
+                                    <img key={i+'residenceDetailFullscreenImage'} onTransitionEnd={() => this.handleImageTransitionEnd(i)} className={imgClasses} src={image.url} alt="Residence"/>
                                 )
                             })}
                         </div>
@@ -150,5 +151,6 @@ const mapStateToProps = state => {
 }
 
 export default connect(
-    mapStateToProps
+    mapStateToProps,
+    { findAvailabilitySlideIdx }
 )(SlideResidencePenthouseDetail)

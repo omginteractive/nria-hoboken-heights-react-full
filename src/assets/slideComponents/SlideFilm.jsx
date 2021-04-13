@@ -20,19 +20,6 @@ class SlideFilm extends Component {
             isPlaying: true
         }
         this.videoContainerRef = React.createRef()
-        // this.reactVideoPlayer = <ReactPlayer
-        //     ref={this.videoContainerRef}
-        //     playing={true}
-        //     volume={1}
-        //     muted={true}
-        //     className='reactPlayer'
-        //     url={this.props.configuration.background_video_film} 
-        //     width='100%'
-        //     height='100%'
-        //     loop={true}
-        //     progressInterval={500}
-        //     onProgress={(progress)=> this.updateSeekBar(progress)}
-        //     />
         this.throttleMouseMove = _.throttle(this.handleMouseMove, 350);
         this.mouseMovementTimeout = null
     }
@@ -41,7 +28,6 @@ class SlideFilm extends Component {
             const left = (e.pageX - offset.left);
             const totalWidth = $(".custom-seekbar").width();
             const percentage = ( left / totalWidth );
-            // this.reactVideoPlayer.ref.current.seekTo(percentage)
             this.videoContainerRef.current.seekTo(percentage)
     }
     componentDidUpdate(prevProps){
@@ -92,9 +78,6 @@ class SlideFilm extends Component {
             }, 2000)
     }
     render(){
-        let videoClasses = 'background-video'
-        // let soundButtonText = this.state.soundOn ? this.props.configuration.filmSoundTurnOffText : this.props.configuration.filmSoundTurnOnText
-        if(this.props.configuration.videoZoomEffect) videoClasses += ' videoZoomEffectRepeat startZoomedIn'
         const right_arrow_styles = {
             backgroundImage: 'url('+this.props.configuration.swipe_arrow_right_1+')'
         }
@@ -123,30 +106,6 @@ class SlideFilm extends Component {
                     </div>
                     <div onClick={this.props.methods.goToContactSlide.bind(this)} className="inquiry-link">INQUIRE NOW</div>
                 </header>
-                {/* <div onClick={this.toggleSound.bind(this)} className="toggleSound btn">{soundButtonText}</div> */}
-                {
-                        //Hide landingpage video on FFMobile because it will not autoplay
-                        //Video is set this way because react does not set muted to true which is required by some devices to allow autoplay
-					// 	<div
-                    //     ref={this.videoContainerRef}
-					// 	className={videoContainerClasses}
-					// 	dangerouslySetInnerHTML={{
-					// 		__html: `
-					// 		<video
-					// 		class="${videoClasses}"
-					// 		${this.props.configuration.videoLoop ? 'loop="true"' : ''}
-                    //         muted="muted"
-					// 		autoplay='true'
-					// 		playsinline='playsinline'
-					// 		preload="metadata"
-					// 		>
-					// 		<source src="${this.props.configuration.background_video_film}" type="video/mp4" />
-					// 		</video>`
-					// 	}}
-					// />
-				}
-                
-                {/* {this.reactVideoPlayer} */}
                 <ReactPlayer
                     ref={this.videoContainerRef}
                     playing={videoIsPlaying}

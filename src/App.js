@@ -630,7 +630,7 @@ class App extends React.Component {
 		switch(mainTouchDirection) {
 			case 'up':
 				const prevSlideResult = this.prevSlide();
-                if(prevSlideResult == 'needScroll'){
+                if(prevSlideResult === 'needScroll'){
                     const deviceSlideIdx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
                     const elementToScroll = this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector ? this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector : '.slide.activeSlide'
                     this.triggerScrollUpElement(elementToScroll, verticalDifference)
@@ -638,7 +638,7 @@ class App extends React.Component {
 				break;
 			case 'down':
 				const nextSlideResult = this.nextSlide()
-                if(nextSlideResult == 'needScroll'){
+                if(nextSlideResult === 'needScroll'){
                     const deviceSlideIdx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
                     const elementToScroll = this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector ? this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector : '.slide.activeSlide'
                     this.triggerScrollDownElement(elementToScroll, verticalDifference)

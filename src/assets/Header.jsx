@@ -52,7 +52,7 @@ class Header extends Component {
         const mobileThemeIsSet = this.props.slideData && this.props.slideData[deviceSlideIdx].headerThemeMobile
         const themeMobile = mobileThemeIsSet ? mobileThemeIsSet : ''
         const availabilityModalEnabled = this.props.availabilityPlanModalEnabled
-        const isFilmSlideAndNoMouseMovement = this.props.currSlideIdx == 1 && !this.props.filmSlideMouseMovementDetected
+        const isFilmSlideAndNoMouseMovement = this.props.currSlideIdx === 1 && !this.props.filmSlideMouseMovementDetected
         let fixedHeaderClasses = 'fixed-header '
         fixedHeaderClasses += this.props.mobileMenuHeader ? 'light' : desktopTheme + ' ' + themeMobile
         fixedHeaderClasses += this.props.formSubmitted ? ' hiddenMobile' : ''
