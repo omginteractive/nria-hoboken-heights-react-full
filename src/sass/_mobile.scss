@@ -688,6 +688,7 @@ body {
                     }
                     .filmSlideContent .videoIcons {
                         bottom: calc_vh(140);
+                        z-index: 1;
                         &.hidden {
                             opacity: 1;
                         }

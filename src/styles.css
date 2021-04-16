@@ -3210,6 +3210,7 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-film .filmSlideContent .videoIcons {
     bottom: 7.2916666667vh;
+    z-index: 1;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-film .filmSlideContent .videoIcons.hidden {
     opacity: 1;
