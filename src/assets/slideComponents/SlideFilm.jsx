@@ -83,7 +83,8 @@ class SlideFilm extends Component {
     handleFullscreenVideo(){
         console.log('handleFullscreenVideo')
         const video = this.videoContainerRef.current
-        screenfull.request(video.wrapper, {navigationUI: 'hide'})//used screenfull to handle crossbrowser full screen issues
+        screenfull.request(video.wrapper)//used screenfull to handle crossbrowser full screen issues
+        //, {navigationUI: 'hide'} //used for hiding UI navigation
         this.setState({
             soundOn: true
         })
