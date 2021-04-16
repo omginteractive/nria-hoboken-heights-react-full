@@ -4,10 +4,11 @@ import $ from 'jquery'
 import {connect} from 'react-redux'
 import { updateFilmSlideMouseMovement } from "../../redux/actions/slideActions";
 import _ from "lodash";
-import { findDOMNode } from 'react-dom'
+// import { findDOMNode } from 'react-dom'
 import screenfull from 'screenfull'
 
-import ReactPlayer from 'react-player/file'
+import ReactPlayer from 'react-player'
+// import ReactPlayer from 'react-player/file'
 import playButton from '../images/videoIcons/PLAY.svg';
 import pauseButton from '../images/videoIcons/PAUSE.svg';
 import soundOnButton from '../images/videoIcons/SOUND-ON.svg';
@@ -31,16 +32,11 @@ class SlideFilm extends Component {
             const left = (e.pageX - offset.left);
             const totalWidth = $(".custom-seekbar").width();
             const percentage = ( left / totalWidth );
-            this.videoContainerRef.current.seekTo(percentage)
-    }
-    componentDidUpdate(prevProps){
-        const slideIsActive = this.props.isCurrent
-        const slideJustChanged = this.props.isCurrent !== prevProps.isCurrent
-        if(slideIsActive && slideJustChanged){
-            setTimeout(() => {
-                this.handleMouseMove()
-                }, 2000)
-        }
+            const timeToSeekTo = percentage * this.videoContainerRef.current.duration
+            // this.videoContainerRef.current.seekTo(percentage)
+            this.videoContainerRef.current.currentTime = timeToSeekTo
+            // console.log(this.videoContainerRef.current.currentTime)
+            // console.log(percentage * this.videoContainerRef.current.duration)
     }
     shouldComponentUpdate(nextProps, nextState){
         const soundStateChanged = this.state.soundOn !== nextState.soundOn
@@ -49,11 +45,38 @@ class SlideFilm extends Component {
         const arrivedAtOrLeftSlide = this.props.isCurrent !== nextProps.isCurrent
         return soundStateChanged || arrivedAtOrLeftSlide || filmSlideMouseMovementDetected || isPlayingStateChanged
     }
+    componentDidUpdate(prevProps){
+        const slideIsActive = this.props.isCurrent
+        const slideJustChanged = this.props.isCurrent !== prevProps.isCurrent
+        if(slideIsActive && slideJustChanged){
+            this.playVideo()
+            setTimeout(() => {//this makes simulates a mousemovement to reveal the video components and header
+                this.handleMouseMove()
+                }, 2000)
+        }
+        else if(!slideIsActive && slideJustChanged) {
+            this.pauseVideo()
+            
+        }
+    }
+    playVideo(){
+        this.videoContainerRef.current.play()
+        this.setState({
+            isPlaying: true
+        })
+    }
+    pauseVideo(){
+        this.videoContainerRef.current.pause()
+        this.setState({
+            isPlaying: false
+        })
+    }
     toggleVideoPlay(){
         const newIsPlayingState = !this.state.isPlaying
-        this.setState({
-            isPlaying: newIsPlayingState
-        })
+        console.log(newIsPlayingState)
+
+        if(newIsPlayingState) this.playVideo()
+        else this.pauseVideo()
     }
     toggleSound(){
         const currentSoundState = this.state.soundOn
@@ -70,7 +93,7 @@ class SlideFilm extends Component {
         })
     }
     updateSeekBar(progress){
-        const percentage = progress.played * 100;
+        const percentage = progress.target.currentTime/progress.target.duration * 100;
         $(".custom-seekbar .progress").css("width", percentage+"%");
     }
     handleMouseMove(){
@@ -103,7 +126,7 @@ class SlideFilm extends Component {
         const playPauseIcon = this.state.isPlaying ?  pauseButton : playButton
         const soundIcon = this.state.soundOn ? soundOffButton : soundOnButton
         const slideIsActive = this.props.isCurrent
-        const videoIsPlaying = slideIsActive && this.state.isPlaying
+        // const videoIsPlaying = slideIsActive && this.state.isPlaying
         let videoIconsClasses = 'videoIcons '
         videoIconsClasses += this.props.filmSlideMouseMovementDetected ? 'visible' : 'hidden'
         return(
@@ -119,19 +142,33 @@ class SlideFilm extends Component {
                     </div>
                     <div onClick={this.props.methods.goToContactSlide.bind(this)} className="inquiry-link">INQUIRE NOW</div>
                 </header>
-                <ReactPlayer
+                {/* <ReactPlayer
+                    url='https://vimeo.com/537572775'
+                    // url={this.props.configuration.background_video_film} 
                     ref={this.videoContainerRef}
                     playing={videoIsPlaying}
                     volume={1}
                     muted={!this.state.soundOn}
                     className='reactPlayer'
-                    url={this.props.configuration.background_video_film} 
                     width='100vw'
                     height='100vh'
                     loop={true}
                     progressInterval={500}
                     onProgress={(progress)=> this.updateSeekBar(progress)}
-                    />
+                    /> */}
+                    <video
+                        className='reactPlayer'
+                        ref={this.videoContainerRef}
+                        loop={true}
+                        muted='muted'
+                        autoPlay={true}
+                        playsInline='playsInline'
+                        preload="metadata"
+                        loop={true}
+                        onTimeUpdate={(progress)=> this.updateSeekBar(progress)}
+							>
+							<source src={this.props.configuration.background_video_film} type="video/mp4" />
+							</video>`
                 <div className={videoIconsClasses}>
                     <img className='icon' alt="Video Icon" onClick={()=>this.toggleVideoPlay()} src={playPauseIcon} />
                     <img className='icon' alt="Video Icon" onClick={()=>this.toggleSound()} src={soundIcon} />
