@@ -4,12 +4,15 @@ import $ from 'jquery'
 import {connect} from 'react-redux'
 import { updateFilmSlideMouseMovement } from "../../redux/actions/slideActions";
 import _ from "lodash";
+import { findDOMNode } from 'react-dom'
+import screenfull from 'screenfull'
 
 import ReactPlayer from 'react-player/file'
 import playButton from '../images/videoIcons/PLAY.svg';
 import pauseButton from '../images/videoIcons/PAUSE.svg';
 import soundOnButton from '../images/videoIcons/SOUND-ON.svg';
 import soundOffButton from '../images/videoIcons/SOUND-OFF.svg';
+import fullscreenButton from '../images/videoIcons/FULLSCREEN.svg';
 
 class SlideFilm extends Component {
     constructor(props) {
@@ -77,6 +80,11 @@ class SlideFilm extends Component {
             this.props.updateFilmSlideMouseMovement(false)
             }, 2000)
     }
+    handleFullscreenVideo(){
+        const video = this.videoContainerRef.current
+        screenfull.request(video.wrapper)//used screenfull to handle crossbrowser full screen issues
+    }
+
     render(){
         const right_arrow_styles = {
             backgroundImage: 'url('+this.props.configuration.swipe_arrow_right_1+')'
@@ -122,6 +130,7 @@ class SlideFilm extends Component {
                 <div className={videoIconsClasses}>
                     <img className='icon' alt="Video Icon" onClick={()=>this.toggleVideoPlay()} src={playPauseIcon} />
                     <img className='icon' alt="Video Icon" onClick={()=>this.toggleSound()} src={soundIcon} />
+                    <img className='icon mobile-only' alt="Video Icon" onClick={()=>this.handleFullscreenVideo()} src={fullscreenButton} />
                 </div>
                 <div className={seekbarClasses} onClick={(e) => this.handleSeekBarClick(e)}>
                     <span className='progress'></span>

@@ -56,20 +56,20 @@ console.log(apartment_result)
         videoLoop: true,
         videoZoomEffect: true,
         videoMobileStartPosition: 'center',
-        mobileHorizontalVideoSlideEnabled: true,
-        mobileHasDifferentContent: true,
-        mobileContent: {
-            centerBottom: {
-                line1: acf_result.swipe_text_mobile_1,
-                line1RightArrowBouncing: true,
-                line1LeftArrowBouncing: true,
-                lineStyles: {
-                    display: 'flex',
-                    alignItems: 'center',
-                    color: '#fff'
-                },
-            }
-        },
+        // mobileHorizontalVideoSlideEnabled: true,
+        // mobileHasDifferentContent: true,
+        // mobileContent: {
+        //     centerBottom: {
+        //         line1: acf_result.swipe_text_mobile_1,
+        //         line1RightArrowBouncing: true,
+        //         line1LeftArrowBouncing: true,
+        //         lineStyles: {
+        //             display: 'flex',
+        //             alignItems: 'center',
+        //             color: '#fff'
+        //         },
+        //     }
+        // },
         headerTheme: 'light',
         headerThemeMobile: 'lightMobile',
         // filmSoundTurnOnText: "SOUND ON",

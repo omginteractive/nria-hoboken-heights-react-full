@@ -682,6 +682,21 @@ body {
                     //     display: none;
                     // }
                 }
+                &film {
+                    .custom-seekbar {
+                        display: none;
+                    }
+                    .filmSlideContent .videoIcons {
+                        bottom: calc_vh(140);
+                        &.hidden {
+                            opacity: 1;
+                        }
+                        .icon {
+                            width: calc_vw(80);
+                            height: calc_vw(80);
+                        }
+                    }
+                }
                 &film,
                 &exteriorLightToggle {
                     background-color: #000;

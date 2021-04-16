@@ -3205,6 +3205,19 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-home .animatedLogo {
     width: 47.037037037vw;
   }
+  .slides_wrapper .slides_inner .slide.slideTemplate-film .custom-seekbar {
+    display: none;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-film .filmSlideContent .videoIcons {
+    bottom: 7.2916666667vh;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-film .filmSlideContent .videoIcons.hidden {
+    opacity: 1;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-film .filmSlideContent .videoIcons .icon {
+    width: 7.4074074074vw;
+    height: 7.4074074074vw;
+  }
   .slides_wrapper .slides_inner .slide.slideTemplate-film, .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle {
     background-color: #000;
   }
