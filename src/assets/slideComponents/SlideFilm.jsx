@@ -7,7 +7,7 @@ import _ from "lodash";
 // import { findDOMNode } from 'react-dom'
 import screenfull from 'screenfull'
 
-import ReactPlayer from 'react-player'
+// import ReactPlayer from 'react-player'
 // import ReactPlayer from 'react-player/file'
 import playButton from '../images/videoIcons/PLAY.svg';
 import pauseButton from '../images/videoIcons/PAUSE.svg';
@@ -106,7 +106,8 @@ class SlideFilm extends Component {
     handleFullscreenVideo(){
         console.log('handleFullscreenVideo')
         const video = this.videoContainerRef.current
-        screenfull.request(video.wrapper)//used screenfull to handle crossbrowser full screen issues
+        screenfull.request(video)//used screenfull to handle crossbrowser full screen issues
+        // screenfull.request(video.wrapper)//used screenfull to handle crossbrowser full screen issues
         //, {navigationUI: 'hide'} //used for hiding UI navigation
         this.setState({
             soundOn: true
@@ -164,11 +165,10 @@ class SlideFilm extends Component {
                         autoPlay={true}
                         playsInline='playsInline'
                         preload="metadata"
-                        loop={true}
                         onTimeUpdate={(progress)=> this.updateSeekBar(progress)}
 							>
 							<source src={this.props.configuration.background_video_film} type="video/mp4" />
-							</video>`
+							</video>
                 <div className={videoIconsClasses}>
                     <img className='icon' alt="Video Icon" onClick={()=>this.toggleVideoPlay()} src={playPauseIcon} />
                     <img className='icon' alt="Video Icon" onClick={()=>this.toggleSound()} src={soundIcon} />
