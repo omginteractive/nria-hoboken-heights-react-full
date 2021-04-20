@@ -687,6 +687,11 @@ body {
   width: 100vw;
   object-fit: cover;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-film .reactPlayer > video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-film .custom-seekbar {
   cursor: pointer;
   height: 0.4166666667vw;
