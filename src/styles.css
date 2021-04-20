@@ -1884,7 +1884,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-contact .privacyPolicy .verticalLineContainer .verticalLine, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy .verticalLineContainer .verticalLine {
   border-left: solid 0.55px #000;
-  transition: all 1.2s;
+  transition: height 1.2s;
   transition-delay: 0.9s;
   height: 0;
 }
@@ -1893,7 +1893,7 @@ body {
   margin-bottom: 56px;
   margin-top: 35px;
   opacity: 0;
-  transition: all 1.2s;
+  transition: opacity 1.2s;
   transition-delay: 2.1s;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-contact .privacyPolicy .contactInfo, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy .contactInfo {
@@ -1918,7 +1918,7 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-contact .privacyPolicy .contactInfo .btn, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy .contactInfo .btn {
   border: solid 1px #000;
   margin-top: 46px;
-  transition: all 0.25s;
+  transition: background-color 0.25s, color 0.25s;
   text-decoration: none;
   margin-left: auto;
   margin-right: auto;
@@ -2135,58 +2135,6 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactForm .rightArrowContainer .rightArrow, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .contactForm .rightArrowContainer .rightArrow {
   cursor: pointer;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-contact .privacyPolicy, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy {
-  width: 45%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  float: right;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-contact .privacyPolicy .verticalLineContainer, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy .verticalLineContainer {
-  height: 50vh;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-contact .privacyPolicy .verticalLineContainer .verticalLine, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy .verticalLineContainer .verticalLine {
-  border-left: solid 0.55px #000;
-  transition: all 1.2s;
-  transition-delay: 0.9s;
-  height: 0;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-contact .privacyPolicy .logo, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy .logo {
-  height: 90px;
-  margin-bottom: 56px;
-  margin-top: 35px;
-  opacity: 0;
-  transition: all 1.2s;
-  transition-delay: 2.1s;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-contact .privacyPolicy .contactInfo, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy .contactInfo {
-  text-align: center;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-contact .privacyPolicy .contactInfo .address,
-.slides_wrapper .slides_inner .slide.slideTemplate-contact .privacyPolicy .contactInfo .phone,
-.slides_wrapper .slides_inner .slide.slideTemplate-contact .privacyPolicy .contactInfo .copyright, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy .contactInfo .address,
-.slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy .contactInfo .phone,
-.slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy .contactInfo .copyright {
-  font-size: 15px;
-  line-height: 25px;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-contact .privacyPolicy .contactInfo .phone, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy .contactInfo .phone {
-  font-family: "Gotham-Bold";
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-contact .privacyPolicy .contactInfo .copyright, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy .contactInfo .copyright {
-  font-family: "Gotham-Light";
-  margin-top: 1.4em;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-contact .privacyPolicy .contactInfo .btn, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy .contactInfo .btn {
-  border: solid 1px #000;
-  margin-top: 46px;
-  transition: all 0.25s;
-  text-decoration: none;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-contact .privacyPolicy .contactInfo .btn:hover, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .privacyPolicy .contactInfo .btn:hover {
-  background-color: #000;
-  color: #fff;
 }
 .slides_wrapper .slides_inner .slide.runAnimationOnce.slideTemplate-contact .privacyPolicy .verticalLineContainer .verticalLine {
   height: 100%;

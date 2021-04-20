@@ -1945,7 +1945,7 @@ body {
                             
                             .verticalLine {
                                 border-left: solid 0.55px #000;
-                                transition: all 1.2s;
+                                transition: height 1.2s;
                                 transition-delay: 0.9s;
                                 height: 0;
                             }
@@ -1955,7 +1955,7 @@ body {
                             margin-bottom: 56px;
                             margin-top: 35px;
                             opacity: 0;
-                            transition: all 1.2s;
+                            transition: opacity 1.2s;
                             transition-delay: 2.1s;
                         }
                         .contactInfo {
@@ -1977,7 +1977,7 @@ body {
                             .btn {
                                 border: solid 1px #000;
                                 margin-top: 46px;
-                                transition: all 0.25s;
+                                transition: background-color 0.25s, color 0.25s;
                                 text-decoration: none;
                                 margin-left: auto;
                                 margin-right: auto;
@@ -2221,58 +2221,58 @@ body {
                         }
                         
                     }
-                    .privacyPolicy {
-                        width: 45%;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        float: right;
+                    // .privacyPolicy {
+                    //     width: 45%;
+                    //     display: flex;
+                    //     flex-direction: column;
+                    //     align-items: center;
+                    //     float: right;
                         
-                        .verticalLineContainer {
-                            height: 50vh;
+                    //     .verticalLineContainer {
+                    //         height: 50vh;
                             
-                            .verticalLine {
-                                border-left: solid 0.55px #000;
-                                transition: all 1.2s;
-                                transition-delay: 0.9s;
-                                height: 0;
-                            }
-                        }
-                        .logo {
-                            height: 90px;
-                            margin-bottom: 56px;
-                            margin-top: 35px;
-                            opacity: 0;
-                            transition: all 1.2s;
-                            transition-delay: 2.1s;
-                        }
-                        .contactInfo {
-                            text-align: center;
-                            .address,
-                            .phone,
-                            .copyright  {
-                                font-size: 15px;
-                                line-height: 25px;
-                            }
-                            .phone {
-                                font-family: "Gotham-Bold";
-                            }
-                            .copyright {
-                                font-family: "Gotham-Light";
-                                margin-top: 1.4em;
-                            }
-                            .btn {
-                                border: solid 1px #000;
-                                margin-top: 46px;
-                                transition: all 0.25s;
-                                text-decoration: none;
-                                &:hover {
-                                    background-color: #000;
-                                    color: #fff;
-                                }
-                            }
-                        }
-                    }
+                    //         .verticalLine {
+                    //             border-left: solid 0.55px #000;
+                    //             transition: all 1.2s;
+                    //             transition-delay: 0.9s;
+                    //             height: 0;
+                    //         }
+                    //     }
+                    //     .logo {
+                    //         height: 90px;
+                    //         margin-bottom: 56px;
+                    //         margin-top: 35px;
+                    //         opacity: 0;
+                    //         transition: all 1.2s;
+                    //         transition-delay: 2.1s;
+                    //     }
+                    //     .contactInfo {
+                    //         text-align: center;
+                    //         .address,
+                    //         .phone,
+                    //         .copyright  {
+                    //             font-size: 15px;
+                    //             line-height: 25px;
+                    //         }
+                    //         .phone {
+                    //             font-family: "Gotham-Bold";
+                    //         }
+                    //         .copyright {
+                    //             font-family: "Gotham-Light";
+                    //             margin-top: 1.4em;
+                    //         }
+                    //         .btn {
+                    //             border: solid 1px #000;
+                    //             margin-top: 46px;
+                    //             transition: all 0.25s;
+                    //             text-decoration: none;
+                    //             &:hover {
+                    //                 background-color: #000;
+                    //                 color: #fff;
+                    //             }
+                    //         }
+                    //     }
+                    // }
                 }
             }
             &.runAnimationOnce {

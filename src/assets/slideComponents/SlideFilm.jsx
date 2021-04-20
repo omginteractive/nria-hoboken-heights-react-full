@@ -101,8 +101,6 @@ class SlideFilm extends Component {
     }
     toggleVideoPlay(){
         const newIsPlayingState = !this.state.isPlaying
-        console.log(newIsPlayingState)
-
         if(newIsPlayingState) this.playVideo()
         else this.pauseVideo()
     }
