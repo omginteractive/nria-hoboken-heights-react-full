@@ -50,6 +50,7 @@ console.log(apartment_result)
     },
     
     {
+        
         slideTemplate: 'film',
         slideClasses: "fullWidthVideo",
         // video: './NIRMA_1_Exterior_High_Cinemagraphic.mp4',

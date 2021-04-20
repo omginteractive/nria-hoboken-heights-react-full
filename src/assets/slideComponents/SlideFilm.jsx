@@ -7,13 +7,16 @@ import _ from "lodash";
 // import { findDOMNode } from 'react-dom'
 import screenfull from 'screenfull'
 
+import fullscreen from '../fullscreen.js'
+
 // import ReactPlayer from 'react-player'
-// import ReactPlayer from 'react-player/file'
+import ReactPlayer from 'react-player/file'
 import playButton from '../images/videoIcons/PLAY.svg';
 import pauseButton from '../images/videoIcons/PAUSE.svg';
 import soundOnButton from '../images/videoIcons/SOUND-ON.svg';
 import soundOffButton from '../images/videoIcons/SOUND-OFF.svg';
 import fullscreenButton from '../images/videoIcons/FULLSCREEN.svg';
+
 
 class SlideFilm extends Component {
     constructor(props) {
@@ -60,13 +63,17 @@ class SlideFilm extends Component {
         }
     }
     playVideo(){
-        this.videoContainerRef.current.play()
+        const videoRef = this.videoContainerRef.current
+        const videoElem = videoRef.wrapper.querySelectorAll(":scope > video")[0];
+        videoElem.play()
         this.setState({
             isPlaying: true
         })
     }
     pauseVideo(){
-        this.videoContainerRef.current.pause()
+        const videoRef = this.videoContainerRef.current
+        const videoElem = videoRef.wrapper.querySelectorAll(":scope > video")[0];
+        videoElem.pause()
         this.setState({
             isPlaying: false
         })
@@ -105,13 +112,17 @@ class SlideFilm extends Component {
     }
     handleFullscreenVideo(){
         console.log('handleFullscreenVideo')
-        const video = this.videoContainerRef.current
-        screenfull.request(video)//used screenfull to handle crossbrowser full screen issues
+        const videoRef = this.videoContainerRef.current
+        const videoElem = videoRef.wrapper.querySelectorAll(":scope > video")[0];
+        fullscreen.request(videoElem)
+        // const video = this.videoContainerRef.current
+        // screenfull.request(videoElem)//used screenfull to handle crossbrowser full screen issues
         // screenfull.request(video.wrapper)//used screenfull to handle crossbrowser full screen issues
         //, {navigationUI: 'hide'} //used for hiding UI navigation
         this.setState({
-            soundOn: true
+            soundOn: true,
         })
+
     }
 
     render(){
@@ -127,7 +138,7 @@ class SlideFilm extends Component {
         const playPauseIcon = this.state.isPlaying ?  pauseButton : playButton
         const soundIcon = this.state.soundOn ? soundOffButton : soundOnButton
         const slideIsActive = this.props.isCurrent
-        // const videoIsPlaying = slideIsActive && this.state.isPlaying
+        const videoIsPlaying = slideIsActive && this.state.isPlaying
         let videoIconsClasses = 'videoIcons '
         videoIconsClasses += this.props.filmSlideMouseMovementDetected ? 'visible' : 'hidden'
         return(
@@ -143,9 +154,10 @@ class SlideFilm extends Component {
                     </div>
                     <div onClick={this.props.methods.goToContactSlide.bind(this)} className="inquiry-link">INQUIRE NOW</div>
                 </header>
-                {/* <ReactPlayer
-                    url='https://vimeo.com/537572775'
-                    // url={this.props.configuration.background_video_film} 
+                <ReactPlayer
+                    playsinline={true}
+                    // url='https://vimeo.com/537572775'
+                    url={this.props.configuration.background_video_film} 
                     ref={this.videoContainerRef}
                     playing={videoIsPlaying}
                     volume={1}
@@ -155,9 +167,9 @@ class SlideFilm extends Component {
                     height='100vh'
                     loop={true}
                     progressInterval={500}
-                    onProgress={(progress)=> this.updateSeekBar(progress)}
-                    /> */}
-                    <video
+                    // onProgress={(progress)=> this.updateSeekBar(progress)}
+                    />
+                    {/* <video
                         className='reactPlayer'
                         ref={this.videoContainerRef}
                         loop={true}
@@ -168,7 +180,22 @@ class SlideFilm extends Component {
                         onTimeUpdate={(progress)=> this.updateSeekBar(progress)}
 							>
 							<source src={this.props.configuration.background_video_film} type="video/mp4" />
-							</video>
+							</video> */}
+                {/* <div className="filmContainer">
+                    <iframe src="https://player.vimeo.com/video/90509568"
+                        title='0'
+                        byline='0'
+                        portrait='0'
+                        playsinline='0'
+                        autopause='0'
+                        controls='0'
+                        app_id='122963'
+                        frameBorder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture"
+                        allowFullScreen 
+                        onMouseMove={() => this.throttleMouseMove()}
+                        />
+                </div> */}
                 <div className={videoIconsClasses}>
                     <img className='icon' alt="Video Icon" onClick={()=>this.toggleVideoPlay()} src={playPauseIcon} />
                     <img className='icon' alt="Video Icon" onClick={()=>this.toggleSound()} src={soundIcon} />

@@ -661,6 +661,10 @@ body {
   display: flex;
   justify-content: center;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-film .filmSlideContent .filmContainer > iframe {
+  position: absolute;
+  z-index: -1;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-film .filmSlideContent .videoIcons {
   position: absolute;
   bottom: 3.6458333333vw;
@@ -679,8 +683,8 @@ body {
   cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-film .reactPlayer {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   object-fit: cover;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-film .custom-seekbar {
@@ -715,7 +719,7 @@ body {
   top: 50%;
   transform: translate(50%, -50%);
 }
-.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle, .slides_wrapper .slides_inner .slide.slideTemplate-film {
+.slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle {
   background: #fff;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-exteriorLightToggle .toggleLights,
