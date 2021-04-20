@@ -6,11 +6,11 @@
 	.st0{opacity:0.85;fill:#FFFFFF;enable-background:new    ;}
 </style>
 <rect class="st0" width="8.2" height="18.7"/>
-<rect class="st0" width="18.7" height="8.2"/>
-<rect x="28.3" class="st0" width="18.7" height="8.2"/>
+<rect x="8.2" class="st0" width="10.5" height="8.2"/>
+<rect x="28.3" class="st0" width="10.4" height="8.2"/>
 <rect x="38.7" class="st0" width="8.2" height="18.7"/>
-<rect y="38.7" class="st0" width="18.7" height="8.2"/>
+<rect x="8.2" y="38.7" class="st0" width="10.5" height="8.2"/>
 <rect y="28.3" class="st0" width="8.2" height="18.7"/>
 <rect x="38.7" y="28.3" class="st0" width="8.2" height="18.7"/>
-<rect x="28.3" y="38.7" class="st0" width="18.7" height="8.2"/>
+<rect x="28.3" y="38.7" class="st0" width="10.4" height="8.2"/>
 </svg>
