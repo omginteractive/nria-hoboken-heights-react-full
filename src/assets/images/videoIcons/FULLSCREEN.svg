@@ -5,12 +5,8 @@
 <style type="text/css">
 	.st0{opacity:0.85;fill:#FFFFFF;enable-background:new    ;}
 </style>
-<rect class="st0" width="8.2" height="18.7"/>
-<rect x="8.2" class="st0" width="10.5" height="8.2"/>
-<rect x="28.3" class="st0" width="10.4" height="8.2"/>
-<rect x="38.7" class="st0" width="8.2" height="18.7"/>
-<rect x="8.2" y="38.7" class="st0" width="10.5" height="8.2"/>
-<rect y="28.3" class="st0" width="8.2" height="18.7"/>
-<rect x="38.7" y="28.3" class="st0" width="8.2" height="18.7"/>
-<rect x="28.3" y="38.7" class="st0" width="10.4" height="8.2"/>
+<polygon class="st0" points="8.2,0 0,0 0,18.7 8.2,18.7 8.2,8.2 18.7,8.2 18.7,0 "/>
+<polygon class="st0" points="38.7,0 28.3,0 28.3,8.2 38.7,8.2 38.7,18.7 46.9,18.7 46.9,0 "/>
+<polygon class="st0" points="8.2,38.7 8.2,28.3 0,28.3 0,47 8.2,47 8.2,46.9 18.7,46.9 18.7,38.7 "/>
+<polygon class="st0" points="38.7,28.3 38.7,38.7 28.3,38.7 28.3,46.9 38.7,46.9 38.7,47 46.9,47 46.9,28.3 "/>
 </svg>
