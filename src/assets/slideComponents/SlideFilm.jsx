@@ -30,6 +30,27 @@ class SlideFilm extends Component {
         this.throttleMouseMove = _.throttle(this.handleMouseMove, 350);
         this.mouseMovementTimeout = null
     }
+    componentDidMount(){
+        if (document.addEventListener) {
+            document.addEventListener('fullscreenchange', this.handleFullscreenChange, false);
+            document.addEventListener('mozfullscreenchange', this.handleFullscreenChange, false);
+            document.addEventListener('MSFullscreenChange', this.handleFullscreenChange, false);
+            document.addEventListener('webkitfullscreenchange', this.handleFullscreenChange, false);
+        }
+        
+    }
+    handleFullscreenChange() {
+        if (document.webkitIsFullScreen || document.mozFullScreen || (document.msFullscreenElement !== null && typeof(document.msFullscreenElement) !== 'undefined')) {//document.msFullscreenElement !== null
+            console.log('isFUllScreen')
+        }
+        else {
+            console.log('NOTFUllScreen')
+            // const videoRef = this.videoContainerRef.current
+            // const videoElem = videoRef.wrapper.querySelectorAll(":scope > video")[0];
+            // console.log('paused',videoElem.paused)
+            // //check if playing and state is playing
+        }
+    }
     handleSeekBarClick(e){
             const offset = $(".custom-seekbar").offset();
             const left = (e.pageX - offset.left);
