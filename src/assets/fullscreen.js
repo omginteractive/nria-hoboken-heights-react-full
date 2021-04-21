@@ -27,12 +27,19 @@ class Fullscreen {
   
     get isFullscreen() {
       return (
-        document.fullscreenElement
-        || document.webkitFullscreenElement
-        || document.mozFullScreenElement
+        document.webkitIsFullScreen
+        || document.mozFullScreen
         || document.msFullscreenElement
       );
     }
+    // get isFullscreen() {
+    //   return (
+    //     document.fullscreenElement
+    //     || document.webkitFullscreenElement
+    //     || document.mozFullScreenElement
+    //     || document.msFullscreenElement
+    //   );
+    // }
   
     get enabled() {
       return (

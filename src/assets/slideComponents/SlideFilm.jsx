@@ -32,35 +32,12 @@ class SlideFilm extends Component {
     }
     componentDidMount(){
         if (document.addEventListener) {
-            document.addEventListener('fullscreenchange', this.handleFullscreenChange, false);
-            document.addEventListener('mozfullscreenchange', this.handleFullscreenChange, false);
-            document.addEventListener('MSFullscreenChange', this.handleFullscreenChange, false);
-            document.addEventListener('webkitfullscreenchange', this.handleFullscreenChange, false);
+            document.addEventListener('fullscreenchange', this.handleFullscreenChange.bind(this), false);
+            document.addEventListener('mozfullscreenchange', this.handleFullscreenChange.bind(this), false);
+            document.addEventListener('MSFullscreenChange', this.handleFullscreenChange.bind(this), false);
+            document.addEventListener('webkitfullscreenchange', this.handleFullscreenChange.bind(this), false);
         }
         
-    }
-    handleFullscreenChange() {
-        if (document.webkitIsFullScreen || document.mozFullScreen || (document.msFullscreenElement !== null && typeof(document.msFullscreenElement) !== 'undefined')) {//document.msFullscreenElement !== null
-            console.log('isFUllScreen')
-        }
-        else {
-            console.log('NOTFUllScreen')
-            // const videoRef = this.videoContainerRef.current
-            // const videoElem = videoRef.wrapper.querySelectorAll(":scope > video")[0];
-            // console.log('paused',videoElem.paused)
-            // //check if playing and state is playing
-        }
-    }
-    handleSeekBarClick(e){
-            const offset = $(".custom-seekbar").offset();
-            const left = (e.pageX - offset.left);
-            const totalWidth = $(".custom-seekbar").width();
-            const percentage = ( left / totalWidth );
-            const timeToSeekTo = percentage * this.videoContainerRef.current.duration
-            // this.videoContainerRef.current.seekTo(percentage)
-            this.videoContainerRef.current.currentTime = timeToSeekTo
-            // console.log(this.videoContainerRef.current.currentTime)
-            // console.log(percentage * this.videoContainerRef.current.duration)
     }
     shouldComponentUpdate(nextProps, nextState){
         const soundStateChanged = this.state.soundOn !== nextState.soundOn
@@ -83,17 +60,39 @@ class SlideFilm extends Component {
             
         }
     }
-    playVideo(){
+    handleFullscreenChange() {
+        if(!fullscreen.isFullscreen){
+            //On iPhones, the video pauses automatically when leaving fullscreen mode. Even when this.state.isPlaying is true
+            const videoElem = this.getVideoElement()
+            const videoShouldBePlaying = videoElem.paused && this.state.isPlaying
+            if(videoShouldBePlaying) videoElem.play()
+        }
+    }
+    handleSeekBarClick(e){
+        const offset = $(".custom-seekbar").offset();
+        const left = (e.pageX - offset.left);
+        const totalWidth = $(".custom-seekbar").width();
+        const percentage = ( left / totalWidth );
+        const timeToSeekTo = percentage * this.videoContainerRef.current.duration
+        // this.videoContainerRef.current.seekTo(percentage)
+        this.videoContainerRef.current.currentTime = timeToSeekTo
+        // console.log(this.videoContainerRef.current.currentTime)
+        // console.log(percentage * this.videoContainerRef.current.duration)
+    }
+    getVideoElement(){
         const videoRef = this.videoContainerRef.current
         const videoElem = videoRef.wrapper.querySelectorAll(":scope > video")[0];
+        return videoElem
+    }
+    playVideo(){
+        const videoElem = this.getVideoElement()
         videoElem.play()
         this.setState({
             isPlaying: true
         })
     }
     pauseVideo(){
-        const videoRef = this.videoContainerRef.current
-        const videoElem = videoRef.wrapper.querySelectorAll(":scope > video")[0];
+        const videoElem = this.getVideoElement()
         videoElem.pause()
         this.setState({
             isPlaying: false
@@ -134,6 +133,7 @@ class SlideFilm extends Component {
         const videoRef = this.videoContainerRef.current
         const videoElem = videoRef.wrapper.querySelectorAll(":scope > video")[0];
         fullscreen.request(videoElem)
+        fullscreen.addEventListener(this.handleFullscreenChange())
         // const video = this.videoContainerRef.current
         // screenfull.request(videoElem)//used screenfull to handle crossbrowser full screen issues
         // screenfull.request(video.wrapper)//used screenfull to handle crossbrowser full screen issues
@@ -141,7 +141,6 @@ class SlideFilm extends Component {
         this.setState({
             soundOn: true,
         })
-
     }
 
     render(){
