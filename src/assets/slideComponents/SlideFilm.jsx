@@ -31,12 +31,12 @@ class SlideFilm extends Component {
         this.mouseMovementTimeout = null
     }
     componentDidMount(){
-        if (document.addEventListener) {
-            document.addEventListener('fullscreenchange', this.handleFullscreenChange.bind(this), false);
-            document.addEventListener('mozfullscreenchange', this.handleFullscreenChange.bind(this), false);
-            document.addEventListener('MSFullscreenChange', this.handleFullscreenChange.bind(this), false);
-            document.addEventListener('webkitfullscreenchange', this.handleFullscreenChange.bind(this), false);
-        }
+        // if (document.addEventListener) {
+        //     document.addEventListener('fullscreenchange', this.handleFullscreenChange.bind(this), false);
+        //     document.addEventListener('mozfullscreenchange', this.handleFullscreenChange.bind(this), false);
+        //     document.addEventListener('MSFullscreenChange', this.handleFullscreenChange.bind(this), false);
+        //     document.addEventListener('webkitfullscreenchange', this.handleFullscreenChange.bind(this), false);
+        // }
         
     }
     shouldComponentUpdate(nextProps, nextState){
@@ -61,12 +61,14 @@ class SlideFilm extends Component {
         }
     }
     handleFullscreenChange() {
-        if(!fullscreen.isFullscreen){
-            //On iPhones, the video pauses automatically when leaving fullscreen mode. Even when this.state.isPlaying is true
-            const videoElem = this.getVideoElement()
-            const videoShouldBePlaying = videoElem.paused && this.state.isPlaying
-            if(videoShouldBePlaying) videoElem.play()
-        }
+        return
+        // //On iPhones, the video pauses automatically when leaving fullscreen mode. Even when this.state.isPlaying is true
+        // const iPhoneIsDisplayingFullscreen = document.querySelector('.slideTemplate-film video').webkitDisplayingFullscreen
+        // if(!fullscreen.isFullscreen){
+        //     const videoElem = this.getVideoElement()
+        //     const videoShouldBePlaying = videoElem.paused && this.state.isPlaying
+        //     if(videoShouldBePlaying) videoElem.play()
+        // }
     }
     handleSeekBarClick(e){
         const offset = $(".custom-seekbar").offset();
@@ -133,7 +135,7 @@ class SlideFilm extends Component {
         const videoRef = this.videoContainerRef.current
         const videoElem = videoRef.wrapper.querySelectorAll(":scope > video")[0];
         fullscreen.request(videoElem)
-        fullscreen.addEventListener(this.handleFullscreenChange())
+        // fullscreen.addEventListener(this.handleFullscreenChange())
         // const video = this.videoContainerRef.current
         // screenfull.request(videoElem)//used screenfull to handle crossbrowser full screen issues
         // screenfull.request(video.wrapper)//used screenfull to handle crossbrowser full screen issues
