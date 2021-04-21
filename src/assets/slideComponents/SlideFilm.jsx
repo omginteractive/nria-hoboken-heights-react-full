@@ -143,6 +143,11 @@ class SlideFilm extends Component {
             }, 2000)
     }
     handleFullscreenVideo(){
+        this.setState({
+            soundOn: true,
+        })
+        this.player.requestFullscreen()
+        /*
         console.log('handleFullscreenVideo')
         const videoRef = this.videoContainerRef.current
         console.log(videoRef)
@@ -150,15 +155,13 @@ class SlideFilm extends Component {
         // const videoElem = videoRef.wrapper.querySelectorAll(":scope > video")[0];
         // fullscreen.request(videoElem)
         const videoElem = document.querySelector("iframe")
-        fullscreen.request(videoElem)
+        fullscreen.request(videoElem)*/
         // fullscreen.addEventListener(this.handleFullscreenChange())
         // const video = this.videoContainerRef.current
         // screenfull.request(videoElem)//used screenfull to handle crossbrowser full screen issues
         // screenfull.request(video.wrapper)//used screenfull to handle crossbrowser full screen issues
         //, {navigationUI: 'hide'} //used for hiding UI navigation
-        this.setState({
-            soundOn: true,
-        })
+        
     }
 
     render(){
