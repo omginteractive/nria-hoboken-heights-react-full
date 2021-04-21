@@ -6,6 +6,8 @@ import { updateFilmSlideMouseMovement } from "../../redux/actions/slideActions";
 import _ from "lodash";
 // import { findDOMNode } from 'react-dom'
 import screenfull from 'screenfull'
+import Vimeo from '@u-wave/react-vimeo';
+
 
 import fullscreen from '../fullscreen.js'
 
@@ -57,7 +59,6 @@ class SlideFilm extends Component {
         }
         else if(!slideIsActive && slideJustChanged) {
             this.pauseVideo()
-            
         }
     }
     handleFullscreenChange() {
@@ -71,31 +72,41 @@ class SlideFilm extends Component {
         // }
     }
     handleSeekBarClick(e){
+        const self = this
+        
         const offset = $(".custom-seekbar").offset();
         const left = (e.pageX - offset.left);
         const totalWidth = $(".custom-seekbar").width();
         const percentage = ( left / totalWidth );
-        const timeToSeekTo = percentage * this.videoContainerRef.current.duration
+        // const timeToSeekTo = percentage * this.videoContainerRef.current.duration
+
+        this.player.getDuration().then(function(duration) {
+            self.player.setCurrentTime(duration*percentage)
+        });
         // this.videoContainerRef.current.seekTo(percentage)
-        this.videoContainerRef.current.currentTime = timeToSeekTo
+        // this.videoContainerRef.current.currentTime = timeToSeekTo
         // console.log(this.videoContainerRef.current.currentTime)
         // console.log(percentage * this.videoContainerRef.current.duration)
     }
+    handleVideoReady (player) {
+        this.player = player//set value to be used when seeking
+    }
     getVideoElement(){
-        const videoRef = this.videoContainerRef.current
-        const videoElem = videoRef.wrapper.querySelectorAll(":scope > video")[0];
+        // const videoRef = this.videoContainerRef.current
+        // const videoElem = videoRef.wrapper.querySelectorAll(":scope > video")[0];
+        const videoElem = document.querySelector("iframe")
         return videoElem
     }
     playVideo(){
-        const videoElem = this.getVideoElement()
-        videoElem.play()
+        // const videoElem = this.getVideoElement()
+        // videoElem.play()
         this.setState({
             isPlaying: true
         })
     }
     pauseVideo(){
-        const videoElem = this.getVideoElement()
-        videoElem.pause()
+        // const videoElem = this.getVideoElement()
+        // videoElem.pause()
         this.setState({
             isPlaying: false
         })
@@ -109,18 +120,19 @@ class SlideFilm extends Component {
         const currentSoundState = this.state.soundOn
         const newSoundState = !this.state.soundOn
 
-        if(currentSoundState){
-            this.videoContainerRef.current.muted = true
-        }
-        else {
-            this.videoContainerRef.current.muted = false
-        }
+        // if(currentSoundState){
+        //     this.videoContainerRef.current.muted = true
+        // }
+        // else {
+        //     this.videoContainerRef.current.muted = false
+        // }
         this.setState({
             soundOn: newSoundState
         })
     }
     updateSeekBar(progress){
-        const percentage = progress.target.currentTime/progress.target.duration * 100;
+        const percentage = progress.percent*100
+        // const percentage = progress.target.currentTime/progress.target.duration * 100;
         $(".custom-seekbar .progress").css("width", percentage+"%");
     }
     handleMouseMove(){
@@ -133,7 +145,11 @@ class SlideFilm extends Component {
     handleFullscreenVideo(){
         console.log('handleFullscreenVideo')
         const videoRef = this.videoContainerRef.current
-        const videoElem = videoRef.wrapper.querySelectorAll(":scope > video")[0];
+        console.log(videoRef)
+        // console.log(videoRef.querySelectorAll(":scope > iframe")[0])
+        // const videoElem = videoRef.wrapper.querySelectorAll(":scope > video")[0];
+        // fullscreen.request(videoElem)
+        const videoElem = document.querySelector("iframe")
         fullscreen.request(videoElem)
         // fullscreen.addEventListener(this.handleFullscreenChange())
         // const video = this.videoContainerRef.current
@@ -157,6 +173,8 @@ class SlideFilm extends Component {
         seekbarClasses += this.props.filmSlideMouseMovementDetected ? 'visible' : 'hidden'
         const playPauseIcon = this.state.isPlaying ?  pauseButton : playButton
         const soundIcon = this.state.soundOn ? soundOffButton : soundOnButton
+        const volume = this.state.soundOn ? 1 : 0
+        
         const slideIsActive = this.props.isCurrent
         const videoIsPlaying = slideIsActive && this.state.isPlaying
         let videoIconsClasses = 'videoIcons '
@@ -174,7 +192,7 @@ class SlideFilm extends Component {
                     </div>
                     <div onClick={this.props.methods.goToContactSlide.bind(this)} className="inquiry-link">INQUIRE NOW</div>
                 </header>
-                <ReactPlayer
+                {/* <ReactPlayer
                     playsinline={true}
                     // url='https://vimeo.com/537572775'
                     url={this.props.configuration.background_video_film} 
@@ -188,7 +206,7 @@ class SlideFilm extends Component {
                     loop={true}
                     progressInterval={500}
                     // onProgress={(progress)=> this.updateSeekBar(progress)}
-                    />
+                    /> */}
                     {/* <video
                         className='reactPlayer'
                         ref={this.videoContainerRef}
@@ -201,12 +219,12 @@ class SlideFilm extends Component {
 							>
 							<source src={this.props.configuration.background_video_film} type="video/mp4" />
 							</video> */}
-                {/* <div className="filmContainer">
-                    <iframe src="https://player.vimeo.com/video/90509568"
+                <div className="filmContainer">
+                    {/* <iframe src="https://player.vimeo.com/video/90509568"
                         title='0'
                         byline='0'
                         portrait='0'
-                        playsinline='0'
+                        playsInline='0'
                         autopause='0'
                         controls='0'
                         app_id='122963'
@@ -214,8 +232,26 @@ class SlideFilm extends Component {
                         allow="autoplay; fullscreen; picture-in-picture"
                         allowFullScreen 
                         onMouseMove={() => this.throttleMouseMove()}
-                        />
-                </div> */}
+                        /> */}
+                        <Vimeo
+                            onReady={this.handleVideoReady.bind(this)}
+                            ref={this.videoContainerRef}
+                            // video="537572775"
+                            video="90509568"
+                            video="539794043"
+                            background={true}
+                            autoplay
+                            loop={true}
+                            muted={!this.state.soundOn}
+                            volume={volume}
+                            paused={!videoIsPlaying}
+                            controls={false}
+                            onTimeUpdate={(progress)=> this.updateSeekBar(progress)}
+                            
+                            // onPause={this.handlePlayerPause}
+                            // onPlay={this.handlePlayerPlay}
+                            />
+                </div>
                 <div className={videoIconsClasses}>
                     <img className='icon' alt="Video Icon" onClick={()=>this.toggleVideoPlay()} src={playPauseIcon} />
                     <img className='icon' alt="Video Icon" onClick={()=>this.toggleSound()} src={soundIcon} />

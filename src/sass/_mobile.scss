@@ -698,9 +698,11 @@ body {
                         }
                     }
                 }
-                &film,
                 &exteriorLightToggle {
                     background-color: #000;
+                }
+                &film,
+                &exteriorLightToggle {
                     .toggleLights,
                     .toggleSound {
                         display: none;
