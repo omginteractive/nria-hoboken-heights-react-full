@@ -67,6 +67,14 @@ class SlideMap extends Component {
                         {/* <img src={require('./images/map/map01_mobile.jpg').default} alt="" className='mobile-only map'/> */}
                         <div className={satelliteImageContainerClasses}>
                             <img src={satelliteMap} alt="" className=' map'/>
+                            <iframe
+                                width="600"
+                                height="450"
+                                loading="lazy"
+                                allowFullScreen
+                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCR9Nsnljn6pkBZPEy5hIudkQDENQrJqh4
+                                    &q=1300+Manhattan+Ave,Union+City,+NJ+07087">
+                                </iframe>
                             {/* <img src={require('./images/map/map02_mobile.jpg').default} alt="" className='mobile-only map'/> */}
                         </div>
                     </div>
