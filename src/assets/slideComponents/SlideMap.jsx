@@ -9,7 +9,8 @@ import {connect} from 'react-redux'
 
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
-import desktopMapLogo from '../images/map/Motion_logo--last-frame.png'
+import desktopSatelliteMapLogo from '../images/map/Motion_logo--last-frame.png'
+import desktopAnimatedMapLogo from '../images/map/Motion_logo.gif'
 
 
 class SlideMap extends Component {
@@ -82,9 +83,17 @@ class SlideMap extends Component {
             lat: 40.759370,
             lng: -74.033470
         }
-        const options = this.state.googleMapsLoaded ? {
+        const optionsSatelliteMapMarker = this.state.googleMapsLoaded ? {
                 icon: {
-                    url: desktopMapLogo,
+                    url: desktopSatelliteMapLogo,
+                    origin: new window.google.maps.Point(0, 0),
+                    anchor: new window.google.maps.Point(22, 40),
+                    scaledSize: new window.google.maps.Size(347, 100)
+                }
+            } : {}
+        const optionsDefaultMapMarker = this.state.googleMapsLoaded ? {
+                icon: {
+                    url: desktopAnimatedMapLogo,
                     origin: new window.google.maps.Point(0, 0),
                     anchor: new window.google.maps.Point(22, 40),
                     scaledSize: new window.google.maps.Size(347, 100)
@@ -305,7 +314,7 @@ class SlideMap extends Component {
                                 >
                                 <Marker
                                     position={markerPosition}
-                                    options={options}
+                                    options={optionsDefaultMapMarker}
                                     />
                                 </GoogleMap>
                             </LoadScript>
@@ -331,7 +340,7 @@ class SlideMap extends Component {
                                     >
                                     <Marker
                                         position={markerPosition}
-                                        options={options}
+                                        options={optionsSatelliteMapMarker}
                                         />
                                     </GoogleMap>
                                 </LoadScript>
