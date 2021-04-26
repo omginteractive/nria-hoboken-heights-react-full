@@ -2,10 +2,14 @@ import {Component} from 'react';
 import React from 'react';
 import {connect} from 'react-redux'
 // import _ from "lodash";
-import locationMapDesktop from '../images/map/map01.jpg'
-import satelliteMapDesktop from '../images/map/map02.jpg'
-import locationMapMobile from '../images/map/map01_mobile.jpg'
-import satelliteMapMobile from '../images/map/map02_mobile.jpg'
+// import locationMapDesktop from '../images/map/map01.jpg'
+// import satelliteMapDesktop from '../images/map/map02.jpg'
+// import locationMapMobile from '../images/map/map01_mobile.jpg'
+// import satelliteMapMobile from '../images/map/map02_mobile.jpg'
+
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+
+import desktopMapLogo from '../images/map/Motion_logo--last-frame.png'
 
 
 class SlideMap extends Component {
@@ -13,14 +17,26 @@ class SlideMap extends Component {
         super(props)
         this.state = {
             satelliteMapEnabled: false,
-            enabledListing: null
+            enabledListing: null,
+            googleMapsLoaded: false
         }
     }
     shouldComponentUpdate(nextProps, nextState){
         const mapChanged = this.state.satelliteMapEnabled !== nextState.satelliteMapEnabled
         const enabledListingChanged = this.state.enabledListing !== nextState.enabledListing
         const mapHeightLockedPropsChanged = this.props.mapHeightLocked !== nextProps.mapHeightLocked
-        return mapChanged || enabledListingChanged || mapHeightLockedPropsChanged
+        const googleMapsNotLoaded = !this.state.googleMapsLoaded
+        console.log(googleMapsNotLoaded)
+        const googleMapsStateChanged = this.state.googleMapsLoaded !== nextState.googleMapsLoaded
+        
+        return mapChanged || enabledListingChanged || mapHeightLockedPropsChanged || googleMapsNotLoaded || googleMapsStateChanged
+    }
+    componentDidUpdate(){
+        if(!this.state.googleMapsLoaded && typeof(window.google) !== 'undefined'){
+            this.setState({
+                googleMapsLoaded: true
+            })
+        }
     }
     toggleMap(){
         const newState = !this.state.satelliteMapEnabled
@@ -45,7 +61,6 @@ class SlideMap extends Component {
         this.setState({
             enabledListing: idx
         })
-
     }
     render(){
         let mapSectionClasses = 'mapSection'
@@ -57,24 +72,276 @@ class SlideMap extends Component {
         // const locationListings = this.props.configuration.locationListings
         const toggleBarText = this.state.satelliteMapEnabled ? this.props.configuration.map_location_view_text : this.props.configuration.map_satellite_view_text
 
-        const locationMap = this.props.isMobileDevice ? locationMapDesktop : locationMapMobile
-        const satelliteMap = this.props.isMobileDevice ? satelliteMapDesktop : satelliteMapMobile
+        // const locationMap = this.props.isMobileDevice ? locationMapDesktop : locationMapMobile
+        // const satelliteMap = this.props.isMobileDevice ? satelliteMapDesktop : satelliteMapMobile
+        
+        const containerStyle = {
+            width: '100%',
+            height: '100%'
+        }
+          
+        const center = {
+            lat: 40.759370,
+            lng: -74.033470
+        }
+        const options = this.state.googleMapsLoaded ? {
+                icon: {
+                    url: desktopMapLogo,
+                    origin: new window.google.maps.Point(0, 0),
+                    anchor: new window.google.maps.Point(10, 60),
+                }
+            } : {}
+        const customMapStyles = [
+            {
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#212121"
+                }
+              ]
+            },
+            {
+              "elementType": "labels.icon",
+              "stylers": [
+                {
+                  "visibility": "off"
+                }
+              ]
+            },
+            {
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#757575"
+                }
+              ]
+            },
+            {
+              "elementType": "labels.text.stroke",
+              "stylers": [
+                {
+                  "color": "#212121"
+                }
+              ]
+            },
+            {
+              "featureType": "administrative",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#757575"
+                }
+              ]
+            },
+            {
+              "featureType": "administrative.country",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#9e9e9e"
+                }
+              ]
+            },
+            {
+              "featureType": "administrative.land_parcel",
+              "stylers": [
+                {
+                  "visibility": "off"
+                }
+              ]
+            },
+            {
+              "featureType": "administrative.locality",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#bdbdbd"
+                }
+              ]
+            },
+            {
+              "featureType": "poi",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#757575"
+                }
+              ]
+            },
+            {
+              "featureType": "poi.park",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#181818"
+                }
+              ]
+            },
+            {
+              "featureType": "poi.park",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#616161"
+                }
+              ]
+            },
+            {
+              "featureType": "poi.park",
+              "elementType": "labels.text.stroke",
+              "stylers": [
+                {
+                  "color": "#1b1b1b"
+                }
+              ]
+            },
+            {
+              "featureType": "road",
+              "elementType": "geometry.fill",
+              "stylers": [
+                {
+                  "color": "#2c2c2c"
+                }
+              ]
+            },
+            {
+              "featureType": "road",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#8a8a8a"
+                }
+              ]
+            },
+            {
+              "featureType": "road.arterial",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#373737"
+                }
+              ]
+            },
+            {
+              "featureType": "road.highway",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#3c3c3c"
+                }
+              ]
+            },
+            {
+              "featureType": "road.highway.controlled_access",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#4e4e4e"
+                }
+              ]
+            },
+            {
+              "featureType": "road.local",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#616161"
+                }
+              ]
+            },
+            {
+              "featureType": "transit",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#757575"
+                }
+              ]
+            },
+            {
+              "featureType": "water",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#000000"
+                }
+              ]
+            },
+            {
+              "featureType": "water",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "color": "#3d3d3d"
+                }
+              ]
+            }
+        ]
+        const mapZoomLevel = 16
+        const markerPosition = {
+            lat: 40.759370,
+            lng: -74.033470
+        }
+        const googleMapsApiKey = "AIzaSyBU2eqkanbV49ozX8-5EU9CSHhusjgXZsI"
         return(
             <>
                 <section className={mapSectionClasses}>
                     <div className="mapBackground">
-                        <img src={locationMap} alt="" className=' map'/>
+                        {/* <img src={locationMap} alt="" className=' map'/> */}
+                        <div className="map">
+                            <LoadScript
+                                googleMapsApiKey={googleMapsApiKey}
+                            >
+                                <GoogleMap
+                                mapContainerStyle={containerStyle}
+                                center={center}
+                                zoom={mapZoomLevel}
+                                options={
+                                    {
+                                        disableDefaultUI: true,
+                                        styles: customMapStyles
+                                    }
+                                }
+                                >
+                                <Marker
+                                    position={markerPosition}
+                                    options={options}
+                                    />
+                                </GoogleMap>
+                            </LoadScript>
+                        </div>
                         {/* <img src={require('./images/map/map01_mobile.jpg').default} alt="" className='mobile-only map'/> */}
                         <div className={satelliteImageContainerClasses}>
-                            <img src={satelliteMap} alt="" className=' map'/>
-                            <iframe
-                                width="600"
-                                height="450"
-                                loading="lazy"
+                            {/* <img src={satelliteMap} alt="" className=' map'/> */}
+                            <div id="map--satellite" className='map--satellite'>
+                                <LoadScript
+                                    googleMapsApiKey={googleMapsApiKey}
+                                >
+                                    <GoogleMap
+                                    mapContainerStyle={containerStyle}
+                                    center={center}
+                                    zoom={mapZoomLevel}
+                                    options={
+                                        {
+                                            mapTypeId: 'satellite',
+                                            disableDefaultUI: true,
+                                        }
+                                    }
+                                    >
+                                    <Marker
+                                        position={markerPosition}
+                                        options={options}
+                                        />
+                                    </GoogleMap>
+                                </LoadScript>
+
+                            </div>
+                            {/* <iframe
+                                // loading="lazy"
                                 allowFullScreen
-                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCR9Nsnljn6pkBZPEy5hIudkQDENQrJqh4
-                                    &q=1300+Manhattan+Ave,Union+City,+NJ+07087">
-                                </iframe>
+                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBU2eqkanbV49ozX8-5EU9CSHhusjgXZsI
+                                    &q=1300+Manhattan+Ave,Union+City,+NJ+07087&center=40.759370,-74.033470">
+                                </iframe> */}
                             {/* <img src={require('./images/map/map02_mobile.jpg').default} alt="" className='mobile-only map'/> */}
                         </div>
                     </div>
