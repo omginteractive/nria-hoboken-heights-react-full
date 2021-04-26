@@ -184,7 +184,7 @@ class Slide extends Component {
                     <SlideNeighborhoodCommunity isCurrent={isCurrent} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'map' &&
-                    <SlideMap mapHeightLocked={this.props.mapHeightLocked} configuration={slideObj}  />
+                    <SlideMap isCurrent={isCurrent} mapHeightLocked={this.props.mapHeightLocked} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'contact' &&
                     <SlideContactForm

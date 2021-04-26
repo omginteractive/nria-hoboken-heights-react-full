@@ -1908,8 +1908,19 @@ body {
                                 width: 100%;
                                 overflow: hidden;
                                 transition: z-index $animationDuration linear 0.2s;//this prevents clickability problems with .locationList
-                                z-index: 0;
-                                height: 100vh;
+                                z-index: -1;//allows interaction with default map when satellite is not enabled
+                                height: calc(100vh - #{$header-height});
+                                &.visible {
+                                    z-index: 2;
+                                    transition: z-index $animationDuration linear;//this prevents clickability problems with .locationList
+                                    > img {
+                                        transform: translateX(0);
+                                    }
+                                    .map--satellite {
+                                        transform: translateX(0);
+                                        
+                                    }
+                                }
                                 > img {
                                     transform: translateX(100%);
                                     transition: transform 1s;
@@ -1921,17 +1932,6 @@ body {
                                     top: 0;
                                     left: 0;
                                     height: 100%;
-                                }
-                                &.visible {
-                                    z-index: 2;
-                                    transition: z-index $animationDuration linear;//this prevents clickability problems with .locationList
-                                    > img {
-                                        transform: translateX(0);
-                                    }
-                                    .map--satellite {
-                                        transform: translateX(0);
-                                        
-                                    }
                                 }
                             }
                         }

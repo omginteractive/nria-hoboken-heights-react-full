@@ -26,9 +26,7 @@ class SlideMap extends Component {
         const enabledListingChanged = this.state.enabledListing !== nextState.enabledListing
         const mapHeightLockedPropsChanged = this.props.mapHeightLocked !== nextProps.mapHeightLocked
         const googleMapsNotLoaded = !this.state.googleMapsLoaded
-        console.log(googleMapsNotLoaded)
         const googleMapsStateChanged = this.state.googleMapsLoaded !== nextState.googleMapsLoaded
-        
         return mapChanged || enabledListingChanged || mapHeightLockedPropsChanged || googleMapsNotLoaded || googleMapsStateChanged
     }
     componentDidUpdate(){
@@ -88,7 +86,8 @@ class SlideMap extends Component {
                 icon: {
                     url: desktopMapLogo,
                     origin: new window.google.maps.Point(0, 0),
-                    anchor: new window.google.maps.Point(10, 60),
+                    anchor: new window.google.maps.Point(22, 40),
+                    scaledSize: new window.google.maps.Size(347, 100)
                 }
             } : {}
         const customMapStyles = [
@@ -277,7 +276,7 @@ class SlideMap extends Component {
               ]
             }
         ]
-        const mapZoomLevel = 16
+        const mapZoomLevel = 14
         const markerPosition = {
             lat: 40.759370,
             lng: -74.033470
@@ -299,7 +298,8 @@ class SlideMap extends Component {
                                 options={
                                     {
                                         disableDefaultUI: true,
-                                        styles: customMapStyles
+                                        styles: customMapStyles,
+                                        scrollwheel: false
                                     }
                                 }
                                 >
@@ -325,6 +325,7 @@ class SlideMap extends Component {
                                         {
                                             mapTypeId: 'satellite',
                                             disableDefaultUI: true,
+                                            scrollwheel: false
                                         }
                                     }
                                     >
