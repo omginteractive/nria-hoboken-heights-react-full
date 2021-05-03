@@ -1349,17 +1349,26 @@ body {
                             display: flex;
                             justify-content: center;
                             // transform: translateX($mapOffset);
+                            $mapImageHeight : calc(#{innerHeightVh(100)} - #{$satelliteToggleButtonHeight});
                             .map {
                                 // object-position: center top;
                                 // width: auto;
-                                height: calc(#{innerHeightVh(100)} - #{$satelliteToggleButtonHeight});
+                                height: $mapImageHeight;
                             }
                             .satelliteImageContainer {
                                 // left: -$mapOffset;
                                 display: flex;
                                 justify-content: center;
+                                height: auto;
                                 &.visible {
-
+                                    .map--satellite {
+                                        transform: translateY(0);
+                                    }
+                                }
+                                .map--satellite {
+                                    width: 100vw;
+                                    height: $mapImageHeight;
+                                    transform: translateY($mapImageHeight);
                                 }
                                 > img {
                                     // right: 200px;

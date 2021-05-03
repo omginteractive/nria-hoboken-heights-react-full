@@ -88,8 +88,10 @@ class SlideMap extends Component {
         const animatedLogoToUse = this.props.isMobileDevice ? mobileAnimatedMapLogo : desktopAnimatedMapLogo
         const scaledSizeMarkerWidth = this.props.isMobileDevice ? 241: 347
         const scaledSizeMarkerHeight = this.props.isMobileDevice ? 170: 100
-        const markerOrigin = new window.google.maps.Point(0, 0)
-        const markerAnchor = this.props.isMobileDevice ? new window.google.maps.Point(40, 90): new window.google.maps.Point(22, 40)
+        const markerOrigin = this.state.googleMapsLoaded ? new window.google.maps.Point(0, 0) : null
+        const mobileMarkerAnchor = this.state.googleMapsLoaded ? new window.google.maps.Point(40, 90) : null
+        const desktopMarkerAnchor = this.state.googleMapsLoaded ? new window.google.maps.Point(22, 40) : null
+        const markerAnchor = this.props.isMobileDevice ? mobileMarkerAnchor : desktopMarkerAnchor
         const satelliteMapLogo = this.props.isMobileDevice ? mobileSatelliteMapLogo: desktopSatelliteMapLogo
         const optionsSatelliteMapMarker = this.state.googleMapsLoaded ? {
                 icon: {

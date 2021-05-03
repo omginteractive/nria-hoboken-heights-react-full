@@ -3744,6 +3744,15 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer {
     display: flex;
     justify-content: center;
+    height: auto;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer.visible .map--satellite {
+    transform: translateY(0);
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer .map--satellite {
+    width: 100vw;
+    height: calc(calc(var(--vh, 1vh) * 100) - 12.4074074074vw);
+    transform: translateY(calc(calc(var(--vh, 1vh) * 100) - 12.4074074074vw));
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection .mapBackground .satelliteImageContainer > img {
     transform: translate(0px, calc(100vh - 12.4074074074vw));
