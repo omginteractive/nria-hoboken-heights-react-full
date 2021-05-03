@@ -10,7 +10,9 @@ import {connect} from 'react-redux'
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 import desktopSatelliteMapLogo from '../images/map/Motion_logo--last-frame.png'
+import mobileSatelliteMapLogo from '../images/map/Motion_logo_mobile--last-frame.png'
 import desktopAnimatedMapLogo from '../images/map/Motion_logo.gif'
+import mobileAnimatedMapLogo from '../images/map/Motion_logo_mobile_animate_once.gif'
 
 
 class SlideMap extends Component {
@@ -83,20 +85,27 @@ class SlideMap extends Component {
             lat: 40.759370,
             lng: -74.033470
         }
+        const animatedLogoToUse = this.props.isMobileDevice ? mobileAnimatedMapLogo : desktopAnimatedMapLogo
+        const scaledSizeMarkerWidth = this.props.isMobileDevice ? 241: 347
+        const scaledSizeMarkerHeight = this.props.isMobileDevice ? 170: 100
+        const markerOrigin = new window.google.maps.Point(0, 0)
+        const markerAnchor = this.props.isMobileDevice ? new window.google.maps.Point(40, 90): new window.google.maps.Point(22, 40)
+        const satelliteMapLogo = this.props.isMobileDevice ? mobileSatelliteMapLogo: desktopSatelliteMapLogo
         const optionsSatelliteMapMarker = this.state.googleMapsLoaded ? {
                 icon: {
-                    url: desktopSatelliteMapLogo,
-                    origin: new window.google.maps.Point(0, 0),
-                    anchor: new window.google.maps.Point(22, 40),
-                    scaledSize: new window.google.maps.Size(347, 100)
+                    url: satelliteMapLogo,
+                    origin: markerOrigin,
+                    anchor: markerAnchor,
+                    scaledSize: new window.google.maps.Size(scaledSizeMarkerWidth, scaledSizeMarkerHeight)
                 }
             } : {}
+        
         const optionsDefaultMapMarker = this.state.googleMapsLoaded ? {
                 icon: {
-                    url: desktopAnimatedMapLogo,
-                    origin: new window.google.maps.Point(0, 0),
-                    anchor: new window.google.maps.Point(22, 40),
-                    scaledSize: new window.google.maps.Size(347, 100)
+                    url: animatedLogoToUse,
+                    origin: markerOrigin,
+                    anchor: markerAnchor,
+                    scaledSize: new window.google.maps.Size(scaledSizeMarkerWidth, scaledSizeMarkerHeight)
                 }
             } : {}
         const customMapStyles = [
@@ -357,14 +366,14 @@ class SlideMap extends Component {
                     </div>
                     <img src={require('../images/map/Motion_logo.gif').default} alt="" className="mapLogo not-mobile"/>
                     {/* <img src={require('./images/map/Motion_logo_mobile_animateonce.gif').default} alt="" className="mapLogo mobile-only"/> */}
-                    <div className="mapLogoContainer mobile-only">
+                    {/* <div className="mapLogoContainer mobile-only">
                         <div className="logoWrapper">
                             <img alt='Hoboken Heights Logo Light' className="logoImage" src={require('../images/logos/Logo-small-white.svg').default} />
                             <div className="companyName">Hoboken Heights</div>
                             <div className="companyAddress">Manhattan Avenue, 1300</div>
                         </div>
                         <div className="mapMarker"></div>
-                    </div>
+                    </div> */}
                     <div className="mapMotionLogo">
                     </div>
                     <div onClick={this.toggleMap.bind(this)} className="satelliteToggle vertical_toggle_column noSelect">

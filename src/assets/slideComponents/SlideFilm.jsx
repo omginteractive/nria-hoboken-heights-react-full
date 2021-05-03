@@ -26,7 +26,7 @@ class SlideFilm extends Component {
         this.state = {
             soundOn: false,
             video: null,
-            isPlaying: true
+            isPlaying: false
         }
         this.videoContainerRef = React.createRef()
         this.throttleMouseMove = _.throttle(this.handleMouseMove, 350);
@@ -117,7 +117,7 @@ class SlideFilm extends Component {
         else this.pauseVideo()
     }
     toggleSound(){
-        const currentSoundState = this.state.soundOn
+        // const currentSoundState = this.state.soundOn
         const newSoundState = !this.state.soundOn
 
         // if(currentSoundState){
@@ -238,12 +238,12 @@ class SlideFilm extends Component {
                         /> */}
                         <Vimeo
                             onReady={this.handleVideoReady.bind(this)}
-                            ref={this.videoContainerRef}
+                            // ref={this.videoContainerRef}
                             // video="537572775"
-                            video="90509568"
+                            // video="90509568"
                             video="539794043"
                             background={true}
-                            autoplay
+                            // autoplay={false}
                             loop={true}
                             muted={!this.state.soundOn}
                             volume={volume}
@@ -252,7 +252,7 @@ class SlideFilm extends Component {
                             onTimeUpdate={(progress)=> this.updateSeekBar(progress)}
                             
                             // onPause={this.handlePlayerPause}
-                            // onPlay={this.handlePlayerPlay}
+                            // onPlay={() => console.log('playy').bind(this)}
                             />
                 </div>
                 <div className={videoIconsClasses}>
