@@ -94,6 +94,11 @@
 }
 
 
+.resize-animation-stopper * {
+	animation: none !important;
+	transition: none !important;
+}
+
 h2 {
     text-transform: uppercase;
     font-size: 40px;
