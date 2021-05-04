@@ -77,18 +77,19 @@ class App extends React.Component {
 		 * 
 		*/
 		let browser;
-		const user_agent = navigator.userAgent.toLowerCase();
+		const user_agent = navigator.userAgent.toLowerCase()
+        let operatingSystem
 		if (user_agent.indexOf('windows') !== -1){
-			this.state.operating_sys = 'windows';
+			operatingSystem = 'windows';
 		}
 		else if(navigator.userAgent.indexOf('OPR') !== -1 || navigator.userAgent.indexOf('Opera') !== -1) {
-			this.state.operating_sys = 'opera';
+			operatingSystem = 'opera';
 		}
 		else if (user_agent.indexOf('android') !== -1){
-			this.state.operating_sys = 'android';
+			operatingSystem = 'android';
 		}
 		else if (user_agent.indexOf('macintosh') !== -1){
-			this.state.operating_sys = 'macintosh';
+			operatingSystem = 'macintosh';
 		}
 
 		if (user_agent.indexOf('safari') !== -1) {
@@ -101,10 +102,9 @@ class App extends React.Component {
 		else if (user_agent.indexOf('firefox') !== -1) {
 			browser ='firefox';
 		}
-        this.props.setOperatingSys(this.state.operating_sys)
+        this.props.setOperatingSys(operatingSystem)
         this.props.setBrowser(browser)
-		this.state.browser= browser;
-
+		
 		this.mobileMenuElement = React.createRef()
 		this.headerElement = React.createRef()
 
@@ -385,7 +385,7 @@ class App extends React.Component {
 	}
 	handleWheelEvent(evt) {
         const deltaY = evt.deltaY;
-		// const browserWithSingleScrollEvent = this.state.browser == 'safari' || (this.state.browser == 'firefox' && this.state.operating_sys != 'macintosh');
+		// const browserWithSingleScrollEvent = this.state.browser == 'safari' || (this.state.browser == 'firefox' && this.props.operatingSys != 'macintosh');
 		// if(browserWithSingleScrollEvent) {
 		// 	this.scrollSlide(deltaY)
 		// }
@@ -474,7 +474,7 @@ class App extends React.Component {
     //     return this.props.desktopKeys[idx]
     // }
     deactivateFocusedInputs(){
-        if(this.state.operating_sys !== 'android') return
+        if(this.props.operatingSys !== 'android') return
         //removing focus from any active inputs will make sure the keyboard is hidden for slide changes
         const inputIsActive = $(document.activeElement).hasClass('hs-input');
         if(inputIsActive) {
@@ -484,7 +484,7 @@ class App extends React.Component {
         return false
     }
     nextSlide(noRequireScroll = false) {
-        // const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
+        // const isFirefoxAndroid = this.state.browser === 'firefox' && this.props.operatingSys === 'android'
 		// const videosPlayed = this.state.videosPlayed//prevent Firefox on Android from moving to next slide because videos don't autoplay without any user interaction
         if (this.deactivateFocusedInputs() || this.isTransitioning() || this.animationsStopped()) { //|| (isFirefoxAndroid && !videosPlayed)
 			return
@@ -734,7 +734,7 @@ class App extends React.Component {
         // const headerTheme = hasHeaderTheme ? this.props.slideData[deviceSlideIdx].headerTheme : 'dark'
         // const headerThemeMobile = hasHeaderThemeMobile ? this.props.slideData[deviceSlideIdx].headerThemeMobile : ''
         
-        const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
+        const isFirefoxAndroid = this.props.browser === 'firefox' && this.state.operating_sys === 'android'
         const $slides = this.props.slideData == null ? null : this.props.slideData.map((slide, idx) =>
             <Slide
                 // showPrivacyPolicy={this.privacyPolicyModalOpen.bind(this)}
@@ -763,7 +763,7 @@ class App extends React.Component {
         pageClasses += this.state.isiPhone ? ' iPhone' : '';
         pageClasses +=  isFirefoxAndroid ? ' firefoxAndroid' : '';
         pageClasses +=  ' ' + this.state.operating_sys;
-        pageClasses +=  ' ' + this.state.browser;
+        pageClasses +=  ' ' + this.props.browser;
         let slidesWrapperClasses = "slides_wrapper";
         if(this.state.slideHasScrolled) slidesWrapperClasses += ' scrolled'
 
@@ -834,8 +834,10 @@ const mapStateToProps = state => {
     const slidesViewed = state.slideData.slidesViewed
     const isMobileDevice = state.appData.isMobileDevice
     const formSubmitted = state.appData.formSubmitted
+    const operatingSys = state.appData.operatingSys
+    const browser = state.appData.browser
     const menuOpen = state.menuData.menuOpen
-    return { currSlideIdx, slideData, slideTransitioningState, slideTouchState, slidesViewed, desktopKeys, mobileKeys, isMobileDevice, menuOpen, formSubmitted }
+    return { browser, operatingSys, currSlideIdx, slideData, slideTransitioningState, slideTouchState, slidesViewed, desktopKeys, mobileKeys, isMobileDevice, menuOpen, formSubmitted }
   }
 
   export default connect(
