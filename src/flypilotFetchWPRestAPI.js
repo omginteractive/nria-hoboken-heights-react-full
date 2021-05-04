@@ -457,6 +457,7 @@ console.log(apartment_result)
             background: "#fff",
         },
         headerTheme: 'dark',
+        maps_api_key: acf_result.maps_api_key,
         headerThemeMobile: 'lightMobile',
         map_satellite_view_text: acf_result.map_satellite_view_text,
         map_location_view_text: acf_result.map_location_view_text,

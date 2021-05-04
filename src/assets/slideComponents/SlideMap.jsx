@@ -294,7 +294,7 @@ class SlideMap extends Component {
             lat: 40.759370,
             lng: -74.033470
         }
-        const googleMapsApiKey = "AIzaSyBU2eqkanbV49ozX8-5EU9CSHhusjgXZsI"
+        const googleMapsApiKey = this.props.configuration.maps_api_key
         return(
             <>
                 <section className={mapSectionClasses}>
