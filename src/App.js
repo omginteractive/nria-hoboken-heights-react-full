@@ -8,7 +8,7 @@ import $ from 'jquery'
 import _ from "lodash";
 import {connect} from 'react-redux'
 import { findDeviceSlideIdx, changeSlideIdx, updateSlideData, updateDesktopKeys, updateMobileKeys, updateSlideTransitioningState, updateSlideTouchState, updateSlidesViewed } from "./redux/actions/slideActions";
-import { changeIsMobileDevice } from "./redux/actions/appActions";
+import { setOperatingSys, setBrowser, changeIsMobileDevice } from "./redux/actions/appActions";
 
 window.jQuery = $
 
@@ -101,6 +101,8 @@ class App extends React.Component {
 		else if (user_agent.indexOf('firefox') !== -1) {
 			browser ='firefox';
 		}
+        this.props.setOperatingSys(this.state.operating_sys)
+        this.props.setBrowser(browser)
 		this.state.browser= browser;
 
 		this.mobileMenuElement = React.createRef()
@@ -168,11 +170,7 @@ class App extends React.Component {
                 }
 			}
         });
-		//See handleResizeOnAndroid() for details
-		if(this.state.operating_sys === 'android') {
-			this.timerHandle = null;
-			window.addEventListener('resize', () => this.handleResizeOnAndroid())
-        }
+		
         window.addEventListener('resize', () => this.handleResize())
 	}
     triggerScrollUpElement(elementToScroll, scrollDistance = 20){
@@ -271,33 +269,7 @@ class App extends React.Component {
         
         this.setState({ mapHeightLocked: mapHeightLocked })
     }
-	/*
-	 * handleResizeOnAndroid() is used due to android soft keyboards changing the 
-	 * viewport height which causes the page to suddenly shift.
-	 * 
-	 * The resize event is sometimes triggered twice from a single focusOut
-	 * event from the .input element. The resizeTime should be large enough to
-	 * last long enough for the second event to occur before the timeout is cleared.
-	 * 
-	 * The animation stopper will run if a text input is active because it is 
-	 * is the reason a keyboard would appear
-	 * 
-	 * It will also run if a text input has recently had an event of focusout because
-	 * we dont want to have animations as the keyboard hides itself
-	 */
-
-	handleResizeOnAndroid(){
-		const resizeTime = 1500; 
-		const inputIsActive = $(document.activeElement).hasClass('hs-input');
-		if(inputIsActive || this.state.inputFocusOutEvent) {
-			this.setState({ inputFocusOutEvent: false });
-			document.body.classList.add("resize-animation-stopper");
-			clearTimeout(this.timerHandle);
-			this.timerHandle = setTimeout(() => {
-				document.body.classList.remove("resize-animation-stopper");
-			}, resizeTime);
-		}
-	}
+	
 	componentDidUpdate(prevProps) {
         // console.log(prevProps.slideData)
         // if(prevProps.slideData !== this.props.slideData){ 
@@ -856,5 +828,5 @@ const mapStateToProps = state => {
 
   export default connect(
     mapStateToProps,
-    { findDeviceSlideIdx, changeSlideIdx, updateSlideData, updateSlideTransitioningState, updateSlideTouchState, updateDesktopKeys, updateMobileKeys, changeIsMobileDevice, updateSlidesViewed }
+    { setOperatingSys, setBrowser, findDeviceSlideIdx, changeSlideIdx, updateSlideData, updateSlideTransitioningState, updateSlideTouchState, updateDesktopKeys, updateMobileKeys, changeIsMobileDevice, updateSlidesViewed }
   )(App);

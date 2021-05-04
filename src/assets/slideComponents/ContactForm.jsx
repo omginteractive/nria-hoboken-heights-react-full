@@ -30,12 +30,50 @@ class ContactForm extends Component {
 			this.handleInputChange(e)
         })
         this.createHubspotForm()//this is used to create the form on load
+
+        //See handleResizeOnAndroid() for details
+        if(this.props.operatingSys === 'android') {
+            this.timerHandle = null;
+            window.addEventListener('resize', () => this.handleResizeOnAndroid())
+            
+            const form = document.getElementById('contactForm')
+            form.addEventListener('focusout', () => this.handleResizeOnAndroid())
+        }
 	}
     componentDidUpdate(){
         if(!this.props.select2Activated) {
             this.activateSelect2FormElement()
         }
     }
+
+    /*
+	 * handleResizeOnAndroid() is used due to android soft keyboards changing the 
+	 * viewport height which causes the page to suddenly shift.
+	 * 
+	 * The resize event is sometimes triggered twice from a single focusOut
+	 * event from the .input element. The resizeTime should be large enough to
+	 * last long enough for the second event to occur before the timeout is cleared.
+	 * 
+	 * The animation stopper will run if a text input is active because it is 
+	 * is the reason a keyboard would appear
+	 * 
+	 * It will also run if a text input has recently had an event of focusout because
+	 * we dont want to have animations as the keyboard hides itself
+	 */
+
+	handleResizeOnAndroid(){
+		const resizeTime = 1500; 
+		const inputIsActive = $(document.activeElement).hasClass('hs-input');
+		if(inputIsActive || this.state.inputFocusOutEvent) {
+			this.setState({ inputFocusOutEvent: false });
+			document.body.classList.add("resize-animation-stopper");
+			clearTimeout(this.timerHandle);
+			this.timerHandle = setTimeout(() => {
+				document.body.classList.remove("resize-animation-stopper");
+			}, resizeTime);
+		}
+	}
+    
     activateSelect2FormElement(){
         const select2Exists = $.fn.select2
         const select2Initialized = $('#how_did_you_hear_of_us_-4c41114a-2807-4884-b5e9-d6b49d56d217').hasClass("select2-hidden-accessible")
@@ -130,7 +168,7 @@ class ContactForm extends Component {
     render(){
 		let contactFormClasses = 'contactForm';
         return (
-			<form className={contactFormClasses}>
+			<form className={contactFormClasses} id='contactForm'>
 				<div className="submittedFormOverlay">
 					<div className="text">THANK YOU!</div>
 					<div 
@@ -145,14 +183,15 @@ class ContactForm extends Component {
 				</div>
                 <img className='mobile-only nriaLogo' src={require('.././images/logos/NRLiving--White.png').default} alt="NRIA Logo" />
 			</form>
-		);
+		)
 	}
 }
 
 
 const mapStateToProps = state => {
     const select2Activated = state.appData.select2Activated
-    return { select2Activated }
+    const operatingSys = state.appData.operatingSys
+    return { select2Activated, operatingSys }
   }
 
   export default connect(
