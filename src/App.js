@@ -209,8 +209,8 @@ class App extends React.Component {
         const homeSlideHeightWithDecimals = homeSlide.getBoundingClientRect().height
         //homeSlideHeightDifferenceBetweenHeightInteger is used because some browsers like Pixel 4 have decimal places for height that needs to be calculated
         const homeSlideHeightDifferenceBetweenHeightInteger = homeSlideHeightWithDecimals - parseInt(homeSlideHeightWithDecimals)
-        const innerHeight = window.innerHeight + homeSlideHeightDifferenceBetweenHeightInteger//if there are issues with this, may need to use document.documentElement.clientHeight || 0, window.innerHeight || 0)
-        document.documentElement.style.setProperty('--vh', `${innerHeight/100}px`)
+        const innerHeight = window.innerHeight //if there are issues with this, may need to use document.documentElement.clientHeight || 0, window.innerHeight || 0)
+        document.documentElement.style.setProperty('--vh', `${(innerHeight + homeSlideHeightDifferenceBetweenHeightInteger)/100}px`)
         document.documentElement.style.setProperty('--mapScale', `${this.calculateMapImageMarkerScale(isMobileState)}`)
         const hundredVhInPx = homeSlide.clientHeight
         const mobileVhCalculation = innerHeight/hundredVhInPx * 100
