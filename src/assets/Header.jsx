@@ -14,6 +14,7 @@ class Header extends Component {
     shouldComponentUpdate(nextProps, nextState){
         const filmSlideMouseMovementDetectedChanged = this.props.filmSlideMouseMovementDetected !== nextProps.filmSlideMouseMovementDetected
         const slideChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
+        const menuOpenChanged = this.props.menuOpen !== nextProps.menuOpen
         const availabilityModalToggled = this.props.availabilityPlanModalEnabled !== nextProps.availabilityPlanModalEnabled
 
         const availabilityModalEnabled = this.props.availabilityPlanModalEnabled
@@ -21,7 +22,7 @@ class Header extends Component {
         // const themeChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
         // const mobileThemeChanged = nextProps.themeMobile !== this.props.themeMobile
         //fixme - can change this to be more specific to test if theme has changed on desktop or mobile
-        return slideChanged || availabilityModalToggled || filmSlideMouseMovementDetectedChanged
+        return menuOpenChanged || slideChanged || availabilityModalToggled || filmSlideMouseMovementDetectedChanged
     }
 
     slideToContact(){
