@@ -54,7 +54,7 @@ class ContactForm extends Component {
 	 * event from the .input element. The resizeTime should be large enough to
 	 * last long enough for the second event to occur before the timeout is cleared.
 	 * 
-	 * The animation stopper will run if a text input is active because it is 
+	 * The animation stopper will run if a text input is focused on because it is 
 	 * is the reason a keyboard would appear
 	 * 
 	 * It will also run if a text input has recently had an event of focusout because

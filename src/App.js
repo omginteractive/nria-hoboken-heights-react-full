@@ -470,24 +470,33 @@ class App extends React.Component {
     //     if(isMobile) return this.props.mobileKeys[idx]
     //     return this.props.desktopKeys[idx]
     // }
+    deactivateFocusedInputs(){
+        if(this.state.operating_sys !== 'android') return
+        //removing focus from any active inputs will make sure the keyboard is hidden for slide changes
+        const inputIsActive = $(document.activeElement).hasClass('hs-input');
+        if(inputIsActive) {
+            document.activeElement.blur()
+            return true
+        }
+        return false
+    }
     nextSlide(noRequireScroll = false) {
-        const deviceSlideIdx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
-        const querySelector = typeof this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector
         // const isFirefoxAndroid = this.state.browser === 'firefox' && this.state.operating_sys === 'android'
 		// const videosPlayed = this.state.videosPlayed//prevent Firefox on Android from moving to next slide because videos don't autoplay without any user interaction
-        if (this.isTransitioning() || this.animationsStopped()) { //|| (isFirefoxAndroid && !videosPlayed)
+        if (this.deactivateFocusedInputs() || this.isTransitioning() || this.animationsStopped()) { //|| (isFirefoxAndroid && !videosPlayed)
 			return
 		}
+        const deviceSlideIdx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
+        const querySelector = typeof this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector === 'undefined' ? '.activeSlide' : this.props.slideData[deviceSlideIdx].enableScrollingQuerySelector
         if(this.props.slideData[deviceSlideIdx].enableScrolling && !noRequireScroll) {
             const scrollBottom = document.querySelector(querySelector).scrollHeight - document.querySelector(querySelector).offsetHeight - document.querySelector(querySelector).scrollTop
             if(scrollBottom > 1) {//scrollBottom can be negative. It also sometimes needs to scroll because 1 is the lowest value as in .amenities__details
                 // document.querySelector(querySelector).scrollTop = document.querySelector(querySelector).scrollTop + 200
-                // console.log(scrollBottom, querySelector)
                 return 'needScroll'
 			}
 		}
         //All of the above is used to prevent a slide change if necessary
-
+        
 		const newIdx = this.props.currSlideIdx + 1;
         const thisSlideDeviceIdx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
         let finalIdxOfDevice
@@ -506,7 +515,7 @@ class App extends React.Component {
 		this.handleSlideChange(newIdx)
 	}
 	prevSlide() {
-		if (this.isTransitioning() || this.animationsStopped()) {
+		if (this.deactivateFocusedInputs() || this.isTransitioning() || this.animationsStopped()) {
 			return
         }
         const deviceSlideIdx = this.props.findDeviceSlideIdx(this.props.currSlideIdx)
