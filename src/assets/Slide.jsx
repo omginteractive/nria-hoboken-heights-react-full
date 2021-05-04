@@ -14,6 +14,7 @@ import SlideResidencePenthouseDetail from './slideComponents/SlideResidencePenth
 import ContactForm from './slideComponents/ContactForm';
 
 import { findDeviceSlideIdx} from ".././redux/actions/slideActions";
+import { googleMapsEnable} from "../redux/actions/appActions";
 
 class Slide extends Component {
     constructor(props) {
@@ -28,7 +29,13 @@ class Slide extends Component {
         const mapHeightLockedPropsChanged = this.props.mapHeightLocked !== nextProps.mapHeightLocked
         const slideChanged = this.props.isCurrent !== nextProps.isCurrent
         const videoMobileStartPositionToggled = this.props.isCurrent && nextProps.slideData[this.props.idx].videoMobileStartPosition !== this.props.slideData[this.props.idx].videoMobileStartPosition
-        return slideChanged || videoMobileStartPositionToggled || mapHeightLockedPropsChanged
+        const googleMapsNotLoaded = !this.props.googleMapsLoaded && (!this.props.googleMapsLoaded !== nextProps.googleMapsLoaded)
+        return slideChanged || videoMobileStartPositionToggled || mapHeightLockedPropsChanged || googleMapsNotLoaded
+    }
+    componentDidUpdate(){
+        if(!this.props.googleMapsLoaded && typeof(window.google) !== 'undefined'){
+            this.props.googleMapsEnable()
+        }
     }
     handleTheScroll = e => {
         let element = e.target
@@ -184,7 +191,7 @@ class Slide extends Component {
                     <SlideNeighborhoodCommunity isCurrent={isCurrent} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'map' &&
-                    <SlideMap isCurrent={isCurrent} mapHeightLocked={this.props.mapHeightLocked} configuration={slideObj}  />
+                    <SlideMap mapHeightLocked={this.props.mapHeightLocked} configuration={slideObj}  />
                 }
                 {slideObj.slideTemplate === 'contact' &&
                     <SlideContactForm
@@ -941,14 +948,15 @@ class SlideFounders extends Component {
 }
 
 const mapStateToProps = state => {
-    const currSlideIdx = state.slideData.currSlideIdx
+    // const currSlideIdx = state.slideData.currSlideIdx
     const slidesViewed = state.slideData.slidesViewed
     const isMobileDevice = state.appData.isMobileDevice
+    const googleMapsLoaded = state.appData.googleMapsLoaded
     const select2Activated = state.appData.select2Activated
     const slideData = state.slideData.slides
-    return { currSlideIdx, slideData, isMobileDevice, select2Activated, slidesViewed }
+    return { slideData, isMobileDevice, googleMapsLoaded, select2Activated, slidesViewed }
   }
   export default connect(
     mapStateToProps,
-    {findDeviceSlideIdx}
-  )(Slide);
+    {findDeviceSlideIdx, googleMapsEnable}
+  )(Slide)

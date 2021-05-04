@@ -14,6 +14,7 @@ import mobileSatelliteMapLogo from '../images/map/Motion_logo_mobile--last-frame
 import desktopAnimatedMapLogo from '../images/map/Motion_logo.gif'
 import mobileAnimatedMapLogo from '../images/map/Motion_logo_mobile_animate_once.gif'
 
+import { googleMapsEnable} from "../../redux/actions/appActions";
 
 class SlideMap extends Component {
     constructor(props) {
@@ -21,24 +22,16 @@ class SlideMap extends Component {
         this.state = {
             satelliteMapEnabled: false,
             enabledListing: null,
-            googleMapsLoaded: false
         }
     }
     shouldComponentUpdate(nextProps, nextState){
+        const googleMapsLoadedChanged = this.props.googleMapsLoaded !== nextProps.googleMapsLoaded
         const mapChanged = this.state.satelliteMapEnabled !== nextState.satelliteMapEnabled
         const enabledListingChanged = this.state.enabledListing !== nextState.enabledListing
         const mapHeightLockedPropsChanged = this.props.mapHeightLocked !== nextProps.mapHeightLocked
-        const googleMapsNotLoaded = !this.state.googleMapsLoaded
-        const googleMapsStateChanged = this.state.googleMapsLoaded !== nextState.googleMapsLoaded
-        return mapChanged || enabledListingChanged || mapHeightLockedPropsChanged || googleMapsNotLoaded || googleMapsStateChanged
+        return googleMapsLoadedChanged || mapChanged || enabledListingChanged || mapHeightLockedPropsChanged
     }
-    componentDidUpdate(){
-        if(!this.state.googleMapsLoaded && typeof(window.google) !== 'undefined'){
-            this.setState({
-                googleMapsLoaded: true
-            })
-        }
-    }
+    
     toggleMap(){
         const newState = !this.state.satelliteMapEnabled
         this.setState({
@@ -88,12 +81,12 @@ class SlideMap extends Component {
         const animatedLogoToUse = this.props.isMobileDevice ? mobileAnimatedMapLogo : desktopAnimatedMapLogo
         const scaledSizeMarkerWidth = this.props.isMobileDevice ? 241: 347
         const scaledSizeMarkerHeight = this.props.isMobileDevice ? 170: 100
-        const markerOrigin = this.state.googleMapsLoaded ? new window.google.maps.Point(0, 0) : null
-        const mobileMarkerAnchor = this.state.googleMapsLoaded ? new window.google.maps.Point(40, 90) : null
-        const desktopMarkerAnchor = this.state.googleMapsLoaded ? new window.google.maps.Point(22, 40) : null
+        const markerOrigin = this.props.googleMapsLoaded ? new window.google.maps.Point(0, 0) : null
+        const mobileMarkerAnchor = this.props.googleMapsLoaded ? new window.google.maps.Point(40, 90) : null
+        const desktopMarkerAnchor = this.props.googleMapsLoaded ? new window.google.maps.Point(22, 40) : null
         const markerAnchor = this.props.isMobileDevice ? mobileMarkerAnchor : desktopMarkerAnchor
         const satelliteMapLogo = this.props.isMobileDevice ? mobileSatelliteMapLogo: desktopSatelliteMapLogo
-        const optionsSatelliteMapMarker = this.state.googleMapsLoaded ? {
+        const optionsSatelliteMapMarker = this.props.googleMapsLoaded ? {
                 icon: {
                     url: satelliteMapLogo,
                     origin: markerOrigin,
@@ -102,7 +95,7 @@ class SlideMap extends Component {
                 }
             } : {}
         
-        const optionsDefaultMapMarker = this.state.googleMapsLoaded ? {
+        const optionsDefaultMapMarker = this.props.googleMapsLoaded ? {
                 icon: {
                     url: animatedLogoToUse,
                     origin: markerOrigin,
@@ -408,9 +401,11 @@ class SlideMap extends Component {
 // export default Slide;
 const mapStateToProps = state => {
     const isMobileDevice = state.appData.isMobileDevice
-    return { isMobileDevice }
+    const googleMapsLoaded = state.appData.googleMapsLoaded
+    return { isMobileDevice, googleMapsLoaded }
   }
 
   export default connect(
-    mapStateToProps
-  )(SlideMap);
+    mapStateToProps,
+    {googleMapsEnable}
+  )(SlideMap)
