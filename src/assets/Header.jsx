@@ -14,7 +14,6 @@ class Header extends Component {
     shouldComponentUpdate(nextProps, nextState){
         const filmSlideMouseMovementDetectedChanged = this.props.filmSlideMouseMovementDetected !== nextProps.filmSlideMouseMovementDetected
         const slideChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
-        const menuOpenChanged = this.props.menuOpen !== nextProps.menuOpen
         const availabilityModalToggled = this.props.availabilityPlanModalEnabled !== nextProps.availabilityPlanModalEnabled
 
         const availabilityModalEnabled = this.props.availabilityPlanModalEnabled
@@ -22,7 +21,7 @@ class Header extends Component {
         // const themeChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
         // const mobileThemeChanged = nextProps.themeMobile !== this.props.themeMobile
         //fixme - can change this to be more specific to test if theme has changed on desktop or mobile
-        return menuOpenChanged || slideChanged || availabilityModalToggled || filmSlideMouseMovementDetectedChanged
+        return slideChanged || availabilityModalToggled || filmSlideMouseMovementDetectedChanged
     }
 
     slideToContact(){
@@ -70,10 +69,10 @@ class Header extends Component {
         const mobileContactButtonClassesDark = mobileContactButtonClasses + ' dark'
         return (
             <header className={fixedHeaderClasses}>
-                {this.props.menuOpen && 
+                {this.props.mobileMenuHeader && 
                     <img alt='Close Button' className="closeBtn" onClick={this.props.toggleMenuState.bind(this)} src={require('./' + this.lightCloseBtn).default} />
                 }
-                {!this.props.menuOpen && 
+                {!this.props.mobileMenuHeader && 
                     <div className="hamburger" onClick={this.props.toggleMenuState.bind(this)}>
                         <div className="line"></div>
                         <div className="line"></div>
