@@ -204,11 +204,14 @@ class App extends React.Component {
         const previousState = this.props.isMobileDevice
         if(previousState !== isMobileState) this.props.changeIsMobileDevice(isMobileState)
 
-        const innerHeight = window.innerHeight//if there are issues with this, may need to use document.documentElement.clientHeight || 0, window.innerHeight || 0)
-
+        
+        const homeSlide = document.querySelector('.slideTemplate-home')
+        const homeSlideHeightWithDecimals = homeSlide.getBoundingClientRect().height
+        //homeSlideHeightDifferenceBetweenHeightInteger is used because some browsers like Pixel 4 have decimal places for height that needs to be calculated
+        const homeSlideHeightDifferenceBetweenHeightInteger = homeSlideHeightWithDecimals - parseInt(homeSlideHeightWithDecimals)
+        const innerHeight = window.innerHeight + homeSlideHeightDifferenceBetweenHeightInteger//if there are issues with this, may need to use document.documentElement.clientHeight || 0, window.innerHeight || 0)
         document.documentElement.style.setProperty('--vh', `${innerHeight/100}px`)
         document.documentElement.style.setProperty('--mapScale', `${this.calculateMapImageMarkerScale(isMobileState)}`)
-        const homeSlide = document.querySelector('.slideTemplate-home')
         const hundredVhInPx = homeSlide.clientHeight
         const mobileVhCalculation = innerHeight/hundredVhInPx * 100
         const visibleSlideHeight = isMobileState ? mobileVhCalculation : '100'//default to 100vh if not mobile
