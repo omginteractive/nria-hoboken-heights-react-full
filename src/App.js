@@ -89,13 +89,13 @@ class App extends React.Component {
 			operatingSystem = 'macintosh';
 		}
 
-		if (user_agent.indexOf('safari') !== -1) {
+        if(user_agent.indexOf('OPR') !== -1 || navigator.userAgent.indexOf('Opera') !== -1) {
+            browser = 'opera';
+        }
+		else if (user_agent.indexOf('safari') !== -1) {
 			if (user_agent.indexOf('chrome') > -1) {
 				browser = 'chrome';
 			}
-            else if(user_agent.indexOf('OPR') !== -1 || navigator.userAgent.indexOf('Opera') !== -1) {
-                browser = 'opera';
-            }
             else {
 				browser = 'safari';
 			}
