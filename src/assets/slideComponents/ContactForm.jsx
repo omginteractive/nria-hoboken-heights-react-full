@@ -32,7 +32,7 @@ class ContactForm extends Component {
         this.createHubspotForm()//this is used to create the form on load
 
         //See handleResizeOnAndroid() for details
-        if(this.props.operatingSys === 'android' || this.props.operatingSys === 'opera') {
+        if(this.props.operatingSys === 'android') {
             this.timerHandle = null;
             window.addEventListener('resize', () => this.handleResizeOnAndroid())
             
