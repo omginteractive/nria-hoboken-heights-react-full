@@ -5,11 +5,12 @@ import {connect} from 'react-redux'
 import { updateFilmSlideMouseMovement } from "../../redux/actions/slideActions";
 import _ from "lodash";
 // import { findDOMNode } from 'react-dom'
-import screenfull from 'screenfull'
+// import screenfull from 'screenfull'
 import Vimeo from '@u-wave/react-vimeo';
+import Header from '../Header';
 
 
-import fullscreen from '../fullscreen.js'
+// import fullscreen from '../fullscreen.js'
 
 // import ReactPlayer from 'react-player'
 import ReactPlayer from 'react-player/file'
@@ -184,7 +185,14 @@ class SlideFilm extends Component {
         videoIconsClasses += this.props.filmSlideMouseMovementDetected ? 'visible' : 'hidden'
         return(
             <div className='filmSlideContent' onMouseMove={() => this.throttleMouseMove()}>
-                <header className='fixed-header'>
+                <Header
+                    // goToContactSlide={this.goToContactSlide.bind(this)}
+                    // mobileMenuHeader={true}
+                    filmSlideHeader={true}
+                    // open={true} 
+                    // toggleMobileMenu={this.toggleMobileMenu.bind(this)} 
+                />
+                {/* <header className='fixed-header'>
                     <div className="hamburger">
                         <div className="line"></div>
                         <div className="line"></div>
@@ -194,7 +202,7 @@ class SlideFilm extends Component {
                         <img alt="Hoboken Heights Logo" className="corner-logo" src={require('../images/logos/NIRMA_Logo_Symbol_Black.png').default} />
                     </div>
                     <div onClick={this.props.methods.goToContactSlide.bind(this)} className="inquiry-link">INQUIRE NOW</div>
-                </header>
+                </header> */}
                 {/* <ReactPlayer
                     playsinline={true}
                     // url='https://vimeo.com/537572775'
