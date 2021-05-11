@@ -192,7 +192,7 @@ class App extends React.Component {
         }
         const desktopKeysNotLoaded = this.props.desktopKeys.length === 0
         const mobileKeysNotLoaded = this.props.mobileKeys.length === 0
-        const currIdxChanged = this.props.currSlideIdx !== nextState.currSlideIdx
+        const currIdxChanged = this.props.currSlideIdx !== nextProps.currSlideIdx
         const menuToggled = this.props.menuOpen !== nextProps.menuOpen
         const mapHeightLockedSettingChanged = this.state.mapHeightLocked !== nextState.mapHeightLocked
         const formSubmittedChanged = this.props.formSubmitted !== nextProps.formSubmitted
@@ -403,9 +403,9 @@ class App extends React.Component {
 		// 	this.prevSlide();
 		// }
     }
-    watchForTransitionStart(e){
-        console.log(e)
-    }
+    // watchForTransitionStart(e){
+    //     console.log(e)
+    // }
 	watchForEventEnd(e) {
         //The onTransitionEnd event triggers many properties and not only for .slides_inner . We only want to run this function for the transform property
 		const isSlidesInner = e.target.classList.contains('slides_inner');
@@ -785,7 +785,8 @@ class App extends React.Component {
                     onTouchMove={this.handleTouchMove.bind(this)}
                     onTouchEnd={this.handleTouchEnd.bind(this)}
                     onWheel={this.handleWheelEvent.bind(this)}
-                    onScroll={this.handleScrollEvent.bind(this)}>
+                    // onScroll={this.handleScrollEvent.bind(this)}
+                    >
                     <div className="fixed-headers">
                         <div className='fixed-header-inner'>
                             <div className='fixed-header-wrapper'>
