@@ -205,6 +205,10 @@ table {
   font-weight: 700;
   font-style: normal;
 }
+.display-none {
+  display: none !important;
+}
+
 .resize-animation-stopper * {
   animation: none !important;
   transition: none !important;
@@ -667,6 +671,9 @@ body {
   justify-content: center;
   width: 100vw;
   height: 100vh;
+}
+.slides_wrapper .slides_inner .slide.slideTemplate-film .filmSlideContent .filmSlideHeader {
+  display: flex;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-film .filmSlideContent .filmContainer > div > iframe {
   z-index: -1;
@@ -2600,6 +2607,9 @@ body {
   }
   .fixed-header.hiddenDesktop {
     opacity: 0;
+  }
+  .fixed-header.hideHeaderDesktop {
+    display: none;
   }
 
   .contactPageWrapper .contactForm .headline {

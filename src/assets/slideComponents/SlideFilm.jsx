@@ -52,9 +52,13 @@ class SlideFilm extends Component {
     componentDidUpdate(prevProps){
         const slideIsActive = this.props.isCurrent
         const slideJustChanged = this.props.isCurrent !== prevProps.isCurrent
+        if(slideJustChanged && !this.props.isCurrent) {
+            clearTimeout(this.mouseMovementTimeout)
+            this.props.updateFilmSlideMouseMovement(false)
+        }
         if(slideIsActive && slideJustChanged){
             this.playVideo()
-            setTimeout(() => {//this makes simulates a mousemovement to reveal the video components and header
+            this.mouseMovementTimeout = setTimeout(() => {//this makes simulates a mousemovement to reveal the video components and header
                 this.handleMouseMove()
                 }, 2000)
         }

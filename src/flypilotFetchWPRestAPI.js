@@ -39,7 +39,8 @@ console.log(apartment_result)
     //     nria_logo: acf_result.nria_logo.url,
     //     copyright_text: acf_result.copyright_text,
     // }
-    const SLIDES = [{
+    const SLIDES = [
+    {
         slideTemplate: 'home',
         styles: {
             background: "#000",
@@ -47,6 +48,8 @@ console.log(apartment_result)
         down_arrow_1: acf_result.down_arrow_1.url,
         landing_center_logo: acf_result.landing_center_logo,
         
+        headerTheme: 'light',
+        headerThemeMobile: 'darkMobile',
     },
     
     {

@@ -57,6 +57,12 @@ class Header extends Component {
         fixedHeaderClasses += this.props.mobileMenuHeader ? 'light' : desktopTheme + ' ' + themeMobile
         fixedHeaderClasses += this.props.formSubmitted ? ' hiddenMobile' : ''
         fixedHeaderClasses += isFilmSlideAndNoMouseMovement ? ' hiddenDesktop' : ''
+        fixedHeaderClasses += this.props.filmSlideHeader ? ' filmSlideHeader' : ''
+        fixedHeaderClasses += this.props.currSlideIdx === 0 && !this.props.filmSlideHeader ? ' display-none' : ''
+        const isPastFilmSlide = this.props.currSlideIdx > 1
+        const isFilmSlideAndSlideIsNotTransitioning =  this.props.currSlideIdx === 1 && this.props.slideTransitioningState !== 0
+        const forceFilmSlideHeaderDisplayNone = this.props.filmSlideHeader && (isPastFilmSlide || (isFilmSlideAndSlideIsNotTransitioning && !isFilmSlideAndNoMouseMovement))
+        fixedHeaderClasses += forceFilmSlideHeaderDisplayNone ? ' display-none' : ''
 
         // let fixedHeaderClasses = 'fixed-header ' + desktopTheme + ' ' + themeMobile
         let inquiryLinkClasses = 'inquiry-link'
@@ -106,7 +112,9 @@ const mapStateToProps = state => {
     const desktopKeys = state.slideData.desktopKeys
     const mobileKeys = state.slideData.mobileKeys
     const filmSlideMouseMovementDetected = state.slideData.filmSlideMouseMovementDetected
-    return { formSubmitted, availabilityPlanModalEnabled, isMobileDevice, menuOpen, currSlideIdx, slideData, mobileKeys, desktopKeys, filmSlideMouseMovementDetected}
+    const slideTransitioningState = state.slideData.slideTransitioningState
+
+    return { slideTransitioningState, formSubmitted, availabilityPlanModalEnabled, isMobileDevice, menuOpen, currSlideIdx, slideData, mobileKeys, desktopKeys, filmSlideMouseMovementDetected}
   }
   export default connect(
     mapStateToProps,

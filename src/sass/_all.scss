@@ -93,7 +93,9 @@
 	font-style: normal;
 }
 
-
+.display-none {
+    display: none !important;
+}
 .resize-animation-stopper * {
 	animation: none !important;
 	transition: none !important;
@@ -246,7 +248,6 @@ body {
     align-items: center;
     justify-content: space-between;
     //Set for different fixed header themes
-    
     &.dark {
         color: #000;
         .separator {
@@ -580,6 +581,9 @@ body {
                         justify-content: center;
                         width: 100vw;//to capture mousemovement events
                         height: 100vh;//to capture mousemovement events
+                        .filmSlideHeader {
+                            display: flex;
+                        }
                         .filmContainer {
                             > div > iframe {
                                 // width: 100vw;

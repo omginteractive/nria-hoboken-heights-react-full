@@ -9,6 +9,9 @@
     &.hiddenDesktop {
         opacity: 0;
     }
+    &.hideHeaderDesktop {
+        display: none;
+    }
 }
 .contactPageWrapper {
     .contactForm {
