@@ -297,7 +297,7 @@ class SlideContactForm extends Component {
         const agentPhoneNumber = this.props.configuration.phone_number
         const rightsReserved = this.props.configuration.copyright_disclaimer
         const buttonText = this.props.configuration.button_text_8
-        const buttonLink = this.props.configuration.button_link_8
+        // const buttonLink = this.props.configuration.button_link_8
         return(
             <>
                 <div className="contactPageWrapper">

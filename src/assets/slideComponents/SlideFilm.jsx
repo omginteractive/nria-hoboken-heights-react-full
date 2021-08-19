@@ -180,7 +180,7 @@ class SlideFilm extends Component {
         let seekbarClasses = 'custom-seekbar '
         seekbarClasses += this.props.filmSlideMouseMovementDetected ? 'visible' : 'hidden'
         const playPauseIcon = this.state.isPlaying ?  pauseButton : playButton
-        const soundIcon = this.state.soundOn ? soundOffButton : soundOnButton
+        const soundIcon = this.state.soundOn ?  soundOnButton : soundOffButton
         const volume = this.state.soundOn ? 1 : 0
         
         const slideIsActive = this.props.isCurrent
