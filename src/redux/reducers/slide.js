@@ -15,6 +15,10 @@ const initialState = {
         desktop: 11,
         mobile: 12
     },
+    foundersSlideIndices: {
+        desktop: 12,
+        mobile: 13
+    },
     discoverSlideIndices: {
         desktop: 14,
         mobile: 15

@@ -45,6 +45,7 @@ class MobileMenu extends Component {
         const viewLink = isMobile ? 7 : 7
         const residencePenthouseLink = isMobile ? 8 : 8
         const availabilityLink = isMobile ? this.props.availabilitySlideIndices.mobile : this.props.availabilitySlideIndices.desktop
+        const foundersLink = isMobile ? this.props.foundersSlideIndices.mobile : this.props.foundersSlideIndices.desktop
         // const developmentTeamLink = isMobile ? 13 : 12
         const discoverLink = isMobile ? this.props.discoverSlideIndices.mobile : this.props.discoverSlideIndices.desktop
         const contactFormSlideIdx = this.props.contactFormSlideIdx
@@ -63,6 +64,7 @@ class MobileMenu extends Component {
                         <div className='link' onClick={() => this.goToSlide(viewLink)}><h2>The View</h2></div>
                         <div className='link' onClick={() => this.goToSlide(residencePenthouseLink)}><h2>Residences & Penthouses</h2></div>
                         <div className='link' onClick={() => this.goToSlide(availabilityLink)}><h2>Availability</h2></div>
+                        <div className='link' onClick={() => this.goToSlide(foundersLink)}><h2>Gold Founding Members</h2></div>
                         {/* <div className='link' onClick={() => this.goToSlide(developmentTeamLink)}><h2>Development Team Story</h2></div> */}
                         <div className='link' onClick={() => this.goToSlide(discoverLink)}><h2>Discover</h2></div>
                         <div className='link' onClick={() => this.goToSlide(contactFormSlideIdx)}><h2>Contact</h2></div>
@@ -91,8 +93,9 @@ const mapStateToProps = state => {
     const menuOpen = state.menuData.menuOpen
     const menuIsTransitioning = state.menuData.menuIsTransitioning
     const availabilitySlideIndices = state.slideData.availabilitySlideIndices
+    const foundersSlideIndices = state.slideData.foundersSlideIndices
     const discoverSlideIndices = state.slideData.discoverSlideIndices
-    return { isMobileDevice, menuOpen, menuIsTransitioning, availabilitySlideIndices, discoverSlideIndices}
+    return { isMobileDevice, menuOpen, menuIsTransitioning, availabilitySlideIndices, foundersSlideIndices, discoverSlideIndices}
   }
   export default connect(
     mapStateToProps,
