@@ -2602,7 +2602,7 @@ body {
     display: none !important;
   }
 
-  .mobile-menu:not(.open) .fixed-header.hiddenDesktop {
+  .fixed-header-wrapper .fixed-header.hiddenDesktop {
     opacity: 0;
   }
 
