@@ -81,11 +81,11 @@ class MobileMenu extends Component {
                 <div className="mobileMenuContact">
                     <div className="socialMedias">
                         <div className="socialMedia">
-                            <a href={facebook_link} target="_blank">{facebook_text}</a>
+                            <a href={facebook_link?.url} target="_blank">{facebook_text}</a>
                         </div>
                         <span className='separator'>|</span>
                         <div className="socialMedia">
-                            <a href={instagram_link} target="_blank">{instagram_text}</a>
+                            <a href={instagram_link?.url} target="_blank">{instagram_text}</a>
                         </div>
                     </div>
                     <div className="address" dangerouslySetInnerHTML={{__html: addresscompany + "<br className='line-break' />" + agentphone}} />
