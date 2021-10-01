@@ -49,6 +49,15 @@ class MobileMenu extends Component {
         // const developmentTeamLink = isMobile ? 13 : 12
         const discoverLink = isMobile ? this.props.discoverSlideIndices.mobile : this.props.discoverSlideIndices.desktop
         const contactFormSlideIdx = this.props.contactFormSlideIdx
+
+
+        const addresscompany = this.props.configuration.addresscompany ? this.props.configuration.addresscompany : ''
+        const copyright = this.props.configuration.copyright ? this.props.configuration.copyright : ''
+        const agentphone = this.props.configuration.agentphone ? this.props.configuration.agentphone : ''
+        const facebook_text = this.props.configuration.facebook_text ? this.props.configuration.facebook_text : ''
+        const facebook_link = this.props.configuration.facebook_link ? this.props.configuration.facebook_link : ''
+        const instagram_link = this.props.configuration.instagram_link ? this.props.configuration.instagram_link : ''
+        const instagram_link = this.props.configuration.instagram_link ? this.props.configuration.instagram_link : ''
         return(
             <div className={mobileMenuClasses} onTransitionEnd={this.handleMenuTransitionEnd.bind(this)}>
                 <Header
@@ -73,15 +82,15 @@ class MobileMenu extends Component {
                 <div className="mobileMenuContact">
                     <div className="socialMedias">
                         <div className="socialMedia">
-                            <a href='#' target="_blank">Facebook</a>
+                            <a href={facebook_link} target="_blank">{facebook_text}</a>
                         </div>
                         <span className='separator'>|</span>
                         <div className="socialMedia">
-                            <a href='#' target="_blank">Instagram</a>
+                            <a href={instagram_link} target="_blank">{instagram_text}</a>
                         </div>
                     </div>
-                    <div className="address">{this.props.configuration.addresscompany} <br className='line-break' /><br />{this.props.configuration.agentphone}</div>
-                    <div className="copyright">{this.props.configuration.copyright}</div>
+                    <div className="address">{addresscompany} <br className='line-break' /><br />{agentphone}</div>
+                    <div className="copyright">{copyright}</div>
                 </div>
             </div>
         )
