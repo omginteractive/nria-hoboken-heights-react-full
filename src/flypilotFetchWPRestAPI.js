@@ -5,7 +5,7 @@ const flypilotFetchWPRestAPI = async (endpoint, apartmentsEndpoint) => {
     console.log(acf_rest_data)
     const apartments_endpoint_rest_response = await fetch(apartmentsEndpoint);
 	const apartment_result = await apartments_endpoint_rest_response.json();
-console.log(apartment_result)
+    console.log(apartment_result)
     const penthouse_gallery = acf_result.penthouse_gallery
     const residences_gallery = acf_result.residences_gallery
     const amenitiesResults = {
@@ -523,8 +523,24 @@ console.log(apartment_result)
         copyright_disclaimer: acf_result.copyright_disclaimer,
         button_text_8: acf_result.button_text_8,
         button_link_8: acf_result.button_link_8,
-    }]
-    return SLIDES;
+    }
+]
+
+
+    const menuData = {
+        copyright: acf_result.copyright,
+        facebook_text: acf_result.facebook_text,
+        facebook_link: acf_result.facebook_link,
+        instagram_text: acf_result.instagram_text,
+        instagram_link: acf_result.instagram_link,
+        addresscompany: acf_result.addresscompany,
+        agentphone: acf_result.agentphone,
+    }
+    let result = []
+
+    result['slideData'] = SLIDES
+    result['menuData'] = menuData
+    return result;
 }
 
 export default flypilotFetchWPRestAPI;

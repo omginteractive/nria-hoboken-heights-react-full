@@ -23,6 +23,7 @@ const initialState = {
         desktop: 14,
         mobile: 15
     },
+    menuData: [],
     residencePenthousePath: 'penthouse'//Setting this will determine if the residencePenthouse slides are showing residence or penthouse data
 }
   

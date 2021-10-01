@@ -50,14 +50,13 @@ class MobileMenu extends Component {
         const discoverLink = isMobile ? this.props.discoverSlideIndices.mobile : this.props.discoverSlideIndices.desktop
         const contactFormSlideIdx = this.props.contactFormSlideIdx
 
-
-        const addresscompany = this?.props?.configuration?.addresscompany ? this?.props?.configuration?.addresscompany : ''
-        const copyright = this?.props?.configuration?.copyright ? this?.props?.configuration?.copyright : ''
-        const agentphone = this?.props?.configuration?.agentphone ? this?.props?.configuration?.agentphone : ''
-        const facebook_text = this?.props?.configuration?.facebook_text ? this?.props?.configuration?.facebook_text : ''
-        const facebook_link = this?.props?.configuration?.facebook_link ? this?.props?.configuration?.facebook_link : ''
-        const instagram_link = this?.props?.configuration?.instagram_link ? this?.props?.configuration?.instagram_link : ''
-        const instagram_text = this?.props?.configuration?.instagram_text ? this?.props?.configuration?.instagram_text : ''
+        const addresscompany = this?.props?.menuData.addresscompany
+        const copyright = this?.props?.menuData.copyright
+        const agentphone = this?.props?.menuData.agentphone
+        const facebook_text = this?.props?.menuData.facebook_text
+        const facebook_link = this?.props?.menuData.facebook_link
+        const instagram_link = this?.props?.menuData.instagram_link
+        const instagram_text = this?.props?.menuData.instagram_text
         return(
             <div className={mobileMenuClasses} onTransitionEnd={this.handleMenuTransitionEnd.bind(this)}>
                 <Header
@@ -89,7 +88,7 @@ class MobileMenu extends Component {
                             <a href={instagram_link} target="_blank">{instagram_text}</a>
                         </div>
                     </div>
-                    <div className="address">{addresscompany} <br className='line-break' /><br />{agentphone}</div>
+                    <div className="address" dangerouslySetInnerHTML={{__html: addresscompany + "<br className='line-break' />" + agentphone}} />
                     <div className="copyright">{copyright}</div>
                 </div>
             </div>
@@ -104,7 +103,9 @@ const mapStateToProps = state => {
     const availabilitySlideIndices = state.slideData.availabilitySlideIndices
     const foundersSlideIndices = state.slideData.foundersSlideIndices
     const discoverSlideIndices = state.slideData.discoverSlideIndices
-    return { isMobileDevice, menuOpen, menuIsTransitioning, availabilitySlideIndices, foundersSlideIndices, discoverSlideIndices}
+    const menuData = state.menuData.menuCustomFields
+    
+    return { menuData, isMobileDevice, menuOpen, menuIsTransitioning, availabilitySlideIndices, foundersSlideIndices, discoverSlideIndices}
   }
   export default connect(
     mapStateToProps,
