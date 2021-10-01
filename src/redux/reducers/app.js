@@ -1,4 +1,4 @@
-import { SET_BROWSER, SET_OPERATING_SYS, CHANGE_IS_MOBILE_DEVICE, ENABLE_GOOGLE_MAPS_LOADED, SELECT2_ENABLE, SELECT2_DISABLE, CONTACT_FORM_SUBMITTED, CONTACT_FORM_RESET } from "../actions/types"
+import { SET_HEADER_DATA, SET_BROWSER, SET_OPERATING_SYS, CHANGE_IS_MOBILE_DEVICE, ENABLE_GOOGLE_MAPS_LOADED, SELECT2_ENABLE, SELECT2_DISABLE, CONTACT_FORM_SUBMITTED, CONTACT_FORM_RESET } from "../actions/types"
 
 const initialState = {
     isMobileDevice: false,
@@ -6,11 +6,14 @@ const initialState = {
     formSubmitted: null,
     operatingSys: null,
     browser: null,
-    googleMapsLoaded: false
+    googleMapsLoaded: false,
+    headerData: []
 }
   
 export default function appReducer(state = initialState, action) {
     switch (action.type) {
+        case SET_HEADER_DATA:
+            return {...state, headerData: action.payload}
         case SET_BROWSER:
             return {...state, browser: action.payload}
         case SET_OPERATING_SYS:

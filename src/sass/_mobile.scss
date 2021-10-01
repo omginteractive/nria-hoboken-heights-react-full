@@ -239,10 +239,10 @@ p {
         //this excess width is used for centering logo/text. 
         //This is to take into consideration the space lost due to the logo being absolutely positioned
         //logo needs to be position absolute so it is able to crossfade
-        width: calc_vw(566.38);
+        // width: calc_vw(566.38);
         
         .text {
-            width: calc_vw(440);
+            // width: calc_vw(440);
             font-size: calc_vw(23.04);
             letter-spacing: calc_vw(6.91);
             line-height: calc_vw(27.65);

@@ -86,10 +86,15 @@ class Header extends Component {
                 }
 
                 <div className="corner-logo-wrapper">
-                    <div className="text" onClick={this.handleHeaderLogoClick.bind(this)}>HOBOKEN HEIGHTS<div className="separator"></div></div>
+                    <div className="text" onClick={this.handleHeaderLogoClick.bind(this)}>
+                        <img alt='Hoboken Heights Logo Light' className="large-logo invisible" src={this?.props?.headerData?.head_logo_white_large?.url} onClick={this.handleHeaderLogoClick.bind(this)} />
+                        <img alt='Hoboken Heights Logo Light' className="large-logo light" src={this?.props?.headerData?.head_logo_white_large?.url} onClick={this.handleHeaderLogoClick.bind(this)} />
+                        <img alt='Hoboken Heights Logo Dark' className="large-logo dark" src={this?.props?.headerData?.head_logo_black_large?.url} onClick={this.handleHeaderLogoClick.bind(this)} />
+                        <div className="separator"></div>
+                    </div>
                     <div className="corner-logo-images">
-                        <img alt='Hoboken Heights Logo Light' className="corner-logo light" src={require('./' + this.lightLogo).default} onClick={this.handleHeaderLogoClick.bind(this)} />
-                        <img alt='Hoboken Heights Logo Dark' className="corner-logo dark" src={require('./' + this.darkLogo).default} onClick={this.handleHeaderLogoClick.bind(this)} />
+                        <img alt='Hoboken Heights Logo Light' className="corner-logo light" src={this?.props?.headerData?.head_logo_white_small?.url} onClick={this.handleHeaderLogoClick.bind(this)} />
+                        <img alt='Hoboken Heights Logo Dark' className="corner-logo dark" src={this?.props?.headerData?.head_logo_black_small?.url} onClick={this.handleHeaderLogoClick.bind(this)} />
                     </div>
 
                 </div>
@@ -106,6 +111,7 @@ const mapStateToProps = state => {
     const availabilityPlanModalEnabled = state.slideData.availabilityPlanModalEnabled
     const isMobileDevice = state.appData.isMobileDevice
     const formSubmitted = state.appData.formSubmitted
+    const headerData = state.appData.headerData
     const menuOpen = state.menuData.menuOpen
     const currSlideIdx = state.slideData.currSlideIdx
     const slideData = state.slideData.slides
@@ -114,7 +120,7 @@ const mapStateToProps = state => {
     const filmSlideMouseMovementDetected = state.slideData.filmSlideMouseMovementDetected
     const slideTransitioningState = state.slideData.slideTransitioningState
 
-    return { slideTransitioningState, formSubmitted, availabilityPlanModalEnabled, isMobileDevice, menuOpen, currSlideIdx, slideData, mobileKeys, desktopKeys, filmSlideMouseMovementDetected}
+    return { headerData, slideTransitioningState, formSubmitted, availabilityPlanModalEnabled, isMobileDevice, menuOpen, currSlideIdx, slideData, mobileKeys, desktopKeys, filmSlideMouseMovementDetected}
   }
   export default connect(
     mapStateToProps,

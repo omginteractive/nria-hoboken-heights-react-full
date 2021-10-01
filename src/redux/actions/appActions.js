@@ -1,4 +1,11 @@
-import { SET_BROWSER, SET_OPERATING_SYS, CHANGE_IS_MOBILE_DEVICE, ENABLE_GOOGLE_MAPS_LOADED, SELECT2_ENABLE, SELECT2_DISABLE, CONTACT_FORM_SUBMITTED, CONTACT_FORM_RESET } from "./types";
+import { SET_HEADER_DATA, SET_BROWSER, SET_OPERATING_SYS, CHANGE_IS_MOBILE_DEVICE, ENABLE_GOOGLE_MAPS_LOADED, SELECT2_ENABLE, SELECT2_DISABLE, CONTACT_FORM_SUBMITTED, CONTACT_FORM_RESET } from "./types";
+
+export const setHeader = headerData => {
+    return {
+        type: SET_HEADER_DATA,
+        payload: headerData
+    }
+}
 
 export const changeIsMobileDevice = isMobileDevice => {
     return {

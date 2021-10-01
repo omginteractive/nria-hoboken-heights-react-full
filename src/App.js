@@ -8,7 +8,7 @@ import $ from 'jquery'
 import _ from "lodash";
 import {connect} from 'react-redux'
 import { findDeviceSlideIdx, changeSlideIdx, updateSlideData, updateDesktopKeys, updateMobileKeys, updateSlideTransitioningState, updateSlideTouchState, updateSlidesViewed } from "./redux/actions/slideActions";
-import { setOperatingSys, setBrowser, changeIsMobileDevice } from "./redux/actions/appActions";
+import { setOperatingSys, setBrowser, changeIsMobileDevice, setHeader } from "./redux/actions/appActions";
 import { updateMenuData } from "./redux/actions/menuActions";
 
 window.jQuery = $
@@ -138,6 +138,7 @@ class App extends React.Component {
             // }, ()=> this.createResponsiveIndices());
             this.props.updateSlideData(result['slideData'], this.createResponsiveIndices(result['slideData']))
             this.props.updateMenuData(result['menuData'])
+            this.props.setHeader(result['headerData'])
             this.handleResize()
         })
         const hubspotscript = document.createElement("script");
@@ -847,5 +848,5 @@ const mapStateToProps = state => {
 
   export default connect(
     mapStateToProps,
-    { setOperatingSys, setBrowser, findDeviceSlideIdx, changeSlideIdx, updateMenuData, updateSlideData, updateSlideTransitioningState, updateSlideTouchState, updateDesktopKeys, updateMobileKeys, changeIsMobileDevice, updateSlidesViewed }
+    { setHeader, setOperatingSys, setBrowser, findDeviceSlideIdx, changeSlideIdx, updateMenuData, updateSlideData, updateSlideTransitioningState, updateSlideTouchState, updateDesktopKeys, updateMobileKeys, changeIsMobileDevice, updateSlidesViewed }
   )(App);

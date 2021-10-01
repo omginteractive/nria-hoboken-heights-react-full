@@ -536,10 +536,18 @@ const flypilotFetchWPRestAPI = async (endpoint, apartmentsEndpoint) => {
         addresscompany: acf_result.addresscompany,
         agentphone: acf_result.agentphone,
     }
+    const headerData = {
+        head_logo_black_small: acf_result.head_logo_black_small,
+        head_logo_white_small: acf_result.head_logo_white_small,
+        head_logo_black_large: acf_result.head_logo_black_large,
+        head_logo_white_large: acf_result.head_logo_white_large,
+        contact_text: acf_result.contact_text,
+    }
     let result = []
 
     result['slideData'] = SLIDES
     result['menuData'] = menuData
+    result['headerData'] = headerData
     return result;
 }
 

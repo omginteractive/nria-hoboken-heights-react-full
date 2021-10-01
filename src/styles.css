@@ -361,6 +361,9 @@ body {
 .fixed-header.dark .corner-logo.dark {
   opacity: 1;
 }
+.fixed-header.dark .large-logo.dark {
+  opacity: 1;
+}
 .fixed-header.light {
   color: #fff;
 }
@@ -373,6 +376,9 @@ body {
 .fixed-header.light .corner-logo.light {
   opacity: 1;
 }
+.fixed-header.light .large-logo.light {
+  opacity: 1;
+}
 .fixed-header.light-inquiry {
   color: #000;
 }
@@ -383,6 +389,9 @@ body {
   color: #ffffff;
 }
 .fixed-header.light-inquiry .corner-logo.dark {
+  opacity: 1;
+}
+.fixed-header.light-inquiry .large-logo.dark {
   opacity: 1;
 }
 .fixed-header .inquiry-link {
@@ -408,6 +417,22 @@ body {
 .fixed-header .corner-logo {
   opacity: 0;
   transition: opacity 1400ms;
+}
+.fixed-header .large-logo {
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1400ms;
+  height: 100%;
+  position: absolute;
+  right: 56px;
+}
+.fixed-header .large-logo.invisible {
+  position: static;
+  opacity: 0;
+}
+.fixed-header .text .separator {
+  position: absolute;
+  right: 0;
 }
 .fixed-header .closeBtn {
   cursor: pointer;
@@ -444,7 +469,7 @@ body {
 }
 .fixed-header .corner-logo-wrapper .text {
   letter-spacing: 5px;
-  width: 300px;
+  position: relative;
   display: flex;
   align-items: center;
 }
@@ -2920,11 +2945,7 @@ body {
   .fixed-header .inquiry-link {
     display: none;
   }
-  .fixed-header .corner-logo-wrapper {
-    width: 52.4425925926vw;
-  }
   .fixed-header .corner-logo-wrapper .text {
-    width: 40.7407407407vw;
     font-size: 2.1333333333vw;
     letter-spacing: 0.6398148148vw;
     line-height: 2.5601851852vw;

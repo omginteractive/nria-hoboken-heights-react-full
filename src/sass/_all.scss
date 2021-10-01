@@ -256,6 +256,9 @@ body {
         .corner-logo.dark {
             opacity: 1;
         }
+        .large-logo.dark {
+            opacity: 1;
+        }
     }
     &.light {
         color: #fff;
@@ -268,6 +271,9 @@ body {
         .corner-logo.light {
             opacity: 1;
         }
+        .large-logo.light {
+            opacity: 1;
+        }
     }
     &.light-inquiry {
         color: #000;
@@ -278,6 +284,9 @@ body {
             color: #ffffff;
         }
         .corner-logo.dark {
+            opacity: 1;
+        }
+        .large-logo.dark {
             opacity: 1;
         }
     }
@@ -309,6 +318,24 @@ body {
     .corner-logo {
         opacity: 0;
         transition: opacity $slideAnimationDuration;
+    }
+    .large-logo {
+        height: 100%;
+        opacity: 0;
+        transition: opacity $slideAnimationDuration;
+        height: 100%;
+        position: absolute;
+        right: 56px;
+        &.invisible {
+            position: static;
+            opacity: 0;
+        }
+    }
+    .text {
+        .separator {
+            position: absolute;
+            right: 0;
+        }
     }
     $menuBtnWidth: 25px;
     $menuBtnHorizontalPadding: 15px;
@@ -354,7 +381,8 @@ body {
         }
         .text {
             letter-spacing: 5px;
-            width: 300px;
+            // width: 300px;
+            position: relative;
             display: flex;
             align-items: center;
             
