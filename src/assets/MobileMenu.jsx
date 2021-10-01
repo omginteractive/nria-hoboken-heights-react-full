@@ -49,6 +49,7 @@ class MobileMenu extends Component {
         // const developmentTeamLink = isMobile ? 13 : 12
         const discoverLink = isMobile ? this.props.discoverSlideIndices.mobile : this.props.discoverSlideIndices.desktop
         const contactFormSlideIdx = this.props.contactFormSlideIdx
+        console.log(this.props.configuration)
 		return(
             <div className={mobileMenuClasses} onTransitionEnd={this.handleMenuTransitionEnd.bind(this)}>
                 <Header
