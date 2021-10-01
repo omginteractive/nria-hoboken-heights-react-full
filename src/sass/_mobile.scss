@@ -246,6 +246,7 @@ p {
             font-size: calc_vw(23.04);
             letter-spacing: calc_vw(6.91);
             line-height: calc_vw(27.65);
+            padding-right: $separator_margin;
             .separator {
                 margin: 0 $separator_margin;
                 height: calc_vw(65.91);

@@ -331,12 +331,7 @@ body {
             opacity: 0;
         }
     }
-    .text {
-        .separator {
-            position: absolute;
-            right: 0;
-        }
-    }
+    
     $menuBtnWidth: 25px;
     $menuBtnHorizontalPadding: 15px;
     $closeBtnHeight: 18px;
@@ -379,16 +374,19 @@ body {
         .corner-logo {
             width: 96px;
         }
+        $separatorDistance: 26px;
         .text {
             letter-spacing: 5px;
             // width: 300px;
             position: relative;
             display: flex;
             align-items: center;
-            
+            padding-right: $separatorDistance;//for centering
             .separator {
+                position: absolute;
+                right: 0;
                 height: 41px;
-                margin: 0 26px;
+                margin: 0 $separatorDistance;
                 width: 1px;//necessary for some browsers
             }
         }

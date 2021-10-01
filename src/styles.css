@@ -430,10 +430,6 @@ body {
   position: static;
   opacity: 0;
 }
-.fixed-header .text .separator {
-  position: absolute;
-  right: 0;
-}
 .fixed-header .closeBtn {
   cursor: pointer;
   height: 18px;
@@ -472,8 +468,11 @@ body {
   position: relative;
   display: flex;
   align-items: center;
+  padding-right: 26px;
 }
 .fixed-header .corner-logo-wrapper .text .separator {
+  position: absolute;
+  right: 0;
   height: 41px;
   margin: 0 26px;
   width: 1px;
@@ -2949,6 +2948,7 @@ body {
     font-size: 2.1333333333vw;
     letter-spacing: 0.6398148148vw;
     line-height: 2.5601851852vw;
+    padding-right: 3.8824074074vw;
   }
   .fixed-header .corner-logo-wrapper .text .separator {
     margin: 0 3.8824074074vw;
