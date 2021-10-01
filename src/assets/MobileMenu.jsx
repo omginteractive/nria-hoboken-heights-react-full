@@ -57,6 +57,7 @@ class MobileMenu extends Component {
         const facebook_text = this?.props?.configuration?.facebook_text ? this?.props?.configuration?.facebook_text : ''
         const facebook_link = this?.props?.configuration?.facebook_link ? this?.props?.configuration?.facebook_link : ''
         const instagram_link = this?.props?.configuration?.instagram_link ? this?.props?.configuration?.instagram_link : ''
+        const instagram_text = this?.props?.configuration?.instagram_text ? this?.props?.configuration?.instagram_text : ''
         return(
             <div className={mobileMenuClasses} onTransitionEnd={this.handleMenuTransitionEnd.bind(this)}>
                 <Header
