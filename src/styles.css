@@ -2602,7 +2602,7 @@ body {
     display: none !important;
   }
 
-  .fixed-header-wrapper .fixed-header.hiddenDesktop {
+  .slides_wrapper .fixed-header.hiddenDesktop {
     opacity: 0;
   }
 
