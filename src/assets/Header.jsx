@@ -101,7 +101,7 @@ class Header extends Component {
                 <div onClick={this.slideToContact.bind(this)} className={mobileContactButtonClassesLight}><img src={require('./images/mobile_mail.svg').default} alt="" /></div>
                 <div onClick={this.slideToContact.bind(this)} className={mobileContactButtonClassesDark}><img src={require('./images/mobile_mail_black.svg').default} alt="" /></div>
                 <img className={availabilityCloseButtonClasses} onClick={this.hideAvailabilityPlanModal.bind(this)} src={require('./images/availability_menu_x.svg').default} alt="" />
-                <div onClick={this.slideToContact.bind(this)} className={inquiryLinkClasses}>INQUIRE NOW</div>
+                <div onClick={this.slideToContact.bind(this)} className={inquiryLinkClasses}>{this?.props.headerData?.contact_text}</div>
             </header>
         )
     }
