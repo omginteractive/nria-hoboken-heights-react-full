@@ -2602,11 +2602,12 @@ body {
     display: none !important;
   }
 
+  .mobile-menu:not(.open) .fixed-header.hiddenDesktop {
+    opacity: 0;
+  }
+
   .fixed-header {
     transition: opacity 0.6s;
-  }
-  .fixed-header.hiddenDesktop {
-    opacity: 0;
   }
   .fixed-header.hideHeaderDesktop {
     display: none;

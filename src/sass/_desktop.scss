@@ -4,10 +4,17 @@
     display: none !important;
 }
 
+.mobile-menu:not(.open) {
+    .fixed-header {
+        &.hiddenDesktop {
+            opacity: 0;
+        }
+    }
+}
 .fixed-header {
     transition: opacity $videoItemTransitionDuration;
     &.hiddenDesktop {
-        opacity: 0;
+        // opacity: 0;
     }
     &.hideHeaderDesktop {
         display: none;
