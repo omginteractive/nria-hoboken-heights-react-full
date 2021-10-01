@@ -51,13 +51,13 @@ class MobileMenu extends Component {
         const contactFormSlideIdx = this.props.contactFormSlideIdx
 
 
-        const addresscompany = this.props.configuration.addresscompany ? this.props.configuration.addresscompany : ''
-        const copyright = this.props.configuration.copyright ? this.props.configuration.copyright : ''
-        const agentphone = this.props.configuration.agentphone ? this.props.configuration.agentphone : ''
-        const facebook_text = this.props.configuration.facebook_text ? this.props.configuration.facebook_text : ''
-        const facebook_link = this.props.configuration.facebook_link ? this.props.configuration.facebook_link : ''
-        const instagram_link = this.props.configuration.instagram_link ? this.props.configuration.instagram_link : ''
-        const instagram_link = this.props.configuration.instagram_link ? this.props.configuration.instagram_link : ''
+        const addresscompany = this?.props?.configuration?.addresscompany ? this?.props?.configuration?.addresscompany : ''
+        const copyright = this?.props?.configuration?.copyright ? this?.props?.configuration?.copyright : ''
+        const agentphone = this?.props?.configuration?.agentphone ? this?.props?.configuration?.agentphone : ''
+        const facebook_text = this?.props?.configuration?.facebook_text ? this?.props?.configuration?.facebook_text : ''
+        const facebook_link = this?.props?.configuration?.facebook_link ? this?.props?.configuration?.facebook_link : ''
+        const instagram_link = this?.props?.configuration?.instagram_link ? this?.props?.configuration?.instagram_link : ''
+        const instagram_link = this?.props?.configuration?.instagram_link ? this?.props?.configuration?.instagram_link : ''
         return(
             <div className={mobileMenuClasses} onTransitionEnd={this.handleMenuTransitionEnd.bind(this)}>
                 <Header
