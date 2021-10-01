@@ -49,8 +49,7 @@ class MobileMenu extends Component {
         // const developmentTeamLink = isMobile ? 13 : 12
         const discoverLink = isMobile ? this.props.discoverSlideIndices.mobile : this.props.discoverSlideIndices.desktop
         const contactFormSlideIdx = this.props.contactFormSlideIdx
-        console.log(this.props.configuration)
-		return(
+        return(
             <div className={mobileMenuClasses} onTransitionEnd={this.handleMenuTransitionEnd.bind(this)}>
                 <Header
                 goToContactSlide={this.goToContactSlide.bind(this)}
@@ -81,8 +80,8 @@ class MobileMenu extends Component {
                             <a href='#' target="_blank">Instagram</a>
                         </div>
                     </div>
-                    <div className="address">1300 Manhattan Avenue Union City, NJ 07087 <br className='line-break' /><span className="separator">|</span> Manhattan Avenue Capital 1300, LLC<br />Richard Stabile | RE/MAX Real Estate Limited | <span className='phoneNum'><a href='tel:2014007487'>201-400-7487</a></span></div>
-                    <div className="copyright">&copy; 2020 Hoboken Heights. All rights reserved.</div>
+                    <div className="address">{this.props.configuration.addresscompany} <br className='line-break' /><br />{this.props.configuration.agentphone}</div>
+                    <div className="copyright">{this.props.configuration.copyright}</div>
                 </div>
             </div>
         )
