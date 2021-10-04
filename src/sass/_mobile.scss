@@ -205,6 +205,12 @@ p {
         .corner-logo.light {
             opacity: 1;
         }
+        .large-logo.dark {
+            opacity: 0;
+        }
+        .large-logo.light {
+            opacity: 1;
+        }
     }
     &.dark {
         .separator {

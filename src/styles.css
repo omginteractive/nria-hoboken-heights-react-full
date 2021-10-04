@@ -419,10 +419,9 @@ body {
   transition: opacity 1400ms;
 }
 .fixed-header .large-logo {
-  height: 100%;
+  height: 60px;
   opacity: 0;
   transition: opacity 1400ms;
-  height: 100%;
   position: absolute;
   transform: translateX(-50%);
 }
@@ -2919,6 +2918,12 @@ body {
     opacity: 0;
   }
   .fixed-header.lightMobile .corner-logo.light {
+    opacity: 1;
+  }
+  .fixed-header.lightMobile .large-logo.dark {
+    opacity: 0;
+  }
+  .fixed-header.lightMobile .large-logo.light {
     opacity: 1;
   }
   .fixed-header.dark .separator {
