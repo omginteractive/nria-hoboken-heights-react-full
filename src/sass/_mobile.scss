@@ -222,7 +222,15 @@ p {
             border-color: #000;
         }
     }
-    
+    .large-logo {
+        height: 100%;
+        opacity: 0;
+        transition: opacity $slideAnimationDuration;
+        height: 100%;
+        position: absolute;
+        // right: 56px;
+        transform: translate(-50%, $header-height/8);
+    }
     .closeBtn {
         left: 0;
         position: absolute;

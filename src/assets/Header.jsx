@@ -86,16 +86,18 @@ class Header extends Component {
                 }
 
                 <div className="corner-logo-wrapper">
-                    <div className="text" onClick={this.handleHeaderLogoClick.bind(this)}>
+                    {/* <div className="text" onClick={this.handleHeaderLogoClick.bind(this)}>
                         <img alt='Hoboken Heights Logo Light' className="large-logo invisible" src={this?.props?.headerData?.head_logo_white_large?.url} onClick={this.handleHeaderLogoClick.bind(this)} />
-                        <img alt='Hoboken Heights Logo Light' className="large-logo light" src={this?.props?.headerData?.head_logo_white_large?.url} onClick={this.handleHeaderLogoClick.bind(this)} />
-                        <img alt='Hoboken Heights Logo Dark' className="large-logo dark" src={this?.props?.headerData?.head_logo_black_large?.url} onClick={this.handleHeaderLogoClick.bind(this)} />
                         <div className="separator"></div>
+                    </div> */}
+                    <div className="centeredLogo">
+                        <img alt='Hoboken Heights Logo Dark' className="large-logo dark" src={this?.props?.headerData?.head_logo_black_large?.url} onClick={this.handleHeaderLogoClick.bind(this)} />
+                        <img alt='Hoboken Heights Logo Light' className="large-logo light" src={this?.props?.headerData?.head_logo_white_large?.url} onClick={this.handleHeaderLogoClick.bind(this)} />
                     </div>
-                    <div className="corner-logo-images">
+                    {/* <div className="corner-logo-images">
                         <img alt='Hoboken Heights Logo Light' className="corner-logo light" src={this?.props?.headerData?.head_logo_white_small?.url} onClick={this.handleHeaderLogoClick.bind(this)} />
                         <img alt='Hoboken Heights Logo Dark' className="corner-logo dark" src={this?.props?.headerData?.head_logo_black_small?.url} onClick={this.handleHeaderLogoClick.bind(this)} />
-                    </div>
+                    </div> */}
 
                 </div>
                 <div onClick={this.slideToContact.bind(this)} className={mobileContactButtonClassesLight}><img src={require('./images/mobile_mail.svg').default} alt="" /></div>

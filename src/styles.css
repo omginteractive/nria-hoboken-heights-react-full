@@ -424,7 +424,7 @@ body {
   transition: opacity 1400ms;
   height: 100%;
   position: absolute;
-  right: 56px;
+  transform: translateX(-50%);
 }
 .fixed-header .large-logo.invisible {
   position: static;
@@ -2933,6 +2933,14 @@ body {
   .fixed-header.darkMobile .hamburger .line {
     border-color: #000;
   }
+  .fixed-header .large-logo {
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1400ms;
+    height: 100%;
+    position: absolute;
+    transform: translate(-50%, 6.25px);
+  }
   .fixed-header .closeBtn {
     left: 0;
     position: absolute;
@@ -4150,3 +4158,5 @@ body {
 	}
 }
 */
+
+/*# sourceMappingURL=styles.css.map */

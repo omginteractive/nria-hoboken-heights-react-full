@@ -325,7 +325,8 @@ body {
         transition: opacity $slideAnimationDuration;
         height: 100%;
         position: absolute;
-        right: 56px;
+        // right: 56px;
+        transform: translateX(-50%);
         &.invisible {
             position: static;
             opacity: 0;
