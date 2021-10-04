@@ -399,6 +399,10 @@ body {
   transition: color 1400ms, opacity 0.9s;
   font-size: 15px;
 }
+.fixed-header .inquiry-link.phantom {
+  pointer-events: none;
+  opacity: 0;
+}
 .fixed-header .inquiry-link.hidden {
   opacity: 0;
   pointer-events: none;

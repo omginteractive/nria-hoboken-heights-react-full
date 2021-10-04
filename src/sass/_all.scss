@@ -294,6 +294,10 @@ body {
         cursor: pointer;
         transition: color $slideAnimationDuration, opacity $availabilityPopupTransitionDuration;
         font-size: 15px;
+        &.phantom {
+            pointer-events: none;
+            opacity: 0;
+        }
         &.hidden {
             opacity: 0;
             pointer-events: none;//to give priority to availabilityCloseBtn

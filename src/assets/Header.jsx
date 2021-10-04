@@ -82,6 +82,7 @@ class Header extends Component {
                     <div className="hamburger" onClick={this.props.toggleMenuState.bind(this)}>
                         <div className="line"></div>
                         <div className="line"></div>
+                        <div className={inquiryLinkClasses + ' phantom'}>{this?.props.headerData?.contact_text}</div>
                     </div>
                 }
 
