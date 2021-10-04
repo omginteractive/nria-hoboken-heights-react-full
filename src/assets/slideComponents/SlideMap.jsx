@@ -11,8 +11,6 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 import desktopSatelliteMapLogo from '../images/map/Motion_logo--last-frame.png'
 import mobileSatelliteMapLogo from '../images/map/Motion_logo_mobile--last-frame.png'
-import desktopAnimatedMapLogo from '../images/map/Motion_logo.gif'
-import mobileAnimatedMapLogo from '../images/map/Motion_logo_mobile_animate_once.gif'
 
 import { googleMapsEnable} from "../../redux/actions/appActions";
 
@@ -74,16 +72,31 @@ class SlideMap extends Component {
             height: '100%'
         }
           
+        const latitude = this.props.configuration.latitude_of_map_location ? parseFloat(this.props.configuration.latitude_of_map_location) : null
+        const longitude = this.props.configuration.longitude_of_map_location ? parseFloat(this.props.configuration.longitude_of_map_location) : null
         const center = {
-            lat: 40.759370,
-            lng: -74.033470
+            lat: latitude,
+            lng: longitude
         }
-        const animatedLogoToUse = this.props.isMobileDevice ? mobileAnimatedMapLogo : desktopAnimatedMapLogo
-        const scaledSizeMarkerWidth = this.props.isMobileDevice ? 241: 347
-        const scaledSizeMarkerHeight = this.props.isMobileDevice ? 170: 100
+        
+        const map_marker_logo_desktop = this.props.configuration.map_marker_logo_desktop
+        const map_marker_anchor_desktop_image_width = this.props.configuration.map_marker_anchor_desktop_image_width
+        const map_marker_anchor_desktop_image_height = this.props.configuration.map_marker_anchor_desktop_image_height
+        const map_marker_anchor_coordinate_x_desktop = this.props.configuration.map_marker_anchor_coordinate_x_desktop
+        const map_marker_anchor_coordinate_y_desktop = this.props.configuration.map_marker_anchor_coordinate_y_desktop
+
+        const map_marker_logo_mobile = this.props.configuration.map_marker_logo_mobile
+        const map_marker_anchor_mobile_image_width = this.props.configuration.map_marker_anchor_mobile_image_width
+        const map_marker_anchor_mobile_image_height = this.props.configuration.map_marker_anchor_mobile_image_height
+        const map_marker_anchor_coordinate_x_mobile = this.props.configuration.map_marker_anchor_coordinate_x_mobile
+        const map_marker_anchor_coordinate_y_mobile = this.props.configuration.map_marker_anchor_coordinate_y_mobile
+
+        const animatedLogoToUse = this.props.isMobileDevice ? map_marker_logo_mobile : map_marker_logo_desktop
+        const scaledSizeMarkerWidth = this.props.isMobileDevice ? map_marker_anchor_mobile_image_width: map_marker_anchor_desktop_image_width
+        const scaledSizeMarkerHeight = this.props.isMobileDevice ? map_marker_anchor_mobile_image_height: map_marker_anchor_desktop_image_height
         const markerOrigin = this.props.googleMapsLoaded ? new window.google.maps.Point(0, 0) : null
-        const mobileMarkerAnchor = this.props.googleMapsLoaded ? new window.google.maps.Point(40, 90) : null
-        const desktopMarkerAnchor = this.props.googleMapsLoaded ? new window.google.maps.Point(22, 40) : null
+        const mobileMarkerAnchor = this.props.googleMapsLoaded ? new window.google.maps.Point(map_marker_anchor_coordinate_x_mobile, map_marker_anchor_coordinate_y_mobile) : null
+        const desktopMarkerAnchor = this.props.googleMapsLoaded ? new window.google.maps.Point(map_marker_anchor_coordinate_x_desktop, map_marker_anchor_coordinate_y_desktop) : null
         const markerAnchor = this.props.isMobileDevice ? mobileMarkerAnchor : desktopMarkerAnchor
         const satelliteMapLogo = this.props.isMobileDevice ? mobileSatelliteMapLogo: desktopSatelliteMapLogo
         const optionsSatelliteMapMarker = this.props.googleMapsLoaded ? {
@@ -295,6 +308,9 @@ class SlideMap extends Component {
             lng: -74.033470
         }
         const googleMapsApiKey = this.props.configuration.maps_api_key
+
+        
+
         return(
             <>
                 <section className={mapSectionClasses}>

@@ -461,6 +461,22 @@ const flypilotFetchWPRestAPI = async (endpoint, apartmentsEndpoint) => {
         },
         headerTheme: 'dark',
         maps_api_key: acf_result.maps_api_key,
+        
+        latitude_of_map_location: acf_result.latitude_of_map_location,
+        longitude_of_map_location: acf_result.longitude_of_map_location,
+        
+        map_marker_logo_desktop: acf_result.map_marker_desktop.map_marker_logo_desktop,
+        map_marker_anchor_desktop_image_width: acf_result.map_marker_desktop.map_marker_anchor_desktop_image_width,
+        map_marker_anchor_desktop_image_height: acf_result.map_marker_desktop.map_marker_anchor_desktop_image_height,
+        map_marker_anchor_coordinate_x_desktop: acf_result.map_marker_desktop.map_marker_anchor_coordinate_x_desktop,
+        map_marker_anchor_coordinate_y_desktop: acf_result.map_marker_desktop.map_marker_anchor_coordinate_y_desktop,
+        
+        map_marker_logo_mobile: acf_result.map_marker_mobile.map_marker_logo_mobile,
+        map_marker_anchor_mobile_image_width: acf_result.map_marker_mobile.map_marker_anchor_mobile_image_width,
+        map_marker_anchor_mobile_image_height: acf_result.map_marker_mobile.map_marker_anchor_mobile_image_height,
+        map_marker_anchor_coordinate_x_mobile: acf_result.map_marker_mobile.map_marker_anchor_coordinate_x_mobile,
+        map_marker_anchor_coordinate_y_mobile: acf_result.map_marker_mobile.map_marker_anchor_coordinate_y_mobile,
+        
         headerThemeMobile: 'lightMobile',
         map_satellite_view_text: acf_result.map_satellite_view_text,
         map_location_view_text: acf_result.map_location_view_text,
