@@ -13,7 +13,7 @@ import Header from '../Header';
 // import fullscreen from '../fullscreen.js'
 
 // import ReactPlayer from 'react-player'
-import ReactPlayer from 'react-player/file'
+// import ReactPlayer from 'react-player/file'
 import playButton from '../images/videoIcons/PLAY.svg';
 import pauseButton from '../images/videoIcons/PAUSE.svg';
 import soundOnButton from '../images/videoIcons/SOUND-ON.svg';
@@ -253,7 +253,7 @@ class SlideFilm extends Component {
                             // ref={this.videoContainerRef}
                             // video="537572775"
                             // video="90509568"
-                            video="539794043"
+                            video={this.props.configuration.background_video_film}
                             background={true}
                             // autoplay={false}
                             loop={true}
