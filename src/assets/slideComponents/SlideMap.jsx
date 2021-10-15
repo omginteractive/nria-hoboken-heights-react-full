@@ -9,8 +9,8 @@ import {connect} from 'react-redux'
 
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
-import desktopSatelliteMapLogo from '../images/map/Motion_logo--last-frame.png'
-import mobileSatelliteMapLogo from '../images/map/Motion_logo_mobile--last-frame.png'
+// import desktopSatelliteMapLogo from '../images/map/Motion_logo--last-frame.png'
+// import mobileSatelliteMapLogo from '../images/map/Motion_logo_mobile--last-frame.png'
 
 import { googleMapsEnable} from "../../redux/actions/appActions";
 
@@ -98,10 +98,10 @@ class SlideMap extends Component {
         const mobileMarkerAnchor = this.props.googleMapsLoaded ? new window.google.maps.Point(map_marker_anchor_coordinate_x_mobile, map_marker_anchor_coordinate_y_mobile) : null
         const desktopMarkerAnchor = this.props.googleMapsLoaded ? new window.google.maps.Point(map_marker_anchor_coordinate_x_desktop, map_marker_anchor_coordinate_y_desktop) : null
         const markerAnchor = this.props.isMobileDevice ? mobileMarkerAnchor : desktopMarkerAnchor
-        const satelliteMapLogo = this.props.isMobileDevice ? mobileSatelliteMapLogo: desktopSatelliteMapLogo
+        // const satelliteMapLogo = this.props.isMobileDevice ? mobileSatelliteMapLogo: desktopSatelliteMapLogo
         const optionsSatelliteMapMarker = this.props.googleMapsLoaded ? {
                 icon: {
-                    url: satelliteMapLogo,
+                    url: animatedLogoToUse,
                     origin: markerOrigin,
                     anchor: markerAnchor,
                     scaledSize: new window.google.maps.Size(scaledSizeMarkerWidth, scaledSizeMarkerHeight)
