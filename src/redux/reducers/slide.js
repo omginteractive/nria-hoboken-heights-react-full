@@ -8,7 +8,7 @@ const initialState = {
     slideTransitioningState: 0, // 0 for false -1 for up 1 for down
     slideTouchState: 0,//0 for end, 1 for start, 2 for move
     slidesViewed: [0],
-    activeAvailabilityPlan: 0,
+    activeAvailabilityPlan: null,
     availabilityPlanModalEnabled: false,
     filmSlideMouseMovementDetected: false,
     availabilitySlideIndices: {

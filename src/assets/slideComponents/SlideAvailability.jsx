@@ -58,6 +58,8 @@ class SlideAvailability extends Component {
         availabilityClasses += availabilityPlanModalEnabled ? ' hidden' : ''
         let availabilityModalClasses = 'availabilityModalPopup'
         availabilityModalClasses += availabilityPlanModalEnabled ? '' : ' hidden'
+        const fullFloorplan = this.props.configuration.apartment_result[this.props.activeAvailabilityPlan]?.acf?.floorplan_full.url
+
         return(
             <>
                 <section className={availabilityClasses}>{this.props.availabilityPlanModalEnabled}
@@ -85,6 +87,7 @@ class SlideAvailability extends Component {
                     </div>
                     <div className="availabilityApartmentContainer">
                         {this.props.configuration.apartment_result.map((apartment, i) => {
+                            console.log(apartment)
                             return (
                                 <div className="apartment" key={i + 'apartment'}>
                                     <div className="apartment__title">{apartment.title.rendered}</div>
@@ -101,7 +104,7 @@ class SlideAvailability extends Component {
                 </section>
                 <div className={availabilityModalClasses}>
                     <>
-                        <img src={require('../images/availabilityFLOOR PLAN PLACEHOLDER.jpg').default} alt="" className="floorPlanPlaceholder"/>
+                        <img src={fullFloorplan} alt="" className="floorPlanPlaceholder"/>
                         {/* <div className="availability_detail_apartment_name">{this.props.configuration.availability_detail_apartment_name}</div>
                         <div className="availability_detail_apartment_address availability_detail_apartment_address_line_1">{this.props.configuration.availability_detail_apartment_address_line_1}</div>
                         <div className="availability_detail_apartment_address availability_detail_apartment_address_line_2">{this.props.configuration.availability_detail_apartment_address_line_2}</div>
