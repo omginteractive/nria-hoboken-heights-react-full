@@ -242,17 +242,17 @@ p + p {
 html,
 body {
   /*
-   * this is used only to prevent pull-to-refresh which can be triggered 
-   * anytime the user tries to scroll up on a touch device
-   * 
-   * This also prevents an issue where the background color of the body is 
-   * exposed during overscroll/elasticscroll behavior on iOS
-   * 
-   * This prevents users from overscrolling on slides causing vertical
-   * movement not related to the slider
-   *
-   * This has caused issues before and may need to get disabled
-   */
+     * this is used only to prevent pull-to-refresh which can be triggered 
+     * anytime the user tries to scroll up on a touch device
+     * 
+     * This also prevents an issue where the background color of the body is 
+     * exposed during overscroll/elasticscroll behavior on iOS
+     * 
+     * This prevents users from overscrolling on slides causing vertical
+     * movement not related to the slider
+     *
+     * This has caused issues before and may need to get disabled
+     */
   overflow: hidden;
 }
 
@@ -345,7 +345,7 @@ body {
   position: fixed;
   color: #fff;
   top: 0;
-  width: calc(100vw - 6.3vw*2);
+  width: calc(100vw - 6.3vw* 2);
   height: 12.8vh;
   left: 6.3vw;
   display: flex;
@@ -757,7 +757,7 @@ body {
   opacity: 0;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-film .custom-seekbar .progress {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   position: absolute;
   top: 0;
   left: 0;
@@ -801,8 +801,8 @@ body {
   overflow: hidden;
   position: absolute;
   left: 6.3vw;
-  height: calc(100vh - 12.8vh);
-  width: calc(100vw - 6.3vw*2);
+  height: 87.2vh;
+  width: 87.4vw;
   bottom: 0;
   z-index: 2;
   display: flex;
@@ -832,12 +832,12 @@ body {
   padding-right: 6.3vw;
   display: flex;
   flex-direction: column;
-  height: calc(100vh);
+  height: 100vh;
   padding-top: calc(23.7037037037vh);
   top: 0;
   padding-right: calc(30% + 6.3vw);
   overflow: scroll;
-  width: calc(100vw - 6.3vw*2);
+  width: calc(100vw - 6.3vw* 2);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-fountainPen .textSection .btn {
   margin-top: 38px;
@@ -878,7 +878,9 @@ body {
   padding-bottom: 11.2962962963vh;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details, .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__list {
-  min-height: calc(100vh - 12.8vh - 11.2962962963vh);
+  min-height: calc(
+                100vh - 12.8vh - 11.2962962963vh
+              );
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenities .amenities__details {
   background-color: #000000;
@@ -1006,7 +1008,9 @@ body {
   background-repeat: no-repeat;
   transform: translateY(100%);
   transition: transform 0.8s;
-  height: calc(8.2vh + 20px + 140px + 100px);
+  height: calc(
+                8.2vh + 20px + 140px + 100px
+              );
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__description_gradient.visible {
   transform: translateY(0);
@@ -1020,7 +1024,7 @@ body {
   justify-content: center;
   transition: transform 0.5s;
   left: 0;
-  transform: translateY(calc(100% - 8.2vh - 32px - 32px));
+  transform: translateY(calc( 100% - 8.2vh - 32px - 32px ));
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-amenitiesGallery .amenities_gallery__amenity_name_and_description_container.visible {
   transform: translateY(0);
@@ -1170,19 +1174,23 @@ body {
   margin: 0;
   -webkit-appearance: none;
   position: relative;
-  left: calc(6vw/2 - 20px/2);
+  left: calc(6vw/ 2 - 20px/ 2);
   z-index: 4;
   /* fix for FF unable to apply focus style bug  */
   border: none 0 transparent;
   /*required for proper track sizing in FF*/
-  width: calc(40.1078125vw + 20px);
+  width: calc(
+                40.1078125vw + 20px
+              );
   height: 20px;
   top: 10px;
   /*hide the outline behind the border*/
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-views .views_section__timeSlider > input::-webkit-slider-runnable-track {
   position: relative;
-  width: calc(40.1078125vw + 20px);
+  width: calc(
+                40.1078125vw + 20px
+              );
   height: 20px;
   -webkit-appearance: none;
   background: transparent;
@@ -1335,7 +1343,7 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail {
   margin-top: 12.8vh;
   height: calc(100vh - 12.8vh);
-  width: calc(calc(100vw - 6.3vw*2));
+  width: calc(calc(100vw - 6.3vw* 2));
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__details {
   padding-right: 2.7203125vw;
@@ -1375,7 +1383,7 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container {
   transition: width 1s;
   position: absolute;
-  width: calc(calc(100vw - 6.3vw*2) - 41.5104166667vw);
+  width: calc(calc(100vw - 6.3vw* 2) - 41.5104166667vw);
   right: 6.3vw;
   height: calc(100vh - 12.8vh);
   overflow: hidden;
@@ -1388,7 +1396,7 @@ body {
   display: none;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail__image_container .fullscreenImageWrapper .fullscreenImage {
-  width: calc(calc(100vw - 6.3vw*2));
+  width: calc(calc(100vw - 6.3vw* 2));
   height: 100%;
   object-fit: cover;
   object-position: right;
@@ -1447,7 +1455,7 @@ body {
   margin-right: 42px;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-residencePenthouseDetail .residencePenthouseDetail.expandImage .residencePenthouseDetail__image_container {
-  width: calc(100vw - 6.3vw*2);
+  width: calc(100vw - 6.3vw* 2);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup {
   position: absolute;
@@ -1455,7 +1463,9 @@ body {
   transition: opacity 0.9s, max-height 0s;
   overflow: hidden;
   width: 67.4479166667vw;
-  max-height: 3000px;
+  max-height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup.hidden {
   opacity: 0;
@@ -1554,7 +1564,7 @@ body {
   display: flex;
   flex-direction: column;
   left: 6.3vw;
-  width: calc(100vw - 6.3vw*2);
+  width: calc(100vw - 6.3vw* 2);
   position: absolute;
   top: 12.8vh;
   transition: opacity 0.9s;
@@ -1614,7 +1624,7 @@ body {
   font-size: 0.78125vw;
   line-height: 0.9375vw;
   letter-spacing: 0.1171875vw;
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
   height: 4.21875vw;
   width: 100%;
   display: flex;
@@ -1656,7 +1666,7 @@ body {
 .slides_wrapper .slides_inner .slide.slideTemplate-developmentTeam .developmentTeam {
   display: flex;
   left: 6.3vw;
-  width: calc(100vw - 6.3vw*2);
+  width: calc(100vw - 6.3vw* 2);
   position: absolute;
   top: 12.8vh;
 }
@@ -1791,7 +1801,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-neighborhoodCommunity .neighborhoodCommunity {
   display: flex;
-  width: calc(100% - 6.3vw*2);
+  width: calc(100% - 6.3vw* 2);
   top: calc(12.8vh);
   position: absolute;
   left: 6.3vw;
@@ -1821,7 +1831,7 @@ body {
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-map .mapSection {
   display: flex;
-  width: calc(100% - 6.3vw*2);
+  width: calc(100% - 6.3vw* 2);
   top: calc(12.8vh);
   position: absolute;
   left: 6.3vw;
@@ -2003,7 +2013,7 @@ body {
   padding: 53px;
   width: 44.4270833333vw;
   margin-bottom: 53px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-error-msgs, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .hs-error-msgs {
   margin-top: 7px;
@@ -2601,7 +2611,7 @@ body {
   width: 100%;
 }
 .slides_wrapper .slides_inner .slide .videoContainer.compact {
-  width: calc(100vw - 6.3vw*2);
+  width: calc(100vw - 6.3vw* 2);
   height: calc(100vh - 12.8vh);
   bottom: 0;
   position: absolute;
@@ -2622,6 +2632,34 @@ body {
 .slides_wrapper .slides_inner .slide .lightsMaskContainer .lightsMask,
 .slides_wrapper .slides_inner .slide .videoContainer .background-video {
   transition: object-position 1400ms linear 0s, transform 0s linear 1400ms;
+}
+
+.react-transform-wrapper {
+  width: 100% !important;
+}
+.react-transform-wrapper .full_floorplan_image {
+  max-height: 85vh;
+  width: auto;
+}
+
+.tools {
+  position: absolute;
+  top: 10;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.tools button {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  font-size: 30px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 769px) {
@@ -4167,5 +4205,3 @@ body {
 	}
 }
 */
-
-/*# sourceMappingURL=styles.css.map */

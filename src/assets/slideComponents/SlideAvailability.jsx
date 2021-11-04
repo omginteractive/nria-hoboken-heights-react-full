@@ -1,6 +1,7 @@
 import {Component} from 'react';
 import React from 'react';
 import magnifyingGlass from '../images/magnifyingGlass.svg';
+import ImageZoom from './ImageZoom';
 import $ from 'jquery'
 import {connect} from 'react-redux'
 // import _ from "lodash";
@@ -104,7 +105,7 @@ class SlideAvailability extends Component {
                 </section>
                 <div className={availabilityModalClasses}>
                     <>
-                        <img src={fullFloorplan} alt="" className="floorPlanPlaceholder"/>
+                        <ImageZoom  image={fullFloorplan} />
                         {/* <div className="availability_detail_apartment_name">{this.props.configuration.availability_detail_apartment_name}</div>
                         <div className="availability_detail_apartment_address availability_detail_apartment_address_line_1">{this.props.configuration.availability_detail_apartment_address_line_1}</div>
                         <div className="availability_detail_apartment_address availability_detail_apartment_address_line_2">{this.props.configuration.availability_detail_apartment_address_line_2}</div>
