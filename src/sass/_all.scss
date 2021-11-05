@@ -2835,6 +2835,7 @@ body {
     max-width: 650px;
   }
 }
+
 .tools {
   position: absolute;
   top: 10px;
@@ -2854,4 +2855,8 @@ body {
     background: #fff;
     cursor: pointer;
   }
+}
+
+.apartment__floorPlanImage {
+  height: 100%!important;
 }

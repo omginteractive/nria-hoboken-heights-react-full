@@ -2668,6 +2668,10 @@ body {
   cursor: pointer;
 }
 
+.apartment__floorPlanImage {
+  height: 100% !important;
+}
+
 @media screen and (min-width: 769px) {
   .mobile-only {
     display: none !important;
