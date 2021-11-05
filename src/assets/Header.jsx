@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import {connect} from 'react-redux'
 import { toggleMenuState } from "../redux/actions/menuActions";
-import { hideAvailabilityPlanModal } from "../redux/actions/slideActions";
+import { hideAvailabilityPlanModal, setActiveAvailabilityPlan } from "../redux/actions/slideActions";
 import $ from 'jquery'
 class Header extends Component {
     constructor(props) {
@@ -38,6 +38,7 @@ class Header extends Component {
     }
     hideAvailabilityPlanModal(animateScroll = true){
         this.props.hideAvailabilityPlanModal()
+        this.props.setActiveAvailabilityPlan(null)
         if(animateScroll){
             //don't animate the scroll when switching slides.
             //Otherwise moving to the next slide causes a scroll of availability slide when moving to nextSlide
@@ -127,5 +128,5 @@ const mapStateToProps = state => {
   }
   export default connect(
     mapStateToProps,
-    { toggleMenuState, hideAvailabilityPlanModal }
+    { toggleMenuState, hideAvailabilityPlanModal,setActiveAvailabilityPlan }
   )(Header)
