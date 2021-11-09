@@ -1458,11 +1458,13 @@ body {
   width: calc(100vw - 6.3vw* 2);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup {
-  position: absolute;
-  top: 12.8vh;
+  position: fixed;
+  width: 100%;
+  transform: translateY(12.8vh);
+  display: flex;
+  justify-content: center;
   transition: opacity 0.9s, max-height 0s;
   overflow: hidden;
-  width: 100%;
   max-height: 100vh;
   height: 100%;
   display: flex;
