@@ -1404,6 +1404,9 @@ body {
                 &availability {
                     .availability {
                         .availabilityApartmentContainer {
+                            &.fix {
+                                gap: unset;
+                              }
                             .apartment__floorPlanImage {
                                 width: 100%;
                                 height: auto;
