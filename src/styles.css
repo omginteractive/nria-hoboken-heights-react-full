@@ -1467,6 +1467,8 @@ body {
   overflow: hidden;
   max-height: 100vh;
   height: 100%;
+  display: flex;
+  justify-content: center;
   z-index: 50;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availabilityModalPopup.hidden {
@@ -1616,11 +1618,16 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
 }
+.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer.fix {
+  justify-content: start;
+  gap: 5rem;
+}
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment {
   display: flex;
   flex-direction: column;
   border: 1px solid #000;
   margin-bottom: 4.53125vw;
+  cursor: pointer;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__title {
   font-size: 0.78125vw;
@@ -2639,6 +2646,7 @@ body {
 .react-transform-wrapper {
   width: 100% !important;
   height: 100% !important;
+  margin-top: 2px !important;
 }
 .react-transform-wrapper .react-transform-component {
   padding-bottom: 3rem !important;
@@ -2651,11 +2659,14 @@ body {
 
 .tools {
   position: absolute;
-  top: 10px;
   z-index: 30;
   display: flex;
   align-items: center;
   gap: 1rem;
+  width: 100%;
+  justify-content: center;
+  background: #fff;
+  padding-bottom: 8px;
 }
 .tools button {
   height: 40px;
@@ -2671,6 +2682,43 @@ body {
 
 .apartment__floorPlanImage {
   height: 100% !important;
+}
+
+.availabilityDropdownSelect {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.availabilityDropdownSelect .availabilityDropdown {
+  border: none;
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+  font-size: 14px;
+  color: #444;
+  cursor: pointer;
+}
+.availabilityDropdownSelect .availabilityDropdown:focus, .availabilityDropdownSelect .availabilityDropdown:active {
+  outline: none;
+}
+.availabilityDropdownSelect .availabilityDropdown option {
+  background: #5897fb;
+  color: #fff;
+  font-size: 16px;
+}
+.availabilityDropdownSelect .availabilityDropdownArrow {
+  position: absolute;
+  right: 0;
+  pointer-events: none;
+}
+.availabilityDropdownSelect .availabilityDropdownArrow b {
+  border-color: #000 transparent transparent;
+  border-width: 13px 7px 0;
+  border-style: solid;
+  display: flex;
 }
 
 @media screen and (min-width: 769px) {
@@ -3861,6 +3909,9 @@ body {
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field + .hs-form-field .input, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field + .hs-form-field .input {
     margin-left: 0;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer.fix {
+    gap: unset;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__floorPlanImage {
     width: 100%;

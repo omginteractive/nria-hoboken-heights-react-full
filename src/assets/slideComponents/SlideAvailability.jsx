@@ -15,13 +15,41 @@ class SlideAvailability extends Component {
     super(props)
     this.state = {
       availabilitySelect2Activated: false,
+      availableFloorplans: [],
+      selectedFilter: {
+        bedrooms:
+          this.props.configuration.availabilityFloorplansOptions[0].choice,
+        apartment_type:
+          this.props.configuration.availabilityCollectionOptions[0].choice,
+      },
     }
   }
+
+  updateFilter() {
+    const { bedrooms, apartment_type } = this.state.selectedFilter
+    const availableFloorplans = this.props.configuration.apartment_result
+
+    const filteredFloorplans = availableFloorplans.filter(
+      (floorplan) =>
+        floorplan.acf.bedrooms === bedrooms &&
+        floorplan.acf.apartment_type === apartment_type
+    )
+
+    this.setState({
+      availableFloorplans: filteredFloorplans,
+    })
+  }
+
   componentDidMount() {
-    if (!this.state.availabilitySelect2Activated) {
-      this.activateSelect2()
+    this.updateFilter()
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.selectedFilter !== prevState.selectedFilter) {
+      this.updateFilter()
     }
   }
+
   shouldComponentUpdate(nextProps, nextState) {
     const select2Exists = $.fn.select2
     const availabilitySelect2Activated = this.state.availabilitySelect2Activated
@@ -32,33 +60,20 @@ class SlideAvailability extends Component {
       nextProps.availabilityPlanModalEnabled
     return availabilitySelect2NeedsActivation || availabilityModalToggled
   }
-  activateSelect2() {
-    const select2Exists = $.fn.select2
-    const select2Initialized = $('#availabilityFloorPlansDropdown').hasClass(
-      'select2-hidden-accessible'
-    )
-    if (!select2Initialized && select2Exists) {
-      $('#availabilityFloorPlansDropdown').select2({
-        minimumResultsForSearch: -1,
-      })
-      $('#availabilityCollectionDropdown').select2({
-        minimumResultsForSearch: -1,
-      })
 
-      this.setState({
-        availabilitySelect2Activated: true,
-      })
-    } else if (!select2Exists) {
-      setTimeout(() => this.activateSelect2(), 5000) //wait and retry if select2 not loaded yet
-    }
-  }
   setActiveAvailabilityPlan(i) {
     this.props.setActiveAvailabilityPlan(i)
     this.props.displayAvailabilityPlanModal()
     // $('.slideTemplate-availability').animate({ scrollTop: 0 }, 'fast') //scroll up to top in case user scrolled down
   }
+
+  handleChange(v) {
+    this.setState({ selectedFilter: { ...this.state.selectedFilter, ...v } })
+  }
+
   render() {
     const availabilityPlanModalEnabled = this.props.availabilityPlanModalEnabled
+    const {availableFloorplans} = this.state
 
     let availabilityClasses = 'availability'
     availabilityClasses += availabilityPlanModalEnabled ? ' hidden' : ''
@@ -85,35 +100,22 @@ class SlideAvailability extends Component {
               <div className="availabilityDropdownLabel">
                 {this.props.configuration.availabilityFloorplansLabel}
               </div>
-              <select
-                className="availabilityDropdown"
-                id="availabilityFloorPlansDropdown"
-              >
-                {this.props.configuration.availabilityFloorplansOptions.map(
-                  (option, i) => {
-                    return (
-                      <option key={i + 'floorPlanOption'} value={option.choice}>
-                        {option.choice}
-                      </option>
-                    )
-                  }
-                )}
-              </select>
-            </div>
-            <div className="availabilityDropdownElement">
-              <div className="availabilityDropdownLabel">
-                {this.props.configuration.availabilityCollectionLabel}
-              </div>
-              <div className="availabilityDropdown">
+              <div className="availabilityDropdownSelect">
                 <select
+                  onChange={(v) =>
+                    this.handleChange({ bedrooms: v.target.value })
+                  }
                   className="availabilityDropdown"
-                  id="availabilityCollectionDropdown"
+                  id="availabilityFloorPlansDropdown"
                 >
-                  {this.props.configuration.availabilityCollectionOptions.map(
+                  <span>
+                    <b>i</b>
+                  </span>
+                  {this.props.configuration.availabilityFloorplansOptions.map(
                     (option, i) => {
                       return (
                         <option
-                          key={i + 'collectionOption'}
+                          key={i + 'floorPlanOption'}
                           value={option.choice}
                         >
                           {option.choice}
@@ -122,14 +124,52 @@ class SlideAvailability extends Component {
                     }
                   )}
                 </select>
+                <span className="availabilityDropdownArrow">
+                  <b />
+                </span>
+              </div>
+            </div>
+            <div className="availabilityDropdownElement">
+              <div className="availabilityDropdownLabel">
+                {this.props.configuration.availabilityCollectionLabel}
+              </div>
+              <div className="availabilityDropdown">
+                <div className="availabilityDropdownSelect">
+                  <select
+                    onChange={(v) =>
+                      this.handleChange({ apartment_type: v.target.value })
+                    }
+                    className="availabilityDropdown"
+                    id="availabilityCollectionDropdown"
+                  >
+                    {this.props.configuration.availabilityCollectionOptions.map(
+                      (option, i) => {
+                        return (
+                          <option
+                            key={i + 'collectionOption'}
+                            value={option.choice}
+                          >
+                            {option.choice}
+                          </option>
+                        )
+                      }
+                    )}
+                  </select>
+                  <span className="availabilityDropdownArrow">
+                    <b />
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-          <div className="availabilityApartmentContainer">
-            {this.props.configuration.apartment_result.map((apartment, i) => {
-              console.log(apartment)
+          <div className={`availabilityApartmentContainer ${availableFloorplans.length <= 2 ? 'fix': ''}`}>
+            {availableFloorplans.map((apartment, i) => {
               return (
-                <div className="apartment" key={i + 'apartment'}>
+                <div
+                  className="apartment"
+                  key={i + 'apartment'}
+                  onClick={() => this.setActiveAvailabilityPlan(i)}
+                >
                   <div className="apartment__title">
                     {apartment.title.rendered}
                   </div>
