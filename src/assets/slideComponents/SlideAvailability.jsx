@@ -17,10 +17,8 @@ class SlideAvailability extends Component {
       availabilitySelect2Activated: false,
       availableFloorplans: [],
       selectedFilter: {
-        bedrooms:
-          this.props.configuration.availabilityFloorplansOptions[0].choice,
-        apartment_type:
-          this.props.configuration.availabilityCollectionOptions[0].choice,
+        bedrooms: '',
+        apartment_type: '',
       },
     }
   }
@@ -31,8 +29,8 @@ class SlideAvailability extends Component {
 
     const filteredFloorplans = availableFloorplans.filter(
       (floorplan) =>
-        floorplan.acf.bedrooms === bedrooms &&
-        floorplan.acf.apartment_type === apartment_type
+        (!bedrooms || floorplan.acf.bedrooms === bedrooms) &&
+        (!apartment_type || floorplan.acf.apartment_type === apartment_type)
     )
 
     this.setState({
@@ -73,7 +71,7 @@ class SlideAvailability extends Component {
 
   render() {
     const availabilityPlanModalEnabled = this.props.availabilityPlanModalEnabled
-    const {availableFloorplans} = this.state
+    const { availableFloorplans } = this.state
 
     let availabilityClasses = 'availability'
     availabilityClasses += availabilityPlanModalEnabled ? ' hidden' : ''
@@ -108,9 +106,7 @@ class SlideAvailability extends Component {
                   className="availabilityDropdown"
                   id="availabilityFloorPlansDropdown"
                 >
-                  <span>
-                    <b>i</b>
-                  </span>
+                  <option value="">All</option>
                   {this.props.configuration.availabilityFloorplansOptions.map(
                     (option, i) => {
                       return (
@@ -142,6 +138,7 @@ class SlideAvailability extends Component {
                     className="availabilityDropdown"
                     id="availabilityCollectionDropdown"
                   >
+                    <option value="">All</option>
                     {this.props.configuration.availabilityCollectionOptions.map(
                       (option, i) => {
                         return (
@@ -162,7 +159,11 @@ class SlideAvailability extends Component {
               </div>
             </div>
           </div>
-          <div className={`availabilityApartmentContainer ${availableFloorplans.length <= 2 ? 'fix': ''}`}>
+          <div
+            className={`availabilityApartmentContainer ${
+              availableFloorplans.length <= 2 ? 'fix' : ''
+            }`}
+          >
             {availableFloorplans.map((apartment, i) => {
               return (
                 <div
