@@ -17,6 +17,7 @@ const ImageZoom = ({ image }) => {
         initialScale={1}
         initialPositionX={initialPosition}
         maxScale={3}
+        centerZoomedOut
       >
         {({ zoomIn, zoomOut }) => (
           <>

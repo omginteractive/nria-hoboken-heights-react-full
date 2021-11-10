@@ -1654,19 +1654,16 @@ body {
               }
             }
             .availabilityApartmentContainer {
-              display: flex;
-              justify-content: space-between;
-              flex-wrap: wrap;
-              &.fix {
-                justify-content: start;
-                gap: 5rem;
-              }
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+          
               .apartment {
                 display: flex;
                 flex-direction: column;
                 border: 1px solid #000;
                 margin-bottom: calc_vw(87);
                 cursor: pointer;
+                width: max-content;
                 &__title {
                   font-size: calc_vw(15);
                   line-height: calc_vw(18);
@@ -2839,7 +2836,7 @@ body {
   }
 
   .full_floorplan_image {
-    max-height: 85vh;
+    max-height: 80vh;
     width: 100%;
     max-width: 650px;
   }

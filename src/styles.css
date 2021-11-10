@@ -1614,13 +1614,8 @@ body {
   top: 33%;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-.slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer.fix {
-  justify-content: start;
-  gap: 5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment {
   display: flex;
@@ -1628,6 +1623,7 @@ body {
   border: 1px solid #000;
   margin-bottom: 4.53125vw;
   cursor: pointer;
+  width: max-content;
 }
 .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__title {
   font-size: 0.78125vw;
@@ -2652,7 +2648,7 @@ body {
   padding-bottom: 3rem !important;
 }
 .react-transform-wrapper .full_floorplan_image {
-  max-height: 85vh;
+  max-height: 80vh;
   width: 100%;
   max-width: 650px;
 }
@@ -3910,8 +3906,12 @@ body {
   .slides_wrapper .slides_inner .slide.slideTemplate-contact .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field + .hs-form-field .input, .slides_wrapper .slides_inner .slide.slideTemplate-contactMobile .contactForm .hubspotFormWrapper .hs-nested-form-fix .hs-form .form-columns-2 .hs-form-field + .hs-form-field .input {
     margin-left: 0;
   }
-  .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer.fix {
-    gap: unset;
+  .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment {
+    width: unset;
   }
   .slides_wrapper .slides_inner .slide.slideTemplate-availability .availability .availabilityApartmentContainer .apartment__floorPlanImage {
     width: 100%;
